@@ -55,12 +55,9 @@ Binaries/Win64/*
 !Binaries/Win64/UnrealEditor.modules
 !Binaries/Win64/UnrealEditor-MyProject.dll
 
-Binaries/*
-Plugins/**/Binaries/*
-
 # Builds
 Build/*
-
+.idea/*
 # Whitelist PakBlacklist-<BuildConfiguration>.txt files
 !Build/*/
 Build/*/**
