@@ -51,9 +51,9 @@ SourceArt/**/*.tga
 Binaries/*
 !Binaries/Win64
 Binaries/Win64/*
-!Binaries/Win64/MyProjectEditor.target
+!Binaries/Win64/DiamondProjectEditor.target
 !Binaries/Win64/UnrealEditor.modules
-!Binaries/Win64/UnrealEditor-MyProject.dll
+!Binaries/Win64/UnrealEditor-DiamondProject.dll
 
 # Builds
 Build/*
