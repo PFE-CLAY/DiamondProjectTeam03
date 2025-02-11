@@ -56,6 +56,7 @@ Binaries/Win64/*
 !Binaries/Win64/UnrealEditor-DiamondProject.dll
 
 # Builds
+
 Build/*
 .idea/*
 # Whitelist PakBlacklist-<BuildConfiguration>.txt files
