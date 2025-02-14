@@ -1,13 +1,13 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 
-#include "PlayerProtoWeapon.h"
 
-#include "TP_WeaponComponent.h"
-#include "DiamondProjectCharacter.h"
-#include "DiamondProjectProjectile.h"
-#include "KismetTraceUtils.h"
-#include "PhysicsAssetRenderUtils.h"
+#include "DiamondProject/Public/Weapons/APlayerProtoWeapon.h"
+
+#include "EnhancedInputComponent.h"
+#include "EnhancedInputSubsystems.h"
+#include "DiamondProject/TP_WeaponComponent.h"
+#include "DiamondProject/DiamondProjectCharacter.h"
 #include "GameFramework/PlayerController.h"
 #include "Camera/PlayerCameraManager.h"
 #include "Kismet/GameplayStatics.h"
@@ -15,16 +15,32 @@
 #include "Engine/LocalPlayer.h"
 #include "Engine/World.h"
 
-void UPlayerProtoWeapon::Fire() {
+void UAPlayerProtoWeapon::BeginPlay()
+{
+	Super::BeginPlay();
+	CurrentAmmo = MagazineSize;
+
+	if (TextComponent != nullptr) {
+		TextComponent->SetText(FText::FromString(FString::FromInt(CurrentAmmo)));;
+	}
+}
+
+void UAPlayerProtoWeapon::Fire() {
 	if (Character == nullptr || Character->GetController() == nullptr) {
 		return;
 	}
 
+	if (CurrentAmmo <= 0) {
+		return;
+	}
+
 	// Try and fire a projectile
-    // Execute shot only if firerate is ready
 	float CurrentTime = GetWorld()->GetTimeSeconds();
 	if (CurrentTime - LastFireTime < 1.0f / FireRatePerSecond) return;
 	LastFireTime = CurrentTime;
+	
+	CurrentAmmo--;
+	TextComponent->SetText(FText::FromString(FString::FromInt(CurrentAmmo)));;
 	
 	UWorld* const World = GetWorld();
 		
@@ -40,7 +56,11 @@ void UPlayerProtoWeapon::Fire() {
 		CollisionParams.AddIgnoredActor(Character);
 		FVector End = SpawnLocation + (SpawnRotation.Vector() * 10000);
 		bool bHasHit = World->LineTraceSingleByChannel(Hit, SpawnLocation, End, ECollisionChannel::ECC_Visibility, CollisionParams);
-		DrawDebugLine(World, SpawnLocation, End, FColor::Red, true, 1.f, 0, 10.f);
+		DrawDebugLine(World, SpawnLocation, End, bHasHit? FColor::Red : FColor::Green, false, 0.3f, 0, 10.f);
+
+		if (bHasHit) {
+			//Implement damage
+		}
 	}
 	
 	// Try and play the sound if specified
@@ -56,10 +76,25 @@ void UPlayerProtoWeapon::Fire() {
 			AnimInstance->Montage_Play(FireAnimation, 1.f);
 		}
 	}
+	
+	if (CurrentAmmo == 0) {
+		UE_LOG(LogTemp, Warning, TEXT("Detach weapon"));
+		OnDropped.Broadcast(Character);
+	}
 }
 
-bool UPlayerProtoWeapon::AttachWeapon(ADiamondProjectCharacter* TargetCharacter) {
-	return Super::AttachWeapon(TargetCharacter);
+void UAPlayerProtoWeapon::DetachWeapon() {
+	FDetachmentTransformRules DetachmentRules(EDetachmentRule::KeepWorld, EDetachmentRule::KeepWorld, EDetachmentRule::KeepWorld, false);
+	DetachFromComponent(DetachmentRules);
+
+	Character->RemoveInstanceComponent(this);
+
+	if (APlayerController* PlayerController = Cast<APlayerController>(Character->GetController())) {
+		if (UEnhancedInputLocalPlayerSubsystem* Subsystem = ULocalPlayer::GetSubsystem<UEnhancedInputLocalPlayerSubsystem>(PlayerController->GetLocalPlayer())) {
+			Subsystem->RemoveMappingContext(FireMappingContext);
+		}
+		if (UEnhancedInputComponent* EnhancedInputComponent = Cast<UEnhancedInputComponent>(PlayerController->InputComponent)) {
+			EnhancedInputComponent->RemoveActionBinding(BindingIndex);
+		}
+	}
 }
-
-
