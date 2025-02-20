@@ -36,5 +36,6 @@ void UAC_Health::ChangeHealth(int NewHealth)
 	} else
 	{
 		OnHealthChangedEvent.Broadcast(CurrentHealth);
+		OnHealthChanged();
 	}
 }

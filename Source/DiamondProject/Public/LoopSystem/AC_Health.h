@@ -18,14 +18,17 @@ private:
 
 	UPROPERTY()
 	int CurrentHealth;
-	
-public:
+	UDELEGATE(BlueprintCallable)
 	DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnHealthChangedEvent, int, CurrentHealth);
-	UPROPERTY()
+
+	UDELEGATE(BlueprintCallable)
+	DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnDeathEvent);
+
+public:
+	UPROPERTY(BlueprintAssignable)
 	FOnHealthChangedEvent OnHealthChangedEvent;
 
-	DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnDeathEvent);
-	UPROPERTY()
+	UPROPERTY(BlueprintAssignable)
 	FOnDeathEvent OnDeathEvent;
 	
 protected:
@@ -44,4 +47,10 @@ public:
 
 	UFUNCTION()
 	void ChangeHealth(int NewHealth);
+
+	UFUNCTION(BlueprintImplementableEvent)
+	void OnHealthChanged();
+
+	UFUNCTION(BlueprintImplementableEvent)
+	void OnDeath();
 };
