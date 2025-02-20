@@ -13,6 +13,9 @@ class DIAMONDPROJECT_API UTP_WeaponComponent : public USkeletalMeshComponent
 {
 	GENERATED_BODY()
 
+protected:
+	int32 BindingIndex;
+	
 public:
 	/** Projectile class to spawn */
 	UPROPERTY(EditDefaultsOnly, Category=Projectile)
