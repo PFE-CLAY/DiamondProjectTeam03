@@ -48,10 +48,4 @@ public:
 
 	UFUNCTION()
 	void ChangeHealth(int NewHealth);
-
-	UFUNCTION(BlueprintImplementableEvent)
-	void OnHealthChanged();
-
-	UFUNCTION(BlueprintImplementableEvent)
-	void OnDeath();
 };
