@@ -13,11 +13,6 @@ class DIAMONDPROJECT_API UAC_Health : public UActorComponent
 	GENERATED_BODY()
 
 private:
-	UPROPERTY(EditDefaultsOnly)
-	int MaxHealth = 3;
-
-	UPROPERTY()
-	int CurrentHealth;
 	UDELEGATE(BlueprintCallable)
 	DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnHealthChangedEvent, int, CurrentHealth);
 
@@ -25,6 +20,12 @@ private:
 	DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnDeathEvent);
 
 public:
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+	int MaxHealth = 3;
+
+	UPROPERTY(BlueprintReadOnly)
+	int CurrentHealth;
+	
 	UPROPERTY(BlueprintAssignable)
 	FOnHealthChangedEvent OnHealthChangedEvent;
 
