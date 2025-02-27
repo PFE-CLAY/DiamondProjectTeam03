@@ -14,6 +14,7 @@
 #include "Animation/AnimInstance.h"
 #include "Engine/LocalPlayer.h"
 #include "Engine/World.h"
+#include "LoopSystem/AC_Health.h"
 
 void UAPlayerProtoWeapon::BeginPlay()
 {
@@ -59,7 +60,10 @@ void UAPlayerProtoWeapon::Fire() {
 		DrawDebugLine(World, SpawnLocation, End, bHasHit? FColor::Red : FColor::Green, false, 0.3f, 0, 10.f);
 
 		if (bHasHit) {
-			//Implement damage
+			//Try to apply damage to the hit actor using AC_Health
+			if (UAC_Health* HealthComponent = Hit.GetActor()->FindComponentByClass<UAC_Health>()) {
+                HealthComponent->DecreaseHealth(Damage);
+            }
 		}
 	}
 	
