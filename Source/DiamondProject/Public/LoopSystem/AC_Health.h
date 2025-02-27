@@ -31,10 +31,10 @@ public:
 
 	UPROPERTY(BlueprintAssignable)
 	FOnDeathEvent OnDeathEvent;
-	
+
 protected:
-	// Called when the game starts
-	virtual void BeginPlay() override;
+    UPROPERTY(BlueprintReadOnly)
+    bool bIsDead;	
 
 public:
 	// Sets default values for this component's properties
@@ -46,6 +46,9 @@ public:
 	UFUNCTION(BlueprintCallable)
 	void DecreaseHealth(int Damage);
 
+protected:
+	// Called when the game starts
+	virtual void BeginPlay() override;
 	UFUNCTION()
 	void ChangeHealth(int NewHealth);
 };
