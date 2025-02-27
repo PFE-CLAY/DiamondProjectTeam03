@@ -56,7 +56,7 @@ void UAPlayerProtoWeapon::Fire() {
 		FCollisionQueryParams CollisionParams;
 		CollisionParams.AddIgnoredActor(Character);
 		FVector End = SpawnLocation + (SpawnRotation.Vector() * 10000);
-		bool bHasHit = World->LineTraceSingleByChannel(Hit, SpawnLocation, End, ECollisionChannel::ECC_Visibility, CollisionParams);
+		bool bHasHit = World->LineTraceSingleByChannel(Hit,SpawnLocation, End, ECC_Visibility, CollisionParams);
 		DrawDebugLine(World, SpawnLocation, End, bHasHit? FColor::Red : FColor::Green, false, 0.3f, 0, 10.f);
 
 		if (bHasHit) {
