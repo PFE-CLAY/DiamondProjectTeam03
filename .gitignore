@@ -54,8 +54,10 @@ Binaries/Win64/*
 !Binaries/Win64/DiamondProjectEditor.target
 !Binaries/Win64/UnrealEditor.modules
 !Binaries/Win64/UnrealEditor-DiamondProject.dll
+!Binaries/Win64/UnrealEditor-FCTween.dll
 
 # Builds
+
 Build/*
 .idea/*
 # Whitelist PakBlacklist-<BuildConfiguration>.txt files
