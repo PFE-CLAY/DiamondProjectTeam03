@@ -13,6 +13,9 @@ class DIAMONDPROJECT_API UTP_WeaponComponent : public USkeletalMeshComponent
 {
 	GENERATED_BODY()
 
+protected:
+	int32 BindingIndex;
+	
 public:
 	/** Projectile class to spawn */
 	UPROPERTY(EditDefaultsOnly, Category=Projectile)
@@ -43,18 +46,18 @@ public:
 
 	/** Attaches the actor to a FirstPersonCharacter */
 	UFUNCTION(BlueprintCallable, Category="Weapon")
-	bool AttachWeapon(ADiamondProjectCharacter* TargetCharacter);
+	virtual bool AttachWeapon(ADiamondProjectCharacter* TargetCharacter);
 
 	/** Make the weapon Fire a Projectile */
 	UFUNCTION(BlueprintCallable, Category="Weapon")
-	void Fire();
+	virtual void Fire();
 
 protected:
 	/** Ends gameplay for this component. */
 	UFUNCTION()
 	virtual void EndPlay(const EEndPlayReason::Type EndPlayReason) override;
 
-private:
 	/** The Character holding this weapon*/
-	ADiamondProjectCharacter* Character;
+	UPROPERTY()
+	TObjectPtr<ADiamondProjectCharacter> Character;
 };

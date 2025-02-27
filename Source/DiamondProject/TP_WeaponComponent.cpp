@@ -9,10 +9,12 @@
 #include "Kismet/GameplayStatics.h"
 #include "EnhancedInputComponent.h"
 #include "EnhancedInputSubsystems.h"
+#include "TP_PickUpComponent.h"
 #include "Animation/AnimInstance.h"
 #include "Engine/LocalPlayer.h"
 #include "Engine/World.h"
 
+class UTP_PickUpComponent;
 // Sets default values for this component's properties
 UTP_WeaponComponent::UTP_WeaponComponent()
 {
@@ -73,6 +75,7 @@ bool UTP_WeaponComponent::AttachWeapon(ADiamondProjectCharacter* TargetCharacter
 	// Check that the character is valid, and has no weapon component yet
 	if (Character == nullptr || Character->GetInstanceComponents().FindItemByClass<UTP_WeaponComponent>())
 	{
+		UE_LOG(LogTemp, Warning, TEXT("Character %s already has a weapon"), *Character->GetName());
 		return false;
 	}
 
@@ -96,6 +99,7 @@ bool UTP_WeaponComponent::AttachWeapon(ADiamondProjectCharacter* TargetCharacter
 		{
 			// Fire
 			EnhancedInputComponent->BindAction(FireAction, ETriggerEvent::Triggered, this, &UTP_WeaponComponent::Fire);
+			BindingIndex = EnhancedInputComponent->GetNumActionBindings() - 1;
 		}
 	}
 
