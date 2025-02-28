@@ -23,18 +23,20 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Enemy Behavior")
 	float MovementSpeed = 600;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Enemy Behavior")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Enemy Attack")
     float AttackCooldown = 3;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Enemy Attack")
+    float AttackDamage = 1;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Enemy Behavior")
-	float BaseDetectionRange;
+	float BaseDetectionRange = 300;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Enemy Behavior")
-	float MaxDetectionRange;
+	float MaxDetectionRange = 600;
 
 	UPROPERTY(BlueprintReadWrite, Category = "Enemy Behavior")
 	float DetectionRange;
-	
 	
 	UPROPERTY(BlueprintReadOnly, Category = "Enemy Behavior");
 	bool bCanAttack = true;
@@ -58,6 +60,9 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
+	UFUNCTION(BlueprintCallable)
+	void OnDeath();
+
 private:
 	UFUNCTION(BlueprintCallable, Category = "Enemy")
 	void DetectPlayer(AActor* Actor);
@@ -70,6 +75,8 @@ private:
 
 	UFUNCTION(BlueprintCallable, Category = "Enemy")
 	void Shoot();
+
+	
 
 public:
 	

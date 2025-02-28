@@ -3,6 +3,7 @@
 
 #include "Enemy.h"
 
+#include "ProjectileEnemy.h"
 #include "Components/BoxComponent.h"
 #include "DiamondProject/DiamondProjectCharacter.h"
 #include "GameFramework/CharacterMovementComponent.h"
@@ -24,6 +25,11 @@ void AEnemy::BeginPlay()
 	PlayerPawn = GetWorld()->GetFirstPlayerController()->GetPawn();
 	GetCharacterMovement()->MaxWalkSpeed = MovementSpeed;
 	
+}
+
+void AEnemy::OnDeath()
+{
+	K2_DestroyActor();
 }
 
 void AEnemy::DetectPlayer(AActor* Actor)
@@ -65,8 +71,9 @@ void AEnemy::Shoot()
 		FVector const Location = GetActorLocation();
 		FRotator const Rotation = (PlayerPawn->GetActorLocation() - GetActorLocation()).Rotation();
 		FActorSpawnParameters SpawnInfo;
-		GetWorld()->SpawnActor(Projectile, &Location, &Rotation, SpawnInfo);
-		GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow, TEXT("Hit"));
+		AActor* ProjectileSpawned = GetWorld()->SpawnActor(Projectile, &Location, &Rotation, SpawnInfo);
+		Cast<AProjectileEnemy>(ProjectileSpawned)->ProjectileDamage = AttackDamage;
+		
 		SetNewAttackTimer();
 		
 	}

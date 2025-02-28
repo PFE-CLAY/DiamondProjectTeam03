@@ -15,9 +15,13 @@ class DIAMONDPROJECT_API AProjectileEnemy : public AActor
 protected:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Projectile")
 	UStaticMeshComponent* MeshCollider;
+
 	
 public:
 	// Sets default values for this actor's properties
+	UPROPERTY()
+	int ProjectileDamage = 0;
+	
 	AProjectileEnemy();
 
 protected:

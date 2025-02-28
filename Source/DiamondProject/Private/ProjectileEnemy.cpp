@@ -2,6 +2,8 @@
 
 
 #include "ProjectileEnemy.h"
+#include "LoopSystem/AC_Health.h"
+#include "DiamondProject/DiamondProjectCharacter.h"
 
 // Sets default values
 AProjectileEnemy::AProjectileEnemy()
@@ -26,8 +28,12 @@ void AProjectileEnemy::Tick(float DeltaTime)
 
 void AProjectileEnemy::OnCollision(AActor* OverlappedActor, AActor* OtherActor)
 {
+	if(Cast<ADiamondProjectCharacter>(OtherActor) != nullptr){
+		
+		if(UAC_Health* HealthComponent = OtherActor->FindComponentByClass<UAC_Health>()){
+			HealthComponent->DecreaseHealth(ProjectileDamage);
+		}
+	}
 	
-	GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Red, TEXT("Bullet"));
-	//Take damages player
 }
 
