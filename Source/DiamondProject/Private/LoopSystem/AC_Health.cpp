@@ -30,8 +30,9 @@ void UAC_Health::ChangeHealth(int NewHealth)
 	NewHealth = FMath::Clamp(NewHealth, 0, MaxHealth);
 	CurrentHealth = NewHealth;
 
-	if (CurrentHealth == 0) {
+	if (CurrentHealth == 0 && !bIsDead) {
 		OnDeathEvent.Broadcast();
+		bIsDead = true;
 	} else {
 		OnHealthChangedEvent.Broadcast(CurrentHealth);
 	}
