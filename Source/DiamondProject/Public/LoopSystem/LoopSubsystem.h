@@ -14,5 +14,6 @@ class DIAMONDPROJECT_API ULoopSubsystem : public UGameInstanceSubsystem
 {
 	GENERATED_BODY()
 public:
+	UFUNCTION(BlueprintCallable)
 	void ReloadScene();
 };
