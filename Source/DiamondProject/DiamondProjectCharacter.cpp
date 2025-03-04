@@ -62,6 +62,9 @@ void ADiamondProjectCharacter::SetupPlayerInputComponent(UInputComponent* Player
 
 		//Interacting
 		EnhancedInputComponent->BindAction(InteractAction, ETriggerEvent::Started, this, &ADiamondProjectCharacter::Interact);
+
+		//Crouching
+		EnhancedInputComponent->BindAction(CrouchAction, ETriggerEvent::Started, this, &ADiamondProjectCharacter::Crouch);
 		
 	}
 	else
@@ -100,4 +103,9 @@ void ADiamondProjectCharacter::Look(const FInputActionValue& Value)
 void ADiamondProjectCharacter::Interact(const FInputActionValue& Value)
 {
 	OnInteract.Broadcast();
+}
+
+void ADiamondProjectCharacter::Crouch(const FInputActionValue& Value)
+{
+	OnCrouch.Broadcast();
 }

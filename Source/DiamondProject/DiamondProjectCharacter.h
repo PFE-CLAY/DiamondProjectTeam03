@@ -16,6 +16,7 @@ struct FInputActionValue;
 
 DECLARE_LOG_CATEGORY_EXTERN(LogTemplateCharacter, Log, All);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnInteract);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnCrouch);
 
 UCLASS(Blueprintable,config=Game)
 class ADiamondProjectCharacter : public ACharacter
@@ -41,6 +42,9 @@ class ADiamondProjectCharacter : public ACharacter
 	/** Move Input Action */
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Input, meta=(AllowPrivateAccess = "true"))
 	UInputAction* InteractAction;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Input, meta=(AllowPrivateAccess = "true"))
+	UInputAction* CrouchAction;
 	
 public:
 	ADiamondProjectCharacter();
@@ -57,6 +61,9 @@ public:
 	UPROPERTY(BlueprintAssignable, Category = "Interaction")
 	FOnInteract OnInteract;
 
+	UPROPERTY(BlueprintAssignable, Category = "Interaction")
+	FOnInteract OnCrouch;
+
 protected:
 	/** Called for movement input */
 	void Move(const FInputActionValue& Value);
@@ -65,6 +72,8 @@ protected:
 	void Look(const FInputActionValue& Value);
 
 	void Interact(const FInputActionValue& Value);
+
+	void Crouch(const FInputActionValue& Value);
 
 
 protected:
@@ -80,4 +89,3 @@ public:
 	
 
 };
-
