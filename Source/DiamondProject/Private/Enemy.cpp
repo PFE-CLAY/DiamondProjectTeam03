@@ -72,8 +72,9 @@ void AEnemy::Shoot()
 		bCanAttack = false;
 		FActorSpawnParameters SpawnInfo;
 		AActor* ProjectileSpawned = GetWorld()->SpawnActor(Projectile, &Location, &Rotation, SpawnInfo);
-		Cast<AProjectileEnemy>(ProjectileSpawned)->ProjectileDamage = AttackDamage;
-		//GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Red, "hit");
+		AProjectileEnemy* ProjectileInstance = Cast<AProjectileEnemy>(ProjectileSpawned);
+		ProjectileInstance->ProjectileDamage = AttackDamage;
+		
 		SetNewAttackTimer();
 		
 		
@@ -82,7 +83,7 @@ void AEnemy::Shoot()
 
 bool AEnemy::IsPlayerOnSight(FRotator Rotation, FVector Location)
 {
-	bool bIsPlayerOnSight = true;
+	bool bIsPlayerOnSight = false;
 	FHitResult Hit;
 	FCollisionQueryParams CollisionParams;
 	
