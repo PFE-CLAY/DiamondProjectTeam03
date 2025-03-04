@@ -24,6 +24,8 @@ void UTP_PickUpComponent::OnSphereBeginOverlap(UPrimitiveComponent* OverlappedCo
 	{
 		// Notify that the actor is being picked up
 		OnPickUp.Broadcast(Character);
+		//output character name
+		UE_LOG(LogTemp, Warning, TEXT("Character %s is picking up the item"), *Character->GetName());
 
 		// Unregister from the Overlap Event so it is no longer triggered
 		OnComponentBeginOverlap.RemoveAll(this);

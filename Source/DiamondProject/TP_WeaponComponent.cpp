@@ -96,6 +96,7 @@ bool UTP_WeaponComponent::AttachWeapon(ADiamondProjectCharacter* TargetCharacter
 		{
 			// Fire
 			EnhancedInputComponent->BindAction(FireAction, ETriggerEvent::Triggered, this, &UTP_WeaponComponent::Fire);
+			BindingIndex = EnhancedInputComponent->GetNumActionBindings() - 1;
 		}
 	}
 
