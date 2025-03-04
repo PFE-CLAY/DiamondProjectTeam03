@@ -35,7 +35,6 @@ ADiamondProjectCharacter::ADiamondProjectCharacter()
 	Mesh1P->CastShadow = false;
 	//Mesh1P->SetRelativeRotation(FRotator(0.9f, -19.19f, 5.2f));
 	Mesh1P->SetRelativeLocation(FVector(-30.f, 0.f, -150.f));
-
 }
 
 void ADiamondProjectCharacter::BeginPlay()
@@ -60,6 +59,13 @@ void ADiamondProjectCharacter::SetupPlayerInputComponent(UInputComponent* Player
 
 		// Looking
 		EnhancedInputComponent->BindAction(LookAction, ETriggerEvent::Triggered, this, &ADiamondProjectCharacter::Look);
+
+		//Interacting
+		EnhancedInputComponent->BindAction(InteractAction, ETriggerEvent::Started, this, &ADiamondProjectCharacter::Interact);
+
+		//Crouching
+		EnhancedInputComponent->BindAction(CrouchAction, ETriggerEvent::Started, this, &ADiamondProjectCharacter::Crouch);
+		
 	}
 	else
 	{
@@ -92,4 +98,14 @@ void ADiamondProjectCharacter::Look(const FInputActionValue& Value)
 		AddControllerYawInput(LookAxisVector.X);
 		AddControllerPitchInput(LookAxisVector.Y);
 	}
+}
+
+void ADiamondProjectCharacter::Interact(const FInputActionValue& Value)
+{
+	OnInteract.Broadcast();
+}
+
+void ADiamondProjectCharacter::Crouch(const FInputActionValue& Value)
+{
+	OnCrouch.Broadcast();
 }

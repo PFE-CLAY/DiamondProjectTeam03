@@ -15,8 +15,10 @@ class UInputMappingContext;
 struct FInputActionValue;
 
 DECLARE_LOG_CATEGORY_EXTERN(LogTemplateCharacter, Log, All);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnInteract);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnCrouch);
 
-UCLASS(config=Game)
+UCLASS(Blueprintable,config=Game)
 class ADiamondProjectCharacter : public ACharacter
 {
 	GENERATED_BODY()
@@ -36,6 +38,13 @@ class ADiamondProjectCharacter : public ACharacter
 	/** Move Input Action */
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Input, meta=(AllowPrivateAccess = "true"))
 	UInputAction* MoveAction;
+
+	/** Move Input Action */
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Input, meta=(AllowPrivateAccess = "true"))
+	UInputAction* InteractAction;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Input, meta=(AllowPrivateAccess = "true"))
+	UInputAction* CrouchAction;
 	
 public:
 	ADiamondProjectCharacter();
@@ -49,12 +58,23 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
 	class UInputAction* LookAction;
 
+	UPROPERTY(BlueprintAssignable, Category = "Interaction")
+	FOnInteract OnInteract;
+
+	UPROPERTY(BlueprintAssignable, Category = "Interaction")
+	FOnInteract OnCrouch;
+
 protected:
 	/** Called for movement input */
 	void Move(const FInputActionValue& Value);
 
 	/** Called for looking input */
 	void Look(const FInputActionValue& Value);
+
+	void Interact(const FInputActionValue& Value);
+
+	void Crouch(const FInputActionValue& Value);
+
 
 protected:
 	// APawn interface
@@ -66,6 +86,6 @@ public:
 	USkeletalMeshComponent* GetMesh1P() const { return Mesh1P; }
 	/** Returns FirstPersonCameraComponent subobject **/
 	UCameraComponent* GetFirstPersonCameraComponent() const { return FirstPersonCameraComponent; }
+	
 
 };
-
