@@ -76,6 +76,8 @@ private:
 	UFUNCTION(BlueprintCallable, Category = "Enemy")
 	void Shoot();
 
+	UFUNCTION(BlueprintCallable, Category = "Enemy")
+	bool IsPlayerOnSight(FRotator Rotation, FVector Location);
 	
 
 public:

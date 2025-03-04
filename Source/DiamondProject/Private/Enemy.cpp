@@ -67,16 +67,32 @@ void AEnemy::Shoot()
 {
 	if(bCanAttack)
 	{
-		bCanAttack = false;
 		FVector const Location = GetActorLocation();
 		FRotator const Rotation = (PlayerPawn->GetActorLocation() - GetActorLocation()).Rotation();
+		bCanAttack = false;
 		FActorSpawnParameters SpawnInfo;
 		AActor* ProjectileSpawned = GetWorld()->SpawnActor(Projectile, &Location, &Rotation, SpawnInfo);
 		Cast<AProjectileEnemy>(ProjectileSpawned)->ProjectileDamage = AttackDamage;
-		
+		//GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Red, "hit");
 		SetNewAttackTimer();
 		
+		
 	}
+}
+
+bool AEnemy::IsPlayerOnSight(FRotator Rotation, FVector Location)
+{
+	bool bIsPlayerOnSight = true;
+	FHitResult Hit;
+	FCollisionQueryParams CollisionParams;
+	
+	CollisionParams.AddIgnoredActor(this);
+	FVector End = GetActorLocation() + (Rotation.Vector() * DetectionRange);
+	bool bHasHit = GetWorld()->LineTraceSingleByChannel(Hit, Location, End, ECollisionChannel::ECC_Camera, CollisionParams);
+	//DrawDebugLine(GetWorld(), Location, End, bHasHit? FColor::Red : FColor::Green, false, 0.3f, 0, 10.f);
+	bIsPlayerOnSight = (bHasHit && Hit.GetActor() == PlayerPawn);
+	//GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Red, FString::Printf(TEXT("Is Player On Sight: %s"), bIsPlayerOnSight ? TEXT("true") : TEXT("false")));
+	return bIsPlayerOnSight;
 }
 
 void AEnemy::SetNewAttackTimer()
