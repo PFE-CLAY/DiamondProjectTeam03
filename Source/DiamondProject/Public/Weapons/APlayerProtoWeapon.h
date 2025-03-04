@@ -15,7 +15,7 @@ class DIAMONDPROJECT_API UAPlayerProtoWeapon : public UTP_WeaponComponent
 
 public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Gameplay)
-	UTextRenderComponent* TextComponent;
+	TObjectPtr<class UTextRenderComponent> TextComponent;
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Gameplay)
 	float Damage;
