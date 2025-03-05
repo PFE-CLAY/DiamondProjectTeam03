@@ -2,6 +2,8 @@
 
 #include "DiamondProject/Public/TriggerZone/TriggerZone.h"
 
+#include <chrono>
+
 // Sets default values
 ATriggerZone::ATriggerZone()
 {
@@ -24,18 +26,50 @@ void ATriggerZone::BeginPlay()
 	Super::BeginPlay();
 }
 
+void ATriggerZone::Tick(float DeltaTime)
+{
+	Super::Tick(DeltaTime);
+	if (!bIsOnce && bIsTriggered) {
+		OnUpdate(DeltaTime);
+		if (TimeElapseToBeTriggered >= TimeBetweenTrigger) {
+			OnResetUpdate(DeltaTime);
+		}
+	}
+}
+
+void ATriggerZone::OnUpdate(float DeltaTime)
+{
+	TimeElapseToBeTriggered += DeltaTime;
+}
+
+void ATriggerZone::OnResetUpdate(float DeltaTime)
+{
+	bIsTriggered = false;
+	TimeElapseToBeTriggered = 0.0f;
+	ShapeComponent->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
+	ShapeComponent->SetCollisionResponseToAllChannels(ECR_Overlap);
+}
+
 // Called when actor overlap the trigger zone
 void ATriggerZone::OnOverlapTriggerZone(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor,
 	UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
 	UE_LOG(LogTemp, Warning, TEXT("Overlap Trigger Zone"));
 	bIsTriggered = true;
-	OnTriggerZone();
+	if (bIsOnce && bIsTriggered) {
+		SetActorTickEnabled(false);
+	}
+	ShapeComponent->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+	ShapeComponent->SetCollisionResponseToAllChannels(ECR_Ignore);
+	OnTriggerZoneEvent();
 }
 
-// Called every frame
-void ATriggerZone::Tick(float DeltaTime)
+void ATriggerZone::OnTriggerZoneEvent_Implementation()
 {
-	Super::Tick(DeltaTime);
+	if (TriggerableActor != nullptr) {
+		TriggerableActor->OnTriggerEvent_Implementation();
+	} else {
+		GEngine->AddOnScreenDebugMessage(static_cast<uint64>(GetUniqueID() * 10 + 1), 5.f, FColor::Red, FString::Printf(TEXT("No TriggerableActor linked to: %s"), *GetName()));
+	}
 }
 

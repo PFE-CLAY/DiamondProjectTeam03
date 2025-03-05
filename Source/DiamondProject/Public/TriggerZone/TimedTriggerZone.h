@@ -27,6 +27,12 @@ protected:
 	// Called when actor overlap the trigger zone
 	virtual void OnOverlapTriggerZone(UPrimitiveComponent* OverlappedComponent, AActor* AtherActor,
 		UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult) override;
+
+	// virtual void OnTriggerZoneEvent_Implementation() override;
+
+	virtual void OnUpdate(float DeltaTime) override;
+
+	virtual void OnResetUpdate(float DeltaTime) override;
 	
 public:
 	// Sets default values for this actor's properties

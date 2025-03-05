@@ -25,4 +25,6 @@ void ATriggerableActor::Tick(float DeltaTime)
 void ATriggerableActor::OnTriggerEvent_Implementation()
 {
 	UE_LOG(LogTemp, Warning, TEXT("OnTrigger appelé dans C++ !"));
+	GEngine->AddOnScreenDebugMessage(static_cast<uint64>(GetUniqueID() * 10 + 2), 5.f, FColor::Green, FString::Printf(TEXT("%s have been notify to be trigger"), *GetName()));
+	OnTriggerEvent();
 }
