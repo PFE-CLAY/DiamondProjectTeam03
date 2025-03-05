@@ -46,6 +46,9 @@ protected:
 
 	UPROPERTY()
 	APawn* PlayerPawn;
+
+	UPROPERTY(EditAnywhere)
+	bool bShouldShowDebug = false;
 	
 	//Garbage
 	

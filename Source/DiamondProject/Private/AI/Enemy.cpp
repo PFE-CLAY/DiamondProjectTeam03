@@ -1,9 +1,9 @@
 ﻿// Fill out your copyright notice in the Description page of Project Settings.
 
 
-#include "Enemy.h"
+#include "AI/Enemy.h"
 
-#include "ProjectileEnemy.h"
+#include "AI/ProjectileEnemy.h"
 #include "Components/BoxComponent.h"
 #include "DiamondProject/DiamondProjectCharacter.h"
 #include "GameFramework/CharacterMovementComponent.h"
@@ -47,7 +47,9 @@ void AEnemy::DetectPlayer(AActor* Actor)
 void AEnemy::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-	DrawDebugSphere(GetWorld(), RootComponent->GetComponentLocation(), DetectionRange, 50, FColor::Blue, false, 0.03);
+	if(bShouldShowDebug){
+		DrawDebugSphere(GetWorld(), RootComponent->GetComponentLocation(), DetectionRange, 50, FColor::Blue, false, 0.03);
+	}
 }
 
 // Called to bind functionality to input
@@ -104,7 +106,7 @@ void AEnemy::SetNewAttackTimer()
 
 void AEnemy::SetShootReady()
 {
-	bCanAttack = true;
+	bCanAttack = true;	
 }
 
 

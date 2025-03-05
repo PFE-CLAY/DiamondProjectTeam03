@@ -1,7 +1,7 @@
 ﻿// Fill out your copyright notice in the Description page of Project Settings.
 
 
-#include "Allied.h"
+#include "AI/Allied.h"
 
 
 // Sets default values

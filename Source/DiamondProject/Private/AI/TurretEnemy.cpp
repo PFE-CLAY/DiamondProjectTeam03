@@ -1,7 +1,7 @@
 ﻿// Fill out your copyright notice in the Description page of Project Settings.
 
 
-#include "DiamondProject/Public/TurretEnemy.h"
+#include "DiamondProject/Public/AI/TurretEnemy.h"
 
 
 // Sets default values
