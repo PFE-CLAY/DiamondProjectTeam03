@@ -27,7 +27,7 @@ protected:
     float AttackCooldown = 3;
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Enemy Attack")
-    float AttackDamage = 1;
+    int AttackDamage = 1;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Enemy Behavior")
 	float BaseDetectionRange = 300;
@@ -46,6 +46,9 @@ protected:
 
 	UPROPERTY()
 	APawn* PlayerPawn;
+
+	UPROPERTY(EditAnywhere)
+	bool bShouldShowDebug = false;
 	
 	//Garbage
 	

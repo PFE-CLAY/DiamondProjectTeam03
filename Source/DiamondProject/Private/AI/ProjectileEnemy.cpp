@@ -1,9 +1,9 @@
 ﻿// Fill out your copyright notice in the Description page of Project Settings.
 
 
-#include "ProjectileEnemy.h"
+#include "AI/ProjectileEnemy.h"
 
-#include "Enemy.h"
+#include "AI/Enemy.h"
 #include "LoopSystem/AC_Health.h"
 #include "DiamondProject/DiamondProjectCharacter.h"
 

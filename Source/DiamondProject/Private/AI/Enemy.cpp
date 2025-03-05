@@ -1,9 +1,9 @@
 ﻿// Fill out your copyright notice in the Description page of Project Settings.
 
 
-#include "Enemy.h"
+#include "AI/Enemy.h"
 
-#include "ProjectileEnemy.h"
+#include "AI/ProjectileEnemy.h"
 #include "Components/BoxComponent.h"
 #include "DiamondProject/DiamondProjectCharacter.h"
 #include "GameFramework/CharacterMovementComponent.h"
@@ -47,7 +47,9 @@ void AEnemy::DetectPlayer(AActor* Actor)
 void AEnemy::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-	DrawDebugSphere(GetWorld(), RootComponent->GetComponentLocation(), DetectionRange, 50, FColor::Blue, false, 0.03);
+	if(bShouldShowDebug){
+		DrawDebugSphere(GetWorld(), RootComponent->GetComponentLocation(), DetectionRange, 50, FColor::Blue, false, 0.03);
+	}
 }
 
 // Called to bind functionality to input
@@ -72,8 +74,9 @@ void AEnemy::Shoot()
 		bCanAttack = false;
 		FActorSpawnParameters SpawnInfo;
 		AActor* ProjectileSpawned = GetWorld()->SpawnActor(Projectile, &Location, &Rotation, SpawnInfo);
-		Cast<AProjectileEnemy>(ProjectileSpawned)->ProjectileDamage = AttackDamage;
-		//GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Red, "hit");
+		AProjectileEnemy* ProjectileInstance = Cast<AProjectileEnemy>(ProjectileSpawned);
+		ProjectileInstance->ProjectileDamage = AttackDamage;
+		
 		SetNewAttackTimer();
 		
 		
@@ -82,7 +85,7 @@ void AEnemy::Shoot()
 
 bool AEnemy::IsPlayerOnSight(FRotator Rotation, FVector Location)
 {
-	bool bIsPlayerOnSight = true;
+	bool bIsPlayerOnSight = false;
 	FHitResult Hit;
 	FCollisionQueryParams CollisionParams;
 	
@@ -103,7 +106,7 @@ void AEnemy::SetNewAttackTimer()
 
 void AEnemy::SetShootReady()
 {
-	bCanAttack = true;
+	bCanAttack = true;	
 }
 
 
