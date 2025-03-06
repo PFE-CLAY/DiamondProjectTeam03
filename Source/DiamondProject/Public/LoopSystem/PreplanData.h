@@ -10,7 +10,7 @@
  * 
  */
 UCLASS()
-class DIAMONDPROJECT_API UPreplanData : public UObject
+class DIAMONDPROJECT_API APreplanData : public AActor
 {
 	GENERATED_BODY()
 
@@ -18,6 +18,12 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="PreplanData")
 	FString PreplanID;
 
-	UPROPERTY(EditAnywhere,BlueprintReadOnly)
-	TArray<TObjectPtr<UPreplanData>> PreviousDatas;
+	UPROPERTY(EditAnywhere, Category="PreplanData")
+	int NbActivationsRequired = 1;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="PreplanData")
+	bool bIsActiveOnStart = false;
+	
+	UPROPERTY(EditAnywhere,BlueprintReadOnly, Category="PreplanData")
+	TArray<TObjectPtr<APreplanData>> PreviousDatas;
 };
