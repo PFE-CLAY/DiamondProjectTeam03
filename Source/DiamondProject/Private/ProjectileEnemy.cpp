@@ -32,15 +32,11 @@ void AProjectileEnemy::OnCollision(AActor* OverlappedActor, AActor* OtherActor)
 {
 	if(Cast<AEnemy>(OtherActor) == nullptr){
 		//GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Red, OtherActor->GetName());
-		if(Cast<ADiamondProjectCharacter>(OtherActor) != nullptr){
-			if(UAC_Health* HealthComponent = OtherActor->FindComponentByClass<UAC_Health>()){
-				HealthComponent->DecreaseHealth(ProjectileDamage);
-			}
-			K2_DestroyActor();
-		}
-		else{
+		if (UAC_Health* HealthComponent = OtherActor->FindComponentByClass<UAC_Health>()) {
+			HealthComponent->DecreaseHealth(ProjectileDamage);
 			
 		}
+		K2_DestroyActor();
 	}
 	
 	
