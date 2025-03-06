@@ -6,6 +6,24 @@
 #include "Subsystems/GameInstanceSubsystem.h"
 #include "LoopSubsystem.generated.h"
 
+class APreplanData;
+
+UCLASS()
+class UPreplanStep : public UObject
+{
+	GENERATED_BODY()
+
+public:
+	UPROPERTY()
+	int NbActivations = 0;
+	
+	UPROPERTY()
+	TObjectPtr<APreplanData> PreplanData;
+
+	UPROPERTY()
+	bool bIsStepActive = false;
+};
+
 /**
  * 
  */
@@ -13,7 +31,22 @@ UCLASS()
 class DIAMONDPROJECT_API ULoopSubsystem : public UGameInstanceSubsystem
 {
 	GENERATED_BODY()
+
+	UPROPERTY()
+	bool bIsInit = false;
+	
 public:
+	UPROPERTY()
+	TMap<FString, TObjectPtr<UPreplanStep>> PreplanSteps;
+	
+private:	
 	UFUNCTION(BlueprintCallable)
 	void ReloadScene();
+
+public:
+	UFUNCTION()
+	void InitializePreplan();
+
+	UFUNCTION(BlueprintCallable)
+	void ActivatePreplanStep(FString PreplanID);
 };
