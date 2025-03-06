@@ -24,7 +24,7 @@ void UAPlayerProtoWeapon::BeginPlay()
 	Super::BeginPlay();
 	CurrentAmmo = MagazineSize;
 
-	if (TextComponent != nullptr) {
+	if (TextComponent) {
 		TextComponent->SetText(FText::FromString(FString::FromInt(CurrentAmmo)));;
 	}
 }
@@ -44,7 +44,9 @@ void UAPlayerProtoWeapon::Fire() {
 	LastFireTime = CurrentTime;
 	
 	CurrentAmmo--;
-	TextComponent->SetText(FText::FromString(FString::FromInt(CurrentAmmo)));;
+	if (TextComponent) {
+		TextComponent->SetText(FText::FromString(FString::FromInt(CurrentAmmo)));;
+	}
 	
 	UWorld* const World = GetWorld();
 		
@@ -101,7 +103,10 @@ void UAPlayerProtoWeapon::DetachWeapon() {
 			Subsystem->RemoveMappingContext(FireMappingContext);
 		}
 		if (UEnhancedInputComponent* EnhancedInputComponent = Cast<UEnhancedInputComponent>(PlayerController->InputComponent)) {
-			EnhancedInputComponent->RemoveActionBinding(BindingIndex);
+			EnhancedInputComponent->RemoveActionEventBinding(BindingIndex);
 		}
 	}
+
+	Character->CurrentWeapon = nullptr;
+	Character = nullptr;
 }
