@@ -13,6 +13,10 @@ class ADiamondProjectGameMode : public AGameModeBase
 
 public:
 	ADiamondProjectGameMode();
+	virtual void BeginPlay() override;
+
+private:
+	void InitPreplan() const;
 };
 
 

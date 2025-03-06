@@ -12,9 +12,12 @@
 #include "Camera/PlayerCameraManager.h"
 #include "Kismet/GameplayStatics.h"
 #include "Animation/AnimInstance.h"
+#include "DiamondProject/TP_PickUpComponent.h"
 #include "Engine/LocalPlayer.h"
 #include "Engine/World.h"
 #include "LoopSystem/AC_Health.h"
+
+class UTP_PickUpComponent;
 
 void UAPlayerProtoWeapon::BeginPlay()
 {
