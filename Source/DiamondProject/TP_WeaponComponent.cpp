@@ -86,6 +86,11 @@ bool UTP_WeaponComponent::AttachWeapon(ADiamondProjectCharacter* TargetCharacter
 	// add the weapon as an instance component to the character
 	Character->AddInstanceComponent(this);
 
+	if (auto* PickUpComponent = this->GetChildComponent(0)) {
+		PickUpComponent->DestroyComponent();
+		UE_LOG(LogTemp, Warning, TEXT("Destroyed PickUpComponent"));
+	}
+	
 	// Set up action bindings
 	if (APlayerController* PlayerController = Cast<APlayerController>(Character->GetController()))
 	{
