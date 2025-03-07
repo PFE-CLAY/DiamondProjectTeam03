@@ -7,22 +7,7 @@
 #include "LoopSubsystem.generated.h"
 
 class APreplanData;
-
-UCLASS()
-class UPreplanStep : public UObject
-{
-	GENERATED_BODY()
-
-public:
-	UPROPERTY()
-	int NbActivations = 0;
-	
-	UPROPERTY()
-	TObjectPtr<APreplanData> PreplanData;
-
-	UPROPERTY()
-	bool bIsStepActive = false;
-};
+class UPreplanStep;
 
 /**
  * 
