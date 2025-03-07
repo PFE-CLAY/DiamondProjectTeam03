@@ -73,11 +73,12 @@ bool UTP_WeaponComponent::AttachWeapon(ADiamondProjectCharacter* TargetCharacter
 	Character = TargetCharacter;
 
 	// Check that the character is valid, and has no weapon component yet
-	if (Character == nullptr || Character->GetInstanceComponents().FindItemByClass<UTP_WeaponComponent>())
-	{
+	if (Character == nullptr || Character->GetInstanceComponents().FindItemByClass<UTP_WeaponComponent>()) {
 		UE_LOG(LogTemp, Warning, TEXT("Character %s already has a weapon"), *Character->GetName());
 		return false;
 	}
+
+	Character->CurrentWeapon = this;
 
 	// Attach the weapon to the First Person Character
 	FAttachmentTransformRules AttachmentRules(EAttachmentRule::SnapToTarget, true);
@@ -86,20 +87,25 @@ bool UTP_WeaponComponent::AttachWeapon(ADiamondProjectCharacter* TargetCharacter
 	// add the weapon as an instance component to the character
 	Character->AddInstanceComponent(this);
 
+	if (TObjectPtr<USceneComponent> PickUpComponent = this->GetChildComponent(0)) {
+		PickUpComponent->DestroyComponent();
+		UE_LOG(LogTemp, Warning, TEXT("Destroyed PickUpComponent"));
+	}
+	
 	// Set up action bindings
-	if (APlayerController* PlayerController = Cast<APlayerController>(Character->GetController()))
+	if (TObjectPtr<APlayerController> PlayerController = Cast<APlayerController>(Character->GetController()))
 	{
-		if (UEnhancedInputLocalPlayerSubsystem* Subsystem = ULocalPlayer::GetSubsystem<UEnhancedInputLocalPlayerSubsystem>(PlayerController->GetLocalPlayer()))
+		if (TObjectPtr<UEnhancedInputLocalPlayerSubsystem> Subsystem = ULocalPlayer::GetSubsystem<UEnhancedInputLocalPlayerSubsystem>(PlayerController->GetLocalPlayer()))
 		{
 			// Set the priority of the mapping to 1, so that it overrides the Jump action with the Fire action when using touch input
 			Subsystem->AddMappingContext(FireMappingContext, 1);
 		}
 
-		if (UEnhancedInputComponent* EnhancedInputComponent = Cast<UEnhancedInputComponent>(PlayerController->InputComponent))
+		if (TObjectPtr<UEnhancedInputComponent> EnhancedInputComponent = Cast<UEnhancedInputComponent>(PlayerController->InputComponent))
 		{
 			// Fire
 			EnhancedInputComponent->BindAction(FireAction, ETriggerEvent::Triggered, this, &UTP_WeaponComponent::Fire);
-			BindingIndex = EnhancedInputComponent->GetNumActionBindings() - 1;
+			BindingIndex = EnhancedInputComponent->GetActionEventBindings().Num() - 1;
 		}
 	}
 
@@ -107,17 +113,11 @@ bool UTP_WeaponComponent::AttachWeapon(ADiamondProjectCharacter* TargetCharacter
 }
 
 void UTP_WeaponComponent::EndPlay(const EEndPlayReason::Type EndPlayReason)
-{
+	{
+	//Log this item name in console
+	UE_LOG(LogTemp, Warning, TEXT("WeaponComponent %s has ended play %d"), *GetFullName(), EndPlayReason);
 	if (Character == nullptr)
 	{
 		return;
-	}
-
-	if (APlayerController* PlayerController = Cast<APlayerController>(Character->GetController()))
-	{
-		if (UEnhancedInputLocalPlayerSubsystem* Subsystem = ULocalPlayer::GetSubsystem<UEnhancedInputLocalPlayerSubsystem>(PlayerController->GetLocalPlayer()))
-		{
-			Subsystem->RemoveMappingContext(FireMappingContext);
-		}
 	}
 }
