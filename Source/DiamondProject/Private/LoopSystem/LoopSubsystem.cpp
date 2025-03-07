@@ -5,6 +5,7 @@
 
 #include "Kismet/GameplayStatics.h"
 #include "LoopSystem/PreplanData.h"
+#include "LoopSystem/PreplanStep.h"
 
 void ULoopSubsystem::ReloadScene()
 {
