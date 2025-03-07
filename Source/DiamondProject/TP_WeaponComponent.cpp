@@ -78,6 +78,8 @@ bool UTP_WeaponComponent::AttachWeapon(ADiamondProjectCharacter* TargetCharacter
 		return false;
 	}
 
+	Character->CurrentWeapon = this;
+
 	// Attach the weapon to the First Person Character
 	FAttachmentTransformRules AttachmentRules(EAttachmentRule::SnapToTarget, true);
 	AttachToComponent(Character->GetMesh1P(), AttachmentRules, FName(TEXT("GripPoint")));
@@ -103,7 +105,7 @@ bool UTP_WeaponComponent::AttachWeapon(ADiamondProjectCharacter* TargetCharacter
 		{
 			// Fire
 			EnhancedInputComponent->BindAction(FireAction, ETriggerEvent::Triggered, this, &UTP_WeaponComponent::Fire);
-			BindingIndex = EnhancedInputComponent->GetNumActionBindings() - 1;
+			BindingIndex = EnhancedInputComponent->GetActionEventBindings().Num() - 1;
 		}
 	}
 
@@ -111,7 +113,9 @@ bool UTP_WeaponComponent::AttachWeapon(ADiamondProjectCharacter* TargetCharacter
 }
 
 void UTP_WeaponComponent::EndPlay(const EEndPlayReason::Type EndPlayReason)
-{
+	{
+	//Log this item name in console
+	UE_LOG(LogTemp, Warning, TEXT("WeaponComponent %s has ended play %d"), *GetFullName(), EndPlayReason);
 	if (Character == nullptr)
 	{
 		return;

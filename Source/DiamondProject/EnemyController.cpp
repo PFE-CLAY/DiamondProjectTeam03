@@ -4,7 +4,7 @@
 #include "EnemyController.h"
 
 #include "BehaviorTree/BehaviorTree.h"
-#include "Enemy.h"
+#include "AI/Enemy.h"
 
 // Sets default values
 AEnemyController::AEnemyController()
