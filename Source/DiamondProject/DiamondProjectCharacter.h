@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "TP_WeaponComponent.h"
 #include "GameFramework/Character.h"
 #include "Logging/LogMacros.h"
 #include "DiamondProjectCharacter.generated.h"
@@ -63,6 +64,9 @@ public:
 
 	UPROPERTY(BlueprintAssignable, Category = "Interaction")
 	FOnInteract OnCrouch;
+
+	UPROPERTY()
+	TObjectPtr<UTP_WeaponComponent> CurrentWeapon;
 
 protected:
 	/** Called for movement input */
