@@ -23,10 +23,6 @@ void UAPlayerProtoWeapon::BeginPlay()
 {
 	Super::BeginPlay();
 	CurrentAmmo = MagazineSize;
-
-	if (TextComponent) {
-		TextComponent->SetText(FText::FromString(FString::FromInt(CurrentAmmo)));;
-	}
 }
 
 void UAPlayerProtoWeapon::Fire() {
@@ -44,9 +40,7 @@ void UAPlayerProtoWeapon::Fire() {
 	LastFireTime = CurrentTime;
 	
 	CurrentAmmo--;
-	if (TextComponent) {
-		TextComponent->SetText(FText::FromString(FString::FromInt(CurrentAmmo)));;
-	}
+	OnFire.Broadcast(CurrentAmmo);
 	
 	UWorld* const World = GetWorld();
 		
