@@ -9,6 +9,9 @@
 /**
  * 
  */
+class APreplanData;
+class APreplanAdvice;
+
 UCLASS()
 class DIAMONDPROJECT_API UPreplanStep : public UObject
 {
@@ -21,6 +24,9 @@ public:
 	UPROPERTY()
 	TObjectPtr<APreplanData> PreplanData;
 
+	UPROPERTY()
+	TArray<TObjectPtr<APreplanAdvice>> PreplanAdvices;
+	
 	UPROPERTY()
 	bool bIsStepActive = false;
 };

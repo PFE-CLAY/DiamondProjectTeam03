@@ -4,6 +4,7 @@
 #include "LoopSystem/LoopSubsystem.h"
 
 #include "Kismet/GameplayStatics.h"
+#include "LoopSystem/PreplanAdvice.h"
 #include "LoopSystem/PreplanData.h"
 #include "LoopSystem/PreplanStep.h"
 
@@ -12,78 +13,133 @@ void ULoopSubsystem::ReloadScene()
 	for (auto PreplanStep : PreplanSteps){
 		PreplanStep.Value->PreplanData = nullptr;
 	}
+	
 	UGameplayStatics::OpenLevel(this, FName(*GetWorld()->GetName()), false);
 }
 
-void ULoopSubsystem::InitializePreplan()
+bool ULoopSubsystem::IsAnyPreviousStepActive(const UPreplanStep* PreplanStep)
 {
-	TArray<AActor*> FoundActors;
-	UGameplayStatics::GetAllActorsOfClass(GetWorld(), APreplanData::StaticClass(), FoundActors);
-
-	if (!bIsInit){
-		bIsInit = true;
-		
-		for (int i = 0; i < FoundActors.Num(); i++)
-		{
-			APreplanData* PreplanDataActor = Cast<APreplanData>(FoundActors[i]);
-			if (PreplanDataActor == nullptr) continue;
-			UPreplanStep* PreplanStep = NewObject<UPreplanStep>();
-			PreplanStep->PreplanData = PreplanDataActor;
-			if (PreplanStep->PreplanData->PreplanID.IsEmpty()){
-				UE_LOG(LogTemp, Warning, TEXT("Preplan has no ID. Step cannot be created."))				
-			} else{
-				if (PreplanDataActor->bIsActiveOnStart){
-					PreplanStep->bIsStepActive = true;
-					PreplanStep->PreplanData->SetActorHiddenInGame(false);
-				} else{
-					PreplanStep->PreplanData->SetActorHiddenInGame(true);
-				}
-				PreplanSteps.Add(PreplanDataActor->PreplanID,PreplanStep);
-			}
-		}
-	} else {
-		for (int i = 0; i < FoundActors.Num(); i++)
-		{
-			APreplanData* PreplanDataActor = Cast<APreplanData>(FoundActors[i]);
-			if (PreplanDataActor == nullptr) continue;
-			
-			if (PreplanDataActor->PreplanID.IsEmpty()){
-				UE_LOG(LogTemp, Warning, TEXT("Preplan has no ID. Step cannot be found."))				
-			} else{
-				TObjectPtr<UPreplanStep>* PreplanStep = PreplanSteps.Find(PreplanDataActor->PreplanID);
-				PreplanStep->Get()->PreplanData = PreplanDataActor;
-				bool test = PreplanStep->Get()->bIsStepActive;
-				PreplanDataActor->SetActorHiddenInGame(!PreplanStep->Get()->bIsStepActive);
-			}
-		}
-	}
-}
-
-void ULoopSubsystem::ActivatePreplanStep(FString PreplanID)
-{
-	TObjectPtr<UPreplanStep>* PreplanStepPtr = PreplanSteps.Find(PreplanID);
-	if (PreplanStepPtr == nullptr)
-		return;
-	
-	TObjectPtr<UPreplanStep> PreplanStep = PreplanStepPtr->Get();
-	bool bIsPreviousStepActive = false;
 	if (PreplanStep == nullptr || PreplanStep->PreplanData == nullptr)
-		return;
+		return false;
+	
+	bool bIsPreviousStepActive = false;
 	
 	if (PreplanStep->PreplanData->PreviousDatas.Num() == 0){
 		bIsPreviousStepActive = true;
 	} else{
 		for (TObjectPtr<APreplanData> PreviousData : PreplanStep->PreplanData->PreviousDatas) {
+			if (PreviousData == nullptr)
+				continue;
+				
 			TObjectPtr<UPreplanStep>* PreviousStep = PreplanSteps.Find(PreviousData->PreplanID);
-			if (PreviousStep->Get()->bIsStepActive){
+			if (PreviousStep != nullptr &&
+				PreviousStep->Get() != nullptr &&
+				PreviousStep->Get()->bIsStepActive){
 				bIsPreviousStepActive = true;
 				break;
-			}
+				}
 		}
 	}
-	if (bIsPreviousStepActive &&
+	return true;
+}
+
+void ULoopSubsystem::InitializePreplanAdvices()
+{
+	TArray<AActor*> FoundPreplanAdviceActors;
+	UGameplayStatics::GetAllActorsOfClass(GetWorld(), APreplanAdvice::StaticClass(), FoundPreplanAdviceActors);
+	
+	for (int i = 0; i < FoundPreplanAdviceActors.Num(); i++)
+	{
+		APreplanAdvice* PreplanDataActor = Cast<APreplanAdvice>(FoundPreplanAdviceActors[i]);
+		if (PreplanDataActor == nullptr){
+			continue;
+		}
+			
+		TObjectPtr<UPreplanStep>* PreplanStepPtr = PreplanSteps.Find(PreplanDataActor->PreplanID);
+		if (PreplanStepPtr == nullptr || PreplanStepPtr->Get() == nullptr){
+			return;
+		}
+
+		PreplanDataActor->SetActorHiddenInGame(!PreplanStepPtr->Get()->bIsStepActive);
+		PreplanStepPtr->Get()->PreplanAdvices.Add(PreplanDataActor);
+	}
+}
+
+void ULoopSubsystem::InitializePreplan()
+{
+	TArray<AActor*> FoundPreplanDataActors;
+	UGameplayStatics::GetAllActorsOfClass(GetWorld(), APreplanData::StaticClass(), FoundPreplanDataActors);
+
+	if (!bIsInit){
+		bIsInit = true;
+		
+		for (int i = 0; i < FoundPreplanDataActors.Num(); i++)
+		{
+			APreplanData* PreplanDataActor = Cast<APreplanData>(FoundPreplanDataActors[i]);
+			if (PreplanDataActor == nullptr){
+				continue;
+			}
+			
+			UPreplanStep* PreplanStep = NewObject<UPreplanStep>();
+			PreplanStep->PreplanData = PreplanDataActor;
+			
+			if (PreplanStep->PreplanData->PreplanID.IsEmpty()){
+				UE_LOG(LogTemp, Warning, TEXT("Preplan has no ID. Step cannot be created."))				
+			} else {
+				if (PreplanDataActor->bIsActiveOnStart){
+					PreplanStep->bIsStepActive = true;
+				}
+
+				PreplanStep->PreplanData->SetActorHiddenInGame(!PreplanDataActor->bIsActiveOnStart);
+				PreplanSteps.Add(PreplanDataActor->PreplanID,PreplanStep);
+			}
+		}
+
+		InitializePreplanAdvices();
+	} else {
+		for (int i = 0; i < FoundPreplanDataActors.Num(); i++)
+		{
+			APreplanData* PreplanDataActor = Cast<APreplanData>(FoundPreplanDataActors[i]);
+			if (PreplanDataActor == nullptr){
+				continue;
+			}
+			
+			if (PreplanDataActor->PreplanID.IsEmpty()){
+				UE_LOG(LogTemp, Warning, TEXT("Preplan has no ID. Step cannot be found."))				
+			} else{
+				TObjectPtr<UPreplanStep>* PreplanStepPtr = PreplanSteps.Find(PreplanDataActor->PreplanID);
+				if (PreplanStepPtr == nullptr){
+					return;
+				}
+				
+				TObjectPtr<UPreplanStep> PreplanStep = PreplanStepPtr->Get();
+				if (PreplanStep != nullptr) {
+					PreplanStep->NbActivations = 0;
+					PreplanStep->PreplanData = PreplanDataActor;
+					PreplanDataActor->SetActorHiddenInGame(!PreplanStep->bIsStepActive);
+				}
+			}
+		}
+		InitializePreplanAdvices();
+	}
+}
+
+void ULoopSubsystem::ActivatePreplanStep(FString PreplanID)
+{
+	const TObjectPtr<UPreplanStep>* PreplanStepPtr = PreplanSteps.Find(PreplanID);
+	if (PreplanStepPtr == nullptr){
+		return;
+	}
+	
+	TObjectPtr<UPreplanStep> PreplanStep = PreplanStepPtr->Get();
+	
+	bool bIsAnyPreviousStepActive = IsAnyPreviousStepActive(PreplanStep);
+
+	if (bIsAnyPreviousStepActive &&
 		PreplanStep->NbActivations < PreplanStep->PreplanData->NbActivationsRequired){
 		++PreplanStep->NbActivations;
+
+		//Change immediately the preplan visibility 
 		if (PreplanStep->NbActivations == PreplanStep->PreplanData->NbActivationsRequired){
 			PreplanStep->bIsStepActive = true;
 			PreplanStep->PreplanData->SetActorHiddenInGame(false);
