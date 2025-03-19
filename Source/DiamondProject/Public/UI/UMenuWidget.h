@@ -4,13 +4,13 @@
 
 #include "CoreMinimal.h"
 #include "Blueprint/UserWidget.h"
-#include "UMainMenuWidget.generated.h"
+#include "UMenuWidget.generated.h"
 
 /**
  * 
  */
 UCLASS()
-class DIAMONDPROJECT_API UUMainMenuWidget : public UUserWidget
+class DIAMONDPROJECT_API UUMenuWidget : public UUserWidget
 {
 	GENERATED_BODY()
 
@@ -24,7 +24,7 @@ protected:
 private:
 
 	UPROPERTY()
-	UUserWidget* LevelChoiceWidget;
+	UUserWidget* NewWidget;
 
 	
 protected:
@@ -32,7 +32,7 @@ protected:
 	virtual bool Initialize() override;
 	
 	UFUNCTION(BlueprintCallable)
-	void OnPlayButtonClicked();
+	void OpenNewWidget(TSubclassOf<UUserWidget> WidgetClass);
 
 	UFUNCTION(BlueprintCallable)
 	void OnQuitApplication();
