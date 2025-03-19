@@ -40,7 +40,6 @@ void UAPlayerProtoWeapon::Fire() {
 	LastFireTime = CurrentTime;
 	
 	CurrentAmmo--;
-	OnFire.Broadcast(CurrentAmmo);
 	
 	UWorld* const World = GetWorld();
 		
@@ -56,7 +55,7 @@ void UAPlayerProtoWeapon::Fire() {
 		CollisionParams.AddIgnoredActor(Character);
 		FVector End = SpawnLocation + (SpawnRotation.Vector() * 10000);
 		bool bHasHit = World->LineTraceSingleByChannel(Hit,SpawnLocation, End, ECC_Visibility, CollisionParams);
-		DrawDebugLine(World, SpawnLocation, End, bHasHit? FColor::Red : FColor::Green, false, 0.3f, 0, 10.f);
+		//DrawDebugLine(World, SpawnLocation, End, bHasHit? FColor::Red : FColor::Green, false, 0.3f, 0, 10.f);
 
 		if (bHasHit) {
 			//Try to apply damage to the hit actor using AC_Health
@@ -64,8 +63,11 @@ void UAPlayerProtoWeapon::Fire() {
                 HealthComponent->DecreaseHealth(Damage);
             }
 		}
+
+		OnFire.Broadcast(CurrentAmmo,SpawnRotation);
 	}
 	
+
 	// Try and play the sound if specified
 	if (FireSound != nullptr) {
 		UGameplayStatics::PlaySoundAtLocation(this, FireSound, Character->GetActorLocation());

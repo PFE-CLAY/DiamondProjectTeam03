@@ -7,7 +7,7 @@
 #include "DiamondProject/TP_WeaponComponent.h"
 #include "APlayerProtoWeapon.generated.h"
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnDropped, ADiamondProjectCharacter*, PickUpCharacter);
-DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnFire, int, CurrentAmmo);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnFire, int, CurrentAmmo,FRotator,ShootRotation);
 
 UCLASS(Blueprintable, BlueprintType, ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
 class DIAMONDPROJECT_API UAPlayerProtoWeapon : public UTP_WeaponComponent
