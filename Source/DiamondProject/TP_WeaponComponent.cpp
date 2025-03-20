@@ -11,6 +11,7 @@
 #include "EnhancedInputSubsystems.h"
 #include "TP_PickUpComponent.h"
 #include "Animation/AnimInstance.h"
+#include "Camera/CameraComponent.h"
 #include "Engine/LocalPlayer.h"
 #include "Engine/World.h"
 
@@ -83,6 +84,13 @@ bool UTP_WeaponComponent::AttachWeapon(ADiamondProjectCharacter* TargetCharacter
 	// Attach the weapon to the First Person Character
 	FAttachmentTransformRules AttachmentRules(EAttachmentRule::SnapToTarget, true);
 	AttachToComponent(Character->GetMesh1P(), AttachmentRules, FName(TEXT("GripPoint")));
+	
+	// Get current rotation and adjust roll by -15 degrees
+	FRotator CurrentRotation = GetRelativeRotation();
+	FRotator AdjustedRotation = GetRelativeRotation() + FRotator(0, -15, -7);
+	SetRelativeRotation(AdjustedRotation);
+	
+	
 
 	// add the weapon as an instance component to the character
 	Character->AddInstanceComponent(this);
