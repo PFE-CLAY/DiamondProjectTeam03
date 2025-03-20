@@ -18,6 +18,7 @@ struct FInputActionValue;
 DECLARE_LOG_CATEGORY_EXTERN(LogTemplateCharacter, Log, All);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnInteract);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnCrouch);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnMantle);
 
 UCLASS(Blueprintable,config=Game)
 class ADiamondProjectCharacter : public ACharacter
@@ -46,6 +47,9 @@ class ADiamondProjectCharacter : public ACharacter
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Input, meta=(AllowPrivateAccess = "true"))
 	UInputAction* CrouchAction;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Input, meta=(AllowPrivateAccess = "true"))
+	UInputAction* MantleAction;
 	
 public:
 	ADiamondProjectCharacter();
@@ -64,6 +68,9 @@ public:
 
 	UPROPERTY(BlueprintAssignable, Category = "Interaction")
 	FOnInteract OnCrouch;
+	
+	UPROPERTY(BlueprintAssignable, Category = "Interaction")
+	FOnMantle OnMantle;
 
 	UPROPERTY()
 	TObjectPtr<UTP_WeaponComponent> CurrentWeapon;
@@ -78,6 +85,8 @@ protected:
 	void Interact(const FInputActionValue& Value);
 
 	void Crouch(const FInputActionValue& Value);
+	
+	void Mantle(const FInputActionValue& Value);
 
 
 protected:

@@ -23,10 +23,6 @@ void UAPlayerProtoWeapon::BeginPlay()
 {
 	Super::BeginPlay();
 	CurrentAmmo = MagazineSize;
-
-	if (TextComponent) {
-		TextComponent->SetText(FText::FromString(FString::FromInt(CurrentAmmo)));;
-	}
 }
 
 void UAPlayerProtoWeapon::Fire() {
@@ -44,9 +40,6 @@ void UAPlayerProtoWeapon::Fire() {
 	LastFireTime = CurrentTime;
 	
 	CurrentAmmo--;
-	if (TextComponent) {
-		TextComponent->SetText(FText::FromString(FString::FromInt(CurrentAmmo)));;
-	}
 	
 	UWorld* const World = GetWorld();
 		
@@ -62,16 +55,27 @@ void UAPlayerProtoWeapon::Fire() {
 		CollisionParams.AddIgnoredActor(Character);
 		FVector End = SpawnLocation + (SpawnRotation.Vector() * 10000);
 		bool bHasHit = World->LineTraceSingleByChannel(Hit,SpawnLocation, End, ECC_Visibility, CollisionParams);
-		DrawDebugLine(World, SpawnLocation, End, bHasHit? FColor::Red : FColor::Green, false, 0.3f, 0, 10.f);
+		//DrawDebugLine(World, SpawnLocation, End, bHasHit? FColor::Red : FColor::Green, false, 0.3f, 0, 10.f);
 
 		if (bHasHit) {
 			//Try to apply damage to the hit actor using AC_Health
 			if (UAC_Health* HealthComponent = Hit.GetActor()->FindComponentByClass<UAC_Health>()) {
                 HealthComponent->DecreaseHealth(Damage);
             }
+			else {
+				//spawn a decal on the hit wall
+				if (DecalMaterial) {
+					UDecalComponent* Decal = UGameplayStatics::SpawnDecalAtLocation(World, DecalMaterial,
+																			FVector(DecalSize, DecalSize, DecalSize),
+																			Hit.ImpactPoint, Hit.ImpactNormal.Rotation(), DecalLifeSpan);
+				}
+			}
 		}
+
+		OnFire.Broadcast(CurrentAmmo,SpawnRotation);
 	}
 	
+
 	// Try and play the sound if specified
 	if (FireSound != nullptr) {
 		UGameplayStatics::PlaySoundAtLocation(this, FireSound, Character->GetActorLocation());
@@ -93,7 +97,7 @@ void UAPlayerProtoWeapon::Fire() {
 }
 
 void UAPlayerProtoWeapon::DetachWeapon() {
-	FDetachmentTransformRules DetachmentRules(EDetachmentRule::KeepWorld, EDetachmentRule::KeepWorld, EDetachmentRule::KeepWorld, false);
+	FDetachmentTransformRules DetachmentRules(EDetachmentRule::KeepWorld, false);
 	DetachFromComponent(DetachmentRules);
 
 	Character->RemoveInstanceComponent(this);

@@ -4954,6 +4954,26 @@
 			"Type": "RequiredResource"
 		},
 		{
+			"Path": "$(EngineDir)/Plugins/Experimental/Text3D/Binaries/Win64/UnrealEditor-Text3D.dll",
+			"Type": "DynamicLibrary"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/Experimental/Text3D/Binaries/Win64/UnrealEditor-Text3D.pdb",
+			"Type": "SymbolFile"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/Experimental/Text3D/Binaries/Win64/UnrealEditor-Text3DEditor.dll",
+			"Type": "DynamicLibrary"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/Experimental/Text3D/Binaries/Win64/UnrealEditor-Text3DEditor.pdb",
+			"Type": "SymbolFile"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/Experimental/Text3D/Binaries/Win64/UnrealEditor.modules",
+			"Type": "RequiredResource"
+		},
+		{
 			"Path": "$(EngineDir)/Plugins/Experimental/ToolPresets/Binaries/Win64/UnrealEditor-ToolPresetAsset.dll",
 			"Type": "DynamicLibrary"
 		},
@@ -29308,6 +29328,10 @@
 			"Type": "UFS"
 		},
 		{
+			"Path": "$(EngineDir)/Plugins/Experimental/Text3D/Text3D.uplugin",
+			"Type": "UFS"
+		},
+		{
 			"Path": "$(EngineDir)/Plugins/Experimental/ToolPresets/ToolPresets.uplugin",
 			"Type": "UFS"
 		},
@@ -29765,6 +29789,7 @@
 		"Takes",
 		"TcpMessaging",
 		"TemplateSequence",
+		"Text3D",
 		"TextureFormatOodle",
 		"ToolPresets",
 		"TraceDataFilters",
