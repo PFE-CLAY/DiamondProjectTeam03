@@ -62,6 +62,14 @@ void UAPlayerProtoWeapon::Fire() {
 			if (UAC_Health* HealthComponent = Hit.GetActor()->FindComponentByClass<UAC_Health>()) {
                 HealthComponent->DecreaseHealth(Damage);
             }
+			else {
+				//spawn a decal on the hit wall
+				if (DecalMaterial) {
+					UDecalComponent* Decal = UGameplayStatics::SpawnDecalAtLocation(World, DecalMaterial,
+																			FVector(DecalSize, DecalSize, DecalSize),
+																			Hit.ImpactPoint, Hit.ImpactNormal.Rotation(), DecalLifeSpan);
+				}
+			}
 		}
 
 		OnFire.Broadcast(CurrentAmmo,SpawnRotation);
@@ -89,7 +97,7 @@ void UAPlayerProtoWeapon::Fire() {
 }
 
 void UAPlayerProtoWeapon::DetachWeapon() {
-	FDetachmentTransformRules DetachmentRules(EDetachmentRule::KeepWorld, EDetachmentRule::KeepWorld, EDetachmentRule::KeepWorld, false);
+	FDetachmentTransformRules DetachmentRules(EDetachmentRule::KeepWorld, false);
 	DetachFromComponent(DetachmentRules);
 
 	Character->RemoveInstanceComponent(this);

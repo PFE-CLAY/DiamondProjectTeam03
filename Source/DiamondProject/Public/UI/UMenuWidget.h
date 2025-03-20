@@ -30,6 +30,8 @@ private:
 protected:
 	UFUNCTION()
 	virtual bool Initialize() override;
+
+	virtual void NativeConstruct() override;
 	
 	UFUNCTION(BlueprintCallable)
 	void OpenNewWidget(TSubclassOf<UUserWidget> WidgetClass);
