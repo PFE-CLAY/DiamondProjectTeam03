@@ -68,8 +68,7 @@ void UAPlayerProtoWeapon::PerformShot()
     
     bool bHasHit = world->LineTraceSingleByChannel(hit, spawnLocation, endLocation, ECC_Visibility, collisionParams);
 
-    if (bHasHit)
-    {
+    if (bHasHit){
         ProcessHit(hit, world);
     }
 
@@ -78,12 +77,10 @@ void UAPlayerProtoWeapon::PerformShot()
 
 void UAPlayerProtoWeapon::ProcessHit(const FHitResult& hit, UWorld* world)
 {
-    if (UAC_Health* healthComponent = hit.GetActor()->FindComponentByClass<UAC_Health>())
-    {
+    if (UAC_Health* healthComponent = hit.GetActor()->FindComponentByClass<UAC_Health>()){
         healthComponent->DecreaseHealth(Damage);
     }
-    else if (DecalMaterial)
-    {
+    else if (DecalMaterial){
         UGameplayStatics::SpawnDecalAtLocation(
             world, 
             DecalMaterial,
@@ -97,13 +94,11 @@ void UAPlayerProtoWeapon::ProcessHit(const FHitResult& hit, UWorld* world)
 
 void UAPlayerProtoWeapon::PlayFireEffects()
 {
-    if (FireSound)
-    {
+    if (FireSound){
         UGameplayStatics::PlaySoundAtLocation(this, FireSound, Character->GetActorLocation());
     }
 
-    if (FireAnimation && Character)
-    {
+    if (FireAnimation && Character){
         UAnimInstance* animInstance = Character->GetMesh1P()->GetAnimInstance();
         if (animInstance)
         {
@@ -119,15 +114,13 @@ void UAPlayerProtoWeapon::DetachWeapon()
 
     Character->RemoveInstanceComponent(this);
 
-    if (APlayerController* playerController = Cast<APlayerController>(Character->GetController()))
-    {
-        if (UEnhancedInputLocalPlayerSubsystem* subsystem = ULocalPlayer::GetSubsystem<UEnhancedInputLocalPlayerSubsystem>(playerController->GetLocalPlayer()))
-        {
+    if (APlayerController* playerController = Cast<APlayerController>(Character->GetController())){
+        
+        if (UEnhancedInputLocalPlayerSubsystem* subsystem = ULocalPlayer::GetSubsystem<UEnhancedInputLocalPlayerSubsystem>(playerController->GetLocalPlayer())){
             subsystem->RemoveMappingContext(FireMappingContext);
         }
         
-        if (UEnhancedInputComponent* enhancedInputComponent = Cast<UEnhancedInputComponent>(playerController->InputComponent))
-        {
+        if (UEnhancedInputComponent* enhancedInputComponent = Cast<UEnhancedInputComponent>(playerController->InputComponent)){
             enhancedInputComponent->RemoveActionEventBinding(BindingIndex);
         }
     }
