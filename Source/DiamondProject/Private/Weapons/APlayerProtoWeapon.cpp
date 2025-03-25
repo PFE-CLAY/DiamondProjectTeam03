@@ -80,6 +80,7 @@ void UAPlayerProtoWeapon::ProcessHit(const FHitResult& hit, UWorld* world)
 {
     if (UAC_Health* healthComponent = hit.GetActor()->FindComponentByClass<UAC_Health>())
     {
+        
         healthComponent->DecreaseHealth(Damage);
     }
     else if (DecalMaterial)
