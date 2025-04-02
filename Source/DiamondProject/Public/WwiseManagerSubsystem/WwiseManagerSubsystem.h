@@ -6,6 +6,17 @@
 #include "Subsystems/GameInstanceSubsystem.h"
 #include "../Plugins/Wwise/Source/AkAudio/Classes/AkGameplayStatics.h"
 #include "WwiseManagerSubsystem.generated.h"
+
+
+UENUM(BlueprintType)
+enum class ESoundCategory : uint8
+{
+	SFX     UMETA(DisplayName = "SFX"),
+	Music   UMETA(DisplayName = "Music"),
+	UI      UMETA(DisplayName = "UI"),
+	Ambience UMETA(DisplayName = "Ambience")
+};
+
 /**
  * 
  */
@@ -23,14 +34,4 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category="Wwise", meta = (AdvancedDisplay = "2"))
 	void SetCategoryVolume(ESoundCategory Category, float Volume, int32 InterpolateTimeMs, AActor* TargetActor);
-};
-
-
-UENUM(BlueprintType)
-enum class ESoundCategory : uint8
-{
-	SFX     UMETA(DisplayName = "SFX"),
-	Music   UMETA(DisplayName = "Music"),
-	UI      UMETA(DisplayName = "UI"),
-	Ambience UMETA(DisplayName = "Ambience")
 };

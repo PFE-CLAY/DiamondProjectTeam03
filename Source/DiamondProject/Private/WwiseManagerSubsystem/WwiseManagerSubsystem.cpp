@@ -31,7 +31,6 @@ void UWwiseManagerSubsystem::PlayEvent(UAkAudioEvent* Event, AActor* TargetActor
 void UWwiseManagerSubsystem::SetCategoryVolume(ESoundCategory Category, float Volume, int32 InterpolateTimeMs, AActor* TargetActor)
 {
 	FString RTPCName;
-	UAkRtpc* RTPC = nullptr;
 	switch (Category)
 	{
 	case ESoundCategory::SFX: RTPCName = "Volume_SFX"; break;
@@ -39,12 +38,10 @@ void UWwiseManagerSubsystem::SetCategoryVolume(ESoundCategory Category, float Vo
 	case ESoundCategory::UI: RTPCName = "Volume_UI"; break;
 	case ESoundCategory::Ambience: RTPCName = "Volume_Ambience"; break;
 	}
-	RTPC = LoadObject<UAkRtpc>(nullptr, *RTPCName);
 	
 	if (!RTPCName.IsEmpty())
 	{
-		UAkGameplayStatics::SetRTPCValue(RTPC, Volume, InterpolateTimeMs, TargetActor, FName(RTPCName));
-		UAkGameplayStatics::SetSwitch()
+		UAkGameplayStatics::SetRTPCValue(nullptr, Volume, InterpolateTimeMs, TargetActor, FName(RTPCName));
 		UE_LOG(LogTemp, Log, TEXT("Set volume for %s to %f"), *RTPCName, Volume);
 	}
 }
