@@ -18,6 +18,19 @@ public:
 	virtual void Initialize(FSubsystemCollectionBase& Collection) override;
 	virtual void Deinitialize() override;
 	
-	UFUNCTION(BlueprintCallable, Category = "Wwise")
-	void PlayEvent(UAkAudioEvent* Event, AActor* TargetActor, UPARAM(meta = (Bitmask, BitmaskEnum = "/Script/AkAudio.EAkCallbackType")) const FOnAkPostEventCallback& PostEventCallback);
+	UFUNCTION(BlueprintCallable, Category = "Wwise", meta = (AdvancedDisplay = "2"))
+	void PlayEvent(UAkAudioEvent* Event, AActor* TargetActor, const FOnAkPostEventCallback& PostEventCallback);
+
+	UFUNCTION(BlueprintCallable, Category="Wwise", meta = (AdvancedDisplay = "2"))
+	void SetCategoryVolume(ESoundCategory Category, float Volume, int32 InterpolateTimeMs, AActor* TargetActor);
+};
+
+
+UENUM(BlueprintType)
+enum class ESoundCategory : uint8
+{
+	SFX     UMETA(DisplayName = "SFX"),
+	Music   UMETA(DisplayName = "Music"),
+	UI      UMETA(DisplayName = "UI"),
+	Ambience UMETA(DisplayName = "Ambience")
 };
