@@ -1,6 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WwiseDocument Type="WorkUnit" ID="{27511C9F-9F7B-4C4E-B437-22E44DADCA42}" SchemaVersion="119">
 	<SoundBanks>
-		<WorkUnit Name="Default Work Unit" ID="{27511C9F-9F7B-4C4E-B437-22E44DADCA42}" PersistMode="Standalone"/>
+		<WorkUnit Name="Default Work Unit" ID="{27511C9F-9F7B-4C4E-B437-22E44DADCA42}" PersistMode="Standalone">
+			<ChildrenList>
+				<SoundBank Name="FOES_Invisible" ID="{D02683F3-78E3-4628-B8A6-D33460D2112E}">
+					<PropertyList>
+						<Property Name="Color" Type="int16" Value="23"/>
+						<Property Name="OverrideColor" Type="bool" Value="True"/>
+					</PropertyList>
+					<ObjectInclusionList>
+						<ObjectRef Name="FOES_Invisible" ID="{18B26930-B16C-4483-ACA2-ACFD23DC62C1}" WorkUnitID="{18B26930-B16C-4483-ACA2-ACFD23DC62C1}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="FOES_Invisible" ID="{D1E0A9B1-44B7-4490-AAB0-5C6631C7DF3C}" WorkUnitID="{D1E0A9B1-44B7-4490-AAB0-5C6631C7DF3C}" Origin="Manual" Filter="7"/>
+					</ObjectInclusionList>
+					<ObjectExclusionList/>
+					<GameSyncExclusionList/>
+				</SoundBank>
+				<SoundBank Name="FOES_Tourelle" ID="{CE0B3BAE-4009-4A9A-AD16-11F123E72ADA}">
+					<PropertyList>
+						<Property Name="Color" Type="int16" Value="10"/>
+						<Property Name="OverrideColor" Type="bool" Value="True"/>
+					</PropertyList>
+					<ObjectInclusionList>
+						<ObjectRef Name="FOES_Tourelle" ID="{F38C7AC6-6811-4B1E-A7A4-2F26EBB9F864}" WorkUnitID="{F38C7AC6-6811-4B1E-A7A4-2F26EBB9F864}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="FOES_Tourelle" ID="{1C36EC12-43A5-4F7F-BD34-ADCCF4CCEFF3}" WorkUnitID="{1C36EC12-43A5-4F7F-BD34-ADCCF4CCEFF3}" Origin="Manual" Filter="7"/>
+					</ObjectInclusionList>
+					<ObjectExclusionList/>
+					<GameSyncExclusionList/>
+				</SoundBank>
+				<SoundBank Name="MC" ID="{637CAF77-906A-48CF-ADDA-90CE58D18762}">
+					<PropertyList>
+						<Property Name="Color" Type="int16" Value="19"/>
+						<Property Name="OverrideColor" Type="bool" Value="True"/>
+					</PropertyList>
+					<ObjectInclusionList>
+						<ObjectRef Name="MC" ID="{1B87B22A-8865-441B-A287-78E87390F212}" WorkUnitID="{1B87B22A-8865-441B-A287-78E87390F212}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="MC" ID="{0C46C646-7080-4D39-B62D-1B5389FBC32E}" WorkUnitID="{0C46C646-7080-4D39-B62D-1B5389FBC32E}" Origin="Manual" Filter="7"/>
+					</ObjectInclusionList>
+					<ObjectExclusionList/>
+					<GameSyncExclusionList/>
+				</SoundBank>
+				<SoundBank Name="UI" ID="{F2786620-B31C-443B-B801-76BC5407A74E}">
+					<PropertyList>
+						<Property Name="Color" Type="int16" Value="1"/>
+						<Property Name="OverrideColor" Type="bool" Value="True"/>
+					</PropertyList>
+					<ObjectInclusionList>
+						<ObjectRef Name="UI" ID="{62F06A32-4749-466D-B60F-D9E6B7F3BEED}" WorkUnitID="{62F06A32-4749-466D-B60F-D9E6B7F3BEED}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="UI" ID="{33FB5FA3-EF92-4889-B391-45FA1B390E1B}" WorkUnitID="{33FB5FA3-EF92-4889-B391-45FA1B390E1B}" Origin="Manual" Filter="7"/>
+					</ObjectInclusionList>
+					<ObjectExclusionList/>
+					<GameSyncExclusionList/>
+				</SoundBank>
+			</ChildrenList>
+		</WorkUnit>
 	</SoundBanks>
 </WwiseDocument>
