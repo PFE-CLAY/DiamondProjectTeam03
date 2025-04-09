@@ -67,13 +67,15 @@ UBehaviorTree* AEnemy::GetBehaviorTree() const
 
 void AEnemy::Shoot()
 {
-	if(bCanAttack)
-	{
+	if(bCanAttack){
 		FVector const Location = GetActorLocation();
 		FRotator const Rotation = (PlayerPawn->GetActorLocation() - GetActorLocation()).Rotation();
 		bCanAttack = false;
 		FActorSpawnParameters SpawnInfo;
 		AActor* ProjectileSpawned = GetWorld()->SpawnActor(Projectile, &Location, &Rotation, SpawnInfo);
+		if(ProjectileSpawned == nullptr){
+			return;
+		}
 		AProjectileEnemy* ProjectileInstance = Cast<AProjectileEnemy>(ProjectileSpawned);
 		ProjectileInstance->ProjectileDamage = AttackDamage;
 		

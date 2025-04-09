@@ -5246,6 +5246,18 @@
 			"Type": "RequiredResource"
 		},
 		{
+			"Path": "$(EngineDir)/Plugins/Marketplace/CPathfinding/Binaries/Win64/UnrealEditor-CPathfinding.dll",
+			"Type": "DynamicLibrary"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/Marketplace/CPathfinding/Binaries/Win64/UnrealEditor-CPathfinding.pdb",
+			"Type": "SymbolFile"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/Marketplace/CPathfinding/Binaries/Win64/UnrealEditor.modules",
+			"Type": "RequiredResource"
+		},
+		{
 			"Path": "$(EngineDir)/Plugins/Marketplace/Developer/RiderLink/Binaries/Win64/UnrealEditor-RD.dll",
 			"Type": "DynamicLibrary"
 		},
@@ -29364,6 +29376,10 @@
 			"Type": "UFS"
 		},
 		{
+			"Path": "$(EngineDir)/Plugins/Marketplace/CPathfinding/CPathfinding.uplugin",
+			"Type": "UFS"
+		},
+		{
 			"Path": "$(EngineDir)/Plugins/Marketplace/Developer/RiderLink/RiderLink.uplugin",
 			"Type": "UFS"
 		},
@@ -29662,6 +29678,7 @@
 		"BlueprintHeaderView",
 		"Bridge",
 		"CLionSourceCodeAccess",
+		"CPathfinding",
 		"CableComponent",
 		"CameraShakePreviewer",
 		"ChangelistReview",
