@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WwiseDocument Type="WorkUnit" ID="{BA181DC8-46ED-402A-9EAD-EA68F3A11926}" SchemaVersion="119">
 	<Events>
-		<WorkUnit Name="Default Work Unit" ID="{BA181DC8-46ED-402A-9EAD-EA68F3A11926}" PersistMode="Standalone"/>
+		<WorkUnit Name="Default Work Unit" ID="{BA181DC8-46ED-402A-9EAD-EA68F3A11926}" PersistMode="Standalone">
+			<ChildrenList>
+				<WorkUnit Name="AMB_WU" ID="{1BF409B0-B754-4C8B-AEBF-EFEE5E6D5D4D}" PersistMode="Reference"/>
+				<WorkUnit Name="FOES_Flying_WU" ID="{B22A3D9B-0AF2-4C03-ADD1-522AA0AC5AA9}" PersistMode="Reference"/>
+			</ChildrenList>
+		</WorkUnit>
 	</Events>
 </WwiseDocument>

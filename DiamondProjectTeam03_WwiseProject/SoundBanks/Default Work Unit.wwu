@@ -1,6 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WwiseDocument Type="WorkUnit" ID="{27511C9F-9F7B-4C4E-B437-22E44DADCA42}" SchemaVersion="119">
 	<SoundBanks>
-		<WorkUnit Name="Default Work Unit" ID="{27511C9F-9F7B-4C4E-B437-22E44DADCA42}" PersistMode="Standalone"/>
+		<WorkUnit Name="Default Work Unit" ID="{27511C9F-9F7B-4C4E-B437-22E44DADCA42}" PersistMode="Standalone">
+			<ChildrenList>
+				<SoundBank Name="AMB_Soundbank" ID="{9DC5CBA4-02D0-4677-A565-21ECA413E694}">
+					<PropertyList>
+						<Property Name="Color" Type="int16" Value="4"/>
+						<Property Name="OverrideColor" Type="bool" Value="True"/>
+					</PropertyList>
+					<ObjectInclusionList/>
+					<ObjectExclusionList/>
+					<GameSyncExclusionList/>
+				</SoundBank>
+				<SoundBank Name="FOES_Flying" ID="{46F08C13-7BDA-47D5-A653-BDFCDAD2487B}">
+					<PropertyList>
+						<Property Name="Color" Type="int16" Value="11"/>
+						<Property Name="OverrideColor" Type="bool" Value="True"/>
+					</PropertyList>
+					<ObjectInclusionList/>
+					<ObjectExclusionList/>
+					<GameSyncExclusionList/>
+				</SoundBank>
+			</ChildrenList>
+		</WorkUnit>
 	</SoundBanks>
 </WwiseDocument>
