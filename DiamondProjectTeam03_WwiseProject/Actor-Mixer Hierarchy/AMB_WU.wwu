@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<WwiseDocument Type="WorkUnit" ID="{183124D0-ACA8-4AFA-A8E9-44C003A151DE}" SchemaVersion="119" RootDocumentID="{19A2074E-FBCE-4765-BE39-5B91BE5A4BAB}" ParentDocumentID="{19A2074E-FBCE-4765-BE39-5B91BE5A4BAB}">
+<WwiseDocument Type="WorkUnit" ID="{183124D0-ACA8-4AFA-A8E9-44C003A151DE}" SchemaVersion="119">
 	<AudioObjects>
-		<WorkUnit Name="AMB_WU" ID="{183124D0-ACA8-4AFA-A8E9-44C003A151DE}" OwnerID="{19A2074E-FBCE-4765-BE39-5B91BE5A4BAB}" PersistMode="Nested">
+		<WorkUnit Name="AMB_WU" ID="{183124D0-ACA8-4AFA-A8E9-44C003A151DE}" PersistMode="Standalone">
 			<PropertyList>
 				<Property Name="Color" Type="int16" Value="4"/>
 				<Property Name="OverrideColor" Type="bool" Value="True"/>

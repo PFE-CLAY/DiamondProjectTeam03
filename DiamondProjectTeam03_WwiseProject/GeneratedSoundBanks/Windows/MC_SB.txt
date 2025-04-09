@@ -1,0 +1,16 @@
+Event	ID	Name			Wwise Object Path	Notes
+	926424941	Play_MC_SFX_Dash_RC			\MC_WU\Play_MC_SFX_Dash_RC	
+	1177297501	Play_MC_SFX_Gun_Shoot_RC			\MC_WU\Play_MC_SFX_Gun_Shoot_RC	
+
+In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	36917763	MC_SFX_Gun_Shoot_01	G:\Unreal\Unreal_Projects\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Windows\SFX\MC_SFX_Gun_Shoot_01_818F3B66.wem		\Actor-Mixer Hierarchy\MC_WU\SFX\MC_SFX_Gun_Shoot_RC\MC_SFX_Gun_Shoot_01		224096
+	62282605	MC_SFX_Gun_Shoot_02	G:\Unreal\Unreal_Projects\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Windows\SFX\MC_SFX_Gun_Shoot_02_818F3B66.wem		\Actor-Mixer Hierarchy\MC_WU\SFX\MC_SFX_Gun_Shoot_RC\MC_SFX_Gun_Shoot_02		256096
+	70109824	MC_SFX_Gun_Shoot_04	G:\Unreal\Unreal_Projects\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Windows\SFX\MC_SFX_Gun_Shoot_04_818F3B66.wem		\Actor-Mixer Hierarchy\MC_WU\SFX\MC_SFX_Gun_Shoot_RC\MC_SFX_Gun_Shoot_04		192096
+	131763475	MC_SFX_Dash_05	G:\Unreal\Unreal_Projects\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Windows\SFX\MC_SFX_Dash_05_818F3B66.wem		\Actor-Mixer Hierarchy\MC_WU\SFX\MC_SFX_Dash_RC\MC_SFX_Dash_05		275312
+	280528909	MC_SFX_Dash_01	G:\Unreal\Unreal_Projects\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Windows\SFX\MC_SFX_Dash_01_818F3B66.wem		\Actor-Mixer Hierarchy\MC_WU\SFX\MC_SFX_Dash_RC\MC_SFX_Dash_01		288096
+	411674623	MC_SFX_Dash_02	G:\Unreal\Unreal_Projects\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Windows\SFX\MC_SFX_Dash_02_818F3B66.wem		\Actor-Mixer Hierarchy\MC_WU\SFX\MC_SFX_Dash_RC\MC_SFX_Dash_02		345696
+	421361594	MC_SFX_Gun_Shoot_05	G:\Unreal\Unreal_Projects\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Windows\SFX\MC_SFX_Gun_Shoot_05_818F3B66.wem		\Actor-Mixer Hierarchy\MC_WU\SFX\MC_SFX_Gun_Shoot_RC\MC_SFX_Gun_Shoot_05		288096
+	610918733	MC_SFX_Gun_Shoot_03	G:\Unreal\Unreal_Projects\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Windows\SFX\MC_SFX_Gun_Shoot_03_818F3B66.wem		\Actor-Mixer Hierarchy\MC_WU\SFX\MC_SFX_Gun_Shoot_RC\MC_SFX_Gun_Shoot_03		288096
+	890446006	MC_SFX_Dash_03	G:\Unreal\Unreal_Projects\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Windows\SFX\MC_SFX_Dash_03_818F3B66.wem		\Actor-Mixer Hierarchy\MC_WU\SFX\MC_SFX_Dash_RC\MC_SFX_Dash_03		212692
+	925500281	MC_SFX_Dash_04	G:\Unreal\Unreal_Projects\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Windows\SFX\MC_SFX_Dash_04_818F3B66.wem		\Actor-Mixer Hierarchy\MC_WU\SFX\MC_SFX_Dash_RC\MC_SFX_Dash_04		313696
+

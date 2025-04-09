@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{F38C7AC6-6811-4B1E-A7A4-2F26EBB9F864}" SchemaVersion="119">
+	<Events>
+		<WorkUnit Name="FOES_Tourelle_WU" ID="{F38C7AC6-6811-4B1E-A7A4-2F26EBB9F864}" PersistMode="Standalone">
+			<PropertyList>
+				<Property Name="Color" Type="int16" Value="10"/>
+				<Property Name="OverrideColor" Type="bool" Value="True"/>
+			</PropertyList>
+			<ChildrenList>
+				<Event Name="Play_FOES_SFX_Tourelle_Shoot_RC" ID="{140E36FB-31F3-4C66-AC5D-E9E86C57BA68}">
+					<ChildrenList>
+						<Action Name="" ID="{101F06F4-BB73-478C-9DF1-E3FAC7B6033B}" ShortID="969277283">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="FOES_SFX_Tourelle_Shoot_RC" ID="{3FAC8C89-9BEA-41EB-B022-3C801C8CA2B6}" WorkUnitID="{1C36EC12-43A5-4F7F-BD34-ADCCF4CCEFF3}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+			</ChildrenList>
+		</WorkUnit>
+	</Events>
+</WwiseDocument>

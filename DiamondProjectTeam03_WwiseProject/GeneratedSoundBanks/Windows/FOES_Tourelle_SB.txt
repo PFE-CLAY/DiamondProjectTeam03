@@ -1,0 +1,10 @@
+Event	ID	Name			Wwise Object Path	Notes
+	2480809816	Play_FOES_SFX_Tourelle_Shoot_RC			\FOES_Tourelle_WU\Play_FOES_SFX_Tourelle_Shoot_RC	
+
+In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	37180877	FOES_SFX_Tourelle_Shoot_02	G:\Unreal\Unreal_Projects\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Windows\SFX\FOES_SFX_Tourelle_Shoot_02_818F3B66.wem		\Actor-Mixer Hierarchy\FOES_Tourelle_WU\SFX\FOES_SFX_Tourelle_Shoot_RC\FOES_SFX_Tourelle_Shoot_02		400932
+	119224371	FOES_SFX_Tourelle_Shoot_05	G:\Unreal\Unreal_Projects\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Windows\SFX\FOES_SFX_Tourelle_Shoot_05_818F3B66.wem		\Actor-Mixer Hierarchy\FOES_Tourelle_WU\SFX\FOES_SFX_Tourelle_Shoot_RC\FOES_SFX_Tourelle_Shoot_05		401892
+	363741101	FOES_SFX_Tourelle_Shoot_04	G:\Unreal\Unreal_Projects\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Windows\SFX\FOES_SFX_Tourelle_Shoot_04_818F3B66.wem		\Actor-Mixer Hierarchy\FOES_Tourelle_WU\SFX\FOES_SFX_Tourelle_Shoot_RC\FOES_SFX_Tourelle_Shoot_04		294496
+	387455546	FOES_SFX_Tourelle_Shoot_01	G:\Unreal\Unreal_Projects\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Windows\SFX\FOES_SFX_Tourelle_Shoot_01_818F3B66.wem		\Actor-Mixer Hierarchy\FOES_Tourelle_WU\SFX\FOES_SFX_Tourelle_Shoot_RC\FOES_SFX_Tourelle_Shoot_01		303124
+	515409144	FOES_SFX_Tourelle_Shoot_03	G:\Unreal\Unreal_Projects\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Windows\SFX\FOES_SFX_Tourelle_Shoot_03_818F3B66.wem		\Actor-Mixer Hierarchy\FOES_Tourelle_WU\SFX\FOES_SFX_Tourelle_Shoot_RC\FOES_SFX_Tourelle_Shoot_03		396136
+
