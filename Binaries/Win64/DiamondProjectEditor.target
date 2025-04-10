@@ -2622,6 +2622,18 @@
 			"Type": "RequiredResource"
 		},
 		{
+			"Path": "$(EngineDir)/Plugins/Experimental/NaniteDisplacedMesh/Binaries/Win64/UnrealEditor-NaniteDisplacedMesh.dll",
+			"Type": "DynamicLibrary"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/Experimental/NaniteDisplacedMesh/Binaries/Win64/UnrealEditor-NaniteDisplacedMeshEditor.dll",
+			"Type": "DynamicLibrary"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/Experimental/NaniteDisplacedMesh/Binaries/Win64/UnrealEditor.modules",
+			"Type": "RequiredResource"
+		},
+		{
 			"Path": "$(EngineDir)/Plugins/Experimental/OpenImageDenoise/Binaries/Win64/UnrealEditor-OpenImageDenoise.dll",
 			"Type": "DynamicLibrary"
 		},
@@ -26372,6 +26384,10 @@
 			"Type": "UFS"
 		},
 		{
+			"Path": "$(EngineDir)/Plugins/Experimental/NaniteDisplacedMesh/NaniteDisplacedMesh.uplugin",
+			"Type": "UFS"
+		},
+		{
 			"Path": "$(EngineDir)/Plugins/Experimental/OpenImageDenoise/OpenImageDenoise.uplugin",
 			"Type": "UFS"
 		},
@@ -26811,6 +26827,7 @@
 		"ModelingToolsEditorMode",
 		"MsQuic",
 		"N10XSourceCodeAccess",
+		"NaniteDisplacedMesh",
 		"Niagara",
 		"NiagaraSimCaching",
 		"NullSourceCodeAccess",
