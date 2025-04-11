@@ -36,6 +36,9 @@ private:
 
 public:
 	UFUNCTION()
+	void OnAdvicesVisibilityChanged(bool bNewVisibility);
+	
+	UFUNCTION()
 	void InitializePreplan();
 
 	UFUNCTION(BlueprintCallable)
