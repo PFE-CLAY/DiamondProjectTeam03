@@ -1,4 +1,3 @@
-// MultiSunlightDetectorComponent.cpp
 #include "LDIngredients/MultiSunlightDetectorComponent.h"
 #include "LDIngredients/SunlightTracePointComponent.h"
 #include "Engine/World.h"
@@ -9,74 +8,72 @@ UMultiSunlightDetectorComponent::UMultiSunlightDetectorComponent()
 {
     PrimaryComponentTick.bCanEverTick = true;
     bPreviousIsActivatedBySun = false;
+    
+    TracePoints.Reserve(4);
 }
 
 void UMultiSunlightDetectorComponent::BeginPlay()
 {
     Super::BeginPlay();
     TryAssignSunComponentFromActor();
-    // Trace points register themselves automatically when created
 }
 
 void UMultiSunlightDetectorComponent::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
 {
     Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
-    PerformSunlightCheck();
+    
+    if (TracePoints.Num() > 0 || bIsActivatedBySun) {
+        PerformSunlightCheck();
+    }
 }
 
 void UMultiSunlightDetectorComponent::RegisterTracePoint(USunlightTracePointComponent* TracePoint)
 {
-    if (TracePoint && !TracePoints.Contains(TracePoint)){
+    if (TracePoint && !TracePoints.Contains(TracePoint)) {
         TracePoints.Add(TracePoint);
-        UE_LOG(LogTemp, Verbose, TEXT("MultiSunlightDetectorComponent: Registered trace point. Total: %d"), TracePoints.Num());
     }
 }
 
 void UMultiSunlightDetectorComponent::UnregisterTracePoint(USunlightTracePointComponent* TracePoint)
 {
-    if (TracePoint){
-        int32 RemovedCount = TracePoints.Remove(TracePoint);
-        if (RemovedCount > 0){
-            UE_LOG(LogTemp, Verbose, TEXT("MultiSunlightDetectorComponent: Unregistered trace point. Remaining: %d"), TracePoints.Num());
-        }
+    if (TracePoint) {
+        TracePoints.Remove(TracePoint);
     }
 }
 
 void UMultiSunlightDetectorComponent::PerformSunlightCheck()
 {
-    if (TracePoints.Num() == 0){
-        bool bNewState = false;
-
-        if (bIsActivatedBySun != bNewState)
-        {
-            bIsActivatedBySun = bNewState;
-            OnSunActivationChanged.Broadcast(bIsActivatedBySun);
+    if (TracePoints.Num() == 0) {
+        if (bIsActivatedBySun) {
+            bIsActivatedBySun = false;
+            OnSunActivationChanged.Broadcast(false);
         }
         return;
     }
 
-    if (!CachedSunComponent){
+    if (!CachedSunComponent) {
         TryAssignSunComponentFromActor();
-        if (!CachedSunComponent){
-            UE_LOG(LogTemp, Warning, TEXT("MultiSunlightDetectorComponent: Sun component not assigned."));
+        if (!CachedSunComponent) {
             return;
         }
     }
 
-    FVector SunDirection = -CachedSunComponent->GetComponentRotation().Vector();
-    int32 SunlitTraceCount = 0;
+    const FVector SunDirection = -CachedSunComponent->GetComponentRotation().Vector();
+    int8 SunlitTraceCount = 0;
+    const AActor* OwningActor = GetOwner();
 
-    for (USunlightTracePointComponent* TracePoint : TracePoints)
-    {
+    for (USunlightTracePointComponent* TracePoint : TracePoints) {
         if (!TracePoint)
             continue;
 
-        FVector Start = TracePoint->GetComponentLocation();
-        FVector End = Start + SunDirection * TraceDistance;
+        const FVector Start = TracePoint->GetComponentLocation();
+        const FVector End = Start + SunDirection * TraceDistance;
 
         FHitResult Hit;
         FCollisionQueryParams Params;
-        Params.AddIgnoredActor(GetOwner());
+        if (OwningActor) {
+            Params.AddIgnoredActor(OwningActor);
+        }
 
         bool bHit = GetWorld()->LineTraceSingleByChannel(Hit, Start, End, ECC_Visibility, Params);
         TracePoint->bIsInSunlight = !bHit;
@@ -84,13 +81,12 @@ void UMultiSunlightDetectorComponent::PerformSunlightCheck()
         if (!bHit)
             SunlitTraceCount++;
 
-        if (bShowDebugLines){
-            FColor LineColor = bHit ? FColor::Red : FColor::Green;
+        if (bShowDebugLines) {
             DrawDebugLine(
                 GetWorld(),
                 Start,
                 bHit ? Hit.ImpactPoint : End,
-                LineColor,
+                bHit ? FColor::Red : FColor::Green,
                 false,
                 0.0f,
                 0,
@@ -98,10 +94,11 @@ void UMultiSunlightDetectorComponent::PerformSunlightCheck()
             );
         }
     }
-
-    // Update activation state and fire event if changed
-    bool bNewState = SunlitTraceCount >= FMath::Min(TracesNeededToActivate, TracePoints.Num());
-    if (bIsActivatedBySun != bNewState){
+    
+    const int8 MinPointsNeeded = FMath::Min(TracesNeededToActivate, TracePoints.Num());
+    const bool bNewState = SunlitTraceCount >= MinPointsNeeded;
+    
+    if (bIsActivatedBySun != bNewState) {
         bIsActivatedBySun = bNewState;
         OnSunActivationChanged.Broadcast(bIsActivatedBySun);
     }
@@ -109,17 +106,12 @@ void UMultiSunlightDetectorComponent::PerformSunlightCheck()
 
 void UMultiSunlightDetectorComponent::TryAssignSunComponentFromActor()
 {
-    if (!SunActor.IsValid()){
-        UE_LOG(LogTemp, Warning, TEXT("MultiSunlightDetectorComponent: Sun actor is not valid."));
+    if (CachedSunComponent || !SunActor.IsValid())
         return;
-    }
 
     AActor* Actor = SunActor.Get();
-    if (!Actor) return;
-
-    TArray<UActorComponent*> Components;
-    Actor->GetComponents(UDirectionalLightComponent::StaticClass(), Components);
-    if (Components.Num() > 0){
-        CachedSunComponent = Cast<UDirectionalLightComponent>(Components[0]);
-    }
+    if (!Actor) 
+        return;
+    
+    CachedSunComponent = Actor->FindComponentByClass<UDirectionalLightComponent>();
 }

@@ -1,4 +1,3 @@
-// MultiSunlightDetectorComponent.h
 #pragma once
 
 #include "CoreMinimal.h"
@@ -34,7 +33,7 @@ public:
     float TraceDistance = 100000.0f;
     
     UPROPERTY(EditAnywhere, Category="Sunlight Detection", meta=(ClampMin="1", UIMin="1"))
-    int32 TracesNeededToActivate = 1;
+    int8 TracesNeededToActivate = 1;
     
     UPROPERTY(BlueprintReadOnly, Category="Sunlight Detection")
     bool bIsActivatedBySun = false;
