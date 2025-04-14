@@ -16,15 +16,21 @@ void UMultiSunlightDetectorComponent::BeginPlay()
 {
     Super::BeginPlay();
     TryAssignSunComponentFromActor();
+    
+    // Start the timer for periodic sunlight checks
+    GetWorld()->GetTimerManager().SetTimer(
+        SunActivationTimerHandle,
+        this,
+        &UMultiSunlightDetectorComponent::SunActivationTimerCallback,
+        SunActivationTimerLength,
+        true // Loop the timer
+    );
 }
 
 void UMultiSunlightDetectorComponent::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
 {
     Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
-    
-    if (TracePoints.Num() > 0 || bIsActivatedBySun) {
-        PerformSunlightCheck();
-    }
+    // Sunlight check moved to timer callback
 }
 
 void UMultiSunlightDetectorComponent::RegisterTracePoint(USunlightTracePointComponent* TracePoint)
@@ -114,4 +120,11 @@ void UMultiSunlightDetectorComponent::TryAssignSunComponentFromActor()
         return;
     
     CachedSunComponent = Actor->FindComponentByClass<UDirectionalLightComponent>();
+}
+
+void UMultiSunlightDetectorComponent::SunActivationTimerCallback()
+{
+    if (TracePoints.Num() > 0 || bIsActivatedBySun) {
+        PerformSunlightCheck();
+    }
 }
