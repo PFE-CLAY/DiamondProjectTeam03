@@ -32,9 +32,8 @@
 			"Enabled": true
 		},
 		{
-			"Name": "CPathfinding",
-			"Enabled": true,
-			"MarketplaceURL": "com.epicgames.launcher://ue/marketplace/product/c533ad0234c540fb81bdfa7bd55d3514"
+			"Name": "NaniteDisplacedMesh",
+			"Enabled": true
 		}
 	]
 }
