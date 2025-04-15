@@ -14,8 +14,14 @@ class DIAMONDPROJECT_API AEnemySpawner : public AActor
 	GENERATED_BODY()
 
 protected:
-	UPROPERTY(EditAnywhere, Category = "Spawner")
-	float SpawnCooldown = 3;
+	UPROPERTY(EditAnywhere, Category = "Wave")
+	float WaveCooldown = 15.f;
+
+	UPROPERTY(EditAnywhere, Category = "Wave")
+	int WaveEnemyCount = 3;
+
+	UPROPERTY(EditAnywhere, Category = "Wave")
+	int IncrementalWaveEnemyCount = 1;
 
 	UPROPERTY(EditDefaultsOnly, Category = "Spawner")
 	TSubclassOf<AEnemy> EnemyToSpawn;
@@ -34,7 +40,7 @@ protected:
 private:
 
 	UFUNCTION()
-	void SpawnEnemy();
+	void SpawnWave();
 
 	UFUNCTION()
 	FTransform GetRandomTransform();

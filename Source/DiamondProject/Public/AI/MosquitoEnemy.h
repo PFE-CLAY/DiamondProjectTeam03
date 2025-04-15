@@ -16,14 +16,14 @@ class DIAMONDPROJECT_API AMosquitoEnemy : public AEnemy
 public:
 	// Sets default values for this character's properties
 	
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Enemy Mosquito")
-	float MoveSpeed = 800;
 	
 	AMosquitoEnemy();
 
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
+
+	virtual FRotator GetDirectionRotation(AActor* OriginActor, AActor* TargetActor) override;
 
 public:
 	// Called every frame

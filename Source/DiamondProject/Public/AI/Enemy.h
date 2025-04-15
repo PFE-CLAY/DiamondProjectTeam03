@@ -41,7 +41,7 @@ protected:
 	UPROPERTY(BlueprintReadOnly, Category = "Enemy Behavior");
 	bool bCanAttack = true;
 
-	UPROPERTY(EditDefaultsOnly, Category = "Turret Behavior")
+	UPROPERTY(EditDefaultsOnly, Category = "Enemy Behavior")
 	UClass* Projectile;
 
 	UPROPERTY()
@@ -66,6 +66,11 @@ protected:
 	UFUNCTION(BlueprintCallable)
 	void OnDeath();
 
+	UFUNCTION(BlueprintCallable, Category = "Enemy")
+	bool IsPlayerOnSight(FRotator Rotation, FVector Location);
+
+	UFUNCTION(BlueprintCallable, BlueprintPure, Category = "Enemy")
+	virtual FRotator GetDirectionRotation(AActor* OriginActor, AActor* TargetActor);
 private:
 	UFUNCTION(BlueprintCallable, Category = "Enemy")
 	void DetectPlayer(AActor* Actor);
@@ -79,8 +84,7 @@ private:
 	UFUNCTION(BlueprintCallable, Category = "Enemy")
 	void Shoot();
 
-	UFUNCTION(BlueprintCallable, Category = "Enemy")
-	bool IsPlayerOnSight(FRotator Rotation, FVector Location);
+	
 	
 
 public:

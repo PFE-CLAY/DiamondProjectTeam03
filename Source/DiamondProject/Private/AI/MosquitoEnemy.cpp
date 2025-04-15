@@ -17,7 +17,14 @@ AMosquitoEnemy::AMosquitoEnemy()
 void AMosquitoEnemy::BeginPlay()
 {
 	Super::BeginPlay();
-	GetCharacterMovement()->MaxFlySpeed = MoveSpeed;
+	GetCharacterMovement()->MaxFlySpeed = MovementSpeed;
+}
+
+FRotator AMosquitoEnemy::GetDirectionRotation(AActor* OriginActor, AActor* TargetActor)
+{
+	FRotator Rotation = Super::GetDirectionRotation(OriginActor, TargetActor);
+	//GEngine->AddOnScreenDebugMessage(-1, 0.1f, FColor::Purple, FString::Printf(TEXT("Vector: %f %f %f"), Rotation.Pitch, Rotation.Roll, Rotation.Yaw));
+	return Rotation;
 }
 
 // Called every frame

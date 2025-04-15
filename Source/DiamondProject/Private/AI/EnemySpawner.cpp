@@ -21,18 +21,27 @@ AEnemySpawner::AEnemySpawner()
 void AEnemySpawner::BeginPlay()
 {
 	Super::BeginPlay();
+	
 	FTimerHandle TimerHandle;
-	GetWorldTimerManager().SetTimer(TimerHandle, this,  &AEnemySpawner::SpawnEnemy, SpawnCooldown, true);
+	GetWorldTimerManager().SetTimer(TimerHandle, this,  &AEnemySpawner::SpawnWave, WaveCooldown, true);
 }
 
-void AEnemySpawner::SpawnEnemy()
+void AEnemySpawner::SpawnWave()
 {
-	FActorSpawnParameters SpawnInfo;
-	FTransform SpawnTransform = GetRandomTransform();
-	AActor* EnemySpawned = GetWorld()->SpawnActor(EnemyToSpawn, &SpawnTransform , SpawnInfo);
-	if(EnemySpawned == nullptr){
-		return;
+	for (int i = 0; i < WaveEnemyCount; i++)
+	{
+		FActorSpawnParameters SpawnInfo;
+		SpawnInfo.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AdjustIfPossibleButAlwaysSpawn;
+		FTransform SpawnTransform = GetRandomTransform();
+		AActor* EnemySpawned = GetWorld()->SpawnActor(EnemyToSpawn, &SpawnTransform , SpawnInfo);
+		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Purple, "Spawned");
+		if(EnemySpawned == nullptr){
+			return;
+		}
 	}
+
+	WaveEnemyCount += IncrementalWaveEnemyCount;
+	
 	
 }
 
@@ -43,7 +52,7 @@ FTransform AEnemySpawner::GetRandomTransform()
 	float RandY = FMath::FRandRange(GetActorLocation().Y - VolumeBox->Bounds.BoxExtent.Y, GetActorLocation().Y + VolumeBox->Bounds.BoxExtent.Y);
 	float RandZ = FMath::FRandRange(GetActorLocation().Z - VolumeBox->Bounds.BoxExtent.Z, GetActorLocation().Z + VolumeBox->Bounds.BoxExtent.Z);
 	FVector RandomLocation = FVector(RandX, RandY, RandZ);
-	Transform.SetLocation(RandomLocation);
+	Transform.SetLocation(RandomLocation);	
 	return Transform;
 }
 

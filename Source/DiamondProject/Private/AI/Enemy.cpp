@@ -7,6 +7,7 @@
 #include "Components/BoxComponent.h"
 #include "DiamondProject/DiamondProjectCharacter.h"
 #include "GameFramework/CharacterMovementComponent.h"
+#include "Kismet/KismetMathLibrary.h"
 
 
 // Sets default values
@@ -99,6 +100,14 @@ bool AEnemy::IsPlayerOnSight(FRotator Rotation, FVector Location)
 	//GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Red, FString::Printf(TEXT("Is Player On Sight: %s"), bIsPlayerOnSight ? TEXT("true") : TEXT("false")));
 	return bIsPlayerOnSight;
 }
+
+FRotator AEnemy::GetDirectionRotation(AActor* OriginActor, AActor* TargetActor)
+{
+	FRotator Rotation = UKismetMathLibrary::FindLookAtRotation(OriginActor->GetActorLocation(),
+		TargetActor->GetActorLocation());
+	return Rotation;
+}
+
 
 void AEnemy::SetNewAttackTimer()
 {
