@@ -4,32 +4,28 @@
 
 #include "CoreMinimal.h"
 #include "Enemy.h"
-#include "TurretEnemy.generated.h"
+#include "MosquitoEnemy.generated.h"
 
 UCLASS()
-class DIAMONDPROJECT_API ATurretEnemy : public AEnemy
+class DIAMONDPROJECT_API AMosquitoEnemy : public AEnemy
 {
 	GENERATED_BODY()
 
-protected:
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Turret Behavior")
-	TArray<AActor*> PatrolPoints;
 
-	UPROPERTY(BlueprintReadWrite, Category = "Turret Behavior")
-	int Position;
+
+public:
+	// Sets default values for this character's properties
 	
 	
+	AMosquitoEnemy();
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
 	virtual FRotator GetDirectionRotation(AActor* OriginActor, AActor* TargetActor) override;
 
-private:
-	UFUNCTION(BlueprintCallable)
-	void StartPatrol();
 public:
-	ATurretEnemy();
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
