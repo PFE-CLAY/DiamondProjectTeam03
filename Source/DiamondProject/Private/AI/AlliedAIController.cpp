@@ -3,6 +3,8 @@
 
 #include "AI/AlliedAIController.h"
 
+#include "AI/Allied.h"
+
 
 // Sets default values
 AAlliedAIController::AAlliedAIController()
@@ -15,7 +17,20 @@ AAlliedAIController::AAlliedAIController()
 void AAlliedAIController::BeginPlay()
 {
 	Super::BeginPlay();
+	AlliedControlled = Cast<AAllied>(GetPawn());
 	
+	
+	
+}
+
+void AAlliedAIController::OnMoveCompleted(FAIRequestID RequestID, EPathFollowingResult::Type Result)
+{
+	Super::OnMoveCompleted(RequestID, Result);
+	AlliedControlled->Position++;
+	if(AlliedControlled->bShouldLoop && AlliedControlled->Position >= AlliedControlled->PatrolPoints.Num()){
+		AlliedControlled->Position = 0;
+	}
+	AlliedControlled->Patrol();
 	
 }
 
