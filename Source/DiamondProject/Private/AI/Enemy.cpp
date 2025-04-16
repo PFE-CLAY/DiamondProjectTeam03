@@ -68,6 +68,7 @@ UBehaviorTree* AEnemy::GetBehaviorTree() const
 
 void AEnemy::Shoot()
 {
+	
 	if(bCanAttack){
 		FVector const Location = GetActorLocation();
 		FRotator const Rotation = (PlayerPawn->GetActorLocation() - GetActorLocation()).Rotation();
@@ -79,7 +80,7 @@ void AEnemy::Shoot()
 		}
 		AProjectileEnemy* ProjectileInstance = Cast<AProjectileEnemy>(ProjectileSpawned);
 		ProjectileInstance->ProjectileDamage = AttackDamage;
-		
+		GEngine->AddOnScreenDebugMessage(-1, 10.f, FColor::Purple, "aaaaaaaaaaaaaaaaa");
 		SetNewAttackTimer();
 		
 		
