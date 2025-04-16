@@ -38,6 +38,9 @@ public:
     UPROPERTY(BlueprintReadOnly, Category="Sunlight Detection")
     bool bIsActivatedBySun = false;
     
+    UPROPERTY(BlueprintReadOnly, Category="Sunlight Detection")
+    float SunActivationTimerLength = 0.5f;
+    
     UPROPERTY(BlueprintAssignable, Category="Sunlight Detection")
     FSunActivationChangedDelegate OnSunActivationChanged;
     
@@ -54,6 +57,10 @@ private:
 
     void PerformSunlightCheck();
     void TryAssignSunComponentFromActor();
+    void SunActivationTimerCallback();
     
     bool bPreviousIsActivatedBySun = false;
+
+    UPROPERTY()
+    FTimerHandle SunActivationTimerHandle;
 };
