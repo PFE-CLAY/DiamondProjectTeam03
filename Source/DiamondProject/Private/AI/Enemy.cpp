@@ -68,6 +68,7 @@ UBehaviorTree* AEnemy::GetBehaviorTree() const
 
 void AEnemy::Shoot()
 {
+	
 	if(bCanAttack){
 		FVector const Location = GetActorLocation();
 		FRotator const Rotation = (PlayerPawn->GetActorLocation() - GetActorLocation()).Rotation();
