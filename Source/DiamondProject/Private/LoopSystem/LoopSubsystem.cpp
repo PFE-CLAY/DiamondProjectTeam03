@@ -7,6 +7,7 @@
 #include "LoopSystem/PreplanAdvice.h"
 #include "LoopSystem/PreplanData.h"
 #include "LoopSystem/PreplanStep.h"
+#include "UI/GameSettingsSubsystem.h"
 
 void ULoopSubsystem::ReloadScene()
 {
@@ -47,7 +48,13 @@ void ULoopSubsystem::InitializePreplanAdvices()
 {
 	TArray<AActor*> FoundPreplanAdviceActors;
 	UGameplayStatics::GetAllActorsOfClass(GetWorld(), APreplanAdvice::StaticClass(), FoundPreplanAdviceActors);
-	
+
+	UGameInstance* GameInstance = GetWorld()->GetGameInstance();
+	if (GameInstance == nullptr) return;
+
+	UGameSettingsSubsystem* SettingsSubsystem = GameInstance->GetSubsystem<UGameSettingsSubsystem>();
+	if (SettingsSubsystem == nullptr) return;
+
 	for (int i = 0; i < FoundPreplanAdviceActors.Num(); i++)
 	{
 		APreplanAdvice* PreplanDataActor = Cast<APreplanAdvice>(FoundPreplanAdviceActors[i]);
@@ -60,8 +67,20 @@ void ULoopSubsystem::InitializePreplanAdvices()
 			return;
 		}
 
-		PreplanDataActor->SetActorHiddenInGame(!PreplanStepPtr->Get()->bIsStepActive);
+		PreplanDataActor->SetActorHiddenInGame(
+			!SettingsSubsystem->IsPreplanInSceneVisible() ||
+			!PreplanStepPtr->Get()->bIsStepActive);
 		PreplanStepPtr->Get()->PreplanAdvices.Add(PreplanDataActor);
+	}
+}
+
+void ULoopSubsystem::OnAdvicesVisibilityChanged(bool bNewVisibility)
+{
+	for (auto PreplanStep : PreplanSteps) {
+		for (auto PreplanAdvice : PreplanStep.Value->PreplanAdvices) {
+			bool value = !bNewVisibility || !PreplanStep.Value->bIsStepVisible;
+			PreplanAdvice->SetActorHiddenInGame(value);
+		}
 	}
 }
 
@@ -69,7 +88,7 @@ void ULoopSubsystem::InitializePreplan()
 {
 	TArray<AActor*> FoundPreplanDataActors;
 	UGameplayStatics::GetAllActorsOfClass(GetWorld(), APreplanData::StaticClass(), FoundPreplanDataActors);
-
+	
 	if (!bIsInit){
 		bIsInit = true;
 		
@@ -88,14 +107,21 @@ void ULoopSubsystem::InitializePreplan()
 			} else {
 				if (PreplanDataActor->bIsActiveOnStart){
 					PreplanStep->bIsStepActive = true;
+					PreplanStep->bIsStepVisible = true;
 				}
-
+				
 				PreplanStep->PreplanData->SetActorHiddenInGame(!PreplanDataActor->bIsActiveOnStart);
 				PreplanSteps.Add(PreplanDataActor->PreplanID,PreplanStep);
 			}
 		}
+		UGameInstance* GameInstance = GetWorld()->GetGameInstance();
+		if (GameInstance == nullptr) return;
 
-		InitializePreplanAdvices();
+		UGameSettingsSubsystem* SettingsSubsystem = GameInstance->GetSubsystem<UGameSettingsSubsystem>();
+		if (SettingsSubsystem == nullptr) return;
+		
+		SettingsSubsystem->OnAdvicesVisibilityChangedDelegate.AddUniqueDynamic(this, &ULoopSubsystem::OnAdvicesVisibilityChanged);
+		
 	} else {
 		for (int i = 0; i < FoundPreplanDataActors.Num(); i++)
 		{
@@ -116,12 +142,14 @@ void ULoopSubsystem::InitializePreplan()
 				if (PreplanStep != nullptr) {
 					PreplanStep->NbActivations = 0;
 					PreplanStep->PreplanData = PreplanDataActor;
-					PreplanDataActor->SetActorHiddenInGame(!PreplanStep->bIsStepActive);
+					PreplanStep->PreplanAdvices.Empty();
+					PreplanStep->bIsStepVisible = PreplanStep->bIsStepActive;
+					PreplanDataActor->SetActorHiddenInGame(!PreplanStep->bIsStepVisible);
 				}
 			}
 		}
-		InitializePreplanAdvices();
 	}
+	InitializePreplanAdvices();
 }
 
 void ULoopSubsystem::ActivatePreplanStep(FString PreplanID)
@@ -139,7 +167,6 @@ void ULoopSubsystem::ActivatePreplanStep(FString PreplanID)
 		PreplanStep->NbActivations < PreplanStep->PreplanData->NbActivationsRequired){
 		++PreplanStep->NbActivations;
 
-		//Change immediately the preplan visibility 
 		if (PreplanStep->NbActivations == PreplanStep->PreplanData->NbActivationsRequired){
 			PreplanStep->bIsStepActive = true;
 			PreplanStep->PreplanData->SetActorHiddenInGame(false);

@@ -29,4 +29,7 @@ public:
 	
 	UPROPERTY()
 	bool bIsStepActive = false;
+
+	UPROPERTY()
+	bool bIsStepVisible = false;
 };

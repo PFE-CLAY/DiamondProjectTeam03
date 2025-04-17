@@ -7,6 +7,7 @@
 #include "Components/BoxComponent.h"
 #include "DiamondProject/DiamondProjectCharacter.h"
 #include "GameFramework/CharacterMovementComponent.h"
+#include "Kismet/KismetMathLibrary.h"
 
 
 // Sets default values
@@ -67,13 +68,16 @@ UBehaviorTree* AEnemy::GetBehaviorTree() const
 
 void AEnemy::Shoot()
 {
-	if(bCanAttack)
-	{
+	
+	if(bCanAttack){
 		FVector const Location = GetActorLocation();
 		FRotator const Rotation = (PlayerPawn->GetActorLocation() - GetActorLocation()).Rotation();
 		bCanAttack = false;
 		FActorSpawnParameters SpawnInfo;
 		AActor* ProjectileSpawned = GetWorld()->SpawnActor(Projectile, &Location, &Rotation, SpawnInfo);
+		if(ProjectileSpawned == nullptr){
+			return;
+		}
 		AProjectileEnemy* ProjectileInstance = Cast<AProjectileEnemy>(ProjectileSpawned);
 		ProjectileInstance->ProjectileDamage = AttackDamage;
 		
@@ -97,6 +101,14 @@ bool AEnemy::IsPlayerOnSight(FRotator Rotation, FVector Location)
 	//GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Red, FString::Printf(TEXT("Is Player On Sight: %s"), bIsPlayerOnSight ? TEXT("true") : TEXT("false")));
 	return bIsPlayerOnSight;
 }
+
+FRotator AEnemy::GetDirectionRotation(AActor* OriginActor, AActor* TargetActor)
+{
+	FRotator Rotation = UKismetMathLibrary::FindLookAtRotation(OriginActor->GetActorLocation(),
+		TargetActor->GetActorLocation());
+	return Rotation;
+}
+
 
 void AEnemy::SetNewAttackTimer()
 {

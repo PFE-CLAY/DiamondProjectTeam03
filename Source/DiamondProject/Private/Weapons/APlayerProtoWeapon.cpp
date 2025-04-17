@@ -1,7 +1,5 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-
-
 #include "DiamondProject/Public/Weapons/APlayerProtoWeapon.h"
 
 #include "EnhancedInputComponent.h"
@@ -12,95 +10,121 @@
 #include "Camera/PlayerCameraManager.h"
 #include "Kismet/GameplayStatics.h"
 #include "Animation/AnimInstance.h"
-#include "DiamondProject/TP_PickUpComponent.h"
 #include "Engine/LocalPlayer.h"
 #include "Engine/World.h"
 #include "LoopSystem/AC_Health.h"
 
-class UTP_PickUpComponent;
-
 void UAPlayerProtoWeapon::BeginPlay()
 {
-	Super::BeginPlay();
-	CurrentAmmo = MagazineSize;
+    Super::BeginPlay();
+    CurrentAmmo = MagazineSize;
 }
 
-void UAPlayerProtoWeapon::Fire() {
-	if (Character == nullptr || Character->GetController() == nullptr) {
-		return;
-	}
+void UAPlayerProtoWeapon::Fire()
+{
+    if (!IsFirePossible())
+        return;
 
-	if (CurrentAmmo <= 0) {
-		return;
-	}
-
-	// Try and fire a projectile
-	float CurrentTime = GetWorld()->GetTimeSeconds();
-	if (CurrentTime - LastFireTime < 1.0f / FireRatePerSecond) return;
-	LastFireTime = CurrentTime;
-	
-	CurrentAmmo--;
-	OnFire.Broadcast(CurrentAmmo);
-	
-	UWorld* const World = GetWorld();
-		
-	if (World != nullptr) {
-		APlayerController* PlayerController = Cast<APlayerController>(Character->GetController());
-		const FRotator SpawnRotation = PlayerController->PlayerCameraManager->GetCameraRotation();
-		// MuzzleOffset is in camera space, so transform it to world space before offsetting from the character location to find the final muzzle position
-		const FVector SpawnLocation = GetOwner()->GetActorLocation() + SpawnRotation.RotateVector(MuzzleOffset);
-
-		//cast a linetrace forward to check if the projectile will hit something
-		FHitResult Hit;
-		FCollisionQueryParams CollisionParams;
-		CollisionParams.AddIgnoredActor(Character);
-		FVector End = SpawnLocation + (SpawnRotation.Vector() * 10000);
-		bool bHasHit = World->LineTraceSingleByChannel(Hit,SpawnLocation, End, ECC_Visibility, CollisionParams);
-		DrawDebugLine(World, SpawnLocation, End, bHasHit? FColor::Red : FColor::Green, false, 0.3f, 0, 10.f);
-
-		if (bHasHit) {
-			//Try to apply damage to the hit actor using AC_Health
-			if (UAC_Health* HealthComponent = Hit.GetActor()->FindComponentByClass<UAC_Health>()) {
-                HealthComponent->DecreaseHealth(Damage);
-            }
-		}
-	}
-	
-	// Try and play the sound if specified
-	if (FireSound != nullptr) {
-		UGameplayStatics::PlaySoundAtLocation(this, FireSound, Character->GetActorLocation());
-	}
-	
-	// Try and play a firing animation if specified
-	if (FireAnimation != nullptr) {
-		// Get the animation object for the arms mesh
-		UAnimInstance* AnimInstance = Character->GetMesh1P()->GetAnimInstance();
-		if (AnimInstance != nullptr) {
-			AnimInstance->Montage_Play(FireAnimation, 1.f);
-		}
-	}
-	
-	if (CurrentAmmo == 0) {
-		UE_LOG(LogTemp, Warning, TEXT("Detach weapon"));
-		OnDropped.Broadcast(Character);
-	}
+    DecreaseAmmo();
+    PerformShot();
+    PlayFireEffects();
+    
+    if (CurrentAmmo == 0){
+        UE_LOG(LogTemp, Warning, TEXT("Detach weapon"));
+        OnDropped.Broadcast(Character);
+    }
 }
 
-void UAPlayerProtoWeapon::DetachWeapon() {
-	FDetachmentTransformRules DetachmentRules(EDetachmentRule::KeepWorld, EDetachmentRule::KeepWorld, EDetachmentRule::KeepWorld, false);
-	DetachFromComponent(DetachmentRules);
+bool UAPlayerProtoWeapon::IsFirePossible() const
+{
+    if (!Character || !Character->GetController() || CurrentAmmo <= 0)
+        return false;
+        
+    float currentTime = GetWorld()->GetTimeSeconds();
+    return (currentTime - LastFireTime >= 1.0f / FireRatePerSecond);
+}
 
-	Character->RemoveInstanceComponent(this);
+void UAPlayerProtoWeapon::DecreaseAmmo()
+{
+    CurrentAmmo--;
+    LastFireTime = GetWorld()->GetTimeSeconds();
+}
 
-	if (APlayerController* PlayerController = Cast<APlayerController>(Character->GetController())) {
-		if (UEnhancedInputLocalPlayerSubsystem* Subsystem = ULocalPlayer::GetSubsystem<UEnhancedInputLocalPlayerSubsystem>(PlayerController->GetLocalPlayer())) {
-			Subsystem->RemoveMappingContext(FireMappingContext);
-		}
-		if (UEnhancedInputComponent* EnhancedInputComponent = Cast<UEnhancedInputComponent>(PlayerController->InputComponent)) {
-			EnhancedInputComponent->RemoveActionEventBinding(BindingIndex);
-		}
-	}
+void UAPlayerProtoWeapon::PerformShot()
+{
+    UWorld* const world = GetWorld();
+    if (!world)
+        return;
 
-	Character->CurrentWeapon = nullptr;
-	Character = nullptr;
+    APlayerController* playerController = Cast<APlayerController>(Character->GetController());
+    const FRotator spawnRotation = playerController->PlayerCameraManager->GetCameraRotation();
+    const FVector spawnLocation = GetOwner()->GetActorLocation() + spawnRotation.RotateVector(MuzzleOffset);
+
+    FHitResult hit;
+    FVector endLocation = spawnLocation + (spawnRotation.Vector() * 10000);
+    
+    FCollisionQueryParams collisionParams;
+    collisionParams.AddIgnoredActor(Character);
+    
+    bool bHasHit = world->LineTraceSingleByChannel(hit, spawnLocation, endLocation, ECC_Visibility, collisionParams);
+
+    if (bHasHit){
+        ProcessHit(hit, world);
+    }
+
+    OnFire.Broadcast(CurrentAmmo, spawnRotation);
+}
+
+void UAPlayerProtoWeapon::ProcessHit(const FHitResult& hit, UWorld* world)
+{
+    if (UAC_Health* healthComponent = hit.GetActor()->FindComponentByClass<UAC_Health>()){
+        healthComponent->DecreaseHealth(Damage);
+    }
+    else if (DecalMaterial){
+        UGameplayStatics::SpawnDecalAtLocation(
+            world, 
+            DecalMaterial,
+            FVector(DecalSize, DecalSize, DecalSize),
+            hit.ImpactPoint, 
+            hit.ImpactNormal.Rotation(), 
+            DecalLifeSpan
+        );
+    }
+}
+
+void UAPlayerProtoWeapon::PlayFireEffects()
+{
+    if (FireSound){
+        UGameplayStatics::PlaySoundAtLocation(this, FireSound, Character->GetActorLocation());
+    }
+
+    if (FireAnimation && Character){
+        UAnimInstance* animInstance = Character->GetMesh1P()->GetAnimInstance();
+        if (animInstance)
+        {
+            animInstance->Montage_Play(FireAnimation, 1.f);
+        }
+    }
+}
+
+void UAPlayerProtoWeapon::DetachWeapon()
+{
+    FDetachmentTransformRules detachmentRules(EDetachmentRule::KeepWorld, false);
+    DetachFromComponent(detachmentRules);
+
+    Character->RemoveInstanceComponent(this);
+
+    if (APlayerController* playerController = Cast<APlayerController>(Character->GetController())){
+        
+        if (UEnhancedInputLocalPlayerSubsystem* subsystem = ULocalPlayer::GetSubsystem<UEnhancedInputLocalPlayerSubsystem>(playerController->GetLocalPlayer())){
+            subsystem->RemoveMappingContext(FireMappingContext);
+        }
+        
+        if (UEnhancedInputComponent* enhancedInputComponent = Cast<UEnhancedInputComponent>(playerController->InputComponent)){
+            enhancedInputComponent->RemoveActionEventBinding(BindingIndex);
+        }
+    }
+
+    Character->CurrentWeapon = nullptr;
+    Character = nullptr;
 }

@@ -65,6 +65,9 @@ void ADiamondProjectCharacter::SetupPlayerInputComponent(UInputComponent* Player
 
 		//Crouching
 		EnhancedInputComponent->BindAction(CrouchAction, ETriggerEvent::Started, this, &ADiamondProjectCharacter::Crouch);
+
+		//Mantling
+		EnhancedInputComponent->BindAction(MantleAction, ETriggerEvent::Started, this, &ADiamondProjectCharacter::Mantle);
 		
 	}
 	else
@@ -108,4 +111,9 @@ void ADiamondProjectCharacter::Interact(const FInputActionValue& Value)
 void ADiamondProjectCharacter::Crouch(const FInputActionValue& Value)
 {
 	OnCrouch.Broadcast();
+}
+
+void ADiamondProjectCharacter::Mantle(const FInputActionValue& Value)
+{
+	OnMantle.Broadcast();
 }

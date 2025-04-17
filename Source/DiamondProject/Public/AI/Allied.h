@@ -16,23 +16,28 @@ protected:
 	UPROPERTY()
 	AAIController* AIController;
 
-	UPROPERTY(EditAnywhere, Category = "Movements")
-	TArray<AActor*> PatrolPoints;
 
-	UPROPERTY()
-	int Position = 0;
+	
 	
 public:
+	UPROPERTY(EditInstanceOnly, BlueprintReadOnly, Category = "Movements")
+	TArray<TObjectPtr<AActor>> PatrolPoints;
 	// Sets default values for this character's properties
 	AAllied();
 
-	
+	UPROPERTY()
+	int Position = 0;
+
+	UPROPERTY(EditAnywhere, Category = "Movements")
+	bool bShouldLoop = false;
 
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
-	void Patrol();
+	
+
+	
 
 public:
 	// Called every frame
@@ -41,5 +46,6 @@ public:
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
-	
+	UFUNCTION()
+	void Patrol();
 };
