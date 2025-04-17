@@ -25,13 +25,22 @@ class DIAMONDPROJECT_API UWwiseManagerSubsystem : public UGameInstanceSubsystem
 {
 	GENERATED_BODY()
 
+private:
+	UPROPERTY()
+	TMap<AActor*, const UAkAudioEvent*> EventCurrentlyPlayedByActor;
+
 public:
 	virtual void Initialize(FSubsystemCollectionBase& Collection) override;
 	virtual void Deinitialize() override;
 	
-	UFUNCTION(BlueprintCallable, Category = "Wwise", meta = (AdvancedDisplay = "2"))
+	UFUNCTION(BlueprintCallable, Category = "Wwise SubSystem", meta = (AdvancedDisplay = "2"))
 	void PlayEvent(UAkAudioEvent* Event, AActor* TargetActor, const FOnAkPostEventCallback& PostEventCallback);
 
-	UFUNCTION(BlueprintCallable, Category="Wwise", meta = (AdvancedDisplay = "2"))
-	void SetCategoryVolume(ESoundCategory Category, float Volume, int32 InterpolateTimeMs, AActor* TargetActor);
+	
+	UFUNCTION(BlueprintCallable, Category = "Wwise SubSystem")
+	void SetRTPCValue(const UAkRtpc* RTPCValue, float Value, int32 InterpolationTimeMs, AActor* Actor);
+	
+	UFUNCTION(BlueprintCallable, Category="Wwise SubSystem", meta = (AdvancedDisplay = "3"))
+	void SetCategoryVolume(const ESoundCategory Category, float Volume, AActor* TargetActor, int32 InterpolateTimeMs = 0);
+
 };
