@@ -36,6 +36,7 @@ void AEnemyController::OnPossess(APawn* InPawn)
 			Blackboard = BlackboardComponent;
 			RunBehaviorTree(BehaviorTree);
 			
+			
 		}
 	}
 	
