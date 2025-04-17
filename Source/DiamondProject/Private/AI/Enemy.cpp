@@ -80,7 +80,7 @@ void AEnemy::Shoot()
 		}
 		AProjectileEnemy* ProjectileInstance = Cast<AProjectileEnemy>(ProjectileSpawned);
 		ProjectileInstance->ProjectileDamage = AttackDamage;
-		GEngine->AddOnScreenDebugMessage(-1, 10.f, FColor::Purple, "aaaaaaaaaaaaaaaaa");
+		
 		SetNewAttackTimer();
 		
 		
