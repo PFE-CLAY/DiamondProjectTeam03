@@ -743,7 +743,7 @@ struct FAkMidiProgramChange : public FAkMidiEventBase
 /// - AK::SoundEngine::PostEvent()
 /// - \ref soundengine_events
 UCLASS(BlueprintType)
-class UAkMIDIEventCallbackInfo : public UAkEventCallbackInfo
+class AKAUDIO_API UAkMIDIEventCallbackInfo : public UAkEventCallbackInfo
 {
 	GENERATED_BODY()
 	
@@ -791,7 +791,7 @@ private:
 /// - \ref soundengine_events
 /// - \ref soundengine_markers
 UCLASS(BlueprintType)
-class UAkMarkerCallbackInfo : public UAkEventCallbackInfo
+class AKAUDIO_API UAkMarkerCallbackInfo : public UAkEventCallbackInfo
 {
 	GENERATED_BODY()
 public:
@@ -813,7 +813,7 @@ public:
 /// - AK::SoundEngine::PostEvent()
 /// - \ref soundengine_events
 UCLASS(BlueprintType)
-class UAkDurationCallbackInfo : public UAkEventCallbackInfo
+class AKAUDIO_API UAkDurationCallbackInfo : public UAkEventCallbackInfo
 {
 	GENERATED_BODY()
 public:

@@ -1,0 +1,8 @@
+{
+	"BuildId": "33043543",
+	"Modules": 
+	{
+		"DiamondProject": "UnrealEditor-DiamondProject.dll",
+		"FCTween": "UnrealEditor-FCTween.dll"
+	}
+}

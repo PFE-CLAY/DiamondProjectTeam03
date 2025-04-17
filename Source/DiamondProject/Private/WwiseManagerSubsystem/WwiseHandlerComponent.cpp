@@ -1,7 +1,7 @@
 ﻿// Fill out your copyright notice in the Description page of Project Settings.
 
-#include "AkGameplayTypes.h"
 #include "WwiseManagerSubsystem/WwiseHandlerComponent.h"
+#include "AkGameplayTypes.h"
 
 // Sets default values for this component's properties
 UWwiseHandlerComponent::UWwiseHandlerComponent()
