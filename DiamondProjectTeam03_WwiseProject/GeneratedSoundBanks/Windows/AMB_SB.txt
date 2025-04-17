@@ -1,0 +1,6 @@
+Event	ID	Name			Wwise Object Path	Notes
+	3817670132	Play_AMB_Arena_Crowd			\AMB_WU\Play_AMB_Arena_Crowd	
+
+In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	397963527	AMB_Arena_Crowd	G:\Unreal\Unreal_Projects\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Windows\SFX\AMB_Arena_Crowd_FBC78EF0.wem		\Actor-Mixer Hierarchy\AMB_WU\AMB_AM\AMB_Global_AM\AMB_Arena_Crowd		9349296
+

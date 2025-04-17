@@ -18,6 +18,14 @@ void ATurretEnemy::BeginPlay()
 	
 }
 
+FRotator ATurretEnemy::GetDirectionRotation(AActor* OriginActor, AActor* TargetActor)
+{
+	FRotator Result = Super::GetDirectionRotation(OriginActor, TargetActor);
+	FRotator Rotation = FRotator(0, Result.Yaw, 0);
+	//GEngine->AddOnScreenDebugMessage(15, 1.f, FColor::Purple, FString::Printf(TEXT("Vector: %f %f %f"), Rotation.Pitch, Rotation.Yaw, Rotation.Roll));
+	return Rotation;
+}
+
 void ATurretEnemy::StartPatrol()
 {
 	

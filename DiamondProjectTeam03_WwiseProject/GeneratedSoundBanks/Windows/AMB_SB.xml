@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="16" SoundBankVersion="150">
+	<SoundBanks>
+		<SoundBank Id="3256182613" Type="User" GUID="{9DC5CBA4-02D0-4677-A565-21ECA413E694}" Language="SFX" Hash="{33B1C8A1-12E5-5F1A-173A-EAA384714293}">
+			<ObjectPath>\SoundBanks\SoundBanks_WU\AMB_SB</ObjectPath>
+			<ShortName>AMB_SB</ShortName>
+			<Path>AMB_SB.bnk</Path>
+			<Media>
+				<File Id="397963527" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB_Arena_Crowd.wav</ShortName>
+					<CachePath>SFX/AMB_Arena_Crowd_FBC78EF0.wem</CachePath>
+				</File>
+			</Media>
+			<Events>
+				<Event Id="3817670132" Name="Play_AMB_Arena_Crowd" ObjectPath="\Events\AMB_WU\Play_AMB_Arena_Crowd" GUID="{044D5574-12FD-4A7D-829F-E12D304EBC61}" DurationType="Infinite">
+					<MediaRefs>
+						<MediaRef Id="397963527"/>
+					</MediaRefs>
+				</Event>
+			</Events>
+		</SoundBank>
+	</SoundBanks>
+	<FileHash>{64613648-9A48-FF62-E93E-92A2C1F3A712}</FileHash>
+</SoundBanksInfo>

@@ -18,6 +18,12 @@ class DIAMONDPROJECT_API UGameSettingsSubsystem : public UGameInstanceSubsystem
 public:
 	UPROPERTY(BlueprintAssignable)
 	FOnAdvicesVisibilityChangedEvent OnAdvicesVisibilityChangedDelegate;
+
+	UPROPERTY(BlueprintReadWrite)
+	bool bSubtitlesActivated = true;
+
+	UPROPERTY(BlueprintReadWrite)
+	float SubtitlesBackgroundOpacity = 0.5f;
 	
 private:
 	UPROPERTY(EditAnywhere)
