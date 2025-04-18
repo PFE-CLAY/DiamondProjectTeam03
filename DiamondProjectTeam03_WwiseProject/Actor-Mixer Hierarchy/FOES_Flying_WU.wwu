@@ -27,7 +27,7 @@
 								</Reference>
 							</ReferenceList>
 						</ActorMixer>
-						<ActorMixer Name="FOES_Flying_Weapon" ID="{26182B59-0F79-4244-B381-11E61290F821}" ShortID="969565210">
+						<ActorMixer Name="FOES_Flying_SFX" ID="{26182B59-0F79-4244-B381-11E61290F821}" ShortID="969565210">
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
