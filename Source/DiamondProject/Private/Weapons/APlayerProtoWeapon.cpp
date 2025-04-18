@@ -17,7 +17,7 @@
 void UAPlayerProtoWeapon::BeginPlay()
 {
     Super::BeginPlay();
-    CurrentAmmo = MagazineSize;
+    CurrentAmmo = AmmonOnSpawn;
 }
 
 void UAPlayerProtoWeapon::Fire()
@@ -28,9 +28,8 @@ void UAPlayerProtoWeapon::Fire()
     DecreaseAmmo();
     PerformShot();
     PlayFireEffects();
-    
+
     if (CurrentAmmo == 0){
-        UE_LOG(LogTemp, Warning, TEXT("Detach weapon"));
         OnDropped.Broadcast(Character);
     }
 }
@@ -39,7 +38,7 @@ bool UAPlayerProtoWeapon::IsFirePossible() const
 {
     if (!Character || !Character->GetController() || CurrentAmmo <= 0)
         return false;
-        
+
     float currentTime = GetWorld()->GetTimeSeconds();
     return (currentTime - LastFireTime >= 1.0f / FireRatePerSecond);
 }
@@ -62,10 +61,10 @@ void UAPlayerProtoWeapon::PerformShot()
 
     FHitResult hit;
     FVector endLocation = spawnLocation + (spawnRotation.Vector() * 10000);
-    
+
     FCollisionQueryParams collisionParams;
     collisionParams.AddIgnoredActor(Character);
-    
+
     bool bHasHit = world->LineTraceSingleByChannel(hit, spawnLocation, endLocation, ECC_Visibility, collisionParams);
 
     if (bHasHit){
@@ -75,18 +74,27 @@ void UAPlayerProtoWeapon::PerformShot()
     OnFire.Broadcast(CurrentAmmo, spawnRotation);
 }
 
-void UAPlayerProtoWeapon::ProcessHit(const FHitResult& hit, UWorld* world)
+void UAPlayerProtoWeapon::ProcessHit(const FHitResult& Hit, UWorld* World)
 {
-    if (UAC_Health* healthComponent = hit.GetActor()->FindComponentByClass<UAC_Health>()){
-        healthComponent->DecreaseHealth(Damage);
+    // Check if Hit.GetActor() is valid before accessing it
+    if (Hit.GetActor() != nullptr)
+    {
+        if (UAC_Health* healthComponent = Hit.GetActor()->FindComponentByClass<UAC_Health>())
+        {
+            healthComponent->DecreaseHealth(Damage);
+            return;
+        }
     }
-    else if (DecalMaterial){
+    
+    // If there's no actor hit or it has no health component
+    if (DecalMaterial)
+    {
         UGameplayStatics::SpawnDecalAtLocation(
-            world, 
+            World,
             DecalMaterial,
             FVector(DecalSize, DecalSize, DecalSize),
-            hit.ImpactPoint, 
-            hit.ImpactNormal.Rotation(), 
+            Hit.ImpactPoint,
+            Hit.ImpactNormal.Rotation(),
             DecalLifeSpan
         );
     }
@@ -107,6 +115,59 @@ void UAPlayerProtoWeapon::PlayFireEffects()
     }
 }
 
+bool UAPlayerProtoWeapon::AttachWeapon(ADiamondProjectCharacter* TargetCharacter)
+{
+    if (!TargetCharacter)
+        return false;
+
+    // Check if character already has a weapon
+    if (TargetCharacter->CurrentWeapon)
+    {
+        UAPlayerProtoWeapon* existingWeapon = Cast<UAPlayerProtoWeapon>(TargetCharacter->CurrentWeapon);
+        if (existingWeapon)
+        {
+            // Add our ammo to existing weapon, clamped to magazine size
+            int newAmmo = FMath::Min(existingWeapon->CurrentAmmo + AmmonOnSpawn, existingWeapon->MagazineSize);
+            existingWeapon->CurrentAmmo = newAmmo;
+            
+            // Notify UI about ammo update
+            existingWeapon->OnUpdateAmmo.Broadcast(existingWeapon->CurrentAmmo);
+
+            // Destroy this weapon's owner
+            if (AActor* weaponActor = GetOwner())
+            {
+                weaponActor->Destroy();
+            }
+            return false; // Weapon was not attached (used for ammo)
+        }
+    }
+
+    // If no weapon equipped, attach this one normally
+    Character = TargetCharacter;
+
+    // Attach the weapon to the character
+    FAttachmentTransformRules attachmentRules(EAttachmentRule::SnapToTarget, true);
+    AttachToComponent(Character->GetMesh1P(), attachmentRules, FName("GripPoint"));
+
+    // Set up the input binding
+    if (APlayerController* playerController = Cast<APlayerController>(Character->GetController()))
+    {
+        if (UEnhancedInputLocalPlayerSubsystem* subsystem = ULocalPlayer::GetSubsystem<UEnhancedInputLocalPlayerSubsystem>(playerController->GetLocalPlayer()))
+        {
+            subsystem->AddMappingContext(FireMappingContext, 1);
+        }
+
+        if (UEnhancedInputComponent* enhancedInputComponent = Cast<UEnhancedInputComponent>(playerController->InputComponent))
+        {
+            BindingIndex = enhancedInputComponent->BindAction(FireAction, ETriggerEvent::Triggered, this, &UAPlayerProtoWeapon::Fire).GetHandle();
+        }
+    }
+
+    Character->CurrentWeapon = this;
+    OnUpdateAmmo.Broadcast(CurrentAmmo);
+    return true; // Weapon was successfully attached
+}
+
 void UAPlayerProtoWeapon::DetachWeapon()
 {
     FDetachmentTransformRules detachmentRules(EDetachmentRule::KeepWorld, false);
@@ -115,11 +176,11 @@ void UAPlayerProtoWeapon::DetachWeapon()
     Character->RemoveInstanceComponent(this);
 
     if (APlayerController* playerController = Cast<APlayerController>(Character->GetController())){
-        
+
         if (UEnhancedInputLocalPlayerSubsystem* subsystem = ULocalPlayer::GetSubsystem<UEnhancedInputLocalPlayerSubsystem>(playerController->GetLocalPlayer())){
             subsystem->RemoveMappingContext(FireMappingContext);
         }
-        
+
         if (UEnhancedInputComponent* enhancedInputComponent = Cast<UEnhancedInputComponent>(playerController->InputComponent)){
             enhancedInputComponent->RemoveActionEventBinding(BindingIndex);
         }
@@ -127,4 +188,9 @@ void UAPlayerProtoWeapon::DetachWeapon()
 
     Character->CurrentWeapon = nullptr;
     Character = nullptr;
+}
+
+int UAPlayerProtoWeapon::GetCurrentAmmo() const
+{
+    return CurrentAmmo;
 }
