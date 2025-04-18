@@ -1,0 +1,18 @@
+Audio Bus	ID	Name			Wwise Object Path	Notes
+	361263376	FOES_Invisible			\Master_WU\Master\FOES_Invisible	
+	1117531639	AMB			\Master_WU\Master\AMB	
+	1551306167	UI			\Master_WU\Master\UI	
+	1685527061	MC			\Master_WU\Master\MC	
+	2290178407	FOES_Tourelle			\Master_WU\Master\FOES_Tourelle	
+	3623095082	FOES_Flying			\Master_WU\Master\FOES_Flying	
+	3803692087	Master Audio Bus			\Default Work Unit\Master Audio Bus	
+	4056684167	Master			\Master_WU\Master	
+
+Auxiliary Bus	ID	Name			Wwise Object Path	Notes
+	1215931641	RVB_Arena			\Master_WU\Master\RVB_Arena	
+	3571340017	RVB_Hub			\Master_WU\Master\RVB_Hub	
+
+Audio Devices	ID	Name	Type				Notes
+	2317455096	No_Output	No Output			
+	3859886410	System	System			
+

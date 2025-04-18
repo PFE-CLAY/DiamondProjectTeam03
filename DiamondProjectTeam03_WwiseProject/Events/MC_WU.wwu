@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{0C46C646-7080-4D39-B62D-1B5389FBC32E}" SchemaVersion="119">
+	<Events>
+		<WorkUnit Name="MC_WU" ID="{0C46C646-7080-4D39-B62D-1B5389FBC32E}" PersistMode="Standalone">
+			<PropertyList>
+				<Property Name="Color" Type="int16" Value="19"/>
+				<Property Name="OverrideColor" Type="bool" Value="True"/>
+			</PropertyList>
+			<ChildrenList>
+				<Event Name="Play_MC_SFX_Dash_RC" ID="{B806ED59-4ACB-4371-BE4B-1518B580024B}">
+					<ChildrenList>
+						<Action Name="" ID="{1B6DF9B3-8CC0-476A-9BDF-D6C8F859718A}" ShortID="826777927">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="MC_SFX_Dash_RC" ID="{33CD4AE3-1E86-4275-A007-B3F8EC06B6A3}" WorkUnitID="{1B87B22A-8865-441B-A287-78E87390F212}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_MC_SFX_Gun_Shoot_RC" ID="{19EDAAA1-DF79-4328-9566-97F28CD19D08}">
+					<ChildrenList>
+						<Action Name="" ID="{3C01A536-6AD2-4F59-B66C-603A3E2AC8E9}" ShortID="91298891">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="MC_SFX_Gun_Shoot_RC" ID="{EA5D9C9D-842C-420A-A870-D1EBFD52CCD2}" WorkUnitID="{1B87B22A-8865-441B-A287-78E87390F212}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+			</ChildrenList>
+		</WorkUnit>
+	</Events>
+</WwiseDocument>

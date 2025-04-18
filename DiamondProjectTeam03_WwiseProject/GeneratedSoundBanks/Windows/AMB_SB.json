@@ -1,0 +1,45 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Windows",
+  "BasePlatform": "Windows",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "150",
+  "SoundBanks": [
+   {
+    "Id": "3256182613",
+    "Type": "User",
+    "GUID": "{9DC5CBA4-02D0-4677-A565-21ECA413E694}",
+    "Language": "SFX",
+    "Hash": "{33B1C8A1-12E5-5F1A-173A-EAA384714293}",
+    "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\AMB_SB",
+    "ShortName": "AMB_SB",
+    "Path": "AMB_SB.bnk",
+    "Media": [
+     {
+      "Id": "397963527",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB_Arena_Crowd.wav",
+      "CachePath": "SFX/AMB_Arena_Crowd_FBC78EF0.wem"
+     }
+    ],
+    "Events": [
+     {
+      "Id": "3817670132",
+      "Name": "Play_AMB_Arena_Crowd",
+      "ObjectPath": "\\Events\\AMB_WU\\Play_AMB_Arena_Crowd",
+      "GUID": "{044D5574-12FD-4A7D-829F-E12D304EBC61}",
+      "DurationType": "Infinite",
+      "MediaRefs": [
+       {
+        "Id": "397963527"
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "FileHash": "{963C3BEC-7B3F-5B34-FE76-159040549485}"
+ }
+}
