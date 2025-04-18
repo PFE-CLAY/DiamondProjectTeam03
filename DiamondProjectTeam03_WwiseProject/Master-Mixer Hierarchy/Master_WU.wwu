@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{A9F2777E-FBA3-4BC0-B5B3-14E0777A7B23}" SchemaVersion="119">
+	<Busses>
+		<WorkUnit Name="Master_WU" ID="{A9F2777E-FBA3-4BC0-B5B3-14E0777A7B23}" PersistMode="Standalone">
+			<PropertyList>
+				<Property Name="Color" Type="int16" Value="9"/>
+				<Property Name="OverrideColor" Type="bool" Value="True"/>
+			</PropertyList>
+			<ChildrenList>
+				<Bus Name="Master" ID="{F3A976BC-47E9-46E5-9EEC-F566BB39DBEE}">
+					<ReferenceList>
+						<Reference Name="AudioDevice" PluginName="System" CompanyID="0" PluginID="174" PluginType="7">
+							<ObjectRef Name="System" ID="{2120331D-1E44-4F44-9FF4-1BD59ADC3B07}" WorkUnitID="{C44D3288-AC0E-4207-A35E-1DA2D1F987E7}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<Bus Name="AMB" ID="{C1595F21-FBBF-4B04-AC1A-78D86879A937}">
+							<PropertyList>
+								<Property Name="Color" Type="int16" Value="4"/>
+								<Property Name="OverrideColor" Type="bool" Value="True"/>
+							</PropertyList>
+						</Bus>
+						<Bus Name="FOES_Invisible" ID="{19573DBC-4DB5-4746-8ACF-EBDC3F32E124}">
+							<PropertyList>
+								<Property Name="Color" Type="int16" Value="23"/>
+								<Property Name="OverrideColor" Type="bool" Value="True"/>
+							</PropertyList>
+						</Bus>
+						<Bus Name="FOES_Tourelle" ID="{D783D57E-4B6F-4101-8F5F-FD96F0409170}">
+							<PropertyList>
+								<Property Name="Color" Type="int16" Value="10"/>
+								<Property Name="OverrideColor" Type="bool" Value="True"/>
+							</PropertyList>
+						</Bus>
+						<Bus Name="FOES_Flying" ID="{439831F9-AA50-4CD2-98C3-ACD8B187380E}">
+							<PropertyList>
+								<Property Name="Color" Type="int16" Value="11"/>
+								<Property Name="OverrideColor" Type="bool" Value="True"/>
+							</PropertyList>
+						</Bus>
+						<Bus Name="MC" ID="{B3079877-B26F-4239-A3AB-9C7AFFCBC797}">
+							<PropertyList>
+								<Property Name="Color" Type="int16" Value="19"/>
+								<Property Name="OverrideColor" Type="bool" Value="True"/>
+							</PropertyList>
+						</Bus>
+						<Bus Name="UI" ID="{B5E7816E-C3FC-4992-B763-4078089CE674}">
+							<PropertyList>
+								<Property Name="Color" Type="int16" Value="1"/>
+								<Property Name="OverrideColor" Type="bool" Value="True"/>
+							</PropertyList>
+						</Bus>
+						<AuxBus Name="RVB_Hub" ID="{D499EBE4-F26A-48E5-B89D-1F7C43D829E3}">
+							<PropertyList>
+								<Property Name="Color" Type="int16" Value="26"/>
+								<Property Name="OverrideColor" Type="bool" Value="True"/>
+							</PropertyList>
+						</AuxBus>
+						<AuxBus Name="RVB_Arena" ID="{54C7EBDA-4885-4850-8969-FB63BDACC807}">
+							<PropertyList>
+								<Property Name="Color" Type="int16" Value="26"/>
+								<Property Name="OverrideColor" Type="bool" Value="True"/>
+							</PropertyList>
+						</AuxBus>
+					</ChildrenList>
+				</Bus>
+			</ChildrenList>
+		</WorkUnit>
+	</Busses>
+</WwiseDocument>

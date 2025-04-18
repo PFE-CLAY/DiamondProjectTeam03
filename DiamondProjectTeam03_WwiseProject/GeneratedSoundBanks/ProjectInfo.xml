@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ProjectInfo>
+	<Project Name="DiamondProjectTeam03_WwiseProject" GUID="{9CD21330-0B10-4A1A-84A7-853BD5B840C0}" Generator="2023.1.7.8574"/>
+	<CacheRoot>../.cache</CacheRoot>
+	<Platforms>
+		<Platform Name="Mac" GUID="{83D5AC1C-A373-4C0E-83EA-816BFA0F0873}" BasePlatform="Mac" BasePlatformGUID="{9C6217D5-DD11-4795-87C1-6CE02853C540}" Path="Mac"/>
+		<Platform Name="Windows" GUID="{1540E741-A7FD-46C8-80D0-E9E5ED44DC73}" BasePlatform="Windows" BasePlatformGUID="{6E0CB257-C6C8-4C5C-8366-2740DFC441EB}" Path="Windows"/>
+	</Platforms>
+	<Languages>
+		<Language Name="English(US)" Id="684519430" GUID="{590A6EE4-2AFB-41B9-8C34-89D612D1599C}" Default="true" UseAsStandIn="true"/>
+	</Languages>
+	<FileHash>{91AA8FEE-1549-5AE7-8BF4-93A90E50E3D6}</FileHash>
+</ProjectInfo>

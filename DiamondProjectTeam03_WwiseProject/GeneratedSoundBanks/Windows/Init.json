@@ -1,0 +1,105 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Windows",
+  "BasePlatform": "Windows",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "150",
+  "SoundBanks": [
+   {
+    "Id": "1355168291",
+    "Type": "User",
+    "GUID": "{701ECBBD-9C7B-4030-8CDB-749EE5D1C7B9}",
+    "Language": "SFX",
+    "Hash": "{B4033665-54EA-CDF9-1EC4-3DBCA4A00835}",
+    "ObjectPath": "Init",
+    "ShortName": "Init",
+    "Path": "Init.bnk",
+    "Plugins": {
+     "AudioDevices": [
+      {
+       "Id": "2317455096",
+       "Name": "No_Output",
+       "ObjectPath": "\\Audio Devices\\Default Work Unit\\No_Output",
+       "GUID": "{A1B1475A-B55F-4479-A7C3-DBD7912FC3E0}",
+       "LibName": "No Output",
+       "LibId": "11862023"
+      },
+      {
+       "Id": "3859886410",
+       "Name": "System",
+       "ObjectPath": "\\Audio Devices\\Default Work Unit\\System",
+       "GUID": "{2120331D-1E44-4F44-9FF4-1BD59ADC3B07}",
+       "LibName": "System",
+       "LibId": "11403271"
+      }
+     ]
+    },
+    "Busses": [
+     {
+      "Id": "361263376",
+      "Name": "FOES_Invisible",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\FOES_Invisible",
+      "GUID": "{19573DBC-4DB5-4746-8ACF-EBDC3F32E124}"
+     },
+     {
+      "Id": "1117531639",
+      "Name": "AMB",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\AMB",
+      "GUID": "{C1595F21-FBBF-4B04-AC1A-78D86879A937}"
+     },
+     {
+      "Id": "1551306167",
+      "Name": "UI",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\UI",
+      "GUID": "{B5E7816E-C3FC-4992-B763-4078089CE674}"
+     },
+     {
+      "Id": "1685527061",
+      "Name": "MC",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\MC",
+      "GUID": "{B3079877-B26F-4239-A3AB-9C7AFFCBC797}"
+     },
+     {
+      "Id": "2290178407",
+      "Name": "FOES_Tourelle",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\FOES_Tourelle",
+      "GUID": "{D783D57E-4B6F-4101-8F5F-FD96F0409170}"
+     },
+     {
+      "Id": "3623095082",
+      "Name": "FOES_Flying",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\FOES_Flying",
+      "GUID": "{439831F9-AA50-4CD2-98C3-ACD8B187380E}"
+     },
+     {
+      "Id": "3803692087",
+      "Name": "Master Audio Bus",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Default Work Unit\\Master Audio Bus",
+      "GUID": "{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}"
+     },
+     {
+      "Id": "4056684167",
+      "Name": "Master",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master",
+      "GUID": "{F3A976BC-47E9-46E5-9EEC-F566BB39DBEE}"
+     }
+    ],
+    "AuxBusses": [
+     {
+      "Id": "1215931641",
+      "Name": "RVB_Arena",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Arena",
+      "GUID": "{54C7EBDA-4885-4850-8969-FB63BDACC807}"
+     },
+     {
+      "Id": "3571340017",
+      "Name": "RVB_Hub",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Hub",
+      "GUID": "{D499EBE4-F26A-48E5-B89D-1F7C43D829E3}"
+     }
+    ]
+   }
+  ],
+  "FileHash": "{7A5A8950-4FA6-D195-A6B2-7620BD0F5E2C}"
+ }
+}

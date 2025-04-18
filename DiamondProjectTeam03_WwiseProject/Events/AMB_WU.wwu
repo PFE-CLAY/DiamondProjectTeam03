@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{1BF409B0-B754-4C8B-AEBF-EFEE5E6D5D4D}" SchemaVersion="119">
+	<Events>
+		<WorkUnit Name="AMB_WU" ID="{1BF409B0-B754-4C8B-AEBF-EFEE5E6D5D4D}" PersistMode="Standalone">
+			<PropertyList>
+				<Property Name="Color" Type="int16" Value="4"/>
+				<Property Name="OverrideColor" Type="bool" Value="True"/>
+			</PropertyList>
+			<ChildrenList>
+				<Event Name="Play_AMB_Arena_Crowd" ID="{044D5574-12FD-4A7D-829F-E12D304EBC61}">
+					<ChildrenList>
+						<Action Name="" ID="{2D8B690A-ED1D-4706-91DC-FE750F6CC98F}" ShortID="478913517">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="AMB_Arena_Crowd" ID="{FE3539A0-D948-4ABB-B89D-F12DD0FE372B}" WorkUnitID="{183124D0-ACA8-4AFA-A8E9-44C003A151DE}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+			</ChildrenList>
+		</WorkUnit>
+	</Events>
+</WwiseDocument>

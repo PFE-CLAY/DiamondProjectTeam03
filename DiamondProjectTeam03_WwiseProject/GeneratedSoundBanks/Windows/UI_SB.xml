@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="16" SoundBankVersion="150">
+	<SoundBanks>
+		<SoundBank Id="1734647573" Type="User" GUID="{6B7E0BFB-A825-46AA-907A-12621FC4038F}" Language="SFX" Hash="{C67A6B6F-F9A3-B0B9-592F-69862761E34C}">
+			<ObjectPath>\SoundBanks\SoundBanks_WU\UI_SB</ObjectPath>
+			<ShortName>UI_SB</ShortName>
+			<Path>UI_SB.bnk</Path>
+			<Media>
+				<File Id="109319961" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>UI_MainMenu_Button_Back_01.wav</ShortName>
+					<CachePath>SFX/UI_MainMenu_Button_Back_01_818F3B66.wem</CachePath>
+				</File>
+				<File Id="463196028" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>UI_MainMenu_Button_Back_02.wav</ShortName>
+					<CachePath>SFX/UI_MainMenu_Button_Back_02_818F3B66.wem</CachePath>
+				</File>
+				<File Id="665852765" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>UI_MainMenu_Button_Back_03.wav</ShortName>
+					<CachePath>SFX/UI_MainMenu_Button_Back_03_818F3B66.wem</CachePath>
+				</File>
+				<File Id="702949171" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>UI_MainMenu_Button_Validation_02.wav</ShortName>
+					<CachePath>SFX/UI_MainMenu_Button_Validation_02_818F3B66.wem</CachePath>
+				</File>
+				<File Id="853115927" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>UI_MainMenu_Button_Validation_01.wav</ShortName>
+					<CachePath>SFX/UI_MainMenu_Button_Validation_01_818F3B66.wem</CachePath>
+				</File>
+				<File Id="1007928850" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>UI_MainMenu_Button_Validation_03.wav</ShortName>
+					<CachePath>SFX/UI_MainMenu_Button_Validation_03_818F3B66.wem</CachePath>
+				</File>
+			</Media>
+			<Events>
+				<Event Id="242330496" Name="Play_UI_MainMenu_Button_Back_01" ObjectPath="\Events\UI_WU\Play_UI_MainMenu_Button_Back_01" GUID="{01C0CAE4-081F-4B6C-B86A-6C2B06CE1B6E}" DurationType="OneShot" DurationMin="1.1" DurationMax="1.1">
+					<MediaRefs>
+						<MediaRef Id="109319961"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="242330499" Name="Play_UI_MainMenu_Button_Back_02" ObjectPath="\Events\UI_WU\Play_UI_MainMenu_Button_Back_02" GUID="{E13DD8C4-5BBD-4349-8967-DBC2AEC8CF83}" DurationType="OneShot" DurationMin="1.1" DurationMax="1.1">
+					<MediaRefs>
+						<MediaRef Id="463196028"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="242330498" Name="Play_UI_MainMenu_Button_Back_03" ObjectPath="\Events\UI_WU\Play_UI_MainMenu_Button_Back_03" GUID="{BEED9BF3-D5D8-4536-BC27-BBBBED306872}" DurationType="OneShot" DurationMin="0.8" DurationMax="0.8">
+					<MediaRefs>
+						<MediaRef Id="665852765"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="3540367000" Name="Play_UI_MainMenu_Button_Validation_01" ObjectPath="\Events\UI_WU\Play_UI_MainMenu_Button_Validation_01" GUID="{B9A5BF93-6E33-4AC1-92A6-228E5E9B7956}" DurationType="OneShot" DurationMin="1.1886168" DurationMax="1.1886168">
+					<MediaRefs>
+						<MediaRef Id="853115927"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="3540367003" Name="Play_UI_MainMenu_Button_Validation_02" ObjectPath="\Events\UI_WU\Play_UI_MainMenu_Button_Validation_02" GUID="{89A8B49D-A61E-47FA-8266-DA2F97115521}" DurationType="OneShot" DurationMin="1.1886168" DurationMax="1.1886168">
+					<MediaRefs>
+						<MediaRef Id="702949171"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="3540367002" Name="Play_UI_MainMenu_Button_Validation_03" ObjectPath="\Events\UI_WU\Play_UI_MainMenu_Button_Validation_03" GUID="{9D2FAC20-12C9-442E-B40F-E57A18D93AA4}" DurationType="OneShot" DurationMin="1.0853968" DurationMax="1.0853968">
+					<MediaRefs>
+						<MediaRef Id="1007928850"/>
+					</MediaRefs>
+				</Event>
+			</Events>
+		</SoundBank>
+	</SoundBanks>
+	<FileHash>{6816057A-262B-B2DA-9BB8-CA954789F30F}</FileHash>
+</SoundBanksInfo>
