@@ -17,7 +17,7 @@
 void UAPlayerProtoWeapon::BeginPlay()
 {
     Super::BeginPlay();
-    CurrentAmmo = AmmonOnSpawn;
+    CurrentAmmo = AmmoOnSpawn;
 }
 
 void UAPlayerProtoWeapon::Fire()
@@ -76,19 +76,14 @@ void UAPlayerProtoWeapon::PerformShot()
 
 void UAPlayerProtoWeapon::ProcessHit(const FHitResult& Hit, UWorld* World)
 {
-    // Check if Hit.GetActor() is valid before accessing it
-    if (Hit.GetActor() != nullptr)
-    {
-        if (UAC_Health* healthComponent = Hit.GetActor()->FindComponentByClass<UAC_Health>())
-        {
+    if (Hit.GetActor() != nullptr){
+        if (UAC_Health* healthComponent = Hit.GetActor()->FindComponentByClass<UAC_Health>()){
             healthComponent->DecreaseHealth(Damage);
             return;
         }
     }
     
-    // If there's no actor hit or it has no health component
-    if (DecalMaterial)
-    {
+    if (DecalMaterial){
         UGameplayStatics::SpawnDecalAtLocation(
             World,
             DecalMaterial,
@@ -108,8 +103,7 @@ void UAPlayerProtoWeapon::PlayFireEffects()
 
     if (FireAnimation && Character){
         UAnimInstance* animInstance = Character->GetMesh1P()->GetAnimInstance();
-        if (animInstance)
-        {
+        if (animInstance){
             animInstance->Montage_Play(FireAnimation, 1.f);
         }
     }
@@ -119,53 +113,40 @@ bool UAPlayerProtoWeapon::AttachWeapon(ADiamondProjectCharacter* TargetCharacter
 {
     if (!TargetCharacter)
         return false;
-
-    // Check if character already has a weapon
-    if (TargetCharacter->CurrentWeapon)
-    {
+    
+    if (TargetCharacter->CurrentWeapon){
         UAPlayerProtoWeapon* existingWeapon = Cast<UAPlayerProtoWeapon>(TargetCharacter->CurrentWeapon);
-        if (existingWeapon)
-        {
-            // Add our ammo to existing weapon, clamped to magazine size
-            int newAmmo = FMath::Min(existingWeapon->CurrentAmmo + AmmonOnSpawn, existingWeapon->MagazineSize);
+        if (existingWeapon){
+            int newAmmo = FMath::Clamp(existingWeapon->CurrentAmmo + AmmoOnSpawn, 0, existingWeapon->MagazineSize);
             existingWeapon->CurrentAmmo = newAmmo;
             
-            // Notify UI about ammo update
             existingWeapon->OnUpdateAmmo.Broadcast(existingWeapon->CurrentAmmo);
-
-            // Destroy this weapon's owner
-            if (AActor* weaponActor = GetOwner())
-            {
+            
+            if (AActor* weaponActor = GetOwner()){
                 weaponActor->Destroy();
             }
-            return false; // Weapon was not attached (used for ammo)
+            return false;
         }
     }
-
-    // If no weapon equipped, attach this one normally
+    
     Character = TargetCharacter;
-
-    // Attach the weapon to the character
+    
     FAttachmentTransformRules attachmentRules(EAttachmentRule::SnapToTarget, true);
     AttachToComponent(Character->GetMesh1P(), attachmentRules, FName("GripPoint"));
-
-    // Set up the input binding
-    if (APlayerController* playerController = Cast<APlayerController>(Character->GetController()))
-    {
-        if (UEnhancedInputLocalPlayerSubsystem* subsystem = ULocalPlayer::GetSubsystem<UEnhancedInputLocalPlayerSubsystem>(playerController->GetLocalPlayer()))
-        {
+    
+    if (APlayerController* playerController = Cast<APlayerController>(Character->GetController())){
+        if (UEnhancedInputLocalPlayerSubsystem* subsystem = ULocalPlayer::GetSubsystem<UEnhancedInputLocalPlayerSubsystem>(playerController->GetLocalPlayer())){
             subsystem->AddMappingContext(FireMappingContext, 1);
         }
 
-        if (UEnhancedInputComponent* enhancedInputComponent = Cast<UEnhancedInputComponent>(playerController->InputComponent))
-        {
+        if (UEnhancedInputComponent* enhancedInputComponent = Cast<UEnhancedInputComponent>(playerController->InputComponent)){
             BindingIndex = enhancedInputComponent->BindAction(FireAction, ETriggerEvent::Triggered, this, &UAPlayerProtoWeapon::Fire).GetHandle();
         }
     }
 
     Character->CurrentWeapon = this;
     OnUpdateAmmo.Broadcast(CurrentAmmo);
-    return true; // Weapon was successfully attached
+    return true;
 }
 
 void UAPlayerProtoWeapon::DetachWeapon()

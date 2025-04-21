@@ -38,7 +38,7 @@ private:
  float FireRatePerSecond;
 
  UPROPERTY(EditAnywhere, Category = GameplayVariables)
- int AmmonOnSpawn;
+ int AmmoOnSpawn;
 
  UPROPERTY(EditAnywhere, Category = GameplayVariables)
  int MagazineSize;
@@ -65,7 +65,7 @@ public:
  virtual bool AttachWeapon(ADiamondProjectCharacter* TargetCharacter) override;
 
  UFUNCTION(BlueprintPure, Category = Weapon)
- int GetAmmoOnSpawn() const { return AmmonOnSpawn; }
+ int GetAmmoOnSpawn() const { return AmmoOnSpawn; }
 
  UFUNCTION(BlueprintPure, Category = Weapon)
  int GetMagazineSize() const { return MagazineSize; }
