@@ -49,32 +49,30 @@ void UAPlayerProtoWeapon::DecreaseAmmo()
     LastFireTime = GetWorld()->GetTimeSeconds();
 }
 
-void UAPlayerProtoWeapon::PerformShot()
+void UAPlayerProtoWeapon::PerformShot() const
 {
-    UWorld* const world = GetWorld();
-    if (!world)
+    UWorld* const World = GetWorld();
+    if (!World)
         return;
 
-    APlayerController* playerController = Cast<APlayerController>(Character->GetController());
-    const FRotator spawnRotation = playerController->PlayerCameraManager->GetCameraRotation();
-    const FVector spawnLocation = GetOwner()->GetActorLocation() + spawnRotation.RotateVector(MuzzleOffset);
+    APlayerController* PlayerController = Cast<APlayerController>(Character->GetController());
+    const FRotator SpawnRotation = PlayerController->PlayerCameraManager->GetCameraRotation();
+    const FVector SpawnLocation = GetOwner()->GetActorLocation() + SpawnRotation.RotateVector(MuzzleOffset);
 
-    FHitResult hit;
-    FVector endLocation = spawnLocation + (spawnRotation.Vector() * 10000);
+    FHitResult Hit;
+    FVector EndLocation = SpawnLocation + (SpawnRotation.Vector() * 10000);
 
     FCollisionQueryParams collisionParams;
     collisionParams.AddIgnoredActor(Character);
 
-    bool bHasHit = world->LineTraceSingleByChannel(hit, spawnLocation, endLocation, ECC_Visibility, collisionParams);
-
-    if (bHasHit){
-        ProcessHit(hit, world);
+    if (bool BHasHit = World->LineTraceSingleByChannel(Hit, SpawnLocation, EndLocation, ECC_Visibility, collisionParams)){
+        ProcessHit(Hit, World);
     }
 
-    OnFire.Broadcast(CurrentAmmo, spawnRotation);
+    OnFire.Broadcast(CurrentAmmo, SpawnRotation);
 }
 
-void UAPlayerProtoWeapon::ProcessHit(const FHitResult& Hit, UWorld* World)
+void UAPlayerProtoWeapon::ProcessHit(const FHitResult& Hit, UWorld* World) const
 {
     if (Hit.GetActor() != nullptr){
         if (UAC_Health* healthComponent = Hit.GetActor()->FindComponentByClass<UAC_Health>()){
@@ -95,16 +93,15 @@ void UAPlayerProtoWeapon::ProcessHit(const FHitResult& Hit, UWorld* World)
     }
 }
 
-void UAPlayerProtoWeapon::PlayFireEffects()
+void UAPlayerProtoWeapon::PlayFireEffects() const
 {
     if (FireSound){
         UGameplayStatics::PlaySoundAtLocation(this, FireSound, Character->GetActorLocation());
     }
 
     if (FireAnimation && Character){
-        UAnimInstance* animInstance = Character->GetMesh1P()->GetAnimInstance();
-        if (animInstance){
-            animInstance->Montage_Play(FireAnimation, 1.f);
+        if (UAnimInstance* AnimInstance = Character->GetMesh1P()->GetAnimInstance()){
+            AnimInstance->Montage_Play(FireAnimation, 1.f);
         }
     }
 }
@@ -115,15 +112,14 @@ bool UAPlayerProtoWeapon::AttachWeapon(ADiamondProjectCharacter* TargetCharacter
         return false;
     
     if (TargetCharacter->CurrentWeapon){
-        UAPlayerProtoWeapon* existingWeapon = Cast<UAPlayerProtoWeapon>(TargetCharacter->CurrentWeapon);
-        if (existingWeapon){
-            int newAmmo = FMath::Clamp(existingWeapon->CurrentAmmo + AmmoOnSpawn, 0, existingWeapon->MagazineSize);
-            existingWeapon->CurrentAmmo = newAmmo;
+        if (UAPlayerProtoWeapon* ExistingWeapon = Cast<UAPlayerProtoWeapon>(TargetCharacter->CurrentWeapon)){
+            const int NewAmmo = FMath::Clamp(ExistingWeapon->CurrentAmmo + AmmoOnSpawn, 0, ExistingWeapon->MagazineSize);
+            ExistingWeapon->CurrentAmmo = NewAmmo;
             
-            existingWeapon->OnUpdateAmmo.Broadcast(existingWeapon->CurrentAmmo);
+            ExistingWeapon->OnUpdateAmmo.Broadcast(ExistingWeapon->CurrentAmmo);
             
-            if (AActor* weaponActor = GetOwner()){
-                weaponActor->Destroy();
+            if (AActor* WeaponActor = GetOwner()){
+                WeaponActor->Destroy();
             }
             return false;
         }
@@ -131,16 +127,16 @@ bool UAPlayerProtoWeapon::AttachWeapon(ADiamondProjectCharacter* TargetCharacter
     
     Character = TargetCharacter;
     
-    FAttachmentTransformRules attachmentRules(EAttachmentRule::SnapToTarget, true);
-    AttachToComponent(Character->GetMesh1P(), attachmentRules, FName("GripPoint"));
+    FAttachmentTransformRules AttachmentRules(EAttachmentRule::SnapToTarget, true);
+    AttachToComponent(Character->GetMesh1P(), AttachmentRules, FName("GripPoint"));
     
-    if (APlayerController* playerController = Cast<APlayerController>(Character->GetController())){
-        if (UEnhancedInputLocalPlayerSubsystem* subsystem = ULocalPlayer::GetSubsystem<UEnhancedInputLocalPlayerSubsystem>(playerController->GetLocalPlayer())){
+    if (APlayerController* PlayerController = Cast<APlayerController>(Character->GetController())){
+        if (UEnhancedInputLocalPlayerSubsystem* subsystem = ULocalPlayer::GetSubsystem<UEnhancedInputLocalPlayerSubsystem>(PlayerController->GetLocalPlayer())){
             subsystem->AddMappingContext(FireMappingContext, 1);
         }
 
-        if (UEnhancedInputComponent* enhancedInputComponent = Cast<UEnhancedInputComponent>(playerController->InputComponent)){
-            BindingIndex = enhancedInputComponent->BindAction(FireAction, ETriggerEvent::Triggered, this, &UAPlayerProtoWeapon::Fire).GetHandle();
+        if (UEnhancedInputComponent* EnhancedInputComponent = Cast<UEnhancedInputComponent>(PlayerController->InputComponent)){
+            BindingIndex = EnhancedInputComponent->BindAction(FireAction, ETriggerEvent::Triggered, this, &UAPlayerProtoWeapon::Fire).GetHandle();
         }
     }
 
@@ -151,19 +147,19 @@ bool UAPlayerProtoWeapon::AttachWeapon(ADiamondProjectCharacter* TargetCharacter
 
 void UAPlayerProtoWeapon::DetachWeapon()
 {
-    FDetachmentTransformRules detachmentRules(EDetachmentRule::KeepWorld, false);
-    DetachFromComponent(detachmentRules);
+    FDetachmentTransformRules DetachmentRules(EDetachmentRule::KeepWorld, false);
+    DetachFromComponent(DetachmentRules);
 
     Character->RemoveInstanceComponent(this);
 
-    if (APlayerController* playerController = Cast<APlayerController>(Character->GetController())){
+    if (APlayerController* PlayerController = Cast<APlayerController>(Character->GetController())){
 
-        if (UEnhancedInputLocalPlayerSubsystem* subsystem = ULocalPlayer::GetSubsystem<UEnhancedInputLocalPlayerSubsystem>(playerController->GetLocalPlayer())){
-            subsystem->RemoveMappingContext(FireMappingContext);
+        if (UEnhancedInputLocalPlayerSubsystem* InputSubsystem = ULocalPlayer::GetSubsystem<UEnhancedInputLocalPlayerSubsystem>(PlayerController->GetLocalPlayer())){
+            InputSubsystem->RemoveMappingContext(FireMappingContext);
         }
 
-        if (UEnhancedInputComponent* enhancedInputComponent = Cast<UEnhancedInputComponent>(playerController->InputComponent)){
-            enhancedInputComponent->RemoveActionEventBinding(BindingIndex);
+        if (UEnhancedInputComponent* EnhancedInputComponent = Cast<UEnhancedInputComponent>(PlayerController->InputComponent)){
+            EnhancedInputComponent->RemoveActionEventBinding(BindingIndex);
         }
     }
 

@@ -76,7 +76,7 @@ public:
 private:
  bool IsFirePossible() const;
  void DecreaseAmmo();
- void PerformShot();
- void ProcessHit(const FHitResult& Hit, UWorld* World);
- void PlayFireEffects();
+ void PerformShot() const;
+ void ProcessHit(const FHitResult& Hit, UWorld* World) const;
+ void PlayFireEffects() const;
 };
