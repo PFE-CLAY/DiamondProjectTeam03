@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "AIController.h"
 #include "GameFramework/Character.h"
+#include "PhysicsEngine/PhysicsHandleComponent.h"
 #include "Allied.generated.h"
 
 UCLASS()
@@ -31,8 +32,20 @@ public:
 	UPROPERTY(EditAnywhere, Category = "Movements")
 	bool bShouldLoop = false;
 
+	UPROPERTY(EditAnywhere, Category = "Grab")
+	FVector GrabLocation;
+
+	UPROPERTY(EditAnywhere, Category = "Grab")
+	FName GrabBoneName;
+
 	UPROPERTY(BlueprintReadWrite)
 	bool bIsDead = false;
+
+	UPROPERTY(BlueprintReadWrite)
+	USkeletalMeshComponent* AlliedMesh;
+
+	UPROPERTY(BlueprintReadWrite)
+	UPhysicsHandleComponent* PhysicsHandle;
 
 protected:
 	// Called when the game starts or when spawned

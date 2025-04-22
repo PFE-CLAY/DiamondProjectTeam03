@@ -12,6 +12,11 @@ ADroneCadaver::ADroneCadaver()
 {
 	// Set this pawn to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
+	USceneComponent* Root = CreateDefaultSubobject<USceneComponent>(TEXT("Root"));
+	MeshComponent = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Mesh"));
+	MeshComponent->SetupAttachment(Root);
+	GrabPoint = CreateDefaultSubobject<USceneComponent>(TEXT("GrabPoint"));
+	GrabPoint->SetupAttachment(MeshComponent);
 }
 
 // Called when the game starts or when spawned
@@ -31,6 +36,7 @@ void ADroneCadaver::BeginPlay()
 void ADroneCadaver::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+	UpdateTargetLocation();
 }
 
 // Called to bind functionality to input
@@ -54,7 +60,21 @@ AActor* ADroneCadaver::GetDeadBody()
 void ADroneCadaver::CarryBody()
 {
 	AActor* OwnedActor = GetController()->GetPawn();
-	CarriedBody->SetActorLocation(OwnedActor->GetActorLocation());
-	CarriedBody->AttachToActor(OwnedActor, FAttachmentTransformRules::SnapToTargetNotIncludingScale);
+	CarriedBody->PhysicsHandle->GrabComponentAtLocation(CarriedBody->AlliedMesh, CarriedBody->GrabBoneName,
+		CarriedBody->AlliedMesh->GetBoneLocation(CarriedBody->GrabBoneName));
+	//TODO: ne collision plus 
+	//CarriedBody->SetActorLocation(FVector(0,0 ,0));
+	//CarriedBody->AlliedMesh->AttachToComponent(GrabPoint, FAttachmentTransformRules::SnapToTargetNotIncludingScale);
+	//CarriedBody->AttachToActor(OwnedActor, FAttachmentTransformRules::SnapToTargetNotIncludingScale);
+	bShouldGrab = true;
+}
+
+void ADroneCadaver::UpdateTargetLocation()
+{
+	if(CarriedBody != nullptr && bShouldGrab){
+		CarriedBody->PhysicsHandle->SetTargetLocation(GetActorLocation());
+		
+	}
+	
 }
 

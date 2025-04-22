@@ -17,6 +17,15 @@ private:
 
 	UPROPERTY(Blueprintable)
 	AHatchIncinerator* HatchIncinerator;
+
+	UPROPERTY(EditAnywhere, Category = "Components")
+	UStaticMeshComponent* MeshComponent;
+
+	UPROPERTY(EditAnywhere, Category = "Components")
+	USceneComponent* GrabPoint;
+
+	UPROPERTY()
+	bool bShouldGrab = false;
 	
 public:
 	// Sets default values for this pawn's properties
@@ -26,7 +35,7 @@ public:
 	TArray<AAllied*> AllAllies;
 
 	UPROPERTY()
-	AActor* CarriedBody;
+	AAllied* CarriedBody;
 
 	UPROPERTY(BlueprintReadWrite)
 	bool bIsActive;
@@ -47,4 +56,7 @@ public:
 
 	UFUNCTION(BlueprintCallable)
 	void CarryBody();
+
+	UFUNCTION()
+	void UpdateTargetLocation();
 };
