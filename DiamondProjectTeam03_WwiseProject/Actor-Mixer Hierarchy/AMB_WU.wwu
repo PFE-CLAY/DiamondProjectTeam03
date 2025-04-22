@@ -21,7 +21,7 @@
 						</Reference>
 					</ReferenceList>
 					<ChildrenList>
-						<ActorMixer Name="AMB_Pads_AM" ID="{500D49D3-6FC8-46FF-9F73-6AEB77176C3B}" ShortID="752581000">
+						<ActorMixer Name="AMB_PAD_AM" ID="{500D49D3-6FC8-46FF-9F73-6AEB77176C3B}" ShortID="752581000">
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
@@ -31,7 +31,7 @@
 								</Reference>
 							</ReferenceList>
 							<ChildrenList>
-								<Sound Name="AMB_Pads_Crowd_LP" ID="{F4CDE6BD-5FB8-45ED-8109-32CE5FBCADF2}" ShortID="62215673">
+								<Sound Name="AMB_PAD_Crowd" ID="{F4CDE6BD-5FB8-45ED-8109-32CE5FBCADF2}" ShortID="62215673">
 									<ReferenceList>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
@@ -907,7 +907,7 @@
 										</Sound>
 									</ChildrenList>
 								</RandomSequenceContainer>
-								<RandomSequenceContainer Name="AMB_RFX_Crowd_Pitched_Reaction" ID="{1B5850FF-CD9B-4D1D-8B66-E2755531AFE1}" ShortID="182860471">
+								<RandomSequenceContainer Name="AMB_RFX_Crowd_Spectacular" ID="{1B5850FF-CD9B-4D1D-8B66-E2755531AFE1}" ShortID="182860471">
 									<ReferenceList>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
