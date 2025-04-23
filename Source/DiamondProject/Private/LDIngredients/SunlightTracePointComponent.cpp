@@ -40,9 +40,9 @@ void USunlightTracePointComponent::CreateVisualizerMesh()
     if (!CachedCubeMesh) {
         CachedCubeMesh = LoadObject<UStaticMesh>(nullptr, TEXT("/Engine/BasicShapes/Cube.Cube"));
     }
-    else {
-        VisualizerMesh->SetStaticMesh(CachedCubeMesh);
-    }
+    
+    VisualizerMesh->SetStaticMesh(CachedCubeMesh);
+
     
     VisualizerMesh->SetRelativeScale3D(FVector(0.1f, 0.1f, 0.1f));
     VisualizerMesh->SetCollisionEnabled(ECollisionEnabled::NoCollision);
@@ -56,6 +56,8 @@ void USunlightTracePointComponent::OnUnregister()
         CachedDetectorComponent = nullptr;
     }
 
+    CachedCubeMesh = nullptr;
+    
     Super::OnUnregister();
 }
 
