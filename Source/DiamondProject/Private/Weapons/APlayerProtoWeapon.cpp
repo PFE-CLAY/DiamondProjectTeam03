@@ -65,11 +65,13 @@ void UAPlayerProtoWeapon::PerformShot() const
     FCollisionQueryParams collisionParams;
     collisionParams.AddIgnoredActor(Character);
 
-    if (bool BHasHit = World->LineTraceSingleByChannel(Hit, SpawnLocation, EndLocation, ECC_Visibility, collisionParams)){
+    bool BHasHit = World->LineTraceSingleByChannel(Hit, SpawnLocation, EndLocation, ECC_Visibility, collisionParams);
+    
+    if (BHasHit){
         ProcessHit(Hit, World);
     }
 
-    OnFire.Broadcast(CurrentAmmo, SpawnRotation);
+    OnFire.Broadcast(CurrentAmmo, BHasHit, Hit.ImpactPoint);
 }
 
 void UAPlayerProtoWeapon::ProcessHit(const FHitResult& Hit, UWorld* World) const
