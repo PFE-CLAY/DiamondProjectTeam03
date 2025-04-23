@@ -12,7 +12,7 @@
 						<Action Name="" ID="{2D8B690A-ED1D-4706-91DC-FE750F6CC98F}" ShortID="478913517">
 							<ReferenceList>
 								<Reference Name="Target">
-									<ObjectRef Name="AMB_Arena_Crowd" ID="{FE3539A0-D948-4ABB-B89D-F12DD0FE372B}" WorkUnitID="{183124D0-ACA8-4AFA-A8E9-44C003A151DE}"/>
+									<ObjectRef Name="AMB_PAD_Crowd" ID="{F4CDE6BD-5FB8-45ED-8109-32CE5FBCADF2}" WorkUnitID="{183124D0-ACA8-4AFA-A8E9-44C003A151DE}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>
