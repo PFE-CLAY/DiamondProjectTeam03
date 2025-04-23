@@ -47,6 +47,9 @@ public:
 	UPROPERTY(BlueprintReadWrite)
 	UPhysicsHandleComponent* PhysicsHandle;
 
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	USceneComponent* GrabPoint;
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;

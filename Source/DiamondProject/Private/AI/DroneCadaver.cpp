@@ -24,6 +24,11 @@ void ADroneCadaver::BeginPlay()
 {
 	Super::BeginPlay();
 	HatchIncinerator = Cast<AHatchIncinerator>(UGameplayStatics::GetActorOfClass(GetWorld(), AHatchIncinerator::StaticClass()));
+	if(HatchIncinerator == nullptr)
+	{
+		GEngine->AddOnScreenDebugMessage(-1, 25.f, FColor::Red, "No Hatch in scene");
+	}
+	
 	TArray<AActor*> AlliedActors;
 	UGameplayStatics::GetAllActorsOfClass(GetWorld(), AAllied::StaticClass(), AlliedActors);
 	for (auto AlliedActor : AlliedActors)
@@ -36,7 +41,10 @@ void ADroneCadaver::BeginPlay()
 void ADroneCadaver::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-	UpdateTargetLocation();
+	if(TargetBody != nullptr && bShouldGrab){
+		UpdateTargetLocation();
+	}
+	
 }
 
 // Called to bind functionality to input
@@ -45,36 +53,57 @@ void ADroneCadaver::SetupPlayerInputComponent(UInputComponent* PlayerInputCompon
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 }
 
-AActor* ADroneCadaver::GetDeadBody()
+
+void ADroneCadaver::GoToNewTarget()
 {
-	CarriedBody = nullptr;
-	for (auto Allied : AllAllies){
-		if(Allied->bIsDead){
-			CarriedBody = Allied;
-			break;
-		}
+	if(CadaverArray.IsEmpty())
+	{
+		return;
 	}
-	return CarriedBody;
+	TargetBody = CadaverArray[0];
+	CadaverArray.Remove(TargetBody);
+	OnMovingToNewCadaver(TargetBody);
 }
 
 void ADroneCadaver::CarryBody()
 {
 	AActor* OwnedActor = GetController()->GetPawn();
-	CarriedBody->PhysicsHandle->GrabComponentAtLocation(CarriedBody->AlliedMesh, CarriedBody->GrabBoneName,
-		CarriedBody->AlliedMesh->GetBoneLocation(CarriedBody->GrabBoneName));
-	//TODO: ne collision plus 
-	//CarriedBody->SetActorLocation(FVector(0,0 ,0));
-	//CarriedBody->AlliedMesh->AttachToComponent(GrabPoint, FAttachmentTransformRules::SnapToTargetNotIncludingScale);
-	//CarriedBody->AttachToActor(OwnedActor, FAttachmentTransformRules::SnapToTargetNotIncludingScale);
+	TargetBody->PhysicsHandle->GrabComponentAtLocation(TargetBody->AlliedMesh, TargetBody->GrabBoneName,
+		TargetBody->AlliedMesh->GetBoneLocation(TargetBody->GrabBoneName));
+	//TODO: ne collisione plus 
 	bShouldGrab = true;
+}
+
+void ADroneCadaver::ThrowBody()
+{
+	TargetBody->PhysicsHandle->ReleaseComponent();
+	bShouldGrab = false;
+	if(CadaverArray.IsEmpty())
+	{
+		GoInHatch();
+	}
+	else
+	{
+		GoToNewTarget();
+	}
+	
+	
 }
 
 void ADroneCadaver::UpdateTargetLocation()
 {
-	if(CarriedBody != nullptr && bShouldGrab){
-		CarriedBody->PhysicsHandle->SetTargetLocation(GetActorLocation());
-		
-	}
-	
+	TargetBody->PhysicsHandle->SetTargetLocation(GetActorLocation());
 }
+
+void ADroneCadaver::GetNewCadaver(AAllied* Allied)
+{
+	CadaverArray.Add(Allied);
+	if(CadaverArray.Num() == 1)
+	{
+		GoOutHatch();
+	}
+}
+
+
+
 
