@@ -115,6 +115,34 @@
       "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Hub",
       "GUID": "{D499EBE4-F26A-48E5-B89D-1F7C43D829E3}"
      }
+    ],
+    "SwitchGroups": [
+     {
+      "Id": "3865314626",
+      "Name": "Material",
+      "ObjectPath": "\\Switches\\Default Work Unit\\Material",
+      "GUID": "{828E8B9F-6B07-4984-BFE7-B76CEA058A8B}",
+      "Switches": [
+       {
+        "Id": "803837735",
+        "Name": "Sand",
+        "ObjectPath": "\\Switches\\Default Work Unit\\Material\\Sand",
+        "GUID": "{0F8A73BD-8A92-4819-BE09-452FE32E1FBC}"
+       },
+       {
+        "Id": "841620460",
+        "Name": "Concrete",
+        "ObjectPath": "\\Switches\\Default Work Unit\\Material\\Concrete",
+        "GUID": "{7D8D0D4C-3D1C-43A2-B357-3F03FF424DDB}"
+       },
+       {
+        "Id": "2473969246",
+        "Name": "Metal",
+        "ObjectPath": "\\Switches\\Default Work Unit\\Material\\Metal",
+        "GUID": "{4F4901C3-CC0C-4142-BDF8-FF62F7720DE3}"
+       }
+      ]
+     }
     ]
    },
    {
@@ -504,18 +532,362 @@
     "Type": "User",
     "GUID": "{9DC5CBA4-02D0-4677-A565-21ECA413E694}",
     "Language": "SFX",
-    "Hash": "{33B1C8A1-12E5-5F1A-173A-EAA384714293}",
+    "Hash": "{DF973D7B-F6BC-786F-4F12-979133A9F593}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\AMB_SB",
     "ShortName": "AMB_SB",
     "Path": "AMB_SB.bnk",
     "Media": [
      {
-      "Id": "397963527",
+      "Id": "4481750",
       "Language": "SFX",
       "Streaming": "false",
       "Location": "Memory",
-      "ShortName": "AMB_Arena_Crowd.wav",
-      "CachePath": "SFX/AMB_Arena_Crowd_FBC78EF0.wem"
+      "ShortName": "AMB\\RFX\\AMB_RFX_Crowd_Pitched_Reaction_04.wav",
+      "CachePath": "SFX/AMB/RFX/AMB_RFX_Crowd_Pitched_Reaction_04_818F3B66.wem"
+     },
+     {
+      "Id": "84736735",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB\\Pads\\AMB_RFX_Negative_Reaction_06.wav",
+      "CachePath": "SFX/AMB/Pads/AMB_RFX_Negative_Reaction_06_818F3B66.wem"
+     },
+     {
+      "Id": "127175197",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB\\RFX\\AMB_RFX_Crowd_Individual_05.wav",
+      "CachePath": "SFX/AMB/RFX/AMB_RFX_Crowd_Individual_05_818F3B66.wem"
+     },
+     {
+      "Id": "138942913",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB\\RFX\\AMB_RFX_Crowd_ClassicReaction_06.wav",
+      "CachePath": "SFX/AMB/RFX/AMB_RFX_Crowd_ClassicReaction_06_818F3B66.wem"
+     },
+     {
+      "Id": "149514301",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB\\RFX\\AMB_RFX_Crowd_Individual_03.wav",
+      "CachePath": "SFX/AMB/RFX/AMB_RFX_Crowd_Individual_03_818F3B66.wem"
+     },
+     {
+      "Id": "155546430",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB\\RFX\\AMB_RFX_Crowd_ClassicReaction_07.wav",
+      "CachePath": "SFX/AMB/RFX/AMB_RFX_Crowd_ClassicReaction_07_818F3B66.wem"
+     },
+     {
+      "Id": "179362195",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB\\Pads\\AMB_RFX_Negative_Reaction_08.wav",
+      "CachePath": "SFX/AMB/Pads/AMB_RFX_Negative_Reaction_08_818F3B66.wem"
+     },
+     {
+      "Id": "203208671",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB\\RFX\\AMB_RFX_Crowd_Individual_07.wav",
+      "CachePath": "SFX/AMB/RFX/AMB_RFX_Crowd_Individual_07_818F3B66.wem"
+     },
+     {
+      "Id": "268147826",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB\\Pads\\AMB_RFX_Negative_Reaction_07.wav",
+      "CachePath": "SFX/AMB/Pads/AMB_RFX_Negative_Reaction_07_818F3B66.wem"
+     },
+     {
+      "Id": "332135939",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB\\Pads\\AMB_RFX_Negative_Reaction_09.wav",
+      "CachePath": "SFX/AMB/Pads/AMB_RFX_Negative_Reaction_09_818F3B66.wem"
+     },
+     {
+      "Id": "339009553",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB\\Pads\\AMB_RFX_Negative_Reaction_01.wav",
+      "CachePath": "SFX/AMB/Pads/AMB_RFX_Negative_Reaction_01_818F3B66.wem"
+     },
+     {
+      "Id": "354075387",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB\\RFX\\AMB_RFX_Crowd_Pitched_Reaction_08.wav",
+      "CachePath": "SFX/AMB/RFX/AMB_RFX_Crowd_Pitched_Reaction_08_818F3B66.wem"
+     },
+     {
+      "Id": "367189538",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB\\RFX\\AMB_RFX_WarHorns_05.wav",
+      "CachePath": "SFX/AMB/RFX/AMB_RFX_WarHorns_05_818F3B66.wem"
+     },
+     {
+      "Id": "475148405",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB\\RFX\\AMB_RFX_WarHorns_03.wav",
+      "CachePath": "SFX/AMB/RFX/AMB_RFX_WarHorns_03_818F3B66.wem"
+     },
+     {
+      "Id": "484735255",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB\\Pads\\AMB_RFX_Negative_Reaction_05.wav",
+      "CachePath": "SFX/AMB/Pads/AMB_RFX_Negative_Reaction_05_818F3B66.wem"
+     },
+     {
+      "Id": "533084126",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB\\RFX\\AMB_RFX_Crowd_ClassicReaction_03.wav",
+      "CachePath": "SFX/AMB/RFX/AMB_RFX_Crowd_ClassicReaction_03_818F3B66.wem"
+     },
+     {
+      "Id": "552226407",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB\\RFX\\AMB_RFX_Crowd_Individual_04.wav",
+      "CachePath": "SFX/AMB/RFX/AMB_RFX_Crowd_Individual_04_818F3B66.wem"
+     },
+     {
+      "Id": "585712298",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB\\RFX\\AMB_RFX_Crowd_Pitched_Reaction_01.wav",
+      "CachePath": "SFX/AMB/RFX/AMB_RFX_Crowd_Pitched_Reaction_01_818F3B66.wem"
+     },
+     {
+      "Id": "680837929",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB\\RFX\\AMB_RFX_Crowd_Pitched_Reaction_05.wav",
+      "CachePath": "SFX/AMB/RFX/AMB_RFX_Crowd_Pitched_Reaction_05_818F3B66.wem"
+     },
+     {
+      "Id": "742879851",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB\\RFX\\AMB_RFX_Crowd_Individual_01.wav",
+      "CachePath": "SFX/AMB/RFX/AMB_RFX_Crowd_Individual_01_818F3B66.wem"
+     },
+     {
+      "Id": "754998867",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB\\RFX\\AMB_RFX_WarHorns_01.wav",
+      "CachePath": "SFX/AMB/RFX/AMB_RFX_WarHorns_01_818F3B66.wem"
+     },
+     {
+      "Id": "762008811",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB\\RFX\\AMB_RFX_Crowd_ClassicReaction_01.wav",
+      "CachePath": "SFX/AMB/RFX/AMB_RFX_Crowd_ClassicReaction_01_818F3B66.wem"
+     },
+     {
+      "Id": "762580490",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB\\RFX\\AMB_RFX_WarHorns_06.wav",
+      "CachePath": "SFX/AMB/RFX/AMB_RFX_WarHorns_06_818F3B66.wem"
+     },
+     {
+      "Id": "773762840",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB\\RFX\\AMB_RFX_Crowd_ClassicReaction_04.wav",
+      "CachePath": "SFX/AMB/RFX/AMB_RFX_Crowd_ClassicReaction_04_818F3B66.wem"
+     },
+     {
+      "Id": "783949220",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB\\AMB_PAD_Crowd.wav",
+      "CachePath": "SFX/AMB/AMB_PAD_Crowd_FBC78EF0.wem"
+     },
+     {
+      "Id": "809714582",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB\\RFX\\AMB_RFX_WarHorns_07.wav",
+      "CachePath": "SFX/AMB/RFX/AMB_RFX_WarHorns_07_818F3B66.wem"
+     },
+     {
+      "Id": "809843148",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB\\Pads\\AMB_RFX_Negative_Reaction_02.wav",
+      "CachePath": "SFX/AMB/Pads/AMB_RFX_Negative_Reaction_02_818F3B66.wem"
+     },
+     {
+      "Id": "828835349",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB\\RFX\\AMB_RFX_Crowd_Individual_06.wav",
+      "CachePath": "SFX/AMB/RFX/AMB_RFX_Crowd_Individual_06_818F3B66.wem"
+     },
+     {
+      "Id": "832021469",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB\\Pads\\AMB_RFX_Negative_Reaction_03.wav",
+      "CachePath": "SFX/AMB/Pads/AMB_RFX_Negative_Reaction_03_818F3B66.wem"
+     },
+     {
+      "Id": "832253334",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB\\RFX\\AMB_RFX_Crowd_Pitched_Reaction_03.wav",
+      "CachePath": "SFX/AMB/RFX/AMB_RFX_Crowd_Pitched_Reaction_03_818F3B66.wem"
+     },
+     {
+      "Id": "843502340",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB\\RFX\\AMB_RFX_Crowd_ClassicReaction_02.wav",
+      "CachePath": "SFX/AMB/RFX/AMB_RFX_Crowd_ClassicReaction_02_818F3B66.wem"
+     },
+     {
+      "Id": "855821515",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB\\RFX\\AMB_RFX_Crowd_ClassicReaction_08.wav",
+      "CachePath": "SFX/AMB/RFX/AMB_RFX_Crowd_ClassicReaction_08_818F3B66.wem"
+     },
+     {
+      "Id": "864351804",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB\\RFX\\AMB_RFX_Crowd_Pitched_Reaction_06.wav",
+      "CachePath": "SFX/AMB/RFX/AMB_RFX_Crowd_Pitched_Reaction_06_818F3B66.wem"
+     },
+     {
+      "Id": "877176436",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB\\RFX\\AMB_RFX_Crowd_ClassicReaction_05.wav",
+      "CachePath": "SFX/AMB/RFX/AMB_RFX_Crowd_ClassicReaction_05_818F3B66.wem"
+     },
+     {
+      "Id": "900351003",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB\\RFX\\AMB_RFX_WarHorns_02.wav",
+      "CachePath": "SFX/AMB/RFX/AMB_RFX_WarHorns_02_818F3B66.wem"
+     },
+     {
+      "Id": "900928265",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB\\RFX\\AMB_RFX_Crowd_Pitched_Reaction_02.wav",
+      "CachePath": "SFX/AMB/RFX/AMB_RFX_Crowd_Pitched_Reaction_02_818F3B66.wem"
+     },
+     {
+      "Id": "919954422",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB\\RFX\\AMB_RFX_Crowd_Individual_02.wav",
+      "CachePath": "SFX/AMB/RFX/AMB_RFX_Crowd_Individual_02_818F3B66.wem"
+     },
+     {
+      "Id": "935598577",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB\\Pads\\AMB_RFX_Applause_04.wav",
+      "CachePath": "SFX/AMB/Pads/AMB_RFX_Applause_04_818F3B66.wem"
+     },
+     {
+      "Id": "946185580",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB\\Pads\\AMB_RFX_Negative_Reaction_04.wav",
+      "CachePath": "SFX/AMB/Pads/AMB_RFX_Negative_Reaction_04_818F3B66.wem"
+     },
+     {
+      "Id": "966132969",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB\\Pads\\AMB_RFX_Applause_02.wav",
+      "CachePath": "SFX/AMB/Pads/AMB_RFX_Applause_02_818F3B66.wem"
+     },
+     {
+      "Id": "1022096015",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB\\Pads\\AMB_RFX_Applause_03.wav",
+      "CachePath": "SFX/AMB/Pads/AMB_RFX_Applause_03_818F3B66.wem"
+     },
+     {
+      "Id": "1023349206",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB\\Pads\\AMB_RFX_Applause_01.wav",
+      "CachePath": "SFX/AMB/Pads/AMB_RFX_Applause_01_818F3B66.wem"
+     },
+     {
+      "Id": "1029183318",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB\\RFX\\AMB_RFX_WarHorns_04.wav",
+      "CachePath": "SFX/AMB/RFX/AMB_RFX_WarHorns_04_818F3B66.wem"
+     },
+     {
+      "Id": "1029865606",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB\\RFX\\AMB_RFX_Crowd_Pitched_Reaction_07.wav",
+      "CachePath": "SFX/AMB/RFX/AMB_RFX_Crowd_Pitched_Reaction_07_818F3B66.wem"
      }
     ],
     "Events": [
@@ -527,13 +899,142 @@
       "DurationType": "Infinite",
       "MediaRefs": [
        {
-        "Id": "397963527"
+        "Id": "4481750"
+       },
+       {
+        "Id": "84736735"
+       },
+       {
+        "Id": "127175197"
+       },
+       {
+        "Id": "138942913"
+       },
+       {
+        "Id": "149514301"
+       },
+       {
+        "Id": "155546430"
+       },
+       {
+        "Id": "179362195"
+       },
+       {
+        "Id": "203208671"
+       },
+       {
+        "Id": "268147826"
+       },
+       {
+        "Id": "332135939"
+       },
+       {
+        "Id": "339009553"
+       },
+       {
+        "Id": "354075387"
+       },
+       {
+        "Id": "367189538"
+       },
+       {
+        "Id": "475148405"
+       },
+       {
+        "Id": "484735255"
+       },
+       {
+        "Id": "533084126"
+       },
+       {
+        "Id": "552226407"
+       },
+       {
+        "Id": "585712298"
+       },
+       {
+        "Id": "680837929"
+       },
+       {
+        "Id": "742879851"
+       },
+       {
+        "Id": "754998867"
+       },
+       {
+        "Id": "762008811"
+       },
+       {
+        "Id": "762580490"
+       },
+       {
+        "Id": "773762840"
+       },
+       {
+        "Id": "783949220"
+       },
+       {
+        "Id": "809714582"
+       },
+       {
+        "Id": "809843148"
+       },
+       {
+        "Id": "828835349"
+       },
+       {
+        "Id": "832021469"
+       },
+       {
+        "Id": "832253334"
+       },
+       {
+        "Id": "843502340"
+       },
+       {
+        "Id": "855821515"
+       },
+       {
+        "Id": "864351804"
+       },
+       {
+        "Id": "877176436"
+       },
+       {
+        "Id": "900351003"
+       },
+       {
+        "Id": "900928265"
+       },
+       {
+        "Id": "919954422"
+       },
+       {
+        "Id": "935598577"
+       },
+       {
+        "Id": "946185580"
+       },
+       {
+        "Id": "966132969"
+       },
+       {
+        "Id": "1022096015"
+       },
+       {
+        "Id": "1023349206"
+       },
+       {
+        "Id": "1029183318"
+       },
+       {
+        "Id": "1029865606"
        }
       ]
      }
     ]
    }
   ],
-  "FileHash": "{C49D8794-3487-7E26-112B-91DC29852604}"
+  "FileHash": "{3EF0A20D-5F34-8DE0-B2B2-676C839ABD4A}"
  }
 }

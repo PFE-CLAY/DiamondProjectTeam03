@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SoundBanksInfo Platform="Mac" BasePlatform="Mac" SchemaVersion="16" SoundBankVersion="150">
+	<SoundBanks>
+		<SoundBank Id="1956625499" Type="User" GUID="{ADC2D189-6608-4828-BC9C-6EF6F90834DB}" Language="SFX" Hash="{A629DDF5-761D-8211-5989-955B7221CBB2}">
+			<ObjectPath>\SoundBanks\SoundBanks_WU\MC_SB</ObjectPath>
+			<ShortName>MC_SB</ShortName>
+			<Path>MC_SB.bnk</Path>
+			<Media>
+				<File Id="36917763" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>MC_SFX_Gun_Shoot_01.wav</ShortName>
+					<CachePath>SFX/MC_SFX_Gun_Shoot_01_818F3B66.wem</CachePath>
+				</File>
+				<File Id="62282605" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>MC_SFX_Gun_Shoot_02.wav</ShortName>
+					<CachePath>SFX/MC_SFX_Gun_Shoot_02_818F3B66.wem</CachePath>
+				</File>
+				<File Id="70109824" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>MC_SFX_Gun_Shoot_04.wav</ShortName>
+					<CachePath>SFX/MC_SFX_Gun_Shoot_04_818F3B66.wem</CachePath>
+				</File>
+				<File Id="131763475" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>MC_SFX_Dash_05.wav</ShortName>
+					<CachePath>SFX/MC_SFX_Dash_05_818F3B66.wem</CachePath>
+				</File>
+				<File Id="280528909" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>MC_SFX_Dash_01.wav</ShortName>
+					<CachePath>SFX/MC_SFX_Dash_01_818F3B66.wem</CachePath>
+				</File>
+				<File Id="411674623" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>MC_SFX_Dash_02.wav</ShortName>
+					<CachePath>SFX/MC_SFX_Dash_02_818F3B66.wem</CachePath>
+				</File>
+				<File Id="421361594" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>MC_SFX_Gun_Shoot_05.wav</ShortName>
+					<CachePath>SFX/MC_SFX_Gun_Shoot_05_818F3B66.wem</CachePath>
+				</File>
+				<File Id="610918733" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>MC_SFX_Gun_Shoot_03.wav</ShortName>
+					<CachePath>SFX/MC_SFX_Gun_Shoot_03_818F3B66.wem</CachePath>
+				</File>
+				<File Id="890446006" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>MC_SFX_Dash_03.wav</ShortName>
+					<CachePath>SFX/MC_SFX_Dash_03_818F3B66.wem</CachePath>
+				</File>
+				<File Id="925500281" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>MC_SFX_Dash_04.wav</ShortName>
+					<CachePath>SFX/MC_SFX_Dash_04_818F3B66.wem</CachePath>
+				</File>
+			</Media>
+			<Events>
+				<Event Id="926424941" Name="Play_MC_SFX_Dash_RC" ObjectPath="\Events\MC_WU\Play_MC_SFX_Dash_RC" GUID="{B806ED59-4ACB-4371-BE4B-1518B580024B}" DurationType="OneShot" DurationMin="1.1072708" DurationMax="1.8">
+					<MediaRefs>
+						<MediaRef Id="131763475"/>
+						<MediaRef Id="280528909"/>
+						<MediaRef Id="411674623"/>
+						<MediaRef Id="890446006"/>
+						<MediaRef Id="925500281"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="1177297501" Name="Play_MC_SFX_Gun_Shoot_RC" ObjectPath="\Events\MC_WU\Play_MC_SFX_Gun_Shoot_RC" GUID="{19EDAAA1-DF79-4328-9566-97F28CD19D08}" DurationType="OneShot" DurationMin="0.80338675" DurationMax="1.8403275">
+					<MediaRefs>
+						<MediaRef Id="36917763"/>
+						<MediaRef Id="62282605"/>
+						<MediaRef Id="70109824"/>
+						<MediaRef Id="421361594"/>
+						<MediaRef Id="610918733"/>
+					</MediaRefs>
+				</Event>
+			</Events>
+		</SoundBank>
+	</SoundBanks>
+	<FileHash>{049A9C00-192E-3C59-6C37-EED78C68D611}</FileHash>
+</SoundBanksInfo>
