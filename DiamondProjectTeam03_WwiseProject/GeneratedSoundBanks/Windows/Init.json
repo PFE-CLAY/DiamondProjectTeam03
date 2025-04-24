@@ -97,9 +97,37 @@
       "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Hub",
       "GUID": "{D499EBE4-F26A-48E5-B89D-1F7C43D829E3}"
      }
+    ],
+    "SwitchGroups": [
+     {
+      "Id": "3865314626",
+      "Name": "Material",
+      "ObjectPath": "\\Switches\\Default Work Unit\\Material",
+      "GUID": "{828E8B9F-6B07-4984-BFE7-B76CEA058A8B}",
+      "Switches": [
+       {
+        "Id": "803837735",
+        "Name": "Sand",
+        "ObjectPath": "\\Switches\\Default Work Unit\\Material\\Sand",
+        "GUID": "{0F8A73BD-8A92-4819-BE09-452FE32E1FBC}"
+       },
+       {
+        "Id": "841620460",
+        "Name": "Concrete",
+        "ObjectPath": "\\Switches\\Default Work Unit\\Material\\Concrete",
+        "GUID": "{7D8D0D4C-3D1C-43A2-B357-3F03FF424DDB}"
+       },
+       {
+        "Id": "2473969246",
+        "Name": "Metal",
+        "ObjectPath": "\\Switches\\Default Work Unit\\Material\\Metal",
+        "GUID": "{4F4901C3-CC0C-4142-BDF8-FF62F7720DE3}"
+       }
+      ]
+     }
     ]
    }
   ],
-  "FileHash": "{7A5A8950-4FA6-D195-A6B2-7620BD0F5E2C}"
+  "FileHash": "{F4AB8C56-403C-ACA5-0D5D-549C49BA485F}"
  }
 }

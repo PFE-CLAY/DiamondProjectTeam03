@@ -1,0 +1,21 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Mac",
+  "BasePlatform": "Mac",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "150",
+  "SoundBanks": [
+   {
+    "Id": "2516814376",
+    "Type": "User",
+    "GUID": "{48187E94-2869-42A3-9E99-A12DF1DA86DF}",
+    "Language": "SFX",
+    "Hash": "{C3C4EF28-296F-6DA0-423D-51A859A6F6A0}",
+    "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\FOES_Invisible_SB",
+    "ShortName": "FOES_Invisible_SB",
+    "Path": "FOES_Invisible_SB.bnk"
+   }
+  ],
+  "FileHash": "{718259D2-28FD-2496-6CAE-0AB79FBFC440}"
+ }
+}
