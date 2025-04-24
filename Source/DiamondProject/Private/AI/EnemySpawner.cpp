@@ -21,15 +21,16 @@ AEnemySpawner::AEnemySpawner()
 void AEnemySpawner::BeginPlay()
 {
 	Super::BeginPlay();
+
+	if (!bShouldSpawnOnBeginplay) return;
 	
 	FTimerHandle TimerHandle;
-	GetWorldTimerManager().SetTimer(TimerHandle, this,  &AEnemySpawner::SpawnWave, WaveCooldown, true);
+	GetWorldTimerManager().SetTimer(TimerHandle, this,  &AEnemySpawner::SpawnWave, WaveCooldown, bShouldLoopWaves);
 }
 
 void AEnemySpawner::SpawnWave()
 {
-	for (int i = 0; i < WaveEnemyCount; i++)
-	{
+	for (int i = 0; i < WaveEnemyCount; i++){
 		FActorSpawnParameters SpawnInfo;
 		SpawnInfo.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AdjustIfPossibleButAlwaysSpawn;
 		FTransform SpawnTransform = GetRandomTransform();
@@ -40,18 +41,18 @@ void AEnemySpawner::SpawnWave()
 		}
 	}
 
+	if (!bShouldIncrementWaves) return;
+	
 	WaveEnemyCount += IncrementalWaveEnemyCount;
-	
-	
 }
 
-FTransform AEnemySpawner::GetRandomTransform()
+FTransform AEnemySpawner::GetRandomTransform() const
 {
 	FTransform Transform;
-	float RandX = FMath::FRandRange(GetActorLocation().X - VolumeBox->Bounds.BoxExtent.X, GetActorLocation().X + VolumeBox->Bounds.BoxExtent.X);
-	float RandY = FMath::FRandRange(GetActorLocation().Y - VolumeBox->Bounds.BoxExtent.Y, GetActorLocation().Y + VolumeBox->Bounds.BoxExtent.Y);
-	float RandZ = FMath::FRandRange(GetActorLocation().Z - VolumeBox->Bounds.BoxExtent.Z, GetActorLocation().Z + VolumeBox->Bounds.BoxExtent.Z);
-	FVector RandomLocation = FVector(RandX, RandY, RandZ);
+	const float RandX = FMath::FRandRange(GetActorLocation().X - VolumeBox->Bounds.BoxExtent.X, GetActorLocation().X + VolumeBox->Bounds.BoxExtent.X);
+	const float RandY = FMath::FRandRange(GetActorLocation().Y - VolumeBox->Bounds.BoxExtent.Y, GetActorLocation().Y + VolumeBox->Bounds.BoxExtent.Y);
+	const float RandZ = FMath::FRandRange(GetActorLocation().Z - VolumeBox->Bounds.BoxExtent.Z, GetActorLocation().Z + VolumeBox->Bounds.BoxExtent.Z);
+	const FVector RandomLocation = FVector(RandX, RandY, RandZ);
 	Transform.SetLocation(RandomLocation);	
 	return Transform;
 }

@@ -7,7 +7,7 @@
 				<Property Name="OverrideColor" Type="bool" Value="True"/>
 			</PropertyList>
 			<ChildrenList>
-				<ActorMixer Name="SFX" ID="{8F3C3C0E-9673-4949-A98F-D33F5B871AC9}" ShortID="722406924">
+				<ActorMixer Name="FOES_Tourelle_SFX" ID="{8F3C3C0E-9673-4949-A98F-D33F5B871AC9}" ShortID="722406924">
 					<ReferenceList>
 						<Reference Name="Conversion">
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
@@ -170,7 +170,7 @@
 						</RandomSequenceContainer>
 					</ChildrenList>
 				</ActorMixer>
-				<ActorMixer Name="FOL" ID="{04B34CC4-34CA-46AE-B7CF-8B7A83ED058A}" ShortID="459451039">
+				<ActorMixer Name="FOES_Tourelle_FOL" ID="{04B34CC4-34CA-46AE-B7CF-8B7A83ED058A}" ShortID="459451039">
 					<ReferenceList>
 						<Reference Name="Conversion">
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
