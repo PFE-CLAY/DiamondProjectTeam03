@@ -14,19 +14,28 @@ class DIAMONDPROJECT_API AEnemySpawner : public AActor
 	GENERATED_BODY()
 
 protected:
-	UPROPERTY(EditAnywhere, Category = "Wave")
+	UPROPERTY(EditAnywhere, Category = Wave)
 	float WaveCooldown = 15.f;
 
-	UPROPERTY(EditAnywhere, Category = "Wave")
+	UPROPERTY(EditAnywhere, Category = Wave)
 	int WaveEnemyCount = 3;
 
-	UPROPERTY(EditAnywhere, Category = "Wave")
+	UPROPERTY(EditAnywhere, Category = Wave)
 	int IncrementalWaveEnemyCount = 1;
 
-	UPROPERTY(EditDefaultsOnly, Category = "Spawner")
+	UPROPERTY(EditAnywhere, Category = Wave)
+	bool bShouldLoopWaves = true;
+
+	UPROPERTY(EditAnywhere, Category = Wave)
+	bool bShouldSpawnOnBeginplay = true;
+
+	UPROPERTY(EditAnywhere, Category = Wave)
+	bool bShouldIncrementWaves = true;
+
+	UPROPERTY(EditDefaultsOnly, Category = Spawner)
 	TSubclassOf<AEnemy> EnemyToSpawn;
 
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Spawner")
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Spawner)
 	UBoxComponent* VolumeBox;
 
 public:
@@ -39,11 +48,11 @@ protected:
 
 private:
 
-	UFUNCTION()
+	UFUNCTION(BlueprintCallable, Category = EnemySpawner)
 	void SpawnWave();
 
 	UFUNCTION()
-	FTransform GetRandomTransform();
+	FTransform GetRandomTransform() const;
 
 public:
 	// Called every frame
