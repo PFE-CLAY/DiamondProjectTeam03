@@ -2,6 +2,10 @@
 
 
 #include "AI/Allied.h"
+#include "AIController.h"
+
+#include "CookOnTheFly.h"
+#include "Navigation/PathFollowingComponent.h"
 
 
 // Sets default values
@@ -18,12 +22,18 @@ void AAllied::BeginPlay()
 	Super::BeginPlay();
 	AIController = this->GetController<AAIController>();
 	//AAIController::OnMoveCompleted();
-	
+	//GEngine->AddOnScreenDebugMessage(-1, 10.f, FColor::Red, FString::Printf(TEXT("%lld"), PatrolPoints.Num()));
+	Patrol();
 }
 
 void AAllied::Patrol()
 {
-	AIController->MoveToActor(PatrolPoints[Position], -1, true, false);
+	if(Position < PatrolPoints.Num()){
+		FAIMoveRequest MoveRequest;
+		MoveRequest.SetGoalLocation(PatrolPoints[Position]->GetActorLocation());
+		AIController->MoveTo(MoveRequest, nullptr);
+	}
+	
 }
 
 // Called every frame
@@ -37,4 +47,6 @@ void AAllied::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 }
+
+
 

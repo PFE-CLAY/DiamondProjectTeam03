@@ -7,7 +7,7 @@
 				<Property Name="OverrideColor" Type="bool" Value="True"/>
 			</PropertyList>
 			<ChildrenList>
-				<ActorMixer Name="SFX" ID="{5C1C65F7-5F3B-4F90-B2CE-6DE46B46262A}" ShortID="556063844">
+				<ActorMixer Name="MC_SFX" ID="{5C1C65F7-5F3B-4F90-B2CE-6DE46B46262A}" ShortID="556063844">
 					<ReferenceList>
 						<Reference Name="Conversion">
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
@@ -292,7 +292,7 @@
 						</RandomSequenceContainer>
 					</ChildrenList>
 				</ActorMixer>
-				<ActorMixer Name="FOL" ID="{4EC871DF-44FB-4787-8600-4B25B05C73DE}" ShortID="660162703">
+				<ActorMixer Name="MC_FOL" ID="{4EC871DF-44FB-4787-8600-4B25B05C73DE}" ShortID="660162703">
 					<ReferenceList>
 						<Reference Name="Conversion">
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
@@ -302,7 +302,7 @@
 						</Reference>
 					</ReferenceList>
 				</ActorMixer>
-				<ActorMixer Name="VOICE" ID="{8986C46F-EF6E-4168-B5C8-8B5F4C2C6D37}" ShortID="297653849">
+				<ActorMixer Name="MC_VOICE" ID="{8986C46F-EF6E-4168-B5C8-8B5F4C2C6D37}" ShortID="297653849">
 					<ReferenceList>
 						<Reference Name="Conversion">
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>

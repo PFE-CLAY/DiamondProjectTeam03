@@ -19,7 +19,7 @@ class DIAMONDPROJECT_API ULoopSubsystem : public UGameInstanceSubsystem
 
 	UPROPERTY()
 	bool bIsInit = false;
-	
+
 public:
 	UPROPERTY()
 	TMap<FString, TObjectPtr<UPreplanStep>> PreplanSteps;
@@ -35,6 +35,9 @@ private:
 	void InitializePreplanAdvices();
 
 public:
+	UFUNCTION()
+	void OnAdvicesVisibilityChanged(bool bNewVisibility);
+	
 	UFUNCTION()
 	void InitializePreplan();
 
