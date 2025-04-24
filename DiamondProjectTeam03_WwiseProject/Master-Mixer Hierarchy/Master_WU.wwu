@@ -14,36 +14,6 @@
 						</Reference>
 					</ReferenceList>
 					<ChildrenList>
-						<Bus Name="AMB" ID="{C1595F21-FBBF-4B04-AC1A-78D86879A937}">
-							<PropertyList>
-								<Property Name="Color" Type="int16" Value="4"/>
-								<Property Name="OverrideColor" Type="bool" Value="True"/>
-							</PropertyList>
-						</Bus>
-						<Bus Name="FOES_Invisible" ID="{19573DBC-4DB5-4746-8ACF-EBDC3F32E124}">
-							<PropertyList>
-								<Property Name="Color" Type="int16" Value="23"/>
-								<Property Name="OverrideColor" Type="bool" Value="True"/>
-							</PropertyList>
-						</Bus>
-						<Bus Name="FOES_Tourelle" ID="{D783D57E-4B6F-4101-8F5F-FD96F0409170}">
-							<PropertyList>
-								<Property Name="Color" Type="int16" Value="10"/>
-								<Property Name="OverrideColor" Type="bool" Value="True"/>
-							</PropertyList>
-						</Bus>
-						<Bus Name="FOES_Flying" ID="{439831F9-AA50-4CD2-98C3-ACD8B187380E}">
-							<PropertyList>
-								<Property Name="Color" Type="int16" Value="11"/>
-								<Property Name="OverrideColor" Type="bool" Value="True"/>
-							</PropertyList>
-						</Bus>
-						<Bus Name="MC" ID="{B3079877-B26F-4239-A3AB-9C7AFFCBC797}">
-							<PropertyList>
-								<Property Name="Color" Type="int16" Value="19"/>
-								<Property Name="OverrideColor" Type="bool" Value="True"/>
-							</PropertyList>
-						</Bus>
 						<Bus Name="UI" ID="{B5E7816E-C3FC-4992-B763-4078089CE674}">
 							<PropertyList>
 								<Property Name="Color" Type="int16" Value="1"/>
@@ -62,6 +32,94 @@
 								<Property Name="OverrideColor" Type="bool" Value="True"/>
 							</PropertyList>
 						</AuxBus>
+						<AuxBus Name="RVB_RFX_Arena" ID="{CC7A2F05-EE75-4E8E-B097-98A1938CB5E4}">
+							<PropertyList>
+								<Property Name="Color" Type="int16" Value="26"/>
+								<Property Name="OverrideColor" Type="bool" Value="True"/>
+							</PropertyList>
+							<ObjectLists>
+								<ObjectList Name="Effects">
+									<Reference>
+										<Local>
+											<EffectSlot Name="" ID="{4C872E48-60DF-4815-BA7D-273C1DBB5EBD}" ShortID="618897896">
+												<ReferenceList>
+													<Reference Name="Effect">
+														<Custom CreatedFrom="{FE29AE8D-FD86-4652-A95D-68D32F5760EC}">
+															<Effect Name="Have_U_Ever_Been_Outside (Custom)" ID="{4EC028FC-6FD5-4AC6-A71F-B2CB8F1117DF}" ShortID="169636257" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
+																<PropertyList>
+																	<Property Name="DecayTime" Type="Real32" Value="6"/>
+																	<Property Name="Density" Type="Real32" Value="50"/>
+																	<Property Name="DryLevel" Type="Real32" Value="-10.3"/>
+																	<Property Name="ERLevel" Type="Real32" Value="-18"/>
+																	<Property Name="ERPattern" Type="int32" Value="29"/>
+																	<Property Name="Filter1Freq" Type="Real32" Value="210"/>
+																	<Property Name="Filter1Gain" Type="Real32" Value="1.5"/>
+																	<Property Name="Filter2Freq" Type="Real32" Value="6830"/>
+																	<Property Name="Filter2Gain" Type="Real32" Value="-7.5"/>
+																	<Property Name="Filter2Q" Type="Real32" Value="0.65"/>
+																	<Property Name="Filter3Freq" Type="Real32" Value="8440"/>
+																	<Property Name="Filter3Gain" Type="Real32" Value="-4"/>
+																	<Property Name="HFDamping" Type="Real32" Value="5.05"/>
+																	<Property Name="PreDelay" Type="Real32" Value="145"/>
+																	<Property Name="Quality" Type="int32" Value="12"/>
+																	<Property Name="ReverbLevel" Type="Real32" Value="-14"/>
+																	<Property Name="RoomSize" Type="Real32" Value="100"/>
+																	<Property Name="StereoWidth" Type="Real32" Value="91"/>
+																</PropertyList>
+															</Effect>
+														</Custom>
+													</Reference>
+												</ReferenceList>
+											</EffectSlot>
+										</Local>
+									</Reference>
+								</ObjectList>
+							</ObjectLists>
+						</AuxBus>
+						<Bus Name="Voices" ID="{00AA482D-3F12-46A5-8177-E8A172D08E63}">
+							<PropertyList>
+								<Property Name="Color" Type="int16" Value="23"/>
+								<Property Name="OverrideColor" Type="bool" Value="True"/>
+							</PropertyList>
+						</Bus>
+						<Bus Name="Music" ID="{08156595-7637-4348-AC3C-2EDE3FCCB08F}">
+							<PropertyList>
+								<Property Name="Color" Type="int16" Value="24"/>
+								<Property Name="OverrideColor" Type="bool" Value="True"/>
+							</PropertyList>
+						</Bus>
+						<Bus Name="Game_Global" ID="{FAD5C029-0A02-4BD2-97F7-F8C20B7A95BD}">
+							<PropertyList>
+								<Property Name="Color" Type="int16" Value="16"/>
+								<Property Name="OverrideColor" Type="bool" Value="True"/>
+							</PropertyList>
+							<ChildrenList>
+								<Bus Name="AMB" ID="{C1595F21-FBBF-4B04-AC1A-78D86879A937}">
+									<PropertyList>
+										<Property Name="Color" Type="int16" Value="4"/>
+										<Property Name="OverrideColor" Type="bool" Value="True"/>
+									</PropertyList>
+								</Bus>
+								<Bus Name="FOES_Tourelle" ID="{D783D57E-4B6F-4101-8F5F-FD96F0409170}">
+									<PropertyList>
+										<Property Name="Color" Type="int16" Value="10"/>
+										<Property Name="OverrideColor" Type="bool" Value="True"/>
+									</PropertyList>
+								</Bus>
+								<Bus Name="MC" ID="{B3079877-B26F-4239-A3AB-9C7AFFCBC797}">
+									<PropertyList>
+										<Property Name="Color" Type="int16" Value="19"/>
+										<Property Name="OverrideColor" Type="bool" Value="True"/>
+									</PropertyList>
+								</Bus>
+								<Bus Name="FOES_Flying" ID="{439831F9-AA50-4CD2-98C3-ACD8B187380E}">
+									<PropertyList>
+										<Property Name="Color" Type="int16" Value="11"/>
+										<Property Name="OverrideColor" Type="bool" Value="True"/>
+									</PropertyList>
+								</Bus>
+							</ChildrenList>
+						</Bus>
 					</ChildrenList>
 				</Bus>
 			</ChildrenList>

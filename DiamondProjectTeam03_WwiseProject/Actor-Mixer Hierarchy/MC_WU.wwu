@@ -328,7 +328,7 @@
 								</Property>
 								<Property Name="Volume" Type="Real64">
 									<ValueList>
-										<Value>-6</Value>
+										<Value>-12</Value>
 									</ValueList>
 									<ModifierList>
 										<ModifierInfo>
@@ -354,7 +354,7 @@
 									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D02282EE-6893-403D-9438-D481AB659EA3}"/>
 								</Reference>
 								<Reference Name="SwitchGroupOrStateGroup">
-									<ObjectRef Name="Material" ID="{828E8B9F-6B07-4984-BFE7-B76CEA058A8B}" WorkUnitID="{4ED3F84A-3536-45B9-B9FE-D3BA1D826FCA}"/>
+									<ObjectRef Name="SW_Material" ID="{828E8B9F-6B07-4984-BFE7-B76CEA058A8B}" WorkUnitID="{4ED3F84A-3536-45B9-B9FE-D3BA1D826FCA}"/>
 								</Reference>
 							</ReferenceList>
 							<ChildrenList>
@@ -1273,7 +1273,7 @@
 									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D02282EE-6893-403D-9438-D481AB659EA3}"/>
 								</Reference>
 								<Reference Name="SwitchGroupOrStateGroup">
-									<ObjectRef Name="Material" ID="{828E8B9F-6B07-4984-BFE7-B76CEA058A8B}" WorkUnitID="{4ED3F84A-3536-45B9-B9FE-D3BA1D826FCA}"/>
+									<ObjectRef Name="SW_Material" ID="{828E8B9F-6B07-4984-BFE7-B76CEA058A8B}" WorkUnitID="{4ED3F84A-3536-45B9-B9FE-D3BA1D826FCA}"/>
 								</Reference>
 							</ReferenceList>
 							<ChildrenList>
@@ -1730,7 +1730,7 @@
 									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D02282EE-6893-403D-9438-D481AB659EA3}"/>
 								</Reference>
 								<Reference Name="SwitchGroupOrStateGroup">
-									<ObjectRef Name="Material" ID="{828E8B9F-6B07-4984-BFE7-B76CEA058A8B}" WorkUnitID="{4ED3F84A-3536-45B9-B9FE-D3BA1D826FCA}"/>
+									<ObjectRef Name="SW_Material" ID="{828E8B9F-6B07-4984-BFE7-B76CEA058A8B}" WorkUnitID="{4ED3F84A-3536-45B9-B9FE-D3BA1D826FCA}"/>
 								</Reference>
 							</ReferenceList>
 							<ChildrenList>

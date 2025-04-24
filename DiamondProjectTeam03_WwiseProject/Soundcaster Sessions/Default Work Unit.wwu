@@ -6,7 +6,9 @@
 				<SoundcasterSession Name="Master" ID="{C6F4B1AB-206C-4154-9FDA-8FD28121D973}">
 					<RTPCValueList ShowAll="true"/>
 					<CurrentStateList ShowAll="true"/>
-					<CurrentSwitchList ShowAll="true"/>
+					<CurrentSwitchList ShowAll="true">
+						<CurrentSwitchRef Name="Concrete" ID="{7D8D0D4C-3D1C-43A2-B357-3F03FF424DDB}"/>
+					</CurrentSwitchList>
 				</SoundcasterSession>
 			</ChildrenList>
 		</WorkUnit>
