@@ -8,7 +8,9 @@
 						<Property Name="Color" Type="int16" Value="11"/>
 						<Property Name="OverrideColor" Type="bool" Value="True"/>
 					</PropertyList>
-					<ObjectInclusionList/>
+					<ObjectInclusionList>
+						<ObjectRef Name="Master_WU" ID="{A9F2777E-FBA3-4BC0-B5B3-14E0777A7B23}" WorkUnitID="{A9F2777E-FBA3-4BC0-B5B3-14E0777A7B23}" Origin="Manual" Filter="7"/>
+					</ObjectInclusionList>
 					<ObjectExclusionList/>
 					<GameSyncExclusionList/>
 				</SoundBank>
@@ -24,6 +26,7 @@
 						<ObjectRef Name="Play_UI_MainMenu_Button_Validation_02" ID="{89A8B49D-A61E-47FA-8266-DA2F97115521}" WorkUnitID="{33FB5FA3-EF92-4889-B391-45FA1B390E1B}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_UI_MainMenu_Button_Validation_01" ID="{B9A5BF93-6E33-4AC1-92A6-228E5E9B7956}" WorkUnitID="{33FB5FA3-EF92-4889-B391-45FA1B390E1B}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_UI_MainMenu_Button_Back_01" ID="{01C0CAE4-081F-4B6C-B86A-6C2B06CE1B6E}" WorkUnitID="{33FB5FA3-EF92-4889-B391-45FA1B390E1B}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Master_WU" ID="{A9F2777E-FBA3-4BC0-B5B3-14E0777A7B23}" WorkUnitID="{A9F2777E-FBA3-4BC0-B5B3-14E0777A7B23}" Origin="Manual" Filter="7"/>
 					</ObjectInclusionList>
 					<ObjectExclusionList/>
 					<GameSyncExclusionList/>
@@ -34,6 +37,7 @@
 						<Property Name="OverrideColor" Type="bool" Value="True"/>
 					</PropertyList>
 					<ObjectInclusionList>
+						<ObjectRef Name="Master_WU" ID="{A9F2777E-FBA3-4BC0-B5B3-14E0777A7B23}" WorkUnitID="{A9F2777E-FBA3-4BC0-B5B3-14E0777A7B23}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_FOES_SFX_Tourelle_Shoot_RC" ID="{140E36FB-31F3-4C66-AC5D-E9E86C57BA68}" WorkUnitID="{F38C7AC6-6811-4B1E-A7A4-2F26EBB9F864}" Origin="Manual" Filter="7"/>
 					</ObjectInclusionList>
 					<ObjectExclusionList/>
@@ -46,6 +50,7 @@
 					</PropertyList>
 					<ObjectInclusionList>
 						<ObjectRef Name="Play_AMB_Arena_Crowd" ID="{044D5574-12FD-4A7D-829F-E12D304EBC61}" WorkUnitID="{1BF409B0-B754-4C8B-AEBF-EFEE5E6D5D4D}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Master_WU" ID="{A9F2777E-FBA3-4BC0-B5B3-14E0777A7B23}" WorkUnitID="{A9F2777E-FBA3-4BC0-B5B3-14E0777A7B23}" Origin="Manual" Filter="7"/>
 					</ObjectInclusionList>
 					<ObjectExclusionList/>
 					<GameSyncExclusionList/>
@@ -55,7 +60,9 @@
 						<Property Name="Color" Type="int16" Value="23"/>
 						<Property Name="OverrideColor" Type="bool" Value="True"/>
 					</PropertyList>
-					<ObjectInclusionList/>
+					<ObjectInclusionList>
+						<ObjectRef Name="Master_WU" ID="{A9F2777E-FBA3-4BC0-B5B3-14E0777A7B23}" WorkUnitID="{A9F2777E-FBA3-4BC0-B5B3-14E0777A7B23}" Origin="Manual" Filter="7"/>
+					</ObjectInclusionList>
 					<ObjectExclusionList/>
 					<GameSyncExclusionList/>
 				</SoundBank>
@@ -67,6 +74,8 @@
 					<ObjectInclusionList>
 						<ObjectRef Name="Play_MC_SFX_Gun_Shoot_RC" ID="{19EDAAA1-DF79-4328-9566-97F28CD19D08}" WorkUnitID="{0C46C646-7080-4D39-B62D-1B5389FBC32E}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_MC_SFX_Dash_RC" ID="{B806ED59-4ACB-4371-BE4B-1518B580024B}" WorkUnitID="{0C46C646-7080-4D39-B62D-1B5389FBC32E}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_MC_FOL_FT_SW" ID="{770A8171-A3BF-4A55-9CA5-93ECE5CBF8BD}" WorkUnitID="{0C46C646-7080-4D39-B62D-1B5389FBC32E}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Master_WU" ID="{A9F2777E-FBA3-4BC0-B5B3-14E0777A7B23}" WorkUnitID="{A9F2777E-FBA3-4BC0-B5B3-14E0777A7B23}" Origin="Manual" Filter="7"/>
 					</ObjectInclusionList>
 					<ObjectExclusionList/>
 					<GameSyncExclusionList/>

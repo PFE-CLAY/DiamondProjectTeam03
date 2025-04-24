@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SoundBanksInfo Platform="Mac" BasePlatform="Mac" SchemaVersion="16" SoundBankVersion="150">
 	<SoundBanks>
-		<SoundBank Id="1355168291" Type="User" GUID="{701ECBBD-9C7B-4030-8CDB-749EE5D1C7B9}" Language="SFX" Hash="{A3E61B4A-1108-8AAE-7DC1-37D3AEFCD8F4}">
+		<SoundBank Id="1355168291" Type="User" GUID="{701ECBBD-9C7B-4030-8CDB-749EE5D1C7B9}" Language="SFX" Hash="{BDF6387D-0F39-9638-6F22-35B9FFDDB025}">
 			<ObjectPath>Init</ObjectPath>
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
 			<Plugins>
+				<Custom>
+					<Plugin Id="169636257" Name="Have_U_Ever_Been_Outside (Custom)" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_RFX_Arena\[Effect Slot [0]: (RoomVerb)]\Have_U_Ever_Been_Outside (Custom)" GUID="{4EC028FC-6FD5-4AC6-A71F-B2CB8F1117DF}" LibName="Wwise RoomVerb" LibId="7733251"/>
+				</Custom>
 				<AudioDevices>
 					<Plugin Id="2317455096" Name="No_Output" ObjectPath="\Audio Devices\Default Work Unit\No_Output" GUID="{A1B1475A-B55F-4479-A7C3-DBD7912FC3E0}" LibName="No Output" LibId="11862023"/>
 					<Plugin Id="3859886410" Name="System" ObjectPath="\Audio Devices\Default Work Unit\System" GUID="{2120331D-1E44-4F44-9FF4-1BD59ADC3B07}" LibName="System" LibId="11403271"/>
@@ -23,18 +26,25 @@
 			</Busses>
 			<AuxBusses>
 				<AuxBus Id="1215931641" Name="RVB_Arena" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Arena" GUID="{54C7EBDA-4885-4850-8969-FB63BDACC807}"/>
+				<AuxBus Id="1408817756" Name="RVB_RFX_Arena" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_RFX_Arena" GUID="{CC7A2F05-EE75-4E8E-B097-98A1938CB5E4}">
+					<PluginRefs>
+						<Custom>
+							<PluginRef Id="169636257"/>
+						</Custom>
+					</PluginRefs>
+				</AuxBus>
 				<AuxBus Id="3571340017" Name="RVB_Hub" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Hub" GUID="{D499EBE4-F26A-48E5-B89D-1F7C43D829E3}"/>
 			</AuxBusses>
 			<SwitchGroups>
-				<SwitchGroup Id="3865314626" Name="Material" ObjectPath="\Switches\Default Work Unit\Material" GUID="{828E8B9F-6B07-4984-BFE7-B76CEA058A8B}">
+				<SwitchGroup Id="757195373" Name="SW_Material" ObjectPath="\Switches\Default Work Unit\SW_Material" GUID="{828E8B9F-6B07-4984-BFE7-B76CEA058A8B}">
 					<Switches>
-						<Switch Id="803837735" Name="Sand" ObjectPath="\Switches\Default Work Unit\Material\Sand" GUID="{0F8A73BD-8A92-4819-BE09-452FE32E1FBC}"/>
-						<Switch Id="841620460" Name="Concrete" ObjectPath="\Switches\Default Work Unit\Material\Concrete" GUID="{7D8D0D4C-3D1C-43A2-B357-3F03FF424DDB}"/>
-						<Switch Id="2473969246" Name="Metal" ObjectPath="\Switches\Default Work Unit\Material\Metal" GUID="{4F4901C3-CC0C-4142-BDF8-FF62F7720DE3}"/>
+						<Switch Id="803837735" Name="Sand" ObjectPath="\Switches\Default Work Unit\SW_Material\Sand" GUID="{0F8A73BD-8A92-4819-BE09-452FE32E1FBC}"/>
+						<Switch Id="841620460" Name="Concrete" ObjectPath="\Switches\Default Work Unit\SW_Material\Concrete" GUID="{7D8D0D4C-3D1C-43A2-B357-3F03FF424DDB}"/>
+						<Switch Id="2473969246" Name="Metal" ObjectPath="\Switches\Default Work Unit\SW_Material\Metal" GUID="{4F4901C3-CC0C-4142-BDF8-FF62F7720DE3}"/>
 					</Switches>
 				</SwitchGroup>
 			</SwitchGroups>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{46C94E9A-567A-B516-6C41-0F275D10840D}</FileHash>
+	<FileHash>{EB06D3EC-853D-3DBE-F41A-C61C52958B81}</FileHash>
 </SoundBanksInfo>
