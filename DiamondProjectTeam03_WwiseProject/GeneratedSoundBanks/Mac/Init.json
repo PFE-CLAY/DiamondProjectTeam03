@@ -10,11 +10,21 @@
     "Type": "User",
     "GUID": "{701ECBBD-9C7B-4030-8CDB-749EE5D1C7B9}",
     "Language": "SFX",
-    "Hash": "{A3E61B4A-1108-8AAE-7DC1-37D3AEFCD8F4}",
+    "Hash": "{BDF6387D-0F39-9638-6F22-35B9FFDDB025}",
     "ObjectPath": "Init",
     "ShortName": "Init",
     "Path": "Init.bnk",
     "Plugins": {
+     "Custom": [
+      {
+       "Id": "169636257",
+       "Name": "Have_U_Ever_Been_Outside (Custom)",
+       "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_RFX_Arena\\[Effect Slot [0]: (RoomVerb)]\\Have_U_Ever_Been_Outside (Custom)",
+       "GUID": "{4EC028FC-6FD5-4AC6-A71F-B2CB8F1117DF}",
+       "LibName": "Wwise RoomVerb",
+       "LibId": "7733251"
+      }
+     ],
      "AudioDevices": [
       {
        "Id": "2317455096",
@@ -92,6 +102,19 @@
       "GUID": "{54C7EBDA-4885-4850-8969-FB63BDACC807}"
      },
      {
+      "Id": "1408817756",
+      "Name": "RVB_RFX_Arena",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_RFX_Arena",
+      "GUID": "{CC7A2F05-EE75-4E8E-B097-98A1938CB5E4}",
+      "PluginRefs": {
+       "Custom": [
+        {
+         "Id": "169636257"
+        }
+       ]
+      }
+     },
+     {
       "Id": "3571340017",
       "Name": "RVB_Hub",
       "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Hub",
@@ -100,27 +123,27 @@
     ],
     "SwitchGroups": [
      {
-      "Id": "3865314626",
-      "Name": "Material",
-      "ObjectPath": "\\Switches\\Default Work Unit\\Material",
+      "Id": "757195373",
+      "Name": "SW_Material",
+      "ObjectPath": "\\Switches\\Default Work Unit\\SW_Material",
       "GUID": "{828E8B9F-6B07-4984-BFE7-B76CEA058A8B}",
       "Switches": [
        {
         "Id": "803837735",
         "Name": "Sand",
-        "ObjectPath": "\\Switches\\Default Work Unit\\Material\\Sand",
+        "ObjectPath": "\\Switches\\Default Work Unit\\SW_Material\\Sand",
         "GUID": "{0F8A73BD-8A92-4819-BE09-452FE32E1FBC}"
        },
        {
         "Id": "841620460",
         "Name": "Concrete",
-        "ObjectPath": "\\Switches\\Default Work Unit\\Material\\Concrete",
+        "ObjectPath": "\\Switches\\Default Work Unit\\SW_Material\\Concrete",
         "GUID": "{7D8D0D4C-3D1C-43A2-B357-3F03FF424DDB}"
        },
        {
         "Id": "2473969246",
         "Name": "Metal",
-        "ObjectPath": "\\Switches\\Default Work Unit\\Material\\Metal",
+        "ObjectPath": "\\Switches\\Default Work Unit\\SW_Material\\Metal",
         "GUID": "{4F4901C3-CC0C-4142-BDF8-FF62F7720DE3}"
        }
       ]
@@ -128,6 +151,6 @@
     ]
    }
   ],
-  "FileHash": "{2B3533D2-ADFC-2ACD-53D9-9CBE2EC5716F}"
+  "FileHash": "{14940078-EE3D-83F1-5E76-5C369927C032}"
  }
 }
