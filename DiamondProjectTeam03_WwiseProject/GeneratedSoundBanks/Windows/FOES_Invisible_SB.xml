@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="16" SoundBankVersion="150">
+	<SoundBanks>
+		<SoundBank Id="2516814376" Type="User" GUID="{48187E94-2869-42A3-9E99-A12DF1DA86DF}" Language="SFX" Hash="{C3C4EF28-296F-6DA0-423D-51A859A6F6A0}">
+			<ObjectPath>\SoundBanks\SoundBanks_WU\FOES_Invisible_SB</ObjectPath>
+			<ShortName>FOES_Invisible_SB</ShortName>
+			<Path>FOES_Invisible_SB.bnk</Path>
+		</SoundBank>
+	</SoundBanks>
+	<FileHash>{1D787381-B0AD-843A-9923-C00B37E1BEA4}</FileHash>
+</SoundBanksInfo>

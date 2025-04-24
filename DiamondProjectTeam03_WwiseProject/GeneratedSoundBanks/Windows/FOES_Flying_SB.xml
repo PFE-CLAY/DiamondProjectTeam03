@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="16" SoundBankVersion="150">
+	<SoundBanks>
+		<SoundBank Id="459280130" Type="User" GUID="{46F08C13-7BDA-47D5-A653-BDFCDAD2487B}" Language="SFX" Hash="{0F0EDC18-1AD4-F33B-B146-DA75EED71E3E}">
+			<ObjectPath>\SoundBanks\SoundBanks_WU\FOES_Flying_SB</ObjectPath>
+			<ShortName>FOES_Flying_SB</ShortName>
+			<Path>FOES_Flying_SB.bnk</Path>
+		</SoundBank>
+	</SoundBanks>
+	<FileHash>{F19C66D8-B01F-B593-AB55-017665F9438A}</FileHash>
+</SoundBanksInfo>

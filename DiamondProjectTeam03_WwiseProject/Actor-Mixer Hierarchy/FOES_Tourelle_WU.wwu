@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{1C36EC12-43A5-4F7F-BD34-ADCCF4CCEFF3}" SchemaVersion="119">
+	<AudioObjects>
+		<WorkUnit Name="FOES_Tourelle_WU" ID="{1C36EC12-43A5-4F7F-BD34-ADCCF4CCEFF3}" PersistMode="Standalone">
+			<PropertyList>
+				<Property Name="Color" Type="int16" Value="10"/>
+				<Property Name="OverrideColor" Type="bool" Value="True"/>
+			</PropertyList>
+			<ChildrenList>
+				<ActorMixer Name="SFX" ID="{8F3C3C0E-9673-4949-A98F-D33F5B871AC9}" ShortID="722406924">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D02282EE-6893-403D-9438-D481AB659EA3}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<RandomSequenceContainer Name="FOES_SFX_Tourelle_Shoot_RC" ID="{3FAC8C89-9BEA-41EB-B022-3C801C8CA2B6}" ShortID="302998761">
+							<PropertyList>
+								<Property Name="NormalOrShuffle" Type="int16" Value="0"/>
+								<Property Name="Pitch" Type="int32">
+									<ModifierList>
+										<ModifierInfo>
+											<Modifier Name="" ID="{1404642B-2073-40C2-B531-78653AABDCB5}">
+												<PropertyList>
+													<Property Name="Enabled" Type="bool" Value="True"/>
+													<Property Name="Max" Type="Real64" Value="379"/>
+													<Property Name="Min" Type="Real64" Value="-354"/>
+												</PropertyList>
+											</Modifier>
+										</ModifierInfo>
+									</ModifierList>
+								</Property>
+								<Property Name="Volume" Type="Real64">
+									<ModifierList>
+										<ModifierInfo>
+											<Modifier Name="" ID="{486140CD-5741-4D37-BAB2-78272B18D1CE}">
+												<PropertyList>
+													<Property Name="Enabled" Type="bool" Value="True"/>
+													<Property Name="Max" Type="Real64" Value="3"/>
+													<Property Name="Min" Type="Real64" Value="-3"/>
+												</PropertyList>
+											</Modifier>
+										</ModifierInfo>
+									</ModifierList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D02282EE-6893-403D-9438-D481AB659EA3}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<Sound Name="FOES_SFX_Tourelle_Shoot_03" ID="{41BE397F-8199-441E-A1E7-01C1DEEC9992}" ShortID="419448738">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D02282EE-6893-403D-9438-D481AB659EA3}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="FOES_SFX_Tourelle_Shoot_03" ID="{E28486E3-A952-43D6-9035-B3228B840B52}">
+											<Language>SFX</Language>
+											<AudioFile>FOES_SFX_Tourelle_Shoot_03.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="515409144"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="FOES_SFX_Tourelle_Shoot_03" ID="{E28486E3-A952-43D6-9035-B3228B840B52}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="FOES_SFX_Tourelle_Shoot_01" ID="{4395465F-A539-47C9-BAFF-BABB17934074}" ShortID="963621385">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D02282EE-6893-403D-9438-D481AB659EA3}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="FOES_SFX_Tourelle_Shoot_01" ID="{1EE56F65-04CC-440E-9E24-A3E839620159}">
+											<Language>SFX</Language>
+											<AudioFile>FOES_SFX_Tourelle_Shoot_01.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="387455546"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="FOES_SFX_Tourelle_Shoot_01" ID="{1EE56F65-04CC-440E-9E24-A3E839620159}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="FOES_SFX_Tourelle_Shoot_05" ID="{B6B516BF-E754-4251-8FB4-8769613FA42F}" ShortID="905025425">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D02282EE-6893-403D-9438-D481AB659EA3}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="FOES_SFX_Tourelle_Shoot_05" ID="{E5440C3A-5F79-4A69-ABD4-EEE64C9D643E}">
+											<Language>SFX</Language>
+											<AudioFile>FOES_SFX_Tourelle_Shoot_05.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="119224371"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="FOES_SFX_Tourelle_Shoot_05" ID="{E5440C3A-5F79-4A69-ABD4-EEE64C9D643E}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="FOES_SFX_Tourelle_Shoot_02" ID="{AA57B36C-AE91-41C8-B7F2-1136FBCD6E4E}" ShortID="287034319">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D02282EE-6893-403D-9438-D481AB659EA3}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="FOES_SFX_Tourelle_Shoot_02" ID="{DADCF424-2887-45E2-9144-8F2D08C4169F}">
+											<Language>SFX</Language>
+											<AudioFile>FOES_SFX_Tourelle_Shoot_02.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="37180877"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="FOES_SFX_Tourelle_Shoot_02" ID="{DADCF424-2887-45E2-9144-8F2D08C4169F}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="FOES_SFX_Tourelle_Shoot_04" ID="{C4410B1A-FCBC-48F3-94FC-C5A0236AD027}" ShortID="83920176">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D02282EE-6893-403D-9438-D481AB659EA3}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="FOES_SFX_Tourelle_Shoot_04" ID="{EB3B0A61-AB13-4F33-8E5B-39BE8B51CA40}">
+											<Language>SFX</Language>
+											<AudioFile>FOES_SFX_Tourelle_Shoot_04.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="363741101"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="FOES_SFX_Tourelle_Shoot_04" ID="{EB3B0A61-AB13-4F33-8E5B-39BE8B51CA40}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+							</ChildrenList>
+						</RandomSequenceContainer>
+					</ChildrenList>
+				</ActorMixer>
+				<ActorMixer Name="FOL" ID="{04B34CC4-34CA-46AE-B7CF-8B7A83ED058A}" ShortID="459451039">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D02282EE-6893-403D-9438-D481AB659EA3}"/>
+						</Reference>
+					</ReferenceList>
+				</ActorMixer>
+			</ChildrenList>
+		</WorkUnit>
+	</AudioObjects>
+</WwiseDocument>

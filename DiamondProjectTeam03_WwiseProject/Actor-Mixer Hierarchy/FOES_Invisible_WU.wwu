@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{18B26930-B16C-4483-ACA2-ACFD23DC62C1}" SchemaVersion="119">
+	<AudioObjects>
+		<WorkUnit Name="FOES_Invisible_WU" ID="{18B26930-B16C-4483-ACA2-ACFD23DC62C1}" PersistMode="Standalone">
+			<PropertyList>
+				<Property Name="Color" Type="int16" Value="23"/>
+				<Property Name="OverrideColor" Type="bool" Value="True"/>
+			</PropertyList>
+		</WorkUnit>
+	</AudioObjects>
+</WwiseDocument>

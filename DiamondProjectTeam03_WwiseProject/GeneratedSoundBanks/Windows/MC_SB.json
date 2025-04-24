@@ -1,0 +1,157 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Windows",
+  "BasePlatform": "Windows",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "150",
+  "SoundBanks": [
+   {
+    "Id": "1956625499",
+    "Type": "User",
+    "GUID": "{ADC2D189-6608-4828-BC9C-6EF6F90834DB}",
+    "Language": "SFX",
+    "Hash": "{A629DDF5-761D-8211-5989-955B7221CBB2}",
+    "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\MC_SB",
+    "ShortName": "MC_SB",
+    "Path": "MC_SB.bnk",
+    "Media": [
+     {
+      "Id": "36917763",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "MC_SFX_Gun_Shoot_01.wav",
+      "CachePath": "SFX/MC_SFX_Gun_Shoot_01_818F3B66.wem"
+     },
+     {
+      "Id": "62282605",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "MC_SFX_Gun_Shoot_02.wav",
+      "CachePath": "SFX/MC_SFX_Gun_Shoot_02_818F3B66.wem"
+     },
+     {
+      "Id": "70109824",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "MC_SFX_Gun_Shoot_04.wav",
+      "CachePath": "SFX/MC_SFX_Gun_Shoot_04_818F3B66.wem"
+     },
+     {
+      "Id": "131763475",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "MC_SFX_Dash_05.wav",
+      "CachePath": "SFX/MC_SFX_Dash_05_818F3B66.wem"
+     },
+     {
+      "Id": "280528909",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "MC_SFX_Dash_01.wav",
+      "CachePath": "SFX/MC_SFX_Dash_01_818F3B66.wem"
+     },
+     {
+      "Id": "411674623",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "MC_SFX_Dash_02.wav",
+      "CachePath": "SFX/MC_SFX_Dash_02_818F3B66.wem"
+     },
+     {
+      "Id": "421361594",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "MC_SFX_Gun_Shoot_05.wav",
+      "CachePath": "SFX/MC_SFX_Gun_Shoot_05_818F3B66.wem"
+     },
+     {
+      "Id": "610918733",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "MC_SFX_Gun_Shoot_03.wav",
+      "CachePath": "SFX/MC_SFX_Gun_Shoot_03_818F3B66.wem"
+     },
+     {
+      "Id": "890446006",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "MC_SFX_Dash_03.wav",
+      "CachePath": "SFX/MC_SFX_Dash_03_818F3B66.wem"
+     },
+     {
+      "Id": "925500281",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "MC_SFX_Dash_04.wav",
+      "CachePath": "SFX/MC_SFX_Dash_04_818F3B66.wem"
+     }
+    ],
+    "Events": [
+     {
+      "Id": "926424941",
+      "Name": "Play_MC_SFX_Dash_RC",
+      "ObjectPath": "\\Events\\MC_WU\\Play_MC_SFX_Dash_RC",
+      "GUID": "{B806ED59-4ACB-4371-BE4B-1518B580024B}",
+      "DurationType": "OneShot",
+      "DurationMin": "1.1072708",
+      "DurationMax": "1.8",
+      "MediaRefs": [
+       {
+        "Id": "131763475"
+       },
+       {
+        "Id": "280528909"
+       },
+       {
+        "Id": "411674623"
+       },
+       {
+        "Id": "890446006"
+       },
+       {
+        "Id": "925500281"
+       }
+      ]
+     },
+     {
+      "Id": "1177297501",
+      "Name": "Play_MC_SFX_Gun_Shoot_RC",
+      "ObjectPath": "\\Events\\MC_WU\\Play_MC_SFX_Gun_Shoot_RC",
+      "GUID": "{19EDAAA1-DF79-4328-9566-97F28CD19D08}",
+      "DurationType": "OneShot",
+      "DurationMin": "0.80338675",
+      "DurationMax": "1.8403275",
+      "MediaRefs": [
+       {
+        "Id": "36917763"
+       },
+       {
+        "Id": "62282605"
+       },
+       {
+        "Id": "70109824"
+       },
+       {
+        "Id": "421361594"
+       },
+       {
+        "Id": "610918733"
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "FileHash": "{3DEF89E2-6586-B812-F2E2-B74BBD490A04}"
+ }
+}

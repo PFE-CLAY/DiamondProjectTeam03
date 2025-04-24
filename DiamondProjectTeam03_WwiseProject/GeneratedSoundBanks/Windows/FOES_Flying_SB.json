@@ -1,0 +1,21 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Windows",
+  "BasePlatform": "Windows",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "150",
+  "SoundBanks": [
+   {
+    "Id": "459280130",
+    "Type": "User",
+    "GUID": "{46F08C13-7BDA-47D5-A653-BDFCDAD2487B}",
+    "Language": "SFX",
+    "Hash": "{0F0EDC18-1AD4-F33B-B146-DA75EED71E3E}",
+    "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\FOES_Flying_SB",
+    "ShortName": "FOES_Flying_SB",
+    "Path": "FOES_Flying_SB.bnk"
+   }
+  ],
+  "FileHash": "{54130042-6B47-7BFB-2B35-F1A4BB91C0F1}"
+ }
+}
