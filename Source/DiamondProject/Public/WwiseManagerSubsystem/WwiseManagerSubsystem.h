@@ -34,8 +34,7 @@ public:
 	virtual void Deinitialize() override;
 	
 	UFUNCTION(BlueprintCallable, Category = "Wwise SubSystem", meta = (AdvancedDisplay = "2"))
-	void PlayEvent(UAkAudioEvent* Event, AActor* TargetActor, const FOnAkPostEventCallback& PostEventCallback);
-
+	void PlayEvent(UAkAudioEvent* Event, AActor* TargetActor);
 	
 	UFUNCTION(BlueprintCallable, Category = "Wwise SubSystem")
 	void SetRTPCValue(const UAkRtpc* RTPCValue, float Value, int32 InterpolationTimeMs, AActor* Actor);
@@ -43,4 +42,9 @@ public:
 	UFUNCTION(BlueprintCallable, Category="Wwise SubSystem", meta = (AdvancedDisplay = "3"))
 	void SetCategoryVolume(const ESoundCategory Category, float Volume, AActor* TargetActor, int32 InterpolateTimeMs = 0);
 
+	UFUNCTION(BlueprintCallable, Category = "Wwise SubSystem")
+	void SetSwitch(const UAkSwitchValue* SwitchValue, AActor* Actor, FName SwitchGroup, FName SwitchState);
+
+	UFUNCTION(BlueprintCallable, Category = "Wwise SubSystem")
+	void SetState(const UAkStateValue* StateValue, FName stateGroup, FName state);
 };
