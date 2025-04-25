@@ -12,7 +12,64 @@
 						<Action Name="" ID="{2D8B690A-ED1D-4706-91DC-FE750F6CC98F}" ShortID="478913517">
 							<ReferenceList>
 								<Reference Name="Target">
-									<ObjectRef Name="AMB_Arena_Crowd" ID="{FE3539A0-D948-4ABB-B89D-F12DD0FE372B}" WorkUnitID="{183124D0-ACA8-4AFA-A8E9-44C003A151DE}"/>
+									<ObjectRef Name="AMB_PAD_Crowd" ID="{086C49AC-8429-4D59-B8FB-98346A636BE8}" WorkUnitID="{183124D0-ACA8-4AFA-A8E9-44C003A151DE}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{E94F0F0C-7E67-4781-B994-C0010B3E192E}" ShortID="120836604">
+							<PropertyList>
+								<Property Name="Delay" Type="Real64" Value="5"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="AMB_RFX_Crowd_Applause" ID="{2593B581-CE7D-47A9-961B-3720EC2F673C}" WorkUnitID="{183124D0-ACA8-4AFA-A8E9-44C003A151DE}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{024FF156-898A-4365-A487-D6C3CC9A8ED5}" ShortID="495432037">
+							<PropertyList>
+								<Property Name="Delay" Type="Real64" Value="3"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="AMB_RFX_Crowd_Classic" ID="{0DD3B7CE-0AF3-483C-B89F-EFB5A99A9181}" WorkUnitID="{183124D0-ACA8-4AFA-A8E9-44C003A151DE}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{BC5F3999-5AA4-4307-8C4A-0547864DC944}" ShortID="88260219">
+							<PropertyList>
+								<Property Name="Delay" Type="Real64" Value="3"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="AMB_RFX_Crowd_Spectacular" ID="{1B5850FF-CD9B-4D1D-8B66-E2755531AFE1}" WorkUnitID="{183124D0-ACA8-4AFA-A8E9-44C003A151DE}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{E4238AE7-50BB-49BB-BBCD-3483F0A775AE}" ShortID="278309500">
+							<PropertyList>
+								<Property Name="Delay" Type="Real64" Value="8"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="AMB_RFX_Individual" ID="{12701ECE-5A31-457F-84B1-EACC6DE289FB}" WorkUnitID="{183124D0-ACA8-4AFA-A8E9-44C003A151DE}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{B803C7E1-C90F-4054-84F5-C008416BDC6E}" ShortID="515753154">
+							<PropertyList>
+								<Property Name="Delay" Type="Real64" Value="3"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="AMB_RFX_Negative_Reaction" ID="{5A6385C4-88AE-44E9-80AC-6F2D0FC29F06}" WorkUnitID="{183124D0-ACA8-4AFA-A8E9-44C003A151DE}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{BCD05455-9F88-478F-96D3-8528344EC717}" ShortID="594724873">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="AMB_RFX_WarHorns" ID="{B810EA4B-8CC6-49C0-845A-4D19550A0C24}" WorkUnitID="{183124D0-ACA8-4AFA-A8E9-44C003A151DE}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>

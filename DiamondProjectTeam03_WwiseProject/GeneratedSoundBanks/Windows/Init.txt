@@ -10,7 +10,11 @@ Audio Bus	ID	Name			Wwise Object Path	Notes
 
 Auxiliary Bus	ID	Name			Wwise Object Path	Notes
 	1215931641	RVB_Arena			\Master_WU\Master\RVB_Arena	
+	1408817756	RVB_RFX_Arena			\Master_WU\Master\RVB_RFX_Arena	
 	3571340017	RVB_Hub			\Master_WU\Master\RVB_Hub	
+
+Effect plug-ins	ID	Name	Type				Notes
+	169636257	Have_U_Ever_Been_Outside (Custom)	Wwise RoomVerb			
 
 Audio Devices	ID	Name	Type				Notes
 	2317455096	No_Output	No Output			
