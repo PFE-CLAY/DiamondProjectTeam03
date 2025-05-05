@@ -42,6 +42,18 @@
 			"Type": "RequiredResource"
 		},
 		{
+			"Path": "$(ProjectDir)/Plugins/CPathfinding/Binaries/Win64/UnrealEditor-CPathfinding.dll",
+			"Type": "DynamicLibrary"
+		},
+		{
+			"Path": "$(ProjectDir)/Plugins/CPathfinding/Binaries/Win64/UnrealEditor-CPathfinding.pdb",
+			"Type": "SymbolFile"
+		},
+		{
+			"Path": "$(ProjectDir)/Plugins/CPathfinding/Binaries/Win64/UnrealEditor.modules",
+			"Type": "RequiredResource"
+		},
+		{
 			"Path": "$(ProjectDir)/Plugins/WwiseNiagara/Binaries/Win64/UnrealEditor-WwiseNiagara.dll",
 			"Type": "DynamicLibrary"
 		},
@@ -2794,6 +2806,18 @@
 			"Type": "RequiredResource"
 		},
 		{
+			"Path": "$(EngineDir)/Plugins/Experimental/NaniteDisplacedMesh/Binaries/Win64/UnrealEditor-NaniteDisplacedMesh.dll",
+			"Type": "DynamicLibrary"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/Experimental/NaniteDisplacedMesh/Binaries/Win64/UnrealEditor-NaniteDisplacedMeshEditor.dll",
+			"Type": "DynamicLibrary"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/Experimental/NaniteDisplacedMesh/Binaries/Win64/UnrealEditor.modules",
+			"Type": "RequiredResource"
+		},
+		{
 			"Path": "$(EngineDir)/Plugins/Experimental/OpenImageDenoise/Binaries/Win64/UnrealEditor-OpenImageDenoise.dll",
 			"Type": "DynamicLibrary"
 		},
@@ -3873,6 +3897,10 @@
 	"RuntimeDependencies": [
 		{
 			"Path": "$(ProjectDir)/DiamondProject.uproject",
+			"Type": "UFS"
+		},
+		{
+			"Path": "$(ProjectDir)/Plugins/CPathfinding/CPathfinding.uplugin",
 			"Type": "UFS"
 		},
 		{
@@ -26720,6 +26748,10 @@
 			"Type": "UFS"
 		},
 		{
+			"Path": "$(EngineDir)/Plugins/Experimental/NaniteDisplacedMesh/NaniteDisplacedMesh.uplugin",
+			"Type": "UFS"
+		},
+		{
 			"Path": "$(EngineDir)/Plugins/Experimental/OpenImageDenoise/OpenImageDenoise.uplugin",
 			"Type": "UFS"
 		},
@@ -27078,6 +27110,7 @@
 		"BlueprintHeaderView",
 		"Bridge",
 		"CLionSourceCodeAccess",
+		"CPathfinding",
 		"CableComponent",
 		"CameraShakePreviewer",
 		"ChangelistReview",
@@ -27159,6 +27192,7 @@
 		"ModelingToolsEditorMode",
 		"MsQuic",
 		"N10XSourceCodeAccess",
+		"NaniteDisplacedMesh",
 		"Niagara",
 		"NiagaraSimCaching",
 		"NullSourceCodeAccess",
