@@ -1,0 +1,174 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Mac",
+  "BasePlatform": "Mac",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "150",
+  "SoundBanks": [
+   {
+    "Id": "3250948517",
+    "Type": "User",
+    "GUID": "{8CC30184-23AF-4DB5-9844-9B04DF10A650}",
+    "Language": "SFX",
+    "Hash": "{BB10A495-761F-9631-99AF-E29AEEE4AD5F}",
+    "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\FOES_Tourelle_SB",
+    "ShortName": "FOES_Tourelle_SB",
+    "Path": "FOES_Tourelle_SB.bnk",
+    "Media": [
+     {
+      "Id": "37180877",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "FOES_SFX_Tourelle_Shoot_02.wav",
+      "CachePath": "SFX/FOES_SFX_Tourelle_Shoot_02_818F3B66.wem"
+     },
+     {
+      "Id": "119224371",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "FOES_SFX_Tourelle_Shoot_05.wav",
+      "CachePath": "SFX/FOES_SFX_Tourelle_Shoot_05_818F3B66.wem"
+     },
+     {
+      "Id": "363741101",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "FOES_SFX_Tourelle_Shoot_04.wav",
+      "CachePath": "SFX/FOES_SFX_Tourelle_Shoot_04_818F3B66.wem"
+     },
+     {
+      "Id": "387455546",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "FOES_SFX_Tourelle_Shoot_01.wav",
+      "CachePath": "SFX/FOES_SFX_Tourelle_Shoot_01_818F3B66.wem"
+     },
+     {
+      "Id": "515409144",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "FOES_SFX_Tourelle_Shoot_03.wav",
+      "CachePath": "SFX/FOES_SFX_Tourelle_Shoot_03_818F3B66.wem"
+     }
+    ],
+    "Plugins": {
+     "Custom": [
+      {
+       "Id": "169636257",
+       "Name": "Have_U_Ever_Been_Outside (Custom)",
+       "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_RFX_Arena\\[Effect Slot [0]: (RoomVerb)]\\Have_U_Ever_Been_Outside (Custom)",
+       "GUID": "{4EC028FC-6FD5-4AC6-A71F-B2CB8F1117DF}",
+       "LibName": "Wwise RoomVerb",
+       "LibId": "7733251"
+      }
+     ]
+    },
+    "Events": [
+     {
+      "Id": "2480809816",
+      "Name": "Play_FOES_SFX_Tourelle_Shoot_RC",
+      "ObjectPath": "\\Events\\FOES_Tourelle_WU\\Play_FOES_SFX_Tourelle_Shoot_RC",
+      "GUID": "{140E36FB-31F3-4C66-AC5D-E9E86C57BA68}",
+      "DurationType": "OneShot",
+      "DurationMin": "1.2318597",
+      "DurationMax": "2.567487",
+      "MediaRefs": [
+       {
+        "Id": "37180877"
+       },
+       {
+        "Id": "119224371"
+       },
+       {
+        "Id": "363741101"
+       },
+       {
+        "Id": "387455546"
+       },
+       {
+        "Id": "515409144"
+       }
+      ]
+     }
+    ],
+    "Busses": [
+     {
+      "Id": "361263376",
+      "Name": "FOES_Invisible",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\FOES_Invisible",
+      "GUID": "{19573DBC-4DB5-4746-8ACF-EBDC3F32E124}"
+     },
+     {
+      "Id": "1117531639",
+      "Name": "AMB",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\AMB",
+      "GUID": "{C1595F21-FBBF-4B04-AC1A-78D86879A937}"
+     },
+     {
+      "Id": "1551306167",
+      "Name": "UI",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\UI",
+      "GUID": "{B5E7816E-C3FC-4992-B763-4078089CE674}"
+     },
+     {
+      "Id": "1685527061",
+      "Name": "MC",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\MC",
+      "GUID": "{B3079877-B26F-4239-A3AB-9C7AFFCBC797}"
+     },
+     {
+      "Id": "2290178407",
+      "Name": "FOES_Tourelle",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\FOES_Tourelle",
+      "GUID": "{D783D57E-4B6F-4101-8F5F-FD96F0409170}"
+     },
+     {
+      "Id": "3623095082",
+      "Name": "FOES_Flying",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\FOES_Flying",
+      "GUID": "{439831F9-AA50-4CD2-98C3-ACD8B187380E}"
+     },
+     {
+      "Id": "4056684167",
+      "Name": "Master",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master",
+      "GUID": "{F3A976BC-47E9-46E5-9EEC-F566BB39DBEE}"
+     }
+    ],
+    "AuxBusses": [
+     {
+      "Id": "1215931641",
+      "Name": "RVB_Arena",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Arena",
+      "GUID": "{54C7EBDA-4885-4850-8969-FB63BDACC807}"
+     },
+     {
+      "Id": "1408817756",
+      "Name": "RVB_RFX_Arena",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_RFX_Arena",
+      "GUID": "{CC7A2F05-EE75-4E8E-B097-98A1938CB5E4}",
+      "PluginRefs": {
+       "Custom": [
+        {
+         "Id": "169636257"
+        }
+       ]
+      }
+     },
+     {
+      "Id": "3571340017",
+      "Name": "RVB_Hub",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Hub",
+      "GUID": "{D499EBE4-F26A-48E5-B89D-1F7C43D829E3}"
+     }
+    ]
+   }
+  ],
+  "FileHash": "{989CB3A4-DFB0-8FEC-869D-F7F060D4EC47}"
+ }
+}

@@ -29,6 +29,17 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="Play_MC_FOL_FT_SW" ID="{770A8171-A3BF-4A55-9CA5-93ECE5CBF8BD}">
+					<ChildrenList>
+						<Action Name="" ID="{BC5B0D0B-67B0-48DB-8E78-7B99FB7C3B5A}" ShortID="1021903170">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="MC_FOL_FT_SW" ID="{910CA64A-2848-413D-9BB5-41678DD71015}" WorkUnitID="{1B87B22A-8865-441B-A287-78E87390F212}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

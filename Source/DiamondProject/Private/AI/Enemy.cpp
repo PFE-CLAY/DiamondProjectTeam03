@@ -74,16 +74,20 @@ void AEnemy::Shoot()
 		FRotator const Rotation = (PlayerPawn->GetActorLocation() - GetActorLocation()).Rotation();
 		bCanAttack = false;
 		FActorSpawnParameters SpawnInfo;
-		AActor* ProjectileSpawned = GetWorld()->SpawnActor(Projectile, &Location, &Rotation, SpawnInfo);
+		SpawnInfo.Name = "aze";
+		AActor* ProjectileSpawned = nullptr;
+		if (GetWorld()) {
+			ProjectileSpawned = GetWorld()->SpawnActor(Projectile, &Location, &Rotation);
+		}
+		
 		if(ProjectileSpawned == nullptr){
 			return;
 		}
+		
 		AProjectileEnemy* ProjectileInstance = Cast<AProjectileEnemy>(ProjectileSpawned);
 		ProjectileInstance->ProjectileDamage = AttackDamage;
 		
 		SetNewAttackTimer();
-		
-		
 	}
 }
 
