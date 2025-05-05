@@ -55,6 +55,11 @@ Binaries/Win64/*
 !Binaries/Win64/UnrealEditor.modules
 !Binaries/Win64/UnrealEditor-DiamondProject.dll
 !Binaries/Win64/UnrealEditor-FCTween.dll
+!Plugins/**/Binaries/Win64/*.dll
+!Plugins/**/Binaries/Win64/*.exe
+Plugins/**/Binaries/Win64/*.pdb
+!Plugins/**/Binaries/Mac/*.dylib
+!Plugins/**/Binaries/Mac/*.app
 
 # Builds
 
@@ -81,3 +86,9 @@ Plugins/**/Intermediate/*
 # Cache files for the editor to use
 DerivedDataCache/*
 DiamondProject.sln.DotSettings.user
+
+# Plugins files
+!Plugins/**/*
+Plugins/**/Intermediate/*
+Plugins/**/*/*.pdb
+Plugins/CPathfinding/Binaries/Win64/UnrealEditor-CPathfinding.pdb

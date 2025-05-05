@@ -1,0 +1,27 @@
+Event	ID	Name			Wwise Object Path	Notes
+	2480809816	Play_FOES_SFX_Tourelle_Shoot_RC			\FOES_Tourelle_WU\Play_FOES_SFX_Tourelle_Shoot_RC	
+
+Audio Bus	ID	Name			Wwise Object Path	Notes
+	361263376	FOES_Invisible			\Master_WU\Master\FOES_Invisible	
+	1117531639	AMB			\Master_WU\Master\AMB	
+	1551306167	UI			\Master_WU\Master\UI	
+	1685527061	MC			\Master_WU\Master\MC	
+	2290178407	FOES_Tourelle			\Master_WU\Master\FOES_Tourelle	
+	3623095082	FOES_Flying			\Master_WU\Master\FOES_Flying	
+	4056684167	Master			\Master_WU\Master	
+
+Auxiliary Bus	ID	Name			Wwise Object Path	Notes
+	1215931641	RVB_Arena			\Master_WU\Master\RVB_Arena	
+	1408817756	RVB_RFX_Arena			\Master_WU\Master\RVB_RFX_Arena	
+	3571340017	RVB_Hub			\Master_WU\Master\RVB_Hub	
+
+Effect plug-ins	ID	Name	Type				Notes
+	169636257	Have_U_Ever_Been_Outside (Custom)	Wwise RoomVerb			
+
+In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	37180877	FOES_SFX_Tourelle_Shoot_02	G:\Unreal\Unreal_Projects\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Windows\SFX\FOES_SFX_Tourelle_Shoot_02_818F3B66.wem		\Actor-Mixer Hierarchy\FOES_Tourelle_WU\FOES_SFX_Tourelle\FOES_SFX_Tourelle_Shoot_RC\FOES_SFX_Tourelle_Shoot_02		400932
+	119224371	FOES_SFX_Tourelle_Shoot_05	G:\Unreal\Unreal_Projects\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Windows\SFX\FOES_SFX_Tourelle_Shoot_05_818F3B66.wem		\Actor-Mixer Hierarchy\FOES_Tourelle_WU\FOES_SFX_Tourelle\FOES_SFX_Tourelle_Shoot_RC\FOES_SFX_Tourelle_Shoot_05		401892
+	363741101	FOES_SFX_Tourelle_Shoot_04	G:\Unreal\Unreal_Projects\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Windows\SFX\FOES_SFX_Tourelle_Shoot_04_818F3B66.wem		\Actor-Mixer Hierarchy\FOES_Tourelle_WU\FOES_SFX_Tourelle\FOES_SFX_Tourelle_Shoot_RC\FOES_SFX_Tourelle_Shoot_04		294496
+	387455546	FOES_SFX_Tourelle_Shoot_01	G:\Unreal\Unreal_Projects\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Windows\SFX\FOES_SFX_Tourelle_Shoot_01_818F3B66.wem		\Actor-Mixer Hierarchy\FOES_Tourelle_WU\FOES_SFX_Tourelle\FOES_SFX_Tourelle_Shoot_RC\FOES_SFX_Tourelle_Shoot_01		303124
+	515409144	FOES_SFX_Tourelle_Shoot_03	G:\Unreal\Unreal_Projects\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Windows\SFX\FOES_SFX_Tourelle_Shoot_03_818F3B66.wem		\Actor-Mixer Hierarchy\FOES_Tourelle_WU\FOES_SFX_Tourelle\FOES_SFX_Tourelle_Shoot_RC\FOES_SFX_Tourelle_Shoot_03		396136
+

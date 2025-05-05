@@ -1,0 +1,46 @@
+﻿// Fill out your copyright notice in the Description page of Project Settings.
+
+#pragma once
+
+#include "CoreMinimal.h"
+#include "Subsystems/GameInstanceSubsystem.h"
+#include "../Plugins/Wwise/Source/AkAudio/Classes/AkGameplayStatics.h"
+#include "WwiseManagerSubsystem.generated.h"
+
+
+UENUM(BlueprintType)
+enum class ESoundCategory : uint8
+{
+	SFX     UMETA(DisplayName = "SFX"),
+	Music   UMETA(DisplayName = "Music"),
+	UI      UMETA(DisplayName = "UI"),
+	Ambience UMETA(DisplayName = "Ambience")
+};
+
+/**
+ * 
+ */
+UCLASS()
+class DIAMONDPROJECT_API UWwiseManagerSubsystem : public UGameInstanceSubsystem
+{
+	GENERATED_BODY()
+
+private:
+	UPROPERTY()
+	TMap<AActor*, const UAkAudioEvent*> EventCurrentlyPlayedByActor;
+
+public:
+	virtual void Initialize(FSubsystemCollectionBase& Collection) override;
+	virtual void Deinitialize() override;
+	
+	UFUNCTION(BlueprintCallable, Category = "Wwise SubSystem", meta = (AdvancedDisplay = "2"))
+	void PlayEvent(UAkAudioEvent* Event, AActor* TargetActor, const FOnAkPostEventCallback& PostEventCallback);
+
+	
+	UFUNCTION(BlueprintCallable, Category = "Wwise SubSystem")
+	void SetRTPCValue(const UAkRtpc* RTPCValue, float Value, int32 InterpolationTimeMs, AActor* Actor);
+	
+	UFUNCTION(BlueprintCallable, Category="Wwise SubSystem", meta = (AdvancedDisplay = "3"))
+	void SetCategoryVolume(const ESoundCategory Category, float Volume, AActor* TargetActor, int32 InterpolateTimeMs = 0);
+
+};

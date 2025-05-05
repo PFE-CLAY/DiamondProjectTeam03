@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{BA087E67-AAD7-4721-B965-F1584ABAA753}" SchemaVersion="119">
+	<SoundBanks>
+		<WorkUnit Name="SoundBanks_WU" ID="{BA087E67-AAD7-4721-B965-F1584ABAA753}" PersistMode="Standalone">
+			<ChildrenList>
+				<SoundBank Name="FOES_Flying_SB" ID="{46F08C13-7BDA-47D5-A653-BDFCDAD2487B}">
+					<PropertyList>
+						<Property Name="Color" Type="int16" Value="11"/>
+						<Property Name="OverrideColor" Type="bool" Value="True"/>
+					</PropertyList>
+					<ObjectInclusionList>
+						<ObjectRef Name="Master_WU" ID="{A9F2777E-FBA3-4BC0-B5B3-14E0777A7B23}" WorkUnitID="{A9F2777E-FBA3-4BC0-B5B3-14E0777A7B23}" Origin="Manual" Filter="7"/>
+					</ObjectInclusionList>
+					<ObjectExclusionList/>
+					<GameSyncExclusionList/>
+				</SoundBank>
+				<SoundBank Name="UI_SB" ID="{6B7E0BFB-A825-46AA-907A-12621FC4038F}">
+					<PropertyList>
+						<Property Name="Color" Type="int16" Value="1"/>
+						<Property Name="OverrideColor" Type="bool" Value="True"/>
+					</PropertyList>
+					<ObjectInclusionList>
+						<ObjectRef Name="Play_UI_MainMenu_Button_Back_02" ID="{E13DD8C4-5BBD-4349-8967-DBC2AEC8CF83}" WorkUnitID="{33FB5FA3-EF92-4889-B391-45FA1B390E1B}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_UI_MainMenu_Button_Validation_03" ID="{9D2FAC20-12C9-442E-B40F-E57A18D93AA4}" WorkUnitID="{33FB5FA3-EF92-4889-B391-45FA1B390E1B}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_UI_MainMenu_Button_Back_03" ID="{BEED9BF3-D5D8-4536-BC27-BBBBED306872}" WorkUnitID="{33FB5FA3-EF92-4889-B391-45FA1B390E1B}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_UI_MainMenu_Button_Validation_02" ID="{89A8B49D-A61E-47FA-8266-DA2F97115521}" WorkUnitID="{33FB5FA3-EF92-4889-B391-45FA1B390E1B}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_UI_MainMenu_Button_Validation_01" ID="{B9A5BF93-6E33-4AC1-92A6-228E5E9B7956}" WorkUnitID="{33FB5FA3-EF92-4889-B391-45FA1B390E1B}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_UI_MainMenu_Button_Back_01" ID="{01C0CAE4-081F-4B6C-B86A-6C2B06CE1B6E}" WorkUnitID="{33FB5FA3-EF92-4889-B391-45FA1B390E1B}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Master_WU" ID="{A9F2777E-FBA3-4BC0-B5B3-14E0777A7B23}" WorkUnitID="{A9F2777E-FBA3-4BC0-B5B3-14E0777A7B23}" Origin="Manual" Filter="7"/>
+					</ObjectInclusionList>
+					<ObjectExclusionList/>
+					<GameSyncExclusionList/>
+				</SoundBank>
+				<SoundBank Name="FOES_Tourelle_SB" ID="{8CC30184-23AF-4DB5-9844-9B04DF10A650}">
+					<PropertyList>
+						<Property Name="Color" Type="int16" Value="10"/>
+						<Property Name="OverrideColor" Type="bool" Value="True"/>
+					</PropertyList>
+					<ObjectInclusionList>
+						<ObjectRef Name="Master_WU" ID="{A9F2777E-FBA3-4BC0-B5B3-14E0777A7B23}" WorkUnitID="{A9F2777E-FBA3-4BC0-B5B3-14E0777A7B23}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_FOES_SFX_Tourelle_Shoot_RC" ID="{140E36FB-31F3-4C66-AC5D-E9E86C57BA68}" WorkUnitID="{F38C7AC6-6811-4B1E-A7A4-2F26EBB9F864}" Origin="Manual" Filter="7"/>
+					</ObjectInclusionList>
+					<ObjectExclusionList/>
+					<GameSyncExclusionList/>
+				</SoundBank>
+				<SoundBank Name="AMB_SB" ID="{9DC5CBA4-02D0-4677-A565-21ECA413E694}">
+					<PropertyList>
+						<Property Name="Color" Type="int16" Value="4"/>
+						<Property Name="OverrideColor" Type="bool" Value="True"/>
+					</PropertyList>
+					<ObjectInclusionList>
+						<ObjectRef Name="Play_AMB_Arena_Crowd" ID="{044D5574-12FD-4A7D-829F-E12D304EBC61}" WorkUnitID="{1BF409B0-B754-4C8B-AEBF-EFEE5E6D5D4D}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Master_WU" ID="{A9F2777E-FBA3-4BC0-B5B3-14E0777A7B23}" WorkUnitID="{A9F2777E-FBA3-4BC0-B5B3-14E0777A7B23}" Origin="Manual" Filter="7"/>
+					</ObjectInclusionList>
+					<ObjectExclusionList/>
+					<GameSyncExclusionList/>
+				</SoundBank>
+				<SoundBank Name="FOES_Invisible_SB" ID="{48187E94-2869-42A3-9E99-A12DF1DA86DF}">
+					<PropertyList>
+						<Property Name="Color" Type="int16" Value="23"/>
+						<Property Name="OverrideColor" Type="bool" Value="True"/>
+					</PropertyList>
+					<ObjectInclusionList>
+						<ObjectRef Name="Master_WU" ID="{A9F2777E-FBA3-4BC0-B5B3-14E0777A7B23}" WorkUnitID="{A9F2777E-FBA3-4BC0-B5B3-14E0777A7B23}" Origin="Manual" Filter="7"/>
+					</ObjectInclusionList>
+					<ObjectExclusionList/>
+					<GameSyncExclusionList/>
+				</SoundBank>
+				<SoundBank Name="MC_SB" ID="{ADC2D189-6608-4828-BC9C-6EF6F90834DB}">
+					<PropertyList>
+						<Property Name="Color" Type="int16" Value="19"/>
+						<Property Name="OverrideColor" Type="bool" Value="True"/>
+					</PropertyList>
+					<ObjectInclusionList>
+						<ObjectRef Name="Play_MC_SFX_Gun_Shoot_RC" ID="{19EDAAA1-DF79-4328-9566-97F28CD19D08}" WorkUnitID="{0C46C646-7080-4D39-B62D-1B5389FBC32E}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_MC_SFX_Dash_RC" ID="{B806ED59-4ACB-4371-BE4B-1518B580024B}" WorkUnitID="{0C46C646-7080-4D39-B62D-1B5389FBC32E}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_MC_FOL_FT_SW" ID="{770A8171-A3BF-4A55-9CA5-93ECE5CBF8BD}" WorkUnitID="{0C46C646-7080-4D39-B62D-1B5389FBC32E}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Master_WU" ID="{A9F2777E-FBA3-4BC0-B5B3-14E0777A7B23}" WorkUnitID="{A9F2777E-FBA3-4BC0-B5B3-14E0777A7B23}" Origin="Manual" Filter="7"/>
+					</ObjectInclusionList>
+					<ObjectExclusionList/>
+					<GameSyncExclusionList/>
+				</SoundBank>
+			</ChildrenList>
+		</WorkUnit>
+	</SoundBanks>
+</WwiseDocument>

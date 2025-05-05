@@ -78,7 +78,7 @@ void ULoopSubsystem::OnAdvicesVisibilityChanged(bool bNewVisibility)
 {
 	for (auto PreplanStep : PreplanSteps) {
 		for (auto PreplanAdvice : PreplanStep.Value->PreplanAdvices) {
-			bool value = !bNewVisibility || !PreplanStep.Value->bIsStepActive;
+			bool value = !bNewVisibility || !PreplanStep.Value->bIsStepVisible;
 			PreplanAdvice->SetActorHiddenInGame(value);
 		}
 	}
@@ -107,6 +107,7 @@ void ULoopSubsystem::InitializePreplan()
 			} else {
 				if (PreplanDataActor->bIsActiveOnStart){
 					PreplanStep->bIsStepActive = true;
+					PreplanStep->bIsStepVisible = true;
 				}
 				
 				PreplanStep->PreplanData->SetActorHiddenInGame(!PreplanDataActor->bIsActiveOnStart);
@@ -142,7 +143,8 @@ void ULoopSubsystem::InitializePreplan()
 					PreplanStep->NbActivations = 0;
 					PreplanStep->PreplanData = PreplanDataActor;
 					PreplanStep->PreplanAdvices.Empty();
-					PreplanDataActor->SetActorHiddenInGame(!PreplanStep->bIsStepActive);
+					PreplanStep->bIsStepVisible = PreplanStep->bIsStepActive;
+					PreplanDataActor->SetActorHiddenInGame(!PreplanStep->bIsStepVisible);
 				}
 			}
 		}
