@@ -82,7 +82,7 @@ struct CPATHFINDING_API FCPathNode
 
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = CPath)
-		FVector WorldLocation;
+		FVector WorldLocation = FVector::Zero();
 
 	// Normalized vector pointing to next node. ZeroVector on last node.
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = CPath)

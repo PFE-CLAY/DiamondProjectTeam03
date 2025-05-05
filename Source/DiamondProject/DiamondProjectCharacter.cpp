@@ -63,11 +63,11 @@ void ADiamondProjectCharacter::SetupPlayerInputComponent(UInputComponent* Player
 		//Interacting
 		EnhancedInputComponent->BindAction(InteractAction, ETriggerEvent::Started, this, &ADiamondProjectCharacter::Interact);
 
-		//Crouching
-		EnhancedInputComponent->BindAction(CrouchAction, ETriggerEvent::Started, this, &ADiamondProjectCharacter::Crouch);
-
 		//Mantling
 		EnhancedInputComponent->BindAction(MantleAction, ETriggerEvent::Started, this, &ADiamondProjectCharacter::Mantle);
+
+		//Pause
+		EnhancedInputComponent->BindAction(PauseAction, ETriggerEvent::Started, this, &ADiamondProjectCharacter::PressPause);
 		
 	}
 	else
@@ -108,12 +108,12 @@ void ADiamondProjectCharacter::Interact(const FInputActionValue& Value)
 	OnInteract.Broadcast();
 }
 
-void ADiamondProjectCharacter::Crouch(const FInputActionValue& Value)
-{
-	OnCrouch.Broadcast();
-}
-
 void ADiamondProjectCharacter::Mantle(const FInputActionValue& Value)
 {
 	OnMantle.Broadcast();
+}
+
+void ADiamondProjectCharacter::PressPause(const FInputActionValue& Value)
+{
+	OnPause.Broadcast();
 }
