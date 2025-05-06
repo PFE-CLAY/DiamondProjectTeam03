@@ -8,7 +8,7 @@
 #include "DiamondProject/DiamondProjectCharacter.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "Kismet/KismetMathLibrary.h"
-
+#include "AI/EnemySpawner.h"
 
 // Sets default values
 AEnemy::AEnemy()
@@ -89,6 +89,11 @@ void AEnemy::Shoot()
 		
 		SetNewAttackTimer();
 	}
+}
+
+void AEnemy::RemoveEnemyFromSpawnerList()
+{
+	EnemySpawner->SpawnedEnemies.Remove(this);
 }
 
 bool AEnemy::IsPlayerOnSight(FRotator Rotation, FVector Location)
