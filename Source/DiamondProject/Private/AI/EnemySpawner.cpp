@@ -3,7 +3,9 @@
 
 #include "AI/EnemySpawner.h"
 
+#include "AI/MosquitoEnemy.h"
 #include "Field/FieldSystemNodes.h"
+#include "Kismet/GameplayStatics.h"
 
 
 // Sets default values
@@ -24,8 +26,8 @@ void AEnemySpawner::BeginPlay()
 
 	if (!bShouldSpawnOnBeginplay) return;
 	
-	FTimerHandle TimerHandle;
 	GetWorldTimerManager().SetTimer(TimerHandle, this,  &AEnemySpawner::SpawnWave, WaveCooldown, bShouldLoopWaves);
+	
 }
 
 void AEnemySpawner::SpawnWave()
@@ -43,7 +45,21 @@ void AEnemySpawner::SpawnWave()
 
 	if (!bShouldIncrementWaves) return;
 	
-	WaveEnemyCount += IncrementalWaveEnemyCount;
+	if(WaveEnemyCount < MaxWaveEnemyCount){
+		WaveEnemyCount += IncrementalWaveEnemyCount;
+	}
+	
+}
+
+void AEnemySpawner::StopSpawn()
+{
+	GetWorldTimerManager().ClearTimer(TimerHandle);
+	TArray<AActor*> ExistingMosquitos;
+	UGameplayStatics::GetAllActorsOfClass(GetWorld(), AMosquitoEnemy::StaticClass(), ExistingMosquitos);
+	for (auto ExistingMosquito : ExistingMosquitos)
+	{
+		ExistingMosquito->Destroy();
+	}
 }
 
 FTransform AEnemySpawner::GetRandomTransform() const
