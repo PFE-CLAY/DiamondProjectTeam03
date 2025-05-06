@@ -32,6 +32,12 @@ void AEnemySpawner::BeginPlay()
 
 void AEnemySpawner::SpawnWave()
 {
+	if (SpawnedEnemies.Num() >= MaxEnemyCount) return;
+	
+	if (SpawnedEnemies.Num() + WaveEnemyCount > MaxEnemyCount){
+		WaveEnemyCount = MaxEnemyCount - SpawnedEnemies.Num();
+	}
+	
 	for (int i = 0; i < WaveEnemyCount; i++){
 		FActorSpawnParameters SpawnInfo;
 		SpawnInfo.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AdjustIfPossibleButAlwaysSpawn;
@@ -41,6 +47,8 @@ void AEnemySpawner::SpawnWave()
 		if(EnemySpawned == nullptr){
 			return;
 		}
+		SpawnedEnemies.Add(EnemySpawned);
+		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, FString::Printf(TEXT("%d"), SpawnedEnemies.Num()));
 	}
 
 	if (!bShouldIncrementWaves) return;
@@ -48,7 +56,6 @@ void AEnemySpawner::SpawnWave()
 	if(WaveEnemyCount < MaxWaveEnemyCount){
 		WaveEnemyCount += IncrementalWaveEnemyCount;
 	}
-	
 }
 
 void AEnemySpawner::StopSpawn()

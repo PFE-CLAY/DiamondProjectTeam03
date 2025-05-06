@@ -40,6 +40,9 @@ protected:
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Spawner)
 	UBoxComponent* VolumeBox;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Spawner)
+	uint8 MaxEnemyCount = 10;
 private:
 	UPROPERTY()
 	FTimerHandle TimerHandle;
@@ -47,6 +50,10 @@ private:
 public:
 	// Sets default values for this actor's properties
 	AEnemySpawner();
+
+	//Make a UPROPERTY array of the spawned enemies
+	UPROPERTY()
+	TArray<AActor*> SpawnedEnemies;
 
 protected:
 	// Called when the game starts or when spawned

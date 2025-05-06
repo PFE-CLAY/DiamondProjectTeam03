@@ -8,7 +8,7 @@
 #include "Components/BoxComponent.h"
 #include "Enemy.generated.h"
 
-
+class AEnemySpawner;
 
 UCLASS()
 class DIAMONDPROJECT_API AEnemy : public ACharacter
@@ -84,7 +84,9 @@ private:
 	UFUNCTION(BlueprintCallable, Category = "Enemy")
 	void Shoot();
 
-	
+	UFUNCTION(BlueprintCallable, Category = "Enemy")
+
+	void RemoveEnemyFromSpawnerList();
 	
 
 public:
@@ -100,5 +102,6 @@ public:
 	UFUNCTION()
 	UBehaviorTree* GetBehaviorTree() const;
 
-	
+	UPROPERTY()
+	TObjectPtr<AEnemySpawner> EnemySpawner = nullptr;
 };
