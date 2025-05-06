@@ -73,6 +73,12 @@ public:
  UFUNCTION(BlueprintPure, Category = Weapon)
  int GetCurrentAmmo() const;
 
+ UFUNCTION(BlueprintPure, Category = Weapon)
+ ADiamondProjectCharacter* GetCharacter() const;
+
+ UFUNCTION(BlueprintPure, Category = Weapon)
+ USoundBase* GetFireSound() const;
+
 private:
  bool IsFirePossible() const;
  void DecreaseAmmo();
