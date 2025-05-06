@@ -91,3 +91,4 @@ DiamondProject.sln.DotSettings.user
 !Plugins/**/*
 Plugins/**/Intermediate/*
 Plugins/**/*/*.pdb
+Plugins/CPathfinding/Binaries/Win64/UnrealEditor-CPathfinding.pdb

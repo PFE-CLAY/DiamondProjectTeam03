@@ -13,6 +13,9 @@ AAllied::AAllied()
 {
 	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
+	PhysicsHandle = CreateDefaultSubobject<UPhysicsHandleComponent>("PhysicsHandle");
+	GrabPoint = CreateDefaultSubobject<USceneComponent>("GrabPoint");
+	GrabPoint->SetupAttachment(GetMesh());
 	
 }
 
@@ -20,7 +23,10 @@ AAllied::AAllied()
 void AAllied::BeginPlay()
 {
 	Super::BeginPlay();
+	AlliedMesh = Cast<USkeletalMeshComponent>(GetMesh());
 	AIController = this->GetController<AAIController>();
+	GrabBoneName = AlliedMesh->GetBoneName(0);
+	
 	//AAIController::OnMoveCompleted();
 	//GEngine->AddOnScreenDebugMessage(-1, 10.f, FColor::Red, FString::Printf(TEXT("%lld"), PatrolPoints.Num()));
 	Patrol();
