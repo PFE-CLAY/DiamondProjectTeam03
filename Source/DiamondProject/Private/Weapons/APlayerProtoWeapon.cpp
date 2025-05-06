@@ -173,3 +173,15 @@ int UAPlayerProtoWeapon::GetCurrentAmmo() const
 {
     return CurrentAmmo;
 }
+
+ADiamondProjectCharacter* UAPlayerProtoWeapon::GetCharacter() const
+{
+    if (!Character) return nullptr;
+    return Character;
+}
+
+USoundBase* UAPlayerProtoWeapon::GetFireSound() const
+{
+    if (!FireSound) return nullptr;
+    return FireSound;
+}
