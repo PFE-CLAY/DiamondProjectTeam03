@@ -57,10 +57,17 @@ void UAPlayerProtoWeapon::PerformShot() const
 
     APlayerController* PlayerController = Cast<APlayerController>(Character->GetController());
     const FRotator SpawnRotation = PlayerController->PlayerCameraManager->GetCameraRotation();
-    const FVector SpawnLocation = GetOwner()->GetActorLocation() + SpawnRotation.RotateVector(MuzzleOffset);
+    const FVector SpawnLocation = PlayerController->PlayerCameraManager->GetCameraLocation();
 
     FHitResult Hit;
-    FVector EndLocation = SpawnLocation + (SpawnRotation.Vector() * 10000);
+    FVector EndLocation; 
+
+    if (Hit.GetActor() != nullptr){
+        EndLocation = Hit.ImpactPoint;
+    }
+    else{
+        EndLocation = SpawnLocation + (SpawnRotation.Vector() * 10000);
+    }
 
     FCollisionQueryParams collisionParams;
     collisionParams.AddIgnoredActor(Character);
@@ -71,7 +78,7 @@ void UAPlayerProtoWeapon::PerformShot() const
         ProcessHit(Hit, World);
     }
 
-    OnFire.Broadcast(CurrentAmmo, BHasHit, Hit.ImpactPoint);
+    OnFire.Broadcast(CurrentAmmo, SpawnLocation + (SpawnRotation.Vector() * 1000));
 }
 
 void UAPlayerProtoWeapon::ProcessHit(const FHitResult& Hit, UWorld* World) const
