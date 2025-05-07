@@ -13,8 +13,6 @@ UCLASS(Config=Game, DefaultConfig, meta = (DisplayName = "Level Selection Settin
 class DIAMONDPROJECT_API ULevelSelectionSettings : public UDeveloperSettings
 {
 	GENERATED_BODY()
-
-	ULevelSelectionSettings();
 public:
 	
 	UPROPERTY(Config, EditAnywhere, Category="Levels")

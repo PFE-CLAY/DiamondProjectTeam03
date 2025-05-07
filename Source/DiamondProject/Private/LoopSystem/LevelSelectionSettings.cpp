@@ -2,7 +2,3 @@
 
 
 #include "LoopSystem/LevelSelectionSettings.h"
-
-ULevelSelectionSettings::ULevelSelectionSettings()
-{
-}

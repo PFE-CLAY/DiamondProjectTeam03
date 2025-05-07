@@ -17,26 +17,28 @@ void ULoopSubsystem::ReloadScene()
 	}
 
 	const ULevelSelectionSettings* LevelSelectionSettings = GetDefault<ULevelSelectionSettings>();
-	FName sceneName = FName(*GetWorld()->GetName());
-	if (LevelSelectionSettings != nullptr)
+	if (LevelSelectionSettings == nullptr) return;
+	
+	OnSceneReloadEvent.Broadcast();
+	if (PreplanDreamSubtitlesArray.IsEmpty())
 	{
-		if (PreplanDreamSubtitlesArray.IsEmpty())
+		bool mainLevelNull = LevelSelectionSettings->MainLevel.IsNull();
+		if (!mainLevelNull)
 		{
-			if (LevelSelectionSettings->MainLevel != nullptr)
-			{
-				sceneName = FName(LevelSelectionSettings->MainLevel->GetName());
-			}
-		} else
+			UGameplayStatics::OpenLevelBySoftObjectPtr(this, LevelSelectionSettings->MainLevel, false);
+			return;
+		}
+	} else
+	{
+		bool dreamLevelNull = LevelSelectionSettings->DreamLevel.IsNull(); 
+		if (!dreamLevelNull)
 		{
-			if (LevelSelectionSettings->DreamLevel != nullptr)
-			{
-				sceneName = FName(LevelSelectionSettings->DreamLevel->GetName());
-			}
+			UGameplayStatics::OpenLevelBySoftObjectPtr(this, LevelSelectionSettings->DreamLevel, false);
+			return;
 		}
 	}
 	
-	OnSceneReloadEvent.Broadcast();
-	UGameplayStatics::OpenLevel(this, sceneName, false);
+	UGameplayStatics::OpenLevel(this, FName(*GetWorld()->GetName()), false);
 }
 
 bool ULoopSubsystem::IsAnyPreviousStepActive(const UPreplanStep* PreplanStep)
@@ -181,6 +183,11 @@ void ULoopSubsystem::ActivatePreplanStep(FString PreplanID)
 	}
 	
 	TObjectPtr<UPreplanStep> PreplanStep = PreplanStepPtr->Get();
+
+	if (PreplanStep->bIsStepActive)
+	{
+		return;
+	}
 	
 	bool bIsAnyPreviousStepActive = IsAnyPreviousStepActive(PreplanStep);
 
@@ -191,6 +198,7 @@ void ULoopSubsystem::ActivatePreplanStep(FString PreplanID)
 		if (PreplanStep->NbActivations == PreplanStep->PreplanData->NbActivationsRequired){
 			PreplanStep->bIsStepActive = true;
 			PreplanStep->PreplanData->SetActorHiddenInGame(false);
+			
 			if (PreplanStep->PreplanData->bShouldActivateDream &&
 				PreplanStep->PreplanData->DreamSubtitles != nullptr)
 			{
