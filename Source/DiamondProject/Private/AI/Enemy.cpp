@@ -93,7 +93,7 @@ void AEnemy::Shoot()
 
 void AEnemy::RemoveEnemyFromSpawnerList()
 {
-	EnemySpawner->SpawnedEnemies.Remove(this);
+	/*EnemySpawner->SpawnedEnemies.Remove(this);*/
 }
 
 bool AEnemy::IsPlayerOnSight(FRotator Rotation, FVector Location)
