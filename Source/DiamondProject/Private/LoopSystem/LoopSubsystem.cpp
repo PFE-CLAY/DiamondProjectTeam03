@@ -14,8 +14,12 @@ void ULoopSubsystem::ReloadScene()
 	for (auto PreplanStep : PreplanSteps){
 		PreplanStep.Value->PreplanData = nullptr;
 	}
-	
-	UGameplayStatics::OpenLevel(this, FName(*GetWorld()->GetName()), false);
+
+	OnSceneReloadEvent.Broadcast();
+	if (PreplanDreamSubtitlesArray.Num() > 0)
+	{
+		UGameplayStatics::OpenLevel(this, FName(*GetWorld()->GetName()), false);
+	} 
 }
 
 bool ULoopSubsystem::IsAnyPreviousStepActive(const UPreplanStep* PreplanStep)
@@ -38,10 +42,10 @@ bool ULoopSubsystem::IsAnyPreviousStepActive(const UPreplanStep* PreplanStep)
 				PreviousStep->Get()->bIsStepActive){
 				bIsPreviousStepActive = true;
 				break;
-				}
+			}
 		}
 	}
-	return true;
+	return bIsPreviousStepActive;
 }
 
 void ULoopSubsystem::InitializePreplanAdvices()
@@ -170,6 +174,11 @@ void ULoopSubsystem::ActivatePreplanStep(FString PreplanID)
 		if (PreplanStep->NbActivations == PreplanStep->PreplanData->NbActivationsRequired){
 			PreplanStep->bIsStepActive = true;
 			PreplanStep->PreplanData->SetActorHiddenInGame(false);
+			if (PreplanStep->PreplanData->bShouldActivateDream &&
+				PreplanStep->PreplanData->DreamSubtitles != nullptr)
+			{
+				PreplanDreamSubtitlesArray.Add(PreplanStep->PreplanData->DreamSubtitles);
+			}
 		}
 	}
 }
