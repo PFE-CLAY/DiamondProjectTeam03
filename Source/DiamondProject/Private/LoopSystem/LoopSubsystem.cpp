@@ -36,7 +36,7 @@ void ULoopSubsystem::ReloadScene()
 	}
 	
 	OnSceneReloadEvent.Broadcast();
-	//UGameplayStatics::OpenLevel(this, sceneName, false);
+	UGameplayStatics::OpenLevel(this, sceneName, false);
 }
 
 bool ULoopSubsystem::IsAnyPreviousStepActive(const UPreplanStep* PreplanStep)
