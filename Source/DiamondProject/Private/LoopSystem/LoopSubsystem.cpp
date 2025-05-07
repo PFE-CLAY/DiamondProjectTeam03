@@ -4,6 +4,7 @@
 #include "LoopSystem/LoopSubsystem.h"
 
 #include "Kismet/GameplayStatics.h"
+#include "LoopSystem/LevelSelectionSettings.h"
 #include "LoopSystem/PreplanAdvice.h"
 #include "LoopSystem/PreplanData.h"
 #include "LoopSystem/PreplanStep.h"
@@ -15,8 +16,27 @@ void ULoopSubsystem::ReloadScene()
 		PreplanStep.Value->PreplanData = nullptr;
 	}
 
+	const ULevelSelectionSettings* LevelSelectionSettings = GetDefault<ULevelSelectionSettings>();
+	FName sceneName = FName(*GetWorld()->GetName());
+	if (LevelSelectionSettings != nullptr)
+	{
+		if (PreplanDreamSubtitlesArray.IsEmpty())
+		{
+			if (LevelSelectionSettings->MainLevel != nullptr)
+			{
+				sceneName = FName(LevelSelectionSettings->MainLevel->GetName());
+			}
+		} else
+		{
+			if (LevelSelectionSettings->DreamLevel != nullptr)
+			{
+				sceneName = FName(LevelSelectionSettings->DreamLevel->GetName());
+			}
+		}
+	}
+	
 	OnSceneReloadEvent.Broadcast();
-	UGameplayStatics::OpenLevel(this, FName(*GetWorld()->GetName()), false);
+	//UGameplayStatics::OpenLevel(this, sceneName, false);
 }
 
 bool ULoopSubsystem::IsAnyPreviousStepActive(const UPreplanStep* PreplanStep)
