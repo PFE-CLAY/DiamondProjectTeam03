@@ -21,6 +21,9 @@ protected:
 	int WaveEnemyCount = 3;
 
 	UPROPERTY(EditAnywhere, Category = Wave)
+	int MaxWaveEnemyCount = 5;
+
+	UPROPERTY(EditAnywhere, Category = Wave)
 	int IncrementalWaveEnemyCount = 1;
 
 	UPROPERTY(EditAnywhere, Category = Wave)
@@ -38,9 +41,19 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Spawner)
 	UBoxComponent* VolumeBox;
 
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Spawner)
+	uint8 MaxEnemyCount = 10;
+private:
+	UPROPERTY()
+	FTimerHandle TimerHandle;
+	
 public:
 	// Sets default values for this actor's properties
 	AEnemySpawner();
+
+	//Make a UPROPERTY array of the spawned enemies
+	UPROPERTY()
+	TArray<AActor*> SpawnedEnemies;
 
 protected:
 	// Called when the game starts or when spawned
@@ -51,6 +64,9 @@ private:
 	UFUNCTION(BlueprintCallable, Category = EnemySpawner)
 	void SpawnWave();
 
+	UFUNCTION(BlueprintCallable, Category = EnemySpawner)
+	void StopSpawn();
+	
 	UFUNCTION()
 	FTransform GetRandomTransform() const;
 
