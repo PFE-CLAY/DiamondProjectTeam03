@@ -16,10 +16,7 @@ void ULoopSubsystem::ReloadScene()
 	}
 
 	OnSceneReloadEvent.Broadcast();
-	if (PreplanDreamSubtitlesArray.Num() > 0)
-	{
-		UGameplayStatics::OpenLevel(this, FName(*GetWorld()->GetName()), false);
-	} 
+	UGameplayStatics::OpenLevel(this, FName(*GetWorld()->GetName()), false);
 }
 
 bool ULoopSubsystem::IsAnyPreviousStepActive(const UPreplanStep* PreplanStep)
