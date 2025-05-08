@@ -1586,7 +1586,7 @@
     "Type": "User",
     "GUID": "{9DC5CBA4-02D0-4677-A565-21ECA413E694}",
     "Language": "SFX",
-    "Hash": "{81D195B3-FE65-F957-6E4A-37BDB6AD1487}",
+    "Hash": "{0ED1688D-F00B-3653-9847-B5985A8B299A}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\AMB_SB",
     "ShortName": "AMB_SB",
     "Path": "AMB_SB.bnk",
@@ -2209,6 +2209,6 @@
     "Path": "SFX_SB.bnk"
    }
   ],
-  "FileHash": "{97F55876-9904-ED14-D0F9-1E76105354FE}"
+  "FileHash": "{698956C4-10C7-0B9D-4807-2CCF5D6D297A}"
  }
 }

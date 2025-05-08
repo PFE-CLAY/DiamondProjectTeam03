@@ -601,7 +601,7 @@
 				<AuxBus Id="3571340017" Name="RVB_Hub" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Hub" GUID="{D499EBE4-F26A-48E5-B89D-1F7C43D829E3}"/>
 			</AuxBusses>
 		</SoundBank>
-		<SoundBank Id="3256182613" Type="User" GUID="{9DC5CBA4-02D0-4677-A565-21ECA413E694}" Language="SFX" Hash="{81D195B3-FE65-F957-6E4A-37BDB6AD1487}">
+		<SoundBank Id="3256182613" Type="User" GUID="{9DC5CBA4-02D0-4677-A565-21ECA413E694}" Language="SFX" Hash="{0ED1688D-F00B-3653-9847-B5985A8B299A}">
 			<ObjectPath>\SoundBanks\SoundBanks_WU\AMB_SB</ObjectPath>
 			<ShortName>AMB_SB</ShortName>
 			<Path>AMB_SB.bnk</Path>
@@ -871,5 +871,5 @@
 			<Path>SFX_SB.bnk</Path>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{3BA8A44F-0A0D-5A6E-4A07-FF1E5109AD31}</FileHash>
+	<FileHash>{32C25BCC-AE8F-F3E4-9279-0A401AE14D05}</FileHash>
 </SoundBanksInfo>
