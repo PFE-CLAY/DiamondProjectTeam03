@@ -3,7 +3,9 @@
 
 #include "AI/EnemySpawner.h"
 
-#include "Field/FieldSystemNodes.h"
+#include "VectorTypes.h"
+#include "Kismet/GameplayStatics.h"
+#include "Math/UnitConversion.h"
 
 
 // Sets default values
@@ -22,29 +24,9 @@ void AEnemySpawner::BeginPlay()
 {
 	Super::BeginPlay();
 
-	if (!bShouldSpawnOnBeginplay) return;
 	
-	FTimerHandle TimerHandle;
-	GetWorldTimerManager().SetTimer(TimerHandle, this,  &AEnemySpawner::SpawnWave, WaveCooldown, bShouldLoopWaves);
 }
 
-void AEnemySpawner::SpawnWave()
-{
-	for (int i = 0; i < WaveEnemyCount; i++){
-		FActorSpawnParameters SpawnInfo;
-		SpawnInfo.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AdjustIfPossibleButAlwaysSpawn;
-		FTransform SpawnTransform = GetRandomTransform();
-		AActor* EnemySpawned = GetWorld()->SpawnActor(EnemyToSpawn, &SpawnTransform , SpawnInfo);
-		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Purple, "Spawned");
-		if(EnemySpawned == nullptr){
-			return;
-		}
-	}
-
-	if (!bShouldIncrementWaves) return;
-	
-	WaveEnemyCount += IncrementalWaveEnemyCount;
-}
 
 FTransform AEnemySpawner::GetRandomTransform() const
 {
@@ -57,11 +39,32 @@ FTransform AEnemySpawner::GetRandomTransform() const
 	return Transform;
 }
 
+void AEnemySpawner::SpawnMonster(){
+	FActorSpawnParameters SpawnInfo;
+	SpawnInfo.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AdjustIfPossibleButAlwaysSpawn;
+	FTransform SpawnTransform = GetRandomTransform();
+	AActor* EnemySpawned = GetWorld()->SpawnActor(EnemyToSpawn, &SpawnTransform , SpawnInfo);
+	/*GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Purple, "Spawned");*/
+	
+}
 
 
 // Called every frame
 void AEnemySpawner::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+}
+
+bool AEnemySpawner::IsInActivationRange(float Distance, AActor* Player)
+{
+	if(Player==nullptr) return false;
+	return FVector::Distance(GetActorLocation(), Player->GetActorLocation()) < Distance;
+}
+
+void AEnemySpawner::DebugDistance()
+{
+	if(bShouldShowDebug){
+		DrawDebugSphere(GetWorld(), RootComponent->GetComponentLocation(), DistanceFromPlayer, 50, FColor::Orange, false, 100.f);
+	}
 }
 

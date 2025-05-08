@@ -7,7 +7,7 @@
 #include "APlayerProtoWeapon.generated.h"
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnDropped, ADiamondProjectCharacter*, PickUpCharacter);
-DECLARE_DYNAMIC_MULTICAST_DELEGATE_ThreeParams(FOnFire, int, CurrentAmmo, bool, HasHit, FVector, HitLocation);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnFire, int, CurrentAmmo, FVector, HitLocation);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnUpdateAmmo, int, newAmmoCount);
 
 UCLASS(Blueprintable, BlueprintType, ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
@@ -72,6 +72,12 @@ public:
 
  UFUNCTION(BlueprintPure, Category = Weapon)
  int GetCurrentAmmo() const;
+
+ UFUNCTION(BlueprintPure, Category = Weapon)
+ ADiamondProjectCharacter* GetCharacter() const;
+
+ UFUNCTION(BlueprintPure, Category = Weapon)
+ USoundBase* GetFireSound() const;
 
 private:
  bool IsFirePossible() const;
