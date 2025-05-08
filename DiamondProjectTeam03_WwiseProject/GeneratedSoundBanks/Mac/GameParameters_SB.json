@@ -1,0 +1,21 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Mac",
+  "BasePlatform": "Mac",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "150",
+  "SoundBanks": [
+   {
+    "Id": "1887645185",
+    "Type": "User",
+    "GUID": "{037ADDDE-3101-4265-8FA2-DE81635A0FF9}",
+    "Language": "SFX",
+    "Hash": "{3D210B18-ABBC-9546-1359-DBBDF0F73AA7}",
+    "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\GameParameters_SB",
+    "ShortName": "GameParameters_SB",
+    "Path": "GameParameters_SB.bnk"
+   }
+  ],
+  "FileHash": "{424F7785-397C-6157-D379-E16987B3192D}"
+ }
+}

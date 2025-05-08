@@ -1,6 +1,5 @@
 Event	ID	Name			Wwise Object Path	Notes
 	294373914	Play_MC_FOL_FT_SW			\MC_WU\Play_MC_FOL_FT_SW	
-	926424941	Play_MC_SFX_Dash_RC			\MC_WU\Play_MC_SFX_Dash_RC	
 	1177297501	Play_MC_SFX_Gun_Shoot_RC			\MC_WU\Play_MC_SFX_Gun_Shoot_RC	
 
 Switch Group	ID	Name			Wwise Object Path	Notes
@@ -12,12 +11,15 @@ Switch	ID	Name	Switch Group			Notes
 	2473969246	Metal	SW_Material			
 
 Audio Bus	ID	Name			Wwise Object Path	Notes
-	361263376	FOES_Invisible			\Master_WU\Master\FOES_Invisible	
-	1117531639	AMB			\Master_WU\Master\AMB	
+	109159411	Game_Global			\Master_WU\Master\Game_Global	
+	393239870	SFX			\Master_WU\Master\Game_Global\SFX	
+	1117531639	AMB			\Master_WU\Master\Game_Global\AMB	
 	1551306167	UI			\Master_WU\Master\UI	
-	1685527061	MC			\Master_WU\Master\MC	
-	2290178407	FOES_Tourelle			\Master_WU\Master\FOES_Tourelle	
-	3623095082	FOES_Flying			\Master_WU\Master\FOES_Flying	
+	1685527061	MC			\Master_WU\Master\Game_Global\MC	
+	2290178407	FOES_Tourelle			\Master_WU\Master\Game_Global\FOES_Tourelle	
+	3313685232	Voices			\Master_WU\Master\Voices	
+	3623095082	FOES_Flying			\Master_WU\Master\Game_Global\FOES_Flying	
+	3991942870	Music			\Master_WU\Master\Music	
 	4056684167	Master			\Master_WU\Master	
 
 Auxiliary Bus	ID	Name			Wwise Object Path	Notes
@@ -40,18 +42,15 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	99306815	MC_FT_Metal_01	G:\Unreal\Unreal_Projects\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\AMB\SP\MC_FT_Metal_01_818F3B66.wem		\Actor-Mixer Hierarchy\MC_WU\MC_FOL\MC_FOL_FT_SW\MC_FOL_FT_Metal\MC_FT_Metal_01		25010
 	104687879	MC_FT_Metal_05	G:\Unreal\Unreal_Projects\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\AMB\SP\MC_FT_Metal_05_818F3B66.wem		\Actor-Mixer Hierarchy\MC_WU\MC_FOL\MC_FOL_FT_SW\MC_FOL_FT_Metal\MC_FT_Metal_05		28304
 	109232168	MC_FT_Sand_10	G:\Unreal\Unreal_Projects\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\AMB\SP\MC_FT_Sand_10_818F3B66.wem		\Actor-Mixer Hierarchy\MC_WU\MC_FOL\MC_FOL_FT_SW\MC_FOL_FT_Sand\MC_FT_Sand_10		62918
-	131763475	MC_SFX_Dash_05	G:\Unreal\Unreal_Projects\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\MC_SFX_Dash_05_818F3B66.wem		\Actor-Mixer Hierarchy\MC_WU\MC_SFX\MC_SFX_Dash_RC\MC_SFX_Dash_05		275312
 	163843360	MC_FT_Concrete_12	G:\Unreal\Unreal_Projects\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\AMB\SP\MC_FT_Concrete_12_818F3B66.wem		\Actor-Mixer Hierarchy\MC_WU\MC_FOL\MC_FOL_FT_SW\MC_FOL_FT_Concrete\MC_FT_Concrete_12		22378
 	174467291	MC_FT_Metal_12	G:\Unreal\Unreal_Projects\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\AMB\SP\MC_FT_Metal_12_818F3B66.wem		\Actor-Mixer Hierarchy\MC_WU\MC_FOL\MC_FOL_FT_SW\MC_FOL_FT_Metal\MC_FT_Metal_12		28310
 	211150638	MC_FT_Sand_01	G:\Unreal\Unreal_Projects\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\AMB\SP\MC_FT_Sand_01_818F3B66.wem		\Actor-Mixer Hierarchy\MC_WU\MC_FOL\MC_FOL_FT_SW\MC_FOL_FT_Sand\MC_FT_Sand_01		73218
 	225595462	MC_FT_Metal_11	G:\Unreal\Unreal_Projects\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\AMB\SP\MC_FT_Metal_11_818F3B66.wem		\Actor-Mixer Hierarchy\MC_WU\MC_FOL\MC_FOL_FT_SW\MC_FOL_FT_Metal\MC_FT_Metal_11		30804
 	267703531	MC_FT_Concrete_05	G:\Unreal\Unreal_Projects\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\AMB\SP\MC_FT_Concrete_05_818F3B66.wem		\Actor-Mixer Hierarchy\MC_WU\MC_FOL\MC_FOL_FT_SW\MC_FOL_FT_Concrete\MC_FT_Concrete_05		22468
 	268013152	MC_FT_Concrete_07	G:\Unreal\Unreal_Projects\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\AMB\SP\MC_FT_Concrete_07_818F3B66.wem		\Actor-Mixer Hierarchy\MC_WU\MC_FOL\MC_FOL_FT_SW\MC_FOL_FT_Concrete\MC_FT_Concrete_07		21866
-	280528909	MC_SFX_Dash_01	G:\Unreal\Unreal_Projects\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\MC_SFX_Dash_01_818F3B66.wem		\Actor-Mixer Hierarchy\MC_WU\MC_SFX\MC_SFX_Dash_RC\MC_SFX_Dash_01		288096
 	300270566	MC_FT_Metal_06	G:\Unreal\Unreal_Projects\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\AMB\SP\MC_FT_Metal_06_818F3B66.wem		\Actor-Mixer Hierarchy\MC_WU\MC_FOL\MC_FOL_FT_SW\MC_FOL_FT_Metal\MC_FT_Metal_06		20008
 	387146543	MC_FT_Sand_05	G:\Unreal\Unreal_Projects\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\AMB\SP\MC_FT_Sand_05_818F3B66.wem		\Actor-Mixer Hierarchy\MC_WU\MC_FOL\MC_FOL_FT_SW\MC_FOL_FT_Sand\MC_FT_Sand_05		79380
 	402066446	MC_FT_Metal_03	G:\Unreal\Unreal_Projects\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\AMB\SP\MC_FT_Metal_03_818F3B66.wem		\Actor-Mixer Hierarchy\MC_WU\MC_FOL\MC_FOL_FT_SW\MC_FOL_FT_Metal\MC_FT_Metal_03		28952
-	411674623	MC_SFX_Dash_02	G:\Unreal\Unreal_Projects\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\MC_SFX_Dash_02_818F3B66.wem		\Actor-Mixer Hierarchy\MC_WU\MC_SFX\MC_SFX_Dash_RC\MC_SFX_Dash_02		345696
 	421361594	MC_SFX_Gun_Shoot_05	G:\Unreal\Unreal_Projects\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\MC_SFX_Gun_Shoot_05_818F3B66.wem		\Actor-Mixer Hierarchy\MC_WU\MC_SFX\MC_SFX_Gun_Shoot_RC\MC_SFX_Gun_Shoot_05		288096
 	480059959	MC_FT_Concrete_02	G:\Unreal\Unreal_Projects\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\AMB\SP\MC_FT_Concrete_02_818F3B66.wem		\Actor-Mixer Hierarchy\MC_WU\MC_FOL\MC_FOL_FT_SW\MC_FOL_FT_Concrete\MC_FT_Concrete_02		22122
 	534496258	MC_FT_Concrete_11	G:\Unreal\Unreal_Projects\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\AMB\SP\MC_FT_Concrete_11_818F3B66.wem		\Actor-Mixer Hierarchy\MC_WU\MC_FOL\MC_FOL_FT_SW\MC_FOL_FT_Concrete\MC_FT_Concrete_11		21842
@@ -69,10 +68,8 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	816346842	MC_FT_Concrete_09	G:\Unreal\Unreal_Projects\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\AMB\SP\MC_FT_Concrete_09_818F3B66.wem		\Actor-Mixer Hierarchy\MC_WU\MC_FOL\MC_FOL_FT_SW\MC_FOL_FT_Concrete\MC_FT_Concrete_09		21220
 	838939217	MC_FT_Sand_04	G:\Unreal\Unreal_Projects\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\AMB\SP\MC_FT_Sand_04_818F3B66.wem		\Actor-Mixer Hierarchy\MC_WU\MC_FOL\MC_FOL_FT_SW\MC_FOL_FT_Sand\MC_FT_Sand_04		70176
 	888066358	MC_FT_Metal_07	G:\Unreal\Unreal_Projects\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\AMB\SP\MC_FT_Metal_07_818F3B66.wem		\Actor-Mixer Hierarchy\MC_WU\MC_FOL\MC_FOL_FT_SW\MC_FOL_FT_Metal\MC_FT_Metal_07		29958
-	890446006	MC_SFX_Dash_03	G:\Unreal\Unreal_Projects\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\MC_SFX_Dash_03_818F3B66.wem		\Actor-Mixer Hierarchy\MC_WU\MC_SFX\MC_SFX_Dash_RC\MC_SFX_Dash_03		212692
 	898538319	MC_FT_Metal_04	G:\Unreal\Unreal_Projects\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\AMB\SP\MC_FT_Metal_04_818F3B66.wem		\Actor-Mixer Hierarchy\MC_WU\MC_FOL\MC_FOL_FT_SW\MC_FOL_FT_Metal\MC_FT_Metal_04		31554
 	910413546	MC_FT_Sand_06	G:\Unreal\Unreal_Projects\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\AMB\SP\MC_FT_Sand_06_818F3B66.wem		\Actor-Mixer Hierarchy\MC_WU\MC_FOL\MC_FOL_FT_SW\MC_FOL_FT_Sand\MC_FT_Sand_06		62956
-	925500281	MC_SFX_Dash_04	G:\Unreal\Unreal_Projects\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\MC_SFX_Dash_04_818F3B66.wem		\Actor-Mixer Hierarchy\MC_WU\MC_SFX\MC_SFX_Dash_RC\MC_SFX_Dash_04		313696
 	967065821	MC_FT_Sand_11	G:\Unreal\Unreal_Projects\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\AMB\SP\MC_FT_Sand_11_818F3B66.wem		\Actor-Mixer Hierarchy\MC_WU\MC_FOL\MC_FOL_FT_SW\MC_FOL_FT_Sand\MC_FT_Sand_11		66654
 	1036129781	MC_FT_Concrete_10	G:\Unreal\Unreal_Projects\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\AMB\SP\MC_FT_Concrete_10_818F3B66.wem		\Actor-Mixer Hierarchy\MC_WU\MC_FOL\MC_FOL_FT_SW\MC_FOL_FT_Concrete\MC_FT_Concrete_10		23436
 
