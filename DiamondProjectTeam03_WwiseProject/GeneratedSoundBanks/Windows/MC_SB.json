@@ -10,7 +10,7 @@
     "Type": "User",
     "GUID": "{ADC2D189-6608-4828-BC9C-6EF6F90834DB}",
     "Language": "SFX",
-    "Hash": "{C9FF9A11-CEFE-F308-6C7D-5A86C3DED7AB}",
+    "Hash": "{7A8AC98D-B07D-8D68-6B54-A3DC2A5DE17E}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\MC_SB",
     "ShortName": "MC_SB",
     "Path": "MC_SB.bnk",
@@ -104,14 +104,6 @@
       "CachePath": "SFX/AMB/SP/MC_FT_Sand_10_818F3B66.wem"
      },
      {
-      "Id": "131763475",
-      "Language": "SFX",
-      "Streaming": "false",
-      "Location": "Memory",
-      "ShortName": "MC_SFX_Dash_05.wav",
-      "CachePath": "SFX/MC_SFX_Dash_05_818F3B66.wem"
-     },
-     {
       "Id": "163843360",
       "Language": "SFX",
       "Streaming": "false",
@@ -160,14 +152,6 @@
       "CachePath": "SFX/AMB/SP/MC_FT_Concrete_07_818F3B66.wem"
      },
      {
-      "Id": "280528909",
-      "Language": "SFX",
-      "Streaming": "false",
-      "Location": "Memory",
-      "ShortName": "MC_SFX_Dash_01.wav",
-      "CachePath": "SFX/MC_SFX_Dash_01_818F3B66.wem"
-     },
-     {
       "Id": "300270566",
       "Language": "SFX",
       "Streaming": "false",
@@ -190,14 +174,6 @@
       "Location": "Memory",
       "ShortName": "AMB\\SP\\MC_FT_Metal_03.wav",
       "CachePath": "SFX/AMB/SP/MC_FT_Metal_03_818F3B66.wem"
-     },
-     {
-      "Id": "411674623",
-      "Language": "SFX",
-      "Streaming": "false",
-      "Location": "Memory",
-      "ShortName": "MC_SFX_Dash_02.wav",
-      "CachePath": "SFX/MC_SFX_Dash_02_818F3B66.wem"
      },
      {
       "Id": "421361594",
@@ -336,14 +312,6 @@
       "CachePath": "SFX/AMB/SP/MC_FT_Metal_07_818F3B66.wem"
      },
      {
-      "Id": "890446006",
-      "Language": "SFX",
-      "Streaming": "false",
-      "Location": "Memory",
-      "ShortName": "MC_SFX_Dash_03.wav",
-      "CachePath": "SFX/MC_SFX_Dash_03_818F3B66.wem"
-     },
-     {
       "Id": "898538319",
       "Language": "SFX",
       "Streaming": "false",
@@ -358,14 +326,6 @@
       "Location": "Memory",
       "ShortName": "AMB\\SP\\MC_FT_Sand_06.wav",
       "CachePath": "SFX/AMB/SP/MC_FT_Sand_06_818F3B66.wem"
-     },
-     {
-      "Id": "925500281",
-      "Language": "SFX",
-      "Streaming": "false",
-      "Location": "Memory",
-      "ShortName": "MC_SFX_Dash_04.wav",
-      "CachePath": "SFX/MC_SFX_Dash_04_818F3B66.wem"
      },
      {
       "Id": "967065821",
@@ -548,32 +508,6 @@
       ]
      },
      {
-      "Id": "926424941",
-      "Name": "Play_MC_SFX_Dash_RC",
-      "ObjectPath": "\\Events\\MC_WU\\Play_MC_SFX_Dash_RC",
-      "GUID": "{B806ED59-4ACB-4371-BE4B-1518B580024B}",
-      "DurationType": "OneShot",
-      "DurationMin": "1.1072708",
-      "DurationMax": "1.8",
-      "MediaRefs": [
-       {
-        "Id": "131763475"
-       },
-       {
-        "Id": "280528909"
-       },
-       {
-        "Id": "411674623"
-       },
-       {
-        "Id": "890446006"
-       },
-       {
-        "Id": "925500281"
-       }
-      ]
-     },
-     {
       "Id": "1177297501",
       "Name": "Play_MC_SFX_Gun_Shoot_RC",
       "ObjectPath": "\\Events\\MC_WU\\Play_MC_SFX_Gun_Shoot_RC",
@@ -602,15 +536,21 @@
     ],
     "Busses": [
      {
-      "Id": "361263376",
-      "Name": "FOES_Invisible",
-      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\FOES_Invisible",
-      "GUID": "{19573DBC-4DB5-4746-8ACF-EBDC3F32E124}"
+      "Id": "109159411",
+      "Name": "Game_Global",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\Game_Global",
+      "GUID": "{FAD5C029-0A02-4BD2-97F7-F8C20B7A95BD}"
+     },
+     {
+      "Id": "393239870",
+      "Name": "SFX",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\Game_Global\\SFX",
+      "GUID": "{EB4CE24D-8196-408E-9775-5E8EEFE98495}"
      },
      {
       "Id": "1117531639",
       "Name": "AMB",
-      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\AMB",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\Game_Global\\AMB",
       "GUID": "{C1595F21-FBBF-4B04-AC1A-78D86879A937}"
      },
      {
@@ -622,20 +562,32 @@
      {
       "Id": "1685527061",
       "Name": "MC",
-      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\MC",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\Game_Global\\MC",
       "GUID": "{B3079877-B26F-4239-A3AB-9C7AFFCBC797}"
      },
      {
       "Id": "2290178407",
       "Name": "FOES_Tourelle",
-      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\FOES_Tourelle",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\Game_Global\\FOES_Tourelle",
       "GUID": "{D783D57E-4B6F-4101-8F5F-FD96F0409170}"
+     },
+     {
+      "Id": "3313685232",
+      "Name": "Voices",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\Voices",
+      "GUID": "{00AA482D-3F12-46A5-8177-E8A172D08E63}"
      },
      {
       "Id": "3623095082",
       "Name": "FOES_Flying",
-      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\FOES_Flying",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\Game_Global\\FOES_Flying",
       "GUID": "{439831F9-AA50-4CD2-98C3-ACD8B187380E}"
+     },
+     {
+      "Id": "3991942870",
+      "Name": "Music",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\Music",
+      "GUID": "{08156595-7637-4348-AC3C-2EDE3FCCB08F}"
      },
      {
       "Id": "4056684167",
@@ -701,6 +653,6 @@
     ]
    }
   ],
-  "FileHash": "{4083A38A-97C2-DB73-1183-76042702591D}"
+  "FileHash": "{A58BBB99-51A8-4634-11FD-4B8BBB7EA68B}"
  }
 }

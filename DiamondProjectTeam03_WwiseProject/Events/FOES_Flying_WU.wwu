@@ -6,6 +6,30 @@
 				<Property Name="Color" Type="int16" Value="11"/>
 				<Property Name="OverrideColor" Type="bool" Value="True"/>
 			</PropertyList>
+			<ChildrenList>
+				<Event Name="Play_FOES_SFX_Flying_Shoot_RC" ID="{615B6DF4-5110-477A-ADAD-83075E2A2CC2}">
+					<ChildrenList>
+						<Action Name="" ID="{C2309B9B-567E-4D71-BFD5-9E9A0685BAEB}" ShortID="451631418">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="FOES_SFX_Flying_Shoot_RC" ID="{E2152439-2479-4224-B3D4-C681FFE80E29}" WorkUnitID="{15E07612-CB6D-4DA7-B6B8-69AB554425DC}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_FOES_SFX_Flying_Idle_LP" ID="{CF4E623B-F60A-4740-B500-0E5586E75310}">
+					<ChildrenList>
+						<Action Name="" ID="{E50DE6E2-E992-4720-A39E-FF0E4AF436CE}" ShortID="620470684">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="FOES_SFX_Flying_Idle_LP" ID="{193AC035-043B-427C-8112-7F8CBCD6C80B}" WorkUnitID="{15E07612-CB6D-4DA7-B6B8-69AB554425DC}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+			</ChildrenList>
 		</WorkUnit>
 	</Events>
 </WwiseDocument>

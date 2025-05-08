@@ -10,7 +10,7 @@
     "Type": "User",
     "GUID": "{701ECBBD-9C7B-4030-8CDB-749EE5D1C7B9}",
     "Language": "SFX",
-    "Hash": "{BDF6387D-0F39-9638-6F22-35B9FFDDB025}",
+    "Hash": "{D050A5DA-AB44-335B-9776-7E03A43F726C}",
     "ObjectPath": "Init",
     "ShortName": "Init",
     "Path": "Init.bnk",
@@ -46,15 +46,21 @@
     },
     "Busses": [
      {
-      "Id": "361263376",
-      "Name": "FOES_Invisible",
-      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\FOES_Invisible",
-      "GUID": "{19573DBC-4DB5-4746-8ACF-EBDC3F32E124}"
+      "Id": "109159411",
+      "Name": "Game_Global",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\Game_Global",
+      "GUID": "{FAD5C029-0A02-4BD2-97F7-F8C20B7A95BD}"
+     },
+     {
+      "Id": "393239870",
+      "Name": "SFX",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\Game_Global\\SFX",
+      "GUID": "{EB4CE24D-8196-408E-9775-5E8EEFE98495}"
      },
      {
       "Id": "1117531639",
       "Name": "AMB",
-      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\AMB",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\Game_Global\\AMB",
       "GUID": "{C1595F21-FBBF-4B04-AC1A-78D86879A937}"
      },
      {
@@ -66,19 +72,25 @@
      {
       "Id": "1685527061",
       "Name": "MC",
-      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\MC",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\Game_Global\\MC",
       "GUID": "{B3079877-B26F-4239-A3AB-9C7AFFCBC797}"
      },
      {
       "Id": "2290178407",
       "Name": "FOES_Tourelle",
-      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\FOES_Tourelle",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\Game_Global\\FOES_Tourelle",
       "GUID": "{D783D57E-4B6F-4101-8F5F-FD96F0409170}"
+     },
+     {
+      "Id": "3313685232",
+      "Name": "Voices",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\Voices",
+      "GUID": "{00AA482D-3F12-46A5-8177-E8A172D08E63}"
      },
      {
       "Id": "3623095082",
       "Name": "FOES_Flying",
-      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\FOES_Flying",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\Game_Global\\FOES_Flying",
       "GUID": "{439831F9-AA50-4CD2-98C3-ACD8B187380E}"
      },
      {
@@ -86,6 +98,12 @@
       "Name": "Master Audio Bus",
       "ObjectPath": "\\Master-Mixer Hierarchy\\Default Work Unit\\Master Audio Bus",
       "GUID": "{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}"
+     },
+     {
+      "Id": "3991942870",
+      "Name": "Music",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\Music",
+      "GUID": "{08156595-7637-4348-AC3C-2EDE3FCCB08F}"
      },
      {
       "Id": "4056684167",
@@ -121,6 +139,14 @@
       "GUID": "{D499EBE4-F26A-48E5-B89D-1F7C43D829E3}"
      }
     ],
+    "GameParameters": [
+     {
+      "Id": "3590742338",
+      "Name": "RTPC_Speed_Flying",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\RTPC_Speed_Flying",
+      "GUID": "{4A0C67E7-2443-47A8-B5EB-86C8F65C73EB}"
+     }
+    ],
     "SwitchGroups": [
      {
       "Id": "757195373",
@@ -151,6 +177,6 @@
     ]
    }
   ],
-  "FileHash": "{14940078-EE3D-83F1-5E76-5C369927C032}"
+  "FileHash": "{084FEEE4-B28C-561F-47FF-BE84B96A4BEA}"
  }
 }

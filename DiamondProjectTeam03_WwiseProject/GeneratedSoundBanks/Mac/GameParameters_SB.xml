@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SoundBanksInfo Platform="Mac" BasePlatform="Mac" SchemaVersion="16" SoundBankVersion="150">
+	<SoundBanks>
+		<SoundBank Id="1887645185" Type="User" GUID="{037ADDDE-3101-4265-8FA2-DE81635A0FF9}" Language="SFX" Hash="{3D210B18-ABBC-9546-1359-DBBDF0F73AA7}">
+			<ObjectPath>\SoundBanks\SoundBanks_WU\GameParameters_SB</ObjectPath>
+			<ShortName>GameParameters_SB</ShortName>
+			<Path>GameParameters_SB.bnk</Path>
+		</SoundBank>
+	</SoundBanks>
+	<FileHash>{7698BF43-45A6-6692-20BA-DD259178FBB3}</FileHash>
+</SoundBanksInfo>
