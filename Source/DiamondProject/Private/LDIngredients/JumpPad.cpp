@@ -57,6 +57,8 @@ void AJumpPad::OnOverlapBegin(class UPrimitiveComponent* OverlappedComponent, cl
 		JumpPadMesh->SetMaterial(0, CooldownMaterial);
 		GetWorldTimerManager().SetTimer(TimerHandle, this, &AJumpPad::ResetJump, CooldownDuration, false);
 		bCanBounce = false;
+
+		JumpadJump.Broadcast();
 	}
 	else if (UPrimitiveComponent* PrimComp = Cast<UPrimitiveComponent>(OtherComp))
 	{

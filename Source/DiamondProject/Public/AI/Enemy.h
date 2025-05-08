@@ -10,6 +10,8 @@
 
 class AEnemySpawner;
 
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnEnemyShoot);
+
 UCLASS()
 class DIAMONDPROJECT_API AEnemy : public ACharacter
 {
@@ -104,4 +106,7 @@ public:
 
 	UPROPERTY()
 	TObjectPtr<AEnemySpawner> EnemySpawner = nullptr;
+
+	UPROPERTY(BlueprintAssignable, Category="Sunlight Detection")
+	FOnEnemyShoot OnEnemyShoot;
 };

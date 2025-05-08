@@ -2,7 +2,6 @@
 
 
 #include "AI/Enemy.h"
-
 #include "AI/ProjectileEnemy.h"
 #include "Components/BoxComponent.h"
 #include "DiamondProject/DiamondProjectCharacter.h"
@@ -78,6 +77,7 @@ void AEnemy::Shoot()
 		AActor* ProjectileSpawned = nullptr;
 		if (GetWorld()) {
 			ProjectileSpawned = GetWorld()->SpawnActor(Projectile, &Location, &Rotation);
+			OnEnemyShoot.Broadcast();
 		}
 		
 		if(ProjectileSpawned == nullptr){

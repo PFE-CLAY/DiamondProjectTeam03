@@ -7,6 +7,8 @@
 #include "GameFramework/Actor.h"
 #include "JumpPad.generated.h"
 
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnJumpadJump);
+
 UCLASS()
 class DIAMONDPROJECT_API AJumpPad : public AActor
 {
@@ -17,6 +19,9 @@ public:
 	virtual void OnConstruction(const FTransform& Transform) override;
 protected:
 	virtual void BeginPlay() override;
+
+	UPROPERTY(BlueprintAssignable, Category="Sunlight Detection")
+	FOnJumpadJump JumpadJump;
 
 public:
 	virtual void Tick(float DeltaTime) override;
