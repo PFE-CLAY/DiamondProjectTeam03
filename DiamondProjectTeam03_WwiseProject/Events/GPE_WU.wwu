@@ -6,6 +6,63 @@
 				<Property Name="Color" Type="int16" Value="14"/>
 				<Property Name="OverrideColor" Type="bool" Value="True"/>
 			</PropertyList>
+			<ChildrenList>
+				<Event Name="Play_GPE_JumPads_RC" ID="{32F429C1-2B0E-427B-9F12-8775F5CFF0AD}">
+					<ChildrenList>
+						<Action Name="" ID="{58C26C1F-4FDA-4C03-90A7-41B87F8E6E1E}" ShortID="641752588">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="GPE_JumpPads_RC" ID="{741A3B08-3097-4286-8BC0-0211BC41AB86}" WorkUnitID="{DBF8DB4E-51F0-47EF-9DC3-F34DD62EE3B6}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_SFX_CorpseTrap_Opening" ID="{3B91810C-60F0-4DA1-8459-1EC729C58878}">
+					<ChildrenList>
+						<Action Name="" ID="{5F2DF3BB-2421-41F5-BDD9-76EBEF7A0523}" ShortID="898624603">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="SFX_CorpseTrap_Opening" ID="{257F2631-12C8-4113-A28A-24B1CD556672}" WorkUnitID="{DBF8DB4E-51F0-47EF-9DC3-F34DD62EE3B6}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_SFX_CorpseTrap_Closing" ID="{8B0069CF-C942-413E-842A-B22826187366}">
+					<ChildrenList>
+						<Action Name="" ID="{1DDBE18F-879C-4630-8442-30BAC58283A9}" ShortID="108583880">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="SFX_CorpseTrap_Closing" ID="{890559E2-3E77-406E-AA88-97F1C130C7DC}" WorkUnitID="{DBF8DB4E-51F0-47EF-9DC3-F34DD62EE3B6}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_GPE_JumpPads_Activation_RC" ID="{7A4A1C10-6F19-4EFC-9649-9850E9202517}">
+					<ChildrenList>
+						<Action Name="" ID="{D89D7741-8423-449D-8611-865449F2E8E9}" ShortID="511980555">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="GPE_JumpPads_Activation_RC" ID="{79130F1C-42F1-4262-8C87-8838DC091D27}" WorkUnitID="{DBF8DB4E-51F0-47EF-9DC3-F34DD62EE3B6}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_GPE_PillarDestroyed" ID="{65F84DEF-9AA8-456B-A6AF-7249DA8CED54}">
+					<ChildrenList>
+						<Action Name="" ID="{06005D25-472B-46C2-B3B7-F20D2567964E}" ShortID="506429009">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="GPE_PillarDestroyed" ID="{9873807F-D5D6-42F4-808C-A7A0607EB130}" WorkUnitID="{DBF8DB4E-51F0-47EF-9DC3-F34DD62EE3B6}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+			</ChildrenList>
 		</WorkUnit>
 	</Events>
 </WwiseDocument>

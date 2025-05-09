@@ -18,6 +18,20 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="Play_FOES_SFX_Tourelle_Death_RC" ID="{03966878-2B14-4479-9F3B-3C317D6EB7B1}">
+					<ChildrenList>
+						<Action Name="" ID="{B729C2B2-E5A2-4FE7-A91F-A0F6CC09ED1B}" ShortID="130545599">
+							<PropertyList>
+								<Property Name="Delay" Type="Real64" Value="0.2"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="FOES_SFX_Tourelle_Death_RC" ID="{32C33BBE-CC93-4EC2-A1F1-08ACD7070E85}" WorkUnitID="{1C36EC12-43A5-4F7F-BD34-ADCCF4CCEFF3}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>
