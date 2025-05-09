@@ -7,17 +7,6 @@
 				<Property Name="OverrideColor" Type="bool" Value="True"/>
 			</PropertyList>
 			<ChildrenList>
-				<Event Name="Play_MC_SFX_Dash_RC" ID="{B806ED59-4ACB-4371-BE4B-1518B580024B}">
-					<ChildrenList>
-						<Action Name="" ID="{1B6DF9B3-8CC0-476A-9BDF-D6C8F859718A}" ShortID="826777927">
-							<ReferenceList>
-								<Reference Name="Target">
-									<ObjectRef Name="MC_SFX_Dash_RC" ID="{33CD4AE3-1E86-4275-A007-B3F8EC06B6A3}" WorkUnitID="{1B87B22A-8865-441B-A287-78E87390F212}"/>
-								</Reference>
-							</ReferenceList>
-						</Action>
-					</ChildrenList>
-				</Event>
 				<Event Name="Play_MC_SFX_Gun_Shoot_RC" ID="{19EDAAA1-DF79-4328-9566-97F28CD19D08}">
 					<ChildrenList>
 						<Action Name="" ID="{3C01A536-6AD2-4F59-B66C-603A3E2AC8E9}" ShortID="91298891">
@@ -35,6 +24,28 @@
 							<ReferenceList>
 								<Reference Name="Target">
 									<ObjectRef Name="MC_FOL_FT_SW" ID="{910CA64A-2848-413D-9BB5-41678DD71015}" WorkUnitID="{1B87B22A-8865-441B-A287-78E87390F212}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_MC_FOL_FT_Jump_SW" ID="{84F52436-C579-4C37-9804-C7D11AEDCC08}">
+					<ChildrenList>
+						<Action Name="" ID="{C709F5D0-EF72-443C-984B-DD78E1799F49}" ShortID="457308520">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="MC_FOL_FT_Jump_SW" ID="{90E000BB-FBC6-417E-862B-6DBEC2A64C81}" WorkUnitID="{1B87B22A-8865-441B-A287-78E87390F212}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_MC_FOL_FT_Land_SW" ID="{3AABFDF5-D848-4A71-84AA-A7DEDC1F4177}">
+					<ChildrenList>
+						<Action Name="" ID="{31FD5B5C-6CE4-4E83-9783-DF4B0F0941B7}" ShortID="348726591">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="MC_FOL_FT_Land_SW" ID="{C97E023A-E426-42A4-8225-A69EEAA7095D}" WorkUnitID="{1B87B22A-8865-441B-A287-78E87390F212}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>

@@ -14,7 +14,6 @@ class DIAMONDPROJECT_API ULevelSelectionSettings : public UDeveloperSettings
 {
 	GENERATED_BODY()
 public:
-	ULevelSelectionSettings();
 	
 	UPROPERTY(Config, EditAnywhere, Category="Levels")
 	TSoftObjectPtr<UWorld> MainLevel;

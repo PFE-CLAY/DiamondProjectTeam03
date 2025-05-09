@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WwiseDocument Type="WorkUnit" ID="{AF741D90-A9C1-41EB-958D-616E32A16F46}" SchemaVersion="119">
 	<GameParameters>
-		<WorkUnit Name="Default Work Unit" ID="{AF741D90-A9C1-41EB-958D-616E32A16F46}" PersistMode="Standalone"/>
+		<WorkUnit Name="Default Work Unit" ID="{AF741D90-A9C1-41EB-958D-616E32A16F46}" PersistMode="Standalone">
+			<ChildrenList>
+				<GameParameter Name="RTPC_Speed_Flying" ID="{4A0C67E7-2443-47A8-B5EB-86C8F65C73EB}">
+					<PropertyList>
+						<Property Name="InitialValue" Type="Real64" Value="0"/>
+						<Property Name="Max" Type="Real64" Value="25"/>
+					</PropertyList>
+				</GameParameter>
+			</ChildrenList>
+		</WorkUnit>
 	</GameParameters>
 </WwiseDocument>

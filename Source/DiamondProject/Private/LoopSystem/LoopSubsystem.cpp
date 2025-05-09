@@ -4,6 +4,7 @@
 #include "LoopSystem/LoopSubsystem.h"
 
 #include "Kismet/GameplayStatics.h"
+#include "LoopSystem/LevelSelectionSettings.h"
 #include "LoopSystem/PreplanAdvice.h"
 #include "LoopSystem/PreplanData.h"
 #include "LoopSystem/PreplanStep.h"
@@ -15,7 +16,28 @@ void ULoopSubsystem::ReloadScene()
 		PreplanStep.Value->PreplanData = nullptr;
 	}
 
+	const ULevelSelectionSettings* LevelSelectionSettings = GetDefault<ULevelSelectionSettings>();
+	if (LevelSelectionSettings == nullptr) return;
+	
 	OnSceneReloadEvent.Broadcast();
+	if (PreplanDreamSubtitlesArray.IsEmpty())
+	{
+		bool mainLevelNull = LevelSelectionSettings->MainLevel.IsNull();
+		if (!mainLevelNull)
+		{
+			UGameplayStatics::OpenLevelBySoftObjectPtr(this, LevelSelectionSettings->MainLevel, false);
+			return;
+		}
+	} else
+	{
+		bool dreamLevelNull = LevelSelectionSettings->DreamLevel.IsNull(); 
+		if (!dreamLevelNull)
+		{
+			UGameplayStatics::OpenLevelBySoftObjectPtr(this, LevelSelectionSettings->DreamLevel, false);
+			return;
+		}
+	}
+	
 	UGameplayStatics::OpenLevel(this, FName(*GetWorld()->GetName()), false);
 }
 
@@ -161,6 +183,11 @@ void ULoopSubsystem::ActivatePreplanStep(FString PreplanID)
 	}
 	
 	TObjectPtr<UPreplanStep> PreplanStep = PreplanStepPtr->Get();
+
+	if (PreplanStep->bIsStepActive)
+	{
+		return;
+	}
 	
 	bool bIsAnyPreviousStepActive = IsAnyPreviousStepActive(PreplanStep);
 
@@ -171,6 +198,7 @@ void ULoopSubsystem::ActivatePreplanStep(FString PreplanID)
 		if (PreplanStep->NbActivations == PreplanStep->PreplanData->NbActivationsRequired){
 			PreplanStep->bIsStepActive = true;
 			PreplanStep->PreplanData->SetActorHiddenInGame(false);
+			
 			if (PreplanStep->PreplanData->bShouldActivateDream &&
 				PreplanStep->PreplanData->DreamSubtitles != nullptr)
 			{

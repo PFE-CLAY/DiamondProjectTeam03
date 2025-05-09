@@ -1,10 +1,13 @@
 Audio Bus	ID	Name			Wwise Object Path	Notes
-	361263376	FOES_Invisible			\Master_WU\Master\FOES_Invisible	
-	1117531639	AMB			\Master_WU\Master\AMB	
+	109159411	Game_Global			\Master_WU\Master\Game_Global	
+	393239870	SFX			\Master_WU\Master\Game_Global\SFX	
+	1117531639	AMB			\Master_WU\Master\Game_Global\AMB	
 	1551306167	UI			\Master_WU\Master\UI	
-	1685527061	MC			\Master_WU\Master\MC	
-	2290178407	FOES_Tourelle			\Master_WU\Master\FOES_Tourelle	
-	3623095082	FOES_Flying			\Master_WU\Master\FOES_Flying	
+	1685527061	MC			\Master_WU\Master\Game_Global\MC	
+	2290178407	FOES_Tourelle			\Master_WU\Master\Game_Global\FOES_Tourelle	
+	3313685232	Voices			\Master_WU\Master\Voices	
+	3623095082	FOES_Flying			\Master_WU\Master\Game_Global\FOES_Flying	
+	3991942870	Music			\Master_WU\Master\Music	
 	4056684167	Master			\Master_WU\Master	
 
 Auxiliary Bus	ID	Name			Wwise Object Path	Notes
