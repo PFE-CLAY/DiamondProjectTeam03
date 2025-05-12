@@ -20,8 +20,14 @@ public:
 protected:
 	virtual void BeginPlay() override;
 
-	UPROPERTY(BlueprintAssignable, Category="Sunlight Detection")
+	UPROPERTY(BlueprintAssignable)
 	FOnJumpadJump JumpadJump;
+
+	UPROPERTY(EditAnywhere)
+	bool bDoesJumppadRequireSun = false;
+
+	UFUNCTION(BlueprintCallable)
+	void SetIsJumpadIlluminated(bool bIsIlluminated);
 
 public:
 	virtual void Tick(float DeltaTime) override;
@@ -47,12 +53,15 @@ public:
 	UFUNCTION()
 	void OnOverlapBegin(class UPrimitiveComponent* OverlappedComponent, class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
 
-	private :
-		UPROPERTY()
+private :
+	
+	UPROPERTY()
 	FTimerHandle TimerHandle;
 
 	UPROPERTY()
 	bool bCanBounce = true;
+
+	bool bIsIlluminated = false;
 	
 	void ResetJump();
 };
