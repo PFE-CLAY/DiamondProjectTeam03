@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="16" SoundBankVersion="150">
 	<SoundBanks>
-		<SoundBank Id="3250948517" Type="User" GUID="{8CC30184-23AF-4DB5-9844-9B04DF10A650}" Language="SFX" Hash="{BB10A495-761F-9631-99AF-E29AEEE4AD5F}">
+		<SoundBank Id="3250948517" Type="User" GUID="{8CC30184-23AF-4DB5-9844-9B04DF10A650}" Language="SFX" Hash="{FC854766-77E4-D367-5F8C-74EB0B9E0D79}">
 			<ObjectPath>\SoundBanks\SoundBanks_WU\FOES_Tourelle_SB</ObjectPath>
 			<ShortName>FOES_Tourelle_SB</ShortName>
 			<Path>FOES_Tourelle_SB.bnk</Path>
@@ -22,9 +22,21 @@
 					<ShortName>FOES_SFX_Tourelle_Shoot_01.wav</ShortName>
 					<CachePath>SFX/FOES_SFX_Tourelle_Shoot_01_818F3B66.wem</CachePath>
 				</File>
+				<File Id="427986118" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\RFX\FOES_SFX_Tourelle_Death_01.wav</ShortName>
+					<CachePath>SFX/AMB/RFX/FOES_SFX_Tourelle_Death_01_818F3B66.wem</CachePath>
+				</File>
 				<File Id="515409144" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>FOES_SFX_Tourelle_Shoot_03.wav</ShortName>
 					<CachePath>SFX/FOES_SFX_Tourelle_Shoot_03_818F3B66.wem</CachePath>
+				</File>
+				<File Id="705394855" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\RFX\FOES_SFX_Tourelle_Death_03.wav</ShortName>
+					<CachePath>SFX/AMB/RFX/FOES_SFX_Tourelle_Death_03_818F3B66.wem</CachePath>
+				</File>
+				<File Id="1008799864" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\RFX\FOES_SFX_Tourelle_Death_02.wav</ShortName>
+					<CachePath>SFX/AMB/RFX/FOES_SFX_Tourelle_Death_02_818F3B66.wem</CachePath>
 				</File>
 			</Media>
 			<Plugins>
@@ -33,7 +45,14 @@
 				</Custom>
 			</Plugins>
 			<Events>
-				<Event Id="2480809816" Name="Play_FOES_SFX_Tourelle_Shoot_RC" ObjectPath="\Events\FOES_Tourelle_WU\Play_FOES_SFX_Tourelle_Shoot_RC" GUID="{140E36FB-31F3-4C66-AC5D-E9E86C57BA68}" DurationType="OneShot" DurationMin="1.2318597" DurationMax="2.567487">
+				<Event Id="305372709" Name="Play_FOES_SFX_Tourelle_Death_RC" ObjectPath="\Events\FOES_Tourelle_WU\Play_FOES_SFX_Tourelle_Death_RC" GUID="{03966878-2B14-4479-9F3B-3C317D6EB7B1}" MaxAttenuation="3000" DurationType="OneShot" DurationMin="2.8365834" DurationMax="3.2426875">
+					<MediaRefs>
+						<MediaRef Id="427986118"/>
+						<MediaRef Id="705394855"/>
+						<MediaRef Id="1008799864"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="2480809816" Name="Play_FOES_SFX_Tourelle_Shoot_RC" ObjectPath="\Events\FOES_Tourelle_WU\Play_FOES_SFX_Tourelle_Shoot_RC" GUID="{140E36FB-31F3-4C66-AC5D-E9E86C57BA68}" MaxAttenuation="3000" DurationType="OneShot" DurationMin="1.2318597" DurationMax="2.567487">
 					<MediaRefs>
 						<MediaRef Id="37180877"/>
 						<MediaRef Id="119224371"/>
@@ -44,12 +63,15 @@
 				</Event>
 			</Events>
 			<Busses>
-				<Bus Id="361263376" Name="FOES_Invisible" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\FOES_Invisible" GUID="{19573DBC-4DB5-4746-8ACF-EBDC3F32E124}"/>
-				<Bus Id="1117531639" Name="AMB" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AMB" GUID="{C1595F21-FBBF-4B04-AC1A-78D86879A937}"/>
+				<Bus Id="109159411" Name="Game_Global" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global" GUID="{FAD5C029-0A02-4BD2-97F7-F8C20B7A95BD}"/>
+				<Bus Id="393239870" Name="SFX" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global\SFX" GUID="{EB4CE24D-8196-408E-9775-5E8EEFE98495}"/>
+				<Bus Id="1117531639" Name="AMB" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global\AMB" GUID="{C1595F21-FBBF-4B04-AC1A-78D86879A937}"/>
 				<Bus Id="1551306167" Name="UI" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\UI" GUID="{B5E7816E-C3FC-4992-B763-4078089CE674}"/>
-				<Bus Id="1685527061" Name="MC" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\MC" GUID="{B3079877-B26F-4239-A3AB-9C7AFFCBC797}"/>
-				<Bus Id="2290178407" Name="FOES_Tourelle" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\FOES_Tourelle" GUID="{D783D57E-4B6F-4101-8F5F-FD96F0409170}"/>
-				<Bus Id="3623095082" Name="FOES_Flying" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\FOES_Flying" GUID="{439831F9-AA50-4CD2-98C3-ACD8B187380E}"/>
+				<Bus Id="1685527061" Name="MC" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global\MC" GUID="{B3079877-B26F-4239-A3AB-9C7AFFCBC797}"/>
+				<Bus Id="2290178407" Name="FOES_Tourelle" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global\FOES_Tourelle" GUID="{D783D57E-4B6F-4101-8F5F-FD96F0409170}"/>
+				<Bus Id="3313685232" Name="Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Voices" GUID="{00AA482D-3F12-46A5-8177-E8A172D08E63}"/>
+				<Bus Id="3623095082" Name="FOES_Flying" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global\FOES_Flying" GUID="{439831F9-AA50-4CD2-98C3-ACD8B187380E}"/>
+				<Bus Id="3991942870" Name="Music" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Music" GUID="{08156595-7637-4348-AC3C-2EDE3FCCB08F}"/>
 				<Bus Id="4056684167" Name="Master" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master" GUID="{F3A976BC-47E9-46E5-9EEC-F566BB39DBEE}"/>
 			</Busses>
 			<AuxBusses>
@@ -65,5 +87,5 @@
 			</AuxBusses>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{A330AD83-E636-A1A7-785A-DCCFFF3F1833}</FileHash>
+	<FileHash>{4EA29A64-24E1-8919-4138-514495483F1B}</FileHash>
 </SoundBanksInfo>

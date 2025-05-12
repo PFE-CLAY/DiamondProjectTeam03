@@ -8,7 +8,9 @@
 #include "Components/BoxComponent.h"
 #include "Enemy.generated.h"
 
+class AEnemySpawner;
 
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnEnemyShoot);
 
 UCLASS()
 class DIAMONDPROJECT_API AEnemy : public ACharacter
@@ -84,7 +86,9 @@ private:
 	UFUNCTION(BlueprintCallable, Category = "Enemy")
 	void Shoot();
 
-	
+	UFUNCTION(BlueprintCallable, Category = "Enemy")
+
+	void RemoveEnemyFromSpawnerList();
 	
 
 public:
@@ -100,5 +104,9 @@ public:
 	UFUNCTION()
 	UBehaviorTree* GetBehaviorTree() const;
 
-	
+	UPROPERTY()
+	TObjectPtr<AEnemySpawner> EnemySpawner = nullptr;
+
+	UPROPERTY(BlueprintAssignable, Category="Sunlight Detection")
+	FOnEnemyShoot OnEnemyShoot;
 };

@@ -75,6 +75,39 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="Play_AMB_PAD_Hub" ID="{E1692669-CD47-4C1F-9271-81F40DE53532}">
+					<ChildrenList>
+						<Action Name="" ID="{A7F71349-F9F7-4B2B-8BE5-FD280B3E9CCD}" ShortID="1013140226">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="AMB_PAD_Hub" ID="{F1E8015C-CCDA-4B17-97D5-02950468C95C}" WorkUnitID="{183124D0-ACA8-4AFA-A8E9-44C003A151DE}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{3A3AB34A-5AF0-473A-989B-AA94F5C8BCC8}" ShortID="895129708">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="36"/>
+								<Property Name="SeekPercent" Type="Real64">
+									<ModifierList>
+										<ModifierInfo>
+											<Modifier Name="" ID="{5B9E38C0-1AA9-4969-8255-D8992A3425AA}">
+												<PropertyList>
+													<Property Name="Enabled" Type="bool" Value="True"/>
+													<Property Name="Max" Type="Real64" Value="100"/>
+												</PropertyList>
+											</Modifier>
+										</ModifierInfo>
+									</ModifierList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="AMB_PAD_Hub" ID="{F1E8015C-CCDA-4B17-97D5-02950468C95C}" WorkUnitID="{183124D0-ACA8-4AFA-A8E9-44C003A151DE}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>
