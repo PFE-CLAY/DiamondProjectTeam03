@@ -29,7 +29,8 @@ void AAllied::BeginPlay()
 	
 	//AAIController::OnMoveCompleted();
 	//GEngine->AddOnScreenDebugMessage(-1, 10.f, FColor::Red, FString::Printf(TEXT("%lld"), PatrolPoints.Num()));
-	Patrol();
+	if(bShouldPlayOnStart) Patrol();
+	
 }
 
 void AAllied::Patrol()

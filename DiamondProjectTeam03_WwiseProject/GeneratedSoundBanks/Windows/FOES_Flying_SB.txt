@@ -1,5 +1,6 @@
 Event	ID	Name			Wwise Object Path	Notes
 	1810073987	Play_FOES_SFX_Flying_Shoot_RC			\FOES_Flying_WU\Play_FOES_SFX_Flying_Shoot_RC	
+	3718813633	Stop_FOES_SFX_Flying_Idle_LP			\FOES_Flying_WU\Stop_FOES_SFX_Flying_Idle_LP	
 	3816121295	Play_FOES_SFX_Flying_Idle_LP			\FOES_Flying_WU\Play_FOES_SFX_Flying_Idle_LP	
 
 Game Parameter	ID	Name			Wwise Object Path	Notes
