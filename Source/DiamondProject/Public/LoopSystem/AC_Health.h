@@ -51,4 +51,7 @@ protected:
 	virtual void BeginPlay() override;
 	UFUNCTION()
 	void ChangeHealth(int NewHealth);
+
+	UFUNCTION(BlueprintCallable)
+	void FullHeal();
 };

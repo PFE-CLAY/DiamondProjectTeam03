@@ -37,3 +37,8 @@ void UAC_Health::ChangeHealth(int NewHealth)
 		OnHealthChangedEvent.Broadcast(CurrentHealth);
 	}
 }
+
+void UAC_Health::FullHeal()
+{
+	ChangeHealth(MaxHealth);
+}
