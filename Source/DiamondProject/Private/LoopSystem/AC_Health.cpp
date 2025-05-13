@@ -32,7 +32,11 @@ void UAC_Health::ChangeHealth(int NewHealth)
 
 	if (CurrentHealth == 0 && !bIsDead) {
 		OnDeathEvent.Broadcast();
-		bIsDead = true;
+		
+		if (!bCanDieMultipleTimes) {
+			bIsDead = true;
+		}
+		
 	} else {
 		OnHealthChangedEvent.Broadcast(CurrentHealth);
 	}
