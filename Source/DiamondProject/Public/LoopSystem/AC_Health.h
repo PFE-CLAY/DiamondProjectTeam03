@@ -36,8 +36,8 @@ protected:
     UPROPERTY(BlueprintReadOnly)
     bool bIsDead;
 
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
-	bool bCanDieMultipleTimes = false;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	bool bIsInvincible = false;
 
 public:
 	// Sets default values for this component's properties
