@@ -527,6 +527,9 @@
 									</ActiveSourceList>
 								</Sound>
 								<Sound Name="AMB_PAD_ControlCenter" ID="{DE270923-E391-404C-B76E-4D6C490413A8}" ShortID="827054151">
+									<PropertyList>
+										<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
@@ -549,6 +552,9 @@
 									</ActiveSourceList>
 								</Sound>
 								<Sound Name="AMB_PAD_Pyramid_Closed" ID="{179F5AED-0218-45B9-B6C4-1939675B2DDD}" ShortID="62171934">
+									<PropertyList>
+										<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
@@ -571,6 +577,9 @@
 									</ActiveSourceList>
 								</Sound>
 								<Sound Name="AMB_PAD_Pyramid_Opened" ID="{FC61480A-086F-47E8-AB9B-7DB49F0EF76C}" ShortID="286403040">
+									<PropertyList>
+										<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
@@ -593,6 +602,9 @@
 									</ActiveSourceList>
 								</Sound>
 								<Sound Name="AMB_PAD_CorpseTrap" ID="{3C0E4987-DADB-4AC2-AEC2-F83F365F76D8}" ShortID="427884014">
+									<PropertyList>
+										<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
@@ -615,6 +627,9 @@
 									</ActiveSourceList>
 								</Sound>
 								<Sound Name="AMB_PAD_FinalDoor" ID="{6068154F-F314-4153-A7E3-E8080669FFF9}" ShortID="477742021">
+									<PropertyList>
+										<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
@@ -637,6 +652,9 @@
 									</ActiveSourceList>
 								</Sound>
 								<Sound Name="AMB_PAD_Sablier" ID="{E7C10284-1AB5-40BC-B0AB-E107A80AD3CB}" ShortID="668711930">
+									<PropertyList>
+										<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
@@ -718,6 +736,9 @@
 									</ActiveSourceList>
 								</Sound>
 								<Sound Name="AMB_SP_Incinerator" ID="{CDFB15D9-8310-4722-86F1-7202CE6DD4CB}" ShortID="643250516">
+									<PropertyList>
+										<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>

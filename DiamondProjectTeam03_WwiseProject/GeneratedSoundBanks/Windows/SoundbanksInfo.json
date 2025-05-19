@@ -18,7 +18,7 @@
     "Type": "User",
     "GUID": "{46F08C13-7BDA-47D5-A653-BDFCDAD2487B}",
     "Language": "SFX",
-    "Hash": "{FEC0151D-6568-73FC-F065-33A4D2F833EA}",
+    "Hash": "{06BA05D0-C2EA-ED4C-7995-917AF8A25DD2}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\FOES_Flying_SB",
     "ShortName": "FOES_Flying_SB",
     "Path": "FOES_Flying_SB.bnk",
@@ -81,22 +81,6 @@
        "GUID": "{4EC028FC-6FD5-4AC6-A71F-B2CB8F1117DF}",
        "LibName": "Wwise RoomVerb",
        "LibId": "7733251"
-      },
-      {
-       "Id": "913803451",
-       "Name": "Octave_Up (Custom)",
-       "ObjectPath": "\\Actor-Mixer Hierarchy\\FOES_Flying_WU\\FOES_Flying\\FOES_SFX_Flying\\FOES_SFX_Flying_Shoot_RC\\[Effect Slot [0]: (Pitch Shifter)]\\Octave_Up (Custom)",
-       "GUID": "{2F00A97A-7EA5-4071-B9A5-B685BC249C27}",
-       "LibName": "Wwise Pitch Shifter",
-       "LibId": "8912899"
-      },
-      {
-       "Id": "963626000",
-       "Name": "Dist_Flying_Shots (Custom)",
-       "ObjectPath": "\\Actor-Mixer Hierarchy\\FOES_Flying_WU\\FOES_Flying\\FOES_SFX_Flying\\FOES_SFX_Flying_Shoot_RC\\[Effect Slot [1]: (Guitar Distortion)]\\Dist_Flying_Shots (Custom)",
-       "GUID": "{71204E36-4F7C-4B89-9BD6-E0036788D676}",
-       "LibName": "Wwise Guitar Distortion",
-       "LibId": "8257539"
       }
      ]
     },
@@ -106,7 +90,7 @@
       "Name": "Play_FOES_SFX_Flying_Idle_LP",
       "ObjectPath": "\\Events\\FOES_Flying_WU\\Play_FOES_SFX_Flying_Idle_LP",
       "GUID": "{CF4E623B-F60A-4740-B500-0E5586E75310}",
-      "MaxAttenuation": "2000",
+      "MaxAttenuation": "3000",
       "DurationType": "Infinite",
       "MediaRefs": [
        {
@@ -121,8 +105,8 @@
       "GUID": "{615B6DF4-5110-477A-ADAD-83075E2A2CC2}",
       "MaxAttenuation": "2000",
       "DurationType": "OneShot",
-      "DurationMin": "1.5138968",
-      "DurationMax": "1.9747615",
+      "DurationMin": "2.2750027",
+      "DurationMax": "3.1742759",
       "MediaRefs": [
        {
         "Id": "45515045"
@@ -139,17 +123,7 @@
        {
         "Id": "821998844"
        }
-      ],
-      "PluginRefs": {
-       "Custom": [
-        {
-         "Id": "913803451"
-        },
-        {
-         "Id": "963626000"
-        }
-       ]
-      }
+      ]
      },
      {
       "Id": "3718813633",
@@ -265,7 +239,7 @@
     "Type": "User",
     "GUID": "{701ECBBD-9C7B-4030-8CDB-749EE5D1C7B9}",
     "Language": "SFX",
-    "Hash": "{7934D874-C376-1821-0883-AFB48ADDF3DA}",
+    "Hash": "{4FE3FF92-ED4E-4058-E9CE-67D83161A2A9}",
     "ObjectPath": "Init",
     "ShortName": "Init",
     "Path": "Init.bnk",
@@ -683,7 +657,7 @@
     "Type": "User",
     "GUID": "{ADC2D189-6608-4828-BC9C-6EF6F90834DB}",
     "Language": "SFX",
-    "Hash": "{7AAC78B6-1A0F-9DDA-4FED-0A29478423A8}",
+    "Hash": "{7FFCB4F9-232B-89E6-AE63-B1C2DA61444D}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\MC_SB",
     "ShortName": "MC_SB",
     "Path": "MC_SB.bnk",
@@ -735,6 +709,14 @@
       "Location": "Memory",
       "ShortName": "AMB\\SP\\MC_FT_Sand_08.wav",
       "CachePath": "SFX/AMB/SP/MC_FT_Sand_08_818F3B66.wem"
+     },
+     {
+      "Id": "47427430",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "SFX\\MC_SFX_PickupWeapon_01.wav",
+      "CachePath": "SFX/SFX/MC_SFX_PickupWeapon_01_818F3B66.wem"
      },
      {
       "Id": "58062480",
@@ -791,6 +773,14 @@
       "Location": "Memory",
       "ShortName": "AMB\\SP\\MC_FT_Metal_01.wav",
       "CachePath": "SFX/AMB/SP/MC_FT_Metal_01_818F3B66.wem"
+     },
+     {
+      "Id": "101923972",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "SFX\\MC_SFX_PickupWeapon_04.wav",
+      "CachePath": "SFX/SFX/MC_SFX_PickupWeapon_04_818F3B66.wem"
      },
      {
       "Id": "104687879",
@@ -969,6 +959,14 @@
       "CachePath": "SFX/AMB/SP/MC_FT_Metal_03_818F3B66.wem"
      },
      {
+      "Id": "418331982",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "SFX\\MC_SFX_Weapon_NoAmmo.wav",
+      "CachePath": "SFX/SFX/MC_SFX_Weapon_NoAmmo_818F3B66.wem"
+     },
+     {
       "Id": "421361594",
       "Language": "SFX",
       "Streaming": "false",
@@ -1033,6 +1031,14 @@
       "CachePath": "SFX/AMB/SP/MC_FT_Concrete_Jump_01_818F3B66.wem"
      },
      {
+      "Id": "511633870",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "SFX\\MC_SFX_PickupWeapon_03.wav",
+      "CachePath": "SFX/SFX/MC_SFX_PickupWeapon_03_818F3B66.wem"
+     },
+     {
       "Id": "534496258",
       "Language": "SFX",
       "Streaming": "false",
@@ -1073,12 +1079,28 @@
       "CachePath": "SFX/AMB/SP/MC_FT_Concrete_01_818F3B66.wem"
      },
      {
+      "Id": "607185623",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "SFX\\MC_SFX_PickupWeapon_02.wav",
+      "CachePath": "SFX/SFX/MC_SFX_PickupWeapon_02_818F3B66.wem"
+     },
+     {
       "Id": "608609148",
       "Language": "SFX",
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "AMB\\SP\\MC_FT_Sand_Jump_03.wav",
       "CachePath": "SFX/AMB/SP/MC_FT_Sand_Jump_03_818F3B66.wem"
+     },
+     {
+      "Id": "610072169",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "SFX\\MC_SFX_PickupWeapon_05.wav",
+      "CachePath": "SFX/SFX/MC_SFX_PickupWeapon_05_818F3B66.wem"
      },
      {
       "Id": "610918733",
@@ -1151,6 +1173,14 @@
       "Location": "Memory",
       "ShortName": "AMB\\SP\\MC_FT_Metal_09.wav",
       "CachePath": "SFX/AMB/SP/MC_FT_Metal_09_818F3B66.wem"
+     },
+     {
+      "Id": "772410827",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "SFX\\MC_SFX_Weapon_Armed.wav",
+      "CachePath": "SFX/SFX/MC_SFX_Weapon_Armed_818F3B66.wem"
      },
      {
       "Id": "779936328",
@@ -1591,6 +1621,145 @@
           "Id": "898538319"
          }
         ]
+       },
+       {
+        "SwitchValue": {
+         "GroupType": "Switch",
+         "GroupId": "757195373",
+         "Id": "841620460",
+         "GUID": "{7D8D0D4C-3D1C-43A2-B357-3F03FF424DDB}",
+         "Default": "true"
+        },
+        "MediaRefs": [
+         {
+          "Id": "28276971"
+         },
+         {
+          "Id": "75654975"
+         },
+         {
+          "Id": "163843360"
+         },
+         {
+          "Id": "267703531"
+         },
+         {
+          "Id": "268013152"
+         },
+         {
+          "Id": "480059959"
+         },
+         {
+          "Id": "534496258"
+         },
+         {
+          "Id": "602677679"
+         },
+         {
+          "Id": "655344864"
+         },
+         {
+          "Id": "814998601"
+         },
+         {
+          "Id": "816346842"
+         },
+         {
+          "Id": "1036129781"
+         }
+        ]
+       },
+       {
+        "SwitchValue": {
+         "GroupType": "Switch",
+         "GroupId": "757195373",
+         "Id": "803837735",
+         "GUID": "{0F8A73BD-8A92-4819-BE09-452FE32E1FBC}"
+        },
+        "MediaRefs": [
+         {
+          "Id": "44684202"
+         },
+         {
+          "Id": "109232168"
+         },
+         {
+          "Id": "211150638"
+         },
+         {
+          "Id": "387146543"
+         },
+         {
+          "Id": "542236427"
+         },
+         {
+          "Id": "620312545"
+         },
+         {
+          "Id": "673489173"
+         },
+         {
+          "Id": "721183356"
+         },
+         {
+          "Id": "779936328"
+         },
+         {
+          "Id": "838939217"
+         },
+         {
+          "Id": "910413546"
+         },
+         {
+          "Id": "967065821"
+         }
+        ]
+       },
+       {
+        "SwitchValue": {
+         "GroupType": "Switch",
+         "GroupId": "757195373",
+         "Id": "2473969246",
+         "GUID": "{4F4901C3-CC0C-4142-BDF8-FF62F7720DE3}"
+        },
+        "MediaRefs": [
+         {
+          "Id": "4962513"
+         },
+         {
+          "Id": "81610070"
+         },
+         {
+          "Id": "99306815"
+         },
+         {
+          "Id": "104687879"
+         },
+         {
+          "Id": "174467291"
+         },
+         {
+          "Id": "225595462"
+         },
+         {
+          "Id": "300270566"
+         },
+         {
+          "Id": "402066446"
+         },
+         {
+          "Id": "592388296"
+         },
+         {
+          "Id": "764749319"
+         },
+         {
+          "Id": "888066358"
+         },
+         {
+          "Id": "898538319"
+         }
+        ]
        }
       ]
      },
@@ -1617,6 +1786,60 @@
        },
        {
         "Id": "610918733"
+       }
+      ]
+     },
+     {
+      "Id": "1820563873",
+      "Name": "Play_MC_SFX_PickupWeapon_RC",
+      "ObjectPath": "\\Events\\MC_WU\\Play_MC_SFX_PickupWeapon_RC",
+      "GUID": "{4C30DC19-451C-449E-9B9A-AADEEAB14B44}",
+      "DurationType": "OneShot",
+      "DurationMin": "2.5657325",
+      "DurationMax": "3.6410909",
+      "MediaRefs": [
+       {
+        "Id": "47427430"
+       },
+       {
+        "Id": "101923972"
+       },
+       {
+        "Id": "511633870"
+       },
+       {
+        "Id": "607185623"
+       },
+       {
+        "Id": "610072169"
+       }
+      ]
+     },
+     {
+      "Id": "3961249933",
+      "Name": "Play_MC_SFX_Weapon_Armed_RC",
+      "ObjectPath": "\\Events\\MC_WU\\Play_MC_SFX_Weapon_Armed_RC",
+      "GUID": "{E22125BE-E0CB-4EC0-A4CB-7460BE42B80E}",
+      "DurationType": "OneShot",
+      "DurationMin": "3.3666666",
+      "DurationMax": "3.3666666",
+      "MediaRefs": [
+       {
+        "Id": "772410827"
+       }
+      ]
+     },
+     {
+      "Id": "3400800083",
+      "Name": "Play_MC_SFX_Weapon_NoAmmo_RC",
+      "ObjectPath": "\\Events\\MC_WU\\Play_MC_SFX_Weapon_NoAmmo_RC",
+      "GUID": "{708ACD16-F6BC-49F8-85D6-8076E283E48F}",
+      "DurationType": "OneShot",
+      "DurationMin": "1.7806667",
+      "DurationMax": "1.7806667",
+      "MediaRefs": [
+       {
+        "Id": "418331982"
        }
       ]
      }
@@ -2921,6 +3144,6 @@
     ]
    }
   ],
-  "FileHash": "{986443EA-20CB-70FE-C074-53FB2546079E}"
+  "FileHash": "{A63B7219-66DF-4BD6-49EA-D6FAE6E0A3EB}"
  }
 }

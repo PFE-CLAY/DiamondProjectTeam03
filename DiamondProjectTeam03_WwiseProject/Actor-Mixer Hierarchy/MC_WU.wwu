@@ -171,28 +171,6 @@
 								</Sound>
 							</ChildrenList>
 						</RandomSequenceContainer>
-						<Sound Name="MC_SFX_Weapon_NoAmmo" ID="{34218524-FDA9-40E2-A6B6-591D77285B94}" ShortID="891006041">
-							<ReferenceList>
-								<Reference Name="Conversion">
-									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
-								</Reference>
-								<Reference Name="OutputBus">
-									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D02282EE-6893-403D-9438-D481AB659EA3}"/>
-								</Reference>
-							</ReferenceList>
-							<ChildrenList>
-								<AudioFileSource Name="MC_SFX_Weapon_NoAmmo" ID="{8EEAB55B-9F5B-4DE2-9E51-4070B588E709}">
-									<Language>SFX</Language>
-									<AudioFile>SFX\MC_SFX_Weapon_NoAmmo.wav</AudioFile>
-									<MediaIDList>
-										<MediaID ID="418331982"/>
-									</MediaIDList>
-								</AudioFileSource>
-							</ChildrenList>
-							<ActiveSourceList>
-								<ActiveSource Name="MC_SFX_Weapon_NoAmmo" ID="{8EEAB55B-9F5B-4DE2-9E51-4070B588E709}" Platform="Linked"/>
-							</ActiveSourceList>
-						</Sound>
 						<RandomSequenceContainer Name="MC_SFX_PickupWeapon_RC" ID="{2039D8A2-903F-476A-B075-F87940F35922}" ShortID="393909649">
 							<PropertyList>
 								<Property Name="GlobalOrPerObject" Type="int16" Value="0"/>
@@ -362,6 +340,40 @@
 									</ChildrenList>
 									<ActiveSourceList>
 										<ActiveSource Name="MC_SFX_Weapon_Armed" ID="{C45C2653-E6B7-46FC-A180-901275E0F9F0}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+							</ChildrenList>
+						</RandomSequenceContainer>
+						<RandomSequenceContainer Name="MC_SFX_Weapon_NoAmmo_RC" ID="{6DCC1C38-83B3-425A-85FC-532867C42DFC}" ShortID="481290550">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D02282EE-6893-403D-9438-D481AB659EA3}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<Sound Name="MC_SFX_Weapon_NoAmmo" ID="{34218524-FDA9-40E2-A6B6-591D77285B94}" ShortID="891006041">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D02282EE-6893-403D-9438-D481AB659EA3}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="MC_SFX_Weapon_NoAmmo" ID="{8EEAB55B-9F5B-4DE2-9E51-4070B588E709}">
+											<Language>SFX</Language>
+											<AudioFile>SFX\MC_SFX_Weapon_NoAmmo.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="418331982"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="MC_SFX_Weapon_NoAmmo" ID="{8EEAB55B-9F5B-4DE2-9E51-4070B588E709}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
 							</ChildrenList>
