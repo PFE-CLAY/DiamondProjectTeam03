@@ -526,6 +526,138 @@
 										<ActiveSource Name="AMB_PAD_Hub" ID="{A1A4C403-1A1F-4758-9A23-79E9538473CD}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
+								<Sound Name="AMB_PAD_ControlCenter" ID="{26832768-C83C-4E6A-8ADE-0D9674F71853}" ShortID="908735699">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D02282EE-6893-403D-9438-D481AB659EA3}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="AMB_PAD_ControlCenter" ID="{B54FA3BB-3062-4A0A-A3D8-EE59F6EEE05E}">
+											<Language>SFX</Language>
+											<AudioFile>AMB_PAD_ControlCenter.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="548040044"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="AMB_PAD_ControlCenter" ID="{B54FA3BB-3062-4A0A-A3D8-EE59F6EEE05E}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="AMB_PAD_CorpseTrap" ID="{5B911C38-B933-40EF-B9D1-6D52EE93BD87}" ShortID="758299563">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D02282EE-6893-403D-9438-D481AB659EA3}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="AMB_PAD_CorpseTrap" ID="{9569340A-210A-402F-9EEA-280296542185}">
+											<Language>SFX</Language>
+											<AudioFile>AMB_PAD_CorpseTrap.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="639308973"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="AMB_PAD_CorpseTrap" ID="{9569340A-210A-402F-9EEA-280296542185}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="AMB_PAD_FinalDoor" ID="{F2FB57C4-237E-4C79-95F9-6F39324645B3}" ShortID="902256711">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D02282EE-6893-403D-9438-D481AB659EA3}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="AMB_PAD_FinalDoor" ID="{76C28FD8-E369-4CBD-A320-E43BE5062C87}">
+											<Language>SFX</Language>
+											<AudioFile>AMB_PAD_FinalDoor.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="361930982"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="AMB_PAD_FinalDoor" ID="{76C28FD8-E369-4CBD-A320-E43BE5062C87}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="AMB_PAD_Pyramid_Closed" ID="{675DC27B-E498-4926-9FE2-94BCC93903BF}" ShortID="154540947">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D02282EE-6893-403D-9438-D481AB659EA3}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="AMB_PAD_Pyramid_Closed" ID="{89C09AAA-BA35-4117-8664-4E3CCF95B86C}">
+											<Language>SFX</Language>
+											<AudioFile>AMB_PAD_Pyramid_Closed.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="237350035"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="AMB_PAD_Pyramid_Closed" ID="{89C09AAA-BA35-4117-8664-4E3CCF95B86C}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="AMB_PAD_Pyramid_Opened" ID="{AD5CA36D-515A-4DFB-AAD1-CFDD210217A6}" ShortID="161843899">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D02282EE-6893-403D-9438-D481AB659EA3}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="AMB_PAD_Pyramid_Opened" ID="{BD977D5C-6A55-46B0-8638-F38533AD37FA}">
+											<Language>SFX</Language>
+											<AudioFile>AMB_PAD_Pyramid_Opened.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="827919036"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="AMB_PAD_Pyramid_Opened" ID="{BD977D5C-6A55-46B0-8638-F38533AD37FA}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="AMB_PAD_Sablier" ID="{1C3689A6-35FF-4F4E-9C9B-25BE142AB4ED}" ShortID="480235396">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D02282EE-6893-403D-9438-D481AB659EA3}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="AMB_PAD_Sablier" ID="{2E23B505-FDB5-4DBE-9EFB-0722C29D053C}">
+											<Language>SFX</Language>
+											<AudioFile>AMB_PAD_Sablier.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="971291290"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="AMB_PAD_Sablier" ID="{2E23B505-FDB5-4DBE-9EFB-0722C29D053C}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
 							</ChildrenList>
 						</ActorMixer>
 						<ActorMixer Name="AMB_SP_AM" ID="{EF2B8C3D-9D2D-4099-A475-A5340EB9D137}" ShortID="8140580">
@@ -583,6 +715,28 @@
 									</ChildrenList>
 									<ActiveSourceList>
 										<ActiveSource Name="AMB_SP_Crowd_Bronca_Long" ID="{5606B068-B000-4143-AA2A-C3993DF0C0DA}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="AMB_SP_Incinerator" ID="{07E6E06B-5168-4C5A-8B06-D8DD20C2D120}" ShortID="476064784">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D02282EE-6893-403D-9438-D481AB659EA3}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="AMB_SP_Incinerator" ID="{3934D5E6-D838-41FF-9DE2-D43D4CF7FC7C}">
+											<Language>SFX</Language>
+											<AudioFile>AMB_SP_Incinerator.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="186758175"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="AMB_SP_Incinerator" ID="{3934D5E6-D838-41FF-9DE2-D43D4CF7FC7C}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
 							</ChildrenList>
