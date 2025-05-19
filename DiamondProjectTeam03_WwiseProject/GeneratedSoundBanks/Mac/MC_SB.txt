@@ -4,6 +4,7 @@ Event	ID	Name			Wwise Object Path	Notes
 	1820563873	Play_MC_SFX_PickupWeapon_RC			\MC_WU\Play_MC_SFX_PickupWeapon_RC	
 	2116962020	Play_MC_FOL_FT_Land_SW			\MC_WU\Play_MC_FOL_FT_Land_SW	
 	2749485653	Play_MC_FOL_FT_Jump_SW			\MC_WU\Play_MC_FOL_FT_Jump_SW	
+	3400800083	Play_MC_SFX_Weapon_NoAmmo_RC			\MC_WU\Play_MC_SFX_Weapon_NoAmmo_RC	
 	3961249933	Play_MC_SFX_Weapon_Armed_RC			\MC_WU\Play_MC_SFX_Weapon_Armed_RC	
 
 Switch Group	ID	Name			Wwise Object Path	Notes
@@ -72,7 +73,7 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	387146543	MC_FT_Sand_05	E:\GitHub\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\AMB\SP\MC_FT_Sand_05_818F3B66.wem		\Actor-Mixer Hierarchy\MC_WU\MC_FOL\MC_FOL_FT_SW\MC_FOL_FT_Sand\MC_FT_Sand_05		79380
 	395573930	MC_FT_Metal_Land_04	E:\GitHub\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\AMB\SP\MC_FT_Metal_Land_04_818F3B66.wem		\Actor-Mixer Hierarchy\MC_WU\MC_FOL\MC_FOL_FT_Land_SW\MC_FOL_FT_Metal_Land\MC_FT_Metal_Land_04		70112
 	402066446	MC_FT_Metal_03	E:\GitHub\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\AMB\SP\MC_FT_Metal_03_818F3B66.wem		\Actor-Mixer Hierarchy\MC_WU\MC_FOL\MC_FOL_FT_SW\MC_FOL_FT_Metal\MC_FT_Metal_03		28952
-	418331982	MC_SFX_Weapon_NoAmmo	E:\GitHub\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\SFX\MC_SFX_Weapon_NoAmmo_818F3B66.wem		\Actor-Mixer Hierarchy\MC_WU\MC_SFX\MC_SFX_Weapon_NoAmmo		341984
+	418331982	MC_SFX_Weapon_NoAmmo	E:\GitHub\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\SFX\MC_SFX_Weapon_NoAmmo_818F3B66.wem		\Actor-Mixer Hierarchy\MC_WU\MC_SFX\MC_SFX_Weapon_NoAmmo_RC\MC_SFX_Weapon_NoAmmo		341984
 	421361594	MC_SFX_Gun_Shoot_05	E:\GitHub\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\MC_SFX_Gun_Shoot_05_818F3B66.wem		\Actor-Mixer Hierarchy\MC_WU\MC_SFX\MC_SFX_Gun_Shoot_RC\MC_SFX_Gun_Shoot_05		288096
 	430767489	MC_FT_Sand_Land_03	E:\GitHub\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\AMB\SP\MC_FT_Sand_Land_03_818F3B66.wem		\Actor-Mixer Hierarchy\MC_WU\MC_FOL\MC_FOL_FT_Land_SW\MC_FOL_FT_Sand_Land\MC_FT_Sand_Land_03		77822
 	442853450	MC_FT_Concrete_Jump_04	E:\GitHub\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\AMB\SP\MC_FT_Concrete_Jump_04_818F3B66.wem		\Actor-Mixer Hierarchy\MC_WU\MC_FOL\MC_FOL_FT_Jump_SW\MC_FOL_FT_Concrete_Jump\MC_FT_Concrete_Jump_04		42924

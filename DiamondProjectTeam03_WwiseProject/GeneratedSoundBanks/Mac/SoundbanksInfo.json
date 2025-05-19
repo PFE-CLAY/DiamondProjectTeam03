@@ -657,7 +657,7 @@
     "Type": "User",
     "GUID": "{ADC2D189-6608-4828-BC9C-6EF6F90834DB}",
     "Language": "SFX",
-    "Hash": "{EFFB8A53-84F8-BE05-800C-F985E809A553}",
+    "Hash": "{7FFCB4F9-232B-89E6-AE63-B1C2DA61444D}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\MC_SB",
     "ShortName": "MC_SB",
     "Path": "MC_SB.bnk",
@@ -1826,6 +1826,20 @@
       "MediaRefs": [
        {
         "Id": "772410827"
+       }
+      ]
+     },
+     {
+      "Id": "3400800083",
+      "Name": "Play_MC_SFX_Weapon_NoAmmo_RC",
+      "ObjectPath": "\\Events\\MC_WU\\Play_MC_SFX_Weapon_NoAmmo_RC",
+      "GUID": "{708ACD16-F6BC-49F8-85D6-8076E283E48F}",
+      "DurationType": "OneShot",
+      "DurationMin": "1.7806667",
+      "DurationMax": "1.7806667",
+      "MediaRefs": [
+       {
+        "Id": "418331982"
        }
       ]
      }
@@ -3130,6 +3144,6 @@
     ]
    }
   ],
-  "FileHash": "{37824E2D-0E06-B166-D3E5-238C06821738}"
+  "FileHash": "{916FB12C-0CEB-DFAC-91D6-95C8059D7823}"
  }
 }

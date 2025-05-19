@@ -73,6 +73,17 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="Play_MC_SFX_Weapon_NoAmmo_RC" ID="{708ACD16-F6BC-49F8-85D6-8076E283E48F}">
+					<ChildrenList>
+						<Action Name="" ID="{DA7F9E5C-78E6-4E7F-A68E-605D6049FA1F}" ShortID="415941874">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="MC_SFX_Weapon_NoAmmo_RC" ID="{6DCC1C38-83B3-425A-85FC-532867C42DFC}" WorkUnitID="{1B87B22A-8865-441B-A287-78E87390F212}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>
