@@ -51,6 +51,28 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="Play_MC_SFX_PickupWeapon_RC" ID="{4C30DC19-451C-449E-9B9A-AADEEAB14B44}">
+					<ChildrenList>
+						<Action Name="" ID="{F2B46034-C2AA-4A87-B00E-3117534AC8A4}" ShortID="186710299">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="MC_SFX_PickupWeapon_RC" ID="{2039D8A2-903F-476A-B075-F87940F35922}" WorkUnitID="{1B87B22A-8865-441B-A287-78E87390F212}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_MC_SFX_Weapon_Armed_RC" ID="{E22125BE-E0CB-4EC0-A4CB-7460BE42B80E}">
+					<ChildrenList>
+						<Action Name="" ID="{9BC20077-0C04-4580-9965-8870AF2C5FCC}" ShortID="456168916">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="MC_SFX_Weapon_Armed_RC" ID="{EF494BB6-BD54-4C8D-8555-2B091B1AA8A0}" WorkUnitID="{1B87B22A-8865-441B-A287-78E87390F212}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

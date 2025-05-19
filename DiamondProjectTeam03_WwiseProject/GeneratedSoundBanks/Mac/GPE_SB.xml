@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SoundBanksInfo Platform="Mac" BasePlatform="Mac" SchemaVersion="16" SoundBankVersion="150">
 	<SoundBanks>
-		<SoundBank Id="4155742227" Type="User" GUID="{D2378E68-5468-4849-BC4A-8FC6D8A3BF29}" Language="SFX" Hash="{9BA10F0A-AD6D-9BE9-A23A-914CD898B28A}">
+		<SoundBank Id="4155742227" Type="User" GUID="{D2378E68-5468-4849-BC4A-8FC6D8A3BF29}" Language="SFX" Hash="{8B83ED19-30EC-C727-F297-C7768A285F71}">
 			<ObjectPath>\SoundBanks\SoundBanks_WU\GPE_SB</ObjectPath>
 			<ShortName>GPE_SB</ShortName>
 			<Path>GPE_SB.bnk</Path>
@@ -68,7 +68,7 @@
 						<MediaRef Id="865971538"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="3930718940" Name="Play_GPE_PillarDestroyed" ObjectPath="\Events\GPE_WU\Play_GPE_PillarDestroyed" GUID="{65F84DEF-9AA8-456B-A6AF-7249DA8CED54}" MaxAttenuation="3000" DurationType="OneShot" DurationMin="4.2210417" DurationMax="4.2210417">
+				<Event Id="3930718940" Name="Play_GPE_PillarDestroyed" ObjectPath="\Events\GPE_WU\Play_GPE_PillarDestroyed" GUID="{65F84DEF-9AA8-456B-A6AF-7249DA8CED54}" MaxAttenuation="3000" DurationType="OneShot" DurationMin="3.549459" DurationMax="3.549459">
 					<MediaRefs>
 						<MediaRef Id="53581153"/>
 					</MediaRefs>
@@ -86,5 +86,5 @@
 			</Events>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{7266A692-1E6E-4485-6791-44FB41A795C0}</FileHash>
+	<FileHash>{A4797519-8E65-7171-1EA6-5E6565381F4D}</FileHash>
 </SoundBanksInfo>

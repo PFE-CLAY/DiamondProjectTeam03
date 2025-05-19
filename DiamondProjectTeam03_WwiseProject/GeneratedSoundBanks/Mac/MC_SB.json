@@ -10,7 +10,7 @@
     "Type": "User",
     "GUID": "{ADC2D189-6608-4828-BC9C-6EF6F90834DB}",
     "Language": "SFX",
-    "Hash": "{7A8AC98D-B07D-8D68-6B54-A3DC2A5DE17E}",
+    "Hash": "{EFFB8A53-84F8-BE05-800C-F985E809A553}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\MC_SB",
     "ShortName": "MC_SB",
     "Path": "MC_SB.bnk",
@@ -24,12 +24,28 @@
       "CachePath": "SFX/AMB/SP/MC_FT_Metal_08_818F3B66.wem"
      },
      {
+      "Id": "16112564",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB\\SP\\MC_FT_Concrete_Land_01.wav",
+      "CachePath": "SFX/AMB/SP/MC_FT_Concrete_Land_01_818F3B66.wem"
+     },
+     {
       "Id": "28276971",
       "Language": "SFX",
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "AMB\\SP\\MC_FT_Concrete_06.wav",
       "CachePath": "SFX/AMB/SP/MC_FT_Concrete_06_818F3B66.wem"
+     },
+     {
+      "Id": "34141530",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB\\SP\\MC_FT_Sand_Jump_01.wav",
+      "CachePath": "SFX/AMB/SP/MC_FT_Sand_Jump_01_818F3B66.wem"
      },
      {
       "Id": "36917763",
@@ -46,6 +62,22 @@
       "Location": "Memory",
       "ShortName": "AMB\\SP\\MC_FT_Sand_08.wav",
       "CachePath": "SFX/AMB/SP/MC_FT_Sand_08_818F3B66.wem"
+     },
+     {
+      "Id": "47427430",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "SFX\\MC_SFX_PickupWeapon_01.wav",
+      "CachePath": "SFX/SFX/MC_SFX_PickupWeapon_01_818F3B66.wem"
+     },
+     {
+      "Id": "58062480",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB\\SP\\MC_FT_Sand_Jump_02.wav",
+      "CachePath": "SFX/AMB/SP/MC_FT_Sand_Jump_02_818F3B66.wem"
      },
      {
       "Id": "62282605",
@@ -80,12 +112,28 @@
       "CachePath": "SFX/AMB/SP/MC_FT_Metal_02_818F3B66.wem"
      },
      {
+      "Id": "97955047",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB\\SP\\MC_FT_Metal_Land_03.wav",
+      "CachePath": "SFX/AMB/SP/MC_FT_Metal_Land_03_818F3B66.wem"
+     },
+     {
       "Id": "99306815",
       "Language": "SFX",
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "AMB\\SP\\MC_FT_Metal_01.wav",
       "CachePath": "SFX/AMB/SP/MC_FT_Metal_01_818F3B66.wem"
+     },
+     {
+      "Id": "101923972",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "SFX\\MC_SFX_PickupWeapon_04.wav",
+      "CachePath": "SFX/SFX/MC_SFX_PickupWeapon_04_818F3B66.wem"
      },
      {
       "Id": "104687879",
@@ -104,6 +152,46 @@
       "CachePath": "SFX/AMB/SP/MC_FT_Sand_10_818F3B66.wem"
      },
      {
+      "Id": "114517244",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB\\SP\\MC_FT_Concrete_Jump_02.wav",
+      "CachePath": "SFX/AMB/SP/MC_FT_Concrete_Jump_02_818F3B66.wem"
+     },
+     {
+      "Id": "138501133",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB\\SP\\MC_FT_Concrete_Land_05.wav",
+      "CachePath": "SFX/AMB/SP/MC_FT_Concrete_Land_05_818F3B66.wem"
+     },
+     {
+      "Id": "146789455",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB\\SP\\MC_FT_Metal_Land_05.wav",
+      "CachePath": "SFX/AMB/SP/MC_FT_Metal_Land_05_818F3B66.wem"
+     },
+     {
+      "Id": "148436568",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB\\SP\\MC_FT_Concrete_Land_03.wav",
+      "CachePath": "SFX/AMB/SP/MC_FT_Concrete_Land_03_818F3B66.wem"
+     },
+     {
+      "Id": "156842051",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB\\SP\\MC_FT_Metal_Jump_04.wav",
+      "CachePath": "SFX/AMB/SP/MC_FT_Metal_Jump_04_818F3B66.wem"
+     },
+     {
       "Id": "163843360",
       "Language": "SFX",
       "Streaming": "false",
@@ -118,6 +206,14 @@
       "Location": "Memory",
       "ShortName": "AMB\\SP\\MC_FT_Metal_12.wav",
       "CachePath": "SFX/AMB/SP/MC_FT_Metal_12_818F3B66.wem"
+     },
+     {
+      "Id": "187397785",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB\\SP\\MC_FT_Sand_Land_04.wav",
+      "CachePath": "SFX/AMB/SP/MC_FT_Sand_Land_04_818F3B66.wem"
      },
      {
       "Id": "211150638",
@@ -152,12 +248,44 @@
       "CachePath": "SFX/AMB/SP/MC_FT_Concrete_07_818F3B66.wem"
      },
      {
+      "Id": "282121010",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB\\SP\\MC_FT_Sand_Land_05.wav",
+      "CachePath": "SFX/AMB/SP/MC_FT_Sand_Land_05_818F3B66.wem"
+     },
+     {
       "Id": "300270566",
       "Language": "SFX",
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "AMB\\SP\\MC_FT_Metal_06.wav",
       "CachePath": "SFX/AMB/SP/MC_FT_Metal_06_818F3B66.wem"
+     },
+     {
+      "Id": "305528684",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB\\SP\\MC_FT_Sand_Jump_05.wav",
+      "CachePath": "SFX/AMB/SP/MC_FT_Sand_Jump_05_818F3B66.wem"
+     },
+     {
+      "Id": "318319530",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB\\SP\\MC_FT_Concrete_Land_04.wav",
+      "CachePath": "SFX/AMB/SP/MC_FT_Concrete_Land_04_818F3B66.wem"
+     },
+     {
+      "Id": "339856009",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB\\SP\\MC_FT_Metal_Jump_01.wav",
+      "CachePath": "SFX/AMB/SP/MC_FT_Metal_Jump_01_818F3B66.wem"
      },
      {
       "Id": "387146543",
@@ -168,12 +296,28 @@
       "CachePath": "SFX/AMB/SP/MC_FT_Sand_05_818F3B66.wem"
      },
      {
+      "Id": "395573930",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB\\SP\\MC_FT_Metal_Land_04.wav",
+      "CachePath": "SFX/AMB/SP/MC_FT_Metal_Land_04_818F3B66.wem"
+     },
+     {
       "Id": "402066446",
       "Language": "SFX",
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "AMB\\SP\\MC_FT_Metal_03.wav",
       "CachePath": "SFX/AMB/SP/MC_FT_Metal_03_818F3B66.wem"
+     },
+     {
+      "Id": "418331982",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "SFX\\MC_SFX_Weapon_NoAmmo.wav",
+      "CachePath": "SFX/SFX/MC_SFX_Weapon_NoAmmo_818F3B66.wem"
      },
      {
       "Id": "421361594",
@@ -184,6 +328,38 @@
       "CachePath": "SFX/MC_SFX_Gun_Shoot_05_818F3B66.wem"
      },
      {
+      "Id": "430767489",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB\\SP\\MC_FT_Sand_Land_03.wav",
+      "CachePath": "SFX/AMB/SP/MC_FT_Sand_Land_03_818F3B66.wem"
+     },
+     {
+      "Id": "442853450",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB\\SP\\MC_FT_Concrete_Jump_04.wav",
+      "CachePath": "SFX/AMB/SP/MC_FT_Concrete_Jump_04_818F3B66.wem"
+     },
+     {
+      "Id": "451049292",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB\\SP\\MC_FT_Metal_Jump_05.wav",
+      "CachePath": "SFX/AMB/SP/MC_FT_Metal_Jump_05_818F3B66.wem"
+     },
+     {
+      "Id": "454622091",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB\\SP\\MC_FT_Metal_Land_02.wav",
+      "CachePath": "SFX/AMB/SP/MC_FT_Metal_Land_02_818F3B66.wem"
+     },
+     {
       "Id": "480059959",
       "Language": "SFX",
       "Streaming": "false",
@@ -192,12 +368,44 @@
       "CachePath": "SFX/AMB/SP/MC_FT_Concrete_02_818F3B66.wem"
      },
      {
+      "Id": "483253408",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB\\SP\\MC_FT_Sand_Land_02.wav",
+      "CachePath": "SFX/AMB/SP/MC_FT_Sand_Land_02_818F3B66.wem"
+     },
+     {
+      "Id": "499540378",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB\\SP\\MC_FT_Concrete_Jump_01.wav",
+      "CachePath": "SFX/AMB/SP/MC_FT_Concrete_Jump_01_818F3B66.wem"
+     },
+     {
+      "Id": "511633870",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "SFX\\MC_SFX_PickupWeapon_03.wav",
+      "CachePath": "SFX/SFX/MC_SFX_PickupWeapon_03_818F3B66.wem"
+     },
+     {
       "Id": "534496258",
       "Language": "SFX",
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "AMB\\SP\\MC_FT_Concrete_11.wav",
       "CachePath": "SFX/AMB/SP/MC_FT_Concrete_11_818F3B66.wem"
+     },
+     {
+      "Id": "541415762",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB\\SP\\MC_FT_Metal_Jump_02.wav",
+      "CachePath": "SFX/AMB/SP/MC_FT_Metal_Jump_02_818F3B66.wem"
      },
      {
       "Id": "542236427",
@@ -222,6 +430,30 @@
       "Location": "Memory",
       "ShortName": "AMB\\SP\\MC_FT_Concrete_01.wav",
       "CachePath": "SFX/AMB/SP/MC_FT_Concrete_01_818F3B66.wem"
+     },
+     {
+      "Id": "607185623",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "SFX\\MC_SFX_PickupWeapon_02.wav",
+      "CachePath": "SFX/SFX/MC_SFX_PickupWeapon_02_818F3B66.wem"
+     },
+     {
+      "Id": "608609148",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB\\SP\\MC_FT_Sand_Jump_03.wav",
+      "CachePath": "SFX/AMB/SP/MC_FT_Sand_Jump_03_818F3B66.wem"
+     },
+     {
+      "Id": "610072169",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "SFX\\MC_SFX_PickupWeapon_05.wav",
+      "CachePath": "SFX/SFX/MC_SFX_PickupWeapon_05_818F3B66.wem"
      },
      {
       "Id": "610918733",
@@ -256,12 +488,36 @@
       "CachePath": "SFX/AMB/SP/MC_FT_Sand_09_818F3B66.wem"
      },
      {
+      "Id": "683985857",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB\\SP\\MC_FT_Concrete_Land_02.wav",
+      "CachePath": "SFX/AMB/SP/MC_FT_Concrete_Land_02_818F3B66.wem"
+     },
+     {
       "Id": "721183356",
       "Language": "SFX",
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "AMB\\SP\\MC_FT_Sand_07.wav",
       "CachePath": "SFX/AMB/SP/MC_FT_Sand_07_818F3B66.wem"
+     },
+     {
+      "Id": "728432909",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB\\SP\\MC_FT_Metal_Land_01.wav",
+      "CachePath": "SFX/AMB/SP/MC_FT_Metal_Land_01_818F3B66.wem"
+     },
+     {
+      "Id": "738022832",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB\\SP\\MC_FT_Concrete_Jump_03.wav",
+      "CachePath": "SFX/AMB/SP/MC_FT_Concrete_Jump_03_818F3B66.wem"
      },
      {
       "Id": "764749319",
@@ -272,12 +528,28 @@
       "CachePath": "SFX/AMB/SP/MC_FT_Metal_09_818F3B66.wem"
      },
      {
+      "Id": "772410827",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "SFX\\MC_SFX_Weapon_Armed.wav",
+      "CachePath": "SFX/SFX/MC_SFX_Weapon_Armed_818F3B66.wem"
+     },
+     {
       "Id": "779936328",
       "Language": "SFX",
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "AMB\\SP\\MC_FT_Sand_02.wav",
       "CachePath": "SFX/AMB/SP/MC_FT_Sand_02_818F3B66.wem"
+     },
+     {
+      "Id": "793802699",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB\\SP\\MC_FT_Concrete_Jump_05.wav",
+      "CachePath": "SFX/AMB/SP/MC_FT_Concrete_Jump_05_818F3B66.wem"
      },
      {
       "Id": "814998601",
@@ -302,6 +574,14 @@
       "Location": "Memory",
       "ShortName": "AMB\\SP\\MC_FT_Sand_04.wav",
       "CachePath": "SFX/AMB/SP/MC_FT_Sand_04_818F3B66.wem"
+     },
+     {
+      "Id": "851952181",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB\\SP\\MC_FT_Metal_Jump_03.wav",
+      "CachePath": "SFX/AMB/SP/MC_FT_Metal_Jump_03_818F3B66.wem"
      },
      {
       "Id": "888066358",
@@ -336,6 +616,22 @@
       "CachePath": "SFX/AMB/SP/MC_FT_Sand_11_818F3B66.wem"
      },
      {
+      "Id": "971911144",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB\\SP\\MC_FT_Sand_Jump_04.wav",
+      "CachePath": "SFX/AMB/SP/MC_FT_Sand_Jump_04_818F3B66.wem"
+     },
+     {
+      "Id": "1003274806",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB\\SP\\MC_FT_Sand_Land_01.wav",
+      "CachePath": "SFX/AMB/SP/MC_FT_Sand_Land_01_818F3B66.wem"
+     },
+     {
       "Id": "1036129781",
       "Language": "SFX",
       "Streaming": "false",
@@ -358,6 +654,180 @@
     },
     "Events": [
      {
+      "Id": "2749485653",
+      "Name": "Play_MC_FOL_FT_Jump_SW",
+      "ObjectPath": "\\Events\\MC_WU\\Play_MC_FOL_FT_Jump_SW",
+      "GUID": "{84F52436-C579-4C37-9804-C7D11AEDCC08}",
+      "DurationType": "OneShot",
+      "DurationMin": "0.42432198",
+      "DurationMax": "0.92546445",
+      "SwitchContainers": [
+       {
+        "SwitchValue": {
+         "GroupType": "Switch",
+         "GroupId": "757195373",
+         "Id": "841620460",
+         "GUID": "{7D8D0D4C-3D1C-43A2-B357-3F03FF424DDB}",
+         "Default": "true"
+        },
+        "MediaRefs": [
+         {
+          "Id": "114517244"
+         },
+         {
+          "Id": "442853450"
+         },
+         {
+          "Id": "499540378"
+         },
+         {
+          "Id": "738022832"
+         },
+         {
+          "Id": "793802699"
+         }
+        ]
+       },
+       {
+        "SwitchValue": {
+         "GroupType": "Switch",
+         "GroupId": "757195373",
+         "Id": "803837735",
+         "GUID": "{0F8A73BD-8A92-4819-BE09-452FE32E1FBC}"
+        },
+        "MediaRefs": [
+         {
+          "Id": "34141530"
+         },
+         {
+          "Id": "58062480"
+         },
+         {
+          "Id": "305528684"
+         },
+         {
+          "Id": "608609148"
+         },
+         {
+          "Id": "971911144"
+         }
+        ]
+       },
+       {
+        "SwitchValue": {
+         "GroupType": "Switch",
+         "GroupId": "757195373",
+         "Id": "2473969246",
+         "GUID": "{4F4901C3-CC0C-4142-BDF8-FF62F7720DE3}"
+        },
+        "MediaRefs": [
+         {
+          "Id": "156842051"
+         },
+         {
+          "Id": "339856009"
+         },
+         {
+          "Id": "451049292"
+         },
+         {
+          "Id": "541415762"
+         },
+         {
+          "Id": "851952181"
+         }
+        ]
+       }
+      ]
+     },
+     {
+      "Id": "2116962020",
+      "Name": "Play_MC_FOL_FT_Land_SW",
+      "ObjectPath": "\\Events\\MC_WU\\Play_MC_FOL_FT_Land_SW",
+      "GUID": "{3AABFDF5-D848-4A71-84AA-A7DEDC1F4177}",
+      "DurationType": "OneShot",
+      "DurationMin": "0.35762826",
+      "DurationMax": "0.91374254",
+      "SwitchContainers": [
+       {
+        "SwitchValue": {
+         "GroupType": "Switch",
+         "GroupId": "757195373",
+         "Id": "841620460",
+         "GUID": "{7D8D0D4C-3D1C-43A2-B357-3F03FF424DDB}",
+         "Default": "true"
+        },
+        "MediaRefs": [
+         {
+          "Id": "16112564"
+         },
+         {
+          "Id": "138501133"
+         },
+         {
+          "Id": "148436568"
+         },
+         {
+          "Id": "318319530"
+         },
+         {
+          "Id": "683985857"
+         }
+        ]
+       },
+       {
+        "SwitchValue": {
+         "GroupType": "Switch",
+         "GroupId": "757195373",
+         "Id": "803837735",
+         "GUID": "{0F8A73BD-8A92-4819-BE09-452FE32E1FBC}"
+        },
+        "MediaRefs": [
+         {
+          "Id": "187397785"
+         },
+         {
+          "Id": "282121010"
+         },
+         {
+          "Id": "430767489"
+         },
+         {
+          "Id": "483253408"
+         },
+         {
+          "Id": "1003274806"
+         }
+        ]
+       },
+       {
+        "SwitchValue": {
+         "GroupType": "Switch",
+         "GroupId": "757195373",
+         "Id": "2473969246",
+         "GUID": "{4F4901C3-CC0C-4142-BDF8-FF62F7720DE3}"
+        },
+        "MediaRefs": [
+         {
+          "Id": "97955047"
+         },
+         {
+          "Id": "146789455"
+         },
+         {
+          "Id": "395573930"
+         },
+         {
+          "Id": "454622091"
+         },
+         {
+          "Id": "728432909"
+         }
+        ]
+       }
+      ]
+     },
+     {
       "Id": "294373914",
       "Name": "Play_MC_FOL_FT_SW",
       "ObjectPath": "\\Events\\MC_WU\\Play_MC_FOL_FT_SW",
@@ -366,6 +836,145 @@
       "DurationMin": "0.20717718",
       "DurationMax": "0.8268297",
       "SwitchContainers": [
+       {
+        "SwitchValue": {
+         "GroupType": "Switch",
+         "GroupId": "757195373",
+         "Id": "841620460",
+         "GUID": "{7D8D0D4C-3D1C-43A2-B357-3F03FF424DDB}",
+         "Default": "true"
+        },
+        "MediaRefs": [
+         {
+          "Id": "28276971"
+         },
+         {
+          "Id": "75654975"
+         },
+         {
+          "Id": "163843360"
+         },
+         {
+          "Id": "267703531"
+         },
+         {
+          "Id": "268013152"
+         },
+         {
+          "Id": "480059959"
+         },
+         {
+          "Id": "534496258"
+         },
+         {
+          "Id": "602677679"
+         },
+         {
+          "Id": "655344864"
+         },
+         {
+          "Id": "814998601"
+         },
+         {
+          "Id": "816346842"
+         },
+         {
+          "Id": "1036129781"
+         }
+        ]
+       },
+       {
+        "SwitchValue": {
+         "GroupType": "Switch",
+         "GroupId": "757195373",
+         "Id": "803837735",
+         "GUID": "{0F8A73BD-8A92-4819-BE09-452FE32E1FBC}"
+        },
+        "MediaRefs": [
+         {
+          "Id": "44684202"
+         },
+         {
+          "Id": "109232168"
+         },
+         {
+          "Id": "211150638"
+         },
+         {
+          "Id": "387146543"
+         },
+         {
+          "Id": "542236427"
+         },
+         {
+          "Id": "620312545"
+         },
+         {
+          "Id": "673489173"
+         },
+         {
+          "Id": "721183356"
+         },
+         {
+          "Id": "779936328"
+         },
+         {
+          "Id": "838939217"
+         },
+         {
+          "Id": "910413546"
+         },
+         {
+          "Id": "967065821"
+         }
+        ]
+       },
+       {
+        "SwitchValue": {
+         "GroupType": "Switch",
+         "GroupId": "757195373",
+         "Id": "2473969246",
+         "GUID": "{4F4901C3-CC0C-4142-BDF8-FF62F7720DE3}"
+        },
+        "MediaRefs": [
+         {
+          "Id": "4962513"
+         },
+         {
+          "Id": "81610070"
+         },
+         {
+          "Id": "99306815"
+         },
+         {
+          "Id": "104687879"
+         },
+         {
+          "Id": "174467291"
+         },
+         {
+          "Id": "225595462"
+         },
+         {
+          "Id": "300270566"
+         },
+         {
+          "Id": "402066446"
+         },
+         {
+          "Id": "592388296"
+         },
+         {
+          "Id": "764749319"
+         },
+         {
+          "Id": "888066358"
+         },
+         {
+          "Id": "898538319"
+         }
+        ]
+       },
        {
         "SwitchValue": {
          "GroupType": "Switch",
@@ -532,6 +1141,46 @@
         "Id": "610918733"
        }
       ]
+     },
+     {
+      "Id": "1820563873",
+      "Name": "Play_MC_SFX_PickupWeapon_RC",
+      "ObjectPath": "\\Events\\MC_WU\\Play_MC_SFX_PickupWeapon_RC",
+      "GUID": "{4C30DC19-451C-449E-9B9A-AADEEAB14B44}",
+      "DurationType": "OneShot",
+      "DurationMin": "2.5657325",
+      "DurationMax": "3.6410909",
+      "MediaRefs": [
+       {
+        "Id": "47427430"
+       },
+       {
+        "Id": "101923972"
+       },
+       {
+        "Id": "511633870"
+       },
+       {
+        "Id": "607185623"
+       },
+       {
+        "Id": "610072169"
+       }
+      ]
+     },
+     {
+      "Id": "3961249933",
+      "Name": "Play_MC_SFX_Weapon_Armed_RC",
+      "ObjectPath": "\\Events\\MC_WU\\Play_MC_SFX_Weapon_Armed_RC",
+      "GUID": "{E22125BE-E0CB-4EC0-A4CB-7460BE42B80E}",
+      "DurationType": "OneShot",
+      "DurationMin": "3.3666666",
+      "DurationMax": "3.3666666",
+      "MediaRefs": [
+       {
+        "Id": "772410827"
+       }
+      ]
      }
     ],
     "Busses": [
@@ -653,6 +1302,6 @@
     ]
    }
   ],
-  "FileHash": "{ECFB31AB-4A56-664B-26FC-8A20143DED11}"
+  "FileHash": "{815055EE-7415-9B59-CEE2-13688F10C4B5}"
  }
 }
