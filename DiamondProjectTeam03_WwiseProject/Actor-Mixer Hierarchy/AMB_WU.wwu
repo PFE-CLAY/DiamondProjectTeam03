@@ -526,7 +526,7 @@
 										<ActiveSource Name="AMB_PAD_Hub" ID="{A1A4C403-1A1F-4758-9A23-79E9538473CD}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
-								<Sound Name="AMB_PAD_ControlCenter" ID="{26832768-C83C-4E6A-8ADE-0D9674F71853}" ShortID="908735699">
+								<Sound Name="AMB_PAD_ControlCenter" ID="{DE270923-E391-404C-B76E-4D6C490413A8}" ShortID="827054151">
 									<ReferenceList>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
@@ -536,19 +536,19 @@
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
-										<AudioFileSource Name="AMB_PAD_ControlCenter" ID="{B54FA3BB-3062-4A0A-A3D8-EE59F6EEE05E}">
+										<AudioFileSource Name="AMB_PAD_ControlCenter" ID="{0570D318-E246-4C1E-AE47-F6D3A3288B32}">
 											<Language>SFX</Language>
-											<AudioFile>AMB_PAD_ControlCenter.wav</AudioFile>
+											<AudioFile>AMB\Pads\AMB_PAD_ControlCenter.wav</AudioFile>
 											<MediaIDList>
-												<MediaID ID="548040044"/>
+												<MediaID ID="838454934"/>
 											</MediaIDList>
 										</AudioFileSource>
 									</ChildrenList>
 									<ActiveSourceList>
-										<ActiveSource Name="AMB_PAD_ControlCenter" ID="{B54FA3BB-3062-4A0A-A3D8-EE59F6EEE05E}" Platform="Linked"/>
+										<ActiveSource Name="AMB_PAD_ControlCenter" ID="{0570D318-E246-4C1E-AE47-F6D3A3288B32}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
-								<Sound Name="AMB_PAD_CorpseTrap" ID="{5B911C38-B933-40EF-B9D1-6D52EE93BD87}" ShortID="758299563">
+								<Sound Name="AMB_PAD_Pyramid_Closed" ID="{179F5AED-0218-45B9-B6C4-1939675B2DDD}" ShortID="62171934">
 									<ReferenceList>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
@@ -558,19 +558,19 @@
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
-										<AudioFileSource Name="AMB_PAD_CorpseTrap" ID="{9569340A-210A-402F-9EEA-280296542185}">
+										<AudioFileSource Name="AMB_PAD_Pyramid_Closed" ID="{9FC68381-296D-4DC9-A6C4-6FE7E08EB2E1}">
 											<Language>SFX</Language>
-											<AudioFile>AMB_PAD_CorpseTrap.wav</AudioFile>
+											<AudioFile>AMB\Pads\AMB_PAD_Pyramid_Closed.wav</AudioFile>
 											<MediaIDList>
-												<MediaID ID="639308973"/>
+												<MediaID ID="1019889613"/>
 											</MediaIDList>
 										</AudioFileSource>
 									</ChildrenList>
 									<ActiveSourceList>
-										<ActiveSource Name="AMB_PAD_CorpseTrap" ID="{9569340A-210A-402F-9EEA-280296542185}" Platform="Linked"/>
+										<ActiveSource Name="AMB_PAD_Pyramid_Closed" ID="{9FC68381-296D-4DC9-A6C4-6FE7E08EB2E1}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
-								<Sound Name="AMB_PAD_FinalDoor" ID="{F2FB57C4-237E-4C79-95F9-6F39324645B3}" ShortID="902256711">
+								<Sound Name="AMB_PAD_Pyramid_Opened" ID="{FC61480A-086F-47E8-AB9B-7DB49F0EF76C}" ShortID="286403040">
 									<ReferenceList>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
@@ -580,19 +580,19 @@
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
-										<AudioFileSource Name="AMB_PAD_FinalDoor" ID="{76C28FD8-E369-4CBD-A320-E43BE5062C87}">
+										<AudioFileSource Name="AMB_PAD_Pyramid_Opened" ID="{D2B4B431-57B2-4DCC-ACB8-BB5F40B47C5F}">
 											<Language>SFX</Language>
-											<AudioFile>AMB_PAD_FinalDoor.wav</AudioFile>
+											<AudioFile>AMB\Pads\AMB_PAD_Pyramid_Opened.wav</AudioFile>
 											<MediaIDList>
-												<MediaID ID="361930982"/>
+												<MediaID ID="410007117"/>
 											</MediaIDList>
 										</AudioFileSource>
 									</ChildrenList>
 									<ActiveSourceList>
-										<ActiveSource Name="AMB_PAD_FinalDoor" ID="{76C28FD8-E369-4CBD-A320-E43BE5062C87}" Platform="Linked"/>
+										<ActiveSource Name="AMB_PAD_Pyramid_Opened" ID="{D2B4B431-57B2-4DCC-ACB8-BB5F40B47C5F}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
-								<Sound Name="AMB_PAD_Pyramid_Closed" ID="{675DC27B-E498-4926-9FE2-94BCC93903BF}" ShortID="154540947">
+								<Sound Name="AMB_PAD_CorpseTrap" ID="{3C0E4987-DADB-4AC2-AEC2-F83F365F76D8}" ShortID="427884014">
 									<ReferenceList>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
@@ -602,19 +602,19 @@
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
-										<AudioFileSource Name="AMB_PAD_Pyramid_Closed" ID="{89C09AAA-BA35-4117-8664-4E3CCF95B86C}">
+										<AudioFileSource Name="AMB_PAD_CorpseTrap" ID="{A27E4D75-0EFD-477B-81FA-2858C9039C32}">
 											<Language>SFX</Language>
-											<AudioFile>AMB_PAD_Pyramid_Closed.wav</AudioFile>
+											<AudioFile>AMB\Pads\AMB_PAD_CorpseTrap.wav</AudioFile>
 											<MediaIDList>
-												<MediaID ID="237350035"/>
+												<MediaID ID="788907204"/>
 											</MediaIDList>
 										</AudioFileSource>
 									</ChildrenList>
 									<ActiveSourceList>
-										<ActiveSource Name="AMB_PAD_Pyramid_Closed" ID="{89C09AAA-BA35-4117-8664-4E3CCF95B86C}" Platform="Linked"/>
+										<ActiveSource Name="AMB_PAD_CorpseTrap" ID="{A27E4D75-0EFD-477B-81FA-2858C9039C32}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
-								<Sound Name="AMB_PAD_Pyramid_Opened" ID="{AD5CA36D-515A-4DFB-AAD1-CFDD210217A6}" ShortID="161843899">
+								<Sound Name="AMB_PAD_FinalDoor" ID="{6068154F-F314-4153-A7E3-E8080669FFF9}" ShortID="477742021">
 									<ReferenceList>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
@@ -624,19 +624,19 @@
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
-										<AudioFileSource Name="AMB_PAD_Pyramid_Opened" ID="{BD977D5C-6A55-46B0-8638-F38533AD37FA}">
+										<AudioFileSource Name="AMB_PAD_FinalDoor" ID="{0CE4F975-126F-4468-B28B-33FE9C1F2B5A}">
 											<Language>SFX</Language>
-											<AudioFile>AMB_PAD_Pyramid_Opened.wav</AudioFile>
+											<AudioFile>AMB\Pads\AMB_PAD_FinalDoor.wav</AudioFile>
 											<MediaIDList>
-												<MediaID ID="827919036"/>
+												<MediaID ID="219508795"/>
 											</MediaIDList>
 										</AudioFileSource>
 									</ChildrenList>
 									<ActiveSourceList>
-										<ActiveSource Name="AMB_PAD_Pyramid_Opened" ID="{BD977D5C-6A55-46B0-8638-F38533AD37FA}" Platform="Linked"/>
+										<ActiveSource Name="AMB_PAD_FinalDoor" ID="{0CE4F975-126F-4468-B28B-33FE9C1F2B5A}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
-								<Sound Name="AMB_PAD_Sablier" ID="{1C3689A6-35FF-4F4E-9C9B-25BE142AB4ED}" ShortID="480235396">
+								<Sound Name="AMB_PAD_Sablier" ID="{E7C10284-1AB5-40BC-B0AB-E107A80AD3CB}" ShortID="668711930">
 									<ReferenceList>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
@@ -646,16 +646,16 @@
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
-										<AudioFileSource Name="AMB_PAD_Sablier" ID="{2E23B505-FDB5-4DBE-9EFB-0722C29D053C}">
+										<AudioFileSource Name="AMB_PAD_Sablier" ID="{6597DECE-E22C-400A-A19F-F85F7D300210}">
 											<Language>SFX</Language>
-											<AudioFile>AMB_PAD_Sablier.wav</AudioFile>
+											<AudioFile>AMB\Pads\AMB_PAD_Sablier.wav</AudioFile>
 											<MediaIDList>
-												<MediaID ID="971291290"/>
+												<MediaID ID="61235804"/>
 											</MediaIDList>
 										</AudioFileSource>
 									</ChildrenList>
 									<ActiveSourceList>
-										<ActiveSource Name="AMB_PAD_Sablier" ID="{2E23B505-FDB5-4DBE-9EFB-0722C29D053C}" Platform="Linked"/>
+										<ActiveSource Name="AMB_PAD_Sablier" ID="{6597DECE-E22C-400A-A19F-F85F7D300210}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
 							</ChildrenList>
@@ -717,7 +717,7 @@
 										<ActiveSource Name="AMB_SP_Crowd_Bronca_Long" ID="{5606B068-B000-4143-AA2A-C3993DF0C0DA}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
-								<Sound Name="AMB_SP_Incinerator" ID="{07E6E06B-5168-4C5A-8B06-D8DD20C2D120}" ShortID="476064784">
+								<Sound Name="AMB_SP_Incinerator" ID="{CDFB15D9-8310-4722-86F1-7202CE6DD4CB}" ShortID="643250516">
 									<ReferenceList>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
@@ -727,16 +727,16 @@
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
-										<AudioFileSource Name="AMB_SP_Incinerator" ID="{3934D5E6-D838-41FF-9DE2-D43D4CF7FC7C}">
+										<AudioFileSource Name="AMB_SP_Incinerator" ID="{96AA7C51-EEDD-4EED-999B-615E9654960C}">
 											<Language>SFX</Language>
-											<AudioFile>AMB_SP_Incinerator.wav</AudioFile>
+											<AudioFile>AMB\SP\AMB_SP_Incinerator.wav</AudioFile>
 											<MediaIDList>
-												<MediaID ID="186758175"/>
+												<MediaID ID="754770262"/>
 											</MediaIDList>
 										</AudioFileSource>
 									</ChildrenList>
 									<ActiveSourceList>
-										<ActiveSource Name="AMB_SP_Incinerator" ID="{3934D5E6-D838-41FF-9DE2-D43D4CF7FC7C}" Platform="Linked"/>
+										<ActiveSource Name="AMB_SP_Incinerator" ID="{96AA7C51-EEDD-4EED-999B-615E9654960C}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
 							</ChildrenList>
