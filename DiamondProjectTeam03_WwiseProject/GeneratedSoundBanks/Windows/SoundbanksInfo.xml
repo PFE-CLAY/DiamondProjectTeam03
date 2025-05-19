@@ -9,7 +9,7 @@
 	</RootPaths>
 	<DialogueEvents/>
 	<SoundBanks>
-		<SoundBank Id="459280130" Type="User" GUID="{46F08C13-7BDA-47D5-A653-BDFCDAD2487B}" Language="SFX" Hash="{06BA05D0-C2EA-ED4C-7995-917AF8A25DD2}">
+		<SoundBank Id="459280130" Type="User" GUID="{46F08C13-7BDA-47D5-A653-BDFCDAD2487B}" Language="SFX" Hash="{FEC0151D-6568-73FC-F065-33A4D2F833EA}">
 			<ObjectPath>\SoundBanks\SoundBanks_WU\FOES_Flying_SB</ObjectPath>
 			<ShortName>FOES_Flying_SB</ShortName>
 			<Path>FOES_Flying_SB.bnk</Path>
@@ -42,15 +42,17 @@
 			<Plugins>
 				<Custom>
 					<Plugin Id="169636257" Name="Have_U_Ever_Been_Outside (Custom)" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_RFX_Arena\[Effect Slot [0]: (RoomVerb)]\Have_U_Ever_Been_Outside (Custom)" GUID="{4EC028FC-6FD5-4AC6-A71F-B2CB8F1117DF}" LibName="Wwise RoomVerb" LibId="7733251"/>
+					<Plugin Id="913803451" Name="Octave_Up (Custom)" ObjectPath="\Actor-Mixer Hierarchy\FOES_Flying_WU\FOES_Flying\FOES_SFX_Flying\FOES_SFX_Flying_Shoot_RC\[Effect Slot [0]: (Pitch Shifter)]\Octave_Up (Custom)" GUID="{2F00A97A-7EA5-4071-B9A5-B685BC249C27}" LibName="Wwise Pitch Shifter" LibId="8912899"/>
+					<Plugin Id="963626000" Name="Dist_Flying_Shots (Custom)" ObjectPath="\Actor-Mixer Hierarchy\FOES_Flying_WU\FOES_Flying\FOES_SFX_Flying\FOES_SFX_Flying_Shoot_RC\[Effect Slot [1]: (Guitar Distortion)]\Dist_Flying_Shots (Custom)" GUID="{71204E36-4F7C-4B89-9BD6-E0036788D676}" LibName="Wwise Guitar Distortion" LibId="8257539"/>
 				</Custom>
 			</Plugins>
 			<Events>
-				<Event Id="3816121295" Name="Play_FOES_SFX_Flying_Idle_LP" ObjectPath="\Events\FOES_Flying_WU\Play_FOES_SFX_Flying_Idle_LP" GUID="{CF4E623B-F60A-4740-B500-0E5586E75310}" MaxAttenuation="3000" DurationType="Infinite">
+				<Event Id="3816121295" Name="Play_FOES_SFX_Flying_Idle_LP" ObjectPath="\Events\FOES_Flying_WU\Play_FOES_SFX_Flying_Idle_LP" GUID="{CF4E623B-F60A-4740-B500-0E5586E75310}" MaxAttenuation="2000" DurationType="Infinite">
 					<MediaRefs>
 						<MediaRef Id="202392697"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="1810073987" Name="Play_FOES_SFX_Flying_Shoot_RC" ObjectPath="\Events\FOES_Flying_WU\Play_FOES_SFX_Flying_Shoot_RC" GUID="{615B6DF4-5110-477A-ADAD-83075E2A2CC2}" MaxAttenuation="2000" DurationType="OneShot" DurationMin="2.2750027" DurationMax="3.1742759">
+				<Event Id="1810073987" Name="Play_FOES_SFX_Flying_Shoot_RC" ObjectPath="\Events\FOES_Flying_WU\Play_FOES_SFX_Flying_Shoot_RC" GUID="{615B6DF4-5110-477A-ADAD-83075E2A2CC2}" MaxAttenuation="2000" DurationType="OneShot" DurationMin="1.5138968" DurationMax="1.9747615">
 					<MediaRefs>
 						<MediaRef Id="45515045"/>
 						<MediaRef Id="195673243"/>
@@ -58,6 +60,12 @@
 						<MediaRef Id="732571760"/>
 						<MediaRef Id="821998844"/>
 					</MediaRefs>
+					<PluginRefs>
+						<Custom>
+							<PluginRef Id="913803451"/>
+							<PluginRef Id="963626000"/>
+						</Custom>
+					</PluginRefs>
 				</Event>
 				<Event Id="3718813633" Name="Stop_FOES_SFX_Flying_Idle_LP" ObjectPath="\Events\FOES_Flying_WU\Stop_FOES_SFX_Flying_Idle_LP" GUID="{9C4A0482-8257-4724-B64F-85F88099C5B0}" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
 			</Events>
@@ -88,7 +96,7 @@
 				<GameParameter Id="3590742338" Name="RTPC_Speed_Flying" ObjectPath="\Game Parameters\Default Work Unit\RTPC_Speed_Flying" GUID="{4A0C67E7-2443-47A8-B5EB-86C8F65C73EB}"/>
 			</GameParameters>
 		</SoundBank>
-		<SoundBank Id="1355168291" Type="User" GUID="{701ECBBD-9C7B-4030-8CDB-749EE5D1C7B9}" Language="SFX" Hash="{4FE3FF92-ED4E-4058-E9CE-67D83161A2A9}">
+		<SoundBank Id="1355168291" Type="User" GUID="{701ECBBD-9C7B-4030-8CDB-749EE5D1C7B9}" Language="SFX" Hash="{7934D874-C376-1821-0883-AFB48ADDF3DA}">
 			<ObjectPath>Init</ObjectPath>
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
@@ -1172,5 +1180,5 @@
 			</Events>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{075A3A82-85A5-489C-FD85-12FFCC28F617}</FileHash>
+	<FileHash>{2CCC204C-8DA2-B359-BADE-A08D9101E4DE}</FileHash>
 </SoundBanksInfo>

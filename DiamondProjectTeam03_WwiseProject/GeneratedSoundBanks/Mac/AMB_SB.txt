@@ -1,4 +1,5 @@
 Event	ID	Name			Wwise Object Path	Notes
+	2972533464	Play_AMB_PAD_Hub			\AMB_WU\Play_AMB_PAD_Hub	
 	3817670132	Play_AMB_Arena_Crowd			\AMB_WU\Play_AMB_Arena_Crowd	
 
 Audio Bus	ID	Name			Wwise Object Path	Notes
@@ -41,6 +42,7 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	552226407	AMB_RFX_Crowd_Individual_04	G:\Unreal\Unreal_Projects\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\AMB\RFX\AMB_RFX_Crowd_Individual_04_818F3B66.wem		\Actor-Mixer Hierarchy\AMB_WU\AMB_AM\AMB_RFX_AM\AMB_RFX_Individual\AMB_RFX_Crowd_Individual_04		232034
 	585712298	AMB_RFX_Crowd_Pitched_Reaction_01	G:\Unreal\Unreal_Projects\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\AMB\RFX\AMB_RFX_Crowd_Pitched_Reaction_01_818F3B66.wem		\Actor-Mixer Hierarchy\AMB_WU\AMB_AM\AMB_RFX_AM\AMB_RFX_Crowd_Spectacular\AMB_RFX_Crowd_Pitched_Reaction_01		631428
 	680837929	AMB_RFX_Crowd_Pitched_Reaction_05	G:\Unreal\Unreal_Projects\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\AMB\RFX\AMB_RFX_Crowd_Pitched_Reaction_05_818F3B66.wem		\Actor-Mixer Hierarchy\AMB_WU\AMB_AM\AMB_RFX_AM\AMB_RFX_Crowd_Spectacular\AMB_RFX_Crowd_Pitched_Reaction_05		704096
+	683095756	AMB_PAD_Hub	G:\Unreal\Unreal_Projects\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\AMB\RFX\AMB_PAD_Hub_FBC78EF0.wem		\Actor-Mixer Hierarchy\AMB_WU\AMB_AM\AMB_PAD_AM\AMB_PAD_Hub		5022548
 	742879851	AMB_RFX_Crowd_Individual_01	G:\Unreal\Unreal_Projects\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\AMB\RFX\AMB_RFX_Crowd_Individual_01_818F3B66.wem		\Actor-Mixer Hierarchy\AMB_WU\AMB_AM\AMB_RFX_AM\AMB_RFX_Individual\AMB_RFX_Crowd_Individual_01		260084
 	754998867	AMB_RFX_WarHorns_01	G:\Unreal\Unreal_Projects\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\AMB\RFX\AMB_RFX_WarHorns_01_818F3B66.wem		\Actor-Mixer Hierarchy\AMB_WU\AMB_AM\AMB_RFX_AM\AMB_RFX_WarHorns\AMB_RFX_WarHorns_01		516098
 	762008811	AMB_RFX_Crowd_ClassicReaction_01	G:\Unreal\Unreal_Projects\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\AMB\RFX\AMB_RFX_Crowd_ClassicReaction_01_818F3B66.wem		\Actor-Mixer Hierarchy\AMB_WU\AMB_AM\AMB_RFX_AM\AMB_RFX_Crowd_Classic\AMB_RFX_Crowd_ClassicReaction_01		912096
