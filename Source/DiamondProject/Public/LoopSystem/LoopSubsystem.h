@@ -18,6 +18,8 @@ class DIAMONDPROJECT_API ULoopSubsystem : public UGameInstanceSubsystem
 {
 	GENERATED_BODY()
 
+	virtual void Initialize(FSubsystemCollectionBase& Collection) override;
+
 	UPROPERTY()
 	bool bIsInit = false;
 
@@ -37,7 +39,7 @@ public:
 	UPROPERTY(BlueprintReadOnly)
 	TArray<TObjectPtr<UDataTable>> PreplanDreamSubtitlesArray;
 
-private:	
+private:
 	UFUNCTION(BlueprintCallable)
 	void ReloadScene();
 

@@ -10,6 +10,12 @@
 #include "LoopSystem/PreplanStep.h"
 #include "UI/GameSettingsSubsystem.h"
 
+void ULoopSubsystem::Initialize(FSubsystemCollectionBase& Collection)
+{
+	Super::Initialize(Collection);
+	UE_LOG(LogTemp, Display, TEXT("ULoopSubsystem::Initialize"));
+}
+
 void ULoopSubsystem::ReloadScene()
 {
 	for (auto PreplanStep : PreplanSteps){
