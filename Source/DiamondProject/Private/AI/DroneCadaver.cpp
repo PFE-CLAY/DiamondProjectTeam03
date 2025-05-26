@@ -68,8 +68,9 @@ void ADroneCadaver::GoToNewTarget()
 void ADroneCadaver::CarryBody()
 {
 	AActor* OwnedActor = GetController()->GetPawn();
+	FVector Location = TargetBody->AlliedMesh->GetBoneLocation(TargetBody->GrabBoneName);
 	TargetBody->PhysicsHandle->GrabComponentAtLocation(TargetBody->AlliedMesh, TargetBody->GrabBoneName,
-		TargetBody->AlliedMesh->GetBoneLocation(TargetBody->GrabBoneName));
+		Location);
 	//TODO: ne collisione plus 
 	bShouldGrab = true;
 }
