@@ -37,7 +37,7 @@ public:
 	FVector GrabLocation;
 
 	UPROPERTY(EditAnywhere, Category = "Grab")
-	FName GrabBoneName;
+	FName GrabBoneName = "Root";
 
 	UPROPERTY(BlueprintReadWrite)
 	bool bIsDead = false;

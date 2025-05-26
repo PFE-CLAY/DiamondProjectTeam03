@@ -24,6 +24,9 @@ public:
 
 	UPROPERTY(BlueprintReadWrite)
 	float SubtitlesBackgroundOpacity = 0.5f;
+
+	UPROPERTY(BlueprintReadWrite)
+	float MouseSensitivity = 1.0f;
 	
 private:
 	UPROPERTY(EditAnywhere)
