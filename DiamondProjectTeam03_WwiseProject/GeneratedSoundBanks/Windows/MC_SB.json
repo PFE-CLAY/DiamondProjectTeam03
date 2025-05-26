@@ -10,7 +10,7 @@
     "Type": "User",
     "GUID": "{ADC2D189-6608-4828-BC9C-6EF6F90834DB}",
     "Language": "SFX",
-    "Hash": "{7FFCB4F9-232B-89E6-AE63-B1C2DA61444D}",
+    "Hash": "{E9EA8E1F-4E63-C97D-EBC9-79444911A34C}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\MC_SB",
     "ShortName": "MC_SB",
     "Path": "MC_SB.bnk",
@@ -1284,6 +1284,12 @@
       "Name": "RVB_Hub",
       "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Hub",
       "GUID": "{D499EBE4-F26A-48E5-B89D-1F7C43D829E3}"
+     },
+     {
+      "Id": "3670521640",
+      "Name": "RVB_Pyramid",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Pyramid",
+      "GUID": "{668EA0D2-771E-452F-B241-11793F9755B0}"
      }
     ],
     "SwitchGroups": [
@@ -1316,6 +1322,6 @@
     ]
    }
   ],
-  "FileHash": "{3C1D495F-9EC0-C79C-26DF-F9610B5CE0B0}"
+  "FileHash": "{9272CF9E-2DE8-EDD8-0611-6DEACDD717E8}"
  }
 }

@@ -11,20 +11,6 @@
     "StaticLib": "AkRoomVerbFX"
    },
    {
-    "LibName": "Wwise Guitar Distortion",
-    "LibId": "8257539",
-    "Type": "Effect",
-    "DLL": "AkGuitarDistortion",
-    "StaticLib": "AkGuitarDistortionFX"
-   },
-   {
-    "LibName": "Wwise Pitch Shifter",
-    "LibId": "8912899",
-    "Type": "Effect",
-    "DLL": "AkPitchShifter",
-    "StaticLib": "AkPitchShifterFX"
-   },
-   {
     "LibName": "System",
     "LibId": "11403271",
     "Type": "AudioDevice"
@@ -35,6 +21,6 @@
     "Type": "AudioDevice"
    }
   ],
-  "FileHash": "{55F32D24-1F2D-B599-E736-F651BA823E17}"
+  "FileHash": "{BFC96AC8-4F88-3DCF-DCDD-B6CF26CB600C}"
  }
 }

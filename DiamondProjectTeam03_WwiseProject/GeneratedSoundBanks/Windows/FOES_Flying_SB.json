@@ -10,7 +10,7 @@
     "Type": "User",
     "GUID": "{46F08C13-7BDA-47D5-A653-BDFCDAD2487B}",
     "Language": "SFX",
-    "Hash": "{FEC0151D-6568-73FC-F065-33A4D2F833EA}",
+    "Hash": "{2025E8DC-740A-C66A-FA64-8B84E3A47534}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\FOES_Flying_SB",
     "ShortName": "FOES_Flying_SB",
     "Path": "FOES_Flying_SB.bnk",
@@ -73,22 +73,6 @@
        "GUID": "{4EC028FC-6FD5-4AC6-A71F-B2CB8F1117DF}",
        "LibName": "Wwise RoomVerb",
        "LibId": "7733251"
-      },
-      {
-       "Id": "913803451",
-       "Name": "Octave_Up (Custom)",
-       "ObjectPath": "\\Actor-Mixer Hierarchy\\FOES_Flying_WU\\FOES_Flying\\FOES_SFX_Flying\\FOES_SFX_Flying_Shoot_RC\\[Effect Slot [0]: (Pitch Shifter)]\\Octave_Up (Custom)",
-       "GUID": "{2F00A97A-7EA5-4071-B9A5-B685BC249C27}",
-       "LibName": "Wwise Pitch Shifter",
-       "LibId": "8912899"
-      },
-      {
-       "Id": "963626000",
-       "Name": "Dist_Flying_Shots (Custom)",
-       "ObjectPath": "\\Actor-Mixer Hierarchy\\FOES_Flying_WU\\FOES_Flying\\FOES_SFX_Flying\\FOES_SFX_Flying_Shoot_RC\\[Effect Slot [1]: (Guitar Distortion)]\\Dist_Flying_Shots (Custom)",
-       "GUID": "{71204E36-4F7C-4B89-9BD6-E0036788D676}",
-       "LibName": "Wwise Guitar Distortion",
-       "LibId": "8257539"
       }
      ]
     },
@@ -113,8 +97,8 @@
       "GUID": "{615B6DF4-5110-477A-ADAD-83075E2A2CC2}",
       "MaxAttenuation": "2000",
       "DurationType": "OneShot",
-      "DurationMin": "1.5138968",
-      "DurationMax": "1.9747615",
+      "DurationMin": "1.4621503",
+      "DurationMax": "2.2117178",
       "MediaRefs": [
        {
         "Id": "45515045"
@@ -131,17 +115,7 @@
        {
         "Id": "821998844"
        }
-      ],
-      "PluginRefs": {
-       "Custom": [
-        {
-         "Id": "913803451"
-        },
-        {
-         "Id": "963626000"
-        }
-       ]
-      }
+      ]
      },
      {
       "Id": "3718813633",
@@ -241,6 +215,12 @@
       "Name": "RVB_Hub",
       "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Hub",
       "GUID": "{D499EBE4-F26A-48E5-B89D-1F7C43D829E3}"
+     },
+     {
+      "Id": "3670521640",
+      "Name": "RVB_Pyramid",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Pyramid",
+      "GUID": "{668EA0D2-771E-452F-B241-11793F9755B0}"
      }
     ],
     "GameParameters": [
@@ -253,6 +233,6 @@
     ]
    }
   ],
-  "FileHash": "{EB3E59C5-AF1E-C4CF-9DDD-10C4C1D4C023}"
+  "FileHash": "{2193E619-6BCB-F4A9-31F8-9D2C46083E71}"
  }
 }

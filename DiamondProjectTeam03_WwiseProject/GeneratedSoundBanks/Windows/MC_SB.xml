@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="16" SoundBankVersion="150">
 	<SoundBanks>
-		<SoundBank Id="1956625499" Type="User" GUID="{ADC2D189-6608-4828-BC9C-6EF6F90834DB}" Language="SFX" Hash="{7FFCB4F9-232B-89E6-AE63-B1C2DA61444D}">
+		<SoundBank Id="1956625499" Type="User" GUID="{ADC2D189-6608-4828-BC9C-6EF6F90834DB}" Language="SFX" Hash="{E9EA8E1F-4E63-C97D-EBC9-79444911A34C}">
 			<ObjectPath>\SoundBanks\SoundBanks_WU\MC_SB</ObjectPath>
 			<ShortName>MC_SB</ShortName>
 			<Path>MC_SB.bnk</Path>
@@ -550,6 +550,7 @@
 					</PluginRefs>
 				</AuxBus>
 				<AuxBus Id="3571340017" Name="RVB_Hub" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Hub" GUID="{D499EBE4-F26A-48E5-B89D-1F7C43D829E3}"/>
+				<AuxBus Id="3670521640" Name="RVB_Pyramid" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Pyramid" GUID="{668EA0D2-771E-452F-B241-11793F9755B0}"/>
 			</AuxBusses>
 			<SwitchGroups>
 				<SwitchGroup Id="757195373" Name="SW_Material" ObjectPath="\Switches\Default Work Unit\SW_Material" GUID="{828E8B9F-6B07-4984-BFE7-B76CEA058A8B}">
@@ -562,5 +563,5 @@
 			</SwitchGroups>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{951DFA94-0764-EC57-233C-3CE0CB416942}</FileHash>
+	<FileHash>{2727CEFD-8CF4-4604-0765-367E0427B782}</FileHash>
 </SoundBanksInfo>
