@@ -37,6 +37,11 @@ void AJumpPad::BeginPlay()
 	Super::BeginPlay();
 }
 
+void AJumpPad::SetIsJumpadIlluminated(bool bNewValue)
+{
+	bIsIlluminated = bNewValue;
+}
+
 void AJumpPad::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
@@ -46,6 +51,10 @@ void AJumpPad::OnOverlapBegin(class UPrimitiveComponent* OverlappedComponent, cl
  class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
 	if (!bCanBounce || !OtherActor) return;
+
+	if (bDoesJumppadRequireSun){
+		if (!bIsIlluminated) return;
+	}
 
 	FVector JumpVector = JumpPadMesh->GetUpVector() * JumpForce;
 

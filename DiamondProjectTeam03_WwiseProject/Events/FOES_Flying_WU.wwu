@@ -29,6 +29,21 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="Stop_FOES_SFX_Flying_Idle_LP" ID="{9C4A0482-8257-4724-B64F-85F88099C5B0}">
+					<ChildrenList>
+						<Action Name="" ID="{0D85EA78-5D0D-4592-8EAD-7D6412B1C907}" ShortID="670745467">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+								<Property Name="FadeTime" Type="Real64" Value="0.5"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="FOES_SFX_Flying_Idle_LP" ID="{193AC035-043B-427C-8112-7F8CBCD6C80B}" WorkUnitID="{15E07612-CB6D-4DA7-B6B8-69AB554425DC}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

@@ -34,7 +34,10 @@ public:
 
 protected:
     UPROPERTY(BlueprintReadOnly)
-    bool bIsDead;	
+    bool bIsDead;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	bool bIsInvincible = false;
 
 public:
 	// Sets default values for this component's properties
@@ -51,4 +54,7 @@ protected:
 	virtual void BeginPlay() override;
 	UFUNCTION()
 	void ChangeHealth(int NewHealth);
+
+	UFUNCTION(BlueprintCallable)
+	void FullHeal();
 };

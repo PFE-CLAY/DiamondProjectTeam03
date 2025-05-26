@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "AIController.h"
+#include "AlliedAnimInstance.h"
 #include "GameFramework/Character.h"
 #include "PhysicsEngine/PhysicsHandleComponent.h"
 #include "Allied.generated.h"
@@ -47,8 +48,14 @@ public:
 	UPROPERTY(BlueprintReadWrite)
 	UPhysicsHandleComponent* PhysicsHandle;
 
+	UPROPERTY()
+	UAlliedAnimInstance* AnimInstance;
+
 	UPROPERTY(EditAnywhere, BlueprintReadOnly)
 	USceneComponent* GrabPoint;
+
+	UPROPERTY(EditAnywhere, Category = "Movements")
+	bool bShouldPlayOnStart = false;
 
 protected:
 	// Called when the game starts or when spawned
@@ -65,6 +72,6 @@ public:
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
-	UFUNCTION()
+	UFUNCTION(BlueprintCallable, Category="Movements")
 	void Patrol();
 };

@@ -10,7 +10,7 @@
     "Type": "User",
     "GUID": "{46F08C13-7BDA-47D5-A653-BDFCDAD2487B}",
     "Language": "SFX",
-    "Hash": "{A0FB1DFA-E643-63CB-3948-F8A54D5F168A}",
+    "Hash": "{06BA05D0-C2EA-ED4C-7995-917AF8A25DD2}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\FOES_Flying_SB",
     "ShortName": "FOES_Flying_SB",
     "Path": "FOES_Flying_SB.bnk",
@@ -116,6 +116,16 @@
         "Id": "821998844"
        }
       ]
+     },
+     {
+      "Id": "3718813633",
+      "Name": "Stop_FOES_SFX_Flying_Idle_LP",
+      "ObjectPath": "\\Events\\FOES_Flying_WU\\Stop_FOES_SFX_Flying_Idle_LP",
+      "GUID": "{9C4A0482-8257-4724-B64F-85F88099C5B0}",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0"
      }
     ],
     "Busses": [
@@ -217,6 +227,6 @@
     ]
    }
   ],
-  "FileHash": "{58E842B4-B36B-756B-D1E3-00660A7814D9}"
+  "FileHash": "{432E695D-201E-6A92-EEF9-7B64D3792BF7}"
  }
 }
