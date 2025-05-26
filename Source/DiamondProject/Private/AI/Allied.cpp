@@ -29,7 +29,7 @@ void AAllied::BeginPlay()
 		AnimInstance = Cast<UAlliedAnimInstance>(AlliedMesh->GetAnimInstance());
 	}
 	AIController = this->GetController<AAIController>();
-	GrabBoneName = AlliedMesh->GetBoneName(0);
+	
 	
 	//AAIController::OnMoveCompleted();
 	//GEngine->AddOnScreenDebugMessage(-1, 10.f, FColor::Red, FString::Printf(TEXT("%lld"), PatrolPoints.Num()));
