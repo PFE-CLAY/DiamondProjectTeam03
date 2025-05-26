@@ -16,6 +16,13 @@
 								</Reference>
 							</ReferenceList>
 						</Action>
+						<Action Name="" ID="{CA84CA2C-A882-498F-BD7E-97F7701D7623}" ShortID="857935816">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Blast_Mono" ID="{B9E1258D-3C23-4FB1-A62C-10B864DE2788}" WorkUnitID="{5DFA8BAE-0AEA-4A3F-92EC-FBABE50597A1}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
 					</ChildrenList>
 				</Event>
 				<Event Name="Play_FOES_SFX_Flying_Idle_LP" ID="{CF4E623B-F60A-4740-B500-0E5586E75310}">
