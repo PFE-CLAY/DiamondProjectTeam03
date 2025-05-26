@@ -10,7 +10,7 @@
     "Type": "User",
     "GUID": "{46F08C13-7BDA-47D5-A653-BDFCDAD2487B}",
     "Language": "SFX",
-    "Hash": "{06BA05D0-C2EA-ED4C-7995-917AF8A25DD2}",
+    "Hash": "{2025E8DC-740A-C66A-FA64-8B84E3A47534}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\FOES_Flying_SB",
     "ShortName": "FOES_Flying_SB",
     "Path": "FOES_Flying_SB.bnk",
@@ -82,7 +82,7 @@
       "Name": "Play_FOES_SFX_Flying_Idle_LP",
       "ObjectPath": "\\Events\\FOES_Flying_WU\\Play_FOES_SFX_Flying_Idle_LP",
       "GUID": "{CF4E623B-F60A-4740-B500-0E5586E75310}",
-      "MaxAttenuation": "3000",
+      "MaxAttenuation": "2000",
       "DurationType": "Infinite",
       "MediaRefs": [
        {
@@ -97,8 +97,8 @@
       "GUID": "{615B6DF4-5110-477A-ADAD-83075E2A2CC2}",
       "MaxAttenuation": "2000",
       "DurationType": "OneShot",
-      "DurationMin": "2.2750027",
-      "DurationMax": "3.1742759",
+      "DurationMin": "1.4621503",
+      "DurationMax": "2.2117178",
       "MediaRefs": [
        {
         "Id": "45515045"
@@ -215,6 +215,12 @@
       "Name": "RVB_Hub",
       "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Hub",
       "GUID": "{D499EBE4-F26A-48E5-B89D-1F7C43D829E3}"
+     },
+     {
+      "Id": "3670521640",
+      "Name": "RVB_Pyramid",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Pyramid",
+      "GUID": "{668EA0D2-771E-452F-B241-11793F9755B0}"
      }
     ],
     "GameParameters": [
@@ -227,6 +233,6 @@
     ]
    }
   ],
-  "FileHash": "{432E695D-201E-6A92-EEF9-7B64D3792BF7}"
+  "FileHash": "{2193E619-6BCB-F4A9-31F8-9D2C46083E71}"
  }
 }
