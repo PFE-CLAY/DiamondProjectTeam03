@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SoundBanksInfo Platform="Mac" BasePlatform="Mac" SchemaVersion="16" SoundBankVersion="150">
 	<SoundBanks>
-		<SoundBank Id="3250948517" Type="User" GUID="{8CC30184-23AF-4DB5-9844-9B04DF10A650}" Language="SFX" Hash="{8AFD1741-1743-AE0B-8611-1DDED3FE01CB}">
+		<SoundBank Id="3250948517" Type="User" GUID="{8CC30184-23AF-4DB5-9844-9B04DF10A650}" Language="SFX" Hash="{FC854766-77E4-D367-5F8C-74EB0B9E0D79}">
 			<ObjectPath>\SoundBanks\SoundBanks_WU\FOES_Tourelle_SB</ObjectPath>
 			<ShortName>FOES_Tourelle_SB</ShortName>
 			<Path>FOES_Tourelle_SB.bnk</Path>
@@ -45,7 +45,7 @@
 				</Custom>
 			</Plugins>
 			<Events>
-				<Event Id="305372709" Name="Play_FOES_SFX_Tourelle_Death_RC" ObjectPath="\Events\FOES_Tourelle_WU\Play_FOES_SFX_Tourelle_Death_RC" GUID="{03966878-2B14-4479-9F3B-3C317D6EB7B1}" MaxAttenuation="3000" DurationType="OneShot" DurationMin="2.6365833" DurationMax="3.0426874">
+				<Event Id="305372709" Name="Play_FOES_SFX_Tourelle_Death_RC" ObjectPath="\Events\FOES_Tourelle_WU\Play_FOES_SFX_Tourelle_Death_RC" GUID="{03966878-2B14-4479-9F3B-3C317D6EB7B1}" MaxAttenuation="3000" DurationType="OneShot" DurationMin="2.8365834" DurationMax="3.2426875">
 					<MediaRefs>
 						<MediaRef Id="427986118"/>
 						<MediaRef Id="705394855"/>
@@ -87,5 +87,5 @@
 			</AuxBusses>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{E1DE508B-1257-4FCD-808B-C3F5DEE866D0}</FileHash>
+	<FileHash>{2C070A7A-2497-CFBE-3906-1D389FF982C3}</FileHash>
 </SoundBanksInfo>

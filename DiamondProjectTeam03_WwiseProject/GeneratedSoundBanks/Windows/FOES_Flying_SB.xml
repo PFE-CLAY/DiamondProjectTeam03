@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="16" SoundBankVersion="150">
 	<SoundBanks>
-		<SoundBank Id="459280130" Type="User" GUID="{46F08C13-7BDA-47D5-A653-BDFCDAD2487B}" Language="SFX" Hash="{06BA05D0-C2EA-ED4C-7995-917AF8A25DD2}">
+		<SoundBank Id="459280130" Type="User" GUID="{46F08C13-7BDA-47D5-A653-BDFCDAD2487B}" Language="SFX" Hash="{2025E8DC-740A-C66A-FA64-8B84E3A47534}">
 			<ObjectPath>\SoundBanks\SoundBanks_WU\FOES_Flying_SB</ObjectPath>
 			<ShortName>FOES_Flying_SB</ShortName>
 			<Path>FOES_Flying_SB.bnk</Path>
@@ -37,12 +37,12 @@
 				</Custom>
 			</Plugins>
 			<Events>
-				<Event Id="3816121295" Name="Play_FOES_SFX_Flying_Idle_LP" ObjectPath="\Events\FOES_Flying_WU\Play_FOES_SFX_Flying_Idle_LP" GUID="{CF4E623B-F60A-4740-B500-0E5586E75310}" MaxAttenuation="3000" DurationType="Infinite">
+				<Event Id="3816121295" Name="Play_FOES_SFX_Flying_Idle_LP" ObjectPath="\Events\FOES_Flying_WU\Play_FOES_SFX_Flying_Idle_LP" GUID="{CF4E623B-F60A-4740-B500-0E5586E75310}" MaxAttenuation="2000" DurationType="Infinite">
 					<MediaRefs>
 						<MediaRef Id="202392697"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="1810073987" Name="Play_FOES_SFX_Flying_Shoot_RC" ObjectPath="\Events\FOES_Flying_WU\Play_FOES_SFX_Flying_Shoot_RC" GUID="{615B6DF4-5110-477A-ADAD-83075E2A2CC2}" MaxAttenuation="2000" DurationType="OneShot" DurationMin="2.2750027" DurationMax="3.1742759">
+				<Event Id="1810073987" Name="Play_FOES_SFX_Flying_Shoot_RC" ObjectPath="\Events\FOES_Flying_WU\Play_FOES_SFX_Flying_Shoot_RC" GUID="{615B6DF4-5110-477A-ADAD-83075E2A2CC2}" MaxAttenuation="2000" DurationType="OneShot" DurationMin="1.4621503" DurationMax="2.2117178">
 					<MediaRefs>
 						<MediaRef Id="45515045"/>
 						<MediaRef Id="195673243"/>
@@ -75,11 +75,12 @@
 					</PluginRefs>
 				</AuxBus>
 				<AuxBus Id="3571340017" Name="RVB_Hub" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Hub" GUID="{D499EBE4-F26A-48E5-B89D-1F7C43D829E3}"/>
+				<AuxBus Id="3670521640" Name="RVB_Pyramid" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Pyramid" GUID="{668EA0D2-771E-452F-B241-11793F9755B0}"/>
 			</AuxBusses>
 			<GameParameters>
 				<GameParameter Id="3590742338" Name="RTPC_Speed_Flying" ObjectPath="\Game Parameters\Default Work Unit\RTPC_Speed_Flying" GUID="{4A0C67E7-2443-47A8-B5EB-86C8F65C73EB}"/>
 			</GameParameters>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{01349798-D293-5BBB-BC73-997E1F6F0D85}</FileHash>
+	<FileHash>{E3709728-6B5C-CDA8-6307-BF493486023E}</FileHash>
 </SoundBanksInfo>
