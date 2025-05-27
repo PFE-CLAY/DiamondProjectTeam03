@@ -74,7 +74,4 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category="Movements")
 	void Patrol();
-
-	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category="Movements")
-	void OnCrouch();
 };

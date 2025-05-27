@@ -5,7 +5,6 @@
 #include "AIController.h"
 
 #include "CookOnTheFly.h"
-#include "GameFramework/CharacterMovementComponent.h"
 #include "Navigation/PathFollowingComponent.h"
 #include "PhysicsEngine/PhysicalAnimationComponent.h"
 
@@ -53,12 +52,6 @@ void AAllied::Patrol()
 		AnimInstance->bIsMoving = false;
 	}
 	
-	
-}
-
-void AAllied::OnCrouch_Implementation()
-{
-	GetCharacterMovement()->DisableMovement();
 	
 }
 
