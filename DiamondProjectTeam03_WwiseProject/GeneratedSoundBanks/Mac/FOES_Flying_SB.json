@@ -10,7 +10,7 @@
     "Type": "User",
     "GUID": "{46F08C13-7BDA-47D5-A653-BDFCDAD2487B}",
     "Language": "SFX",
-    "Hash": "{FEC0151D-6568-73FC-F065-33A4D2F833EA}",
+    "Hash": "{994B7C71-D94A-388D-4735-2E8F05AA95A1}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\FOES_Flying_SB",
     "ShortName": "FOES_Flying_SB",
     "Path": "FOES_Flying_SB.bnk",
@@ -73,22 +73,6 @@
        "GUID": "{4EC028FC-6FD5-4AC6-A71F-B2CB8F1117DF}",
        "LibName": "Wwise RoomVerb",
        "LibId": "7733251"
-      },
-      {
-       "Id": "913803451",
-       "Name": "Octave_Up (Custom)",
-       "ObjectPath": "\\Actor-Mixer Hierarchy\\FOES_Flying_WU\\FOES_Flying\\FOES_SFX_Flying\\FOES_SFX_Flying_Shoot_RC\\[Effect Slot [0]: (Pitch Shifter)]\\Octave_Up (Custom)",
-       "GUID": "{2F00A97A-7EA5-4071-B9A5-B685BC249C27}",
-       "LibName": "Wwise Pitch Shifter",
-       "LibId": "8912899"
-      },
-      {
-       "Id": "963626000",
-       "Name": "Dist_Flying_Shots (Custom)",
-       "ObjectPath": "\\Actor-Mixer Hierarchy\\FOES_Flying_WU\\FOES_Flying\\FOES_SFX_Flying\\FOES_SFX_Flying_Shoot_RC\\[Effect Slot [1]: (Guitar Distortion)]\\Dist_Flying_Shots (Custom)",
-       "GUID": "{71204E36-4F7C-4B89-9BD6-E0036788D676}",
-       "LibName": "Wwise Guitar Distortion",
-       "LibId": "8257539"
       }
      ]
     },
@@ -98,7 +82,7 @@
       "Name": "Play_FOES_SFX_Flying_Idle_LP",
       "ObjectPath": "\\Events\\FOES_Flying_WU\\Play_FOES_SFX_Flying_Idle_LP",
       "GUID": "{CF4E623B-F60A-4740-B500-0E5586E75310}",
-      "MaxAttenuation": "2000",
+      "MaxAttenuation": "3000",
       "DurationType": "Infinite",
       "MediaRefs": [
        {
@@ -113,8 +97,8 @@
       "GUID": "{615B6DF4-5110-477A-ADAD-83075E2A2CC2}",
       "MaxAttenuation": "2000",
       "DurationType": "OneShot",
-      "DurationMin": "1.5138968",
-      "DurationMax": "1.9747615",
+      "DurationMin": "2.2750027",
+      "DurationMax": "3.1742759",
       "MediaRefs": [
        {
         "Id": "45515045"
@@ -131,27 +115,7 @@
        {
         "Id": "821998844"
        }
-      ],
-      "PluginRefs": {
-       "Custom": [
-        {
-         "Id": "913803451"
-        },
-        {
-         "Id": "963626000"
-        }
-       ]
-      }
-     },
-     {
-      "Id": "3718813633",
-      "Name": "Stop_FOES_SFX_Flying_Idle_LP",
-      "ObjectPath": "\\Events\\FOES_Flying_WU\\Stop_FOES_SFX_Flying_Idle_LP",
-      "GUID": "{9C4A0482-8257-4724-B64F-85F88099C5B0}",
-      "MaxAttenuation": "0",
-      "DurationType": "OneShot",
-      "DurationMin": "0",
-      "DurationMax": "0"
+      ]
      }
     ],
     "Busses": [
@@ -253,6 +217,6 @@
     ]
    }
   ],
-  "FileHash": "{776380AD-11F3-6AF6-692F-A15B4B279676}"
+  "FileHash": "{130EA255-0C42-44D4-B984-5624849A63AB}"
  }
 }

@@ -10,7 +10,7 @@
     "Type": "User",
     "GUID": "{48187E94-2869-42A3-9E99-A12DF1DA86DF}",
     "Language": "SFX",
-    "Hash": "{C3C86C4E-FE65-6AD7-4768-76AA7749EB72}",
+    "Hash": "{C96EC5F5-E48D-9B1B-CFF8-653DECDF38A6}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\FOES_Invisible_SB",
     "ShortName": "FOES_Invisible_SB",
     "Path": "FOES_Invisible_SB.bnk",
@@ -113,16 +113,10 @@
       "Name": "RVB_Hub",
       "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Hub",
       "GUID": "{D499EBE4-F26A-48E5-B89D-1F7C43D829E3}"
-     },
-     {
-      "Id": "3670521640",
-      "Name": "RVB_Pyramid",
-      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Pyramid",
-      "GUID": "{668EA0D2-771E-452F-B241-11793F9755B0}"
      }
     ]
    }
   ],
-  "FileHash": "{ED2CCC4E-FB43-2BE5-18C1-CB33F55197AE}"
+  "FileHash": "{6B20B87F-093B-2467-1681-D8E850D93DD1}"
  }
 }

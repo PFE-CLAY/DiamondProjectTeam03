@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WwiseDocument Type="WorkUnit" ID="{0C036DE8-3A27-4F64-BFF3-D26B63DEA47E}" SchemaVersion="119">
 	<Effects>
-		<WorkUnit Name="Default Work Unit" ID="{0C036DE8-3A27-4F64-BFF3-D26B63DEA47E}" PersistMode="Standalone">
-			<ChildrenList>
-				<Effect Name="Dist_Flying_Shots" ID="{2C9B05D7-7CE7-47C9-9A44-1A3589B1B836}" PluginName="Wwise Guitar Distortion" CompanyID="0" PluginID="126" PluginType="3"/>
-			</ChildrenList>
-		</WorkUnit>
+		<WorkUnit Name="Default Work Unit" ID="{0C036DE8-3A27-4F64-BFF3-D26B63DEA47E}" PersistMode="Standalone"/>
 	</Effects>
 </WwiseDocument>

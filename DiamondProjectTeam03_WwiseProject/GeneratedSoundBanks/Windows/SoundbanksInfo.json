@@ -18,7 +18,7 @@
     "Type": "User",
     "GUID": "{46F08C13-7BDA-47D5-A653-BDFCDAD2487B}",
     "Language": "SFX",
-    "Hash": "{2025E8DC-740A-C66A-FA64-8B84E3A47534}",
+    "Hash": "{06BA05D0-C2EA-ED4C-7995-917AF8A25DD2}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\FOES_Flying_SB",
     "ShortName": "FOES_Flying_SB",
     "Path": "FOES_Flying_SB.bnk",
@@ -90,7 +90,7 @@
       "Name": "Play_FOES_SFX_Flying_Idle_LP",
       "ObjectPath": "\\Events\\FOES_Flying_WU\\Play_FOES_SFX_Flying_Idle_LP",
       "GUID": "{CF4E623B-F60A-4740-B500-0E5586E75310}",
-      "MaxAttenuation": "2000",
+      "MaxAttenuation": "3000",
       "DurationType": "Infinite",
       "MediaRefs": [
        {
@@ -105,8 +105,8 @@
       "GUID": "{615B6DF4-5110-477A-ADAD-83075E2A2CC2}",
       "MaxAttenuation": "2000",
       "DurationType": "OneShot",
-      "DurationMin": "1.4621503",
-      "DurationMax": "2.2117178",
+      "DurationMin": "2.2750027",
+      "DurationMax": "3.1742759",
       "MediaRefs": [
        {
         "Id": "45515045"
@@ -223,12 +223,6 @@
       "Name": "RVB_Hub",
       "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Hub",
       "GUID": "{D499EBE4-F26A-48E5-B89D-1F7C43D829E3}"
-     },
-     {
-      "Id": "3670521640",
-      "Name": "RVB_Pyramid",
-      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Pyramid",
-      "GUID": "{668EA0D2-771E-452F-B241-11793F9755B0}"
      }
     ],
     "GameParameters": [
@@ -245,7 +239,7 @@
     "Type": "User",
     "GUID": "{701ECBBD-9C7B-4030-8CDB-749EE5D1C7B9}",
     "Language": "SFX",
-    "Hash": "{511C2535-53E9-C4AC-C5E5-DDF9CE879114}",
+    "Hash": "{4FE3FF92-ED4E-4058-E9CE-67D83161A2A9}",
     "ObjectPath": "Init",
     "ShortName": "Init",
     "Path": "Init.bnk",
@@ -372,12 +366,6 @@
       "Name": "RVB_Hub",
       "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Hub",
       "GUID": "{D499EBE4-F26A-48E5-B89D-1F7C43D829E3}"
-     },
-     {
-      "Id": "3670521640",
-      "Name": "RVB_Pyramid",
-      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Pyramid",
-      "GUID": "{668EA0D2-771E-452F-B241-11793F9755B0}"
      }
     ],
     "GameParameters": [
@@ -422,7 +410,7 @@
     "Type": "User",
     "GUID": "{6B7E0BFB-A825-46AA-907A-12621FC4038F}",
     "Language": "SFX",
-    "Hash": "{2EAA3030-CC4B-21B8-3200-322430B760E9}",
+    "Hash": "{11B8418C-6918-F348-4DE0-38893901FE38}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\UI_SB",
     "ShortName": "UI_SB",
     "Path": "UI_SB.bnk",
@@ -661,12 +649,6 @@
       "Name": "RVB_Hub",
       "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Hub",
       "GUID": "{D499EBE4-F26A-48E5-B89D-1F7C43D829E3}"
-     },
-     {
-      "Id": "3670521640",
-      "Name": "RVB_Pyramid",
-      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Pyramid",
-      "GUID": "{668EA0D2-771E-452F-B241-11793F9755B0}"
      }
     ]
    },
@@ -675,7 +657,7 @@
     "Type": "User",
     "GUID": "{ADC2D189-6608-4828-BC9C-6EF6F90834DB}",
     "Language": "SFX",
-    "Hash": "{E9EA8E1F-4E63-C97D-EBC9-79444911A34C}",
+    "Hash": "{7AAC78B6-1A0F-9DDA-4FED-0A29478423A8}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\MC_SB",
     "ShortName": "MC_SB",
     "Path": "MC_SB.bnk",
@@ -727,14 +709,6 @@
       "Location": "Memory",
       "ShortName": "AMB\\SP\\MC_FT_Sand_08.wav",
       "CachePath": "SFX/AMB/SP/MC_FT_Sand_08_818F3B66.wem"
-     },
-     {
-      "Id": "47427430",
-      "Language": "SFX",
-      "Streaming": "false",
-      "Location": "Memory",
-      "ShortName": "SFX\\MC_SFX_PickupWeapon_01.wav",
-      "CachePath": "SFX/SFX/MC_SFX_PickupWeapon_01_818F3B66.wem"
      },
      {
       "Id": "58062480",
@@ -791,14 +765,6 @@
       "Location": "Memory",
       "ShortName": "AMB\\SP\\MC_FT_Metal_01.wav",
       "CachePath": "SFX/AMB/SP/MC_FT_Metal_01_818F3B66.wem"
-     },
-     {
-      "Id": "101923972",
-      "Language": "SFX",
-      "Streaming": "false",
-      "Location": "Memory",
-      "ShortName": "SFX\\MC_SFX_PickupWeapon_04.wav",
-      "CachePath": "SFX/SFX/MC_SFX_PickupWeapon_04_818F3B66.wem"
      },
      {
       "Id": "104687879",
@@ -977,14 +943,6 @@
       "CachePath": "SFX/AMB/SP/MC_FT_Metal_03_818F3B66.wem"
      },
      {
-      "Id": "418331982",
-      "Language": "SFX",
-      "Streaming": "false",
-      "Location": "Memory",
-      "ShortName": "SFX\\MC_SFX_Weapon_NoAmmo.wav",
-      "CachePath": "SFX/SFX/MC_SFX_Weapon_NoAmmo_818F3B66.wem"
-     },
-     {
       "Id": "421361594",
       "Language": "SFX",
       "Streaming": "false",
@@ -1049,14 +1007,6 @@
       "CachePath": "SFX/AMB/SP/MC_FT_Concrete_Jump_01_818F3B66.wem"
      },
      {
-      "Id": "511633870",
-      "Language": "SFX",
-      "Streaming": "false",
-      "Location": "Memory",
-      "ShortName": "SFX\\MC_SFX_PickupWeapon_03.wav",
-      "CachePath": "SFX/SFX/MC_SFX_PickupWeapon_03_818F3B66.wem"
-     },
-     {
       "Id": "534496258",
       "Language": "SFX",
       "Streaming": "false",
@@ -1097,28 +1047,12 @@
       "CachePath": "SFX/AMB/SP/MC_FT_Concrete_01_818F3B66.wem"
      },
      {
-      "Id": "607185623",
-      "Language": "SFX",
-      "Streaming": "false",
-      "Location": "Memory",
-      "ShortName": "SFX\\MC_SFX_PickupWeapon_02.wav",
-      "CachePath": "SFX/SFX/MC_SFX_PickupWeapon_02_818F3B66.wem"
-     },
-     {
       "Id": "608609148",
       "Language": "SFX",
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "AMB\\SP\\MC_FT_Sand_Jump_03.wav",
       "CachePath": "SFX/AMB/SP/MC_FT_Sand_Jump_03_818F3B66.wem"
-     },
-     {
-      "Id": "610072169",
-      "Language": "SFX",
-      "Streaming": "false",
-      "Location": "Memory",
-      "ShortName": "SFX\\MC_SFX_PickupWeapon_05.wav",
-      "CachePath": "SFX/SFX/MC_SFX_PickupWeapon_05_818F3B66.wem"
      },
      {
       "Id": "610918733",
@@ -1191,14 +1125,6 @@
       "Location": "Memory",
       "ShortName": "AMB\\SP\\MC_FT_Metal_09.wav",
       "CachePath": "SFX/AMB/SP/MC_FT_Metal_09_818F3B66.wem"
-     },
-     {
-      "Id": "772410827",
-      "Language": "SFX",
-      "Streaming": "false",
-      "Location": "Memory",
-      "ShortName": "SFX\\MC_SFX_Weapon_Armed.wav",
-      "CachePath": "SFX/SFX/MC_SFX_Weapon_Armed_818F3B66.wem"
      },
      {
       "Id": "779936328",
@@ -1639,145 +1565,6 @@
           "Id": "898538319"
          }
         ]
-       },
-       {
-        "SwitchValue": {
-         "GroupType": "Switch",
-         "GroupId": "757195373",
-         "Id": "841620460",
-         "GUID": "{7D8D0D4C-3D1C-43A2-B357-3F03FF424DDB}",
-         "Default": "true"
-        },
-        "MediaRefs": [
-         {
-          "Id": "28276971"
-         },
-         {
-          "Id": "75654975"
-         },
-         {
-          "Id": "163843360"
-         },
-         {
-          "Id": "267703531"
-         },
-         {
-          "Id": "268013152"
-         },
-         {
-          "Id": "480059959"
-         },
-         {
-          "Id": "534496258"
-         },
-         {
-          "Id": "602677679"
-         },
-         {
-          "Id": "655344864"
-         },
-         {
-          "Id": "814998601"
-         },
-         {
-          "Id": "816346842"
-         },
-         {
-          "Id": "1036129781"
-         }
-        ]
-       },
-       {
-        "SwitchValue": {
-         "GroupType": "Switch",
-         "GroupId": "757195373",
-         "Id": "803837735",
-         "GUID": "{0F8A73BD-8A92-4819-BE09-452FE32E1FBC}"
-        },
-        "MediaRefs": [
-         {
-          "Id": "44684202"
-         },
-         {
-          "Id": "109232168"
-         },
-         {
-          "Id": "211150638"
-         },
-         {
-          "Id": "387146543"
-         },
-         {
-          "Id": "542236427"
-         },
-         {
-          "Id": "620312545"
-         },
-         {
-          "Id": "673489173"
-         },
-         {
-          "Id": "721183356"
-         },
-         {
-          "Id": "779936328"
-         },
-         {
-          "Id": "838939217"
-         },
-         {
-          "Id": "910413546"
-         },
-         {
-          "Id": "967065821"
-         }
-        ]
-       },
-       {
-        "SwitchValue": {
-         "GroupType": "Switch",
-         "GroupId": "757195373",
-         "Id": "2473969246",
-         "GUID": "{4F4901C3-CC0C-4142-BDF8-FF62F7720DE3}"
-        },
-        "MediaRefs": [
-         {
-          "Id": "4962513"
-         },
-         {
-          "Id": "81610070"
-         },
-         {
-          "Id": "99306815"
-         },
-         {
-          "Id": "104687879"
-         },
-         {
-          "Id": "174467291"
-         },
-         {
-          "Id": "225595462"
-         },
-         {
-          "Id": "300270566"
-         },
-         {
-          "Id": "402066446"
-         },
-         {
-          "Id": "592388296"
-         },
-         {
-          "Id": "764749319"
-         },
-         {
-          "Id": "888066358"
-         },
-         {
-          "Id": "898538319"
-         }
-        ]
        }
       ]
      },
@@ -1804,60 +1591,6 @@
        },
        {
         "Id": "610918733"
-       }
-      ]
-     },
-     {
-      "Id": "1820563873",
-      "Name": "Play_MC_SFX_PickupWeapon_RC",
-      "ObjectPath": "\\Events\\MC_WU\\Play_MC_SFX_PickupWeapon_RC",
-      "GUID": "{4C30DC19-451C-449E-9B9A-AADEEAB14B44}",
-      "DurationType": "OneShot",
-      "DurationMin": "2.5657325",
-      "DurationMax": "3.6410909",
-      "MediaRefs": [
-       {
-        "Id": "47427430"
-       },
-       {
-        "Id": "101923972"
-       },
-       {
-        "Id": "511633870"
-       },
-       {
-        "Id": "607185623"
-       },
-       {
-        "Id": "610072169"
-       }
-      ]
-     },
-     {
-      "Id": "3961249933",
-      "Name": "Play_MC_SFX_Weapon_Armed_RC",
-      "ObjectPath": "\\Events\\MC_WU\\Play_MC_SFX_Weapon_Armed_RC",
-      "GUID": "{E22125BE-E0CB-4EC0-A4CB-7460BE42B80E}",
-      "DurationType": "OneShot",
-      "DurationMin": "3.3666666",
-      "DurationMax": "3.3666666",
-      "MediaRefs": [
-       {
-        "Id": "772410827"
-       }
-      ]
-     },
-     {
-      "Id": "3400800083",
-      "Name": "Play_MC_SFX_Weapon_NoAmmo_RC",
-      "ObjectPath": "\\Events\\MC_WU\\Play_MC_SFX_Weapon_NoAmmo_RC",
-      "GUID": "{708ACD16-F6BC-49F8-85D6-8076E283E48F}",
-      "DurationType": "OneShot",
-      "DurationMin": "1.7806667",
-      "DurationMax": "1.7806667",
-      "MediaRefs": [
-       {
-        "Id": "418331982"
        }
       ]
      }
@@ -1949,12 +1682,6 @@
       "Name": "RVB_Hub",
       "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Hub",
       "GUID": "{D499EBE4-F26A-48E5-B89D-1F7C43D829E3}"
-     },
-     {
-      "Id": "3670521640",
-      "Name": "RVB_Pyramid",
-      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Pyramid",
-      "GUID": "{668EA0D2-771E-452F-B241-11793F9755B0}"
      }
     ],
     "SwitchGroups": [
@@ -1991,7 +1718,7 @@
     "Type": "User",
     "GUID": "{48187E94-2869-42A3-9E99-A12DF1DA86DF}",
     "Language": "SFX",
-    "Hash": "{C3C86C4E-FE65-6AD7-4768-76AA7749EB72}",
+    "Hash": "{C96EC5F5-E48D-9B1B-CFF8-653DECDF38A6}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\FOES_Invisible_SB",
     "ShortName": "FOES_Invisible_SB",
     "Path": "FOES_Invisible_SB.bnk",
@@ -2094,12 +1821,6 @@
       "Name": "RVB_Hub",
       "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Hub",
       "GUID": "{D499EBE4-F26A-48E5-B89D-1F7C43D829E3}"
-     },
-     {
-      "Id": "3670521640",
-      "Name": "RVB_Pyramid",
-      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Pyramid",
-      "GUID": "{668EA0D2-771E-452F-B241-11793F9755B0}"
      }
     ]
    },
@@ -2108,7 +1829,7 @@
     "Type": "User",
     "GUID": "{8CC30184-23AF-4DB5-9844-9B04DF10A650}",
     "Language": "SFX",
-    "Hash": "{2F460421-BA9E-57A1-4A53-82E0B322EA2E}",
+    "Hash": "{FC854766-77E4-D367-5F8C-74EB0B9E0D79}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\FOES_Tourelle_SB",
     "ShortName": "FOES_Tourelle_SB",
     "Path": "FOES_Tourelle_SB.bnk",
@@ -2327,12 +2048,6 @@
       "Name": "RVB_Hub",
       "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Hub",
       "GUID": "{D499EBE4-F26A-48E5-B89D-1F7C43D829E3}"
-     },
-     {
-      "Id": "3670521640",
-      "Name": "RVB_Pyramid",
-      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Pyramid",
-      "GUID": "{668EA0D2-771E-452F-B241-11793F9755B0}"
      }
     ]
    },
@@ -2341,7 +2056,7 @@
     "Type": "User",
     "GUID": "{9DC5CBA4-02D0-4677-A565-21ECA413E694}",
     "Language": "SFX",
-    "Hash": "{4899E94E-B5E1-3E7B-8CA0-DD716B0CDF19}",
+    "Hash": "{59009633-8F0C-DA94-B70D-F4CCA6263F72}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\AMB_SB",
     "ShortName": "AMB_SB",
     "Path": "AMB_SB.bnk",
@@ -2971,12 +2686,6 @@
       "Name": "RVB_Hub",
       "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Hub",
       "GUID": "{D499EBE4-F26A-48E5-B89D-1F7C43D829E3}"
-     },
-     {
-      "Id": "3670521640",
-      "Name": "RVB_Pyramid",
-      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Pyramid",
-      "GUID": "{668EA0D2-771E-452F-B241-11793F9755B0}"
      }
     ]
    },
@@ -2985,7 +2694,7 @@
     "Type": "User",
     "GUID": "{459D1F67-52BD-4FA1-B846-B8F3A50C2C5F}",
     "Language": "SFX",
-    "Hash": "{B571FF43-03E3-0F51-E76C-22555D138B0E}",
+    "Hash": "{02BE1600-7C47-6A2A-12CF-4A10D9F2CF3F}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\SFX_SB",
     "ShortName": "SFX_SB",
     "Path": "SFX_SB.bnk"
@@ -2995,7 +2704,7 @@
     "Type": "User",
     "GUID": "{D2378E68-5468-4849-BC4A-8FC6D8A3BF29}",
     "Language": "SFX",
-    "Hash": "{B5A6ED62-77A4-3128-5ABB-97C065D239EA}",
+    "Hash": "{8B83ED19-30EC-C727-F297-C7768A285F71}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\GPE_SB",
     "ShortName": "GPE_SB",
     "Path": "GPE_SB.bnk",
@@ -3186,6 +2895,6 @@
     ]
    }
   ],
-  "FileHash": "{3FE88385-392A-8267-9178-2F6E831B7943}"
+  "FileHash": "{0E8266E8-A999-58F8-B67D-602DC808D741}"
  }
 }

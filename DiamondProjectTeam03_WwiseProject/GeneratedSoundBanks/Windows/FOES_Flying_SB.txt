@@ -22,16 +22,15 @@ Auxiliary Bus	ID	Name			Wwise Object Path	Notes
 	1215931641	RVB_Arena			\Master_WU\Master\RVB_Arena	
 	1408817756	RVB_RFX_Arena			\Master_WU\Master\RVB_RFX_Arena	
 	3571340017	RVB_Hub			\Master_WU\Master\RVB_Hub	
-	3670521640	RVB_Pyramid			\Master_WU\Master\RVB_Pyramid	
 
 Effect plug-ins	ID	Name	Type				Notes
 	169636257	Have_U_Ever_Been_Outside (Custom)	Wwise RoomVerb			
 
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
-	45515045	FOES_SFX_Flying_Shoot_03	G:\Unreal\Unreal_Projects\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Windows\SFX\FOES_SFX_Flying_Shoot_03_818F3B66.wem		\Actor-Mixer Hierarchy\FOES_Flying_WU\FOES_Flying\FOES_SFX_Flying\FOES_SFX_Flying_Shoot_RC\FOES_SFX_Flying_Shoot_03		169278
-	195673243	FOES_SFX_Flying_Shoot_04	G:\Unreal\Unreal_Projects\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Windows\SFX\FOES_SFX_Flying_Shoot_04_818F3B66.wem		\Actor-Mixer Hierarchy\FOES_Flying_WU\FOES_Flying\FOES_SFX_Flying\FOES_SFX_Flying_Shoot_RC\FOES_SFX_Flying_Shoot_04		167728
-	202392697	FOES_SFX_Flying_Idle_LP	G:\Unreal\Unreal_Projects\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Windows\SFX\FOES_SFX_Flying_Idle_LP_FBC78EF0.wem		\Actor-Mixer Hierarchy\FOES_Flying_WU\FOES_Flying\FOES_FOL_Flying\FOES_SFX_Flying_Idle_LP		1743780
-	229626045	FOES_SFX_Flying_Shoot_05	G:\Unreal\Unreal_Projects\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Windows\SFX\FOES_SFX_Flying_Shoot_05_818F3B66.wem		\Actor-Mixer Hierarchy\FOES_Flying_WU\FOES_Flying\FOES_SFX_Flying\FOES_SFX_Flying_Shoot_RC\FOES_SFX_Flying_Shoot_05		157652
-	732571760	FOES_SFX_Flying_Shoot_01	G:\Unreal\Unreal_Projects\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Windows\SFX\FOES_SFX_Flying_Shoot_01_818F3B66.wem		\Actor-Mixer Hierarchy\FOES_Flying_WU\FOES_Flying\FOES_SFX_Flying\FOES_SFX_Flying_Shoot_RC\FOES_SFX_Flying_Shoot_01		189256
-	821998844	FOES_SFX_Flying_Shoot_02	G:\Unreal\Unreal_Projects\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Windows\SFX\FOES_SFX_Flying_Shoot_02_818F3B66.wem		\Actor-Mixer Hierarchy\FOES_Flying_WU\FOES_Flying\FOES_SFX_Flying\FOES_SFX_Flying_Shoot_RC\FOES_SFX_Flying_Shoot_02		174204
+	45515045	FOES_SFX_Flying_Shoot_03	G:\Unreal\Unreal_Projects\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Windows\SFX\FOES_SFX_Flying_Shoot_03_818F3B66.wem		\Actor-Mixer Hierarchy\FOES_Flying_WU\FOES_Flying\FOES_SFX_Flying\FOES_SFX_Flying_Shoot_RC\FOES_SFX_Flying_Shoot_03		265370
+	195673243	FOES_SFX_Flying_Shoot_04	G:\Unreal\Unreal_Projects\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Windows\SFX\FOES_SFX_Flying_Shoot_04_818F3B66.wem		\Actor-Mixer Hierarchy\FOES_Flying_WU\FOES_Flying\FOES_SFX_Flying\FOES_SFX_Flying_Shoot_RC\FOES_SFX_Flying_Shoot_04		267834
+	202392697	FOES_SFX_Flying_Idle_LP	G:\Unreal\Unreal_Projects\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Windows\SFX\FOES_SFX_Flying_Idle_LP_FBC78EF0.wem		\Actor-Mixer Hierarchy\FOES_Flying_WU\FOES_Flying\FOES_FOL_Flying\FOES_SFX_Flying_Idle_LP		1965136
+	229626045	FOES_SFX_Flying_Shoot_05	G:\Unreal\Unreal_Projects\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Windows\SFX\FOES_SFX_Flying_Shoot_05_818F3B66.wem		\Actor-Mixer Hierarchy\FOES_Flying_WU\FOES_Flying\FOES_SFX_Flying\FOES_SFX_Flying_Shoot_RC\FOES_SFX_Flying_Shoot_05		245242
+	732571760	FOES_SFX_Flying_Shoot_01	G:\Unreal\Unreal_Projects\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Windows\SFX\FOES_SFX_Flying_Shoot_01_818F3B66.wem		\Actor-Mixer Hierarchy\FOES_Flying_WU\FOES_Flying\FOES_SFX_Flying\FOES_SFX_Flying_Shoot_RC\FOES_SFX_Flying_Shoot_01		266486
+	821998844	FOES_SFX_Flying_Shoot_02	G:\Unreal\Unreal_Projects\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Windows\SFX\FOES_SFX_Flying_Shoot_02_818F3B66.wem		\Actor-Mixer Hierarchy\FOES_Flying_WU\FOES_Flying\FOES_SFX_Flying\FOES_SFX_Flying_Shoot_RC\FOES_SFX_Flying_Shoot_02		271580
 
