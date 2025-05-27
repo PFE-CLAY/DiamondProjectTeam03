@@ -7,7 +7,7 @@
 					<RTPCValueList ShowAll="true">
 						<RTPCValue>
 							<GameParameterRef Name="RTPC_Speed_Flying" ID="{4A0C67E7-2443-47A8-B5EB-86C8F65C73EB}"/>
-							<Value>1.40295655623189E-311</Value>
+							<Value>0</Value>
 						</RTPCValue>
 					</RTPCValueList>
 					<CurrentStateList ShowAll="true"/>
