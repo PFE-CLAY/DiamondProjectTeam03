@@ -2,6 +2,7 @@
 
 #pragma once
 
+
 #include "CoreMinimal.h"
 #include "Subsystems/GameInstanceSubsystem.h"
 #include "GameSettingsSubsystem.generated.h"
@@ -27,6 +28,12 @@ public:
 
 	UPROPERTY(BlueprintReadWrite)
 	float MouseSensitivity = 1.0f;
+	
+	UPROPERTY(BlueprintReadWrite)
+	FString CrosshairColor = "White";
+
+	UPROPERTY(BlueprintReadWrite)
+	float CrosshairSize = 0.1f;
 	
 private:
 	UPROPERTY(EditAnywhere)
