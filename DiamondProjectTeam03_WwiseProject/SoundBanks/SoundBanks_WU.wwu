@@ -80,10 +80,8 @@
 						<ObjectRef Name="MC_FOL_FT_Jump_SW" ID="{90E000BB-FBC6-417E-862B-6DBEC2A64C81}" WorkUnitID="{1B87B22A-8865-441B-A287-78E87390F212}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="MC_FOL_FT_Land_SW" ID="{C97E023A-E426-42A4-8225-A69EEAA7095D}" WorkUnitID="{1B87B22A-8865-441B-A287-78E87390F212}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_MC_SFX_Gun_Shoot_RC" ID="{19EDAAA1-DF79-4328-9566-97F28CD19D08}" WorkUnitID="{0C46C646-7080-4D39-B62D-1B5389FBC32E}" Origin="Manual" Filter="7"/>
-						<ObjectRef Name="MC_WU" ID="{1B87B22A-8865-441B-A287-78E87390F212}" WorkUnitID="{1B87B22A-8865-441B-A287-78E87390F212}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_MC_FOL_FT_SW" ID="{770A8171-A3BF-4A55-9CA5-93ECE5CBF8BD}" WorkUnitID="{0C46C646-7080-4D39-B62D-1B5389FBC32E}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Master_WU" ID="{A9F2777E-FBA3-4BC0-B5B3-14E0777A7B23}" WorkUnitID="{A9F2777E-FBA3-4BC0-B5B3-14E0777A7B23}" Origin="Manual" Filter="7"/>
-						<ObjectRef Name="MC_WU" ID="{0C46C646-7080-4D39-B62D-1B5389FBC32E}" WorkUnitID="{0C46C646-7080-4D39-B62D-1B5389FBC32E}" Origin="Manual" Filter="7"/>
 					</ObjectInclusionList>
 					<ObjectExclusionList/>
 					<GameSyncExclusionList/>

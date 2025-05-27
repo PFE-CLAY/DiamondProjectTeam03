@@ -10,7 +10,7 @@
     "Type": "User",
     "GUID": "{D2378E68-5468-4849-BC4A-8FC6D8A3BF29}",
     "Language": "SFX",
-    "Hash": "{8B83ED19-30EC-C727-F297-C7768A285F71}",
+    "Hash": "{9BA10F0A-AD6D-9BE9-A23A-914CD898B28A}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\GPE_SB",
     "ShortName": "GPE_SB",
     "Path": "GPE_SB.bnk",
@@ -160,8 +160,8 @@
       "GUID": "{65F84DEF-9AA8-456B-A6AF-7249DA8CED54}",
       "MaxAttenuation": "3000",
       "DurationType": "OneShot",
-      "DurationMin": "3.549459",
-      "DurationMax": "3.549459",
+      "DurationMin": "4.2210417",
+      "DurationMax": "4.2210417",
       "MediaRefs": [
        {
         "Id": "53581153"
@@ -201,6 +201,6 @@
     ]
    }
   ],
-  "FileHash": "{DCC594A7-099D-8E01-FAF1-65AEAE131FE3}"
+  "FileHash": "{86052DCB-4FCA-4549-34A5-11EC8316B6CD}"
  }
 }

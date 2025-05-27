@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="16" SoundBankVersion="150">
 	<SoundBanks>
-		<SoundBank Id="3250948517" Type="User" GUID="{8CC30184-23AF-4DB5-9844-9B04DF10A650}" Language="SFX" Hash="{2F460421-BA9E-57A1-4A53-82E0B322EA2E}">
+		<SoundBank Id="3250948517" Type="User" GUID="{8CC30184-23AF-4DB5-9844-9B04DF10A650}" Language="SFX" Hash="{FC854766-77E4-D367-5F8C-74EB0B9E0D79}">
 			<ObjectPath>\SoundBanks\SoundBanks_WU\FOES_Tourelle_SB</ObjectPath>
 			<ShortName>FOES_Tourelle_SB</ShortName>
 			<Path>FOES_Tourelle_SB.bnk</Path>
@@ -84,9 +84,8 @@
 					</PluginRefs>
 				</AuxBus>
 				<AuxBus Id="3571340017" Name="RVB_Hub" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Hub" GUID="{D499EBE4-F26A-48E5-B89D-1F7C43D829E3}"/>
-				<AuxBus Id="3670521640" Name="RVB_Pyramid" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Pyramid" GUID="{668EA0D2-771E-452F-B241-11793F9755B0}"/>
 			</AuxBusses>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{D47C6C09-4BCF-88A9-7995-2CAA057FAFE0}</FileHash>
+	<FileHash>{4EA29A64-24E1-8919-4138-514495483F1B}</FileHash>
 </SoundBanksInfo>

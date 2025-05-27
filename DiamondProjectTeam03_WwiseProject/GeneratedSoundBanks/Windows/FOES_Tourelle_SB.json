@@ -10,7 +10,7 @@
     "Type": "User",
     "GUID": "{8CC30184-23AF-4DB5-9844-9B04DF10A650}",
     "Language": "SFX",
-    "Hash": "{2F460421-BA9E-57A1-4A53-82E0B322EA2E}",
+    "Hash": "{FC854766-77E4-D367-5F8C-74EB0B9E0D79}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\FOES_Tourelle_SB",
     "ShortName": "FOES_Tourelle_SB",
     "Path": "FOES_Tourelle_SB.bnk",
@@ -229,16 +229,10 @@
       "Name": "RVB_Hub",
       "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Hub",
       "GUID": "{D499EBE4-F26A-48E5-B89D-1F7C43D829E3}"
-     },
-     {
-      "Id": "3670521640",
-      "Name": "RVB_Pyramid",
-      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Pyramid",
-      "GUID": "{668EA0D2-771E-452F-B241-11793F9755B0}"
      }
     ]
    }
   ],
-  "FileHash": "{781B1DEB-D31D-8C68-24A7-346D4A35B736}"
+  "FileHash": "{97F6C672-BF28-ED8D-D841-4B2FF70D117B}"
  }
 }

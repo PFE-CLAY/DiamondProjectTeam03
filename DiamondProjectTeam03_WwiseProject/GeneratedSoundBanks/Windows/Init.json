@@ -10,7 +10,7 @@
     "Type": "User",
     "GUID": "{701ECBBD-9C7B-4030-8CDB-749EE5D1C7B9}",
     "Language": "SFX",
-    "Hash": "{511C2535-53E9-C4AC-C5E5-DDF9CE879114}",
+    "Hash": "{4FE3FF92-ED4E-4058-E9CE-67D83161A2A9}",
     "ObjectPath": "Init",
     "ShortName": "Init",
     "Path": "Init.bnk",
@@ -137,12 +137,6 @@
       "Name": "RVB_Hub",
       "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Hub",
       "GUID": "{D499EBE4-F26A-48E5-B89D-1F7C43D829E3}"
-     },
-     {
-      "Id": "3670521640",
-      "Name": "RVB_Pyramid",
-      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Pyramid",
-      "GUID": "{668EA0D2-771E-452F-B241-11793F9755B0}"
      }
     ],
     "GameParameters": [
@@ -183,6 +177,6 @@
     ]
    }
   ],
-  "FileHash": "{F1D51878-1BD3-6A5B-CC4D-35FDB66E3291}"
+  "FileHash": "{DEA2E7E1-97F5-24DA-9A27-5CB390AC7F5D}"
  }
 }

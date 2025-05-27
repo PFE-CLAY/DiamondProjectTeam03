@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="16" SoundBankVersion="150">
 	<SoundBanks>
-		<SoundBank Id="1734647573" Type="User" GUID="{6B7E0BFB-A825-46AA-907A-12621FC4038F}" Language="SFX" Hash="{2EAA3030-CC4B-21B8-3200-322430B760E9}">
+		<SoundBank Id="1734647573" Type="User" GUID="{6B7E0BFB-A825-46AA-907A-12621FC4038F}" Language="SFX" Hash="{11B8418C-6918-F348-4DE0-38893901FE38}">
 			<ObjectPath>\SoundBanks\SoundBanks_WU\UI_SB</ObjectPath>
 			<ShortName>UI_SB</ShortName>
 			<Path>UI_SB.bnk</Path>
@@ -90,9 +90,8 @@
 					</PluginRefs>
 				</AuxBus>
 				<AuxBus Id="3571340017" Name="RVB_Hub" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Hub" GUID="{D499EBE4-F26A-48E5-B89D-1F7C43D829E3}"/>
-				<AuxBus Id="3670521640" Name="RVB_Pyramid" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Pyramid" GUID="{668EA0D2-771E-452F-B241-11793F9755B0}"/>
 			</AuxBusses>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{429C2C77-D883-A745-FDE2-CF855FAB5BE0}</FileHash>
+	<FileHash>{4EB76056-33FE-F124-5666-9DBE13FCF827}</FileHash>
 </SoundBanksInfo>
