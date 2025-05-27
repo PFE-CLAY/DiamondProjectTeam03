@@ -23,7 +23,7 @@
 						<Action Name="" ID="{E50DE6E2-E992-4720-A39E-FF0E4AF436CE}" ShortID="620470684">
 							<ReferenceList>
 								<Reference Name="Target">
-									<ObjectRef Name="FOES_SFX_Flying_Idle_LP" ID="{193AC035-043B-427C-8112-7F8CBCD6C80B}" WorkUnitID="{15E07612-CB6D-4DA7-B6B8-69AB554425DC}"/>
+									<ObjectRef Name="FOES_SFX_Flying_Idle_LP" ID="{BB1579DA-5C19-4002-808C-3743DFAF3135}" WorkUnitID="{15E07612-CB6D-4DA7-B6B8-69AB554425DC}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>
@@ -38,7 +38,7 @@
 							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Target">
-									<ObjectRef Name="FOES_SFX_Flying_Idle_LP" ID="{193AC035-043B-427C-8112-7F8CBCD6C80B}" WorkUnitID="{15E07612-CB6D-4DA7-B6B8-69AB554425DC}"/>
+									<ObjectRef Name="FOES_SFX_Flying_Idle_LP" ID="{BB1579DA-5C19-4002-808C-3743DFAF3135}" WorkUnitID="{15E07612-CB6D-4DA7-B6B8-69AB554425DC}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>

@@ -9,7 +9,7 @@
 	</RootPaths>
 	<DialogueEvents/>
 	<SoundBanks>
-		<SoundBank Id="459280130" Type="User" GUID="{46F08C13-7BDA-47D5-A653-BDFCDAD2487B}" Language="SFX" Hash="{06BA05D0-C2EA-ED4C-7995-917AF8A25DD2}">
+		<SoundBank Id="459280130" Type="User" GUID="{46F08C13-7BDA-47D5-A653-BDFCDAD2487B}" Language="SFX" Hash="{2025E8DC-740A-C66A-FA64-8B84E3A47534}">
 			<ObjectPath>\SoundBanks\SoundBanks_WU\FOES_Flying_SB</ObjectPath>
 			<ShortName>FOES_Flying_SB</ShortName>
 			<Path>FOES_Flying_SB.bnk</Path>
@@ -45,12 +45,12 @@
 				</Custom>
 			</Plugins>
 			<Events>
-				<Event Id="3816121295" Name="Play_FOES_SFX_Flying_Idle_LP" ObjectPath="\Events\FOES_Flying_WU\Play_FOES_SFX_Flying_Idle_LP" GUID="{CF4E623B-F60A-4740-B500-0E5586E75310}" MaxAttenuation="3000" DurationType="Infinite">
+				<Event Id="3816121295" Name="Play_FOES_SFX_Flying_Idle_LP" ObjectPath="\Events\FOES_Flying_WU\Play_FOES_SFX_Flying_Idle_LP" GUID="{CF4E623B-F60A-4740-B500-0E5586E75310}" MaxAttenuation="2000" DurationType="Infinite">
 					<MediaRefs>
 						<MediaRef Id="202392697"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="1810073987" Name="Play_FOES_SFX_Flying_Shoot_RC" ObjectPath="\Events\FOES_Flying_WU\Play_FOES_SFX_Flying_Shoot_RC" GUID="{615B6DF4-5110-477A-ADAD-83075E2A2CC2}" MaxAttenuation="2000" DurationType="OneShot" DurationMin="2.2750027" DurationMax="3.1742759">
+				<Event Id="1810073987" Name="Play_FOES_SFX_Flying_Shoot_RC" ObjectPath="\Events\FOES_Flying_WU\Play_FOES_SFX_Flying_Shoot_RC" GUID="{615B6DF4-5110-477A-ADAD-83075E2A2CC2}" MaxAttenuation="2000" DurationType="OneShot" DurationMin="1.4621503" DurationMax="2.2117178">
 					<MediaRefs>
 						<MediaRef Id="45515045"/>
 						<MediaRef Id="195673243"/>
@@ -83,12 +83,13 @@
 					</PluginRefs>
 				</AuxBus>
 				<AuxBus Id="3571340017" Name="RVB_Hub" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Hub" GUID="{D499EBE4-F26A-48E5-B89D-1F7C43D829E3}"/>
+				<AuxBus Id="3670521640" Name="RVB_Pyramid" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Pyramid" GUID="{668EA0D2-771E-452F-B241-11793F9755B0}"/>
 			</AuxBusses>
 			<GameParameters>
 				<GameParameter Id="3590742338" Name="RTPC_Speed_Flying" ObjectPath="\Game Parameters\Default Work Unit\RTPC_Speed_Flying" GUID="{4A0C67E7-2443-47A8-B5EB-86C8F65C73EB}"/>
 			</GameParameters>
 		</SoundBank>
-		<SoundBank Id="1355168291" Type="User" GUID="{701ECBBD-9C7B-4030-8CDB-749EE5D1C7B9}" Language="SFX" Hash="{4FE3FF92-ED4E-4058-E9CE-67D83161A2A9}">
+		<SoundBank Id="1355168291" Type="User" GUID="{701ECBBD-9C7B-4030-8CDB-749EE5D1C7B9}" Language="SFX" Hash="{511C2535-53E9-C4AC-C5E5-DDF9CE879114}">
 			<ObjectPath>Init</ObjectPath>
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
@@ -124,6 +125,7 @@
 					</PluginRefs>
 				</AuxBus>
 				<AuxBus Id="3571340017" Name="RVB_Hub" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Hub" GUID="{D499EBE4-F26A-48E5-B89D-1F7C43D829E3}"/>
+				<AuxBus Id="3670521640" Name="RVB_Pyramid" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Pyramid" GUID="{668EA0D2-771E-452F-B241-11793F9755B0}"/>
 			</AuxBusses>
 			<GameParameters>
 				<GameParameter Id="3590742338" Name="RTPC_Speed_Flying" ObjectPath="\Game Parameters\Default Work Unit\RTPC_Speed_Flying" GUID="{4A0C67E7-2443-47A8-B5EB-86C8F65C73EB}"/>
@@ -138,7 +140,7 @@
 				</SwitchGroup>
 			</SwitchGroups>
 		</SoundBank>
-		<SoundBank Id="1734647573" Type="User" GUID="{6B7E0BFB-A825-46AA-907A-12621FC4038F}" Language="SFX" Hash="{11B8418C-6918-F348-4DE0-38893901FE38}">
+		<SoundBank Id="1734647573" Type="User" GUID="{6B7E0BFB-A825-46AA-907A-12621FC4038F}" Language="SFX" Hash="{2EAA3030-CC4B-21B8-3200-322430B760E9}">
 			<ObjectPath>\SoundBanks\SoundBanks_WU\UI_SB</ObjectPath>
 			<ShortName>UI_SB</ShortName>
 			<Path>UI_SB.bnk</Path>
@@ -227,9 +229,10 @@
 					</PluginRefs>
 				</AuxBus>
 				<AuxBus Id="3571340017" Name="RVB_Hub" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Hub" GUID="{D499EBE4-F26A-48E5-B89D-1F7C43D829E3}"/>
+				<AuxBus Id="3670521640" Name="RVB_Pyramid" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Pyramid" GUID="{668EA0D2-771E-452F-B241-11793F9755B0}"/>
 			</AuxBusses>
 		</SoundBank>
-		<SoundBank Id="1956625499" Type="User" GUID="{ADC2D189-6608-4828-BC9C-6EF6F90834DB}" Language="SFX" Hash="{7AAC78B6-1A0F-9DDA-4FED-0A29478423A8}">
+		<SoundBank Id="1956625499" Type="User" GUID="{ADC2D189-6608-4828-BC9C-6EF6F90834DB}" Language="SFX" Hash="{E9EA8E1F-4E63-C97D-EBC9-79444911A34C}">
 			<ObjectPath>\SoundBanks\SoundBanks_WU\MC_SB</ObjectPath>
 			<ShortName>MC_SB</ShortName>
 			<Path>MC_SB.bnk</Path>
@@ -258,6 +261,10 @@
 					<ShortName>AMB\SP\MC_FT_Sand_08.wav</ShortName>
 					<CachePath>SFX/AMB/SP/MC_FT_Sand_08_818F3B66.wem</CachePath>
 				</File>
+				<File Id="47427430" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SFX\MC_SFX_PickupWeapon_01.wav</ShortName>
+					<CachePath>SFX/SFX/MC_SFX_PickupWeapon_01_818F3B66.wem</CachePath>
+				</File>
 				<File Id="58062480" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\SP\MC_FT_Sand_Jump_02.wav</ShortName>
 					<CachePath>SFX/AMB/SP/MC_FT_Sand_Jump_02_818F3B66.wem</CachePath>
@@ -285,6 +292,10 @@
 				<File Id="99306815" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\SP\MC_FT_Metal_01.wav</ShortName>
 					<CachePath>SFX/AMB/SP/MC_FT_Metal_01_818F3B66.wem</CachePath>
+				</File>
+				<File Id="101923972" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SFX\MC_SFX_PickupWeapon_04.wav</ShortName>
+					<CachePath>SFX/SFX/MC_SFX_PickupWeapon_04_818F3B66.wem</CachePath>
 				</File>
 				<File Id="104687879" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\SP\MC_FT_Metal_05.wav</ShortName>
@@ -374,6 +385,10 @@
 					<ShortName>AMB\SP\MC_FT_Metal_03.wav</ShortName>
 					<CachePath>SFX/AMB/SP/MC_FT_Metal_03_818F3B66.wem</CachePath>
 				</File>
+				<File Id="418331982" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SFX\MC_SFX_Weapon_NoAmmo.wav</ShortName>
+					<CachePath>SFX/SFX/MC_SFX_Weapon_NoAmmo_818F3B66.wem</CachePath>
+				</File>
 				<File Id="421361594" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>MC_SFX_Gun_Shoot_05.wav</ShortName>
 					<CachePath>SFX/MC_SFX_Gun_Shoot_05_818F3B66.wem</CachePath>
@@ -406,6 +421,10 @@
 					<ShortName>AMB\SP\MC_FT_Concrete_Jump_01.wav</ShortName>
 					<CachePath>SFX/AMB/SP/MC_FT_Concrete_Jump_01_818F3B66.wem</CachePath>
 				</File>
+				<File Id="511633870" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SFX\MC_SFX_PickupWeapon_03.wav</ShortName>
+					<CachePath>SFX/SFX/MC_SFX_PickupWeapon_03_818F3B66.wem</CachePath>
+				</File>
 				<File Id="534496258" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\SP\MC_FT_Concrete_11.wav</ShortName>
 					<CachePath>SFX/AMB/SP/MC_FT_Concrete_11_818F3B66.wem</CachePath>
@@ -426,9 +445,17 @@
 					<ShortName>AMB\SP\MC_FT_Concrete_01.wav</ShortName>
 					<CachePath>SFX/AMB/SP/MC_FT_Concrete_01_818F3B66.wem</CachePath>
 				</File>
+				<File Id="607185623" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SFX\MC_SFX_PickupWeapon_02.wav</ShortName>
+					<CachePath>SFX/SFX/MC_SFX_PickupWeapon_02_818F3B66.wem</CachePath>
+				</File>
 				<File Id="608609148" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\SP\MC_FT_Sand_Jump_03.wav</ShortName>
 					<CachePath>SFX/AMB/SP/MC_FT_Sand_Jump_03_818F3B66.wem</CachePath>
+				</File>
+				<File Id="610072169" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SFX\MC_SFX_PickupWeapon_05.wav</ShortName>
+					<CachePath>SFX/SFX/MC_SFX_PickupWeapon_05_818F3B66.wem</CachePath>
 				</File>
 				<File Id="610918733" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>MC_SFX_Gun_Shoot_03.wav</ShortName>
@@ -465,6 +492,10 @@
 				<File Id="764749319" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\SP\MC_FT_Metal_09.wav</ShortName>
 					<CachePath>SFX/AMB/SP/MC_FT_Metal_09_818F3B66.wem</CachePath>
+				</File>
+				<File Id="772410827" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SFX\MC_SFX_Weapon_Armed.wav</ShortName>
+					<CachePath>SFX/SFX/MC_SFX_Weapon_Armed_818F3B66.wem</CachePath>
 				</File>
 				<File Id="779936328" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\SP\MC_FT_Sand_02.wav</ShortName>
@@ -646,6 +677,57 @@
 								<MediaRef Id="898538319"/>
 							</MediaRefs>
 						</SwitchContainer>
+						<SwitchContainer>
+							<SwitchValue GroupType="Switch" GroupId="757195373" Id="841620460" GUID="{7D8D0D4C-3D1C-43A2-B357-3F03FF424DDB}" Default="true"/>
+							<MediaRefs>
+								<MediaRef Id="28276971"/>
+								<MediaRef Id="75654975"/>
+								<MediaRef Id="163843360"/>
+								<MediaRef Id="267703531"/>
+								<MediaRef Id="268013152"/>
+								<MediaRef Id="480059959"/>
+								<MediaRef Id="534496258"/>
+								<MediaRef Id="602677679"/>
+								<MediaRef Id="655344864"/>
+								<MediaRef Id="814998601"/>
+								<MediaRef Id="816346842"/>
+								<MediaRef Id="1036129781"/>
+							</MediaRefs>
+						</SwitchContainer>
+						<SwitchContainer>
+							<SwitchValue GroupType="Switch" GroupId="757195373" Id="803837735" GUID="{0F8A73BD-8A92-4819-BE09-452FE32E1FBC}"/>
+							<MediaRefs>
+								<MediaRef Id="44684202"/>
+								<MediaRef Id="109232168"/>
+								<MediaRef Id="211150638"/>
+								<MediaRef Id="387146543"/>
+								<MediaRef Id="542236427"/>
+								<MediaRef Id="620312545"/>
+								<MediaRef Id="673489173"/>
+								<MediaRef Id="721183356"/>
+								<MediaRef Id="779936328"/>
+								<MediaRef Id="838939217"/>
+								<MediaRef Id="910413546"/>
+								<MediaRef Id="967065821"/>
+							</MediaRefs>
+						</SwitchContainer>
+						<SwitchContainer>
+							<SwitchValue GroupType="Switch" GroupId="757195373" Id="2473969246" GUID="{4F4901C3-CC0C-4142-BDF8-FF62F7720DE3}"/>
+							<MediaRefs>
+								<MediaRef Id="4962513"/>
+								<MediaRef Id="81610070"/>
+								<MediaRef Id="99306815"/>
+								<MediaRef Id="104687879"/>
+								<MediaRef Id="174467291"/>
+								<MediaRef Id="225595462"/>
+								<MediaRef Id="300270566"/>
+								<MediaRef Id="402066446"/>
+								<MediaRef Id="592388296"/>
+								<MediaRef Id="764749319"/>
+								<MediaRef Id="888066358"/>
+								<MediaRef Id="898538319"/>
+							</MediaRefs>
+						</SwitchContainer>
 					</SwitchContainers>
 				</Event>
 				<Event Id="1177297501" Name="Play_MC_SFX_Gun_Shoot_RC" ObjectPath="\Events\MC_WU\Play_MC_SFX_Gun_Shoot_RC" GUID="{19EDAAA1-DF79-4328-9566-97F28CD19D08}" DurationType="OneShot" DurationMin="0.80338675" DurationMax="1.8403275">
@@ -655,6 +737,25 @@
 						<MediaRef Id="70109824"/>
 						<MediaRef Id="421361594"/>
 						<MediaRef Id="610918733"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="1820563873" Name="Play_MC_SFX_PickupWeapon_RC" ObjectPath="\Events\MC_WU\Play_MC_SFX_PickupWeapon_RC" GUID="{4C30DC19-451C-449E-9B9A-AADEEAB14B44}" DurationType="OneShot" DurationMin="2.5657325" DurationMax="3.6410909">
+					<MediaRefs>
+						<MediaRef Id="47427430"/>
+						<MediaRef Id="101923972"/>
+						<MediaRef Id="511633870"/>
+						<MediaRef Id="607185623"/>
+						<MediaRef Id="610072169"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="3961249933" Name="Play_MC_SFX_Weapon_Armed_RC" ObjectPath="\Events\MC_WU\Play_MC_SFX_Weapon_Armed_RC" GUID="{E22125BE-E0CB-4EC0-A4CB-7460BE42B80E}" DurationType="OneShot" DurationMin="3.3666666" DurationMax="3.3666666">
+					<MediaRefs>
+						<MediaRef Id="772410827"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="3400800083" Name="Play_MC_SFX_Weapon_NoAmmo_RC" ObjectPath="\Events\MC_WU\Play_MC_SFX_Weapon_NoAmmo_RC" GUID="{708ACD16-F6BC-49F8-85D6-8076E283E48F}" DurationType="OneShot" DurationMin="1.7806667" DurationMax="1.7806667">
+					<MediaRefs>
+						<MediaRef Id="418331982"/>
 					</MediaRefs>
 				</Event>
 			</Events>
@@ -680,6 +781,7 @@
 					</PluginRefs>
 				</AuxBus>
 				<AuxBus Id="3571340017" Name="RVB_Hub" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Hub" GUID="{D499EBE4-F26A-48E5-B89D-1F7C43D829E3}"/>
+				<AuxBus Id="3670521640" Name="RVB_Pyramid" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Pyramid" GUID="{668EA0D2-771E-452F-B241-11793F9755B0}"/>
 			</AuxBusses>
 			<SwitchGroups>
 				<SwitchGroup Id="757195373" Name="SW_Material" ObjectPath="\Switches\Default Work Unit\SW_Material" GUID="{828E8B9F-6B07-4984-BFE7-B76CEA058A8B}">
@@ -691,7 +793,7 @@
 				</SwitchGroup>
 			</SwitchGroups>
 		</SoundBank>
-		<SoundBank Id="2516814376" Type="User" GUID="{48187E94-2869-42A3-9E99-A12DF1DA86DF}" Language="SFX" Hash="{C96EC5F5-E48D-9B1B-CFF8-653DECDF38A6}">
+		<SoundBank Id="2516814376" Type="User" GUID="{48187E94-2869-42A3-9E99-A12DF1DA86DF}" Language="SFX" Hash="{C3C86C4E-FE65-6AD7-4768-76AA7749EB72}">
 			<ObjectPath>\SoundBanks\SoundBanks_WU\FOES_Invisible_SB</ObjectPath>
 			<ShortName>FOES_Invisible_SB</ShortName>
 			<Path>FOES_Invisible_SB.bnk</Path>
@@ -722,9 +824,10 @@
 					</PluginRefs>
 				</AuxBus>
 				<AuxBus Id="3571340017" Name="RVB_Hub" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Hub" GUID="{D499EBE4-F26A-48E5-B89D-1F7C43D829E3}"/>
+				<AuxBus Id="3670521640" Name="RVB_Pyramid" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Pyramid" GUID="{668EA0D2-771E-452F-B241-11793F9755B0}"/>
 			</AuxBusses>
 		</SoundBank>
-		<SoundBank Id="3250948517" Type="User" GUID="{8CC30184-23AF-4DB5-9844-9B04DF10A650}" Language="SFX" Hash="{FC854766-77E4-D367-5F8C-74EB0B9E0D79}">
+		<SoundBank Id="3250948517" Type="User" GUID="{8CC30184-23AF-4DB5-9844-9B04DF10A650}" Language="SFX" Hash="{2F460421-BA9E-57A1-4A53-82E0B322EA2E}">
 			<ObjectPath>\SoundBanks\SoundBanks_WU\FOES_Tourelle_SB</ObjectPath>
 			<ShortName>FOES_Tourelle_SB</ShortName>
 			<Path>FOES_Tourelle_SB.bnk</Path>
@@ -807,9 +910,10 @@
 					</PluginRefs>
 				</AuxBus>
 				<AuxBus Id="3571340017" Name="RVB_Hub" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Hub" GUID="{D499EBE4-F26A-48E5-B89D-1F7C43D829E3}"/>
+				<AuxBus Id="3670521640" Name="RVB_Pyramid" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Pyramid" GUID="{668EA0D2-771E-452F-B241-11793F9755B0}"/>
 			</AuxBusses>
 		</SoundBank>
-		<SoundBank Id="3256182613" Type="User" GUID="{9DC5CBA4-02D0-4677-A565-21ECA413E694}" Language="SFX" Hash="{59009633-8F0C-DA94-B70D-F4CCA6263F72}">
+		<SoundBank Id="3256182613" Type="User" GUID="{9DC5CBA4-02D0-4677-A565-21ECA413E694}" Language="SFX" Hash="{4899E94E-B5E1-3E7B-8CA0-DD716B0CDF19}">
 			<ObjectPath>\SoundBanks\SoundBanks_WU\AMB_SB</ObjectPath>
 			<ShortName>AMB_SB</ShortName>
 			<Path>AMB_SB.bnk</Path>
@@ -1080,14 +1184,15 @@
 					</PluginRefs>
 				</AuxBus>
 				<AuxBus Id="3571340017" Name="RVB_Hub" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Hub" GUID="{D499EBE4-F26A-48E5-B89D-1F7C43D829E3}"/>
+				<AuxBus Id="3670521640" Name="RVB_Pyramid" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Pyramid" GUID="{668EA0D2-771E-452F-B241-11793F9755B0}"/>
 			</AuxBusses>
 		</SoundBank>
-		<SoundBank Id="3896292454" Type="User" GUID="{459D1F67-52BD-4FA1-B846-B8F3A50C2C5F}" Language="SFX" Hash="{02BE1600-7C47-6A2A-12CF-4A10D9F2CF3F}">
+		<SoundBank Id="3896292454" Type="User" GUID="{459D1F67-52BD-4FA1-B846-B8F3A50C2C5F}" Language="SFX" Hash="{B571FF43-03E3-0F51-E76C-22555D138B0E}">
 			<ObjectPath>\SoundBanks\SoundBanks_WU\SFX_SB</ObjectPath>
 			<ShortName>SFX_SB</ShortName>
 			<Path>SFX_SB.bnk</Path>
 		</SoundBank>
-		<SoundBank Id="4155742227" Type="User" GUID="{D2378E68-5468-4849-BC4A-8FC6D8A3BF29}" Language="SFX" Hash="{8B83ED19-30EC-C727-F297-C7768A285F71}">
+		<SoundBank Id="4155742227" Type="User" GUID="{D2378E68-5468-4849-BC4A-8FC6D8A3BF29}" Language="SFX" Hash="{B5A6ED62-77A4-3128-5ABB-97C065D239EA}">
 			<ObjectPath>\SoundBanks\SoundBanks_WU\GPE_SB</ObjectPath>
 			<ShortName>GPE_SB</ShortName>
 			<Path>GPE_SB.bnk</Path>
@@ -1172,5 +1277,5 @@
 			</Events>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{075A3A82-85A5-489C-FD85-12FFCC28F617}</FileHash>
+	<FileHash>{8AFE67D1-384F-3E41-751D-C1ADC948766B}</FileHash>
 </SoundBanksInfo>
