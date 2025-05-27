@@ -6,6 +6,7 @@
 
 #include "CookOnTheFly.h"
 #include "Navigation/PathFollowingComponent.h"
+#include "PhysicsEngine/PhysicalAnimationComponent.h"
 
 
 // Sets default values
@@ -24,21 +25,33 @@ void AAllied::BeginPlay()
 {
 	Super::BeginPlay();
 	AlliedMesh = Cast<USkeletalMeshComponent>(GetMesh());
+	if (AlliedMesh != nullptr){
+		AnimInstance = Cast<UAlliedAnimInstance>(AlliedMesh->GetAnimInstance());
+	}
 	AIController = this->GetController<AAIController>();
-	GrabBoneName = AlliedMesh->GetBoneName(0);
+	
 	
 	//AAIController::OnMoveCompleted();
 	//GEngine->AddOnScreenDebugMessage(-1, 10.f, FColor::Red, FString::Printf(TEXT("%lld"), PatrolPoints.Num()));
-	Patrol();
+	if(bShouldPlayOnStart) Patrol();
+
+	
+	
 }
 
 void AAllied::Patrol()
 {
 	if(Position < PatrolPoints.Num()){
+		AnimInstance->bIsMoving = true;
 		FAIMoveRequest MoveRequest;
 		MoveRequest.SetGoalLocation(PatrolPoints[Position]->GetActorLocation());
 		AIController->MoveTo(MoveRequest, nullptr);
 	}
+	else
+	{
+		AnimInstance->bIsMoving = false;
+	}
+	
 	
 }
 

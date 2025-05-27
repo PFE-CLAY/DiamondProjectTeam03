@@ -2,6 +2,7 @@
 
 #pragma once
 
+#include "Containers/Queue.h"
 #include "CoreMinimal.h"
 #include "Subsystems/GameInstanceSubsystem.h"
 #include "LoopSubsystem.generated.h"
@@ -20,10 +21,22 @@ class DIAMONDPROJECT_API ULoopSubsystem : public UGameInstanceSubsystem
 	UPROPERTY()
 	bool bIsInit = false;
 
+	UDELEGATE(BlueprintCallable)
+	DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnSceneReloadEvent);
+
 public:
+	UPROPERTY(BlueprintReadWrite)
+	bool bIsDreamLevel = false;
+	
+	UPROPERTY(BlueprintAssignable)
+	FOnSceneReloadEvent OnSceneReloadEvent;
+	
 	UPROPERTY()
 	TMap<FString, TObjectPtr<UPreplanStep>> PreplanSteps;
-	
+
+	UPROPERTY(BlueprintReadOnly)
+	TArray<TObjectPtr<UDataTable>> PreplanDreamSubtitlesArray;
+
 private:	
 	UFUNCTION(BlueprintCallable)
 	void ReloadScene();

@@ -11,10 +11,10 @@ class DIAMONDPROJECT_API AHatchIncinerator : public AActor
 {
 	GENERATED_BODY()
 private:
-	UPROPERTY()
+	UPROPERTY(EditAnywhere)
 	USceneComponent* Doors;
 	
-	UPROPERTY()
+	UPROPERTY(EditAnywhere)
     USceneComponent* DroneStart;
 
 	UPROPERTY()

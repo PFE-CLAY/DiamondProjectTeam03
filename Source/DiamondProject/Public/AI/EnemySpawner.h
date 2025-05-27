@@ -14,23 +14,6 @@ class DIAMONDPROJECT_API AEnemySpawner : public AActor
 	GENERATED_BODY()
 
 protected:
-	UPROPERTY(EditAnywhere, Category = Wave)
-	float WaveCooldown = 15.f;
-
-	UPROPERTY(EditAnywhere, Category = Wave)
-	int WaveEnemyCount = 3;
-
-	UPROPERTY(EditAnywhere, Category = Wave)
-	int IncrementalWaveEnemyCount = 1;
-
-	UPROPERTY(EditAnywhere, Category = Wave)
-	bool bShouldLoopWaves = true;
-
-	UPROPERTY(EditAnywhere, Category = Wave)
-	bool bShouldSpawnOnBeginplay = true;
-
-	UPROPERTY(EditAnywhere, Category = Wave)
-	bool bShouldIncrementWaves = true;
 
 	UPROPERTY(EditDefaultsOnly, Category = Spawner)
 	TSubclassOf<AEnemy> EnemyToSpawn;
@@ -38,23 +21,35 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Spawner)
 	UBoxComponent* VolumeBox;
 
+
+
 public:
 	// Sets default values for this actor's properties
 	AEnemySpawner();
+
+	UPROPERTY(EditDefaultsOnly, Category = "Debug")
+	bool bShouldShowDebug = false;
+
+	UPROPERTY()
+	float DistanceFromPlayer;
 
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
 private:
-
-	UFUNCTION(BlueprintCallable, Category = EnemySpawner)
-	void SpawnWave();
-
+	
 	UFUNCTION()
 	FTransform GetRandomTransform() const;
 
 public:
+
+	UFUNCTION()
+	void SpawnMonster();
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
+
+	bool IsInActivationRange(float Distance, AActor* Actor);
+
+	void DebugDistance();
 };

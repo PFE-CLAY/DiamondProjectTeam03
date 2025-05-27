@@ -7,6 +7,8 @@
 #include "GameFramework/Actor.h"
 #include "JumpPad.generated.h"
 
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnJumpadJump);
+
 UCLASS()
 class DIAMONDPROJECT_API AJumpPad : public AActor
 {
@@ -17,6 +19,15 @@ public:
 	virtual void OnConstruction(const FTransform& Transform) override;
 protected:
 	virtual void BeginPlay() override;
+
+	UPROPERTY(BlueprintAssignable)
+	FOnJumpadJump JumpadJump;
+
+	UPROPERTY(EditAnywhere)
+	bool bDoesJumppadRequireSun = false;
+
+	UFUNCTION(BlueprintCallable)
+	void SetIsJumpadIlluminated(bool bIsIlluminated);
 
 public:
 	virtual void Tick(float DeltaTime) override;
@@ -42,12 +53,15 @@ public:
 	UFUNCTION()
 	void OnOverlapBegin(class UPrimitiveComponent* OverlappedComponent, class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
 
-	private :
-		UPROPERTY()
+private :
+	
+	UPROPERTY()
 	FTimerHandle TimerHandle;
 
 	UPROPERTY()
 	bool bCanBounce = true;
+
+	bool bIsIlluminated = false;
 	
 	void ResetJump();
 };
