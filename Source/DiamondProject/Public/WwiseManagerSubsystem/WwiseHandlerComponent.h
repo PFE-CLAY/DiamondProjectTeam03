@@ -32,12 +32,12 @@ public:
 	                           FActorComponentTickFunction* ThisTickFunction) override;
 
 	DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FHandleCallbackDelegate, EAkCallbackType, CallbackType, UAkCallbackInfo*, CallbackInfo); 
-	DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FEndOfEventCallbackDelegate, UAkEventCallbackInfo*, CallbackInfo);
-	DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FMarkerCallbackDelegate, UAkMarkerCallbackInfo*, CallbackInfo);
-	DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FDurationCallbackDelegate, UAkDurationCallbackInfo*, CallbackInfo);
-	DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FStarvationCallbackDelegate, UAkEventCallbackInfo*, CallbackInfo);
-	DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FMusicPlayStartedCallbackDelegate, UAkEventCallbackInfo*, CallbackInfo);
-	DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FMidiEventCallbackDelegate, UAkMIDIEventCallbackInfo*, CallbackInfo);
+	DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FEndOfEventCallbackDelegate, UAkEventCallbackInfo*, CallbackInfo, UWwiseHandlerComponent*, owner);
+	DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FMarkerCallbackDelegate, UAkMarkerCallbackInfo*, CallbackInfo, UWwiseHandlerComponent*, owner);
+	DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FDurationCallbackDelegate, UAkDurationCallbackInfo*, CallbackInfo, UWwiseHandlerComponent*, owner);
+	DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FStarvationCallbackDelegate, UAkEventCallbackInfo*, CallbackInfo, UWwiseHandlerComponent*, owner);
+	DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FMusicPlayStartedCallbackDelegate, UAkEventCallbackInfo*, CallbackInfo, UWwiseHandlerComponent*, owner);
+	DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FMidiEventCallbackDelegate, UAkMIDIEventCallbackInfo*, CallbackInfo, UWwiseHandlerComponent*, owner);
 
 	UPROPERTY(BlueprintAssignable, Category="Wwise|Callback")
 	FHandleCallbackDelegate HandleCallbackDelegate;
@@ -49,37 +49,37 @@ public:
 	FEndOfEventCallbackDelegate EndOfEventCallbackDelegate;
 	
 	UFUNCTION(BlueprintImplementableEvent, Category = "Wwise|Event")
-	void OnEndOfEventCallback(UAkEventCallbackInfo* CallbackInfo);
+	void OnEndOfEventCallback(UAkEventCallbackInfo* CallbackInfo, UWwiseHandlerComponent* owner);
 
 	UPROPERTY(BlueprintAssignable, Category="Wwise|Callback")
 	FMarkerCallbackDelegate MarkerCallbackDelegate;
 	
 	UFUNCTION(BlueprintImplementableEvent, Category = "Wwise|Event")
-	void OnMarkerCallback(UAkMarkerCallbackInfo* CallbackInfo);
+	void OnMarkerCallback(UAkMarkerCallbackInfo* CallbackInfo, UWwiseHandlerComponent* owner);
 
 	UPROPERTY(BlueprintAssignable, Category="Wwise|Callback")
 	FDurationCallbackDelegate DurationCallbackDelegate;
 	
 	UFUNCTION(BlueprintImplementableEvent, Category = "Wwise|Event")
-	void OnDurationCallback(UAkDurationCallbackInfo* CallbackInfo);
+	void OnDurationCallback(UAkDurationCallbackInfo* CallbackInfo, UWwiseHandlerComponent* owner);
 
 	UPROPERTY(BlueprintAssignable, Category="Wwise|Callback")
 	FStarvationCallbackDelegate StarvationCallbackDelegate;
 	
 	UFUNCTION(BlueprintImplementableEvent, Category = "Wwise|Event")
-	void OnStarvationCallback(UAkEventCallbackInfo* CallbackInfo);
+	void OnStarvationCallback(UAkEventCallbackInfo* CallbackInfo, UWwiseHandlerComponent* owner);
 
 	UPROPERTY(BlueprintAssignable, Category="Wwise|Callback")
 	FMusicPlayStartedCallbackDelegate MusicPlayStartedCallbackDelegate;
 	
 	UFUNCTION(BlueprintImplementableEvent, Category = "Wwise|Event")
-	void OnMusicPlayStartedCallback(UAkEventCallbackInfo* CallbackInfo);
+	void OnMusicPlayStartedCallback(UAkEventCallbackInfo* CallbackInfo, UWwiseHandlerComponent* owner);
 
 	UPROPERTY(BlueprintAssignable, Category="Wwise|Callback")
 	FMidiEventCallbackDelegate MidiEventCallbackDelegate;
 	
 	UFUNCTION(BlueprintImplementableEvent, Category = "Wwise|Event")
-	void OnMidiEventCallback(UAkMIDIEventCallbackInfo* CallbackInfo);
+	void OnMidiEventCallback(UAkMIDIEventCallbackInfo* CallbackInfo, UWwiseHandlerComponent* owner);
 
 	void HandleCallback_Implementation(EAkCallbackType CallbackType, UAkCallbackInfo* CallbackInfo);
 
@@ -104,6 +104,9 @@ public:
 public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Wwise|Mask", meta=(Bitmask, BitmaskEnum = "/Script/AkAudio.EAkCallbackType"))
 	int32 CallbackMask;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Wwise|Wwise Event")
+	int32 LastPlayedID = 0;
 };
 
 // 5
