@@ -36,25 +36,25 @@ void UWwiseHandlerComponent::HandleCallback_Implementation(EAkCallbackType Callb
 {
 	switch (CallbackType) {
 		case EAkCallbackType::EndOfEvent:
-			OnEndOfEventCallback(CastChecked<UAkEventCallbackInfo>(CallbackInfo));
+			OnEndOfEventCallback(CastChecked<UAkEventCallbackInfo>(CallbackInfo), this);
 			break;
 		case EAkCallbackType::Marker:
-			OnMarkerCallback(CastChecked<UAkMarkerCallbackInfo>(CallbackInfo));
+			OnMarkerCallback(CastChecked<UAkMarkerCallbackInfo>(CallbackInfo), this);
 			break;
 		case EAkCallbackType::Duration:
-			OnDurationCallback(CastChecked<UAkDurationCallbackInfo>(CallbackInfo));
+			OnDurationCallback(CastChecked<UAkDurationCallbackInfo>(CallbackInfo), this);
 			break;
 		case EAkCallbackType::Starvation:
-			OnStarvationCallback(CastChecked<UAkEventCallbackInfo>(CallbackInfo));
+			OnStarvationCallback(CastChecked<UAkEventCallbackInfo>(CallbackInfo), this);
 			break;
 		case EAkCallbackType::MusicPlayStarted:
-			OnMusicPlayStartedCallback(CastChecked<UAkEventCallbackInfo>(CallbackInfo));
+			OnMusicPlayStartedCallback(CastChecked<UAkEventCallbackInfo>(CallbackInfo), this);
 			break;
 		case EAkCallbackType::MIDIEvent:
-			OnMidiEventCallback(CastChecked<UAkMIDIEventCallbackInfo>(CallbackInfo));
+			OnMidiEventCallback(CastChecked<UAkMIDIEventCallbackInfo>(CallbackInfo), this);
 			break;
 		default:
-			UE_LOG(LogTemp, Warning, TEXT("Unhandled Wwise callback type: %d"), CallbackType);
+			UE_LOG(LogTemp, Warning, TEXT("[HandleCallback] Unhandled Wwise callback type: %d on Actor: %s"), CallbackType, *GetOwner()->GetName());
 			HandleCallbackDelegate.Broadcast(CallbackType, CallbackInfo);
 			break;
 	}
@@ -67,7 +67,7 @@ void UWwiseHandlerComponent::OnEndOfEventCallback_Implementation(UAkEventCallbac
 		UE_LOG(LogTemp, Error, TEXT("[OnEndOfEvent] CallbackInfo is null!"));
 		return;
 	}
-	EndOfEventCallbackDelegate.Broadcast(CallbackInfo);
+	EndOfEventCallbackDelegate.Broadcast(CallbackInfo, this);
 }
 
 void UWwiseHandlerComponent::OnMarkerCallback_Implementation(UAkMarkerCallbackInfo* CallbackInfo)
@@ -78,7 +78,7 @@ void UWwiseHandlerComponent::OnMarkerCallback_Implementation(UAkMarkerCallbackIn
 	}
 	UE_LOG(LogTemp, Log, TEXT("[Wwise] Marker Callback: Label = %s, Position = %u, Identifier = %u"),
 			*CallbackInfo->Label, CallbackInfo->Position, CallbackInfo->Identifier);
-	MarkerCallbackDelegate.Broadcast(CallbackInfo);
+	MarkerCallbackDelegate.Broadcast(CallbackInfo, this);
 }
 
 void UWwiseHandlerComponent::OnDurationCallback_Implementation(UAkDurationCallbackInfo* CallbackInfo)
@@ -89,7 +89,7 @@ void UWwiseHandlerComponent::OnDurationCallback_Implementation(UAkDurationCallba
 	}
 	UE_LOG(LogTemp, Log, TEXT("[Wwise] Duration Callback: Duration = %f, EstimatedDuration = %f, AudioNodeID = %u, MediaID = %u"),
 			CallbackInfo->Duration, CallbackInfo->EstimatedDuration, CallbackInfo->AudioNodeID, CallbackInfo->MediaID);
-	DurationCallbackDelegate.Broadcast(CallbackInfo);
+	DurationCallbackDelegate.Broadcast(CallbackInfo, this);
 }
 
 void UWwiseHandlerComponent::OnStarvationCallback_Implementation(UAkEventCallbackInfo* CallbackInfo)
@@ -100,7 +100,7 @@ void UWwiseHandlerComponent::OnStarvationCallback_Implementation(UAkEventCallbac
 	}
 	UE_LOG(LogTemp, Log, TEXT("[Wwise] Starvation Callback: PlayingID = %u, EventID = %u"),
 			CallbackInfo->PlayingID, CallbackInfo->EventID);
-	StarvationCallbackDelegate.Broadcast(CallbackInfo);
+	StarvationCallbackDelegate.Broadcast(CallbackInfo, this);
 }
 
 void UWwiseHandlerComponent::OnMusicPlayStartedCallback_Implementation(UAkEventCallbackInfo* CallbackInfo)
@@ -111,25 +111,18 @@ void UWwiseHandlerComponent::OnMusicPlayStartedCallback_Implementation(UAkEventC
 	}
 	UE_LOG(LogTemp, Log, TEXT("[Wwise] Music Play Started Callback: PlayingID = %u, EventID = %u"),
 			CallbackInfo->PlayingID, CallbackInfo->EventID);
-	MusicPlayStartedCallbackDelegate.Broadcast(CallbackInfo);
+	MusicPlayStartedCallbackDelegate.Broadcast(CallbackInfo, this);
 }
 
 void UWwiseHandlerComponent::OnMidiEventCallback_Implementation(UAkMIDIEventCallbackInfo* CallbackInfo)
 {
 	if (CallbackInfo == nullptr) {
-		UE_LOG(LogTemp, Error, TEXT("[OnMidiEventCallback."
-							  ""
-		 ""
-   ""
-   ""
-   ""
-   ""
-   ".3] CallbackInfo is null!"));
+		UE_LOG(LogTemp, Error, TEXT("[OnMidiEventCallback] CallbackInfo is null!"));
 		return;
 	}
 	UE_LOG(LogTemp, Log, TEXT("[Wwise] MIDI Event Callback: PlayingID = %u, EventID = %u"),
 			CallbackInfo->PlayingID, CallbackInfo->EventID);
-	MidiEventCallbackDelegate.Broadcast(CallbackInfo);
+	MidiEventCallbackDelegate.Broadcast(CallbackInfo, this);
 }
 
 void UWwiseHandlerComponent::AddMaskToCallbackMask(EAkCallbackType CallbackType)
