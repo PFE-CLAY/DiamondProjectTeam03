@@ -126,6 +126,12 @@
 								</Bus>
 							</ChildrenList>
 						</Bus>
+						<AuxBus Name="RVB_Pyramid" ID="{668EA0D2-771E-452F-B241-11793F9755B0}">
+							<PropertyList>
+								<Property Name="Color" Type="int16" Value="26"/>
+								<Property Name="OverrideColor" Type="bool" Value="True"/>
+							</PropertyList>
+						</AuxBus>
 					</ChildrenList>
 				</Bus>
 			</ChildrenList>
