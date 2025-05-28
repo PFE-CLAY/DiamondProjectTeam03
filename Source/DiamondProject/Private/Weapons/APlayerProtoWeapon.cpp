@@ -100,6 +100,11 @@ void UAPlayerProtoWeapon::ProcessHit(const FHitResult& Hit, UWorld* World) const
             DecalLifeSpan
         );
     }
+
+    if (Hit.bBlockingHit)
+    {
+        OnHit.Broadcast(Hit);
+    }
 }
 
 void UAPlayerProtoWeapon::PlayFireEffects() const
