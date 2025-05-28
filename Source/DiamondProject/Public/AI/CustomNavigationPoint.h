@@ -38,7 +38,7 @@ public:
 	UPROPERTY(EditAnywhere, Category="NavPoint", meta=(EditCondition="PointType == EPointType::Choice"))
 	TArray<APath*> PathArray;
 
-	UPROPERTY(EditAnywhere, Category="NavPoint", meta=(EditCondition="PointType == EPointType::Choice"))
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="NavPoint", meta=(EditCondition="PointType == EPointType::Choice"))
 	int WantedPathIndex = 0;
 
 	UPROPERTY()
