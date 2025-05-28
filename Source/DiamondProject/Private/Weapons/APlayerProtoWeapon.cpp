@@ -76,6 +76,7 @@ void UAPlayerProtoWeapon::PerformShot() const
     
     if (BHasHit){
         ProcessHit(Hit, World);
+        OnHit.Broadcast(Hit);
     }
 
     OnFire.Broadcast(CurrentAmmo, SpawnLocation + (SpawnRotation.Vector() * 1000));
@@ -99,11 +100,6 @@ void UAPlayerProtoWeapon::ProcessHit(const FHitResult& Hit, UWorld* World) const
             Hit.ImpactNormal.Rotation(),
             DecalLifeSpan
         );
-    }
-
-    if (Hit.bBlockingHit)
-    {
-        OnHit.Broadcast(Hit);
     }
 }
 
