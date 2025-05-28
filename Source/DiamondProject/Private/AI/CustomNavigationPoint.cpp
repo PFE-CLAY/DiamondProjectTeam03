@@ -35,7 +35,7 @@ void ACustomNavigationPoint::	PointEffect()
 	case EPointType::None:
 		break;
 	case EPointType::Crouch:
-		Allied->Crouch();
+		Allied->OnCrouch();
 		break;
 	case EPointType::Choice:
 		Allied->GetNewPath(PathArray[WantedPathIndex]);

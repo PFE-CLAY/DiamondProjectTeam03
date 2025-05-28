@@ -7,6 +7,7 @@
 #include "CookOnTheFly.h"
 #include "AI/CustomNavigationPoint.h"
 #include "AI/Path.h"
+#include "GameFramework/CharacterMovementComponent.h"
 #include "Navigation/PathFollowingComponent.h"
 #include "PhysicsEngine/PhysicalAnimationComponent.h"
 
@@ -68,6 +69,11 @@ void AAllied::GetNewPath(APath* NewPath)
 	Position = -1;
 	Path = NewPath;
 	Path->SetAllied(this);
+}
+
+void AAllied::OnCrouch_Implementation()
+{
+	GetCharacterMovement()->DisableMovement();
 }
 
 // Called every frame

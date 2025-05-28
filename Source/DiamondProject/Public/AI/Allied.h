@@ -81,4 +81,7 @@ public:
 
 	UFUNCTION()
 	void GetNewPath(APath* NewPath);
+
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category="Movements")
+	void OnCrouch();
 };
