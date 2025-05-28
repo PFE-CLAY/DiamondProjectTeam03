@@ -5,6 +5,8 @@
 #include "AIController.h"
 
 #include "CookOnTheFly.h"
+#include "AI/CustomNavigationPoint.h"
+#include "AI/Path.h"
 #include "Navigation/PathFollowingComponent.h"
 #include "PhysicsEngine/PhysicalAnimationComponent.h"
 
@@ -25,26 +27,25 @@ void AAllied::BeginPlay()
 {
 	Super::BeginPlay();
 	AlliedMesh = Cast<USkeletalMeshComponent>(GetMesh());
+	
+	Path->SetAllied(this);
 	if (AlliedMesh != nullptr){
 		AnimInstance = Cast<UAlliedAnimInstance>(AlliedMesh->GetAnimInstance());
 	}
 	AIController = this->GetController<AAIController>();
 	
-	
 	//AAIController::OnMoveCompleted();
 	//GEngine->AddOnScreenDebugMessage(-1, 10.f, FColor::Red, FString::Printf(TEXT("%lld"), PatrolPoints.Num()));
 	if(bShouldPlayOnStart) Patrol();
-
-	
-	
 }
 
 void AAllied::Patrol()
 {
-	if(Position < PatrolPoints.Num()){
+	if(Path->PatrolPoints.IsEmpty()) return;
+	if(Position < Path->PatrolPoints.Num()){
 		AnimInstance->bIsMoving = true;
 		FAIMoveRequest MoveRequest;
-		MoveRequest.SetGoalLocation(PatrolPoints[Position]->GetActorLocation());
+		MoveRequest.SetGoalLocation(Path->PatrolPoints[Position]->GetActorLocation());
 		AIController->MoveTo(MoveRequest, nullptr);
 	}
 	else
@@ -57,8 +58,16 @@ void AAllied::Patrol()
 
 ACustomNavigationPoint* AAllied::GetCurrentNavigationPoint()
 {
-	if(PatrolPoints[Position] != nullptr){ return PatrolPoints[Position];}
+	
+	if(Path->PatrolPoints[Position] != nullptr){ return Path->PatrolPoints[Position];}
 	return nullptr;
+}
+
+void AAllied::GetNewPath(APath* NewPath)
+{
+	Position = -1;
+	Path = NewPath;
+	Path->SetAllied(this);
 }
 
 // Called every frame

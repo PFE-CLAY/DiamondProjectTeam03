@@ -3,8 +3,12 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "EPointType.h"
 #include "GameFramework/Actor.h"
+#include "Allied.h"
 #include "CustomNavigationPoint.generated.h"
+
+class APath;
 
 UCLASS()
 class DIAMONDPROJECT_API ACustomNavigationPoint : public AActor
@@ -14,7 +18,9 @@ class DIAMONDPROJECT_API ACustomNavigationPoint : public AActor
 	
 protected:
 	
-	
+private:
+	UPROPERTY()
+	int EffectIndex = 0;
 	
 public:
 	// Sets default values for this actor's properties
@@ -26,6 +32,19 @@ public:
 	UPROPERTY(EditAnywhere, meta=(EditCondition="bShouldWait"))
 	float TimeToWait;
 
+	UPROPERTY(EditAnywhere, Category="NavPoint")
+	EPointType PointType;
+
+	UPROPERTY(EditAnywhere, Category="NavPoint", meta=(EditCondition="PointType == EPointType::Choice"))
+	TArray<APath*> PathArray;
+
+	UPROPERTY(EditAnywhere, Category="NavPoint", meta=(EditCondition="PointType == EPointType::Choice"))
+	int WantedPathIndex = 0;
+
+	UPROPERTY()
+	AAllied* Allied;
+	
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -33,4 +52,9 @@ protected:
 public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
+
+	UFUNCTION()
+	void PointEffect();
+
+	
 };
