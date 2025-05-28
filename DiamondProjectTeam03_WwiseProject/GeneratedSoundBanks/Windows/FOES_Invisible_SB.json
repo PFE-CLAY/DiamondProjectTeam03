@@ -10,17 +10,65 @@
     "Type": "User",
     "GUID": "{48187E94-2869-42A3-9E99-A12DF1DA86DF}",
     "Language": "SFX",
-    "Hash": "{C3C86C4E-FE65-6AD7-4768-76AA7749EB72}",
+    "Hash": "{5EFE4B06-2C67-1DB8-5429-5DD205FE5B9C}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\FOES_Invisible_SB",
     "ShortName": "FOES_Invisible_SB",
     "Path": "FOES_Invisible_SB.bnk",
     "Plugins": {
      "Custom": [
       {
+       "Id": "16383166",
+       "Name": "Hall_Medium_Bright (Custom)",
+       "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Hub\\[Effect Slot [0]: (RoomVerb)]\\Hall_Medium_Bright (Custom)",
+       "GUID": "{2B8E8BE0-9B77-422E-880F-E9F637DE5BCF}",
+       "LibName": "Wwise RoomVerb",
+       "LibId": "7733251"
+      },
+      {
+       "Id": "97605317",
+       "Name": "Hall_Medium_Dark (Custom)",
+       "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Basement\\[Effect Slot [0]: (RoomVerb)]\\Hall_Medium_Dark (Custom)",
+       "GUID": "{8C478E3B-5F92-4AEE-A130-8EAD54778042}",
+       "LibName": "Wwise RoomVerb",
+       "LibId": "7733251"
+      },
+      {
        "Id": "169636257",
        "Name": "Have_U_Ever_Been_Outside (Custom)",
        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_RFX_Arena\\[Effect Slot [0]: (RoomVerb)]\\Have_U_Ever_Been_Outside (Custom)",
        "GUID": "{4EC028FC-6FD5-4AC6-A71F-B2CB8F1117DF}",
+       "LibName": "Wwise RoomVerb",
+       "LibId": "7733251"
+      },
+      {
+       "Id": "272452003",
+       "Name": "Echoes_Linear (Custom)",
+       "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Arena\\[Effect Slot [1]: (Delay)]\\Echoes_Linear (Custom)",
+       "GUID": "{977B3548-DD8F-4D11-AE62-48D4E99C3447}",
+       "LibName": "Wwise Delay",
+       "LibId": "6946819"
+      },
+      {
+       "Id": "403656092",
+       "Name": "Have_U_Ever_Been_Outside (Custom)",
+       "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Arena\\[Effect Slot [0]: (RoomVerb)]\\Have_U_Ever_Been_Outside (Custom)",
+       "GUID": "{0C674E07-FB9A-4697-AC82-7C943290C81C}",
+       "LibName": "Wwise RoomVerb",
+       "LibId": "7733251"
+      },
+      {
+       "Id": "498081942",
+       "Name": "Hall_Large_Dark (Custom)",
+       "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Pyramid\\[Effect Slot [0]: (RoomVerb)]\\Hall_Large_Dark (Custom)",
+       "GUID": "{8E1228B5-2A98-4B87-B429-B348D1C6D236}",
+       "LibName": "Wwise RoomVerb",
+       "LibId": "7733251"
+      },
+      {
+       "Id": "688337969",
+       "Name": "Hall_Small_Bright (Custom)",
+       "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_BlackHouses\\[Effect Slot [0]: (RoomVerb)]\\Hall_Small_Bright (Custom)",
+       "GUID": "{846A0309-936D-4337-BF4B-E6792E655155}",
        "LibName": "Wwise RoomVerb",
        "LibId": "7733251"
       }
@@ -90,10 +138,33 @@
     ],
     "AuxBusses": [
      {
+      "Id": "395111090",
+      "Name": "RVB_BlackHouses",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_BlackHouses",
+      "GUID": "{17B5E8F9-026F-4941-A027-1C0641AB0C14}",
+      "PluginRefs": {
+       "Custom": [
+        {
+         "Id": "688337969"
+        }
+       ]
+      }
+     },
+     {
       "Id": "1215931641",
       "Name": "RVB_Arena",
       "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Arena",
-      "GUID": "{54C7EBDA-4885-4850-8969-FB63BDACC807}"
+      "GUID": "{54C7EBDA-4885-4850-8969-FB63BDACC807}",
+      "PluginRefs": {
+       "Custom": [
+        {
+         "Id": "272452003"
+        },
+        {
+         "Id": "403656092"
+        }
+       ]
+      }
      },
      {
       "Id": "1408817756",
@@ -109,20 +180,47 @@
       }
      },
      {
+      "Id": "2344250611",
+      "Name": "RVB_Basement",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Basement",
+      "GUID": "{BF09F5DA-71E8-4CAC-B0EB-19A1C29389BA}",
+      "PluginRefs": {
+       "Custom": [
+        {
+         "Id": "97605317"
+        }
+       ]
+      }
+     },
+     {
       "Id": "3571340017",
       "Name": "RVB_Hub",
       "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Hub",
-      "GUID": "{D499EBE4-F26A-48E5-B89D-1F7C43D829E3}"
+      "GUID": "{D499EBE4-F26A-48E5-B89D-1F7C43D829E3}",
+      "PluginRefs": {
+       "Custom": [
+        {
+         "Id": "16383166"
+        }
+       ]
+      }
      },
      {
       "Id": "3670521640",
       "Name": "RVB_Pyramid",
       "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Pyramid",
-      "GUID": "{668EA0D2-771E-452F-B241-11793F9755B0}"
+      "GUID": "{668EA0D2-771E-452F-B241-11793F9755B0}",
+      "PluginRefs": {
+       "Custom": [
+        {
+         "Id": "498081942"
+        }
+       ]
+      }
      }
     ]
    }
   ],
-  "FileHash": "{ED2CCC4E-FB43-2BE5-18C1-CB33F55197AE}"
+  "FileHash": "{1FA446F9-8D84-49A0-89A4-36A1D525E20E}"
  }
 }
