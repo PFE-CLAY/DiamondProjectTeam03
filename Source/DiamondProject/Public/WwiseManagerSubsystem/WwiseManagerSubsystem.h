@@ -33,8 +33,8 @@ public:
 	virtual void Initialize(FSubsystemCollectionBase& Collection) override;
 	virtual void Deinitialize() override;
 	
-	UFUNCTION(BlueprintCallable, Category = "Wwise SubSystem", meta = (AdvancedDisplay = "2"))
-	void PlayEvent(UAkAudioEvent* Event, AActor* TargetActor);
+	UFUNCTION(BlueprintCallable, Category = "Wwise SubSystem")
+	int32 PostEvent(UAkAudioEvent* Event, AActor* TargetActor);
 	
 	UFUNCTION(BlueprintCallable, Category = "Wwise SubSystem")
 	void SetRTPCValue(const UAkRtpc* RTPCValue, float Value, int32 InterpolationTimeMs, AActor* Actor);
