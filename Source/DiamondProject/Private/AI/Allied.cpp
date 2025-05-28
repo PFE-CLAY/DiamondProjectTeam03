@@ -55,6 +55,12 @@ void AAllied::Patrol()
 	
 }
 
+ACustomNavigationPoint* AAllied::GetCurrentNavigationPoint()
+{
+	if(PatrolPoints[Position] != nullptr){ return PatrolPoints[Position];}
+	return nullptr;
+}
+
 // Called every frame
 void AAllied::Tick(float DeltaTime)
 {

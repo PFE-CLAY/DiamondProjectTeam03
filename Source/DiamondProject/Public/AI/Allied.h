@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "AIController.h"
 #include "AlliedAnimInstance.h"
+#include "CustomNavigationPoint.h"
 #include "GameFramework/Character.h"
 #include "PhysicsEngine/PhysicsHandleComponent.h"
 #include "Allied.generated.h"
@@ -23,7 +24,7 @@ protected:
 	
 public:
 	UPROPERTY(EditInstanceOnly, BlueprintReadOnly, Category = "Movements")
-	TArray<TObjectPtr<AActor>> PatrolPoints;
+	TArray<TObjectPtr<ACustomNavigationPoint>> PatrolPoints;
 	// Sets default values for this character's properties
 	AAllied();
 
@@ -74,4 +75,7 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category="Movements")
 	void Patrol();
+
+	UFUNCTION()
+	ACustomNavigationPoint* GetCurrentNavigationPoint();
 };

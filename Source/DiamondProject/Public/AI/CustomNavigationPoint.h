@@ -3,35 +3,34 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "AIController.h"
-#include "Allied.h"
-#include "AlliedAIController.generated.h"
-
+#include "GameFramework/Actor.h"
+#include "CustomNavigationPoint.generated.h"
 
 UCLASS()
-class DIAMONDPROJECT_API AAlliedAIController : public AAIController
+class DIAMONDPROJECT_API ACustomNavigationPoint : public AActor
 {
 	GENERATED_BODY()
-
+	
+	
+protected:
+	
+	
+	
 public:
 	// Sets default values for this actor's properties
-	AAlliedAIController();
+	ACustomNavigationPoint();
+	
+	UPROPERTY(EditAnywhere)
+	bool bShouldWait;
 
-	UPROPERTY()
-	AAllied* AlliedControlled;
+	UPROPERTY(EditAnywhere, meta=(EditCondition="bShouldWait"))
+	float TimeToWait;
 
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
-	UFUNCTION()
-	virtual void OnMoveCompleted(FAIRequestID RequestID, EPathFollowingResult::Type Result) override;
-
-	UFUNCTION()
-	void StartPatrol();
 public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
-
-	
 };

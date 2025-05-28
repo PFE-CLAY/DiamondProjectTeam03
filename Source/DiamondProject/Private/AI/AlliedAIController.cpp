@@ -26,12 +26,24 @@ void AAlliedAIController::BeginPlay()
 void AAlliedAIController::OnMoveCompleted(FAIRequestID RequestID, EPathFollowingResult::Type Result)
 {
 	Super::OnMoveCompleted(RequestID, Result);
+	
 	AlliedControlled->Position++;
 	if(AlliedControlled->bShouldLoop && AlliedControlled->Position >= AlliedControlled->PatrolPoints.Num()){
 		AlliedControlled->Position = 0;
 	}
+	ACustomNavigationPoint* CurrentNavigationPoint = AlliedControlled->GetCurrentNavigationPoint();
+	if(CurrentNavigationPoint != nullptr && CurrentNavigationPoint->bShouldWait){
+		FTimerHandle TimerHandle;
+		GetWorldTimerManager().SetTimer(TimerHandle, this, &AAlliedAIController::StartPatrol, CurrentNavigationPoint->TimeToWait, false);
+		return;
+	}
 	AlliedControlled->Patrol();
 	
+}
+
+void AAlliedAIController::StartPatrol()
+{
+	AlliedControlled->Patrol();
 }
 
 // Called every frame
@@ -39,4 +51,10 @@ void AAlliedAIController::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 }
+
+
+
+
+
+
 

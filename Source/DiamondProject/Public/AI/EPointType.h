@@ -3,35 +3,26 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "AIController.h"
-#include "Allied.h"
-#include "AlliedAIController.generated.h"
-
+#include "GameFramework/Actor.h"
+#include "Path.generated.h"
 
 UCLASS()
-class DIAMONDPROJECT_API AAlliedAIController : public AAIController
+class DIAMONDPROJECT_API APath : public AActor
 {
 	GENERATED_BODY()
 
 public:
 	// Sets default values for this actor's properties
-	AAlliedAIController();
+	APath();
 
-	UPROPERTY()
-	AAllied* AlliedControlled;
+	UPROPERTY(EditInstanceOnly, BlueprintReadOnly, Category = "Movements")
+	TArray<TObjectPtr<ACustomNavigationPoint>> PatrolPoints;
 
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
-	UFUNCTION()
-	virtual void OnMoveCompleted(FAIRequestID RequestID, EPathFollowingResult::Type Result) override;
-
-	UFUNCTION()
-	void StartPatrol();
 public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
-
-	
 };
