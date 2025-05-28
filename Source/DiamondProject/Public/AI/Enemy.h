@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
 #include "AIController.h"
+#include "CustomNavigationPoint.h"
 #include "Components/BoxComponent.h"
 #include "Enemy.generated.h"
 
@@ -109,4 +110,6 @@ public:
 
 	UPROPERTY(BlueprintAssignable, Category="Sunlight Detection")
 	FOnEnemyShoot OnEnemyShoot;
+
+	
 };
