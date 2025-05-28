@@ -28,8 +28,9 @@ void AAllied::BeginPlay()
 {
 	Super::BeginPlay();
 	AlliedMesh = Cast<USkeletalMeshComponent>(GetMesh());
+
+	if(Path != nullptr) Path->SetAllied(this);
 	
-	Path->SetAllied(this);
 	if (AlliedMesh != nullptr){
 		AnimInstance = Cast<UAlliedAnimInstance>(AlliedMesh->GetAnimInstance());
 	}
