@@ -68,7 +68,12 @@ void ADiamondProjectCharacter::SetupPlayerInputComponent(UInputComponent* Player
 
 		//Pause
 		EnhancedInputComponent->BindAction(PauseAction, ETriggerEvent::Started, this, &ADiamondProjectCharacter::PressPause);
-		
+
+		//Preplan Move
+		EnhancedInputComponent->BindAction(PreplanMoveAction, ETriggerEvent::Triggered, this, &ADiamondProjectCharacter::PreplanMove);
+
+		//Preplan Zoom
+		EnhancedInputComponent->BindAction(PreplanZoomAction, ETriggerEvent::Triggered, this, &ADiamondProjectCharacter::PreplanZoom);
 	}
 	else
 	{
@@ -116,4 +121,16 @@ void ADiamondProjectCharacter::Mantle(const FInputActionValue& Value)
 void ADiamondProjectCharacter::PressPause(const FInputActionValue& Value)
 {
 	OnPause.Broadcast();
+}
+
+void ADiamondProjectCharacter::PreplanMove(const FInputActionValue& Value)
+{
+	FVector2D PreplanMovementVector = Value.Get<FVector2D>();
+	OnPreplanMove.Broadcast(PreplanMovementVector);
+}
+
+void ADiamondProjectCharacter::PreplanZoom(const FInputActionValue& Value)
+{
+	float PreplanZoomValue = Value.Get<float>();
+	OnPreplanZoom.Broadcast(PreplanZoomValue);
 }

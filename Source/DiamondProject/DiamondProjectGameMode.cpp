@@ -26,8 +26,8 @@ void ADiamondProjectGameMode::InitPreplan() const
 	UGameInstance* GameInstance = GetWorld()->GetGameInstance();
 	if (GameInstance == nullptr) return;
 
-	ULoopSubsystem* LoopSubsystem = GameInstance->GetSubsystem<ULoopSubsystem>();
-	if (LoopSubsystem == nullptr) return;
+	//ULoopSubsystem* LoopSubsystem = GameInstance->GetSubsystem<ULoopSubsystem>();
+	//if (LoopSubsystem == nullptr) return;
 
-	LoopSubsystem->InitializePreplan();
+	//LoopSubsystem->InitializePreplan();
 }
