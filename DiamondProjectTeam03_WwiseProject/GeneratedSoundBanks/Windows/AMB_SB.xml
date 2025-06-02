@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="16" SoundBankVersion="150">
 	<SoundBanks>
-		<SoundBank Id="3256182613" Type="User" GUID="{9DC5CBA4-02D0-4677-A565-21ECA413E694}" Language="SFX" Hash="{59009633-8F0C-DA94-B70D-F4CCA6263F72}">
+		<SoundBank Id="3256182613" Type="User" GUID="{9DC5CBA4-02D0-4677-A565-21ECA413E694}" Language="SFX" Hash="{263200E2-9129-2900-879D-D70764ABF5C2}">
 			<ObjectPath>\SoundBanks\SoundBanks_WU\AMB_SB</ObjectPath>
 			<ShortName>AMB_SB</ShortName>
 			<Path>AMB_SB.bnk</Path>
@@ -189,7 +189,13 @@
 			</Media>
 			<Plugins>
 				<Custom>
+					<Plugin Id="16383166" Name="Hall_Medium_Bright (Custom)" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Hub\[Effect Slot [0]: (RoomVerb)]\Hall_Medium_Bright (Custom)" GUID="{2B8E8BE0-9B77-422E-880F-E9F637DE5BCF}" LibName="Wwise RoomVerb" LibId="7733251"/>
+					<Plugin Id="97605317" Name="Hall_Medium_Dark (Custom)" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Basement\[Effect Slot [0]: (RoomVerb)]\Hall_Medium_Dark (Custom)" GUID="{8C478E3B-5F92-4AEE-A130-8EAD54778042}" LibName="Wwise RoomVerb" LibId="7733251"/>
 					<Plugin Id="169636257" Name="Have_U_Ever_Been_Outside (Custom)" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_RFX_Arena\[Effect Slot [0]: (RoomVerb)]\Have_U_Ever_Been_Outside (Custom)" GUID="{4EC028FC-6FD5-4AC6-A71F-B2CB8F1117DF}" LibName="Wwise RoomVerb" LibId="7733251"/>
+					<Plugin Id="272452003" Name="Echoes_Linear (Custom)" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Arena\[Effect Slot [1]: (Delay)]\Echoes_Linear (Custom)" GUID="{977B3548-DD8F-4D11-AE62-48D4E99C3447}" LibName="Wwise Delay" LibId="6946819"/>
+					<Plugin Id="403656092" Name="Have_U_Ever_Been_Outside (Custom)" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Arena\[Effect Slot [0]: (RoomVerb)]\Have_U_Ever_Been_Outside (Custom)" GUID="{0C674E07-FB9A-4697-AC82-7C943290C81C}" LibName="Wwise RoomVerb" LibId="7733251"/>
+					<Plugin Id="498081942" Name="Hall_Large_Dark (Custom)" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Pyramid\[Effect Slot [0]: (RoomVerb)]\Hall_Large_Dark (Custom)" GUID="{8E1228B5-2A98-4B87-B429-B348D1C6D236}" LibName="Wwise RoomVerb" LibId="7733251"/>
+					<Plugin Id="688337969" Name="Hall_Small_Bright (Custom)" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_BlackHouses\[Effect Slot [0]: (RoomVerb)]\Hall_Small_Bright (Custom)" GUID="{846A0309-936D-4337-BF4B-E6792E655155}" LibName="Wwise RoomVerb" LibId="7733251"/>
 				</Custom>
 			</Plugins>
 			<Events>
@@ -263,7 +269,21 @@
 				<Bus Id="4056684167" Name="Master" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master" GUID="{F3A976BC-47E9-46E5-9EEC-F566BB39DBEE}"/>
 			</Busses>
 			<AuxBusses>
-				<AuxBus Id="1215931641" Name="RVB_Arena" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Arena" GUID="{54C7EBDA-4885-4850-8969-FB63BDACC807}"/>
+				<AuxBus Id="395111090" Name="RVB_BlackHouses" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_BlackHouses" GUID="{17B5E8F9-026F-4941-A027-1C0641AB0C14}">
+					<PluginRefs>
+						<Custom>
+							<PluginRef Id="688337969"/>
+						</Custom>
+					</PluginRefs>
+				</AuxBus>
+				<AuxBus Id="1215931641" Name="RVB_Arena" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Arena" GUID="{54C7EBDA-4885-4850-8969-FB63BDACC807}">
+					<PluginRefs>
+						<Custom>
+							<PluginRef Id="272452003"/>
+							<PluginRef Id="403656092"/>
+						</Custom>
+					</PluginRefs>
+				</AuxBus>
 				<AuxBus Id="1408817756" Name="RVB_RFX_Arena" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_RFX_Arena" GUID="{CC7A2F05-EE75-4E8E-B097-98A1938CB5E4}">
 					<PluginRefs>
 						<Custom>
@@ -271,9 +291,29 @@
 						</Custom>
 					</PluginRefs>
 				</AuxBus>
-				<AuxBus Id="3571340017" Name="RVB_Hub" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Hub" GUID="{D499EBE4-F26A-48E5-B89D-1F7C43D829E3}"/>
+				<AuxBus Id="2344250611" Name="RVB_Basement" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Basement" GUID="{BF09F5DA-71E8-4CAC-B0EB-19A1C29389BA}">
+					<PluginRefs>
+						<Custom>
+							<PluginRef Id="97605317"/>
+						</Custom>
+					</PluginRefs>
+				</AuxBus>
+				<AuxBus Id="3571340017" Name="RVB_Hub" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Hub" GUID="{D499EBE4-F26A-48E5-B89D-1F7C43D829E3}">
+					<PluginRefs>
+						<Custom>
+							<PluginRef Id="16383166"/>
+						</Custom>
+					</PluginRefs>
+				</AuxBus>
+				<AuxBus Id="3670521640" Name="RVB_Pyramid" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Pyramid" GUID="{668EA0D2-771E-452F-B241-11793F9755B0}">
+					<PluginRefs>
+						<Custom>
+							<PluginRef Id="498081942"/>
+						</Custom>
+					</PluginRefs>
+				</AuxBus>
 			</AuxBusses>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{6D12355D-6E13-900D-A482-69E4693918F7}</FileHash>
+	<FileHash>{6FC83AEA-0090-C9F6-9E1E-FC90CB73B173}</FileHash>
 </SoundBanksInfo>

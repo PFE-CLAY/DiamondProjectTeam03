@@ -8,6 +8,10 @@
 			</PropertyList>
 			<ChildrenList>
 				<ActorMixer Name="FOES_Flying" ID="{7F628A78-D635-40F2-8DE8-9A0CD29469D4}" ShortID="772374637">
+					<PropertyList>
+						<Property Name="EnableDiffraction" Type="bool" Value="True"/>
+						<Property Name="UseGameAuxSends" Type="bool" Value="True"/>
+					</PropertyList>
 					<ReferenceList>
 						<Reference Name="Conversion">
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
@@ -30,6 +34,7 @@
 								<Sound Name="FOES_SFX_Flying_Idle_LP" ID="{BB1579DA-5C19-4002-808C-3743DFAF3135}" ShortID="874250668">
 									<PropertyList>
 										<Property Name="3DSpatialization" Type="int16" Value="1"/>
+										<Property Name="EnableDiffraction" Type="bool" Value="True"/>
 										<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
 										<Property Name="OverridePositioning" Type="bool" Value="True"/>
 									</PropertyList>
@@ -220,7 +225,43 @@
 																			</Point>
 																			<Point>
 																				<XPos>25</XPos>
-																				<YPos>1117</YPos>
+																				<YPos>657</YPos>
+																				<Flags>37</Flags>
+																			</Point>
+																		</PointList>
+																	</Curve>
+																</Custom>
+															</Reference>
+														</ReferenceList>
+													</RTPC>
+												</Local>
+											</Reference>
+											<Reference>
+												<Local>
+													<RTPC Name="" ID="{7524B7E2-850E-4B56-A87A-17FCCECF20F9}" ShortID="549991132">
+														<PropertyList>
+															<Property Name="PropertyName" Type="string" Value="Volume"/>
+														</PropertyList>
+														<ReferenceList>
+															<Reference Name="ControlInput">
+																<ObjectRef Name="RTPC_Speed_Flying" ID="{4A0C67E7-2443-47A8-B5EB-86C8F65C73EB}" WorkUnitID="{AF741D90-A9C1-41EB-958D-616E32A16F46}"/>
+															</Reference>
+															<Reference Name="Curve">
+																<Custom>
+																	<Curve Name="" ID="{7746FD20-41FB-4A67-B277-3300D81B8D29}">
+																		<PropertyList>
+																			<Property Name="Flags" Type="int32" Value="3"/>
+																		</PropertyList>
+																		<PointList>
+																			<Point>
+																				<XPos>0</XPos>
+																				<YPos>-11.93194</YPos>
+																				<Flags>5</Flags>
+																				<SegmentShape>Exp1</SegmentShape>
+																			</Point>
+																			<Point>
+																				<XPos>25</XPos>
+																				<YPos>0</YPos>
 																				<Flags>37</Flags>
 																			</Point>
 																		</PointList>
@@ -428,7 +469,7 @@
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
-										<Sound Name="FOES_SFX_Flying_Shoot_01" ID="{C4910CEE-02F7-4F65-ABA2-A01D78FBC0F8}" ShortID="321928398">
+										<Sound Name="FOES_SFX_Flying_Shoot_01" ID="{F026B620-2877-489F-9B33-2D162F687F43}" ShortID="1070074421">
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
@@ -438,7 +479,7 @@
 												</Reference>
 											</ReferenceList>
 											<ChildrenList>
-												<AudioFileSource Name="FOES_SFX_Flying_Shoot_01" ID="{1962D407-0E8D-4A51-9DF5-F65CA5C24199}">
+												<AudioFileSource Name="FOES_SFX_Flying_Shoot_01" ID="{7A742A76-107E-4DDC-9CAC-F923F3EE8BAD}">
 													<Language>SFX</Language>
 													<AudioFile>FOES_SFX_Flying_Shoot_01.wav</AudioFile>
 													<MediaIDList>
@@ -447,10 +488,10 @@
 												</AudioFileSource>
 											</ChildrenList>
 											<ActiveSourceList>
-												<ActiveSource Name="FOES_SFX_Flying_Shoot_01" ID="{1962D407-0E8D-4A51-9DF5-F65CA5C24199}" Platform="Linked"/>
+												<ActiveSource Name="FOES_SFX_Flying_Shoot_01" ID="{7A742A76-107E-4DDC-9CAC-F923F3EE8BAD}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
-										<Sound Name="FOES_SFX_Flying_Shoot_02" ID="{8F2CD982-C40D-487D-9AEC-C61E75515825}" ShortID="6727013">
+										<Sound Name="FOES_SFX_Flying_Shoot_02" ID="{31200586-D673-4BFA-94D5-2BD51804E58E}" ShortID="196823834">
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
@@ -460,7 +501,7 @@
 												</Reference>
 											</ReferenceList>
 											<ChildrenList>
-												<AudioFileSource Name="FOES_SFX_Flying_Shoot_02" ID="{58E1BBFF-9CC0-42FC-A337-417986170321}">
+												<AudioFileSource Name="FOES_SFX_Flying_Shoot_02" ID="{DE24DC68-CCE8-4B45-833C-1CC52ECE5627}">
 													<Language>SFX</Language>
 													<AudioFile>FOES_SFX_Flying_Shoot_02.wav</AudioFile>
 													<MediaIDList>
@@ -469,10 +510,10 @@
 												</AudioFileSource>
 											</ChildrenList>
 											<ActiveSourceList>
-												<ActiveSource Name="FOES_SFX_Flying_Shoot_02" ID="{58E1BBFF-9CC0-42FC-A337-417986170321}" Platform="Linked"/>
+												<ActiveSource Name="FOES_SFX_Flying_Shoot_02" ID="{DE24DC68-CCE8-4B45-833C-1CC52ECE5627}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
-										<Sound Name="FOES_SFX_Flying_Shoot_03" ID="{53D69D9C-3192-4DFA-88F8-880DADD60A9E}" ShortID="163449790">
+										<Sound Name="FOES_SFX_Flying_Shoot_03" ID="{25539D4D-93DE-458E-85B0-63F7EE05943E}" ShortID="695303276">
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
@@ -482,7 +523,7 @@
 												</Reference>
 											</ReferenceList>
 											<ChildrenList>
-												<AudioFileSource Name="FOES_SFX_Flying_Shoot_03" ID="{D652464B-EFDE-4493-8913-A46575894A1A}">
+												<AudioFileSource Name="FOES_SFX_Flying_Shoot_03" ID="{1A3CC337-927E-403D-B6F0-1B3AA590A972}">
 													<Language>SFX</Language>
 													<AudioFile>FOES_SFX_Flying_Shoot_03.wav</AudioFile>
 													<MediaIDList>
@@ -491,10 +532,10 @@
 												</AudioFileSource>
 											</ChildrenList>
 											<ActiveSourceList>
-												<ActiveSource Name="FOES_SFX_Flying_Shoot_03" ID="{D652464B-EFDE-4493-8913-A46575894A1A}" Platform="Linked"/>
+												<ActiveSource Name="FOES_SFX_Flying_Shoot_03" ID="{1A3CC337-927E-403D-B6F0-1B3AA590A972}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
-										<Sound Name="FOES_SFX_Flying_Shoot_04" ID="{92EB52DD-67CE-49E9-99E5-9D35FA1164F7}" ShortID="840855989">
+										<Sound Name="FOES_SFX_Flying_Shoot_04" ID="{0EAEED04-FC48-462A-924D-D9631A81F74A}" ShortID="333792961">
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
@@ -504,7 +545,7 @@
 												</Reference>
 											</ReferenceList>
 											<ChildrenList>
-												<AudioFileSource Name="FOES_SFX_Flying_Shoot_04" ID="{5233E674-4028-4CB3-83B7-9B9D5E489B16}">
+												<AudioFileSource Name="FOES_SFX_Flying_Shoot_04" ID="{C1F4FC83-B64F-4721-ABDA-746303E28E8D}">
 													<Language>SFX</Language>
 													<AudioFile>FOES_SFX_Flying_Shoot_04.wav</AudioFile>
 													<MediaIDList>
@@ -513,10 +554,10 @@
 												</AudioFileSource>
 											</ChildrenList>
 											<ActiveSourceList>
-												<ActiveSource Name="FOES_SFX_Flying_Shoot_04" ID="{5233E674-4028-4CB3-83B7-9B9D5E489B16}" Platform="Linked"/>
+												<ActiveSource Name="FOES_SFX_Flying_Shoot_04" ID="{C1F4FC83-B64F-4721-ABDA-746303E28E8D}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
-										<Sound Name="FOES_SFX_Flying_Shoot_05" ID="{B392560B-5E48-4F8F-9F2D-F19E06170DC1}" ShortID="270529745">
+										<Sound Name="FOES_SFX_Flying_Shoot_05" ID="{EA9C76FA-E480-4A25-B4DB-D9EE45638149}" ShortID="432080567">
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
@@ -526,7 +567,7 @@
 												</Reference>
 											</ReferenceList>
 											<ChildrenList>
-												<AudioFileSource Name="FOES_SFX_Flying_Shoot_05" ID="{0A50D2D7-06E2-412E-835A-EF506984C8A5}">
+												<AudioFileSource Name="FOES_SFX_Flying_Shoot_05" ID="{58540661-3726-43DA-92F7-37C11DB28A60}">
 													<Language>SFX</Language>
 													<AudioFile>FOES_SFX_Flying_Shoot_05.wav</AudioFile>
 													<MediaIDList>
@@ -535,57 +576,10 @@
 												</AudioFileSource>
 											</ChildrenList>
 											<ActiveSourceList>
-												<ActiveSource Name="FOES_SFX_Flying_Shoot_05" ID="{0A50D2D7-06E2-412E-835A-EF506984C8A5}" Platform="Linked"/>
+												<ActiveSource Name="FOES_SFX_Flying_Shoot_05" ID="{58540661-3726-43DA-92F7-37C11DB28A60}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
 									</ChildrenList>
-									<ObjectLists>
-										<ObjectList Name="Effects">
-											<Reference>
-												<Local>
-													<EffectSlot Name="" ID="{1A782715-8630-4397-B4EB-2CCF5067792B}" ShortID="811319513">
-														<ReferenceList>
-															<Reference Name="Effect">
-																<Custom CreatedFrom="{A98F423C-EC97-49D8-8698-445CE91F24B7}">
-																	<Effect Name="Octave_Up (Custom)" ID="{2F00A97A-7EA5-4071-B9A5-B685BC249C27}" ShortID="913803451" PluginName="Wwise Pitch Shifter" CompanyID="0" PluginID="136" PluginType="3">
-																		<PropertyList>
-																			<Property Name="DryLevel" Type="Real32" Value="0"/>
-																			<Property Name="FilterFrequency" Type="Real32" Value="2000"/>
-																			<Property Name="FilterType" Type="int32" Value="5"/>
-																			<Property Name="Pitch" Type="Real32" Value="2400"/>
-																		</PropertyList>
-																	</Effect>
-																</Custom>
-															</Reference>
-														</ReferenceList>
-													</EffectSlot>
-												</Local>
-											</Reference>
-											<Reference>
-												<Local>
-													<EffectSlot Name="" ID="{224C10B7-E1E0-46DD-8CB3-CAEF64780488}" ShortID="1018354687">
-														<ReferenceList>
-															<Reference Name="Effect">
-																<Custom CreatedFrom="{2C9B05D7-7CE7-47C9-9A44-1A3589B1B836}">
-																	<Effect Name="Dist_Flying_Shots (Custom)" ID="{71204E36-4F7C-4B89-9BD6-E0036788D676}" ShortID="963626000" PluginName="Wwise Guitar Distortion" CompanyID="0" PluginID="126" PluginType="3">
-																		<PropertyList>
-																			<Property Name="DistortionDrive" Type="Real32" Value="10"/>
-																			<Property Name="DistortionTone" Type="Real32" Value="80"/>
-																			<Property Name="DistortionType" Type="int32" Value="1"/>
-																			<Property Name="PostEQBand3Enable" Type="bool" Value="True"/>
-																			<Property Name="PreEQBand3Enable" Type="bool" Value="True"/>
-																			<Property Name="Rectification" Type="Real32" Value="20"/>
-																			<Property Name="WetDryMix" Type="Real32" Value="50"/>
-																		</PropertyList>
-																	</Effect>
-																</Custom>
-															</Reference>
-														</ReferenceList>
-													</EffectSlot>
-												</Local>
-											</Reference>
-										</ObjectList>
-									</ObjectLists>
 								</RandomSequenceContainer>
 							</ChildrenList>
 						</ActorMixer>
