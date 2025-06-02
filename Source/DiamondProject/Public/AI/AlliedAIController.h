@@ -27,8 +27,11 @@ protected:
 	UFUNCTION()
 	virtual void OnMoveCompleted(FAIRequestID RequestID, EPathFollowingResult::Type Result) override;
 
-
+	UFUNCTION()
+	void StartPatrol();
 public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
+
+	
 };

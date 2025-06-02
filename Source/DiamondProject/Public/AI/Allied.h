@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "AIController.h"
 #include "AlliedAnimInstance.h"
+
 #include "GameFramework/Character.h"
 #include "PhysicsEngine/PhysicsHandleComponent.h"
 #include "Allied.generated.h"
@@ -22,8 +23,8 @@ protected:
 	
 	
 public:
-	UPROPERTY(EditInstanceOnly, BlueprintReadOnly, Category = "Movements")
-	TArray<TObjectPtr<AActor>> PatrolPoints;
+	UPROPERTY(EditInstanceOnly, Category="Path")
+	APath* Path;
 	// Sets default values for this character's properties
 	AAllied();
 
@@ -74,4 +75,13 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category="Movements")
 	void Patrol();
+
+	UFUNCTION()
+	ACustomNavigationPoint* GetCurrentNavigationPoint();
+
+	UFUNCTION()
+	void GetNewPath(APath* NewPath);
+
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category="Movements")
+	void OnCrouch();
 };
