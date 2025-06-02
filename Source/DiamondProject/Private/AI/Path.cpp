@@ -2,16 +2,15 @@
 
 
 #include "AI/Path.h"
-
-#include "AI/CustomNavigationPoint.h"
 #include "Components/BillboardComponent.h"
+#include "AI/CustomNavigationPoint.h"
+#include "Engine/World.h"
 
 // Sets default values
 APath::APath()
 {
 	PrimaryActorTick.bCanEverTick = true;
 	BillboardComponent = CreateDefaultSubobject<UBillboardComponent>(TEXT("Root"));
-	
 }
 
 // Called when the game starts or when spawned
