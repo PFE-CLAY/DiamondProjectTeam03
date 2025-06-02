@@ -3,12 +3,19 @@
 
 #include "LoopSystem/LoopSubsystem.h"
 
+#include "Blueprint/WidgetBlueprintLibrary.h"
 #include "Kismet/GameplayStatics.h"
 #include "LoopSystem/LevelSelectionSettings.h"
 #include "LoopSystem/PreplanAdvice.h"
-#include "LoopSystem/PreplanData.h"
+#include "LoopSystem/PreplanDataWidget.h"
 #include "LoopSystem/PreplanStep.h"
 #include "UI/GameSettingsSubsystem.h"
+
+void ULoopSubsystem::Initialize(FSubsystemCollectionBase& Collection)
+{
+	Super::Initialize(Collection);
+	UE_LOG(LogTemp, Display, TEXT("ULoopSubsystem::Initialize"));
+}
 
 void ULoopSubsystem::ReloadScene()
 {
@@ -51,7 +58,7 @@ bool ULoopSubsystem::IsAnyPreviousStepActive(const UPreplanStep* PreplanStep)
 	if (PreplanStep->PreplanData->PreviousDatas.Num() == 0){
 		bIsPreviousStepActive = true;
 	} else{
-		for (TObjectPtr<APreplanData> PreviousData : PreplanStep->PreplanData->PreviousDatas) {
+		for (TObjectPtr<UPreplanDataWidget> PreviousData : PreplanStep->PreplanData->PreviousDatas) {
 			if (PreviousData == nullptr)
 				continue;
 				
@@ -97,6 +104,19 @@ void ULoopSubsystem::InitializePreplanAdvices()
 	}
 }
 
+void ULoopSubsystem::SetPreplanVisibility(UPreplanDataWidget* PreplanData, bool bIsVisible)
+{
+	if (PreplanData == nullptr) return;
+	
+	if (bIsVisible)
+	{
+		PreplanData->SetVisibility(ESlateVisibility::Visible);
+	} else
+	{
+		PreplanData->SetVisibility(ESlateVisibility::Hidden);
+	}
+}
+
 void ULoopSubsystem::OnAdvicesVisibilityChanged(bool bNewVisibility)
 {
 	for (auto PreplanStep : PreplanSteps) {
@@ -109,15 +129,16 @@ void ULoopSubsystem::OnAdvicesVisibilityChanged(bool bNewVisibility)
 
 void ULoopSubsystem::InitializePreplan()
 {
-	TArray<AActor*> FoundPreplanDataActors;
-	UGameplayStatics::GetAllActorsOfClass(GetWorld(), APreplanData::StaticClass(), FoundPreplanDataActors);
-	
+	TArray<UUserWidget*> FoundPreplanDataActors;
+
+	UWidgetBlueprintLibrary::GetAllWidgetsOfClass(GetWorld(), FoundPreplanDataActors, UPreplanDataWidget::StaticClass(),false);
+
 	if (!bIsInit){
 		bIsInit = true;
-		
+
 		for (int i = 0; i < FoundPreplanDataActors.Num(); i++)
 		{
-			APreplanData* PreplanDataActor = Cast<APreplanData>(FoundPreplanDataActors[i]);
+			UPreplanDataWidget* PreplanDataActor = Cast<UPreplanDataWidget>(FoundPreplanDataActors[i]);
 			if (PreplanDataActor == nullptr){
 				continue;
 			}
@@ -132,14 +153,14 @@ void ULoopSubsystem::InitializePreplan()
 					PreplanStep->bIsStepActive = true;
 					PreplanStep->bIsStepVisible = true;
 				}
-				
-				PreplanStep->PreplanData->SetActorHiddenInGame(!PreplanDataActor->bIsActiveOnStart);
+				PreplanStep->PreplanData->SetVisibility(ESlateVisibility::Visible);
+				SetPreplanVisibility(PreplanStep->PreplanData,PreplanDataActor->bIsActiveOnStart);
 				PreplanSteps.Add(PreplanDataActor->PreplanID,PreplanStep);
 			}
 		}
 		UGameInstance* GameInstance = GetWorld()->GetGameInstance();
 		if (GameInstance == nullptr) return;
-
+	
 		UGameSettingsSubsystem* SettingsSubsystem = GameInstance->GetSubsystem<UGameSettingsSubsystem>();
 		if (SettingsSubsystem == nullptr) return;
 		
@@ -148,7 +169,7 @@ void ULoopSubsystem::InitializePreplan()
 	} else {
 		for (int i = 0; i < FoundPreplanDataActors.Num(); i++)
 		{
-			APreplanData* PreplanDataActor = Cast<APreplanData>(FoundPreplanDataActors[i]);
+			UPreplanDataWidget* PreplanDataActor = Cast<UPreplanDataWidget>(FoundPreplanDataActors[i]);
 			if (PreplanDataActor == nullptr){
 				continue;
 			}
@@ -167,7 +188,7 @@ void ULoopSubsystem::InitializePreplan()
 					PreplanStep->PreplanData = PreplanDataActor;
 					PreplanStep->PreplanAdvices.Empty();
 					PreplanStep->bIsStepVisible = PreplanStep->bIsStepActive;
-					PreplanDataActor->SetActorHiddenInGame(!PreplanStep->bIsStepVisible);
+					SetPreplanVisibility(PreplanDataActor, PreplanStep->bIsStepVisible);
 				}
 			}
 		}
@@ -197,7 +218,8 @@ void ULoopSubsystem::ActivatePreplanStep(FString PreplanID)
 
 		if (PreplanStep->NbActivations == PreplanStep->PreplanData->NbActivationsRequired){
 			PreplanStep->bIsStepActive = true;
-			PreplanStep->PreplanData->SetActorHiddenInGame(false);
+			SetPreplanVisibility(PreplanStep->PreplanData, false);
+			//PreplanStep->PreplanData->SetActorHiddenInGame(false);
 			
 			if (PreplanStep->PreplanData->bShouldActivateDream &&
 				PreplanStep->PreplanData->DreamSubtitles != nullptr)

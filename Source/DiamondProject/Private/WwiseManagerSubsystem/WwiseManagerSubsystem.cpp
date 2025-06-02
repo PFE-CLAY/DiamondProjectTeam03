@@ -18,8 +18,9 @@ void UWwiseManagerSubsystem::Deinitialize()
 	UE_LOG(LogTemp, Log, TEXT("WwiseAudioManagerSubsystem Deinitialized"));
 }
 
-void UWwiseManagerSubsystem::PlayEvent(UAkAudioEvent* Event, AActor* TargetActor)
+int32 UWwiseManagerSubsystem::PostEvent(UAkAudioEvent* Event, AActor* TargetActor)
 {
+	AkPlayingID PlayingID = AK_INVALID_PLAYING_ID;
 	FOnAkPostEventCallback Callback;
 	UWwiseHandlerComponent* WwiseHandler = nullptr;
 	
@@ -30,13 +31,18 @@ void UWwiseManagerSubsystem::PlayEvent(UAkAudioEvent* Event, AActor* TargetActor
 			Callback = FOnAkPostEventCallback();
 			Callback.BindUFunction(WwiseHandler, "HandleCallback");
 		} else {
-			UE_LOG(LogTemp, Error, TEXT("WwiseHandlerComponent not found on TargetActor!"));
+			UE_LOG(LogTemp, Error, TEXT("[UWwiseManagerSubsystem::PostEvent] WwiseHandlerComponent not found on TargetActor!"));
 		}
-		UAkGameplayStatics::PostEvent(Event, TargetActor, WwiseHandler->CallbackMask, Callback);
-		UE_LOG(LogTemp, Log, TEXT("Playing Wwise Event: %s"), *Event->GetName());
+		PlayingID = UAkGameplayStatics::PostEvent(Event, TargetActor, WwiseHandler->CallbackMask, Callback);
+		WwiseHandler->LastPlayedID = PlayingID;
+		UE_LOG(LogTemp, Log, TEXT("[UWwiseManagerSubsystem::PostEvent] Playing Wwise Event: %s ID: %d"), *Event->GetName(), PlayingID);
 	} else {
-		UE_LOG(LogTemp, Warning, TEXT("Event or TargetActor is null!"));
+		UE_LOG(LogTemp, Warning, TEXT("[UWwiseManagerSubsystem::PostEvent] Event or TargetActor is null!"));
 	}
+	if (PlayingID == AK_INVALID_PLAYING_ID) {
+		UE_LOG(LogTemp, Error, TEXT("[UWwiseManagerSubsystem::PostEvent] Failed to post event!"));
+	}
+	return PlayingID;
 }
 
 void UWwiseManagerSubsystem::SetRTPCValue(const UAkRtpc* RTPCValue, float Value, int32 InterpolationTimeMs, AActor* Actor)
