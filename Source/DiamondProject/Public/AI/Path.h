@@ -3,12 +3,12 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "Components/SplineComponent.h"
 #include "GameFramework/Actor.h"
 #include "Path.generated.h"
 
-class ACustomNavigationPoint;
+class UBillboardComponent;
 class AAllied;
+class ACustomNavigationPoint;
 
 UCLASS()
 class DIAMONDPROJECT_API APath : public AActor
@@ -16,8 +16,6 @@ class DIAMONDPROJECT_API APath : public AActor
 	GENERATED_BODY()
 
 private:
-	UPROPERTY(EditDefaultsOnly)
-	USplineComponent* PathSpline;
 
 	UPROPERTY(EditDefaultsOnly)
 	UBillboardComponent* BillboardComponent;

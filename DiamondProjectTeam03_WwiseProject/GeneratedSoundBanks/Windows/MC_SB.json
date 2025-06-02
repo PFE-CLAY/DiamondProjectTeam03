@@ -10,7 +10,7 @@
     "Type": "User",
     "GUID": "{ADC2D189-6608-4828-BC9C-6EF6F90834DB}",
     "Language": "SFX",
-    "Hash": "{E9EA8E1F-4E63-C97D-EBC9-79444911A34C}",
+    "Hash": "{1BCEA6A0-A769-73E9-6F2A-9E211AA99E4A}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\MC_SB",
     "ShortName": "MC_SB",
     "Path": "MC_SB.bnk",
@@ -1143,9 +1143,9 @@
       ]
      },
      {
-      "Id": "1820563873",
-      "Name": "Play_MC_SFX_PickupWeapon_RC",
-      "ObjectPath": "\\Events\\MC_WU\\Play_MC_SFX_PickupWeapon_RC",
+      "Id": "4122495842",
+      "Name": "Play_MC_SFX_UpdateAmmo_RC",
+      "ObjectPath": "\\Events\\MC_WU\\Play_MC_SFX_UpdateAmmo_RC",
       "GUID": "{4C30DC19-451C-449E-9B9A-AADEEAB14B44}",
       "DurationType": "OneShot",
       "DurationMin": "2.5657325",
@@ -1284,12 +1284,6 @@
       "Name": "RVB_Hub",
       "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Hub",
       "GUID": "{D499EBE4-F26A-48E5-B89D-1F7C43D829E3}"
-     },
-     {
-      "Id": "3670521640",
-      "Name": "RVB_Pyramid",
-      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Pyramid",
-      "GUID": "{668EA0D2-771E-452F-B241-11793F9755B0}"
      }
     ],
     "SwitchGroups": [
@@ -1322,6 +1316,6 @@
     ]
    }
   ],
-  "FileHash": "{9272CF9E-2DE8-EDD8-0611-6DEACDD717E8}"
+  "FileHash": "{5B28BD85-7AEB-685F-8BA1-6B9FA652BA34}"
  }
 }
