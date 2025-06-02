@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="16" SoundBankVersion="150">
 	<SoundBanks>
-		<SoundBank Id="1956625499" Type="User" GUID="{ADC2D189-6608-4828-BC9C-6EF6F90834DB}" Language="SFX" Hash="{7FFCB4F9-232B-89E6-AE63-B1C2DA61444D}">
+		<SoundBank Id="1956625499" Type="User" GUID="{ADC2D189-6608-4828-BC9C-6EF6F90834DB}" Language="SFX" Hash="{1BCEA6A0-A769-73E9-6F2A-9E211AA99E4A}">
 			<ObjectPath>\SoundBanks\SoundBanks_WU\MC_SB</ObjectPath>
 			<ShortName>MC_SB</ShortName>
 			<Path>MC_SB.bnk</Path>
@@ -508,7 +508,7 @@
 						<MediaRef Id="610918733"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="1820563873" Name="Play_MC_SFX_PickupWeapon_RC" ObjectPath="\Events\MC_WU\Play_MC_SFX_PickupWeapon_RC" GUID="{4C30DC19-451C-449E-9B9A-AADEEAB14B44}" DurationType="OneShot" DurationMin="2.5657325" DurationMax="3.6410909">
+				<Event Id="4122495842" Name="Play_MC_SFX_UpdateAmmo_RC" ObjectPath="\Events\MC_WU\Play_MC_SFX_UpdateAmmo_RC" GUID="{4C30DC19-451C-449E-9B9A-AADEEAB14B44}" DurationType="OneShot" DurationMin="2.5657325" DurationMax="3.6410909">
 					<MediaRefs>
 						<MediaRef Id="47427430"/>
 						<MediaRef Id="101923972"/>
@@ -562,5 +562,5 @@
 			</SwitchGroups>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{951DFA94-0764-EC57-233C-3CE0CB416942}</FileHash>
+	<FileHash>{A7F33FA6-7195-74F4-5050-DAFB6342D06D}</FileHash>
 </SoundBanksInfo>
