@@ -19,6 +19,8 @@ DECLARE_LOG_CATEGORY_EXTERN(LogTemplateCharacter, Log, All);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnInteract);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnMantle);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnPause);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnPreplanMove, FVector2D, Value);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnPreplanZoom, float, ZoomValue);
 
 UCLASS(Blueprintable,config=Game)
 class ADiamondProjectCharacter : public ACharacter
@@ -50,6 +52,12 @@ class ADiamondProjectCharacter : public ACharacter
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Input, meta=(AllowPrivateAccess = "true"))
 	UInputAction* PauseAction;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Input, meta=(AllowPrivateAccess = "true"))
+	UInputAction* PreplanMoveAction;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Input, meta=(AllowPrivateAccess = "true"))
+	UInputAction* PreplanZoomAction;
 	
 public:
 	ADiamondProjectCharacter();
@@ -73,6 +81,12 @@ public:
 	UPROPERTY(BlueprintAssignable, Category = "Interaction")
 	FOnPause OnPause;
 
+	UPROPERTY(BlueprintAssignable, Category = "Preplan")
+	FOnPreplanMove OnPreplanMove;
+	
+	UPROPERTY(BlueprintAssignable, Category = "Preplan")
+	FOnPreplanZoom OnPreplanZoom;
+	
 	UPROPERTY()
 	TObjectPtr<UTP_WeaponComponent> CurrentWeapon;
 
@@ -88,6 +102,10 @@ protected:
 	void Mantle(const FInputActionValue& Value);
 
 	void PressPause(const FInputActionValue& Value);
+
+	void PreplanMove(const FInputActionValue& Value);
+
+	void PreplanZoom(const FInputActionValue& Value);
 
 
 protected:
