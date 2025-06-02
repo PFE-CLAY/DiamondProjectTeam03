@@ -76,6 +76,7 @@ void UAPlayerProtoWeapon::PerformShot() const
     
     if (BHasHit){
         ProcessHit(Hit, World);
+        OnHit.Broadcast(Hit);
     }
 
     OnFire.Broadcast(CurrentAmmo, SpawnLocation + (SpawnRotation.Vector() * 1000));
