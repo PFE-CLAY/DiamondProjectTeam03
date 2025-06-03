@@ -115,6 +115,14 @@
 					<ObjectExclusionList/>
 					<GameSyncExclusionList/>
 				</SoundBank>
+				<SoundBank Name="VOICES_SB" ID="{9B915276-16F3-4721-B819-126344F97366}">
+					<ObjectInclusionList>
+						<ObjectRef Name="VOICES" ID="{46DADE32-2503-4D70-A7EF-8385A6296709}" WorkUnitID="{46DADE32-2503-4D70-A7EF-8385A6296709}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="VOICES_WU" ID="{29491AAD-2CC5-4E24-81EC-BAA4ED991611}" WorkUnitID="{29491AAD-2CC5-4E24-81EC-BAA4ED991611}" Origin="Manual" Filter="7"/>
+					</ObjectInclusionList>
+					<ObjectExclusionList/>
+					<GameSyncExclusionList/>
+				</SoundBank>
 			</ChildrenList>
 		</WorkUnit>
 	</SoundBanks>

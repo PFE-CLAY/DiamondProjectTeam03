@@ -10,7 +10,7 @@
     "Type": "User",
     "GUID": "{D2378E68-5468-4849-BC4A-8FC6D8A3BF29}",
     "Language": "SFX",
-    "Hash": "{8B83ED19-30EC-C727-F297-C7768A285F71}",
+    "Hash": "{3B2DB062-4BBA-A159-2E6F-D6643CD23CDD}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\GPE_SB",
     "ShortName": "GPE_SB",
     "Path": "GPE_SB.bnk",
@@ -201,6 +201,6 @@
     ]
    }
   ],
-  "FileHash": "{DCC594A7-099D-8E01-FAF1-65AEAE131FE3}"
+  "FileHash": "{3FC1B6A0-8809-C7D2-D1CD-0E74F7C921E9}"
  }
 }

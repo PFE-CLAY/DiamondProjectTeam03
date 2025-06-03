@@ -1,0 +1,567 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{46DADE32-2503-4D70-A7EF-8385A6296709}" SchemaVersion="119">
+	<AudioObjects>
+		<WorkUnit Name="VOICES" ID="{46DADE32-2503-4D70-A7EF-8385A6296709}" PersistMode="Standalone">
+			<ChildrenList>
+				<ActorMixer Name="VOICES" ID="{80F29803-99F8-4A4C-BD96-1F8BE7683B02}" ShortID="159156522">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Voices" ID="{00AA482D-3F12-46A5-8177-E8A172D08E63}" WorkUnitID="{A9F2777E-FBA3-4BC0-B5B3-14E0777A7B23}"/>
+						</Reference>
+						<Reference Name="UserAuxSend0">
+							<ObjectRef Name="RVB_Voices" ID="{483EAB60-BC92-484F-9830-D1776233B15C}" WorkUnitID="{A9F2777E-FBA3-4BC0-B5B3-14E0777A7B23}"/>
+						</Reference>
+						<Reference Name="UserAuxSend1">
+							<ObjectRef Name="AUX_LPF" ID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}" WorkUnitID="{A9F2777E-FBA3-4BC0-B5B3-14E0777A7B23}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<Sound Name="DUB_ARENA_1_2_3" ID="{BC87B917-F83C-4DC7-817E-8E6243EE8BE5}" ShortID="150826179">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D02282EE-6893-403D-9438-D481AB659EA3}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="DUB_ARENA_1_2_3" ID="{12CDF2FC-F709-447C-948E-F2D319EB7C72}">
+									<Language>SFX</Language>
+									<AudioFile>DUB_ARENA_1_2_3.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="83922193"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="DUB_ARENA_1_2_3" ID="{12CDF2FC-F709-447C-948E-F2D319EB7C72}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="DUB_ARENA_1_2_2" ID="{05727182-4745-474F-AFAB-5502BB7DC708}" ShortID="700280944">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D02282EE-6893-403D-9438-D481AB659EA3}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="DUB_ARENA_1_2_2" ID="{4FC26D51-9233-42A1-86C5-2F5B4CB445DF}">
+									<Language>SFX</Language>
+									<AudioFile>DUB_ARENA_1_2_2.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="7231555"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="DUB_ARENA_1_2_2" ID="{4FC26D51-9233-42A1-86C5-2F5B4CB445DF}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="DUB_ARENA_1_6_0" ID="{4F2125F4-2EDF-488B-A57C-7FAA5159B4D5}" ShortID="448415226">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D02282EE-6893-403D-9438-D481AB659EA3}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="DUB_ARENA_1_6_0" ID="{25E98F1F-8FD5-4439-B235-35BCE348A468}">
+									<Language>SFX</Language>
+									<AudioFile>DUB_ARENA_1_6_0.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="435995496"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="DUB_ARENA_1_6_0" ID="{25E98F1F-8FD5-4439-B235-35BCE348A468}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="DUB_ARENA_1_1_1" ID="{F0C77C63-18C8-47DB-B613-E6904166DC22}" ShortID="1027146103">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D02282EE-6893-403D-9438-D481AB659EA3}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="DUB_ARENA_1_1_1" ID="{390F12AF-6ADD-436F-BF7E-9BB204665168}">
+									<Language>SFX</Language>
+									<AudioFile>DUB_ARENA_1_1_1.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="500906151"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="DUB_ARENA_1_1_1" ID="{390F12AF-6ADD-436F-BF7E-9BB204665168}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="DUB_ARENA_1_3_0" ID="{996A732F-B478-4555-A9EE-F88DCAD8C4E0}" ShortID="400740481">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D02282EE-6893-403D-9438-D481AB659EA3}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="DUB_ARENA_1_3_0" ID="{E32B2B04-6A4D-4764-BB57-790B1E43FBE2}">
+									<Language>SFX</Language>
+									<AudioFile>DUB_ARENA_1_3_0.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="289625457"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="DUB_ARENA_1_3_0" ID="{E32B2B04-6A4D-4764-BB57-790B1E43FBE2}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="DUB_ARENA_1_5_0" ID="{8FE19444-1FD6-428C-8667-EBDB06FA14A1}" ShortID="377251296">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D02282EE-6893-403D-9438-D481AB659EA3}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="DUB_ARENA_1_5_0" ID="{EB88B1AE-3247-40C2-A953-81E5A887B2F2}">
+									<Language>SFX</Language>
+									<AudioFile>DUB_ARENA_1_5_0.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="899907561"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="DUB_ARENA_1_5_0" ID="{EB88B1AE-3247-40C2-A953-81E5A887B2F2}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="DUB_ARENA_1_9_0" ID="{9B1B7E14-1C81-4897-8451-0ED51BB66D49}" ShortID="681525575">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D02282EE-6893-403D-9438-D481AB659EA3}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="DUB_ARENA_1_9_0" ID="{7FBE9456-119C-4660-9C36-5ECAB0C29AC7}">
+									<Language>SFX</Language>
+									<AudioFile>DUB_ARENA_1_9_0.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="767088532"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="DUB_ARENA_1_9_0" ID="{7FBE9456-119C-4660-9C36-5ECAB0C29AC7}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="DUB_ARENA_1_7_0" ID="{3FF54225-2746-4229-B6B4-1A9EC8A9D3CC}" ShortID="1044091320">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D02282EE-6893-403D-9438-D481AB659EA3}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="DUB_ARENA_1_7_0" ID="{4455C4AB-8E3B-4F5D-8349-727C6ECF130F}">
+									<Language>SFX</Language>
+									<AudioFile>DUB_ARENA_1_7_0.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="73406871"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="DUB_ARENA_1_7_0" ID="{4455C4AB-8E3B-4F5D-8349-727C6ECF130F}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="DUB_ARENA_1_9_5" ID="{EF1B648C-B89D-4FA1-856B-7F58DD1CAD7A}" ShortID="669277029">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D02282EE-6893-403D-9438-D481AB659EA3}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="DUB_ARENA_1_9_5" ID="{052140A1-892A-46F1-B2C9-5BE4FF653B9D}">
+									<Language>SFX</Language>
+									<AudioFile>DUB_ARENA_1_9_5.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="279456589"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="DUB_ARENA_1_9_5" ID="{052140A1-892A-46F1-B2C9-5BE4FF653B9D}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="DUB_ARENA_1_8_0" ID="{3823288D-9564-4199-8534-F0F9D6A25E3F}" ShortID="1062960418">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D02282EE-6893-403D-9438-D481AB659EA3}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="DUB_ARENA_1_8_0" ID="{83C2E755-7BAA-4EEF-B126-0E83EB488F2B}">
+									<Language>SFX</Language>
+									<AudioFile>DUB_ARENA_1_8_0.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="140616404"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="DUB_ARENA_1_8_0" ID="{83C2E755-7BAA-4EEF-B126-0E83EB488F2B}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="DUB_ARENA_1_1_0" ID="{B58F42AC-28CF-4306-A8FF-CE919E27BBBA}" ShortID="191626813">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D02282EE-6893-403D-9438-D481AB659EA3}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="DUB_ARENA_1_1_0" ID="{ED5F337D-8470-486A-ACB5-D2E1974A3054}">
+									<Language>SFX</Language>
+									<AudioFile>DUB_ARENA_1_1_0.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="898148885"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="DUB_ARENA_1_1_0" ID="{ED5F337D-8470-486A-ACB5-D2E1974A3054}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="DUB_ARENA_1_3_2" ID="{9FB8D075-72A8-4D6D-89ED-DAC187DA8446}" ShortID="150281356">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D02282EE-6893-403D-9438-D481AB659EA3}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="DUB_ARENA_1_3_2" ID="{20B77FBF-5569-43ED-BCAA-85A4E7CF78D9}">
+									<Language>SFX</Language>
+									<AudioFile>DUB_ARENA_1_3_2.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="881110537"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="DUB_ARENA_1_3_2" ID="{20B77FBF-5569-43ED-BCAA-85A4E7CF78D9}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="DUB_ARENA_1_2_0" ID="{C7E54DAA-19E4-4F81-A565-FAA9783BC4DE}" ShortID="993371404">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D02282EE-6893-403D-9438-D481AB659EA3}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="DUB_ARENA_1_2_0" ID="{2EB4A70F-12C1-4F17-B21A-561B5C435607}">
+									<Language>SFX</Language>
+									<AudioFile>DUB_ARENA_1_2_0.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="687283735"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="DUB_ARENA_1_2_0" ID="{2EB4A70F-12C1-4F17-B21A-561B5C435607}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="DUB_ARENA_1_4_0" ID="{3C74ED90-5F27-40D1-B854-C10ED1FD9272}" ShortID="286304587">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D02282EE-6893-403D-9438-D481AB659EA3}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="DUB_ARENA_1_4_0" ID="{44391C40-C6DA-4B43-AFCF-7AF3FA8BA8F0}">
+									<Language>SFX</Language>
+									<AudioFile>DUB_ARENA_1_4_0.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="952186329"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="DUB_ARENA_1_4_0" ID="{44391C40-C6DA-4B43-AFCF-7AF3FA8BA8F0}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="DUB_ARENA_1_9_6" ID="{BBF771F9-8749-40ED-A01C-B8E577318EC1}" ShortID="548500367">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D02282EE-6893-403D-9438-D481AB659EA3}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="DUB_ARENA_1_9_6" ID="{0CBADC30-E8DC-49CD-8653-242787B2460D}">
+									<Language>SFX</Language>
+									<AudioFile>DUB_ARENA_1_9_6.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="411650085"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="DUB_ARENA_1_9_6" ID="{0CBADC30-E8DC-49CD-8653-242787B2460D}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="DUB_ARENA_1_9_3" ID="{7E00E9FA-2362-4FD5-A6D1-A2F618D8CA16}" ShortID="840027887">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D02282EE-6893-403D-9438-D481AB659EA3}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="DUB_ARENA_1_9_3" ID="{9BF3061A-AB54-4ACA-B742-096D5856194F}">
+									<Language>SFX</Language>
+									<AudioFile>DUB_ARENA_1_9_3.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="278418833"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="DUB_ARENA_1_9_3" ID="{9BF3061A-AB54-4ACA-B742-096D5856194F}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="DUB_ARENA_1_0_0" ID="{4B953B69-8204-4E2C-B43D-F497BCF5428E}" ShortID="56447622">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D02282EE-6893-403D-9438-D481AB659EA3}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="DUB_ARENA_1_0_0" ID="{964D182B-CC84-4872-8B6B-901AA235241E}">
+									<Language>SFX</Language>
+									<AudioFile>DUB_ARENA_1_0_0.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="93564485"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="DUB_ARENA_1_0_0" ID="{964D182B-CC84-4872-8B6B-901AA235241E}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="DUB_ARENA_1_2_1" ID="{54372EE7-8E4C-48AA-A88E-DD17986D441D}" ShortID="729422494">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D02282EE-6893-403D-9438-D481AB659EA3}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="DUB_ARENA_1_2_1" ID="{229D3D5E-0741-40BB-B1B7-9510B7BB05F5}">
+									<Language>SFX</Language>
+									<AudioFile>DUB_ARENA_1_2_1.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="1008445025"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="DUB_ARENA_1_2_1" ID="{229D3D5E-0741-40BB-B1B7-9510B7BB05F5}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="DUB_ARENA_1_9_1" ID="{1328FC87-F9F4-4BA4-B666-A8B4E0BB6600}" ShortID="285608563">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D02282EE-6893-403D-9438-D481AB659EA3}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="DUB_ARENA_1_9_1" ID="{11666091-6E44-4141-86E9-12DABC476FFA}">
+									<Language>SFX</Language>
+									<AudioFile>DUB_ARENA_1_9_1.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="166584951"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="DUB_ARENA_1_9_1" ID="{11666091-6E44-4141-86E9-12DABC476FFA}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="DUB_ARENA_1_1_2" ID="{168C7FF3-8EF5-467E-B790-745C4C89598E}" ShortID="530932454">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D02282EE-6893-403D-9438-D481AB659EA3}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="DUB_ARENA_1_1_2" ID="{1A31B123-5A58-4E9D-A687-2FCE6E0308EB}">
+									<Language>SFX</Language>
+									<AudioFile>DUB_ARENA_1_1_2.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="338368799"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="DUB_ARENA_1_1_2" ID="{1A31B123-5A58-4E9D-A687-2FCE6E0308EB}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="DUB_ARENA_1_3_1" ID="{D9207DCA-F789-43A5-ADD7-C7511F33B023}" ShortID="708484658">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D02282EE-6893-403D-9438-D481AB659EA3}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="DUB_ARENA_1_3_1" ID="{FCD945DE-AA83-43A7-87B3-8E4EE915A8FA}">
+									<Language>SFX</Language>
+									<AudioFile>DUB_ARENA_1_3_1.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="1031568460"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="DUB_ARENA_1_3_1" ID="{FCD945DE-AA83-43A7-87B3-8E4EE915A8FA}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="DUB_ARENA_1_9_2" ID="{A713C42F-4B89-46F9-9FF8-E9CAB0AE1FC0}" ShortID="649803713">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D02282EE-6893-403D-9438-D481AB659EA3}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="DUB_ARENA_1_9_2" ID="{CA85752F-9479-46E3-8DA0-F1C1FD5AE6B3}">
+									<Language>SFX</Language>
+									<AudioFile>DUB_ARENA_1_9_2.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="157392684"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="DUB_ARENA_1_9_2" ID="{CA85752F-9479-46E3-8DA0-F1C1FD5AE6B3}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="DUB_ARENA_1_9_4" ID="{E530639D-5710-442B-A5D9-3D082DEEDC1B}" ShortID="440302181">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D02282EE-6893-403D-9438-D481AB659EA3}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="DUB_ARENA_1_9_4" ID="{5F5D1FE3-18B1-477C-8B0C-D4B26A3E0486}">
+									<Language>SFX</Language>
+									<AudioFile>DUB_ARENA_1_9_4.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="115645254"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="DUB_ARENA_1_9_4" ID="{5F5D1FE3-18B1-477C-8B0C-D4B26A3E0486}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+					</ChildrenList>
+					<StateInfo>
+						<StatePropertyList>
+							<Property Name="Highpass"/>
+							<Property Name="Lowpass"/>
+							<Property Name="MakeUpGain"/>
+							<Property Name="Pitch"/>
+							<Property Name="UserAuxSendVolume1"/>
+							<Property Name="Volume"/>
+						</StatePropertyList>
+						<StateGroupList>
+							<StateGroupInfo>
+								<StateGroupRef Name="InsideOutside" ID="{2CE28D5C-F27B-42D7-9D91-1905B53C4C3C}"/>
+							</StateGroupInfo>
+						</StateGroupList>
+						<CustomStateList>
+							<CustomState>
+								<StateRef Name="In" ID="{BFBB05BE-0B19-41C7-B759-C85C0C60B1D8}"/>
+								<CustomState Name="" ID="{5947F9F4-7813-479D-9E50-31D9C610173F}" ShortID="611316238">
+									<PropertyList>
+										<Property Name="Lowpass" Type="int16" Value="64"/>
+										<Property Name="UserAuxSendVolume1" Type="Real64" Value="108"/>
+									</PropertyList>
+								</CustomState>
+							</CustomState>
+							<CustomState>
+								<StateRef Name="Out" ID="{C04B12A4-672A-478D-A191-EED95AAB3C6D}"/>
+								<CustomState Name="" ID="{01CD7BB3-BACA-45B6-9B91-496FB4498E93}" ShortID="462631821">
+									<PropertyList>
+										<Property Name="UserAuxSendVolume1" Type="Real64" Value="-108"/>
+									</PropertyList>
+								</CustomState>
+							</CustomState>
+						</CustomStateList>
+					</StateInfo>
+				</ActorMixer>
+			</ChildrenList>
+		</WorkUnit>
+	</AudioObjects>
+</WwiseDocument>
