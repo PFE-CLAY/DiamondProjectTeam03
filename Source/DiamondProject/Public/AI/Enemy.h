@@ -61,6 +61,9 @@ protected:
 	UPROPERTY()
 	AAIController* AIController;
 
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category="Enemy Behavior")
+	USceneComponent* ShootPoint;
+
 	
 protected:
 	// Called when the game starts or when spawned
