@@ -18,7 +18,6 @@ protected:
 	UPROPERTY(BlueprintReadWrite, Category = "Turret Behavior")
 	int Position;
 	
-	
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
