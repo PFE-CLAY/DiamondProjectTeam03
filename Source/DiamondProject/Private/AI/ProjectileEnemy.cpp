@@ -20,6 +20,7 @@ void AProjectileEnemy::BeginPlay()
 {
 	Super::BeginPlay();
 	OnActorBeginOverlap.AddDynamic(this, &AProjectileEnemy::OnCollision);
+	
 }
 
 // Called every frame
@@ -32,9 +33,9 @@ void AProjectileEnemy::OnCollision(AActor* OverlappedActor, AActor* OtherActor)
 {
 	
 	if(Cast<AEnemy>(OtherActor) == nullptr){
+		
 		if (UAC_Health* HealthComponent = OtherActor->FindComponentByClass<UAC_Health>()) {
 			HealthComponent->DecreaseHealth(ProjectileDamage);
-			
 		}
 		
 		K2_DestroyActor();
@@ -42,4 +43,5 @@ void AProjectileEnemy::OnCollision(AActor* OverlappedActor, AActor* OtherActor)
 	
 	
 }
+
 
