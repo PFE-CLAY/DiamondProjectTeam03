@@ -1,6 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WwiseDocument Type="WorkUnit" ID="{D34E006B-5E8B-45C7-9A02-B74F9F705FA1}" SchemaVersion="119">
 	<SoundcasterSessions>
-		<WorkUnit Name="Default Work Unit" ID="{D34E006B-5E8B-45C7-9A02-B74F9F705FA1}" PersistMode="Standalone"/>
+		<WorkUnit Name="Default Work Unit" ID="{D34E006B-5E8B-45C7-9A02-B74F9F705FA1}" PersistMode="Standalone">
+			<ChildrenList>
+				<SoundcasterSession Name="Master" ID="{C6F4B1AB-206C-4154-9FDA-8FD28121D973}">
+					<RTPCValueList ShowAll="true">
+						<RTPCValue>
+							<GameParameterRef Name="RTPC_Speed_Flying" ID="{4A0C67E7-2443-47A8-B5EB-86C8F65C73EB}"/>
+							<Value>0</Value>
+						</RTPCValue>
+					</RTPCValueList>
+					<CurrentStateList ShowAll="true"/>
+					<CurrentSwitchList ShowAll="true">
+						<CurrentSwitchRef Name="Concrete" ID="{7D8D0D4C-3D1C-43A2-B357-3F03FF424DDB}"/>
+					</CurrentSwitchList>
+				</SoundcasterSession>
+			</ChildrenList>
+		</WorkUnit>
 	</SoundcasterSessions>
 </WwiseDocument>

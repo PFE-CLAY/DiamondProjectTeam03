@@ -3,7 +3,9 @@
 
 #include "AI/EnemySpawner.h"
 
-#include "Field/FieldSystemNodes.h"
+#include "VectorTypes.h"
+#include "Kismet/GameplayStatics.h"
+#include "Math/UnitConversion.h"
 
 
 // Sets default values
@@ -21,46 +23,48 @@ AEnemySpawner::AEnemySpawner()
 void AEnemySpawner::BeginPlay()
 {
 	Super::BeginPlay();
-	
-	FTimerHandle TimerHandle;
-	GetWorldTimerManager().SetTimer(TimerHandle, this,  &AEnemySpawner::SpawnWave, WaveCooldown, true);
-}
 
-void AEnemySpawner::SpawnWave()
-{
-	for (int i = 0; i < WaveEnemyCount; i++)
-	{
-		FActorSpawnParameters SpawnInfo;
-		SpawnInfo.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AdjustIfPossibleButAlwaysSpawn;
-		FTransform SpawnTransform = GetRandomTransform();
-		AActor* EnemySpawned = GetWorld()->SpawnActor(EnemyToSpawn, &SpawnTransform , SpawnInfo);
-		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Purple, "Spawned");
-		if(EnemySpawned == nullptr){
-			return;
-		}
-	}
-
-	WaveEnemyCount += IncrementalWaveEnemyCount;
-	
 	
 }
 
-FTransform AEnemySpawner::GetRandomTransform()
+
+FTransform AEnemySpawner::GetRandomTransform() const
 {
 	FTransform Transform;
-	float RandX = FMath::FRandRange(GetActorLocation().X - VolumeBox->Bounds.BoxExtent.X, GetActorLocation().X + VolumeBox->Bounds.BoxExtent.X);
-	float RandY = FMath::FRandRange(GetActorLocation().Y - VolumeBox->Bounds.BoxExtent.Y, GetActorLocation().Y + VolumeBox->Bounds.BoxExtent.Y);
-	float RandZ = FMath::FRandRange(GetActorLocation().Z - VolumeBox->Bounds.BoxExtent.Z, GetActorLocation().Z + VolumeBox->Bounds.BoxExtent.Z);
-	FVector RandomLocation = FVector(RandX, RandY, RandZ);
+	const float RandX = FMath::FRandRange(GetActorLocation().X - VolumeBox->Bounds.BoxExtent.X, GetActorLocation().X + VolumeBox->Bounds.BoxExtent.X);
+	const float RandY = FMath::FRandRange(GetActorLocation().Y - VolumeBox->Bounds.BoxExtent.Y, GetActorLocation().Y + VolumeBox->Bounds.BoxExtent.Y);
+	const float RandZ = FMath::FRandRange(GetActorLocation().Z - VolumeBox->Bounds.BoxExtent.Z, GetActorLocation().Z + VolumeBox->Bounds.BoxExtent.Z);
+	const FVector RandomLocation = FVector(RandX, RandY, RandZ);
 	Transform.SetLocation(RandomLocation);	
 	return Transform;
 }
 
+void AEnemySpawner::SpawnMonster(){
+	FActorSpawnParameters SpawnInfo;
+	SpawnInfo.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AdjustIfPossibleButAlwaysSpawn;
+	FTransform SpawnTransform = GetRandomTransform();
+	AActor* EnemySpawned = GetWorld()->SpawnActor(EnemyToSpawn, &SpawnTransform , SpawnInfo);
+	/*GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Purple, "Spawned");*/
+	
+}
 
 
 // Called every frame
 void AEnemySpawner::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+}
+
+bool AEnemySpawner::IsInActivationRange(float Distance, AActor* Player)
+{
+	if(Player==nullptr) return false;
+	return FVector::Distance(GetActorLocation(), Player->GetActorLocation()) < Distance;
+}
+
+void AEnemySpawner::DebugDistance()
+{
+	if(bShouldShowDebug){
+		DrawDebugSphere(GetWorld(), RootComponent->GetComponentLocation(), DistanceFromPlayer, 50, FColor::Orange, false, 100.f);
+	}
 }
 

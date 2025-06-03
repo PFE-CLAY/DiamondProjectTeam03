@@ -17,8 +17,10 @@ struct FInputActionValue;
 
 DECLARE_LOG_CATEGORY_EXTERN(LogTemplateCharacter, Log, All);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnInteract);
-DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnCrouch);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnMantle);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnPause);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnPreplanMove, FVector2D, Value);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnPreplanZoom, float, ZoomValue);
 
 UCLASS(Blueprintable,config=Game)
 class ADiamondProjectCharacter : public ACharacter
@@ -46,10 +48,16 @@ class ADiamondProjectCharacter : public ACharacter
 	UInputAction* InteractAction;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Input, meta=(AllowPrivateAccess = "true"))
-	UInputAction* CrouchAction;
+	UInputAction* MantleAction;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Input, meta=(AllowPrivateAccess = "true"))
-	UInputAction* MantleAction;
+	UInputAction* PauseAction;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Input, meta=(AllowPrivateAccess = "true"))
+	UInputAction* PreplanMoveAction;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Input, meta=(AllowPrivateAccess = "true"))
+	UInputAction* PreplanZoomAction;
 	
 public:
 	ADiamondProjectCharacter();
@@ -65,13 +73,20 @@ public:
 
 	UPROPERTY(BlueprintAssignable, Category = "Interaction")
 	FOnInteract OnInteract;
-
-	UPROPERTY(BlueprintAssignable, Category = "Interaction")
-	FOnInteract OnCrouch;
+	
 	
 	UPROPERTY(BlueprintAssignable, Category = "Interaction")
 	FOnMantle OnMantle;
 
+	UPROPERTY(BlueprintAssignable, Category = "Interaction")
+	FOnPause OnPause;
+
+	UPROPERTY(BlueprintAssignable, Category = "Preplan")
+	FOnPreplanMove OnPreplanMove;
+	
+	UPROPERTY(BlueprintAssignable, Category = "Preplan")
+	FOnPreplanZoom OnPreplanZoom;
+	
 	UPROPERTY()
 	TObjectPtr<UTP_WeaponComponent> CurrentWeapon;
 
@@ -83,10 +98,14 @@ protected:
 	void Look(const FInputActionValue& Value);
 
 	void Interact(const FInputActionValue& Value);
-
-	void Crouch(const FInputActionValue& Value);
 	
 	void Mantle(const FInputActionValue& Value);
+
+	void PressPause(const FInputActionValue& Value);
+
+	void PreplanMove(const FInputActionValue& Value);
+
+	void PreplanZoom(const FInputActionValue& Value);
 
 
 protected:

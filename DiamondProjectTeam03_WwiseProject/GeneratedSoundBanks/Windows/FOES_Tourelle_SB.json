@@ -10,7 +10,7 @@
     "Type": "User",
     "GUID": "{8CC30184-23AF-4DB5-9844-9B04DF10A650}",
     "Language": "SFX",
-    "Hash": "{35FEE618-89B7-C7B0-CA84-F19B5062419C}",
+    "Hash": "{674A76FF-4872-F762-A1DF-F28A7DE0B50C}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\FOES_Tourelle_SB",
     "ShortName": "FOES_Tourelle_SB",
     "Path": "FOES_Tourelle_SB.bnk",
@@ -48,20 +48,126 @@
       "CachePath": "SFX/FOES_SFX_Tourelle_Shoot_01_818F3B66.wem"
      },
      {
+      "Id": "427986118",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB\\RFX\\FOES_SFX_Tourelle_Death_01.wav",
+      "CachePath": "SFX/AMB/RFX/FOES_SFX_Tourelle_Death_01_818F3B66.wem"
+     },
+     {
       "Id": "515409144",
       "Language": "SFX",
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "FOES_SFX_Tourelle_Shoot_03.wav",
       "CachePath": "SFX/FOES_SFX_Tourelle_Shoot_03_818F3B66.wem"
+     },
+     {
+      "Id": "705394855",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB\\RFX\\FOES_SFX_Tourelle_Death_03.wav",
+      "CachePath": "SFX/AMB/RFX/FOES_SFX_Tourelle_Death_03_818F3B66.wem"
+     },
+     {
+      "Id": "1008799864",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB\\RFX\\FOES_SFX_Tourelle_Death_02.wav",
+      "CachePath": "SFX/AMB/RFX/FOES_SFX_Tourelle_Death_02_818F3B66.wem"
      }
     ],
+    "Plugins": {
+     "Custom": [
+      {
+       "Id": "16383166",
+       "Name": "Hall_Medium_Bright (Custom)",
+       "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Hub\\[Effect Slot [0]: (RoomVerb)]\\Hall_Medium_Bright (Custom)",
+       "GUID": "{2B8E8BE0-9B77-422E-880F-E9F637DE5BCF}",
+       "LibName": "Wwise RoomVerb",
+       "LibId": "7733251"
+      },
+      {
+       "Id": "97605317",
+       "Name": "Hall_Medium_Dark (Custom)",
+       "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Basement\\[Effect Slot [0]: (RoomVerb)]\\Hall_Medium_Dark (Custom)",
+       "GUID": "{8C478E3B-5F92-4AEE-A130-8EAD54778042}",
+       "LibName": "Wwise RoomVerb",
+       "LibId": "7733251"
+      },
+      {
+       "Id": "169636257",
+       "Name": "Have_U_Ever_Been_Outside (Custom)",
+       "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_RFX_Arena\\[Effect Slot [0]: (RoomVerb)]\\Have_U_Ever_Been_Outside (Custom)",
+       "GUID": "{4EC028FC-6FD5-4AC6-A71F-B2CB8F1117DF}",
+       "LibName": "Wwise RoomVerb",
+       "LibId": "7733251"
+      },
+      {
+       "Id": "272452003",
+       "Name": "Echoes_Linear (Custom)",
+       "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Arena\\[Effect Slot [1]: (Delay)]\\Echoes_Linear (Custom)",
+       "GUID": "{977B3548-DD8F-4D11-AE62-48D4E99C3447}",
+       "LibName": "Wwise Delay",
+       "LibId": "6946819"
+      },
+      {
+       "Id": "403656092",
+       "Name": "Have_U_Ever_Been_Outside (Custom)",
+       "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Arena\\[Effect Slot [0]: (RoomVerb)]\\Have_U_Ever_Been_Outside (Custom)",
+       "GUID": "{0C674E07-FB9A-4697-AC82-7C943290C81C}",
+       "LibName": "Wwise RoomVerb",
+       "LibId": "7733251"
+      },
+      {
+       "Id": "498081942",
+       "Name": "Hall_Large_Dark (Custom)",
+       "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Pyramid\\[Effect Slot [0]: (RoomVerb)]\\Hall_Large_Dark (Custom)",
+       "GUID": "{8E1228B5-2A98-4B87-B429-B348D1C6D236}",
+       "LibName": "Wwise RoomVerb",
+       "LibId": "7733251"
+      },
+      {
+       "Id": "688337969",
+       "Name": "Hall_Small_Bright (Custom)",
+       "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_BlackHouses\\[Effect Slot [0]: (RoomVerb)]\\Hall_Small_Bright (Custom)",
+       "GUID": "{846A0309-936D-4337-BF4B-E6792E655155}",
+       "LibName": "Wwise RoomVerb",
+       "LibId": "7733251"
+      }
+     ]
+    },
     "Events": [
+     {
+      "Id": "305372709",
+      "Name": "Play_FOES_SFX_Tourelle_Death_RC",
+      "ObjectPath": "\\Events\\FOES_Tourelle_WU\\Play_FOES_SFX_Tourelle_Death_RC",
+      "GUID": "{03966878-2B14-4479-9F3B-3C317D6EB7B1}",
+      "MaxAttenuation": "3000",
+      "DurationType": "OneShot",
+      "DurationMin": "2.8365834",
+      "DurationMax": "3.2426875",
+      "MediaRefs": [
+       {
+        "Id": "427986118"
+       },
+       {
+        "Id": "705394855"
+       },
+       {
+        "Id": "1008799864"
+       }
+      ]
+     },
      {
       "Id": "2480809816",
       "Name": "Play_FOES_SFX_Tourelle_Shoot_RC",
       "ObjectPath": "\\Events\\FOES_Tourelle_WU\\Play_FOES_SFX_Tourelle_Shoot_RC",
       "GUID": "{140E36FB-31F3-4C66-AC5D-E9E86C57BA68}",
+      "MaxAttenuation": "3000",
       "DurationType": "OneShot",
       "DurationMin": "1.2318597",
       "DurationMax": "2.567487",
@@ -83,9 +189,154 @@
        }
       ]
      }
+    ],
+    "Busses": [
+     {
+      "Id": "109159411",
+      "Name": "Game_Global",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\Game_Global",
+      "GUID": "{FAD5C029-0A02-4BD2-97F7-F8C20B7A95BD}"
+     },
+     {
+      "Id": "393239870",
+      "Name": "SFX",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\Game_Global\\SFX",
+      "GUID": "{EB4CE24D-8196-408E-9775-5E8EEFE98495}"
+     },
+     {
+      "Id": "1117531639",
+      "Name": "AMB",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\Game_Global\\AMB",
+      "GUID": "{C1595F21-FBBF-4B04-AC1A-78D86879A937}"
+     },
+     {
+      "Id": "1551306167",
+      "Name": "UI",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\UI",
+      "GUID": "{B5E7816E-C3FC-4992-B763-4078089CE674}"
+     },
+     {
+      "Id": "1685527061",
+      "Name": "MC",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\Game_Global\\MC",
+      "GUID": "{B3079877-B26F-4239-A3AB-9C7AFFCBC797}"
+     },
+     {
+      "Id": "2290178407",
+      "Name": "FOES_Tourelle",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\Game_Global\\FOES_Tourelle",
+      "GUID": "{D783D57E-4B6F-4101-8F5F-FD96F0409170}"
+     },
+     {
+      "Id": "3313685232",
+      "Name": "Voices",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\Voices",
+      "GUID": "{00AA482D-3F12-46A5-8177-E8A172D08E63}"
+     },
+     {
+      "Id": "3623095082",
+      "Name": "FOES_Flying",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\Game_Global\\FOES_Flying",
+      "GUID": "{439831F9-AA50-4CD2-98C3-ACD8B187380E}"
+     },
+     {
+      "Id": "3991942870",
+      "Name": "Music",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\Music",
+      "GUID": "{08156595-7637-4348-AC3C-2EDE3FCCB08F}"
+     },
+     {
+      "Id": "4056684167",
+      "Name": "Master",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master",
+      "GUID": "{F3A976BC-47E9-46E5-9EEC-F566BB39DBEE}"
+     }
+    ],
+    "AuxBusses": [
+     {
+      "Id": "395111090",
+      "Name": "RVB_BlackHouses",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_BlackHouses",
+      "GUID": "{17B5E8F9-026F-4941-A027-1C0641AB0C14}",
+      "PluginRefs": {
+       "Custom": [
+        {
+         "Id": "688337969"
+        }
+       ]
+      }
+     },
+     {
+      "Id": "1215931641",
+      "Name": "RVB_Arena",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Arena",
+      "GUID": "{54C7EBDA-4885-4850-8969-FB63BDACC807}",
+      "PluginRefs": {
+       "Custom": [
+        {
+         "Id": "272452003"
+        },
+        {
+         "Id": "403656092"
+        }
+       ]
+      }
+     },
+     {
+      "Id": "1408817756",
+      "Name": "RVB_RFX_Arena",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_RFX_Arena",
+      "GUID": "{CC7A2F05-EE75-4E8E-B097-98A1938CB5E4}",
+      "PluginRefs": {
+       "Custom": [
+        {
+         "Id": "169636257"
+        }
+       ]
+      }
+     },
+     {
+      "Id": "2344250611",
+      "Name": "RVB_Basement",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Basement",
+      "GUID": "{BF09F5DA-71E8-4CAC-B0EB-19A1C29389BA}",
+      "PluginRefs": {
+       "Custom": [
+        {
+         "Id": "97605317"
+        }
+       ]
+      }
+     },
+     {
+      "Id": "3571340017",
+      "Name": "RVB_Hub",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Hub",
+      "GUID": "{D499EBE4-F26A-48E5-B89D-1F7C43D829E3}",
+      "PluginRefs": {
+       "Custom": [
+        {
+         "Id": "16383166"
+        }
+       ]
+      }
+     },
+     {
+      "Id": "3670521640",
+      "Name": "RVB_Pyramid",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Pyramid",
+      "GUID": "{668EA0D2-771E-452F-B241-11793F9755B0}",
+      "PluginRefs": {
+       "Custom": [
+        {
+         "Id": "498081942"
+        }
+       ]
+      }
+     }
     ]
    }
   ],
-  "FileHash": "{7E55971B-5AEE-B00B-517E-638C64B41EB9}"
+  "FileHash": "{C3E7FCDA-9346-8160-09A1-98E21361818D}"
  }
 }

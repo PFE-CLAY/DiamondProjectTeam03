@@ -1,0 +1,258 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Mac",
+  "BasePlatform": "Mac",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "150",
+  "SoundBanks": [
+   {
+    "Id": "459280130",
+    "Type": "User",
+    "GUID": "{46F08C13-7BDA-47D5-A653-BDFCDAD2487B}",
+    "Language": "SFX",
+    "Hash": "{FEC0151D-6568-73FC-F065-33A4D2F833EA}",
+    "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\FOES_Flying_SB",
+    "ShortName": "FOES_Flying_SB",
+    "Path": "FOES_Flying_SB.bnk",
+    "Media": [
+     {
+      "Id": "45515045",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "FOES_SFX_Flying_Shoot_03.wav",
+      "CachePath": "SFX/FOES_SFX_Flying_Shoot_03_818F3B66.wem"
+     },
+     {
+      "Id": "195673243",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "FOES_SFX_Flying_Shoot_04.wav",
+      "CachePath": "SFX/FOES_SFX_Flying_Shoot_04_818F3B66.wem"
+     },
+     {
+      "Id": "202392697",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "FOES_SFX_Flying_Idle_LP.wav",
+      "CachePath": "SFX/FOES_SFX_Flying_Idle_LP_FBC78EF0.wem"
+     },
+     {
+      "Id": "229626045",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "FOES_SFX_Flying_Shoot_05.wav",
+      "CachePath": "SFX/FOES_SFX_Flying_Shoot_05_818F3B66.wem"
+     },
+     {
+      "Id": "732571760",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "FOES_SFX_Flying_Shoot_01.wav",
+      "CachePath": "SFX/FOES_SFX_Flying_Shoot_01_818F3B66.wem"
+     },
+     {
+      "Id": "821998844",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "FOES_SFX_Flying_Shoot_02.wav",
+      "CachePath": "SFX/FOES_SFX_Flying_Shoot_02_818F3B66.wem"
+     }
+    ],
+    "Plugins": {
+     "Custom": [
+      {
+       "Id": "169636257",
+       "Name": "Have_U_Ever_Been_Outside (Custom)",
+       "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_RFX_Arena\\[Effect Slot [0]: (RoomVerb)]\\Have_U_Ever_Been_Outside (Custom)",
+       "GUID": "{4EC028FC-6FD5-4AC6-A71F-B2CB8F1117DF}",
+       "LibName": "Wwise RoomVerb",
+       "LibId": "7733251"
+      },
+      {
+       "Id": "913803451",
+       "Name": "Octave_Up (Custom)",
+       "ObjectPath": "\\Actor-Mixer Hierarchy\\FOES_Flying_WU\\FOES_Flying\\FOES_SFX_Flying\\FOES_SFX_Flying_Shoot_RC\\[Effect Slot [0]: (Pitch Shifter)]\\Octave_Up (Custom)",
+       "GUID": "{2F00A97A-7EA5-4071-B9A5-B685BC249C27}",
+       "LibName": "Wwise Pitch Shifter",
+       "LibId": "8912899"
+      },
+      {
+       "Id": "963626000",
+       "Name": "Dist_Flying_Shots (Custom)",
+       "ObjectPath": "\\Actor-Mixer Hierarchy\\FOES_Flying_WU\\FOES_Flying\\FOES_SFX_Flying\\FOES_SFX_Flying_Shoot_RC\\[Effect Slot [1]: (Guitar Distortion)]\\Dist_Flying_Shots (Custom)",
+       "GUID": "{71204E36-4F7C-4B89-9BD6-E0036788D676}",
+       "LibName": "Wwise Guitar Distortion",
+       "LibId": "8257539"
+      }
+     ]
+    },
+    "Events": [
+     {
+      "Id": "3816121295",
+      "Name": "Play_FOES_SFX_Flying_Idle_LP",
+      "ObjectPath": "\\Events\\FOES_Flying_WU\\Play_FOES_SFX_Flying_Idle_LP",
+      "GUID": "{CF4E623B-F60A-4740-B500-0E5586E75310}",
+      "MaxAttenuation": "2000",
+      "DurationType": "Infinite",
+      "MediaRefs": [
+       {
+        "Id": "202392697"
+       }
+      ]
+     },
+     {
+      "Id": "1810073987",
+      "Name": "Play_FOES_SFX_Flying_Shoot_RC",
+      "ObjectPath": "\\Events\\FOES_Flying_WU\\Play_FOES_SFX_Flying_Shoot_RC",
+      "GUID": "{615B6DF4-5110-477A-ADAD-83075E2A2CC2}",
+      "MaxAttenuation": "2000",
+      "DurationType": "OneShot",
+      "DurationMin": "1.5138968",
+      "DurationMax": "1.9747615",
+      "MediaRefs": [
+       {
+        "Id": "45515045"
+       },
+       {
+        "Id": "195673243"
+       },
+       {
+        "Id": "229626045"
+       },
+       {
+        "Id": "732571760"
+       },
+       {
+        "Id": "821998844"
+       }
+      ],
+      "PluginRefs": {
+       "Custom": [
+        {
+         "Id": "913803451"
+        },
+        {
+         "Id": "963626000"
+        }
+       ]
+      }
+     },
+     {
+      "Id": "3718813633",
+      "Name": "Stop_FOES_SFX_Flying_Idle_LP",
+      "ObjectPath": "\\Events\\FOES_Flying_WU\\Stop_FOES_SFX_Flying_Idle_LP",
+      "GUID": "{9C4A0482-8257-4724-B64F-85F88099C5B0}",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0"
+     }
+    ],
+    "Busses": [
+     {
+      "Id": "109159411",
+      "Name": "Game_Global",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\Game_Global",
+      "GUID": "{FAD5C029-0A02-4BD2-97F7-F8C20B7A95BD}"
+     },
+     {
+      "Id": "393239870",
+      "Name": "SFX",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\Game_Global\\SFX",
+      "GUID": "{EB4CE24D-8196-408E-9775-5E8EEFE98495}"
+     },
+     {
+      "Id": "1117531639",
+      "Name": "AMB",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\Game_Global\\AMB",
+      "GUID": "{C1595F21-FBBF-4B04-AC1A-78D86879A937}"
+     },
+     {
+      "Id": "1551306167",
+      "Name": "UI",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\UI",
+      "GUID": "{B5E7816E-C3FC-4992-B763-4078089CE674}"
+     },
+     {
+      "Id": "1685527061",
+      "Name": "MC",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\Game_Global\\MC",
+      "GUID": "{B3079877-B26F-4239-A3AB-9C7AFFCBC797}"
+     },
+     {
+      "Id": "2290178407",
+      "Name": "FOES_Tourelle",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\Game_Global\\FOES_Tourelle",
+      "GUID": "{D783D57E-4B6F-4101-8F5F-FD96F0409170}"
+     },
+     {
+      "Id": "3313685232",
+      "Name": "Voices",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\Voices",
+      "GUID": "{00AA482D-3F12-46A5-8177-E8A172D08E63}"
+     },
+     {
+      "Id": "3623095082",
+      "Name": "FOES_Flying",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\Game_Global\\FOES_Flying",
+      "GUID": "{439831F9-AA50-4CD2-98C3-ACD8B187380E}"
+     },
+     {
+      "Id": "3991942870",
+      "Name": "Music",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\Music",
+      "GUID": "{08156595-7637-4348-AC3C-2EDE3FCCB08F}"
+     },
+     {
+      "Id": "4056684167",
+      "Name": "Master",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master",
+      "GUID": "{F3A976BC-47E9-46E5-9EEC-F566BB39DBEE}"
+     }
+    ],
+    "AuxBusses": [
+     {
+      "Id": "1215931641",
+      "Name": "RVB_Arena",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Arena",
+      "GUID": "{54C7EBDA-4885-4850-8969-FB63BDACC807}"
+     },
+     {
+      "Id": "1408817756",
+      "Name": "RVB_RFX_Arena",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_RFX_Arena",
+      "GUID": "{CC7A2F05-EE75-4E8E-B097-98A1938CB5E4}",
+      "PluginRefs": {
+       "Custom": [
+        {
+         "Id": "169636257"
+        }
+       ]
+      }
+     },
+     {
+      "Id": "3571340017",
+      "Name": "RVB_Hub",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Hub",
+      "GUID": "{D499EBE4-F26A-48E5-B89D-1F7C43D829E3}"
+     }
+    ],
+    "GameParameters": [
+     {
+      "Id": "3590742338",
+      "Name": "RTPC_Speed_Flying",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\RTPC_Speed_Flying",
+      "GUID": "{4A0C67E7-2443-47A8-B5EB-86C8F65C73EB}"
+     }
+    ]
+   }
+  ],
+  "FileHash": "{776380AD-11F3-6AF6-692F-A15B4B279676}"
+ }
+}

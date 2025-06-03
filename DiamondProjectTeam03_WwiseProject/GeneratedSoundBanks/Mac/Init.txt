@@ -1,0 +1,25 @@
+Audio Bus	ID	Name			Wwise Object Path	Notes
+	109159411	Game_Global			\Master_WU\Master\Game_Global	
+	393239870	SFX			\Master_WU\Master\Game_Global\SFX	
+	1117531639	AMB			\Master_WU\Master\Game_Global\AMB	
+	1551306167	UI			\Master_WU\Master\UI	
+	1685527061	MC			\Master_WU\Master\Game_Global\MC	
+	2290178407	FOES_Tourelle			\Master_WU\Master\Game_Global\FOES_Tourelle	
+	3313685232	Voices			\Master_WU\Master\Voices	
+	3623095082	FOES_Flying			\Master_WU\Master\Game_Global\FOES_Flying	
+	3803692087	Master Audio Bus			\Default Work Unit\Master Audio Bus	
+	3991942870	Music			\Master_WU\Master\Music	
+	4056684167	Master			\Master_WU\Master	
+
+Auxiliary Bus	ID	Name			Wwise Object Path	Notes
+	1215931641	RVB_Arena			\Master_WU\Master\RVB_Arena	
+	1408817756	RVB_RFX_Arena			\Master_WU\Master\RVB_RFX_Arena	
+	3571340017	RVB_Hub			\Master_WU\Master\RVB_Hub	
+
+Effect plug-ins	ID	Name	Type				Notes
+	169636257	Have_U_Ever_Been_Outside (Custom)	Wwise RoomVerb			
+
+Audio Devices	ID	Name	Type				Notes
+	2317455096	No_Output	No Output			
+	3859886410	System	System			
+

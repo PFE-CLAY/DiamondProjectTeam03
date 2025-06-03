@@ -2,13 +2,12 @@
 
 
 #include "AI/Enemy.h"
-
 #include "AI/ProjectileEnemy.h"
 #include "Components/BoxComponent.h"
 #include "DiamondProject/DiamondProjectCharacter.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "Kismet/KismetMathLibrary.h"
-
+#include "AI/EnemySpawner.h"
 
 // Sets default values
 AEnemy::AEnemy()
@@ -74,17 +73,27 @@ void AEnemy::Shoot()
 		FRotator const Rotation = (PlayerPawn->GetActorLocation() - GetActorLocation()).Rotation();
 		bCanAttack = false;
 		FActorSpawnParameters SpawnInfo;
-		AActor* ProjectileSpawned = GetWorld()->SpawnActor(Projectile, &Location, &Rotation, SpawnInfo);
+		SpawnInfo.Name = "aze";
+		AActor* ProjectileSpawned = nullptr;
+		if (GetWorld()) {
+			ProjectileSpawned = GetWorld()->SpawnActor(Projectile, &Location, &Rotation);
+			OnEnemyShoot.Broadcast();
+		}
+		
 		if(ProjectileSpawned == nullptr){
 			return;
 		}
+		
 		AProjectileEnemy* ProjectileInstance = Cast<AProjectileEnemy>(ProjectileSpawned);
 		ProjectileInstance->ProjectileDamage = AttackDamage;
 		
 		SetNewAttackTimer();
-		
-		
 	}
+}
+
+void AEnemy::RemoveEnemyFromSpawnerList()
+{
+	/*EnemySpawner->SpawnedEnemies.Remove(this);*/
 }
 
 bool AEnemy::IsPlayerOnSight(FRotator Rotation, FVector Location)
@@ -120,7 +129,6 @@ void AEnemy::SetShootReady()
 {
 	bCanAttack = true;	
 }
-
 
 
 

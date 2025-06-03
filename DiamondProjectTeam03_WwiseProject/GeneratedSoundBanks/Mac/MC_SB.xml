@@ -1,0 +1,566 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SoundBanksInfo Platform="Mac" BasePlatform="Mac" SchemaVersion="16" SoundBankVersion="150">
+	<SoundBanks>
+		<SoundBank Id="1956625499" Type="User" GUID="{ADC2D189-6608-4828-BC9C-6EF6F90834DB}" Language="SFX" Hash="{1BCEA6A0-A769-73E9-6F2A-9E211AA99E4A}">
+			<ObjectPath>\SoundBanks\SoundBanks_WU\MC_SB</ObjectPath>
+			<ShortName>MC_SB</ShortName>
+			<Path>MC_SB.bnk</Path>
+			<Media>
+				<File Id="4962513" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\SP\MC_FT_Metal_08.wav</ShortName>
+					<CachePath>SFX/AMB/SP/MC_FT_Metal_08_818F3B66.wem</CachePath>
+				</File>
+				<File Id="16112564" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\SP\MC_FT_Concrete_Land_01.wav</ShortName>
+					<CachePath>SFX/AMB/SP/MC_FT_Concrete_Land_01_818F3B66.wem</CachePath>
+				</File>
+				<File Id="28276971" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\SP\MC_FT_Concrete_06.wav</ShortName>
+					<CachePath>SFX/AMB/SP/MC_FT_Concrete_06_818F3B66.wem</CachePath>
+				</File>
+				<File Id="34141530" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\SP\MC_FT_Sand_Jump_01.wav</ShortName>
+					<CachePath>SFX/AMB/SP/MC_FT_Sand_Jump_01_818F3B66.wem</CachePath>
+				</File>
+				<File Id="36917763" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>MC_SFX_Gun_Shoot_01.wav</ShortName>
+					<CachePath>SFX/MC_SFX_Gun_Shoot_01_818F3B66.wem</CachePath>
+				</File>
+				<File Id="44684202" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\SP\MC_FT_Sand_08.wav</ShortName>
+					<CachePath>SFX/AMB/SP/MC_FT_Sand_08_818F3B66.wem</CachePath>
+				</File>
+				<File Id="47427430" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SFX\MC_SFX_PickupWeapon_01.wav</ShortName>
+					<CachePath>SFX/SFX/MC_SFX_PickupWeapon_01_818F3B66.wem</CachePath>
+				</File>
+				<File Id="58062480" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\SP\MC_FT_Sand_Jump_02.wav</ShortName>
+					<CachePath>SFX/AMB/SP/MC_FT_Sand_Jump_02_818F3B66.wem</CachePath>
+				</File>
+				<File Id="62282605" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>MC_SFX_Gun_Shoot_02.wav</ShortName>
+					<CachePath>SFX/MC_SFX_Gun_Shoot_02_818F3B66.wem</CachePath>
+				</File>
+				<File Id="70109824" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>MC_SFX_Gun_Shoot_04.wav</ShortName>
+					<CachePath>SFX/MC_SFX_Gun_Shoot_04_818F3B66.wem</CachePath>
+				</File>
+				<File Id="75654975" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\SP\MC_FT_Concrete_03.wav</ShortName>
+					<CachePath>SFX/AMB/SP/MC_FT_Concrete_03_818F3B66.wem</CachePath>
+				</File>
+				<File Id="81610070" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\SP\MC_FT_Metal_02.wav</ShortName>
+					<CachePath>SFX/AMB/SP/MC_FT_Metal_02_818F3B66.wem</CachePath>
+				</File>
+				<File Id="97955047" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\SP\MC_FT_Metal_Land_03.wav</ShortName>
+					<CachePath>SFX/AMB/SP/MC_FT_Metal_Land_03_818F3B66.wem</CachePath>
+				</File>
+				<File Id="99306815" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\SP\MC_FT_Metal_01.wav</ShortName>
+					<CachePath>SFX/AMB/SP/MC_FT_Metal_01_818F3B66.wem</CachePath>
+				</File>
+				<File Id="101923972" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SFX\MC_SFX_PickupWeapon_04.wav</ShortName>
+					<CachePath>SFX/SFX/MC_SFX_PickupWeapon_04_818F3B66.wem</CachePath>
+				</File>
+				<File Id="104687879" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\SP\MC_FT_Metal_05.wav</ShortName>
+					<CachePath>SFX/AMB/SP/MC_FT_Metal_05_818F3B66.wem</CachePath>
+				</File>
+				<File Id="109232168" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\SP\MC_FT_Sand_10.wav</ShortName>
+					<CachePath>SFX/AMB/SP/MC_FT_Sand_10_818F3B66.wem</CachePath>
+				</File>
+				<File Id="114517244" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\SP\MC_FT_Concrete_Jump_02.wav</ShortName>
+					<CachePath>SFX/AMB/SP/MC_FT_Concrete_Jump_02_818F3B66.wem</CachePath>
+				</File>
+				<File Id="138501133" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\SP\MC_FT_Concrete_Land_05.wav</ShortName>
+					<CachePath>SFX/AMB/SP/MC_FT_Concrete_Land_05_818F3B66.wem</CachePath>
+				</File>
+				<File Id="146789455" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\SP\MC_FT_Metal_Land_05.wav</ShortName>
+					<CachePath>SFX/AMB/SP/MC_FT_Metal_Land_05_818F3B66.wem</CachePath>
+				</File>
+				<File Id="148436568" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\SP\MC_FT_Concrete_Land_03.wav</ShortName>
+					<CachePath>SFX/AMB/SP/MC_FT_Concrete_Land_03_818F3B66.wem</CachePath>
+				</File>
+				<File Id="156842051" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\SP\MC_FT_Metal_Jump_04.wav</ShortName>
+					<CachePath>SFX/AMB/SP/MC_FT_Metal_Jump_04_818F3B66.wem</CachePath>
+				</File>
+				<File Id="163843360" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\SP\MC_FT_Concrete_12.wav</ShortName>
+					<CachePath>SFX/AMB/SP/MC_FT_Concrete_12_818F3B66.wem</CachePath>
+				</File>
+				<File Id="174467291" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\SP\MC_FT_Metal_12.wav</ShortName>
+					<CachePath>SFX/AMB/SP/MC_FT_Metal_12_818F3B66.wem</CachePath>
+				</File>
+				<File Id="187397785" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\SP\MC_FT_Sand_Land_04.wav</ShortName>
+					<CachePath>SFX/AMB/SP/MC_FT_Sand_Land_04_818F3B66.wem</CachePath>
+				</File>
+				<File Id="211150638" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\SP\MC_FT_Sand_01.wav</ShortName>
+					<CachePath>SFX/AMB/SP/MC_FT_Sand_01_818F3B66.wem</CachePath>
+				</File>
+				<File Id="225595462" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\SP\MC_FT_Metal_11.wav</ShortName>
+					<CachePath>SFX/AMB/SP/MC_FT_Metal_11_818F3B66.wem</CachePath>
+				</File>
+				<File Id="267703531" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\SP\MC_FT_Concrete_05.wav</ShortName>
+					<CachePath>SFX/AMB/SP/MC_FT_Concrete_05_818F3B66.wem</CachePath>
+				</File>
+				<File Id="268013152" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\SP\MC_FT_Concrete_07.wav</ShortName>
+					<CachePath>SFX/AMB/SP/MC_FT_Concrete_07_818F3B66.wem</CachePath>
+				</File>
+				<File Id="282121010" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\SP\MC_FT_Sand_Land_05.wav</ShortName>
+					<CachePath>SFX/AMB/SP/MC_FT_Sand_Land_05_818F3B66.wem</CachePath>
+				</File>
+				<File Id="300270566" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\SP\MC_FT_Metal_06.wav</ShortName>
+					<CachePath>SFX/AMB/SP/MC_FT_Metal_06_818F3B66.wem</CachePath>
+				</File>
+				<File Id="305528684" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\SP\MC_FT_Sand_Jump_05.wav</ShortName>
+					<CachePath>SFX/AMB/SP/MC_FT_Sand_Jump_05_818F3B66.wem</CachePath>
+				</File>
+				<File Id="318319530" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\SP\MC_FT_Concrete_Land_04.wav</ShortName>
+					<CachePath>SFX/AMB/SP/MC_FT_Concrete_Land_04_818F3B66.wem</CachePath>
+				</File>
+				<File Id="339856009" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\SP\MC_FT_Metal_Jump_01.wav</ShortName>
+					<CachePath>SFX/AMB/SP/MC_FT_Metal_Jump_01_818F3B66.wem</CachePath>
+				</File>
+				<File Id="387146543" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\SP\MC_FT_Sand_05.wav</ShortName>
+					<CachePath>SFX/AMB/SP/MC_FT_Sand_05_818F3B66.wem</CachePath>
+				</File>
+				<File Id="395573930" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\SP\MC_FT_Metal_Land_04.wav</ShortName>
+					<CachePath>SFX/AMB/SP/MC_FT_Metal_Land_04_818F3B66.wem</CachePath>
+				</File>
+				<File Id="402066446" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\SP\MC_FT_Metal_03.wav</ShortName>
+					<CachePath>SFX/AMB/SP/MC_FT_Metal_03_818F3B66.wem</CachePath>
+				</File>
+				<File Id="418331982" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SFX\MC_SFX_Weapon_NoAmmo.wav</ShortName>
+					<CachePath>SFX/SFX/MC_SFX_Weapon_NoAmmo_818F3B66.wem</CachePath>
+				</File>
+				<File Id="421361594" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>MC_SFX_Gun_Shoot_05.wav</ShortName>
+					<CachePath>SFX/MC_SFX_Gun_Shoot_05_818F3B66.wem</CachePath>
+				</File>
+				<File Id="430767489" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\SP\MC_FT_Sand_Land_03.wav</ShortName>
+					<CachePath>SFX/AMB/SP/MC_FT_Sand_Land_03_818F3B66.wem</CachePath>
+				</File>
+				<File Id="442853450" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\SP\MC_FT_Concrete_Jump_04.wav</ShortName>
+					<CachePath>SFX/AMB/SP/MC_FT_Concrete_Jump_04_818F3B66.wem</CachePath>
+				</File>
+				<File Id="451049292" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\SP\MC_FT_Metal_Jump_05.wav</ShortName>
+					<CachePath>SFX/AMB/SP/MC_FT_Metal_Jump_05_818F3B66.wem</CachePath>
+				</File>
+				<File Id="454622091" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\SP\MC_FT_Metal_Land_02.wav</ShortName>
+					<CachePath>SFX/AMB/SP/MC_FT_Metal_Land_02_818F3B66.wem</CachePath>
+				</File>
+				<File Id="480059959" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\SP\MC_FT_Concrete_02.wav</ShortName>
+					<CachePath>SFX/AMB/SP/MC_FT_Concrete_02_818F3B66.wem</CachePath>
+				</File>
+				<File Id="483253408" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\SP\MC_FT_Sand_Land_02.wav</ShortName>
+					<CachePath>SFX/AMB/SP/MC_FT_Sand_Land_02_818F3B66.wem</CachePath>
+				</File>
+				<File Id="499540378" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\SP\MC_FT_Concrete_Jump_01.wav</ShortName>
+					<CachePath>SFX/AMB/SP/MC_FT_Concrete_Jump_01_818F3B66.wem</CachePath>
+				</File>
+				<File Id="511633870" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SFX\MC_SFX_PickupWeapon_03.wav</ShortName>
+					<CachePath>SFX/SFX/MC_SFX_PickupWeapon_03_818F3B66.wem</CachePath>
+				</File>
+				<File Id="534496258" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\SP\MC_FT_Concrete_11.wav</ShortName>
+					<CachePath>SFX/AMB/SP/MC_FT_Concrete_11_818F3B66.wem</CachePath>
+				</File>
+				<File Id="541415762" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\SP\MC_FT_Metal_Jump_02.wav</ShortName>
+					<CachePath>SFX/AMB/SP/MC_FT_Metal_Jump_02_818F3B66.wem</CachePath>
+				</File>
+				<File Id="542236427" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\SP\MC_FT_Sand_12.wav</ShortName>
+					<CachePath>SFX/AMB/SP/MC_FT_Sand_12_818F3B66.wem</CachePath>
+				</File>
+				<File Id="592388296" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\SP\MC_FT_Metal_10.wav</ShortName>
+					<CachePath>SFX/AMB/SP/MC_FT_Metal_10_818F3B66.wem</CachePath>
+				</File>
+				<File Id="602677679" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\SP\MC_FT_Concrete_01.wav</ShortName>
+					<CachePath>SFX/AMB/SP/MC_FT_Concrete_01_818F3B66.wem</CachePath>
+				</File>
+				<File Id="607185623" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SFX\MC_SFX_PickupWeapon_02.wav</ShortName>
+					<CachePath>SFX/SFX/MC_SFX_PickupWeapon_02_818F3B66.wem</CachePath>
+				</File>
+				<File Id="608609148" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\SP\MC_FT_Sand_Jump_03.wav</ShortName>
+					<CachePath>SFX/AMB/SP/MC_FT_Sand_Jump_03_818F3B66.wem</CachePath>
+				</File>
+				<File Id="610072169" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SFX\MC_SFX_PickupWeapon_05.wav</ShortName>
+					<CachePath>SFX/SFX/MC_SFX_PickupWeapon_05_818F3B66.wem</CachePath>
+				</File>
+				<File Id="610918733" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>MC_SFX_Gun_Shoot_03.wav</ShortName>
+					<CachePath>SFX/MC_SFX_Gun_Shoot_03_818F3B66.wem</CachePath>
+				</File>
+				<File Id="620312545" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\SP\MC_FT_Sand_03.wav</ShortName>
+					<CachePath>SFX/AMB/SP/MC_FT_Sand_03_818F3B66.wem</CachePath>
+				</File>
+				<File Id="655344864" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\SP\MC_FT_Concrete_04.wav</ShortName>
+					<CachePath>SFX/AMB/SP/MC_FT_Concrete_04_818F3B66.wem</CachePath>
+				</File>
+				<File Id="673489173" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\SP\MC_FT_Sand_09.wav</ShortName>
+					<CachePath>SFX/AMB/SP/MC_FT_Sand_09_818F3B66.wem</CachePath>
+				</File>
+				<File Id="683985857" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\SP\MC_FT_Concrete_Land_02.wav</ShortName>
+					<CachePath>SFX/AMB/SP/MC_FT_Concrete_Land_02_818F3B66.wem</CachePath>
+				</File>
+				<File Id="721183356" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\SP\MC_FT_Sand_07.wav</ShortName>
+					<CachePath>SFX/AMB/SP/MC_FT_Sand_07_818F3B66.wem</CachePath>
+				</File>
+				<File Id="728432909" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\SP\MC_FT_Metal_Land_01.wav</ShortName>
+					<CachePath>SFX/AMB/SP/MC_FT_Metal_Land_01_818F3B66.wem</CachePath>
+				</File>
+				<File Id="738022832" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\SP\MC_FT_Concrete_Jump_03.wav</ShortName>
+					<CachePath>SFX/AMB/SP/MC_FT_Concrete_Jump_03_818F3B66.wem</CachePath>
+				</File>
+				<File Id="764749319" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\SP\MC_FT_Metal_09.wav</ShortName>
+					<CachePath>SFX/AMB/SP/MC_FT_Metal_09_818F3B66.wem</CachePath>
+				</File>
+				<File Id="772410827" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SFX\MC_SFX_Weapon_Armed.wav</ShortName>
+					<CachePath>SFX/SFX/MC_SFX_Weapon_Armed_818F3B66.wem</CachePath>
+				</File>
+				<File Id="779936328" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\SP\MC_FT_Sand_02.wav</ShortName>
+					<CachePath>SFX/AMB/SP/MC_FT_Sand_02_818F3B66.wem</CachePath>
+				</File>
+				<File Id="793802699" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\SP\MC_FT_Concrete_Jump_05.wav</ShortName>
+					<CachePath>SFX/AMB/SP/MC_FT_Concrete_Jump_05_818F3B66.wem</CachePath>
+				</File>
+				<File Id="814998601" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\SP\MC_FT_Concrete_08.wav</ShortName>
+					<CachePath>SFX/AMB/SP/MC_FT_Concrete_08_818F3B66.wem</CachePath>
+				</File>
+				<File Id="816346842" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\SP\MC_FT_Concrete_09.wav</ShortName>
+					<CachePath>SFX/AMB/SP/MC_FT_Concrete_09_818F3B66.wem</CachePath>
+				</File>
+				<File Id="838939217" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\SP\MC_FT_Sand_04.wav</ShortName>
+					<CachePath>SFX/AMB/SP/MC_FT_Sand_04_818F3B66.wem</CachePath>
+				</File>
+				<File Id="851952181" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\SP\MC_FT_Metal_Jump_03.wav</ShortName>
+					<CachePath>SFX/AMB/SP/MC_FT_Metal_Jump_03_818F3B66.wem</CachePath>
+				</File>
+				<File Id="888066358" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\SP\MC_FT_Metal_07.wav</ShortName>
+					<CachePath>SFX/AMB/SP/MC_FT_Metal_07_818F3B66.wem</CachePath>
+				</File>
+				<File Id="898538319" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\SP\MC_FT_Metal_04.wav</ShortName>
+					<CachePath>SFX/AMB/SP/MC_FT_Metal_04_818F3B66.wem</CachePath>
+				</File>
+				<File Id="910413546" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\SP\MC_FT_Sand_06.wav</ShortName>
+					<CachePath>SFX/AMB/SP/MC_FT_Sand_06_818F3B66.wem</CachePath>
+				</File>
+				<File Id="967065821" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\SP\MC_FT_Sand_11.wav</ShortName>
+					<CachePath>SFX/AMB/SP/MC_FT_Sand_11_818F3B66.wem</CachePath>
+				</File>
+				<File Id="971911144" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\SP\MC_FT_Sand_Jump_04.wav</ShortName>
+					<CachePath>SFX/AMB/SP/MC_FT_Sand_Jump_04_818F3B66.wem</CachePath>
+				</File>
+				<File Id="1003274806" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\SP\MC_FT_Sand_Land_01.wav</ShortName>
+					<CachePath>SFX/AMB/SP/MC_FT_Sand_Land_01_818F3B66.wem</CachePath>
+				</File>
+				<File Id="1036129781" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\SP\MC_FT_Concrete_10.wav</ShortName>
+					<CachePath>SFX/AMB/SP/MC_FT_Concrete_10_818F3B66.wem</CachePath>
+				</File>
+			</Media>
+			<Plugins>
+				<Custom>
+					<Plugin Id="169636257" Name="Have_U_Ever_Been_Outside (Custom)" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_RFX_Arena\[Effect Slot [0]: (RoomVerb)]\Have_U_Ever_Been_Outside (Custom)" GUID="{4EC028FC-6FD5-4AC6-A71F-B2CB8F1117DF}" LibName="Wwise RoomVerb" LibId="7733251"/>
+				</Custom>
+			</Plugins>
+			<Events>
+				<Event Id="2749485653" Name="Play_MC_FOL_FT_Jump_SW" ObjectPath="\Events\MC_WU\Play_MC_FOL_FT_Jump_SW" GUID="{84F52436-C579-4C37-9804-C7D11AEDCC08}" DurationType="OneShot" DurationMin="0.42432198" DurationMax="0.92546445">
+					<SwitchContainers>
+						<SwitchContainer>
+							<SwitchValue GroupType="Switch" GroupId="757195373" Id="841620460" GUID="{7D8D0D4C-3D1C-43A2-B357-3F03FF424DDB}" Default="true"/>
+							<MediaRefs>
+								<MediaRef Id="114517244"/>
+								<MediaRef Id="442853450"/>
+								<MediaRef Id="499540378"/>
+								<MediaRef Id="738022832"/>
+								<MediaRef Id="793802699"/>
+							</MediaRefs>
+						</SwitchContainer>
+						<SwitchContainer>
+							<SwitchValue GroupType="Switch" GroupId="757195373" Id="803837735" GUID="{0F8A73BD-8A92-4819-BE09-452FE32E1FBC}"/>
+							<MediaRefs>
+								<MediaRef Id="34141530"/>
+								<MediaRef Id="58062480"/>
+								<MediaRef Id="305528684"/>
+								<MediaRef Id="608609148"/>
+								<MediaRef Id="971911144"/>
+							</MediaRefs>
+						</SwitchContainer>
+						<SwitchContainer>
+							<SwitchValue GroupType="Switch" GroupId="757195373" Id="2473969246" GUID="{4F4901C3-CC0C-4142-BDF8-FF62F7720DE3}"/>
+							<MediaRefs>
+								<MediaRef Id="156842051"/>
+								<MediaRef Id="339856009"/>
+								<MediaRef Id="451049292"/>
+								<MediaRef Id="541415762"/>
+								<MediaRef Id="851952181"/>
+							</MediaRefs>
+						</SwitchContainer>
+					</SwitchContainers>
+				</Event>
+				<Event Id="2116962020" Name="Play_MC_FOL_FT_Land_SW" ObjectPath="\Events\MC_WU\Play_MC_FOL_FT_Land_SW" GUID="{3AABFDF5-D848-4A71-84AA-A7DEDC1F4177}" DurationType="OneShot" DurationMin="0.35762826" DurationMax="0.91374254">
+					<SwitchContainers>
+						<SwitchContainer>
+							<SwitchValue GroupType="Switch" GroupId="757195373" Id="841620460" GUID="{7D8D0D4C-3D1C-43A2-B357-3F03FF424DDB}" Default="true"/>
+							<MediaRefs>
+								<MediaRef Id="16112564"/>
+								<MediaRef Id="138501133"/>
+								<MediaRef Id="148436568"/>
+								<MediaRef Id="318319530"/>
+								<MediaRef Id="683985857"/>
+							</MediaRefs>
+						</SwitchContainer>
+						<SwitchContainer>
+							<SwitchValue GroupType="Switch" GroupId="757195373" Id="803837735" GUID="{0F8A73BD-8A92-4819-BE09-452FE32E1FBC}"/>
+							<MediaRefs>
+								<MediaRef Id="187397785"/>
+								<MediaRef Id="282121010"/>
+								<MediaRef Id="430767489"/>
+								<MediaRef Id="483253408"/>
+								<MediaRef Id="1003274806"/>
+							</MediaRefs>
+						</SwitchContainer>
+						<SwitchContainer>
+							<SwitchValue GroupType="Switch" GroupId="757195373" Id="2473969246" GUID="{4F4901C3-CC0C-4142-BDF8-FF62F7720DE3}"/>
+							<MediaRefs>
+								<MediaRef Id="97955047"/>
+								<MediaRef Id="146789455"/>
+								<MediaRef Id="395573930"/>
+								<MediaRef Id="454622091"/>
+								<MediaRef Id="728432909"/>
+							</MediaRefs>
+						</SwitchContainer>
+					</SwitchContainers>
+				</Event>
+				<Event Id="294373914" Name="Play_MC_FOL_FT_SW" ObjectPath="\Events\MC_WU\Play_MC_FOL_FT_SW" GUID="{770A8171-A3BF-4A55-9CA5-93ECE5CBF8BD}" DurationType="OneShot" DurationMin="0.20717718" DurationMax="0.8268297">
+					<SwitchContainers>
+						<SwitchContainer>
+							<SwitchValue GroupType="Switch" GroupId="757195373" Id="841620460" GUID="{7D8D0D4C-3D1C-43A2-B357-3F03FF424DDB}" Default="true"/>
+							<MediaRefs>
+								<MediaRef Id="28276971"/>
+								<MediaRef Id="75654975"/>
+								<MediaRef Id="163843360"/>
+								<MediaRef Id="267703531"/>
+								<MediaRef Id="268013152"/>
+								<MediaRef Id="480059959"/>
+								<MediaRef Id="534496258"/>
+								<MediaRef Id="602677679"/>
+								<MediaRef Id="655344864"/>
+								<MediaRef Id="814998601"/>
+								<MediaRef Id="816346842"/>
+								<MediaRef Id="1036129781"/>
+							</MediaRefs>
+						</SwitchContainer>
+						<SwitchContainer>
+							<SwitchValue GroupType="Switch" GroupId="757195373" Id="803837735" GUID="{0F8A73BD-8A92-4819-BE09-452FE32E1FBC}"/>
+							<MediaRefs>
+								<MediaRef Id="44684202"/>
+								<MediaRef Id="109232168"/>
+								<MediaRef Id="211150638"/>
+								<MediaRef Id="387146543"/>
+								<MediaRef Id="542236427"/>
+								<MediaRef Id="620312545"/>
+								<MediaRef Id="673489173"/>
+								<MediaRef Id="721183356"/>
+								<MediaRef Id="779936328"/>
+								<MediaRef Id="838939217"/>
+								<MediaRef Id="910413546"/>
+								<MediaRef Id="967065821"/>
+							</MediaRefs>
+						</SwitchContainer>
+						<SwitchContainer>
+							<SwitchValue GroupType="Switch" GroupId="757195373" Id="2473969246" GUID="{4F4901C3-CC0C-4142-BDF8-FF62F7720DE3}"/>
+							<MediaRefs>
+								<MediaRef Id="4962513"/>
+								<MediaRef Id="81610070"/>
+								<MediaRef Id="99306815"/>
+								<MediaRef Id="104687879"/>
+								<MediaRef Id="174467291"/>
+								<MediaRef Id="225595462"/>
+								<MediaRef Id="300270566"/>
+								<MediaRef Id="402066446"/>
+								<MediaRef Id="592388296"/>
+								<MediaRef Id="764749319"/>
+								<MediaRef Id="888066358"/>
+								<MediaRef Id="898538319"/>
+							</MediaRefs>
+						</SwitchContainer>
+						<SwitchContainer>
+							<SwitchValue GroupType="Switch" GroupId="757195373" Id="841620460" GUID="{7D8D0D4C-3D1C-43A2-B357-3F03FF424DDB}" Default="true"/>
+							<MediaRefs>
+								<MediaRef Id="28276971"/>
+								<MediaRef Id="75654975"/>
+								<MediaRef Id="163843360"/>
+								<MediaRef Id="267703531"/>
+								<MediaRef Id="268013152"/>
+								<MediaRef Id="480059959"/>
+								<MediaRef Id="534496258"/>
+								<MediaRef Id="602677679"/>
+								<MediaRef Id="655344864"/>
+								<MediaRef Id="814998601"/>
+								<MediaRef Id="816346842"/>
+								<MediaRef Id="1036129781"/>
+							</MediaRefs>
+						</SwitchContainer>
+						<SwitchContainer>
+							<SwitchValue GroupType="Switch" GroupId="757195373" Id="803837735" GUID="{0F8A73BD-8A92-4819-BE09-452FE32E1FBC}"/>
+							<MediaRefs>
+								<MediaRef Id="44684202"/>
+								<MediaRef Id="109232168"/>
+								<MediaRef Id="211150638"/>
+								<MediaRef Id="387146543"/>
+								<MediaRef Id="542236427"/>
+								<MediaRef Id="620312545"/>
+								<MediaRef Id="673489173"/>
+								<MediaRef Id="721183356"/>
+								<MediaRef Id="779936328"/>
+								<MediaRef Id="838939217"/>
+								<MediaRef Id="910413546"/>
+								<MediaRef Id="967065821"/>
+							</MediaRefs>
+						</SwitchContainer>
+						<SwitchContainer>
+							<SwitchValue GroupType="Switch" GroupId="757195373" Id="2473969246" GUID="{4F4901C3-CC0C-4142-BDF8-FF62F7720DE3}"/>
+							<MediaRefs>
+								<MediaRef Id="4962513"/>
+								<MediaRef Id="81610070"/>
+								<MediaRef Id="99306815"/>
+								<MediaRef Id="104687879"/>
+								<MediaRef Id="174467291"/>
+								<MediaRef Id="225595462"/>
+								<MediaRef Id="300270566"/>
+								<MediaRef Id="402066446"/>
+								<MediaRef Id="592388296"/>
+								<MediaRef Id="764749319"/>
+								<MediaRef Id="888066358"/>
+								<MediaRef Id="898538319"/>
+							</MediaRefs>
+						</SwitchContainer>
+					</SwitchContainers>
+				</Event>
+				<Event Id="1177297501" Name="Play_MC_SFX_Gun_Shoot_RC" ObjectPath="\Events\MC_WU\Play_MC_SFX_Gun_Shoot_RC" GUID="{19EDAAA1-DF79-4328-9566-97F28CD19D08}" DurationType="OneShot" DurationMin="0.80338675" DurationMax="1.8403275">
+					<MediaRefs>
+						<MediaRef Id="36917763"/>
+						<MediaRef Id="62282605"/>
+						<MediaRef Id="70109824"/>
+						<MediaRef Id="421361594"/>
+						<MediaRef Id="610918733"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="4122495842" Name="Play_MC_SFX_UpdateAmmo_RC" ObjectPath="\Events\MC_WU\Play_MC_SFX_UpdateAmmo_RC" GUID="{4C30DC19-451C-449E-9B9A-AADEEAB14B44}" DurationType="OneShot" DurationMin="2.5657325" DurationMax="3.6410909">
+					<MediaRefs>
+						<MediaRef Id="47427430"/>
+						<MediaRef Id="101923972"/>
+						<MediaRef Id="511633870"/>
+						<MediaRef Id="607185623"/>
+						<MediaRef Id="610072169"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="3961249933" Name="Play_MC_SFX_Weapon_Armed_RC" ObjectPath="\Events\MC_WU\Play_MC_SFX_Weapon_Armed_RC" GUID="{E22125BE-E0CB-4EC0-A4CB-7460BE42B80E}" DurationType="OneShot" DurationMin="3.3666666" DurationMax="3.3666666">
+					<MediaRefs>
+						<MediaRef Id="772410827"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="3400800083" Name="Play_MC_SFX_Weapon_NoAmmo_RC" ObjectPath="\Events\MC_WU\Play_MC_SFX_Weapon_NoAmmo_RC" GUID="{708ACD16-F6BC-49F8-85D6-8076E283E48F}" DurationType="OneShot" DurationMin="1.7806667" DurationMax="1.7806667">
+					<MediaRefs>
+						<MediaRef Id="418331982"/>
+					</MediaRefs>
+				</Event>
+			</Events>
+			<Busses>
+				<Bus Id="109159411" Name="Game_Global" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global" GUID="{FAD5C029-0A02-4BD2-97F7-F8C20B7A95BD}"/>
+				<Bus Id="393239870" Name="SFX" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global\SFX" GUID="{EB4CE24D-8196-408E-9775-5E8EEFE98495}"/>
+				<Bus Id="1117531639" Name="AMB" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global\AMB" GUID="{C1595F21-FBBF-4B04-AC1A-78D86879A937}"/>
+				<Bus Id="1551306167" Name="UI" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\UI" GUID="{B5E7816E-C3FC-4992-B763-4078089CE674}"/>
+				<Bus Id="1685527061" Name="MC" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global\MC" GUID="{B3079877-B26F-4239-A3AB-9C7AFFCBC797}"/>
+				<Bus Id="2290178407" Name="FOES_Tourelle" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global\FOES_Tourelle" GUID="{D783D57E-4B6F-4101-8F5F-FD96F0409170}"/>
+				<Bus Id="3313685232" Name="Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Voices" GUID="{00AA482D-3F12-46A5-8177-E8A172D08E63}"/>
+				<Bus Id="3623095082" Name="FOES_Flying" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global\FOES_Flying" GUID="{439831F9-AA50-4CD2-98C3-ACD8B187380E}"/>
+				<Bus Id="3991942870" Name="Music" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Music" GUID="{08156595-7637-4348-AC3C-2EDE3FCCB08F}"/>
+				<Bus Id="4056684167" Name="Master" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master" GUID="{F3A976BC-47E9-46E5-9EEC-F566BB39DBEE}"/>
+			</Busses>
+			<AuxBusses>
+				<AuxBus Id="1215931641" Name="RVB_Arena" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Arena" GUID="{54C7EBDA-4885-4850-8969-FB63BDACC807}"/>
+				<AuxBus Id="1408817756" Name="RVB_RFX_Arena" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_RFX_Arena" GUID="{CC7A2F05-EE75-4E8E-B097-98A1938CB5E4}">
+					<PluginRefs>
+						<Custom>
+							<PluginRef Id="169636257"/>
+						</Custom>
+					</PluginRefs>
+				</AuxBus>
+				<AuxBus Id="3571340017" Name="RVB_Hub" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Hub" GUID="{D499EBE4-F26A-48E5-B89D-1F7C43D829E3}"/>
+			</AuxBusses>
+			<SwitchGroups>
+				<SwitchGroup Id="757195373" Name="SW_Material" ObjectPath="\Switches\Default Work Unit\SW_Material" GUID="{828E8B9F-6B07-4984-BFE7-B76CEA058A8B}">
+					<Switches>
+						<Switch Id="803837735" Name="Sand" ObjectPath="\Switches\Default Work Unit\SW_Material\Sand" GUID="{0F8A73BD-8A92-4819-BE09-452FE32E1FBC}"/>
+						<Switch Id="841620460" Name="Concrete" ObjectPath="\Switches\Default Work Unit\SW_Material\Concrete" GUID="{7D8D0D4C-3D1C-43A2-B357-3F03FF424DDB}"/>
+						<Switch Id="2473969246" Name="Metal" ObjectPath="\Switches\Default Work Unit\SW_Material\Metal" GUID="{4F4901C3-CC0C-4142-BDF8-FF62F7720DE3}"/>
+					</Switches>
+				</SwitchGroup>
+			</SwitchGroups>
+		</SoundBank>
+	</SoundBanks>
+	<FileHash>{64FC3D45-8BC7-66EC-5405-BAA43E5C4F4C}</FileHash>
+</SoundBanksInfo>

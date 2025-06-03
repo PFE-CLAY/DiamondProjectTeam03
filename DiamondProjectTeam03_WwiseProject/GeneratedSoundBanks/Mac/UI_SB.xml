@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SoundBanksInfo Platform="Mac" BasePlatform="Mac" SchemaVersion="16" SoundBankVersion="150">
+	<SoundBanks>
+		<SoundBank Id="1734647573" Type="User" GUID="{6B7E0BFB-A825-46AA-907A-12621FC4038F}" Language="SFX" Hash="{11B8418C-6918-F348-4DE0-38893901FE38}">
+			<ObjectPath>\SoundBanks\SoundBanks_WU\UI_SB</ObjectPath>
+			<ShortName>UI_SB</ShortName>
+			<Path>UI_SB.bnk</Path>
+			<Media>
+				<File Id="109319961" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>UI_MainMenu_Button_Back_01.wav</ShortName>
+					<CachePath>SFX/UI_MainMenu_Button_Back_01_818F3B66.wem</CachePath>
+				</File>
+				<File Id="463196028" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>UI_MainMenu_Button_Back_02.wav</ShortName>
+					<CachePath>SFX/UI_MainMenu_Button_Back_02_818F3B66.wem</CachePath>
+				</File>
+				<File Id="665852765" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>UI_MainMenu_Button_Back_03.wav</ShortName>
+					<CachePath>SFX/UI_MainMenu_Button_Back_03_818F3B66.wem</CachePath>
+				</File>
+				<File Id="702949171" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>UI_MainMenu_Button_Validation_02.wav</ShortName>
+					<CachePath>SFX/UI_MainMenu_Button_Validation_02_818F3B66.wem</CachePath>
+				</File>
+				<File Id="853115927" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>UI_MainMenu_Button_Validation_01.wav</ShortName>
+					<CachePath>SFX/UI_MainMenu_Button_Validation_01_818F3B66.wem</CachePath>
+				</File>
+				<File Id="1007928850" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>UI_MainMenu_Button_Validation_03.wav</ShortName>
+					<CachePath>SFX/UI_MainMenu_Button_Validation_03_818F3B66.wem</CachePath>
+				</File>
+			</Media>
+			<Plugins>
+				<Custom>
+					<Plugin Id="169636257" Name="Have_U_Ever_Been_Outside (Custom)" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_RFX_Arena\[Effect Slot [0]: (RoomVerb)]\Have_U_Ever_Been_Outside (Custom)" GUID="{4EC028FC-6FD5-4AC6-A71F-B2CB8F1117DF}" LibName="Wwise RoomVerb" LibId="7733251"/>
+				</Custom>
+			</Plugins>
+			<Events>
+				<Event Id="242330496" Name="Play_UI_MainMenu_Button_Back_01" ObjectPath="\Events\UI_WU\Play_UI_MainMenu_Button_Back_01" GUID="{01C0CAE4-081F-4B6C-B86A-6C2B06CE1B6E}" DurationType="OneShot" DurationMin="1.1" DurationMax="1.1">
+					<MediaRefs>
+						<MediaRef Id="109319961"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="242330499" Name="Play_UI_MainMenu_Button_Back_02" ObjectPath="\Events\UI_WU\Play_UI_MainMenu_Button_Back_02" GUID="{E13DD8C4-5BBD-4349-8967-DBC2AEC8CF83}" DurationType="OneShot" DurationMin="1.1" DurationMax="1.1">
+					<MediaRefs>
+						<MediaRef Id="463196028"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="242330498" Name="Play_UI_MainMenu_Button_Back_03" ObjectPath="\Events\UI_WU\Play_UI_MainMenu_Button_Back_03" GUID="{BEED9BF3-D5D8-4536-BC27-BBBBED306872}" DurationType="OneShot" DurationMin="0.8" DurationMax="0.8">
+					<MediaRefs>
+						<MediaRef Id="665852765"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="3540367000" Name="Play_UI_MainMenu_Button_Validation_01" ObjectPath="\Events\UI_WU\Play_UI_MainMenu_Button_Validation_01" GUID="{B9A5BF93-6E33-4AC1-92A6-228E5E9B7956}" DurationType="OneShot" DurationMin="1.1886168" DurationMax="1.1886168">
+					<MediaRefs>
+						<MediaRef Id="853115927"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="3540367003" Name="Play_UI_MainMenu_Button_Validation_02" ObjectPath="\Events\UI_WU\Play_UI_MainMenu_Button_Validation_02" GUID="{89A8B49D-A61E-47FA-8266-DA2F97115521}" DurationType="OneShot" DurationMin="1.1886168" DurationMax="1.1886168">
+					<MediaRefs>
+						<MediaRef Id="702949171"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="3540367002" Name="Play_UI_MainMenu_Button_Validation_03" ObjectPath="\Events\UI_WU\Play_UI_MainMenu_Button_Validation_03" GUID="{9D2FAC20-12C9-442E-B40F-E57A18D93AA4}" DurationType="OneShot" DurationMin="1.0853968" DurationMax="1.0853968">
+					<MediaRefs>
+						<MediaRef Id="1007928850"/>
+					</MediaRefs>
+				</Event>
+			</Events>
+			<Busses>
+				<Bus Id="109159411" Name="Game_Global" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global" GUID="{FAD5C029-0A02-4BD2-97F7-F8C20B7A95BD}"/>
+				<Bus Id="393239870" Name="SFX" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global\SFX" GUID="{EB4CE24D-8196-408E-9775-5E8EEFE98495}"/>
+				<Bus Id="1117531639" Name="AMB" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global\AMB" GUID="{C1595F21-FBBF-4B04-AC1A-78D86879A937}"/>
+				<Bus Id="1551306167" Name="UI" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\UI" GUID="{B5E7816E-C3FC-4992-B763-4078089CE674}"/>
+				<Bus Id="1685527061" Name="MC" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global\MC" GUID="{B3079877-B26F-4239-A3AB-9C7AFFCBC797}"/>
+				<Bus Id="2290178407" Name="FOES_Tourelle" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global\FOES_Tourelle" GUID="{D783D57E-4B6F-4101-8F5F-FD96F0409170}"/>
+				<Bus Id="3313685232" Name="Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Voices" GUID="{00AA482D-3F12-46A5-8177-E8A172D08E63}"/>
+				<Bus Id="3623095082" Name="FOES_Flying" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global\FOES_Flying" GUID="{439831F9-AA50-4CD2-98C3-ACD8B187380E}"/>
+				<Bus Id="3991942870" Name="Music" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Music" GUID="{08156595-7637-4348-AC3C-2EDE3FCCB08F}"/>
+				<Bus Id="4056684167" Name="Master" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master" GUID="{F3A976BC-47E9-46E5-9EEC-F566BB39DBEE}"/>
+			</Busses>
+			<AuxBusses>
+				<AuxBus Id="1215931641" Name="RVB_Arena" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Arena" GUID="{54C7EBDA-4885-4850-8969-FB63BDACC807}"/>
+				<AuxBus Id="1408817756" Name="RVB_RFX_Arena" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_RFX_Arena" GUID="{CC7A2F05-EE75-4E8E-B097-98A1938CB5E4}">
+					<PluginRefs>
+						<Custom>
+							<PluginRef Id="169636257"/>
+						</Custom>
+					</PluginRefs>
+				</AuxBus>
+				<AuxBus Id="3571340017" Name="RVB_Hub" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Hub" GUID="{D499EBE4-F26A-48E5-B89D-1F7C43D829E3}"/>
+			</AuxBusses>
+		</SoundBank>
+	</SoundBanks>
+	<FileHash>{A8FC0611-CF2A-B1AE-B7D3-291F463BF6AD}</FileHash>
+</SoundBanksInfo>

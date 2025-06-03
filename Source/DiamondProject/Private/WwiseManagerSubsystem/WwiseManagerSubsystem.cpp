@@ -4,6 +4,7 @@
 
 #include "AkRtpc.h"
 #include "../Plugins/Wwise/Source/AkAudio/Classes/AkAudioEvent.h"
+#include "WwiseManagerSubsystem/WwiseHandlerComponent.h"
 
 void UWwiseManagerSubsystem::Initialize(FSubsystemCollectionBase& Collection)
 {
@@ -17,15 +18,31 @@ void UWwiseManagerSubsystem::Deinitialize()
 	UE_LOG(LogTemp, Log, TEXT("WwiseAudioManagerSubsystem Deinitialized"));
 }
 
-void UWwiseManagerSubsystem::PlayEvent(UAkAudioEvent* Event, AActor* TargetActor, const FOnAkPostEventCallback& PostEventCallback)
+int32 UWwiseManagerSubsystem::PostEvent(UAkAudioEvent* Event, AActor* TargetActor)
 {
+	AkPlayingID PlayingID = AK_INVALID_PLAYING_ID;
+	FOnAkPostEventCallback Callback;
+	UWwiseHandlerComponent* WwiseHandler = nullptr;
+	
 	if (Event && TargetActor) {
 		EventCurrentlyPlayedByActor.Add(TargetActor, Event);
-		UAkGameplayStatics::PostEvent(Event, TargetActor, 0, PostEventCallback);
-		UE_LOG(LogTemp, Log, TEXT("Playing Wwise Event: %s"), *Event->GetName());
+		WwiseHandler = TargetActor->FindComponentByClass<UWwiseHandlerComponent>();
+		if (WwiseHandler) {
+			Callback = FOnAkPostEventCallback();
+			Callback.BindUFunction(WwiseHandler, "HandleCallback");
+		} else {
+			UE_LOG(LogTemp, Error, TEXT("[UWwiseManagerSubsystem::PostEvent] WwiseHandlerComponent not found on TargetActor!"));
+		}
+		PlayingID = UAkGameplayStatics::PostEvent(Event, TargetActor, WwiseHandler->CallbackMask, Callback);
+		WwiseHandler->LastPlayedID = PlayingID;
+		UE_LOG(LogTemp, Log, TEXT("[UWwiseManagerSubsystem::PostEvent] Playing Wwise Event: %s ID: %d"), *Event->GetName(), PlayingID);
 	} else {
-		UE_LOG(LogTemp, Warning, TEXT("Event or TargetActor is null!"));
+		UE_LOG(LogTemp, Warning, TEXT("[UWwiseManagerSubsystem::PostEvent] Event or TargetActor is null!"));
 	}
+	if (PlayingID == AK_INVALID_PLAYING_ID) {
+		UE_LOG(LogTemp, Error, TEXT("[UWwiseManagerSubsystem::PostEvent] Failed to post event!"));
+	}
+	return PlayingID;
 }
 
 void UWwiseManagerSubsystem::SetRTPCValue(const UAkRtpc* RTPCValue, float Value, int32 InterpolationTimeMs, AActor* Actor)
@@ -53,4 +70,16 @@ void UWwiseManagerSubsystem::SetCategoryVolume(ESoundCategory Category, float Vo
 		UAkGameplayStatics::SetRTPCValue(nullptr, Volume, InterpolateTimeMs, TargetActor, FName(RTPCName));
 		UE_LOG(LogTemp, Log, TEXT("Set volume for %s to %f"), *RTPCName, Volume);
 	}
+}
+
+void UWwiseManagerSubsystem::SetSwitch(const UAkSwitchValue* SwitchValue, AActor* Actor, FName SwitchGroup, FName SwitchState)
+{
+	UE_LOG(LogTemp, Log, TEXT("Setting Switch State: %s to %s from actor: %s"), *SwitchGroup.ToString(), *SwitchState.ToString(), *Actor->GetName());
+	UAkGameplayStatics::SetSwitch(SwitchValue, Actor, SwitchGroup, SwitchState);
+}
+
+void UWwiseManagerSubsystem::SetState(const UAkStateValue* StateValue, FName stateGroup, FName state)
+{
+	UE_LOG(LogTemp, Log, TEXT("Setting State: %s to %s"), *stateGroup.ToString(), *state.ToString());
+	UAkGameplayStatics::SetState(StateValue, stateGroup, state);
 }

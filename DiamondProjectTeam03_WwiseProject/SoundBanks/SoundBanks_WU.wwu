@@ -8,7 +8,12 @@
 						<Property Name="Color" Type="int16" Value="11"/>
 						<Property Name="OverrideColor" Type="bool" Value="True"/>
 					</PropertyList>
-					<ObjectInclusionList/>
+					<ObjectInclusionList>
+						<ObjectRef Name="Stop_FOES_SFX_Flying_Idle_LP" ID="{9C4A0482-8257-4724-B64F-85F88099C5B0}" WorkUnitID="{B22A3D9B-0AF2-4C03-ADD1-522AA0AC5AA9}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_FOES_SFX_Flying_Idle_LP" ID="{CF4E623B-F60A-4740-B500-0E5586E75310}" WorkUnitID="{B22A3D9B-0AF2-4C03-ADD1-522AA0AC5AA9}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_FOES_SFX_Flying_Shoot_RC" ID="{615B6DF4-5110-477A-ADAD-83075E2A2CC2}" WorkUnitID="{B22A3D9B-0AF2-4C03-ADD1-522AA0AC5AA9}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Master_WU" ID="{A9F2777E-FBA3-4BC0-B5B3-14E0777A7B23}" WorkUnitID="{A9F2777E-FBA3-4BC0-B5B3-14E0777A7B23}" Origin="Manual" Filter="7"/>
+					</ObjectInclusionList>
 					<ObjectExclusionList/>
 					<GameSyncExclusionList/>
 				</SoundBank>
@@ -24,6 +29,7 @@
 						<ObjectRef Name="Play_UI_MainMenu_Button_Validation_02" ID="{89A8B49D-A61E-47FA-8266-DA2F97115521}" WorkUnitID="{33FB5FA3-EF92-4889-B391-45FA1B390E1B}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_UI_MainMenu_Button_Validation_01" ID="{B9A5BF93-6E33-4AC1-92A6-228E5E9B7956}" WorkUnitID="{33FB5FA3-EF92-4889-B391-45FA1B390E1B}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_UI_MainMenu_Button_Back_01" ID="{01C0CAE4-081F-4B6C-B86A-6C2B06CE1B6E}" WorkUnitID="{33FB5FA3-EF92-4889-B391-45FA1B390E1B}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Master_WU" ID="{A9F2777E-FBA3-4BC0-B5B3-14E0777A7B23}" WorkUnitID="{A9F2777E-FBA3-4BC0-B5B3-14E0777A7B23}" Origin="Manual" Filter="7"/>
 					</ObjectInclusionList>
 					<ObjectExclusionList/>
 					<GameSyncExclusionList/>
@@ -34,6 +40,8 @@
 						<Property Name="OverrideColor" Type="bool" Value="True"/>
 					</PropertyList>
 					<ObjectInclusionList>
+						<ObjectRef Name="Play_FOES_SFX_Tourelle_Death_RC" ID="{03966878-2B14-4479-9F3B-3C317D6EB7B1}" WorkUnitID="{F38C7AC6-6811-4B1E-A7A4-2F26EBB9F864}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Master_WU" ID="{A9F2777E-FBA3-4BC0-B5B3-14E0777A7B23}" WorkUnitID="{A9F2777E-FBA3-4BC0-B5B3-14E0777A7B23}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_FOES_SFX_Tourelle_Shoot_RC" ID="{140E36FB-31F3-4C66-AC5D-E9E86C57BA68}" WorkUnitID="{F38C7AC6-6811-4B1E-A7A4-2F26EBB9F864}" Origin="Manual" Filter="7"/>
 					</ObjectInclusionList>
 					<ObjectExclusionList/>
@@ -45,7 +53,12 @@
 						<Property Name="OverrideColor" Type="bool" Value="True"/>
 					</PropertyList>
 					<ObjectInclusionList>
+						<ObjectRef Name="Play_AMB_PAD_CorpseTrap" ID="{06E4EAB2-C55E-4652-84C1-FD484B705D76}" WorkUnitID="{1BF409B0-B754-4C8B-AEBF-EFEE5E6D5D4D}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_AMB_Arena_Crowd" ID="{044D5574-12FD-4A7D-829F-E12D304EBC61}" WorkUnitID="{1BF409B0-B754-4C8B-AEBF-EFEE5E6D5D4D}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_AMB_PAD_ControlCenter" ID="{36CC78C6-483D-4AB2-9AF1-71F27874043E}" WorkUnitID="{1BF409B0-B754-4C8B-AEBF-EFEE5E6D5D4D}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Master_WU" ID="{A9F2777E-FBA3-4BC0-B5B3-14E0777A7B23}" WorkUnitID="{A9F2777E-FBA3-4BC0-B5B3-14E0777A7B23}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_AMB_PAD_Pyramid_Closed" ID="{F627B9DE-2BDF-4BC2-B74E-5E799A3FBDBF}" WorkUnitID="{1BF409B0-B754-4C8B-AEBF-EFEE5E6D5D4D}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_AMB_PAD_Hub" ID="{E1692669-CD47-4C1F-9271-81F40DE53532}" WorkUnitID="{1BF409B0-B754-4C8B-AEBF-EFEE5E6D5D4D}" Origin="Manual" Filter="7"/>
 					</ObjectInclusionList>
 					<ObjectExclusionList/>
 					<GameSyncExclusionList/>
@@ -55,7 +68,9 @@
 						<Property Name="Color" Type="int16" Value="23"/>
 						<Property Name="OverrideColor" Type="bool" Value="True"/>
 					</PropertyList>
-					<ObjectInclusionList/>
+					<ObjectInclusionList>
+						<ObjectRef Name="Master_WU" ID="{A9F2777E-FBA3-4BC0-B5B3-14E0777A7B23}" WorkUnitID="{A9F2777E-FBA3-4BC0-B5B3-14E0777A7B23}" Origin="Manual" Filter="7"/>
+					</ObjectInclusionList>
 					<ObjectExclusionList/>
 					<GameSyncExclusionList/>
 				</SoundBank>
@@ -65,8 +80,37 @@
 						<Property Name="OverrideColor" Type="bool" Value="True"/>
 					</PropertyList>
 					<ObjectInclusionList>
+						<ObjectRef Name="MC_FOL_FT_Jump_SW" ID="{90E000BB-FBC6-417E-862B-6DBEC2A64C81}" WorkUnitID="{1B87B22A-8865-441B-A287-78E87390F212}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="MC_FOL_FT_Land_SW" ID="{C97E023A-E426-42A4-8225-A69EEAA7095D}" WorkUnitID="{1B87B22A-8865-441B-A287-78E87390F212}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_MC_SFX_Gun_Shoot_RC" ID="{19EDAAA1-DF79-4328-9566-97F28CD19D08}" WorkUnitID="{0C46C646-7080-4D39-B62D-1B5389FBC32E}" Origin="Manual" Filter="7"/>
-						<ObjectRef Name="Play_MC_SFX_Dash_RC" ID="{B806ED59-4ACB-4371-BE4B-1518B580024B}" WorkUnitID="{0C46C646-7080-4D39-B62D-1B5389FBC32E}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="MC_WU" ID="{1B87B22A-8865-441B-A287-78E87390F212}" WorkUnitID="{1B87B22A-8865-441B-A287-78E87390F212}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_MC_FOL_FT_SW" ID="{770A8171-A3BF-4A55-9CA5-93ECE5CBF8BD}" WorkUnitID="{0C46C646-7080-4D39-B62D-1B5389FBC32E}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Master_WU" ID="{A9F2777E-FBA3-4BC0-B5B3-14E0777A7B23}" WorkUnitID="{A9F2777E-FBA3-4BC0-B5B3-14E0777A7B23}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="MC_WU" ID="{0C46C646-7080-4D39-B62D-1B5389FBC32E}" WorkUnitID="{0C46C646-7080-4D39-B62D-1B5389FBC32E}" Origin="Manual" Filter="7"/>
+					</ObjectInclusionList>
+					<ObjectExclusionList/>
+					<GameSyncExclusionList/>
+				</SoundBank>
+				<SoundBank Name="SFX_SB" ID="{459D1F67-52BD-4FA1-B846-B8F3A50C2C5F}">
+					<PropertyList>
+						<Property Name="Color" Type="int16" Value="17"/>
+						<Property Name="OverrideColor" Type="bool" Value="True"/>
+					</PropertyList>
+					<ObjectInclusionList/>
+					<ObjectExclusionList/>
+					<GameSyncExclusionList/>
+				</SoundBank>
+				<SoundBank Name="GPE_SB" ID="{D2378E68-5468-4849-BC4A-8FC6D8A3BF29}">
+					<PropertyList>
+						<Property Name="Color" Type="int16" Value="15"/>
+						<Property Name="OverrideColor" Type="bool" Value="True"/>
+					</PropertyList>
+					<ObjectInclusionList>
+						<ObjectRef Name="Play_SFX_CorpseTrap_Closing" ID="{8B0069CF-C942-413E-842A-B22826187366}" WorkUnitID="{44DB29AC-F5E7-466B-9313-B33937B56A9D}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_GPE_JumPads_RC" ID="{32F429C1-2B0E-427B-9F12-8775F5CFF0AD}" WorkUnitID="{44DB29AC-F5E7-466B-9313-B33937B56A9D}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_GPE_PillarDestroyed" ID="{65F84DEF-9AA8-456B-A6AF-7249DA8CED54}" WorkUnitID="{44DB29AC-F5E7-466B-9313-B33937B56A9D}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_SFX_CorpseTrap_Opening" ID="{3B91810C-60F0-4DA1-8459-1EC729C58878}" WorkUnitID="{44DB29AC-F5E7-466B-9313-B33937B56A9D}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_GPE_JumpPads_Activation_RC" ID="{7A4A1C10-6F19-4EFC-9649-9850E9202517}" WorkUnitID="{44DB29AC-F5E7-466B-9313-B33937B56A9D}" Origin="Manual" Filter="7"/>
 					</ObjectInclusionList>
 					<ObjectExclusionList/>
 					<GameSyncExclusionList/>

@@ -10,36 +10,807 @@
     "Type": "User",
     "GUID": "{9DC5CBA4-02D0-4677-A565-21ECA413E694}",
     "Language": "SFX",
-    "Hash": "{33B1C8A1-12E5-5F1A-173A-EAA384714293}",
+    "Hash": "{7F2D58DE-DF4F-4903-C564-7F249EE37B0F}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\AMB_SB",
     "ShortName": "AMB_SB",
     "Path": "AMB_SB.bnk",
     "Media": [
      {
-      "Id": "397963527",
+      "Id": "4481750",
       "Language": "SFX",
       "Streaming": "false",
       "Location": "Memory",
-      "ShortName": "AMB_Arena_Crowd.wav",
-      "CachePath": "SFX/AMB_Arena_Crowd_FBC78EF0.wem"
+      "ShortName": "AMB\\RFX\\AMB_RFX_Crowd_Pitched_Reaction_04.wav",
+      "CachePath": "SFX/AMB/RFX/AMB_RFX_Crowd_Pitched_Reaction_04_818F3B66.wem"
+     },
+     {
+      "Id": "84736735",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB\\Pads\\AMB_RFX_Negative_Reaction_06.wav",
+      "CachePath": "SFX/AMB/Pads/AMB_RFX_Negative_Reaction_06_818F3B66.wem"
+     },
+     {
+      "Id": "127175197",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB\\RFX\\AMB_RFX_Crowd_Individual_05.wav",
+      "CachePath": "SFX/AMB/RFX/AMB_RFX_Crowd_Individual_05_818F3B66.wem"
+     },
+     {
+      "Id": "138942913",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB\\RFX\\AMB_RFX_Crowd_ClassicReaction_06.wav",
+      "CachePath": "SFX/AMB/RFX/AMB_RFX_Crowd_ClassicReaction_06_818F3B66.wem"
+     },
+     {
+      "Id": "149514301",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB\\RFX\\AMB_RFX_Crowd_Individual_03.wav",
+      "CachePath": "SFX/AMB/RFX/AMB_RFX_Crowd_Individual_03_818F3B66.wem"
+     },
+     {
+      "Id": "155546430",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB\\RFX\\AMB_RFX_Crowd_ClassicReaction_07.wav",
+      "CachePath": "SFX/AMB/RFX/AMB_RFX_Crowd_ClassicReaction_07_818F3B66.wem"
+     },
+     {
+      "Id": "179362195",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB\\Pads\\AMB_RFX_Negative_Reaction_08.wav",
+      "CachePath": "SFX/AMB/Pads/AMB_RFX_Negative_Reaction_08_818F3B66.wem"
+     },
+     {
+      "Id": "203208671",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB\\RFX\\AMB_RFX_Crowd_Individual_07.wav",
+      "CachePath": "SFX/AMB/RFX/AMB_RFX_Crowd_Individual_07_818F3B66.wem"
+     },
+     {
+      "Id": "268147826",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB\\Pads\\AMB_RFX_Negative_Reaction_07.wav",
+      "CachePath": "SFX/AMB/Pads/AMB_RFX_Negative_Reaction_07_818F3B66.wem"
+     },
+     {
+      "Id": "332135939",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB\\Pads\\AMB_RFX_Negative_Reaction_09.wav",
+      "CachePath": "SFX/AMB/Pads/AMB_RFX_Negative_Reaction_09_818F3B66.wem"
+     },
+     {
+      "Id": "339009553",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB\\Pads\\AMB_RFX_Negative_Reaction_01.wav",
+      "CachePath": "SFX/AMB/Pads/AMB_RFX_Negative_Reaction_01_818F3B66.wem"
+     },
+     {
+      "Id": "354075387",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB\\RFX\\AMB_RFX_Crowd_Pitched_Reaction_08.wav",
+      "CachePath": "SFX/AMB/RFX/AMB_RFX_Crowd_Pitched_Reaction_08_818F3B66.wem"
+     },
+     {
+      "Id": "367189538",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB\\RFX\\AMB_RFX_WarHorns_05.wav",
+      "CachePath": "SFX/AMB/RFX/AMB_RFX_WarHorns_05_818F3B66.wem"
+     },
+     {
+      "Id": "475148405",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB\\RFX\\AMB_RFX_WarHorns_03.wav",
+      "CachePath": "SFX/AMB/RFX/AMB_RFX_WarHorns_03_818F3B66.wem"
+     },
+     {
+      "Id": "484735255",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB\\Pads\\AMB_RFX_Negative_Reaction_05.wav",
+      "CachePath": "SFX/AMB/Pads/AMB_RFX_Negative_Reaction_05_818F3B66.wem"
+     },
+     {
+      "Id": "533084126",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB\\RFX\\AMB_RFX_Crowd_ClassicReaction_03.wav",
+      "CachePath": "SFX/AMB/RFX/AMB_RFX_Crowd_ClassicReaction_03_818F3B66.wem"
+     },
+     {
+      "Id": "552226407",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB\\RFX\\AMB_RFX_Crowd_Individual_04.wav",
+      "CachePath": "SFX/AMB/RFX/AMB_RFX_Crowd_Individual_04_818F3B66.wem"
+     },
+     {
+      "Id": "585712298",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB\\RFX\\AMB_RFX_Crowd_Pitched_Reaction_01.wav",
+      "CachePath": "SFX/AMB/RFX/AMB_RFX_Crowd_Pitched_Reaction_01_818F3B66.wem"
+     },
+     {
+      "Id": "680837929",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB\\RFX\\AMB_RFX_Crowd_Pitched_Reaction_05.wav",
+      "CachePath": "SFX/AMB/RFX/AMB_RFX_Crowd_Pitched_Reaction_05_818F3B66.wem"
+     },
+     {
+      "Id": "683095756",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB\\RFX\\AMB_PAD_Hub.wav",
+      "CachePath": "SFX/AMB/RFX/AMB_PAD_Hub_FBC78EF0.wem"
+     },
+     {
+      "Id": "742879851",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB\\RFX\\AMB_RFX_Crowd_Individual_01.wav",
+      "CachePath": "SFX/AMB/RFX/AMB_RFX_Crowd_Individual_01_818F3B66.wem"
+     },
+     {
+      "Id": "754998867",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB\\RFX\\AMB_RFX_WarHorns_01.wav",
+      "CachePath": "SFX/AMB/RFX/AMB_RFX_WarHorns_01_818F3B66.wem"
+     },
+     {
+      "Id": "762008811",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB\\RFX\\AMB_RFX_Crowd_ClassicReaction_01.wav",
+      "CachePath": "SFX/AMB/RFX/AMB_RFX_Crowd_ClassicReaction_01_818F3B66.wem"
+     },
+     {
+      "Id": "762580490",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB\\RFX\\AMB_RFX_WarHorns_06.wav",
+      "CachePath": "SFX/AMB/RFX/AMB_RFX_WarHorns_06_818F3B66.wem"
+     },
+     {
+      "Id": "773762840",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB\\RFX\\AMB_RFX_Crowd_ClassicReaction_04.wav",
+      "CachePath": "SFX/AMB/RFX/AMB_RFX_Crowd_ClassicReaction_04_818F3B66.wem"
+     },
+     {
+      "Id": "783949220",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB\\AMB_PAD_Crowd.wav",
+      "CachePath": "SFX/AMB/AMB_PAD_Crowd_FBC78EF0.wem"
+     },
+     {
+      "Id": "788907204",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB\\Pads\\AMB_PAD_CorpseTrap.wav",
+      "CachePath": "SFX/AMB/Pads/AMB_PAD_CorpseTrap_FBC78EF0.wem"
+     },
+     {
+      "Id": "809714582",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB\\RFX\\AMB_RFX_WarHorns_07.wav",
+      "CachePath": "SFX/AMB/RFX/AMB_RFX_WarHorns_07_818F3B66.wem"
+     },
+     {
+      "Id": "809843148",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB\\Pads\\AMB_RFX_Negative_Reaction_02.wav",
+      "CachePath": "SFX/AMB/Pads/AMB_RFX_Negative_Reaction_02_818F3B66.wem"
+     },
+     {
+      "Id": "828835349",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB\\RFX\\AMB_RFX_Crowd_Individual_06.wav",
+      "CachePath": "SFX/AMB/RFX/AMB_RFX_Crowd_Individual_06_818F3B66.wem"
+     },
+     {
+      "Id": "832021469",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB\\Pads\\AMB_RFX_Negative_Reaction_03.wav",
+      "CachePath": "SFX/AMB/Pads/AMB_RFX_Negative_Reaction_03_818F3B66.wem"
+     },
+     {
+      "Id": "832253334",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB\\RFX\\AMB_RFX_Crowd_Pitched_Reaction_03.wav",
+      "CachePath": "SFX/AMB/RFX/AMB_RFX_Crowd_Pitched_Reaction_03_818F3B66.wem"
+     },
+     {
+      "Id": "838454934",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB\\Pads\\AMB_PAD_ControlCenter.wav",
+      "CachePath": "SFX/AMB/Pads/AMB_PAD_ControlCenter_FBC78EF0.wem"
+     },
+     {
+      "Id": "843502340",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB\\RFX\\AMB_RFX_Crowd_ClassicReaction_02.wav",
+      "CachePath": "SFX/AMB/RFX/AMB_RFX_Crowd_ClassicReaction_02_818F3B66.wem"
+     },
+     {
+      "Id": "855821515",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB\\RFX\\AMB_RFX_Crowd_ClassicReaction_08.wav",
+      "CachePath": "SFX/AMB/RFX/AMB_RFX_Crowd_ClassicReaction_08_818F3B66.wem"
+     },
+     {
+      "Id": "864351804",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB\\RFX\\AMB_RFX_Crowd_Pitched_Reaction_06.wav",
+      "CachePath": "SFX/AMB/RFX/AMB_RFX_Crowd_Pitched_Reaction_06_818F3B66.wem"
+     },
+     {
+      "Id": "877176436",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB\\RFX\\AMB_RFX_Crowd_ClassicReaction_05.wav",
+      "CachePath": "SFX/AMB/RFX/AMB_RFX_Crowd_ClassicReaction_05_818F3B66.wem"
+     },
+     {
+      "Id": "900351003",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB\\RFX\\AMB_RFX_WarHorns_02.wav",
+      "CachePath": "SFX/AMB/RFX/AMB_RFX_WarHorns_02_818F3B66.wem"
+     },
+     {
+      "Id": "900928265",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB\\RFX\\AMB_RFX_Crowd_Pitched_Reaction_02.wav",
+      "CachePath": "SFX/AMB/RFX/AMB_RFX_Crowd_Pitched_Reaction_02_818F3B66.wem"
+     },
+     {
+      "Id": "919954422",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB\\RFX\\AMB_RFX_Crowd_Individual_02.wav",
+      "CachePath": "SFX/AMB/RFX/AMB_RFX_Crowd_Individual_02_818F3B66.wem"
+     },
+     {
+      "Id": "935598577",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB\\Pads\\AMB_RFX_Applause_04.wav",
+      "CachePath": "SFX/AMB/Pads/AMB_RFX_Applause_04_818F3B66.wem"
+     },
+     {
+      "Id": "946185580",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB\\Pads\\AMB_RFX_Negative_Reaction_04.wav",
+      "CachePath": "SFX/AMB/Pads/AMB_RFX_Negative_Reaction_04_818F3B66.wem"
+     },
+     {
+      "Id": "966132969",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB\\Pads\\AMB_RFX_Applause_02.wav",
+      "CachePath": "SFX/AMB/Pads/AMB_RFX_Applause_02_818F3B66.wem"
+     },
+     {
+      "Id": "1019889613",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB\\Pads\\AMB_PAD_Pyramid_Closed.wav",
+      "CachePath": "SFX/AMB/Pads/AMB_PAD_Pyramid_Closed_FBC78EF0.wem"
+     },
+     {
+      "Id": "1022096015",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB\\Pads\\AMB_RFX_Applause_03.wav",
+      "CachePath": "SFX/AMB/Pads/AMB_RFX_Applause_03_818F3B66.wem"
+     },
+     {
+      "Id": "1023349206",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB\\Pads\\AMB_RFX_Applause_01.wav",
+      "CachePath": "SFX/AMB/Pads/AMB_RFX_Applause_01_818F3B66.wem"
+     },
+     {
+      "Id": "1029183318",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB\\RFX\\AMB_RFX_WarHorns_04.wav",
+      "CachePath": "SFX/AMB/RFX/AMB_RFX_WarHorns_04_818F3B66.wem"
+     },
+     {
+      "Id": "1029865606",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB\\RFX\\AMB_RFX_Crowd_Pitched_Reaction_07.wav",
+      "CachePath": "SFX/AMB/RFX/AMB_RFX_Crowd_Pitched_Reaction_07_818F3B66.wem"
      }
     ],
+    "Plugins": {
+     "Custom": [
+      {
+       "Id": "16383166",
+       "Name": "Hall_Medium_Bright (Custom)",
+       "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Hub\\[Effect Slot [0]: (RoomVerb)]\\Hall_Medium_Bright (Custom)",
+       "GUID": "{2B8E8BE0-9B77-422E-880F-E9F637DE5BCF}",
+       "LibName": "Wwise RoomVerb",
+       "LibId": "7733251"
+      },
+      {
+       "Id": "97605317",
+       "Name": "Hall_Medium_Dark (Custom)",
+       "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Basement\\[Effect Slot [0]: (RoomVerb)]\\Hall_Medium_Dark (Custom)",
+       "GUID": "{8C478E3B-5F92-4AEE-A130-8EAD54778042}",
+       "LibName": "Wwise RoomVerb",
+       "LibId": "7733251"
+      },
+      {
+       "Id": "169636257",
+       "Name": "Have_U_Ever_Been_Outside (Custom)",
+       "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_RFX_Arena\\[Effect Slot [0]: (RoomVerb)]\\Have_U_Ever_Been_Outside (Custom)",
+       "GUID": "{4EC028FC-6FD5-4AC6-A71F-B2CB8F1117DF}",
+       "LibName": "Wwise RoomVerb",
+       "LibId": "7733251"
+      },
+      {
+       "Id": "272452003",
+       "Name": "Echoes_Linear (Custom)",
+       "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Arena\\[Effect Slot [1]: (Delay)]\\Echoes_Linear (Custom)",
+       "GUID": "{977B3548-DD8F-4D11-AE62-48D4E99C3447}",
+       "LibName": "Wwise Delay",
+       "LibId": "6946819"
+      },
+      {
+       "Id": "403656092",
+       "Name": "Have_U_Ever_Been_Outside (Custom)",
+       "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Arena\\[Effect Slot [0]: (RoomVerb)]\\Have_U_Ever_Been_Outside (Custom)",
+       "GUID": "{0C674E07-FB9A-4697-AC82-7C943290C81C}",
+       "LibName": "Wwise RoomVerb",
+       "LibId": "7733251"
+      },
+      {
+       "Id": "498081942",
+       "Name": "Hall_Large_Dark (Custom)",
+       "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Pyramid\\[Effect Slot [0]: (RoomVerb)]\\Hall_Large_Dark (Custom)",
+       "GUID": "{8E1228B5-2A98-4B87-B429-B348D1C6D236}",
+       "LibName": "Wwise RoomVerb",
+       "LibId": "7733251"
+      },
+      {
+       "Id": "688337969",
+       "Name": "Hall_Small_Bright (Custom)",
+       "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_BlackHouses\\[Effect Slot [0]: (RoomVerb)]\\Hall_Small_Bright (Custom)",
+       "GUID": "{846A0309-936D-4337-BF4B-E6792E655155}",
+       "LibName": "Wwise RoomVerb",
+       "LibId": "7733251"
+      }
+     ]
+    },
     "Events": [
      {
       "Id": "3817670132",
       "Name": "Play_AMB_Arena_Crowd",
       "ObjectPath": "\\Events\\AMB_WU\\Play_AMB_Arena_Crowd",
       "GUID": "{044D5574-12FD-4A7D-829F-E12D304EBC61}",
+      "MaxAttenuation": "3000",
       "DurationType": "Infinite",
       "MediaRefs": [
        {
-        "Id": "397963527"
+        "Id": "4481750"
+       },
+       {
+        "Id": "84736735"
+       },
+       {
+        "Id": "127175197"
+       },
+       {
+        "Id": "138942913"
+       },
+       {
+        "Id": "149514301"
+       },
+       {
+        "Id": "155546430"
+       },
+       {
+        "Id": "179362195"
+       },
+       {
+        "Id": "203208671"
+       },
+       {
+        "Id": "268147826"
+       },
+       {
+        "Id": "332135939"
+       },
+       {
+        "Id": "339009553"
+       },
+       {
+        "Id": "354075387"
+       },
+       {
+        "Id": "367189538"
+       },
+       {
+        "Id": "475148405"
+       },
+       {
+        "Id": "484735255"
+       },
+       {
+        "Id": "533084126"
+       },
+       {
+        "Id": "552226407"
+       },
+       {
+        "Id": "585712298"
+       },
+       {
+        "Id": "680837929"
+       },
+       {
+        "Id": "742879851"
+       },
+       {
+        "Id": "754998867"
+       },
+       {
+        "Id": "762008811"
+       },
+       {
+        "Id": "762580490"
+       },
+       {
+        "Id": "773762840"
+       },
+       {
+        "Id": "783949220"
+       },
+       {
+        "Id": "809714582"
+       },
+       {
+        "Id": "809843148"
+       },
+       {
+        "Id": "828835349"
+       },
+       {
+        "Id": "832021469"
+       },
+       {
+        "Id": "832253334"
+       },
+       {
+        "Id": "843502340"
+       },
+       {
+        "Id": "855821515"
+       },
+       {
+        "Id": "864351804"
+       },
+       {
+        "Id": "877176436"
+       },
+       {
+        "Id": "900351003"
+       },
+       {
+        "Id": "900928265"
+       },
+       {
+        "Id": "919954422"
+       },
+       {
+        "Id": "935598577"
+       },
+       {
+        "Id": "946185580"
+       },
+       {
+        "Id": "966132969"
+       },
+       {
+        "Id": "1022096015"
+       },
+       {
+        "Id": "1023349206"
+       },
+       {
+        "Id": "1029183318"
+       },
+       {
+        "Id": "1029865606"
+       }
+      ],
+      "AuxBusRefs": [
+       {
+        "Id": "1408817756",
+        "Name": "RVB_RFX_Arena",
+        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_RFX_Arena",
+        "GUID": "{CC7A2F05-EE75-4E8E-B097-98A1938CB5E4}"
        }
       ]
+     },
+     {
+      "Id": "1977891013",
+      "Name": "Play_AMB_PAD_ControlCenter",
+      "ObjectPath": "\\Events\\AMB_WU\\Play_AMB_PAD_ControlCenter",
+      "GUID": "{36CC78C6-483D-4AB2-9AF1-71F27874043E}",
+      "MaxAttenuation": "3000",
+      "DurationType": "Infinite",
+      "MediaRefs": [
+       {
+        "Id": "838454934"
+       }
+      ]
+     },
+     {
+      "Id": "1229646826",
+      "Name": "Play_AMB_PAD_CorpseTrap",
+      "ObjectPath": "\\Events\\AMB_WU\\Play_AMB_PAD_CorpseTrap",
+      "GUID": "{06E4EAB2-C55E-4652-84C1-FD484B705D76}",
+      "MaxAttenuation": "3000",
+      "DurationType": "Infinite",
+      "MediaRefs": [
+       {
+        "Id": "788907204"
+       }
+      ]
+     },
+     {
+      "Id": "2972533464",
+      "Name": "Play_AMB_PAD_Hub",
+      "ObjectPath": "\\Events\\AMB_WU\\Play_AMB_PAD_Hub",
+      "GUID": "{E1692669-CD47-4C1F-9271-81F40DE53532}",
+      "MaxAttenuation": "1000",
+      "DurationType": "Infinite",
+      "MediaRefs": [
+       {
+        "Id": "683095756"
+       }
+      ]
+     },
+     {
+      "Id": "297916660",
+      "Name": "Play_AMB_PAD_Pyramid_Closed",
+      "ObjectPath": "\\Events\\AMB_WU\\Play_AMB_PAD_Pyramid_Closed",
+      "GUID": "{F627B9DE-2BDF-4BC2-B74E-5E799A3FBDBF}",
+      "MaxAttenuation": "3000",
+      "DurationType": "Infinite",
+      "MediaRefs": [
+       {
+        "Id": "1019889613"
+       }
+      ]
+     }
+    ],
+    "Busses": [
+     {
+      "Id": "109159411",
+      "Name": "Game_Global",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\Game_Global",
+      "GUID": "{FAD5C029-0A02-4BD2-97F7-F8C20B7A95BD}"
+     },
+     {
+      "Id": "393239870",
+      "Name": "SFX",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\Game_Global\\SFX",
+      "GUID": "{EB4CE24D-8196-408E-9775-5E8EEFE98495}"
+     },
+     {
+      "Id": "1117531639",
+      "Name": "AMB",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\Game_Global\\AMB",
+      "GUID": "{C1595F21-FBBF-4B04-AC1A-78D86879A937}"
+     },
+     {
+      "Id": "1551306167",
+      "Name": "UI",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\UI",
+      "GUID": "{B5E7816E-C3FC-4992-B763-4078089CE674}"
+     },
+     {
+      "Id": "1685527061",
+      "Name": "MC",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\Game_Global\\MC",
+      "GUID": "{B3079877-B26F-4239-A3AB-9C7AFFCBC797}"
+     },
+     {
+      "Id": "2290178407",
+      "Name": "FOES_Tourelle",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\Game_Global\\FOES_Tourelle",
+      "GUID": "{D783D57E-4B6F-4101-8F5F-FD96F0409170}"
+     },
+     {
+      "Id": "3313685232",
+      "Name": "Voices",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\Voices",
+      "GUID": "{00AA482D-3F12-46A5-8177-E8A172D08E63}"
+     },
+     {
+      "Id": "3623095082",
+      "Name": "FOES_Flying",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\Game_Global\\FOES_Flying",
+      "GUID": "{439831F9-AA50-4CD2-98C3-ACD8B187380E}"
+     },
+     {
+      "Id": "3991942870",
+      "Name": "Music",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\Music",
+      "GUID": "{08156595-7637-4348-AC3C-2EDE3FCCB08F}"
+     },
+     {
+      "Id": "4056684167",
+      "Name": "Master",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master",
+      "GUID": "{F3A976BC-47E9-46E5-9EEC-F566BB39DBEE}"
+     }
+    ],
+    "AuxBusses": [
+     {
+      "Id": "395111090",
+      "Name": "RVB_BlackHouses",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_BlackHouses",
+      "GUID": "{17B5E8F9-026F-4941-A027-1C0641AB0C14}",
+      "PluginRefs": {
+       "Custom": [
+        {
+         "Id": "688337969"
+        }
+       ]
+      }
+     },
+     {
+      "Id": "1215931641",
+      "Name": "RVB_Arena",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Arena",
+      "GUID": "{54C7EBDA-4885-4850-8969-FB63BDACC807}",
+      "PluginRefs": {
+       "Custom": [
+        {
+         "Id": "272452003"
+        },
+        {
+         "Id": "403656092"
+        }
+       ]
+      }
+     },
+     {
+      "Id": "1408817756",
+      "Name": "RVB_RFX_Arena",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_RFX_Arena",
+      "GUID": "{CC7A2F05-EE75-4E8E-B097-98A1938CB5E4}",
+      "PluginRefs": {
+       "Custom": [
+        {
+         "Id": "169636257"
+        }
+       ]
+      }
+     },
+     {
+      "Id": "2344250611",
+      "Name": "RVB_Basement",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Basement",
+      "GUID": "{BF09F5DA-71E8-4CAC-B0EB-19A1C29389BA}",
+      "PluginRefs": {
+       "Custom": [
+        {
+         "Id": "97605317"
+        }
+       ]
+      }
+     },
+     {
+      "Id": "3571340017",
+      "Name": "RVB_Hub",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Hub",
+      "GUID": "{D499EBE4-F26A-48E5-B89D-1F7C43D829E3}",
+      "PluginRefs": {
+       "Custom": [
+        {
+         "Id": "16383166"
+        }
+       ]
+      }
+     },
+     {
+      "Id": "3670521640",
+      "Name": "RVB_Pyramid",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Pyramid",
+      "GUID": "{668EA0D2-771E-452F-B241-11793F9755B0}",
+      "PluginRefs": {
+       "Custom": [
+        {
+         "Id": "498081942"
+        }
+       ]
+      }
      }
     ]
    }
   ],
-  "FileHash": "{963C3BEC-7B3F-5B34-FE76-159040549485}"
+  "FileHash": "{FC7C1EEA-EAFE-E8C1-2002-A883CD319824}"
  }
 }

@@ -14,36 +14,6 @@
 						</Reference>
 					</ReferenceList>
 					<ChildrenList>
-						<Bus Name="AMB" ID="{C1595F21-FBBF-4B04-AC1A-78D86879A937}">
-							<PropertyList>
-								<Property Name="Color" Type="int16" Value="4"/>
-								<Property Name="OverrideColor" Type="bool" Value="True"/>
-							</PropertyList>
-						</Bus>
-						<Bus Name="FOES_Invisible" ID="{19573DBC-4DB5-4746-8ACF-EBDC3F32E124}">
-							<PropertyList>
-								<Property Name="Color" Type="int16" Value="23"/>
-								<Property Name="OverrideColor" Type="bool" Value="True"/>
-							</PropertyList>
-						</Bus>
-						<Bus Name="FOES_Tourelle" ID="{D783D57E-4B6F-4101-8F5F-FD96F0409170}">
-							<PropertyList>
-								<Property Name="Color" Type="int16" Value="10"/>
-								<Property Name="OverrideColor" Type="bool" Value="True"/>
-							</PropertyList>
-						</Bus>
-						<Bus Name="FOES_Flying" ID="{439831F9-AA50-4CD2-98C3-ACD8B187380E}">
-							<PropertyList>
-								<Property Name="Color" Type="int16" Value="11"/>
-								<Property Name="OverrideColor" Type="bool" Value="True"/>
-							</PropertyList>
-						</Bus>
-						<Bus Name="MC" ID="{B3079877-B26F-4239-A3AB-9C7AFFCBC797}">
-							<PropertyList>
-								<Property Name="Color" Type="int16" Value="19"/>
-								<Property Name="OverrideColor" Type="bool" Value="True"/>
-							</PropertyList>
-						</Bus>
 						<Bus Name="UI" ID="{B5E7816E-C3FC-4992-B763-4078089CE674}">
 							<PropertyList>
 								<Property Name="Color" Type="int16" Value="1"/>
@@ -55,12 +25,323 @@
 								<Property Name="Color" Type="int16" Value="26"/>
 								<Property Name="OverrideColor" Type="bool" Value="True"/>
 							</PropertyList>
+							<ObjectLists>
+								<ObjectList Name="Effects">
+									<Reference>
+										<Local>
+											<EffectSlot Name="" ID="{8A84951A-FB3B-4B13-BF6C-9130C0BB1072}" ShortID="861463158">
+												<ReferenceList>
+													<Reference Name="Effect">
+														<Custom CreatedFrom="{3C3845B2-C76E-4634-9108-83FA43A5A7BC}">
+															<Effect Name="Hall_Medium_Bright (Custom)" ID="{2B8E8BE0-9B77-422E-880F-E9F637DE5BCF}" ShortID="16383166" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
+																<PropertyList>
+																	<Property Name="DecayTime" Type="Real32" Value="3.2"/>
+																	<Property Name="Density" Type="Real32" Value="70"/>
+																	<Property Name="Diffusion" Type="Real32" Value="76"/>
+																	<Property Name="ERLevel" Type="Real32" Value="-23"/>
+																	<Property Name="ERPattern" Type="int32" Value="15"/>
+																	<Property Name="Filter1Freq" Type="Real32" Value="600"/>
+																	<Property Name="Filter1InsertPos" Type="int32" Value="2"/>
+																	<Property Name="Filter2Freq" Type="Real32" Value="2000"/>
+																	<Property Name="Filter3Freq" Type="Real32" Value="6500"/>
+																	<Property Name="Filter3Gain" Type="Real32" Value="3"/>
+																	<Property Name="HFDamping" Type="Real32" Value="1.8"/>
+																	<Property Name="PreDelay" Type="Real32" Value="50"/>
+																	<Property Name="Quality" Type="int32" Value="14"/>
+																	<Property Name="ReverbLevel" Type="Real32" Value="-23"/>
+																	<Property Name="RoomShape" Type="Real32" Value="55"/>
+																	<Property Name="RoomSize" Type="Real32" Value="28"/>
+																	<Property Name="StereoWidth" Type="Real32" Value="165"/>
+																</PropertyList>
+															</Effect>
+														</Custom>
+													</Reference>
+												</ReferenceList>
+											</EffectSlot>
+										</Local>
+									</Reference>
+								</ObjectList>
+							</ObjectLists>
 						</AuxBus>
 						<AuxBus Name="RVB_Arena" ID="{54C7EBDA-4885-4850-8969-FB63BDACC807}">
 							<PropertyList>
 								<Property Name="Color" Type="int16" Value="26"/>
 								<Property Name="OverrideColor" Type="bool" Value="True"/>
 							</PropertyList>
+							<ObjectLists>
+								<ObjectList Name="Effects">
+									<Reference>
+										<Local>
+											<EffectSlot Name="" ID="{8275DA44-FD31-4988-9457-4CB491BDCB0C}" ShortID="462584008">
+												<ReferenceList>
+													<Reference Name="Effect">
+														<Custom CreatedFrom="{FE29AE8D-FD86-4652-A95D-68D32F5760EC}">
+															<Effect Name="Have_U_Ever_Been_Outside (Custom)" ID="{0C674E07-FB9A-4697-AC82-7C943290C81C}" ShortID="403656092" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
+																<PropertyList>
+																	<Property Name="DecayTime" Type="Real32" Value="4"/>
+																	<Property Name="Density" Type="Real32" Value="50"/>
+																	<Property Name="ERLevel" Type="Real32" Value="-18"/>
+																	<Property Name="ERPattern" Type="int32" Value="29"/>
+																	<Property Name="Filter1Freq" Type="Real32" Value="210"/>
+																	<Property Name="Filter1Gain" Type="Real32" Value="1.5"/>
+																	<Property Name="Filter2Freq" Type="Real32" Value="6830"/>
+																	<Property Name="Filter2Gain" Type="Real32" Value="-7.5"/>
+																	<Property Name="Filter2Q" Type="Real32" Value="0.65"/>
+																	<Property Name="Filter3Freq" Type="Real32" Value="8440"/>
+																	<Property Name="Filter3Gain" Type="Real32" Value="-4"/>
+																	<Property Name="HFDamping" Type="Real32" Value="0.5"/>
+																	<Property Name="PreDelay" Type="Real32" Value="40"/>
+																	<Property Name="Quality" Type="int32" Value="12"/>
+																	<Property Name="ReverbLevel" Type="Real32" Value="-37"/>
+																	<Property Name="RoomSize" Type="Real32" Value="1"/>
+																	<Property Name="StereoWidth" Type="Real32" Value="28"/>
+																</PropertyList>
+															</Effect>
+														</Custom>
+													</Reference>
+												</ReferenceList>
+											</EffectSlot>
+										</Local>
+									</Reference>
+									<Reference>
+										<Local>
+											<EffectSlot Name="" ID="{E0F2F1EB-CEBD-4DCC-9BDB-1A2EE34FD3FB}" ShortID="264669429">
+												<ReferenceList>
+													<Reference Name="Effect">
+														<Custom CreatedFrom="{D20F3717-EBA2-4E3A-84F8-C8BD431563FB}">
+															<Effect Name="Echoes_Linear (Custom)" ID="{977B3548-DD8F-4D11-AE62-48D4E99C3447}" ShortID="272452003" PluginName="Wwise Delay" CompanyID="0" PluginID="106" PluginType="3">
+																<PropertyList>
+																	<Property Name="DelayTime" Type="Real32" Value="0.1"/>
+																	<Property Name="Feedback" Type="Real32" Value="50"/>
+																	<Property Name="WetDryMix" Type="Real32" Value="50"/>
+																</PropertyList>
+															</Effect>
+														</Custom>
+													</Reference>
+												</ReferenceList>
+											</EffectSlot>
+										</Local>
+									</Reference>
+								</ObjectList>
+							</ObjectLists>
+						</AuxBus>
+						<AuxBus Name="RVB_RFX_Arena" ID="{CC7A2F05-EE75-4E8E-B097-98A1938CB5E4}">
+							<PropertyList>
+								<Property Name="Color" Type="int16" Value="27"/>
+								<Property Name="OverrideColor" Type="bool" Value="True"/>
+							</PropertyList>
+							<ObjectLists>
+								<ObjectList Name="Effects">
+									<Reference>
+										<Local>
+											<EffectSlot Name="" ID="{4C872E48-60DF-4815-BA7D-273C1DBB5EBD}" ShortID="618897896">
+												<ReferenceList>
+													<Reference Name="Effect">
+														<Custom CreatedFrom="{FE29AE8D-FD86-4652-A95D-68D32F5760EC}">
+															<Effect Name="Have_U_Ever_Been_Outside (Custom)" ID="{4EC028FC-6FD5-4AC6-A71F-B2CB8F1117DF}" ShortID="169636257" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
+																<PropertyList>
+																	<Property Name="DecayTime" Type="Real32" Value="6"/>
+																	<Property Name="Density" Type="Real32" Value="50"/>
+																	<Property Name="DryLevel" Type="Real32" Value="-10.3"/>
+																	<Property Name="ERLevel" Type="Real32" Value="-18"/>
+																	<Property Name="ERPattern" Type="int32" Value="29"/>
+																	<Property Name="Filter1Freq" Type="Real32" Value="210"/>
+																	<Property Name="Filter1Gain" Type="Real32" Value="1.5"/>
+																	<Property Name="Filter2Freq" Type="Real32" Value="6830"/>
+																	<Property Name="Filter2Gain" Type="Real32" Value="-7.5"/>
+																	<Property Name="Filter2Q" Type="Real32" Value="0.65"/>
+																	<Property Name="Filter3Freq" Type="Real32" Value="8440"/>
+																	<Property Name="Filter3Gain" Type="Real32" Value="-4"/>
+																	<Property Name="HFDamping" Type="Real32" Value="5.05"/>
+																	<Property Name="PreDelay" Type="Real32" Value="145"/>
+																	<Property Name="Quality" Type="int32" Value="12"/>
+																	<Property Name="ReverbLevel" Type="Real32" Value="-14"/>
+																	<Property Name="RoomSize" Type="Real32" Value="100"/>
+																	<Property Name="StereoWidth" Type="Real32" Value="91"/>
+																</PropertyList>
+															</Effect>
+														</Custom>
+													</Reference>
+												</ReferenceList>
+											</EffectSlot>
+										</Local>
+									</Reference>
+								</ObjectList>
+							</ObjectLists>
+						</AuxBus>
+						<Bus Name="Voices" ID="{00AA482D-3F12-46A5-8177-E8A172D08E63}">
+							<PropertyList>
+								<Property Name="Color" Type="int16" Value="23"/>
+								<Property Name="OverrideColor" Type="bool" Value="True"/>
+							</PropertyList>
+						</Bus>
+						<Bus Name="Music" ID="{08156595-7637-4348-AC3C-2EDE3FCCB08F}">
+							<PropertyList>
+								<Property Name="Color" Type="int16" Value="24"/>
+								<Property Name="OverrideColor" Type="bool" Value="True"/>
+							</PropertyList>
+						</Bus>
+						<Bus Name="Game_Global" ID="{FAD5C029-0A02-4BD2-97F7-F8C20B7A95BD}">
+							<PropertyList>
+								<Property Name="Color" Type="int16" Value="16"/>
+								<Property Name="OverrideColor" Type="bool" Value="True"/>
+							</PropertyList>
+							<ChildrenList>
+								<Bus Name="AMB" ID="{C1595F21-FBBF-4B04-AC1A-78D86879A937}">
+									<PropertyList>
+										<Property Name="Color" Type="int16" Value="4"/>
+										<Property Name="OverrideColor" Type="bool" Value="True"/>
+									</PropertyList>
+								</Bus>
+								<Bus Name="FOES_Tourelle" ID="{D783D57E-4B6F-4101-8F5F-FD96F0409170}">
+									<PropertyList>
+										<Property Name="Color" Type="int16" Value="10"/>
+										<Property Name="OverrideColor" Type="bool" Value="True"/>
+									</PropertyList>
+								</Bus>
+								<Bus Name="MC" ID="{B3079877-B26F-4239-A3AB-9C7AFFCBC797}">
+									<PropertyList>
+										<Property Name="Color" Type="int16" Value="19"/>
+										<Property Name="OverrideColor" Type="bool" Value="True"/>
+									</PropertyList>
+								</Bus>
+								<Bus Name="FOES_Flying" ID="{439831F9-AA50-4CD2-98C3-ACD8B187380E}">
+									<PropertyList>
+										<Property Name="Color" Type="int16" Value="11"/>
+										<Property Name="OverrideColor" Type="bool" Value="True"/>
+									</PropertyList>
+								</Bus>
+								<Bus Name="SFX" ID="{EB4CE24D-8196-408E-9775-5E8EEFE98495}">
+									<PropertyList>
+										<Property Name="Color" Type="int16" Value="17"/>
+										<Property Name="OverrideColor" Type="bool" Value="True"/>
+									</PropertyList>
+								</Bus>
+							</ChildrenList>
+						</Bus>
+						<AuxBus Name="RVB_Pyramid" ID="{668EA0D2-771E-452F-B241-11793F9755B0}">
+							<PropertyList>
+								<Property Name="Color" Type="int16" Value="26"/>
+								<Property Name="OverrideColor" Type="bool" Value="True"/>
+							</PropertyList>
+							<ObjectLists>
+								<ObjectList Name="Effects">
+									<Reference>
+										<Local>
+											<EffectSlot Name="" ID="{F70E947B-617B-46D8-AEB8-CA2AC2742D12}" ShortID="430606588">
+												<ReferenceList>
+													<Reference Name="Effect">
+														<Custom CreatedFrom="{0F6A7D6D-131C-4650-9561-FC05F5C7A37B}">
+															<Effect Name="Hall_Large_Dark (Custom)" ID="{8E1228B5-2A98-4B87-B429-B348D1C6D236}" ShortID="498081942" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
+																<PropertyList>
+																	<Property Name="DecayTime" Type="Real32" Value="5.2"/>
+																	<Property Name="Density" Type="Real32" Value="70"/>
+																	<Property Name="ERLevel" Type="Real32" Value="-25"/>
+																	<Property Name="ERPattern" Type="int32" Value="11"/>
+																	<Property Name="Filter1Freq" Type="Real32" Value="490"/>
+																	<Property Name="Filter1Gain" Type="Real32" Value="4"/>
+																	<Property Name="Filter1InsertPos" Type="int32" Value="2"/>
+																	<Property Name="Filter3Freq" Type="Real32" Value="11000"/>
+																	<Property Name="Filter3Gain" Type="Real32" Value="-11.5"/>
+																	<Property Name="HFDamping" Type="Real32" Value="5.05"/>
+																	<Property Name="PreDelay" Type="Real32" Value="75"/>
+																	<Property Name="Quality" Type="int32" Value="16"/>
+																	<Property Name="ReverbLevel" Type="Real32" Value="-25"/>
+																	<Property Name="RoomShape" Type="Real32" Value="55"/>
+																	<Property Name="RoomSize" Type="Real32" Value="73"/>
+																</PropertyList>
+															</Effect>
+														</Custom>
+													</Reference>
+												</ReferenceList>
+											</EffectSlot>
+										</Local>
+									</Reference>
+								</ObjectList>
+							</ObjectLists>
+						</AuxBus>
+						<AuxBus Name="RVB_Basement" ID="{BF09F5DA-71E8-4CAC-B0EB-19A1C29389BA}">
+							<PropertyList>
+								<Property Name="Color" Type="int16" Value="26"/>
+								<Property Name="OverrideColor" Type="bool" Value="True"/>
+							</PropertyList>
+							<ObjectLists>
+								<ObjectList Name="Effects">
+									<Reference>
+										<Local>
+											<EffectSlot Name="" ID="{C26AAA0B-D448-4C11-BCD1-D598BA16FB04}" ShortID="235849728">
+												<ReferenceList>
+													<Reference Name="Effect">
+														<Custom CreatedFrom="{626B6E38-739B-4689-819F-F81AD3788BDE}">
+															<Effect Name="Hall_Medium_Dark (Custom)" ID="{8C478E3B-5F92-4AEE-A130-8EAD54778042}" ShortID="97605317" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
+																<PropertyList>
+																	<Property Name="DecayTime" Type="Real32" Value="3.8"/>
+																	<Property Name="Density" Type="Real32" Value="70"/>
+																	<Property Name="Diffusion" Type="Real32" Value="64"/>
+																	<Property Name="ERLevel" Type="Real32" Value="-23"/>
+																	<Property Name="ERPattern" Type="int32" Value="10"/>
+																	<Property Name="Filter1Freq" Type="Real32" Value="490"/>
+																	<Property Name="Filter1Gain" Type="Real32" Value="4"/>
+																	<Property Name="Filter1InsertPos" Type="int32" Value="2"/>
+																	<Property Name="Filter3Freq" Type="Real32" Value="11000"/>
+																	<Property Name="Filter3Gain" Type="Real32" Value="-11.5"/>
+																	<Property Name="HFDamping" Type="Real32" Value="5.05"/>
+																	<Property Name="PreDelay" Type="Real32" Value="48"/>
+																	<Property Name="Quality" Type="int32" Value="16"/>
+																	<Property Name="ReverbLevel" Type="Real32" Value="-23"/>
+																	<Property Name="RoomShape" Type="Real32" Value="55"/>
+																	<Property Name="RoomSize" Type="Real32" Value="53"/>
+																	<Property Name="StereoWidth" Type="Real32" Value="165"/>
+																</PropertyList>
+															</Effect>
+														</Custom>
+													</Reference>
+												</ReferenceList>
+											</EffectSlot>
+										</Local>
+									</Reference>
+								</ObjectList>
+							</ObjectLists>
+						</AuxBus>
+						<AuxBus Name="RVB_BlackHouses" ID="{17B5E8F9-026F-4941-A027-1C0641AB0C14}">
+							<PropertyList>
+								<Property Name="Color" Type="int16" Value="26"/>
+								<Property Name="OverrideColor" Type="bool" Value="True"/>
+							</PropertyList>
+							<ObjectLists>
+								<ObjectList Name="Effects">
+									<Reference>
+										<Local>
+											<EffectSlot Name="" ID="{79508741-82D1-43D6-90B7-4891ECF66BCC}" ShortID="63478080">
+												<ReferenceList>
+													<Reference Name="Effect">
+														<Custom CreatedFrom="{D8AD1955-D2BA-4C88-A806-E2D8AB47A90B}">
+															<Effect Name="Hall_Small_Bright (Custom)" ID="{846A0309-936D-4337-BF4B-E6792E655155}" ShortID="688337969" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
+																<PropertyList>
+																	<Property Name="DecayTime" Type="Real32" Value="2.2"/>
+																	<Property Name="Density" Type="Real32" Value="44"/>
+																	<Property Name="ERLevel" Type="Real32" Value="-25"/>
+																	<Property Name="ERPattern" Type="int32" Value="13"/>
+																	<Property Name="Filter1Freq" Type="Real32" Value="590"/>
+																	<Property Name="Filter1InsertPos" Type="int32" Value="2"/>
+																	<Property Name="Filter2Freq" Type="Real32" Value="780"/>
+																	<Property Name="Filter3Gain" Type="Real32" Value="4.5"/>
+																	<Property Name="HFDamping" Type="Real32" Value="1.85"/>
+																	<Property Name="PreDelay" Type="Real32" Value="40"/>
+																	<Property Name="Quality" Type="int32" Value="14"/>
+																	<Property Name="ReverbLevel" Type="Real32" Value="-22"/>
+																	<Property Name="RoomShape" Type="Real32" Value="55"/>
+																	<Property Name="RoomSize" Type="Real32" Value="24"/>
+																</PropertyList>
+															</Effect>
+														</Custom>
+													</Reference>
+												</ReferenceList>
+											</EffectSlot>
+										</Local>
+									</Reference>
+								</ObjectList>
+							</ObjectLists>
 						</AuxBus>
 					</ChildrenList>
 				</Bus>

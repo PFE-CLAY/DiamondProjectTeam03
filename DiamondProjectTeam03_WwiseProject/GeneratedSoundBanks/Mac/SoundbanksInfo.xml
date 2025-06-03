@@ -1,0 +1,1282 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SoundBanksInfo Platform="Mac" BasePlatform="Mac" SchemaVersion="16" SoundBankVersion="150">
+	<RootPaths>
+		<ProjectRoot>../..</ProjectRoot>
+		<SourceFilesRoot>../../.cache/Mac</SourceFilesRoot>
+		<SoundBanksRoot>.</SoundBanksRoot>
+		<ExternalSourcesInputFile></ExternalSourcesInputFile>
+		<ExternalSourcesOutputRoot>.</ExternalSourcesOutputRoot>
+	</RootPaths>
+	<DialogueEvents/>
+	<SoundBanks>
+		<SoundBank Id="459280130" Type="User" GUID="{46F08C13-7BDA-47D5-A653-BDFCDAD2487B}" Language="SFX" Hash="{FEC0151D-6568-73FC-F065-33A4D2F833EA}">
+			<ObjectPath>\SoundBanks\SoundBanks_WU\FOES_Flying_SB</ObjectPath>
+			<ShortName>FOES_Flying_SB</ShortName>
+			<Path>FOES_Flying_SB.bnk</Path>
+			<Media>
+				<File Id="45515045" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>FOES_SFX_Flying_Shoot_03.wav</ShortName>
+					<CachePath>SFX/FOES_SFX_Flying_Shoot_03_818F3B66.wem</CachePath>
+				</File>
+				<File Id="195673243" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>FOES_SFX_Flying_Shoot_04.wav</ShortName>
+					<CachePath>SFX/FOES_SFX_Flying_Shoot_04_818F3B66.wem</CachePath>
+				</File>
+				<File Id="202392697" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>FOES_SFX_Flying_Idle_LP.wav</ShortName>
+					<CachePath>SFX/FOES_SFX_Flying_Idle_LP_FBC78EF0.wem</CachePath>
+				</File>
+				<File Id="229626045" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>FOES_SFX_Flying_Shoot_05.wav</ShortName>
+					<CachePath>SFX/FOES_SFX_Flying_Shoot_05_818F3B66.wem</CachePath>
+				</File>
+				<File Id="732571760" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>FOES_SFX_Flying_Shoot_01.wav</ShortName>
+					<CachePath>SFX/FOES_SFX_Flying_Shoot_01_818F3B66.wem</CachePath>
+				</File>
+				<File Id="821998844" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>FOES_SFX_Flying_Shoot_02.wav</ShortName>
+					<CachePath>SFX/FOES_SFX_Flying_Shoot_02_818F3B66.wem</CachePath>
+				</File>
+			</Media>
+			<Plugins>
+				<Custom>
+					<Plugin Id="169636257" Name="Have_U_Ever_Been_Outside (Custom)" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_RFX_Arena\[Effect Slot [0]: (RoomVerb)]\Have_U_Ever_Been_Outside (Custom)" GUID="{4EC028FC-6FD5-4AC6-A71F-B2CB8F1117DF}" LibName="Wwise RoomVerb" LibId="7733251"/>
+					<Plugin Id="913803451" Name="Octave_Up (Custom)" ObjectPath="\Actor-Mixer Hierarchy\FOES_Flying_WU\FOES_Flying\FOES_SFX_Flying\FOES_SFX_Flying_Shoot_RC\[Effect Slot [0]: (Pitch Shifter)]\Octave_Up (Custom)" GUID="{2F00A97A-7EA5-4071-B9A5-B685BC249C27}" LibName="Wwise Pitch Shifter" LibId="8912899"/>
+					<Plugin Id="963626000" Name="Dist_Flying_Shots (Custom)" ObjectPath="\Actor-Mixer Hierarchy\FOES_Flying_WU\FOES_Flying\FOES_SFX_Flying\FOES_SFX_Flying_Shoot_RC\[Effect Slot [1]: (Guitar Distortion)]\Dist_Flying_Shots (Custom)" GUID="{71204E36-4F7C-4B89-9BD6-E0036788D676}" LibName="Wwise Guitar Distortion" LibId="8257539"/>
+				</Custom>
+			</Plugins>
+			<Events>
+				<Event Id="3816121295" Name="Play_FOES_SFX_Flying_Idle_LP" ObjectPath="\Events\FOES_Flying_WU\Play_FOES_SFX_Flying_Idle_LP" GUID="{CF4E623B-F60A-4740-B500-0E5586E75310}" MaxAttenuation="2000" DurationType="Infinite">
+					<MediaRefs>
+						<MediaRef Id="202392697"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="1810073987" Name="Play_FOES_SFX_Flying_Shoot_RC" ObjectPath="\Events\FOES_Flying_WU\Play_FOES_SFX_Flying_Shoot_RC" GUID="{615B6DF4-5110-477A-ADAD-83075E2A2CC2}" MaxAttenuation="2000" DurationType="OneShot" DurationMin="1.5138968" DurationMax="1.9747615">
+					<MediaRefs>
+						<MediaRef Id="45515045"/>
+						<MediaRef Id="195673243"/>
+						<MediaRef Id="229626045"/>
+						<MediaRef Id="732571760"/>
+						<MediaRef Id="821998844"/>
+					</MediaRefs>
+					<PluginRefs>
+						<Custom>
+							<PluginRef Id="913803451"/>
+							<PluginRef Id="963626000"/>
+						</Custom>
+					</PluginRefs>
+				</Event>
+				<Event Id="3718813633" Name="Stop_FOES_SFX_Flying_Idle_LP" ObjectPath="\Events\FOES_Flying_WU\Stop_FOES_SFX_Flying_Idle_LP" GUID="{9C4A0482-8257-4724-B64F-85F88099C5B0}" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+			</Events>
+			<Busses>
+				<Bus Id="109159411" Name="Game_Global" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global" GUID="{FAD5C029-0A02-4BD2-97F7-F8C20B7A95BD}"/>
+				<Bus Id="393239870" Name="SFX" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global\SFX" GUID="{EB4CE24D-8196-408E-9775-5E8EEFE98495}"/>
+				<Bus Id="1117531639" Name="AMB" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global\AMB" GUID="{C1595F21-FBBF-4B04-AC1A-78D86879A937}"/>
+				<Bus Id="1551306167" Name="UI" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\UI" GUID="{B5E7816E-C3FC-4992-B763-4078089CE674}"/>
+				<Bus Id="1685527061" Name="MC" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global\MC" GUID="{B3079877-B26F-4239-A3AB-9C7AFFCBC797}"/>
+				<Bus Id="2290178407" Name="FOES_Tourelle" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global\FOES_Tourelle" GUID="{D783D57E-4B6F-4101-8F5F-FD96F0409170}"/>
+				<Bus Id="3313685232" Name="Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Voices" GUID="{00AA482D-3F12-46A5-8177-E8A172D08E63}"/>
+				<Bus Id="3623095082" Name="FOES_Flying" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global\FOES_Flying" GUID="{439831F9-AA50-4CD2-98C3-ACD8B187380E}"/>
+				<Bus Id="3991942870" Name="Music" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Music" GUID="{08156595-7637-4348-AC3C-2EDE3FCCB08F}"/>
+				<Bus Id="4056684167" Name="Master" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master" GUID="{F3A976BC-47E9-46E5-9EEC-F566BB39DBEE}"/>
+			</Busses>
+			<AuxBusses>
+				<AuxBus Id="1215931641" Name="RVB_Arena" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Arena" GUID="{54C7EBDA-4885-4850-8969-FB63BDACC807}"/>
+				<AuxBus Id="1408817756" Name="RVB_RFX_Arena" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_RFX_Arena" GUID="{CC7A2F05-EE75-4E8E-B097-98A1938CB5E4}">
+					<PluginRefs>
+						<Custom>
+							<PluginRef Id="169636257"/>
+						</Custom>
+					</PluginRefs>
+				</AuxBus>
+				<AuxBus Id="3571340017" Name="RVB_Hub" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Hub" GUID="{D499EBE4-F26A-48E5-B89D-1F7C43D829E3}"/>
+			</AuxBusses>
+			<GameParameters>
+				<GameParameter Id="3590742338" Name="RTPC_Speed_Flying" ObjectPath="\Game Parameters\Default Work Unit\RTPC_Speed_Flying" GUID="{4A0C67E7-2443-47A8-B5EB-86C8F65C73EB}"/>
+			</GameParameters>
+		</SoundBank>
+		<SoundBank Id="1355168291" Type="User" GUID="{701ECBBD-9C7B-4030-8CDB-749EE5D1C7B9}" Language="SFX" Hash="{4CE71B63-6A3A-1ED2-765C-3739144B631F}">
+			<ObjectPath>Init</ObjectPath>
+			<ShortName>Init</ShortName>
+			<Path>Init.bnk</Path>
+			<Plugins>
+				<Custom>
+					<Plugin Id="169636257" Name="Have_U_Ever_Been_Outside (Custom)" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_RFX_Arena\[Effect Slot [0]: (RoomVerb)]\Have_U_Ever_Been_Outside (Custom)" GUID="{4EC028FC-6FD5-4AC6-A71F-B2CB8F1117DF}" LibName="Wwise RoomVerb" LibId="7733251"/>
+				</Custom>
+				<AudioDevices>
+					<Plugin Id="2317455096" Name="No_Output" ObjectPath="\Audio Devices\Default Work Unit\No_Output" GUID="{A1B1475A-B55F-4479-A7C3-DBD7912FC3E0}" LibName="No Output" LibId="11862023"/>
+					<Plugin Id="3859886410" Name="System" ObjectPath="\Audio Devices\Default Work Unit\System" GUID="{2120331D-1E44-4F44-9FF4-1BD59ADC3B07}" LibName="System" LibId="11403271"/>
+				</AudioDevices>
+			</Plugins>
+			<Busses>
+				<Bus Id="109159411" Name="Game_Global" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global" GUID="{FAD5C029-0A02-4BD2-97F7-F8C20B7A95BD}"/>
+				<Bus Id="393239870" Name="SFX" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global\SFX" GUID="{EB4CE24D-8196-408E-9775-5E8EEFE98495}"/>
+				<Bus Id="1117531639" Name="AMB" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global\AMB" GUID="{C1595F21-FBBF-4B04-AC1A-78D86879A937}"/>
+				<Bus Id="1551306167" Name="UI" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\UI" GUID="{B5E7816E-C3FC-4992-B763-4078089CE674}"/>
+				<Bus Id="1685527061" Name="MC" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global\MC" GUID="{B3079877-B26F-4239-A3AB-9C7AFFCBC797}"/>
+				<Bus Id="2290178407" Name="FOES_Tourelle" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global\FOES_Tourelle" GUID="{D783D57E-4B6F-4101-8F5F-FD96F0409170}"/>
+				<Bus Id="3313685232" Name="Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Voices" GUID="{00AA482D-3F12-46A5-8177-E8A172D08E63}"/>
+				<Bus Id="3623095082" Name="FOES_Flying" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global\FOES_Flying" GUID="{439831F9-AA50-4CD2-98C3-ACD8B187380E}"/>
+				<Bus Id="3803692087" Name="Master Audio Bus" ObjectPath="\Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus" GUID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}"/>
+				<Bus Id="3991942870" Name="Music" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Music" GUID="{08156595-7637-4348-AC3C-2EDE3FCCB08F}"/>
+				<Bus Id="4056684167" Name="Master" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master" GUID="{F3A976BC-47E9-46E5-9EEC-F566BB39DBEE}"/>
+			</Busses>
+			<AuxBusses>
+				<AuxBus Id="1215931641" Name="RVB_Arena" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Arena" GUID="{54C7EBDA-4885-4850-8969-FB63BDACC807}"/>
+				<AuxBus Id="1408817756" Name="RVB_RFX_Arena" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_RFX_Arena" GUID="{CC7A2F05-EE75-4E8E-B097-98A1938CB5E4}">
+					<PluginRefs>
+						<Custom>
+							<PluginRef Id="169636257"/>
+						</Custom>
+					</PluginRefs>
+				</AuxBus>
+				<AuxBus Id="3571340017" Name="RVB_Hub" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Hub" GUID="{D499EBE4-F26A-48E5-B89D-1F7C43D829E3}"/>
+			</AuxBusses>
+			<GameParameters>
+				<GameParameter Id="3590742338" Name="RTPC_Speed_Flying" ObjectPath="\Game Parameters\Default Work Unit\RTPC_Speed_Flying" GUID="{4A0C67E7-2443-47A8-B5EB-86C8F65C73EB}"/>
+			</GameParameters>
+			<SwitchGroups>
+				<SwitchGroup Id="757195373" Name="SW_Material" ObjectPath="\Switches\Default Work Unit\SW_Material" GUID="{828E8B9F-6B07-4984-BFE7-B76CEA058A8B}">
+					<Switches>
+						<Switch Id="803837735" Name="Sand" ObjectPath="\Switches\Default Work Unit\SW_Material\Sand" GUID="{0F8A73BD-8A92-4819-BE09-452FE32E1FBC}"/>
+						<Switch Id="841620460" Name="Concrete" ObjectPath="\Switches\Default Work Unit\SW_Material\Concrete" GUID="{7D8D0D4C-3D1C-43A2-B357-3F03FF424DDB}"/>
+						<Switch Id="2473969246" Name="Metal" ObjectPath="\Switches\Default Work Unit\SW_Material\Metal" GUID="{4F4901C3-CC0C-4142-BDF8-FF62F7720DE3}"/>
+					</Switches>
+				</SwitchGroup>
+			</SwitchGroups>
+		</SoundBank>
+		<SoundBank Id="1734647573" Type="User" GUID="{6B7E0BFB-A825-46AA-907A-12621FC4038F}" Language="SFX" Hash="{11B8418C-6918-F348-4DE0-38893901FE38}">
+			<ObjectPath>\SoundBanks\SoundBanks_WU\UI_SB</ObjectPath>
+			<ShortName>UI_SB</ShortName>
+			<Path>UI_SB.bnk</Path>
+			<Media>
+				<File Id="109319961" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>UI_MainMenu_Button_Back_01.wav</ShortName>
+					<CachePath>SFX/UI_MainMenu_Button_Back_01_818F3B66.wem</CachePath>
+				</File>
+				<File Id="463196028" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>UI_MainMenu_Button_Back_02.wav</ShortName>
+					<CachePath>SFX/UI_MainMenu_Button_Back_02_818F3B66.wem</CachePath>
+				</File>
+				<File Id="665852765" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>UI_MainMenu_Button_Back_03.wav</ShortName>
+					<CachePath>SFX/UI_MainMenu_Button_Back_03_818F3B66.wem</CachePath>
+				</File>
+				<File Id="702949171" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>UI_MainMenu_Button_Validation_02.wav</ShortName>
+					<CachePath>SFX/UI_MainMenu_Button_Validation_02_818F3B66.wem</CachePath>
+				</File>
+				<File Id="853115927" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>UI_MainMenu_Button_Validation_01.wav</ShortName>
+					<CachePath>SFX/UI_MainMenu_Button_Validation_01_818F3B66.wem</CachePath>
+				</File>
+				<File Id="1007928850" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>UI_MainMenu_Button_Validation_03.wav</ShortName>
+					<CachePath>SFX/UI_MainMenu_Button_Validation_03_818F3B66.wem</CachePath>
+				</File>
+			</Media>
+			<Plugins>
+				<Custom>
+					<Plugin Id="169636257" Name="Have_U_Ever_Been_Outside (Custom)" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_RFX_Arena\[Effect Slot [0]: (RoomVerb)]\Have_U_Ever_Been_Outside (Custom)" GUID="{4EC028FC-6FD5-4AC6-A71F-B2CB8F1117DF}" LibName="Wwise RoomVerb" LibId="7733251"/>
+				</Custom>
+			</Plugins>
+			<Events>
+				<Event Id="242330496" Name="Play_UI_MainMenu_Button_Back_01" ObjectPath="\Events\UI_WU\Play_UI_MainMenu_Button_Back_01" GUID="{01C0CAE4-081F-4B6C-B86A-6C2B06CE1B6E}" DurationType="OneShot" DurationMin="1.1" DurationMax="1.1">
+					<MediaRefs>
+						<MediaRef Id="109319961"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="242330499" Name="Play_UI_MainMenu_Button_Back_02" ObjectPath="\Events\UI_WU\Play_UI_MainMenu_Button_Back_02" GUID="{E13DD8C4-5BBD-4349-8967-DBC2AEC8CF83}" DurationType="OneShot" DurationMin="1.1" DurationMax="1.1">
+					<MediaRefs>
+						<MediaRef Id="463196028"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="242330498" Name="Play_UI_MainMenu_Button_Back_03" ObjectPath="\Events\UI_WU\Play_UI_MainMenu_Button_Back_03" GUID="{BEED9BF3-D5D8-4536-BC27-BBBBED306872}" DurationType="OneShot" DurationMin="0.8" DurationMax="0.8">
+					<MediaRefs>
+						<MediaRef Id="665852765"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="3540367000" Name="Play_UI_MainMenu_Button_Validation_01" ObjectPath="\Events\UI_WU\Play_UI_MainMenu_Button_Validation_01" GUID="{B9A5BF93-6E33-4AC1-92A6-228E5E9B7956}" DurationType="OneShot" DurationMin="1.1886168" DurationMax="1.1886168">
+					<MediaRefs>
+						<MediaRef Id="853115927"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="3540367003" Name="Play_UI_MainMenu_Button_Validation_02" ObjectPath="\Events\UI_WU\Play_UI_MainMenu_Button_Validation_02" GUID="{89A8B49D-A61E-47FA-8266-DA2F97115521}" DurationType="OneShot" DurationMin="1.1886168" DurationMax="1.1886168">
+					<MediaRefs>
+						<MediaRef Id="702949171"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="3540367002" Name="Play_UI_MainMenu_Button_Validation_03" ObjectPath="\Events\UI_WU\Play_UI_MainMenu_Button_Validation_03" GUID="{9D2FAC20-12C9-442E-B40F-E57A18D93AA4}" DurationType="OneShot" DurationMin="1.0853968" DurationMax="1.0853968">
+					<MediaRefs>
+						<MediaRef Id="1007928850"/>
+					</MediaRefs>
+				</Event>
+			</Events>
+			<Busses>
+				<Bus Id="109159411" Name="Game_Global" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global" GUID="{FAD5C029-0A02-4BD2-97F7-F8C20B7A95BD}"/>
+				<Bus Id="393239870" Name="SFX" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global\SFX" GUID="{EB4CE24D-8196-408E-9775-5E8EEFE98495}"/>
+				<Bus Id="1117531639" Name="AMB" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global\AMB" GUID="{C1595F21-FBBF-4B04-AC1A-78D86879A937}"/>
+				<Bus Id="1551306167" Name="UI" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\UI" GUID="{B5E7816E-C3FC-4992-B763-4078089CE674}"/>
+				<Bus Id="1685527061" Name="MC" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global\MC" GUID="{B3079877-B26F-4239-A3AB-9C7AFFCBC797}"/>
+				<Bus Id="2290178407" Name="FOES_Tourelle" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global\FOES_Tourelle" GUID="{D783D57E-4B6F-4101-8F5F-FD96F0409170}"/>
+				<Bus Id="3313685232" Name="Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Voices" GUID="{00AA482D-3F12-46A5-8177-E8A172D08E63}"/>
+				<Bus Id="3623095082" Name="FOES_Flying" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global\FOES_Flying" GUID="{439831F9-AA50-4CD2-98C3-ACD8B187380E}"/>
+				<Bus Id="3991942870" Name="Music" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Music" GUID="{08156595-7637-4348-AC3C-2EDE3FCCB08F}"/>
+				<Bus Id="4056684167" Name="Master" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master" GUID="{F3A976BC-47E9-46E5-9EEC-F566BB39DBEE}"/>
+			</Busses>
+			<AuxBusses>
+				<AuxBus Id="1215931641" Name="RVB_Arena" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Arena" GUID="{54C7EBDA-4885-4850-8969-FB63BDACC807}"/>
+				<AuxBus Id="1408817756" Name="RVB_RFX_Arena" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_RFX_Arena" GUID="{CC7A2F05-EE75-4E8E-B097-98A1938CB5E4}">
+					<PluginRefs>
+						<Custom>
+							<PluginRef Id="169636257"/>
+						</Custom>
+					</PluginRefs>
+				</AuxBus>
+				<AuxBus Id="3571340017" Name="RVB_Hub" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Hub" GUID="{D499EBE4-F26A-48E5-B89D-1F7C43D829E3}"/>
+			</AuxBusses>
+		</SoundBank>
+		<SoundBank Id="1956625499" Type="User" GUID="{ADC2D189-6608-4828-BC9C-6EF6F90834DB}" Language="SFX" Hash="{1BCEA6A0-A769-73E9-6F2A-9E211AA99E4A}">
+			<ObjectPath>\SoundBanks\SoundBanks_WU\MC_SB</ObjectPath>
+			<ShortName>MC_SB</ShortName>
+			<Path>MC_SB.bnk</Path>
+			<Media>
+				<File Id="4962513" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\SP\MC_FT_Metal_08.wav</ShortName>
+					<CachePath>SFX/AMB/SP/MC_FT_Metal_08_818F3B66.wem</CachePath>
+				</File>
+				<File Id="16112564" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\SP\MC_FT_Concrete_Land_01.wav</ShortName>
+					<CachePath>SFX/AMB/SP/MC_FT_Concrete_Land_01_818F3B66.wem</CachePath>
+				</File>
+				<File Id="28276971" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\SP\MC_FT_Concrete_06.wav</ShortName>
+					<CachePath>SFX/AMB/SP/MC_FT_Concrete_06_818F3B66.wem</CachePath>
+				</File>
+				<File Id="34141530" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\SP\MC_FT_Sand_Jump_01.wav</ShortName>
+					<CachePath>SFX/AMB/SP/MC_FT_Sand_Jump_01_818F3B66.wem</CachePath>
+				</File>
+				<File Id="36917763" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>MC_SFX_Gun_Shoot_01.wav</ShortName>
+					<CachePath>SFX/MC_SFX_Gun_Shoot_01_818F3B66.wem</CachePath>
+				</File>
+				<File Id="44684202" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\SP\MC_FT_Sand_08.wav</ShortName>
+					<CachePath>SFX/AMB/SP/MC_FT_Sand_08_818F3B66.wem</CachePath>
+				</File>
+				<File Id="47427430" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SFX\MC_SFX_PickupWeapon_01.wav</ShortName>
+					<CachePath>SFX/SFX/MC_SFX_PickupWeapon_01_818F3B66.wem</CachePath>
+				</File>
+				<File Id="58062480" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\SP\MC_FT_Sand_Jump_02.wav</ShortName>
+					<CachePath>SFX/AMB/SP/MC_FT_Sand_Jump_02_818F3B66.wem</CachePath>
+				</File>
+				<File Id="62282605" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>MC_SFX_Gun_Shoot_02.wav</ShortName>
+					<CachePath>SFX/MC_SFX_Gun_Shoot_02_818F3B66.wem</CachePath>
+				</File>
+				<File Id="70109824" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>MC_SFX_Gun_Shoot_04.wav</ShortName>
+					<CachePath>SFX/MC_SFX_Gun_Shoot_04_818F3B66.wem</CachePath>
+				</File>
+				<File Id="75654975" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\SP\MC_FT_Concrete_03.wav</ShortName>
+					<CachePath>SFX/AMB/SP/MC_FT_Concrete_03_818F3B66.wem</CachePath>
+				</File>
+				<File Id="81610070" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\SP\MC_FT_Metal_02.wav</ShortName>
+					<CachePath>SFX/AMB/SP/MC_FT_Metal_02_818F3B66.wem</CachePath>
+				</File>
+				<File Id="97955047" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\SP\MC_FT_Metal_Land_03.wav</ShortName>
+					<CachePath>SFX/AMB/SP/MC_FT_Metal_Land_03_818F3B66.wem</CachePath>
+				</File>
+				<File Id="99306815" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\SP\MC_FT_Metal_01.wav</ShortName>
+					<CachePath>SFX/AMB/SP/MC_FT_Metal_01_818F3B66.wem</CachePath>
+				</File>
+				<File Id="101923972" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SFX\MC_SFX_PickupWeapon_04.wav</ShortName>
+					<CachePath>SFX/SFX/MC_SFX_PickupWeapon_04_818F3B66.wem</CachePath>
+				</File>
+				<File Id="104687879" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\SP\MC_FT_Metal_05.wav</ShortName>
+					<CachePath>SFX/AMB/SP/MC_FT_Metal_05_818F3B66.wem</CachePath>
+				</File>
+				<File Id="109232168" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\SP\MC_FT_Sand_10.wav</ShortName>
+					<CachePath>SFX/AMB/SP/MC_FT_Sand_10_818F3B66.wem</CachePath>
+				</File>
+				<File Id="114517244" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\SP\MC_FT_Concrete_Jump_02.wav</ShortName>
+					<CachePath>SFX/AMB/SP/MC_FT_Concrete_Jump_02_818F3B66.wem</CachePath>
+				</File>
+				<File Id="138501133" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\SP\MC_FT_Concrete_Land_05.wav</ShortName>
+					<CachePath>SFX/AMB/SP/MC_FT_Concrete_Land_05_818F3B66.wem</CachePath>
+				</File>
+				<File Id="146789455" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\SP\MC_FT_Metal_Land_05.wav</ShortName>
+					<CachePath>SFX/AMB/SP/MC_FT_Metal_Land_05_818F3B66.wem</CachePath>
+				</File>
+				<File Id="148436568" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\SP\MC_FT_Concrete_Land_03.wav</ShortName>
+					<CachePath>SFX/AMB/SP/MC_FT_Concrete_Land_03_818F3B66.wem</CachePath>
+				</File>
+				<File Id="156842051" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\SP\MC_FT_Metal_Jump_04.wav</ShortName>
+					<CachePath>SFX/AMB/SP/MC_FT_Metal_Jump_04_818F3B66.wem</CachePath>
+				</File>
+				<File Id="163843360" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\SP\MC_FT_Concrete_12.wav</ShortName>
+					<CachePath>SFX/AMB/SP/MC_FT_Concrete_12_818F3B66.wem</CachePath>
+				</File>
+				<File Id="174467291" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\SP\MC_FT_Metal_12.wav</ShortName>
+					<CachePath>SFX/AMB/SP/MC_FT_Metal_12_818F3B66.wem</CachePath>
+				</File>
+				<File Id="187397785" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\SP\MC_FT_Sand_Land_04.wav</ShortName>
+					<CachePath>SFX/AMB/SP/MC_FT_Sand_Land_04_818F3B66.wem</CachePath>
+				</File>
+				<File Id="211150638" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\SP\MC_FT_Sand_01.wav</ShortName>
+					<CachePath>SFX/AMB/SP/MC_FT_Sand_01_818F3B66.wem</CachePath>
+				</File>
+				<File Id="225595462" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\SP\MC_FT_Metal_11.wav</ShortName>
+					<CachePath>SFX/AMB/SP/MC_FT_Metal_11_818F3B66.wem</CachePath>
+				</File>
+				<File Id="267703531" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\SP\MC_FT_Concrete_05.wav</ShortName>
+					<CachePath>SFX/AMB/SP/MC_FT_Concrete_05_818F3B66.wem</CachePath>
+				</File>
+				<File Id="268013152" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\SP\MC_FT_Concrete_07.wav</ShortName>
+					<CachePath>SFX/AMB/SP/MC_FT_Concrete_07_818F3B66.wem</CachePath>
+				</File>
+				<File Id="282121010" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\SP\MC_FT_Sand_Land_05.wav</ShortName>
+					<CachePath>SFX/AMB/SP/MC_FT_Sand_Land_05_818F3B66.wem</CachePath>
+				</File>
+				<File Id="300270566" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\SP\MC_FT_Metal_06.wav</ShortName>
+					<CachePath>SFX/AMB/SP/MC_FT_Metal_06_818F3B66.wem</CachePath>
+				</File>
+				<File Id="305528684" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\SP\MC_FT_Sand_Jump_05.wav</ShortName>
+					<CachePath>SFX/AMB/SP/MC_FT_Sand_Jump_05_818F3B66.wem</CachePath>
+				</File>
+				<File Id="318319530" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\SP\MC_FT_Concrete_Land_04.wav</ShortName>
+					<CachePath>SFX/AMB/SP/MC_FT_Concrete_Land_04_818F3B66.wem</CachePath>
+				</File>
+				<File Id="339856009" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\SP\MC_FT_Metal_Jump_01.wav</ShortName>
+					<CachePath>SFX/AMB/SP/MC_FT_Metal_Jump_01_818F3B66.wem</CachePath>
+				</File>
+				<File Id="387146543" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\SP\MC_FT_Sand_05.wav</ShortName>
+					<CachePath>SFX/AMB/SP/MC_FT_Sand_05_818F3B66.wem</CachePath>
+				</File>
+				<File Id="395573930" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\SP\MC_FT_Metal_Land_04.wav</ShortName>
+					<CachePath>SFX/AMB/SP/MC_FT_Metal_Land_04_818F3B66.wem</CachePath>
+				</File>
+				<File Id="402066446" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\SP\MC_FT_Metal_03.wav</ShortName>
+					<CachePath>SFX/AMB/SP/MC_FT_Metal_03_818F3B66.wem</CachePath>
+				</File>
+				<File Id="418331982" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SFX\MC_SFX_Weapon_NoAmmo.wav</ShortName>
+					<CachePath>SFX/SFX/MC_SFX_Weapon_NoAmmo_818F3B66.wem</CachePath>
+				</File>
+				<File Id="421361594" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>MC_SFX_Gun_Shoot_05.wav</ShortName>
+					<CachePath>SFX/MC_SFX_Gun_Shoot_05_818F3B66.wem</CachePath>
+				</File>
+				<File Id="430767489" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\SP\MC_FT_Sand_Land_03.wav</ShortName>
+					<CachePath>SFX/AMB/SP/MC_FT_Sand_Land_03_818F3B66.wem</CachePath>
+				</File>
+				<File Id="442853450" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\SP\MC_FT_Concrete_Jump_04.wav</ShortName>
+					<CachePath>SFX/AMB/SP/MC_FT_Concrete_Jump_04_818F3B66.wem</CachePath>
+				</File>
+				<File Id="451049292" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\SP\MC_FT_Metal_Jump_05.wav</ShortName>
+					<CachePath>SFX/AMB/SP/MC_FT_Metal_Jump_05_818F3B66.wem</CachePath>
+				</File>
+				<File Id="454622091" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\SP\MC_FT_Metal_Land_02.wav</ShortName>
+					<CachePath>SFX/AMB/SP/MC_FT_Metal_Land_02_818F3B66.wem</CachePath>
+				</File>
+				<File Id="480059959" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\SP\MC_FT_Concrete_02.wav</ShortName>
+					<CachePath>SFX/AMB/SP/MC_FT_Concrete_02_818F3B66.wem</CachePath>
+				</File>
+				<File Id="483253408" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\SP\MC_FT_Sand_Land_02.wav</ShortName>
+					<CachePath>SFX/AMB/SP/MC_FT_Sand_Land_02_818F3B66.wem</CachePath>
+				</File>
+				<File Id="499540378" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\SP\MC_FT_Concrete_Jump_01.wav</ShortName>
+					<CachePath>SFX/AMB/SP/MC_FT_Concrete_Jump_01_818F3B66.wem</CachePath>
+				</File>
+				<File Id="511633870" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SFX\MC_SFX_PickupWeapon_03.wav</ShortName>
+					<CachePath>SFX/SFX/MC_SFX_PickupWeapon_03_818F3B66.wem</CachePath>
+				</File>
+				<File Id="534496258" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\SP\MC_FT_Concrete_11.wav</ShortName>
+					<CachePath>SFX/AMB/SP/MC_FT_Concrete_11_818F3B66.wem</CachePath>
+				</File>
+				<File Id="541415762" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\SP\MC_FT_Metal_Jump_02.wav</ShortName>
+					<CachePath>SFX/AMB/SP/MC_FT_Metal_Jump_02_818F3B66.wem</CachePath>
+				</File>
+				<File Id="542236427" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\SP\MC_FT_Sand_12.wav</ShortName>
+					<CachePath>SFX/AMB/SP/MC_FT_Sand_12_818F3B66.wem</CachePath>
+				</File>
+				<File Id="592388296" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\SP\MC_FT_Metal_10.wav</ShortName>
+					<CachePath>SFX/AMB/SP/MC_FT_Metal_10_818F3B66.wem</CachePath>
+				</File>
+				<File Id="602677679" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\SP\MC_FT_Concrete_01.wav</ShortName>
+					<CachePath>SFX/AMB/SP/MC_FT_Concrete_01_818F3B66.wem</CachePath>
+				</File>
+				<File Id="607185623" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SFX\MC_SFX_PickupWeapon_02.wav</ShortName>
+					<CachePath>SFX/SFX/MC_SFX_PickupWeapon_02_818F3B66.wem</CachePath>
+				</File>
+				<File Id="608609148" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\SP\MC_FT_Sand_Jump_03.wav</ShortName>
+					<CachePath>SFX/AMB/SP/MC_FT_Sand_Jump_03_818F3B66.wem</CachePath>
+				</File>
+				<File Id="610072169" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SFX\MC_SFX_PickupWeapon_05.wav</ShortName>
+					<CachePath>SFX/SFX/MC_SFX_PickupWeapon_05_818F3B66.wem</CachePath>
+				</File>
+				<File Id="610918733" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>MC_SFX_Gun_Shoot_03.wav</ShortName>
+					<CachePath>SFX/MC_SFX_Gun_Shoot_03_818F3B66.wem</CachePath>
+				</File>
+				<File Id="620312545" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\SP\MC_FT_Sand_03.wav</ShortName>
+					<CachePath>SFX/AMB/SP/MC_FT_Sand_03_818F3B66.wem</CachePath>
+				</File>
+				<File Id="655344864" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\SP\MC_FT_Concrete_04.wav</ShortName>
+					<CachePath>SFX/AMB/SP/MC_FT_Concrete_04_818F3B66.wem</CachePath>
+				</File>
+				<File Id="673489173" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\SP\MC_FT_Sand_09.wav</ShortName>
+					<CachePath>SFX/AMB/SP/MC_FT_Sand_09_818F3B66.wem</CachePath>
+				</File>
+				<File Id="683985857" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\SP\MC_FT_Concrete_Land_02.wav</ShortName>
+					<CachePath>SFX/AMB/SP/MC_FT_Concrete_Land_02_818F3B66.wem</CachePath>
+				</File>
+				<File Id="721183356" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\SP\MC_FT_Sand_07.wav</ShortName>
+					<CachePath>SFX/AMB/SP/MC_FT_Sand_07_818F3B66.wem</CachePath>
+				</File>
+				<File Id="728432909" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\SP\MC_FT_Metal_Land_01.wav</ShortName>
+					<CachePath>SFX/AMB/SP/MC_FT_Metal_Land_01_818F3B66.wem</CachePath>
+				</File>
+				<File Id="738022832" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\SP\MC_FT_Concrete_Jump_03.wav</ShortName>
+					<CachePath>SFX/AMB/SP/MC_FT_Concrete_Jump_03_818F3B66.wem</CachePath>
+				</File>
+				<File Id="764749319" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\SP\MC_FT_Metal_09.wav</ShortName>
+					<CachePath>SFX/AMB/SP/MC_FT_Metal_09_818F3B66.wem</CachePath>
+				</File>
+				<File Id="772410827" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SFX\MC_SFX_Weapon_Armed.wav</ShortName>
+					<CachePath>SFX/SFX/MC_SFX_Weapon_Armed_818F3B66.wem</CachePath>
+				</File>
+				<File Id="779936328" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\SP\MC_FT_Sand_02.wav</ShortName>
+					<CachePath>SFX/AMB/SP/MC_FT_Sand_02_818F3B66.wem</CachePath>
+				</File>
+				<File Id="793802699" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\SP\MC_FT_Concrete_Jump_05.wav</ShortName>
+					<CachePath>SFX/AMB/SP/MC_FT_Concrete_Jump_05_818F3B66.wem</CachePath>
+				</File>
+				<File Id="814998601" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\SP\MC_FT_Concrete_08.wav</ShortName>
+					<CachePath>SFX/AMB/SP/MC_FT_Concrete_08_818F3B66.wem</CachePath>
+				</File>
+				<File Id="816346842" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\SP\MC_FT_Concrete_09.wav</ShortName>
+					<CachePath>SFX/AMB/SP/MC_FT_Concrete_09_818F3B66.wem</CachePath>
+				</File>
+				<File Id="838939217" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\SP\MC_FT_Sand_04.wav</ShortName>
+					<CachePath>SFX/AMB/SP/MC_FT_Sand_04_818F3B66.wem</CachePath>
+				</File>
+				<File Id="851952181" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\SP\MC_FT_Metal_Jump_03.wav</ShortName>
+					<CachePath>SFX/AMB/SP/MC_FT_Metal_Jump_03_818F3B66.wem</CachePath>
+				</File>
+				<File Id="888066358" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\SP\MC_FT_Metal_07.wav</ShortName>
+					<CachePath>SFX/AMB/SP/MC_FT_Metal_07_818F3B66.wem</CachePath>
+				</File>
+				<File Id="898538319" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\SP\MC_FT_Metal_04.wav</ShortName>
+					<CachePath>SFX/AMB/SP/MC_FT_Metal_04_818F3B66.wem</CachePath>
+				</File>
+				<File Id="910413546" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\SP\MC_FT_Sand_06.wav</ShortName>
+					<CachePath>SFX/AMB/SP/MC_FT_Sand_06_818F3B66.wem</CachePath>
+				</File>
+				<File Id="967065821" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\SP\MC_FT_Sand_11.wav</ShortName>
+					<CachePath>SFX/AMB/SP/MC_FT_Sand_11_818F3B66.wem</CachePath>
+				</File>
+				<File Id="971911144" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\SP\MC_FT_Sand_Jump_04.wav</ShortName>
+					<CachePath>SFX/AMB/SP/MC_FT_Sand_Jump_04_818F3B66.wem</CachePath>
+				</File>
+				<File Id="1003274806" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\SP\MC_FT_Sand_Land_01.wav</ShortName>
+					<CachePath>SFX/AMB/SP/MC_FT_Sand_Land_01_818F3B66.wem</CachePath>
+				</File>
+				<File Id="1036129781" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\SP\MC_FT_Concrete_10.wav</ShortName>
+					<CachePath>SFX/AMB/SP/MC_FT_Concrete_10_818F3B66.wem</CachePath>
+				</File>
+			</Media>
+			<Plugins>
+				<Custom>
+					<Plugin Id="169636257" Name="Have_U_Ever_Been_Outside (Custom)" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_RFX_Arena\[Effect Slot [0]: (RoomVerb)]\Have_U_Ever_Been_Outside (Custom)" GUID="{4EC028FC-6FD5-4AC6-A71F-B2CB8F1117DF}" LibName="Wwise RoomVerb" LibId="7733251"/>
+				</Custom>
+			</Plugins>
+			<Events>
+				<Event Id="2749485653" Name="Play_MC_FOL_FT_Jump_SW" ObjectPath="\Events\MC_WU\Play_MC_FOL_FT_Jump_SW" GUID="{84F52436-C579-4C37-9804-C7D11AEDCC08}" DurationType="OneShot" DurationMin="0.42432198" DurationMax="0.92546445">
+					<SwitchContainers>
+						<SwitchContainer>
+							<SwitchValue GroupType="Switch" GroupId="757195373" Id="841620460" GUID="{7D8D0D4C-3D1C-43A2-B357-3F03FF424DDB}" Default="true"/>
+							<MediaRefs>
+								<MediaRef Id="114517244"/>
+								<MediaRef Id="442853450"/>
+								<MediaRef Id="499540378"/>
+								<MediaRef Id="738022832"/>
+								<MediaRef Id="793802699"/>
+							</MediaRefs>
+						</SwitchContainer>
+						<SwitchContainer>
+							<SwitchValue GroupType="Switch" GroupId="757195373" Id="803837735" GUID="{0F8A73BD-8A92-4819-BE09-452FE32E1FBC}"/>
+							<MediaRefs>
+								<MediaRef Id="34141530"/>
+								<MediaRef Id="58062480"/>
+								<MediaRef Id="305528684"/>
+								<MediaRef Id="608609148"/>
+								<MediaRef Id="971911144"/>
+							</MediaRefs>
+						</SwitchContainer>
+						<SwitchContainer>
+							<SwitchValue GroupType="Switch" GroupId="757195373" Id="2473969246" GUID="{4F4901C3-CC0C-4142-BDF8-FF62F7720DE3}"/>
+							<MediaRefs>
+								<MediaRef Id="156842051"/>
+								<MediaRef Id="339856009"/>
+								<MediaRef Id="451049292"/>
+								<MediaRef Id="541415762"/>
+								<MediaRef Id="851952181"/>
+							</MediaRefs>
+						</SwitchContainer>
+					</SwitchContainers>
+				</Event>
+				<Event Id="2116962020" Name="Play_MC_FOL_FT_Land_SW" ObjectPath="\Events\MC_WU\Play_MC_FOL_FT_Land_SW" GUID="{3AABFDF5-D848-4A71-84AA-A7DEDC1F4177}" DurationType="OneShot" DurationMin="0.35762826" DurationMax="0.91374254">
+					<SwitchContainers>
+						<SwitchContainer>
+							<SwitchValue GroupType="Switch" GroupId="757195373" Id="841620460" GUID="{7D8D0D4C-3D1C-43A2-B357-3F03FF424DDB}" Default="true"/>
+							<MediaRefs>
+								<MediaRef Id="16112564"/>
+								<MediaRef Id="138501133"/>
+								<MediaRef Id="148436568"/>
+								<MediaRef Id="318319530"/>
+								<MediaRef Id="683985857"/>
+							</MediaRefs>
+						</SwitchContainer>
+						<SwitchContainer>
+							<SwitchValue GroupType="Switch" GroupId="757195373" Id="803837735" GUID="{0F8A73BD-8A92-4819-BE09-452FE32E1FBC}"/>
+							<MediaRefs>
+								<MediaRef Id="187397785"/>
+								<MediaRef Id="282121010"/>
+								<MediaRef Id="430767489"/>
+								<MediaRef Id="483253408"/>
+								<MediaRef Id="1003274806"/>
+							</MediaRefs>
+						</SwitchContainer>
+						<SwitchContainer>
+							<SwitchValue GroupType="Switch" GroupId="757195373" Id="2473969246" GUID="{4F4901C3-CC0C-4142-BDF8-FF62F7720DE3}"/>
+							<MediaRefs>
+								<MediaRef Id="97955047"/>
+								<MediaRef Id="146789455"/>
+								<MediaRef Id="395573930"/>
+								<MediaRef Id="454622091"/>
+								<MediaRef Id="728432909"/>
+							</MediaRefs>
+						</SwitchContainer>
+					</SwitchContainers>
+				</Event>
+				<Event Id="294373914" Name="Play_MC_FOL_FT_SW" ObjectPath="\Events\MC_WU\Play_MC_FOL_FT_SW" GUID="{770A8171-A3BF-4A55-9CA5-93ECE5CBF8BD}" DurationType="OneShot" DurationMin="0.20717718" DurationMax="0.8268297">
+					<SwitchContainers>
+						<SwitchContainer>
+							<SwitchValue GroupType="Switch" GroupId="757195373" Id="841620460" GUID="{7D8D0D4C-3D1C-43A2-B357-3F03FF424DDB}" Default="true"/>
+							<MediaRefs>
+								<MediaRef Id="28276971"/>
+								<MediaRef Id="75654975"/>
+								<MediaRef Id="163843360"/>
+								<MediaRef Id="267703531"/>
+								<MediaRef Id="268013152"/>
+								<MediaRef Id="480059959"/>
+								<MediaRef Id="534496258"/>
+								<MediaRef Id="602677679"/>
+								<MediaRef Id="655344864"/>
+								<MediaRef Id="814998601"/>
+								<MediaRef Id="816346842"/>
+								<MediaRef Id="1036129781"/>
+							</MediaRefs>
+						</SwitchContainer>
+						<SwitchContainer>
+							<SwitchValue GroupType="Switch" GroupId="757195373" Id="803837735" GUID="{0F8A73BD-8A92-4819-BE09-452FE32E1FBC}"/>
+							<MediaRefs>
+								<MediaRef Id="44684202"/>
+								<MediaRef Id="109232168"/>
+								<MediaRef Id="211150638"/>
+								<MediaRef Id="387146543"/>
+								<MediaRef Id="542236427"/>
+								<MediaRef Id="620312545"/>
+								<MediaRef Id="673489173"/>
+								<MediaRef Id="721183356"/>
+								<MediaRef Id="779936328"/>
+								<MediaRef Id="838939217"/>
+								<MediaRef Id="910413546"/>
+								<MediaRef Id="967065821"/>
+							</MediaRefs>
+						</SwitchContainer>
+						<SwitchContainer>
+							<SwitchValue GroupType="Switch" GroupId="757195373" Id="2473969246" GUID="{4F4901C3-CC0C-4142-BDF8-FF62F7720DE3}"/>
+							<MediaRefs>
+								<MediaRef Id="4962513"/>
+								<MediaRef Id="81610070"/>
+								<MediaRef Id="99306815"/>
+								<MediaRef Id="104687879"/>
+								<MediaRef Id="174467291"/>
+								<MediaRef Id="225595462"/>
+								<MediaRef Id="300270566"/>
+								<MediaRef Id="402066446"/>
+								<MediaRef Id="592388296"/>
+								<MediaRef Id="764749319"/>
+								<MediaRef Id="888066358"/>
+								<MediaRef Id="898538319"/>
+							</MediaRefs>
+						</SwitchContainer>
+						<SwitchContainer>
+							<SwitchValue GroupType="Switch" GroupId="757195373" Id="841620460" GUID="{7D8D0D4C-3D1C-43A2-B357-3F03FF424DDB}" Default="true"/>
+							<MediaRefs>
+								<MediaRef Id="28276971"/>
+								<MediaRef Id="75654975"/>
+								<MediaRef Id="163843360"/>
+								<MediaRef Id="267703531"/>
+								<MediaRef Id="268013152"/>
+								<MediaRef Id="480059959"/>
+								<MediaRef Id="534496258"/>
+								<MediaRef Id="602677679"/>
+								<MediaRef Id="655344864"/>
+								<MediaRef Id="814998601"/>
+								<MediaRef Id="816346842"/>
+								<MediaRef Id="1036129781"/>
+							</MediaRefs>
+						</SwitchContainer>
+						<SwitchContainer>
+							<SwitchValue GroupType="Switch" GroupId="757195373" Id="803837735" GUID="{0F8A73BD-8A92-4819-BE09-452FE32E1FBC}"/>
+							<MediaRefs>
+								<MediaRef Id="44684202"/>
+								<MediaRef Id="109232168"/>
+								<MediaRef Id="211150638"/>
+								<MediaRef Id="387146543"/>
+								<MediaRef Id="542236427"/>
+								<MediaRef Id="620312545"/>
+								<MediaRef Id="673489173"/>
+								<MediaRef Id="721183356"/>
+								<MediaRef Id="779936328"/>
+								<MediaRef Id="838939217"/>
+								<MediaRef Id="910413546"/>
+								<MediaRef Id="967065821"/>
+							</MediaRefs>
+						</SwitchContainer>
+						<SwitchContainer>
+							<SwitchValue GroupType="Switch" GroupId="757195373" Id="2473969246" GUID="{4F4901C3-CC0C-4142-BDF8-FF62F7720DE3}"/>
+							<MediaRefs>
+								<MediaRef Id="4962513"/>
+								<MediaRef Id="81610070"/>
+								<MediaRef Id="99306815"/>
+								<MediaRef Id="104687879"/>
+								<MediaRef Id="174467291"/>
+								<MediaRef Id="225595462"/>
+								<MediaRef Id="300270566"/>
+								<MediaRef Id="402066446"/>
+								<MediaRef Id="592388296"/>
+								<MediaRef Id="764749319"/>
+								<MediaRef Id="888066358"/>
+								<MediaRef Id="898538319"/>
+							</MediaRefs>
+						</SwitchContainer>
+					</SwitchContainers>
+				</Event>
+				<Event Id="1177297501" Name="Play_MC_SFX_Gun_Shoot_RC" ObjectPath="\Events\MC_WU\Play_MC_SFX_Gun_Shoot_RC" GUID="{19EDAAA1-DF79-4328-9566-97F28CD19D08}" DurationType="OneShot" DurationMin="0.80338675" DurationMax="1.8403275">
+					<MediaRefs>
+						<MediaRef Id="36917763"/>
+						<MediaRef Id="62282605"/>
+						<MediaRef Id="70109824"/>
+						<MediaRef Id="421361594"/>
+						<MediaRef Id="610918733"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="4122495842" Name="Play_MC_SFX_UpdateAmmo_RC" ObjectPath="\Events\MC_WU\Play_MC_SFX_UpdateAmmo_RC" GUID="{4C30DC19-451C-449E-9B9A-AADEEAB14B44}" DurationType="OneShot" DurationMin="2.5657325" DurationMax="3.6410909">
+					<MediaRefs>
+						<MediaRef Id="47427430"/>
+						<MediaRef Id="101923972"/>
+						<MediaRef Id="511633870"/>
+						<MediaRef Id="607185623"/>
+						<MediaRef Id="610072169"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="3961249933" Name="Play_MC_SFX_Weapon_Armed_RC" ObjectPath="\Events\MC_WU\Play_MC_SFX_Weapon_Armed_RC" GUID="{E22125BE-E0CB-4EC0-A4CB-7460BE42B80E}" DurationType="OneShot" DurationMin="3.3666666" DurationMax="3.3666666">
+					<MediaRefs>
+						<MediaRef Id="772410827"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="3400800083" Name="Play_MC_SFX_Weapon_NoAmmo_RC" ObjectPath="\Events\MC_WU\Play_MC_SFX_Weapon_NoAmmo_RC" GUID="{708ACD16-F6BC-49F8-85D6-8076E283E48F}" DurationType="OneShot" DurationMin="1.7806667" DurationMax="1.7806667">
+					<MediaRefs>
+						<MediaRef Id="418331982"/>
+					</MediaRefs>
+				</Event>
+			</Events>
+			<Busses>
+				<Bus Id="109159411" Name="Game_Global" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global" GUID="{FAD5C029-0A02-4BD2-97F7-F8C20B7A95BD}"/>
+				<Bus Id="393239870" Name="SFX" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global\SFX" GUID="{EB4CE24D-8196-408E-9775-5E8EEFE98495}"/>
+				<Bus Id="1117531639" Name="AMB" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global\AMB" GUID="{C1595F21-FBBF-4B04-AC1A-78D86879A937}"/>
+				<Bus Id="1551306167" Name="UI" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\UI" GUID="{B5E7816E-C3FC-4992-B763-4078089CE674}"/>
+				<Bus Id="1685527061" Name="MC" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global\MC" GUID="{B3079877-B26F-4239-A3AB-9C7AFFCBC797}"/>
+				<Bus Id="2290178407" Name="FOES_Tourelle" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global\FOES_Tourelle" GUID="{D783D57E-4B6F-4101-8F5F-FD96F0409170}"/>
+				<Bus Id="3313685232" Name="Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Voices" GUID="{00AA482D-3F12-46A5-8177-E8A172D08E63}"/>
+				<Bus Id="3623095082" Name="FOES_Flying" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global\FOES_Flying" GUID="{439831F9-AA50-4CD2-98C3-ACD8B187380E}"/>
+				<Bus Id="3991942870" Name="Music" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Music" GUID="{08156595-7637-4348-AC3C-2EDE3FCCB08F}"/>
+				<Bus Id="4056684167" Name="Master" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master" GUID="{F3A976BC-47E9-46E5-9EEC-F566BB39DBEE}"/>
+			</Busses>
+			<AuxBusses>
+				<AuxBus Id="1215931641" Name="RVB_Arena" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Arena" GUID="{54C7EBDA-4885-4850-8969-FB63BDACC807}"/>
+				<AuxBus Id="1408817756" Name="RVB_RFX_Arena" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_RFX_Arena" GUID="{CC7A2F05-EE75-4E8E-B097-98A1938CB5E4}">
+					<PluginRefs>
+						<Custom>
+							<PluginRef Id="169636257"/>
+						</Custom>
+					</PluginRefs>
+				</AuxBus>
+				<AuxBus Id="3571340017" Name="RVB_Hub" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Hub" GUID="{D499EBE4-F26A-48E5-B89D-1F7C43D829E3}"/>
+			</AuxBusses>
+			<SwitchGroups>
+				<SwitchGroup Id="757195373" Name="SW_Material" ObjectPath="\Switches\Default Work Unit\SW_Material" GUID="{828E8B9F-6B07-4984-BFE7-B76CEA058A8B}">
+					<Switches>
+						<Switch Id="803837735" Name="Sand" ObjectPath="\Switches\Default Work Unit\SW_Material\Sand" GUID="{0F8A73BD-8A92-4819-BE09-452FE32E1FBC}"/>
+						<Switch Id="841620460" Name="Concrete" ObjectPath="\Switches\Default Work Unit\SW_Material\Concrete" GUID="{7D8D0D4C-3D1C-43A2-B357-3F03FF424DDB}"/>
+						<Switch Id="2473969246" Name="Metal" ObjectPath="\Switches\Default Work Unit\SW_Material\Metal" GUID="{4F4901C3-CC0C-4142-BDF8-FF62F7720DE3}"/>
+					</Switches>
+				</SwitchGroup>
+			</SwitchGroups>
+		</SoundBank>
+		<SoundBank Id="2516814376" Type="User" GUID="{48187E94-2869-42A3-9E99-A12DF1DA86DF}" Language="SFX" Hash="{C96EC5F5-E48D-9B1B-CFF8-653DECDF38A6}">
+			<ObjectPath>\SoundBanks\SoundBanks_WU\FOES_Invisible_SB</ObjectPath>
+			<ShortName>FOES_Invisible_SB</ShortName>
+			<Path>FOES_Invisible_SB.bnk</Path>
+			<Plugins>
+				<Custom>
+					<Plugin Id="169636257" Name="Have_U_Ever_Been_Outside (Custom)" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_RFX_Arena\[Effect Slot [0]: (RoomVerb)]\Have_U_Ever_Been_Outside (Custom)" GUID="{4EC028FC-6FD5-4AC6-A71F-B2CB8F1117DF}" LibName="Wwise RoomVerb" LibId="7733251"/>
+				</Custom>
+			</Plugins>
+			<Busses>
+				<Bus Id="109159411" Name="Game_Global" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global" GUID="{FAD5C029-0A02-4BD2-97F7-F8C20B7A95BD}"/>
+				<Bus Id="393239870" Name="SFX" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global\SFX" GUID="{EB4CE24D-8196-408E-9775-5E8EEFE98495}"/>
+				<Bus Id="1117531639" Name="AMB" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global\AMB" GUID="{C1595F21-FBBF-4B04-AC1A-78D86879A937}"/>
+				<Bus Id="1551306167" Name="UI" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\UI" GUID="{B5E7816E-C3FC-4992-B763-4078089CE674}"/>
+				<Bus Id="1685527061" Name="MC" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global\MC" GUID="{B3079877-B26F-4239-A3AB-9C7AFFCBC797}"/>
+				<Bus Id="2290178407" Name="FOES_Tourelle" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global\FOES_Tourelle" GUID="{D783D57E-4B6F-4101-8F5F-FD96F0409170}"/>
+				<Bus Id="3313685232" Name="Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Voices" GUID="{00AA482D-3F12-46A5-8177-E8A172D08E63}"/>
+				<Bus Id="3623095082" Name="FOES_Flying" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global\FOES_Flying" GUID="{439831F9-AA50-4CD2-98C3-ACD8B187380E}"/>
+				<Bus Id="3991942870" Name="Music" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Music" GUID="{08156595-7637-4348-AC3C-2EDE3FCCB08F}"/>
+				<Bus Id="4056684167" Name="Master" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master" GUID="{F3A976BC-47E9-46E5-9EEC-F566BB39DBEE}"/>
+			</Busses>
+			<AuxBusses>
+				<AuxBus Id="1215931641" Name="RVB_Arena" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Arena" GUID="{54C7EBDA-4885-4850-8969-FB63BDACC807}"/>
+				<AuxBus Id="1408817756" Name="RVB_RFX_Arena" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_RFX_Arena" GUID="{CC7A2F05-EE75-4E8E-B097-98A1938CB5E4}">
+					<PluginRefs>
+						<Custom>
+							<PluginRef Id="169636257"/>
+						</Custom>
+					</PluginRefs>
+				</AuxBus>
+				<AuxBus Id="3571340017" Name="RVB_Hub" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Hub" GUID="{D499EBE4-F26A-48E5-B89D-1F7C43D829E3}"/>
+			</AuxBusses>
+		</SoundBank>
+		<SoundBank Id="3250948517" Type="User" GUID="{8CC30184-23AF-4DB5-9844-9B04DF10A650}" Language="SFX" Hash="{FC854766-77E4-D367-5F8C-74EB0B9E0D79}">
+			<ObjectPath>\SoundBanks\SoundBanks_WU\FOES_Tourelle_SB</ObjectPath>
+			<ShortName>FOES_Tourelle_SB</ShortName>
+			<Path>FOES_Tourelle_SB.bnk</Path>
+			<Media>
+				<File Id="37180877" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>FOES_SFX_Tourelle_Shoot_02.wav</ShortName>
+					<CachePath>SFX/FOES_SFX_Tourelle_Shoot_02_818F3B66.wem</CachePath>
+				</File>
+				<File Id="119224371" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>FOES_SFX_Tourelle_Shoot_05.wav</ShortName>
+					<CachePath>SFX/FOES_SFX_Tourelle_Shoot_05_818F3B66.wem</CachePath>
+				</File>
+				<File Id="363741101" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>FOES_SFX_Tourelle_Shoot_04.wav</ShortName>
+					<CachePath>SFX/FOES_SFX_Tourelle_Shoot_04_818F3B66.wem</CachePath>
+				</File>
+				<File Id="387455546" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>FOES_SFX_Tourelle_Shoot_01.wav</ShortName>
+					<CachePath>SFX/FOES_SFX_Tourelle_Shoot_01_818F3B66.wem</CachePath>
+				</File>
+				<File Id="427986118" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\RFX\FOES_SFX_Tourelle_Death_01.wav</ShortName>
+					<CachePath>SFX/AMB/RFX/FOES_SFX_Tourelle_Death_01_818F3B66.wem</CachePath>
+				</File>
+				<File Id="515409144" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>FOES_SFX_Tourelle_Shoot_03.wav</ShortName>
+					<CachePath>SFX/FOES_SFX_Tourelle_Shoot_03_818F3B66.wem</CachePath>
+				</File>
+				<File Id="705394855" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\RFX\FOES_SFX_Tourelle_Death_03.wav</ShortName>
+					<CachePath>SFX/AMB/RFX/FOES_SFX_Tourelle_Death_03_818F3B66.wem</CachePath>
+				</File>
+				<File Id="1008799864" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\RFX\FOES_SFX_Tourelle_Death_02.wav</ShortName>
+					<CachePath>SFX/AMB/RFX/FOES_SFX_Tourelle_Death_02_818F3B66.wem</CachePath>
+				</File>
+			</Media>
+			<Plugins>
+				<Custom>
+					<Plugin Id="169636257" Name="Have_U_Ever_Been_Outside (Custom)" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_RFX_Arena\[Effect Slot [0]: (RoomVerb)]\Have_U_Ever_Been_Outside (Custom)" GUID="{4EC028FC-6FD5-4AC6-A71F-B2CB8F1117DF}" LibName="Wwise RoomVerb" LibId="7733251"/>
+				</Custom>
+			</Plugins>
+			<Events>
+				<Event Id="305372709" Name="Play_FOES_SFX_Tourelle_Death_RC" ObjectPath="\Events\FOES_Tourelle_WU\Play_FOES_SFX_Tourelle_Death_RC" GUID="{03966878-2B14-4479-9F3B-3C317D6EB7B1}" MaxAttenuation="3000" DurationType="OneShot" DurationMin="2.8365834" DurationMax="3.2426875">
+					<MediaRefs>
+						<MediaRef Id="427986118"/>
+						<MediaRef Id="705394855"/>
+						<MediaRef Id="1008799864"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="2480809816" Name="Play_FOES_SFX_Tourelle_Shoot_RC" ObjectPath="\Events\FOES_Tourelle_WU\Play_FOES_SFX_Tourelle_Shoot_RC" GUID="{140E36FB-31F3-4C66-AC5D-E9E86C57BA68}" MaxAttenuation="3000" DurationType="OneShot" DurationMin="1.2318597" DurationMax="2.567487">
+					<MediaRefs>
+						<MediaRef Id="37180877"/>
+						<MediaRef Id="119224371"/>
+						<MediaRef Id="363741101"/>
+						<MediaRef Id="387455546"/>
+						<MediaRef Id="515409144"/>
+					</MediaRefs>
+				</Event>
+			</Events>
+			<Busses>
+				<Bus Id="109159411" Name="Game_Global" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global" GUID="{FAD5C029-0A02-4BD2-97F7-F8C20B7A95BD}"/>
+				<Bus Id="393239870" Name="SFX" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global\SFX" GUID="{EB4CE24D-8196-408E-9775-5E8EEFE98495}"/>
+				<Bus Id="1117531639" Name="AMB" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global\AMB" GUID="{C1595F21-FBBF-4B04-AC1A-78D86879A937}"/>
+				<Bus Id="1551306167" Name="UI" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\UI" GUID="{B5E7816E-C3FC-4992-B763-4078089CE674}"/>
+				<Bus Id="1685527061" Name="MC" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global\MC" GUID="{B3079877-B26F-4239-A3AB-9C7AFFCBC797}"/>
+				<Bus Id="2290178407" Name="FOES_Tourelle" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global\FOES_Tourelle" GUID="{D783D57E-4B6F-4101-8F5F-FD96F0409170}"/>
+				<Bus Id="3313685232" Name="Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Voices" GUID="{00AA482D-3F12-46A5-8177-E8A172D08E63}"/>
+				<Bus Id="3623095082" Name="FOES_Flying" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global\FOES_Flying" GUID="{439831F9-AA50-4CD2-98C3-ACD8B187380E}"/>
+				<Bus Id="3991942870" Name="Music" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Music" GUID="{08156595-7637-4348-AC3C-2EDE3FCCB08F}"/>
+				<Bus Id="4056684167" Name="Master" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master" GUID="{F3A976BC-47E9-46E5-9EEC-F566BB39DBEE}"/>
+			</Busses>
+			<AuxBusses>
+				<AuxBus Id="1215931641" Name="RVB_Arena" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Arena" GUID="{54C7EBDA-4885-4850-8969-FB63BDACC807}"/>
+				<AuxBus Id="1408817756" Name="RVB_RFX_Arena" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_RFX_Arena" GUID="{CC7A2F05-EE75-4E8E-B097-98A1938CB5E4}">
+					<PluginRefs>
+						<Custom>
+							<PluginRef Id="169636257"/>
+						</Custom>
+					</PluginRefs>
+				</AuxBus>
+				<AuxBus Id="3571340017" Name="RVB_Hub" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Hub" GUID="{D499EBE4-F26A-48E5-B89D-1F7C43D829E3}"/>
+			</AuxBusses>
+		</SoundBank>
+		<SoundBank Id="3256182613" Type="User" GUID="{9DC5CBA4-02D0-4677-A565-21ECA413E694}" Language="SFX" Hash="{59009633-8F0C-DA94-B70D-F4CCA6263F72}">
+			<ObjectPath>\SoundBanks\SoundBanks_WU\AMB_SB</ObjectPath>
+			<ShortName>AMB_SB</ShortName>
+			<Path>AMB_SB.bnk</Path>
+			<Media>
+				<File Id="4481750" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\RFX\AMB_RFX_Crowd_Pitched_Reaction_04.wav</ShortName>
+					<CachePath>SFX/AMB/RFX/AMB_RFX_Crowd_Pitched_Reaction_04_818F3B66.wem</CachePath>
+				</File>
+				<File Id="84736735" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\Pads\AMB_RFX_Negative_Reaction_06.wav</ShortName>
+					<CachePath>SFX/AMB/Pads/AMB_RFX_Negative_Reaction_06_818F3B66.wem</CachePath>
+				</File>
+				<File Id="127175197" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\RFX\AMB_RFX_Crowd_Individual_05.wav</ShortName>
+					<CachePath>SFX/AMB/RFX/AMB_RFX_Crowd_Individual_05_818F3B66.wem</CachePath>
+				</File>
+				<File Id="138942913" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\RFX\AMB_RFX_Crowd_ClassicReaction_06.wav</ShortName>
+					<CachePath>SFX/AMB/RFX/AMB_RFX_Crowd_ClassicReaction_06_818F3B66.wem</CachePath>
+				</File>
+				<File Id="149514301" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\RFX\AMB_RFX_Crowd_Individual_03.wav</ShortName>
+					<CachePath>SFX/AMB/RFX/AMB_RFX_Crowd_Individual_03_818F3B66.wem</CachePath>
+				</File>
+				<File Id="155546430" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\RFX\AMB_RFX_Crowd_ClassicReaction_07.wav</ShortName>
+					<CachePath>SFX/AMB/RFX/AMB_RFX_Crowd_ClassicReaction_07_818F3B66.wem</CachePath>
+				</File>
+				<File Id="179362195" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\Pads\AMB_RFX_Negative_Reaction_08.wav</ShortName>
+					<CachePath>SFX/AMB/Pads/AMB_RFX_Negative_Reaction_08_818F3B66.wem</CachePath>
+				</File>
+				<File Id="203208671" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\RFX\AMB_RFX_Crowd_Individual_07.wav</ShortName>
+					<CachePath>SFX/AMB/RFX/AMB_RFX_Crowd_Individual_07_818F3B66.wem</CachePath>
+				</File>
+				<File Id="268147826" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\Pads\AMB_RFX_Negative_Reaction_07.wav</ShortName>
+					<CachePath>SFX/AMB/Pads/AMB_RFX_Negative_Reaction_07_818F3B66.wem</CachePath>
+				</File>
+				<File Id="332135939" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\Pads\AMB_RFX_Negative_Reaction_09.wav</ShortName>
+					<CachePath>SFX/AMB/Pads/AMB_RFX_Negative_Reaction_09_818F3B66.wem</CachePath>
+				</File>
+				<File Id="339009553" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\Pads\AMB_RFX_Negative_Reaction_01.wav</ShortName>
+					<CachePath>SFX/AMB/Pads/AMB_RFX_Negative_Reaction_01_818F3B66.wem</CachePath>
+				</File>
+				<File Id="354075387" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\RFX\AMB_RFX_Crowd_Pitched_Reaction_08.wav</ShortName>
+					<CachePath>SFX/AMB/RFX/AMB_RFX_Crowd_Pitched_Reaction_08_818F3B66.wem</CachePath>
+				</File>
+				<File Id="367189538" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\RFX\AMB_RFX_WarHorns_05.wav</ShortName>
+					<CachePath>SFX/AMB/RFX/AMB_RFX_WarHorns_05_818F3B66.wem</CachePath>
+				</File>
+				<File Id="475148405" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\RFX\AMB_RFX_WarHorns_03.wav</ShortName>
+					<CachePath>SFX/AMB/RFX/AMB_RFX_WarHorns_03_818F3B66.wem</CachePath>
+				</File>
+				<File Id="484735255" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\Pads\AMB_RFX_Negative_Reaction_05.wav</ShortName>
+					<CachePath>SFX/AMB/Pads/AMB_RFX_Negative_Reaction_05_818F3B66.wem</CachePath>
+				</File>
+				<File Id="533084126" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\RFX\AMB_RFX_Crowd_ClassicReaction_03.wav</ShortName>
+					<CachePath>SFX/AMB/RFX/AMB_RFX_Crowd_ClassicReaction_03_818F3B66.wem</CachePath>
+				</File>
+				<File Id="552226407" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\RFX\AMB_RFX_Crowd_Individual_04.wav</ShortName>
+					<CachePath>SFX/AMB/RFX/AMB_RFX_Crowd_Individual_04_818F3B66.wem</CachePath>
+				</File>
+				<File Id="585712298" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\RFX\AMB_RFX_Crowd_Pitched_Reaction_01.wav</ShortName>
+					<CachePath>SFX/AMB/RFX/AMB_RFX_Crowd_Pitched_Reaction_01_818F3B66.wem</CachePath>
+				</File>
+				<File Id="680837929" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\RFX\AMB_RFX_Crowd_Pitched_Reaction_05.wav</ShortName>
+					<CachePath>SFX/AMB/RFX/AMB_RFX_Crowd_Pitched_Reaction_05_818F3B66.wem</CachePath>
+				</File>
+				<File Id="683095756" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\RFX\AMB_PAD_Hub.wav</ShortName>
+					<CachePath>SFX/AMB/RFX/AMB_PAD_Hub_FBC78EF0.wem</CachePath>
+				</File>
+				<File Id="742879851" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\RFX\AMB_RFX_Crowd_Individual_01.wav</ShortName>
+					<CachePath>SFX/AMB/RFX/AMB_RFX_Crowd_Individual_01_818F3B66.wem</CachePath>
+				</File>
+				<File Id="754998867" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\RFX\AMB_RFX_WarHorns_01.wav</ShortName>
+					<CachePath>SFX/AMB/RFX/AMB_RFX_WarHorns_01_818F3B66.wem</CachePath>
+				</File>
+				<File Id="762008811" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\RFX\AMB_RFX_Crowd_ClassicReaction_01.wav</ShortName>
+					<CachePath>SFX/AMB/RFX/AMB_RFX_Crowd_ClassicReaction_01_818F3B66.wem</CachePath>
+				</File>
+				<File Id="762580490" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\RFX\AMB_RFX_WarHorns_06.wav</ShortName>
+					<CachePath>SFX/AMB/RFX/AMB_RFX_WarHorns_06_818F3B66.wem</CachePath>
+				</File>
+				<File Id="773762840" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\RFX\AMB_RFX_Crowd_ClassicReaction_04.wav</ShortName>
+					<CachePath>SFX/AMB/RFX/AMB_RFX_Crowd_ClassicReaction_04_818F3B66.wem</CachePath>
+				</File>
+				<File Id="783949220" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\AMB_PAD_Crowd.wav</ShortName>
+					<CachePath>SFX/AMB/AMB_PAD_Crowd_FBC78EF0.wem</CachePath>
+				</File>
+				<File Id="809714582" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\RFX\AMB_RFX_WarHorns_07.wav</ShortName>
+					<CachePath>SFX/AMB/RFX/AMB_RFX_WarHorns_07_818F3B66.wem</CachePath>
+				</File>
+				<File Id="809843148" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\Pads\AMB_RFX_Negative_Reaction_02.wav</ShortName>
+					<CachePath>SFX/AMB/Pads/AMB_RFX_Negative_Reaction_02_818F3B66.wem</CachePath>
+				</File>
+				<File Id="828835349" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\RFX\AMB_RFX_Crowd_Individual_06.wav</ShortName>
+					<CachePath>SFX/AMB/RFX/AMB_RFX_Crowd_Individual_06_818F3B66.wem</CachePath>
+				</File>
+				<File Id="832021469" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\Pads\AMB_RFX_Negative_Reaction_03.wav</ShortName>
+					<CachePath>SFX/AMB/Pads/AMB_RFX_Negative_Reaction_03_818F3B66.wem</CachePath>
+				</File>
+				<File Id="832253334" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\RFX\AMB_RFX_Crowd_Pitched_Reaction_03.wav</ShortName>
+					<CachePath>SFX/AMB/RFX/AMB_RFX_Crowd_Pitched_Reaction_03_818F3B66.wem</CachePath>
+				</File>
+				<File Id="843502340" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\RFX\AMB_RFX_Crowd_ClassicReaction_02.wav</ShortName>
+					<CachePath>SFX/AMB/RFX/AMB_RFX_Crowd_ClassicReaction_02_818F3B66.wem</CachePath>
+				</File>
+				<File Id="855821515" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\RFX\AMB_RFX_Crowd_ClassicReaction_08.wav</ShortName>
+					<CachePath>SFX/AMB/RFX/AMB_RFX_Crowd_ClassicReaction_08_818F3B66.wem</CachePath>
+				</File>
+				<File Id="864351804" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\RFX\AMB_RFX_Crowd_Pitched_Reaction_06.wav</ShortName>
+					<CachePath>SFX/AMB/RFX/AMB_RFX_Crowd_Pitched_Reaction_06_818F3B66.wem</CachePath>
+				</File>
+				<File Id="877176436" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\RFX\AMB_RFX_Crowd_ClassicReaction_05.wav</ShortName>
+					<CachePath>SFX/AMB/RFX/AMB_RFX_Crowd_ClassicReaction_05_818F3B66.wem</CachePath>
+				</File>
+				<File Id="900351003" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\RFX\AMB_RFX_WarHorns_02.wav</ShortName>
+					<CachePath>SFX/AMB/RFX/AMB_RFX_WarHorns_02_818F3B66.wem</CachePath>
+				</File>
+				<File Id="900928265" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\RFX\AMB_RFX_Crowd_Pitched_Reaction_02.wav</ShortName>
+					<CachePath>SFX/AMB/RFX/AMB_RFX_Crowd_Pitched_Reaction_02_818F3B66.wem</CachePath>
+				</File>
+				<File Id="919954422" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\RFX\AMB_RFX_Crowd_Individual_02.wav</ShortName>
+					<CachePath>SFX/AMB/RFX/AMB_RFX_Crowd_Individual_02_818F3B66.wem</CachePath>
+				</File>
+				<File Id="935598577" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\Pads\AMB_RFX_Applause_04.wav</ShortName>
+					<CachePath>SFX/AMB/Pads/AMB_RFX_Applause_04_818F3B66.wem</CachePath>
+				</File>
+				<File Id="946185580" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\Pads\AMB_RFX_Negative_Reaction_04.wav</ShortName>
+					<CachePath>SFX/AMB/Pads/AMB_RFX_Negative_Reaction_04_818F3B66.wem</CachePath>
+				</File>
+				<File Id="966132969" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\Pads\AMB_RFX_Applause_02.wav</ShortName>
+					<CachePath>SFX/AMB/Pads/AMB_RFX_Applause_02_818F3B66.wem</CachePath>
+				</File>
+				<File Id="1022096015" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\Pads\AMB_RFX_Applause_03.wav</ShortName>
+					<CachePath>SFX/AMB/Pads/AMB_RFX_Applause_03_818F3B66.wem</CachePath>
+				</File>
+				<File Id="1023349206" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\Pads\AMB_RFX_Applause_01.wav</ShortName>
+					<CachePath>SFX/AMB/Pads/AMB_RFX_Applause_01_818F3B66.wem</CachePath>
+				</File>
+				<File Id="1029183318" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\RFX\AMB_RFX_WarHorns_04.wav</ShortName>
+					<CachePath>SFX/AMB/RFX/AMB_RFX_WarHorns_04_818F3B66.wem</CachePath>
+				</File>
+				<File Id="1029865606" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\RFX\AMB_RFX_Crowd_Pitched_Reaction_07.wav</ShortName>
+					<CachePath>SFX/AMB/RFX/AMB_RFX_Crowd_Pitched_Reaction_07_818F3B66.wem</CachePath>
+				</File>
+			</Media>
+			<Plugins>
+				<Custom>
+					<Plugin Id="169636257" Name="Have_U_Ever_Been_Outside (Custom)" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_RFX_Arena\[Effect Slot [0]: (RoomVerb)]\Have_U_Ever_Been_Outside (Custom)" GUID="{4EC028FC-6FD5-4AC6-A71F-B2CB8F1117DF}" LibName="Wwise RoomVerb" LibId="7733251"/>
+				</Custom>
+			</Plugins>
+			<Events>
+				<Event Id="3817670132" Name="Play_AMB_Arena_Crowd" ObjectPath="\Events\AMB_WU\Play_AMB_Arena_Crowd" GUID="{044D5574-12FD-4A7D-829F-E12D304EBC61}" MaxAttenuation="3000" DurationType="Infinite">
+					<MediaRefs>
+						<MediaRef Id="4481750"/>
+						<MediaRef Id="84736735"/>
+						<MediaRef Id="127175197"/>
+						<MediaRef Id="138942913"/>
+						<MediaRef Id="149514301"/>
+						<MediaRef Id="155546430"/>
+						<MediaRef Id="179362195"/>
+						<MediaRef Id="203208671"/>
+						<MediaRef Id="268147826"/>
+						<MediaRef Id="332135939"/>
+						<MediaRef Id="339009553"/>
+						<MediaRef Id="354075387"/>
+						<MediaRef Id="367189538"/>
+						<MediaRef Id="475148405"/>
+						<MediaRef Id="484735255"/>
+						<MediaRef Id="533084126"/>
+						<MediaRef Id="552226407"/>
+						<MediaRef Id="585712298"/>
+						<MediaRef Id="680837929"/>
+						<MediaRef Id="742879851"/>
+						<MediaRef Id="754998867"/>
+						<MediaRef Id="762008811"/>
+						<MediaRef Id="762580490"/>
+						<MediaRef Id="773762840"/>
+						<MediaRef Id="783949220"/>
+						<MediaRef Id="809714582"/>
+						<MediaRef Id="809843148"/>
+						<MediaRef Id="828835349"/>
+						<MediaRef Id="832021469"/>
+						<MediaRef Id="832253334"/>
+						<MediaRef Id="843502340"/>
+						<MediaRef Id="855821515"/>
+						<MediaRef Id="864351804"/>
+						<MediaRef Id="877176436"/>
+						<MediaRef Id="900351003"/>
+						<MediaRef Id="900928265"/>
+						<MediaRef Id="919954422"/>
+						<MediaRef Id="935598577"/>
+						<MediaRef Id="946185580"/>
+						<MediaRef Id="966132969"/>
+						<MediaRef Id="1022096015"/>
+						<MediaRef Id="1023349206"/>
+						<MediaRef Id="1029183318"/>
+						<MediaRef Id="1029865606"/>
+					</MediaRefs>
+					<AuxBusRefs>
+						<AuxBusRef Id="1408817756" Name="RVB_RFX_Arena" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_RFX_Arena" GUID="{CC7A2F05-EE75-4E8E-B097-98A1938CB5E4}"/>
+					</AuxBusRefs>
+				</Event>
+				<Event Id="2972533464" Name="Play_AMB_PAD_Hub" ObjectPath="\Events\AMB_WU\Play_AMB_PAD_Hub" GUID="{E1692669-CD47-4C1F-9271-81F40DE53532}" MaxAttenuation="1000" DurationType="Infinite">
+					<MediaRefs>
+						<MediaRef Id="683095756"/>
+					</MediaRefs>
+				</Event>
+			</Events>
+			<Busses>
+				<Bus Id="109159411" Name="Game_Global" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global" GUID="{FAD5C029-0A02-4BD2-97F7-F8C20B7A95BD}"/>
+				<Bus Id="393239870" Name="SFX" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global\SFX" GUID="{EB4CE24D-8196-408E-9775-5E8EEFE98495}"/>
+				<Bus Id="1117531639" Name="AMB" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global\AMB" GUID="{C1595F21-FBBF-4B04-AC1A-78D86879A937}"/>
+				<Bus Id="1551306167" Name="UI" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\UI" GUID="{B5E7816E-C3FC-4992-B763-4078089CE674}"/>
+				<Bus Id="1685527061" Name="MC" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global\MC" GUID="{B3079877-B26F-4239-A3AB-9C7AFFCBC797}"/>
+				<Bus Id="2290178407" Name="FOES_Tourelle" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global\FOES_Tourelle" GUID="{D783D57E-4B6F-4101-8F5F-FD96F0409170}"/>
+				<Bus Id="3313685232" Name="Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Voices" GUID="{00AA482D-3F12-46A5-8177-E8A172D08E63}"/>
+				<Bus Id="3623095082" Name="FOES_Flying" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global\FOES_Flying" GUID="{439831F9-AA50-4CD2-98C3-ACD8B187380E}"/>
+				<Bus Id="3991942870" Name="Music" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Music" GUID="{08156595-7637-4348-AC3C-2EDE3FCCB08F}"/>
+				<Bus Id="4056684167" Name="Master" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master" GUID="{F3A976BC-47E9-46E5-9EEC-F566BB39DBEE}"/>
+			</Busses>
+			<AuxBusses>
+				<AuxBus Id="1215931641" Name="RVB_Arena" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Arena" GUID="{54C7EBDA-4885-4850-8969-FB63BDACC807}"/>
+				<AuxBus Id="1408817756" Name="RVB_RFX_Arena" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_RFX_Arena" GUID="{CC7A2F05-EE75-4E8E-B097-98A1938CB5E4}">
+					<PluginRefs>
+						<Custom>
+							<PluginRef Id="169636257"/>
+						</Custom>
+					</PluginRefs>
+				</AuxBus>
+				<AuxBus Id="3571340017" Name="RVB_Hub" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Hub" GUID="{D499EBE4-F26A-48E5-B89D-1F7C43D829E3}"/>
+			</AuxBusses>
+		</SoundBank>
+		<SoundBank Id="3896292454" Type="User" GUID="{459D1F67-52BD-4FA1-B846-B8F3A50C2C5F}" Language="SFX" Hash="{02BE1600-7C47-6A2A-12CF-4A10D9F2CF3F}">
+			<ObjectPath>\SoundBanks\SoundBanks_WU\SFX_SB</ObjectPath>
+			<ShortName>SFX_SB</ShortName>
+			<Path>SFX_SB.bnk</Path>
+		</SoundBank>
+		<SoundBank Id="4155742227" Type="User" GUID="{D2378E68-5468-4849-BC4A-8FC6D8A3BF29}" Language="SFX" Hash="{8B83ED19-30EC-C727-F297-C7768A285F71}">
+			<ObjectPath>\SoundBanks\SoundBanks_WU\GPE_SB</ObjectPath>
+			<ShortName>GPE_SB</ShortName>
+			<Path>GPE_SB.bnk</Path>
+			<Media>
+				<File Id="53581153" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\RFX\GPE_PillarDestroyed.wav</ShortName>
+					<CachePath>SFX/AMB/RFX/GPE_PillarDestroyed_818F3B66.wem</CachePath>
+				</File>
+				<File Id="131763475" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>MC_SFX_Dash_05.wav</ShortName>
+					<CachePath>SFX/MC_SFX_Dash_05_818F3B66.wem</CachePath>
+				</File>
+				<File Id="275758801" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\RFX\GPE_JumpPads_Activation-002.wav</ShortName>
+					<CachePath>SFX/AMB/RFX/GPE_JumpPads_Activation-002_818F3B66.wem</CachePath>
+				</File>
+				<File Id="280528909" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>MC_SFX_Dash_01.wav</ShortName>
+					<CachePath>SFX/MC_SFX_Dash_01_818F3B66.wem</CachePath>
+				</File>
+				<File Id="411674623" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>MC_SFX_Dash_02.wav</ShortName>
+					<CachePath>SFX/MC_SFX_Dash_02_818F3B66.wem</CachePath>
+				</File>
+				<File Id="423129361" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\RFX\GPE_JumpPads_Activation-001.wav</ShortName>
+					<CachePath>SFX/AMB/RFX/GPE_JumpPads_Activation-001_818F3B66.wem</CachePath>
+				</File>
+				<File Id="434078456" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\RFX\SFX_CorpseTrap_Closing.wav</ShortName>
+					<CachePath>SFX/AMB/RFX/SFX_CorpseTrap_Closing_818F3B66.wem</CachePath>
+				</File>
+				<File Id="865971538" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\RFX\GPE_JumpPads_Activation-003.wav</ShortName>
+					<CachePath>SFX/AMB/RFX/GPE_JumpPads_Activation-003_818F3B66.wem</CachePath>
+				</File>
+				<File Id="890446006" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>MC_SFX_Dash_03.wav</ShortName>
+					<CachePath>SFX/MC_SFX_Dash_03_818F3B66.wem</CachePath>
+				</File>
+				<File Id="925500281" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>MC_SFX_Dash_04.wav</ShortName>
+					<CachePath>SFX/MC_SFX_Dash_04_818F3B66.wem</CachePath>
+				</File>
+				<File Id="978522934" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\RFX\SFX_CorpseTrap_Opening.wav</ShortName>
+					<CachePath>SFX/AMB/RFX/SFX_CorpseTrap_Opening_818F3B66.wem</CachePath>
+				</File>
+			</Media>
+			<Events>
+				<Event Id="575283655" Name="Play_GPE_JumPads_RC" ObjectPath="\Events\GPE_WU\Play_GPE_JumPads_RC" GUID="{32F429C1-2B0E-427B-9F12-8775F5CFF0AD}" MaxAttenuation="2000" DurationType="OneShot" DurationMin="1.1072708" DurationMax="1.8">
+					<MediaRefs>
+						<MediaRef Id="131763475"/>
+						<MediaRef Id="280528909"/>
+						<MediaRef Id="411674623"/>
+						<MediaRef Id="890446006"/>
+						<MediaRef Id="925500281"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="2353660422" Name="Play_GPE_JumpPads_Activation_RC" ObjectPath="\Events\GPE_WU\Play_GPE_JumpPads_Activation_RC" GUID="{7A4A1C10-6F19-4EFC-9649-9850E9202517}" MaxAttenuation="2000" DurationType="OneShot" DurationMin="3.2564793" DurationMax="3.8888958">
+					<MediaRefs>
+						<MediaRef Id="275758801"/>
+						<MediaRef Id="423129361"/>
+						<MediaRef Id="865971538"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="3930718940" Name="Play_GPE_PillarDestroyed" ObjectPath="\Events\GPE_WU\Play_GPE_PillarDestroyed" GUID="{65F84DEF-9AA8-456B-A6AF-7249DA8CED54}" MaxAttenuation="3000" DurationType="OneShot" DurationMin="3.549459" DurationMax="3.549459">
+					<MediaRefs>
+						<MediaRef Id="53581153"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="616160567" Name="Play_SFX_CorpseTrap_Closing" ObjectPath="\Events\GPE_WU\Play_SFX_CorpseTrap_Closing" GUID="{8B0069CF-C942-413E-842A-B22826187366}" MaxAttenuation="2000" DurationType="OneShot" DurationMin="2.4738333" DurationMax="2.4738333">
+					<MediaRefs>
+						<MediaRef Id="434078456"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="2467711998" Name="Play_SFX_CorpseTrap_Opening" ObjectPath="\Events\GPE_WU\Play_SFX_CorpseTrap_Opening" GUID="{3B91810C-60F0-4DA1-8459-1EC729C58878}" MaxAttenuation="2000" DurationType="OneShot" DurationMin="2.3800209" DurationMax="2.3800209">
+					<MediaRefs>
+						<MediaRef Id="978522934"/>
+					</MediaRefs>
+				</Event>
+			</Events>
+		</SoundBank>
+	</SoundBanks>
+	<FileHash>{456F5AE6-7A7F-6E74-490D-442D3DCE0572}</FileHash>
+</SoundBanksInfo>

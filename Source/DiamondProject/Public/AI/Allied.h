@@ -4,7 +4,10 @@
 
 #include "CoreMinimal.h"
 #include "AIController.h"
+#include "AlliedAnimInstance.h"
+
 #include "GameFramework/Character.h"
+#include "PhysicsEngine/PhysicsHandleComponent.h"
 #include "Allied.generated.h"
 
 UCLASS()
@@ -20,8 +23,8 @@ protected:
 	
 	
 public:
-	UPROPERTY(EditInstanceOnly, BlueprintReadOnly, Category = "Movements")
-	TArray<TObjectPtr<AActor>> PatrolPoints;
+	UPROPERTY(EditInstanceOnly, Category="Path")
+	APath* Path;
 	// Sets default values for this character's properties
 	AAllied();
 
@@ -30,6 +33,30 @@ public:
 
 	UPROPERTY(EditAnywhere, Category = "Movements")
 	bool bShouldLoop = false;
+
+	UPROPERTY(EditAnywhere, Category = "Grab")
+	FVector GrabLocation;
+
+	UPROPERTY(EditAnywhere, Category = "Grab")
+	FName GrabBoneName = "Root";
+
+	UPROPERTY(BlueprintReadWrite)
+	bool bIsDead = false;
+
+	UPROPERTY(BlueprintReadWrite)
+	USkeletalMeshComponent* AlliedMesh;
+
+	UPROPERTY(BlueprintReadWrite)
+	UPhysicsHandleComponent* PhysicsHandle;
+
+	UPROPERTY()
+	UAlliedAnimInstance* AnimInstance;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	USceneComponent* GrabPoint;
+
+	UPROPERTY(EditAnywhere, Category = "Movements")
+	bool bShouldPlayOnStart = false;
 
 protected:
 	// Called when the game starts or when spawned
@@ -46,6 +73,15 @@ public:
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
-	UFUNCTION()
+	UFUNCTION(BlueprintCallable, Category="Movements")
 	void Patrol();
+
+	UFUNCTION()
+	ACustomNavigationPoint* GetCurrentNavigationPoint();
+
+	UFUNCTION()
+	void GetNewPath(APath* NewPath);
+
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category="Movements")
+	void OnCrouch();
 };

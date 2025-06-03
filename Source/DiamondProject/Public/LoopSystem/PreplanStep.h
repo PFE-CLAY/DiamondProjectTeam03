@@ -9,7 +9,8 @@
 /**
  * 
  */
-class APreplanData;
+class UPreplanLinkWidget;
+class UPreplanDataWidget;
 class APreplanAdvice;
 
 UCLASS()
@@ -22,10 +23,16 @@ public:
 	int NbActivations = 0;
 	
 	UPROPERTY()
-	TObjectPtr<APreplanData> PreplanData;
+	TObjectPtr<UPreplanDataWidget> PreplanData;
 
 	UPROPERTY()
 	TArray<TObjectPtr<APreplanAdvice>> PreplanAdvices;
+
+	UPROPERTY()
+	TArray<TObjectPtr<UPreplanLinkWidget>> OutLinks;
+
+	UPROPERTY()
+	TArray<TObjectPtr<UPreplanLinkWidget>> InLinks;
 	
 	UPROPERTY()
 	bool bIsStepActive = false;
