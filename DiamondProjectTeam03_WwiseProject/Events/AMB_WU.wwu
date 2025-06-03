@@ -108,6 +108,39 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="Play_AMB_PAD_ControlCenter" ID="{36CC78C6-483D-4AB2-9AF1-71F27874043E}">
+					<ChildrenList>
+						<Action Name="" ID="{BFCC5EB9-C33D-4D0B-9849-22A0BC5F4A85}" ShortID="360872531">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="AMB_PAD_ControlCenter" ID="{DE270923-E391-404C-B76E-4D6C490413A8}" WorkUnitID="{183124D0-ACA8-4AFA-A8E9-44C003A151DE}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_AMB_PAD_Pyramid_Closed" ID="{F627B9DE-2BDF-4BC2-B74E-5E799A3FBDBF}">
+					<ChildrenList>
+						<Action Name="" ID="{100D39C1-7AE9-45E1-9859-9C83E5959A65}" ShortID="315604202">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="AMB_PAD_Pyramid_Closed" ID="{179F5AED-0218-45B9-B6C4-1939675B2DDD}" WorkUnitID="{183124D0-ACA8-4AFA-A8E9-44C003A151DE}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_AMB_PAD_CorpseTrap" ID="{06E4EAB2-C55E-4652-84C1-FD484B705D76}">
+					<ChildrenList>
+						<Action Name="" ID="{6B79D69B-2C13-46D3-954D-F90CDDAAF29F}" ShortID="875224183">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="AMB_PAD_CorpseTrap" ID="{3C0E4987-DADB-4AC2-AEC2-F83F365F76D8}" WorkUnitID="{183124D0-ACA8-4AFA-A8E9-44C003A151DE}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>
