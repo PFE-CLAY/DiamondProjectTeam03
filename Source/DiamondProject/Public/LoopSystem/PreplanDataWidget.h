@@ -24,8 +24,8 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="PreplanData")
 	bool bIsActiveOnStart = false;
 	
-	UPROPERTY(EditAnywhere,BlueprintReadOnly, Category="PreplanData")
-	TArray<TObjectPtr<UPreplanDataWidget>> PreviousDatas;
+	//UPROPERTY(EditAnywhere,BlueprintReadOnly, Category="PreplanData")
+	//TArray<TObjectPtr<UPreplanDataWidget>> PreviousDatas;
 
 	UPROPERTY(EditAnywhere, Category="PreplanData")
 	bool bShouldActivateDream = false;
