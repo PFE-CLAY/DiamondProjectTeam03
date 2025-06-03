@@ -56,7 +56,7 @@
 						<Action Name="" ID="{F2B46034-C2AA-4A87-B00E-3117534AC8A4}" ShortID="186710299">
 							<ReferenceList>
 								<Reference Name="Target">
-									<ObjectRef Name="MC_SFX_PickupWeapon_RC" ID="{2039D8A2-903F-476A-B075-F87940F35922}" WorkUnitID="{1B87B22A-8865-441B-A287-78E87390F212}"/>
+									<ObjectRef Name="MC_SFX_UpdateAmmo_RC" ID="{2039D8A2-903F-476A-B075-F87940F35922}" WorkUnitID="{1B87B22A-8865-441B-A287-78E87390F212}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>
