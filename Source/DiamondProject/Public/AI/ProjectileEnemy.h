@@ -34,4 +34,6 @@ public:
 
 	UFUNCTION()
 	void OnCollision(AActor* OverlappedActor, AActor* OtherActor);
+
+	
 };

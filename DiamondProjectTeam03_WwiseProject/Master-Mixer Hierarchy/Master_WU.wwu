@@ -343,6 +343,96 @@
 								</ObjectList>
 							</ObjectLists>
 						</AuxBus>
+						<AuxBus Name="AUX_LPF" ID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}">
+							<ObjectLists>
+								<ObjectList Name="Effects">
+									<Reference>
+										<Local>
+											<EffectSlot Name="" ID="{74E3C8E3-976A-4222-9169-4E769A037F23}" ShortID="901291369">
+												<ReferenceList>
+													<Reference Name="Effect" PluginName="Wwise Parametric EQ" CompanyID="0" PluginID="105" PluginType="3">
+														<ObjectRef Name="Low_Pass_20KHz" ID="{830124FB-B9D5-4AE8-846E-E94A74652666}" WorkUnitID="{E8613F7D-BAD3-45CD-A3ED-505576F31277}"/>
+													</Reference>
+												</ReferenceList>
+											</EffectSlot>
+										</Local>
+									</Reference>
+								</ObjectList>
+							</ObjectLists>
+						</AuxBus>
+						<AuxBus Name="RVB_Voices" ID="{483EAB60-BC92-484F-9830-D1776233B15C}">
+							<StateInfo>
+								<StateGroupList>
+									<StateGroupInfo>
+										<StateGroupRef Name="InsideOutside" ID="{2CE28D5C-F27B-42D7-9D91-1905B53C4C3C}"/>
+									</StateGroupInfo>
+								</StateGroupList>
+								<CustomStateList>
+									<CustomState>
+										<StateRef Name="In" ID="{BFBB05BE-0B19-41C7-B759-C85C0C60B1D8}"/>
+										<CustomState Name="" ID="{6F390043-5B0E-4A07-AFFA-749237BC7C55}" ShortID="303216598"/>
+									</CustomState>
+									<CustomState>
+										<StateRef Name="Out" ID="{C04B12A4-672A-478D-A191-EED95AAB3C6D}"/>
+										<CustomState Name="" ID="{EA849628-7128-47EC-8FFE-AA919F58A754}" ShortID="841146632">
+											<PropertyList>
+												<Property Name="BusVolume" Type="Real64" Value="1"/>
+											</PropertyList>
+										</CustomState>
+									</CustomState>
+								</CustomStateList>
+							</StateInfo>
+							<ObjectLists>
+								<ObjectList Name="Effects">
+									<Reference>
+										<Local>
+											<EffectSlot Name="" ID="{F867F639-684A-49EF-B869-6526BE5A406C}" ShortID="345248367">
+												<ReferenceList>
+													<Reference Name="Effect" PluginName="Wwise Delay" CompanyID="0" PluginID="106" PluginType="3">
+														<ObjectRef Name="One_Tap_Half_Second" ID="{B8FE0D3B-7AAB-4344-89FE-177602B7BF19}" WorkUnitID="{E8613F7D-BAD3-45CD-A3ED-505576F31277}"/>
+													</Reference>
+												</ReferenceList>
+												<StateInfo>
+													<CustomStateList>
+														<CustomState>
+															<StateRef Name="In" ID="{BFBB05BE-0B19-41C7-B759-C85C0C60B1D8}"/>
+															<CustomState Name="" ID="{06C38F48-829E-4C3B-87F9-870D270CD45A}" ShortID="117232785"/>
+														</CustomState>
+														<CustomState>
+															<StateRef Name="Out" ID="{C04B12A4-672A-478D-A191-EED95AAB3C6D}"/>
+															<CustomState Name="" ID="{C527CD77-A565-4D89-A677-4F5D167A6604}" ShortID="429271467"/>
+														</CustomState>
+													</CustomStateList>
+												</StateInfo>
+											</EffectSlot>
+										</Local>
+									</Reference>
+									<Reference>
+										<Local>
+											<EffectSlot Name="" ID="{4D7A1507-E44C-4EA0-8179-11FDCCE4B92C}" ShortID="126374883">
+												<ReferenceList>
+													<Reference Name="Effect" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
+														<ObjectRef Name="Hall_Large_Dark" ID="{0F6A7D6D-131C-4650-9561-FC05F5C7A37B}" WorkUnitID="{E8613F7D-BAD3-45CD-A3ED-505576F31277}"/>
+													</Reference>
+												</ReferenceList>
+												<StateInfo>
+													<CustomStateList>
+														<CustomState>
+															<StateRef Name="In" ID="{BFBB05BE-0B19-41C7-B759-C85C0C60B1D8}"/>
+															<CustomState Name="" ID="{E067D01E-468E-490B-B5C6-CE98DAA6ECF2}" ShortID="463107666"/>
+														</CustomState>
+														<CustomState>
+															<StateRef Name="Out" ID="{C04B12A4-672A-478D-A191-EED95AAB3C6D}"/>
+															<CustomState Name="" ID="{90AF01B4-5893-4D89-8CBC-442D322D55FA}" ShortID="1027270272"/>
+														</CustomState>
+													</CustomStateList>
+												</StateInfo>
+											</EffectSlot>
+										</Local>
+									</Reference>
+								</ObjectList>
+							</ObjectLists>
+						</AuxBus>
 					</ChildrenList>
 				</Bus>
 			</ChildrenList>

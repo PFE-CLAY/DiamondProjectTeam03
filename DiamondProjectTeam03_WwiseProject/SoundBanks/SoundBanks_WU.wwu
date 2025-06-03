@@ -53,8 +53,11 @@
 						<Property Name="OverrideColor" Type="bool" Value="True"/>
 					</PropertyList>
 					<ObjectInclusionList>
+						<ObjectRef Name="Play_AMB_PAD_CorpseTrap" ID="{06E4EAB2-C55E-4652-84C1-FD484B705D76}" WorkUnitID="{1BF409B0-B754-4C8B-AEBF-EFEE5E6D5D4D}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_AMB_Arena_Crowd" ID="{044D5574-12FD-4A7D-829F-E12D304EBC61}" WorkUnitID="{1BF409B0-B754-4C8B-AEBF-EFEE5E6D5D4D}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_AMB_PAD_ControlCenter" ID="{36CC78C6-483D-4AB2-9AF1-71F27874043E}" WorkUnitID="{1BF409B0-B754-4C8B-AEBF-EFEE5E6D5D4D}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Master_WU" ID="{A9F2777E-FBA3-4BC0-B5B3-14E0777A7B23}" WorkUnitID="{A9F2777E-FBA3-4BC0-B5B3-14E0777A7B23}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_AMB_PAD_Pyramid_Closed" ID="{F627B9DE-2BDF-4BC2-B74E-5E799A3FBDBF}" WorkUnitID="{1BF409B0-B754-4C8B-AEBF-EFEE5E6D5D4D}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_AMB_PAD_Hub" ID="{E1692669-CD47-4C1F-9271-81F40DE53532}" WorkUnitID="{1BF409B0-B754-4C8B-AEBF-EFEE5E6D5D4D}" Origin="Manual" Filter="7"/>
 					</ObjectInclusionList>
 					<ObjectExclusionList/>
@@ -108,6 +111,14 @@
 						<ObjectRef Name="Play_GPE_PillarDestroyed" ID="{65F84DEF-9AA8-456B-A6AF-7249DA8CED54}" WorkUnitID="{44DB29AC-F5E7-466B-9313-B33937B56A9D}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_SFX_CorpseTrap_Opening" ID="{3B91810C-60F0-4DA1-8459-1EC729C58878}" WorkUnitID="{44DB29AC-F5E7-466B-9313-B33937B56A9D}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_GPE_JumpPads_Activation_RC" ID="{7A4A1C10-6F19-4EFC-9649-9850E9202517}" WorkUnitID="{44DB29AC-F5E7-466B-9313-B33937B56A9D}" Origin="Manual" Filter="7"/>
+					</ObjectInclusionList>
+					<ObjectExclusionList/>
+					<GameSyncExclusionList/>
+				</SoundBank>
+				<SoundBank Name="VOICES_SB" ID="{9B915276-16F3-4721-B819-126344F97366}">
+					<ObjectInclusionList>
+						<ObjectRef Name="VOICES" ID="{46DADE32-2503-4D70-A7EF-8385A6296709}" WorkUnitID="{46DADE32-2503-4D70-A7EF-8385A6296709}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="VOICES_WU" ID="{29491AAD-2CC5-4E24-81EC-BAA4ED991611}" WorkUnitID="{29491AAD-2CC5-4E24-81EC-BAA4ED991611}" Origin="Manual" Filter="7"/>
 					</ObjectInclusionList>
 					<ObjectExclusionList/>
 					<GameSyncExclusionList/>
