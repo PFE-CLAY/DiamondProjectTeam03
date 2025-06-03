@@ -53,8 +53,11 @@
 						<Property Name="OverrideColor" Type="bool" Value="True"/>
 					</PropertyList>
 					<ObjectInclusionList>
+						<ObjectRef Name="Play_AMB_PAD_CorpseTrap" ID="{06E4EAB2-C55E-4652-84C1-FD484B705D76}" WorkUnitID="{1BF409B0-B754-4C8B-AEBF-EFEE5E6D5D4D}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_AMB_Arena_Crowd" ID="{044D5574-12FD-4A7D-829F-E12D304EBC61}" WorkUnitID="{1BF409B0-B754-4C8B-AEBF-EFEE5E6D5D4D}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_AMB_PAD_ControlCenter" ID="{36CC78C6-483D-4AB2-9AF1-71F27874043E}" WorkUnitID="{1BF409B0-B754-4C8B-AEBF-EFEE5E6D5D4D}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Master_WU" ID="{A9F2777E-FBA3-4BC0-B5B3-14E0777A7B23}" WorkUnitID="{A9F2777E-FBA3-4BC0-B5B3-14E0777A7B23}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_AMB_PAD_Pyramid_Closed" ID="{F627B9DE-2BDF-4BC2-B74E-5E799A3FBDBF}" WorkUnitID="{1BF409B0-B754-4C8B-AEBF-EFEE5E6D5D4D}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_AMB_PAD_Hub" ID="{E1692669-CD47-4C1F-9271-81F40DE53532}" WorkUnitID="{1BF409B0-B754-4C8B-AEBF-EFEE5E6D5D4D}" Origin="Manual" Filter="7"/>
 					</ObjectInclusionList>
 					<ObjectExclusionList/>
