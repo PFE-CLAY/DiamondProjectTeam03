@@ -1,7 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 
-#include "SunFollower.h"
+#include "LDIngredients/SunFollower.h"
 
 #include "Components/DirectionalLightComponent.h"
 
