@@ -10,7 +10,7 @@
     "Type": "User",
     "GUID": "{48187E94-2869-42A3-9E99-A12DF1DA86DF}",
     "Language": "SFX",
-    "Hash": "{BC28BDB4-180C-F55B-E198-C1CDBD0658F1}",
+    "Hash": "{6DD75665-0468-1CCA-BF8B-AA750C9618F5}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\FOES_Invisible_SB",
     "ShortName": "FOES_Invisible_SB",
     "Path": "FOES_Invisible_SB.bnk",
@@ -74,6 +74,14 @@
       }
      ],
      "ShareSets": [
+      {
+       "Id": "1008402193",
+       "Name": "Low_Pass_20KHz",
+       "ObjectPath": "\\Effects\\Factory Effects\\Parametric EQ\\Low Pass Filters\\Low_Pass_20KHz",
+       "GUID": "{830124FB-B9D5-4AE8-846E-E94A74652666}",
+       "LibName": "Wwise Parametric EQ",
+       "LibId": "6881283"
+      },
       {
        "Id": "3442768367",
        "Name": "Hall_Large_Dark",
@@ -158,7 +166,7 @@
      {
       "Id": "367558429",
       "Name": "RVB_Voices",
-      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\Voices\\RVB_Voices",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Voices",
       "GUID": "{483EAB60-BC92-484F-9830-D1776233B15C}",
       "PluginRefs": {
        "ShareSets": [
@@ -227,6 +235,19 @@
       }
      },
      {
+      "Id": "2561323002",
+      "Name": "AUX_LPF",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\AUX_LPF",
+      "GUID": "{5D5AAEA6-57CB-46FD-9802-C041695A5809}",
+      "PluginRefs": {
+       "ShareSets": [
+        {
+         "Id": "1008402193"
+        }
+       ]
+      }
+     },
+     {
       "Id": "3571340017",
       "Name": "RVB_Hub",
       "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Hub",
@@ -283,6 +304,6 @@
     ]
    }
   ],
-  "FileHash": "{C696A1B9-D50C-A57A-D6E5-1764390BCCA6}"
+  "FileHash": "{22560815-ED0A-B2E2-4631-63B1045D8150}"
  }
 }

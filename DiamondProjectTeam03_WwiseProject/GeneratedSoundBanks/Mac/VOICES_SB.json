@@ -10,7 +10,7 @@
     "Type": "User",
     "GUID": "{9B915276-16F3-4721-B819-126344F97366}",
     "Language": "SFX",
-    "Hash": "{F0D65CF9-2320-6D7D-179F-26F7AA2A7FB3}",
+    "Hash": "{EFC11ECD-61A9-CAEF-2912-D928ABDA26AA}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\VOICES_SB",
     "ShortName": "VOICES_SB",
     "Path": "VOICES_SB.bnk",
@@ -218,8 +218,14 @@
        {
         "Id": "367558429",
         "Name": "RVB_Voices",
-        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\Voices\\RVB_Voices",
+        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Voices",
         "GUID": "{483EAB60-BC92-484F-9830-D1776233B15C}"
+       },
+       {
+        "Id": "2561323002",
+        "Name": "AUX_LPF",
+        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\AUX_LPF",
+        "GUID": "{5D5AAEA6-57CB-46FD-9802-C041695A5809}"
        }
       ]
      },
@@ -240,8 +246,14 @@
        {
         "Id": "367558429",
         "Name": "RVB_Voices",
-        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\Voices\\RVB_Voices",
+        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Voices",
         "GUID": "{483EAB60-BC92-484F-9830-D1776233B15C}"
+       },
+       {
+        "Id": "2561323002",
+        "Name": "AUX_LPF",
+        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\AUX_LPF",
+        "GUID": "{5D5AAEA6-57CB-46FD-9802-C041695A5809}"
        }
       ]
      },
@@ -262,8 +274,14 @@
        {
         "Id": "367558429",
         "Name": "RVB_Voices",
-        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\Voices\\RVB_Voices",
+        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Voices",
         "GUID": "{483EAB60-BC92-484F-9830-D1776233B15C}"
+       },
+       {
+        "Id": "2561323002",
+        "Name": "AUX_LPF",
+        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\AUX_LPF",
+        "GUID": "{5D5AAEA6-57CB-46FD-9802-C041695A5809}"
        }
       ]
      },
@@ -284,8 +302,14 @@
        {
         "Id": "367558429",
         "Name": "RVB_Voices",
-        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\Voices\\RVB_Voices",
+        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Voices",
         "GUID": "{483EAB60-BC92-484F-9830-D1776233B15C}"
+       },
+       {
+        "Id": "2561323002",
+        "Name": "AUX_LPF",
+        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\AUX_LPF",
+        "GUID": "{5D5AAEA6-57CB-46FD-9802-C041695A5809}"
        }
       ]
      },
@@ -306,8 +330,14 @@
        {
         "Id": "367558429",
         "Name": "RVB_Voices",
-        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\Voices\\RVB_Voices",
+        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Voices",
         "GUID": "{483EAB60-BC92-484F-9830-D1776233B15C}"
+       },
+       {
+        "Id": "2561323002",
+        "Name": "AUX_LPF",
+        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\AUX_LPF",
+        "GUID": "{5D5AAEA6-57CB-46FD-9802-C041695A5809}"
        }
       ]
      },
@@ -328,8 +358,14 @@
        {
         "Id": "367558429",
         "Name": "RVB_Voices",
-        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\Voices\\RVB_Voices",
+        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Voices",
         "GUID": "{483EAB60-BC92-484F-9830-D1776233B15C}"
+       },
+       {
+        "Id": "2561323002",
+        "Name": "AUX_LPF",
+        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\AUX_LPF",
+        "GUID": "{5D5AAEA6-57CB-46FD-9802-C041695A5809}"
        }
       ]
      },
@@ -350,8 +386,14 @@
        {
         "Id": "367558429",
         "Name": "RVB_Voices",
-        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\Voices\\RVB_Voices",
+        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Voices",
         "GUID": "{483EAB60-BC92-484F-9830-D1776233B15C}"
+       },
+       {
+        "Id": "2561323002",
+        "Name": "AUX_LPF",
+        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\AUX_LPF",
+        "GUID": "{5D5AAEA6-57CB-46FD-9802-C041695A5809}"
        }
       ]
      },
@@ -372,8 +414,14 @@
        {
         "Id": "367558429",
         "Name": "RVB_Voices",
-        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\Voices\\RVB_Voices",
+        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Voices",
         "GUID": "{483EAB60-BC92-484F-9830-D1776233B15C}"
+       },
+       {
+        "Id": "2561323002",
+        "Name": "AUX_LPF",
+        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\AUX_LPF",
+        "GUID": "{5D5AAEA6-57CB-46FD-9802-C041695A5809}"
        }
       ]
      },
@@ -394,8 +442,14 @@
        {
         "Id": "367558429",
         "Name": "RVB_Voices",
-        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\Voices\\RVB_Voices",
+        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Voices",
         "GUID": "{483EAB60-BC92-484F-9830-D1776233B15C}"
+       },
+       {
+        "Id": "2561323002",
+        "Name": "AUX_LPF",
+        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\AUX_LPF",
+        "GUID": "{5D5AAEA6-57CB-46FD-9802-C041695A5809}"
        }
       ]
      },
@@ -416,8 +470,14 @@
        {
         "Id": "367558429",
         "Name": "RVB_Voices",
-        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\Voices\\RVB_Voices",
+        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Voices",
         "GUID": "{483EAB60-BC92-484F-9830-D1776233B15C}"
+       },
+       {
+        "Id": "2561323002",
+        "Name": "AUX_LPF",
+        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\AUX_LPF",
+        "GUID": "{5D5AAEA6-57CB-46FD-9802-C041695A5809}"
        }
       ]
      },
@@ -438,8 +498,14 @@
        {
         "Id": "367558429",
         "Name": "RVB_Voices",
-        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\Voices\\RVB_Voices",
+        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Voices",
         "GUID": "{483EAB60-BC92-484F-9830-D1776233B15C}"
+       },
+       {
+        "Id": "2561323002",
+        "Name": "AUX_LPF",
+        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\AUX_LPF",
+        "GUID": "{5D5AAEA6-57CB-46FD-9802-C041695A5809}"
        }
       ]
      },
@@ -460,8 +526,14 @@
        {
         "Id": "367558429",
         "Name": "RVB_Voices",
-        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\Voices\\RVB_Voices",
+        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Voices",
         "GUID": "{483EAB60-BC92-484F-9830-D1776233B15C}"
+       },
+       {
+        "Id": "2561323002",
+        "Name": "AUX_LPF",
+        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\AUX_LPF",
+        "GUID": "{5D5AAEA6-57CB-46FD-9802-C041695A5809}"
        }
       ]
      },
@@ -482,8 +554,14 @@
        {
         "Id": "367558429",
         "Name": "RVB_Voices",
-        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\Voices\\RVB_Voices",
+        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Voices",
         "GUID": "{483EAB60-BC92-484F-9830-D1776233B15C}"
+       },
+       {
+        "Id": "2561323002",
+        "Name": "AUX_LPF",
+        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\AUX_LPF",
+        "GUID": "{5D5AAEA6-57CB-46FD-9802-C041695A5809}"
        }
       ]
      },
@@ -504,8 +582,14 @@
        {
         "Id": "367558429",
         "Name": "RVB_Voices",
-        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\Voices\\RVB_Voices",
+        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Voices",
         "GUID": "{483EAB60-BC92-484F-9830-D1776233B15C}"
+       },
+       {
+        "Id": "2561323002",
+        "Name": "AUX_LPF",
+        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\AUX_LPF",
+        "GUID": "{5D5AAEA6-57CB-46FD-9802-C041695A5809}"
        }
       ]
      },
@@ -526,8 +610,14 @@
        {
         "Id": "367558429",
         "Name": "RVB_Voices",
-        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\Voices\\RVB_Voices",
+        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Voices",
         "GUID": "{483EAB60-BC92-484F-9830-D1776233B15C}"
+       },
+       {
+        "Id": "2561323002",
+        "Name": "AUX_LPF",
+        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\AUX_LPF",
+        "GUID": "{5D5AAEA6-57CB-46FD-9802-C041695A5809}"
        }
       ]
      },
@@ -548,8 +638,14 @@
        {
         "Id": "367558429",
         "Name": "RVB_Voices",
-        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\Voices\\RVB_Voices",
+        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Voices",
         "GUID": "{483EAB60-BC92-484F-9830-D1776233B15C}"
+       },
+       {
+        "Id": "2561323002",
+        "Name": "AUX_LPF",
+        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\AUX_LPF",
+        "GUID": "{5D5AAEA6-57CB-46FD-9802-C041695A5809}"
        }
       ]
      },
@@ -570,8 +666,14 @@
        {
         "Id": "367558429",
         "Name": "RVB_Voices",
-        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\Voices\\RVB_Voices",
+        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Voices",
         "GUID": "{483EAB60-BC92-484F-9830-D1776233B15C}"
+       },
+       {
+        "Id": "2561323002",
+        "Name": "AUX_LPF",
+        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\AUX_LPF",
+        "GUID": "{5D5AAEA6-57CB-46FD-9802-C041695A5809}"
        }
       ]
      },
@@ -592,8 +694,14 @@
        {
         "Id": "367558429",
         "Name": "RVB_Voices",
-        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\Voices\\RVB_Voices",
+        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Voices",
         "GUID": "{483EAB60-BC92-484F-9830-D1776233B15C}"
+       },
+       {
+        "Id": "2561323002",
+        "Name": "AUX_LPF",
+        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\AUX_LPF",
+        "GUID": "{5D5AAEA6-57CB-46FD-9802-C041695A5809}"
        }
       ]
      },
@@ -614,8 +722,14 @@
        {
         "Id": "367558429",
         "Name": "RVB_Voices",
-        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\Voices\\RVB_Voices",
+        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Voices",
         "GUID": "{483EAB60-BC92-484F-9830-D1776233B15C}"
+       },
+       {
+        "Id": "2561323002",
+        "Name": "AUX_LPF",
+        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\AUX_LPF",
+        "GUID": "{5D5AAEA6-57CB-46FD-9802-C041695A5809}"
        }
       ]
      },
@@ -636,8 +750,14 @@
        {
         "Id": "367558429",
         "Name": "RVB_Voices",
-        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\Voices\\RVB_Voices",
+        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Voices",
         "GUID": "{483EAB60-BC92-484F-9830-D1776233B15C}"
+       },
+       {
+        "Id": "2561323002",
+        "Name": "AUX_LPF",
+        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\AUX_LPF",
+        "GUID": "{5D5AAEA6-57CB-46FD-9802-C041695A5809}"
        }
       ]
      },
@@ -658,8 +778,14 @@
        {
         "Id": "367558429",
         "Name": "RVB_Voices",
-        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\Voices\\RVB_Voices",
+        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Voices",
         "GUID": "{483EAB60-BC92-484F-9830-D1776233B15C}"
+       },
+       {
+        "Id": "2561323002",
+        "Name": "AUX_LPF",
+        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\AUX_LPF",
+        "GUID": "{5D5AAEA6-57CB-46FD-9802-C041695A5809}"
        }
       ]
      },
@@ -680,8 +806,14 @@
        {
         "Id": "367558429",
         "Name": "RVB_Voices",
-        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\Voices\\RVB_Voices",
+        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Voices",
         "GUID": "{483EAB60-BC92-484F-9830-D1776233B15C}"
+       },
+       {
+        "Id": "2561323002",
+        "Name": "AUX_LPF",
+        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\AUX_LPF",
+        "GUID": "{5D5AAEA6-57CB-46FD-9802-C041695A5809}"
        }
       ]
      },
@@ -702,14 +834,20 @@
        {
         "Id": "367558429",
         "Name": "RVB_Voices",
-        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\Voices\\RVB_Voices",
+        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Voices",
         "GUID": "{483EAB60-BC92-484F-9830-D1776233B15C}"
+       },
+       {
+        "Id": "2561323002",
+        "Name": "AUX_LPF",
+        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\AUX_LPF",
+        "GUID": "{5D5AAEA6-57CB-46FD-9802-C041695A5809}"
        }
       ]
      }
     ]
    }
   ],
-  "FileHash": "{EFF47299-2462-7707-1F5E-E5F5D1C6325B}"
+  "FileHash": "{FACA82BF-8967-318D-4F6E-842E28F4D2C1}"
  }
 }

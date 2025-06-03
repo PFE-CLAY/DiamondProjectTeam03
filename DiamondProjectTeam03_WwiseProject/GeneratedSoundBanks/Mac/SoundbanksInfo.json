@@ -18,7 +18,7 @@
     "Type": "User",
     "GUID": "{46F08C13-7BDA-47D5-A653-BDFCDAD2487B}",
     "Language": "SFX",
-    "Hash": "{0DC126AA-5BBF-124D-51C3-ACDCCDF0C1CF}",
+    "Hash": "{FEE00F70-8251-3614-C7C8-A06B1AF92F49}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\FOES_Flying_SB",
     "ShortName": "FOES_Flying_SB",
     "Path": "FOES_Flying_SB.bnk",
@@ -132,6 +132,14 @@
       }
      ],
      "ShareSets": [
+      {
+       "Id": "1008402193",
+       "Name": "Low_Pass_20KHz",
+       "ObjectPath": "\\Effects\\Factory Effects\\Parametric EQ\\Low Pass Filters\\Low_Pass_20KHz",
+       "GUID": "{830124FB-B9D5-4AE8-846E-E94A74652666}",
+       "LibName": "Wwise Parametric EQ",
+       "LibId": "6881283"
+      },
       {
        "Id": "3442768367",
        "Name": "Hall_Large_Dark",
@@ -268,7 +276,7 @@
      {
       "Id": "367558429",
       "Name": "RVB_Voices",
-      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\Voices\\RVB_Voices",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Voices",
       "GUID": "{483EAB60-BC92-484F-9830-D1776233B15C}",
       "PluginRefs": {
        "ShareSets": [
@@ -332,6 +340,19 @@
        "Custom": [
         {
          "Id": "97605317"
+        }
+       ]
+      }
+     },
+     {
+      "Id": "2561323002",
+      "Name": "AUX_LPF",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\AUX_LPF",
+      "GUID": "{5D5AAEA6-57CB-46FD-9802-C041695A5809}",
+      "PluginRefs": {
+       "ShareSets": [
+        {
+         "Id": "1008402193"
         }
        ]
       }
@@ -405,7 +426,7 @@
     "Type": "User",
     "GUID": "{701ECBBD-9C7B-4030-8CDB-749EE5D1C7B9}",
     "Language": "SFX",
-    "Hash": "{3C52751F-F203-8457-A76F-5316363322F3}",
+    "Hash": "{105ED3DD-BC4F-3033-CA6A-40DA8A58EB75}",
     "ObjectPath": "Init",
     "ShortName": "Init",
     "Path": "Init.bnk",
@@ -469,6 +490,14 @@
       }
      ],
      "ShareSets": [
+      {
+       "Id": "1008402193",
+       "Name": "Low_Pass_20KHz",
+       "ObjectPath": "\\Effects\\Factory Effects\\Parametric EQ\\Low Pass Filters\\Low_Pass_20KHz",
+       "GUID": "{830124FB-B9D5-4AE8-846E-E94A74652666}",
+       "LibName": "Wwise Parametric EQ",
+       "LibId": "6881283"
+      },
       {
        "Id": "3442768367",
        "Name": "Hall_Large_Dark",
@@ -577,7 +606,7 @@
      {
       "Id": "367558429",
       "Name": "RVB_Voices",
-      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\Voices\\RVB_Voices",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Voices",
       "GUID": "{483EAB60-BC92-484F-9830-D1776233B15C}",
       "PluginRefs": {
        "ShareSets": [
@@ -641,6 +670,19 @@
        "Custom": [
         {
          "Id": "97605317"
+        }
+       ]
+      }
+     },
+     {
+      "Id": "2561323002",
+      "Name": "AUX_LPF",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\AUX_LPF",
+      "GUID": "{5D5AAEA6-57CB-46FD-9802-C041695A5809}",
+      "PluginRefs": {
+       "ShareSets": [
+        {
+         "Id": "1008402193"
         }
        ]
       }
@@ -742,7 +784,7 @@
     "Type": "User",
     "GUID": "{6B7E0BFB-A825-46AA-907A-12621FC4038F}",
     "Language": "SFX",
-    "Hash": "{7941D649-1B0A-9110-DB6A-AC9FDFBBC734}",
+    "Hash": "{03DA66E4-26F7-B0CA-8C92-6AAB929A3342}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\UI_SB",
     "ShortName": "UI_SB",
     "Path": "UI_SB.bnk",
@@ -856,6 +898,14 @@
       }
      ],
      "ShareSets": [
+      {
+       "Id": "1008402193",
+       "Name": "Low_Pass_20KHz",
+       "ObjectPath": "\\Effects\\Factory Effects\\Parametric EQ\\Low Pass Filters\\Low_Pass_20KHz",
+       "GUID": "{830124FB-B9D5-4AE8-846E-E94A74652666}",
+       "LibName": "Wwise Parametric EQ",
+       "LibId": "6881283"
+      },
       {
        "Id": "3442768367",
        "Name": "Hall_Large_Dark",
@@ -1026,7 +1076,7 @@
      {
       "Id": "367558429",
       "Name": "RVB_Voices",
-      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\Voices\\RVB_Voices",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Voices",
       "GUID": "{483EAB60-BC92-484F-9830-D1776233B15C}",
       "PluginRefs": {
        "ShareSets": [
@@ -1095,6 +1145,19 @@
       }
      },
      {
+      "Id": "2561323002",
+      "Name": "AUX_LPF",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\AUX_LPF",
+      "GUID": "{5D5AAEA6-57CB-46FD-9802-C041695A5809}",
+      "PluginRefs": {
+       "ShareSets": [
+        {
+         "Id": "1008402193"
+        }
+       ]
+      }
+     },
+     {
       "Id": "3571340017",
       "Name": "RVB_Hub",
       "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Hub",
@@ -1155,19 +1218,11 @@
     "Type": "User",
     "GUID": "{ADC2D189-6608-4828-BC9C-6EF6F90834DB}",
     "Language": "SFX",
-    "Hash": "{1197DEB1-3260-D819-2500-1CEF87099813}",
+    "Hash": "{E8CEF62C-1D06-8949-2AF8-C3703931A98B}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\MC_SB",
     "ShortName": "MC_SB",
     "Path": "MC_SB.bnk",
     "Media": [
-     {
-      "Id": "4962513",
-      "Language": "SFX",
-      "Streaming": "false",
-      "Location": "Memory",
-      "ShortName": "AMB\\SP\\MC_FT_Metal_08.wav",
-      "CachePath": "SFX/AMB/SP/MC_FT_Metal_08_818F3B66.wem"
-     },
      {
       "Id": "16112564",
       "Language": "SFX",
@@ -1175,14 +1230,6 @@
       "Location": "Memory",
       "ShortName": "AMB\\SP\\MC_FT_Concrete_Land_01.wav",
       "CachePath": "SFX/AMB/SP/MC_FT_Concrete_Land_01_818F3B66.wem"
-     },
-     {
-      "Id": "28276971",
-      "Language": "SFX",
-      "Streaming": "false",
-      "Location": "Memory",
-      "ShortName": "AMB\\SP\\MC_FT_Concrete_06.wav",
-      "CachePath": "SFX/AMB/SP/MC_FT_Concrete_06_818F3B66.wem"
      },
      {
       "Id": "34141530",
@@ -1217,6 +1264,14 @@
       "CachePath": "SFX/SFX/MC_SFX_PickupWeapon_01_818F3B66.wem"
      },
      {
+      "Id": "57293249",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "MC\\MC_FT_Metal_03.wav",
+      "CachePath": "SFX/MC/MC_FT_Metal_03_818F3B66.wem"
+     },
+     {
       "Id": "58062480",
       "Language": "SFX",
       "Streaming": "false",
@@ -1233,28 +1288,28 @@
       "CachePath": "SFX/MC_SFX_Gun_Shoot_02_818F3B66.wem"
      },
      {
+      "Id": "64776164",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "MC\\MC_FT_Concrete_02.wav",
+      "CachePath": "SFX/MC/MC_FT_Concrete_02_818F3B66.wem"
+     },
+     {
+      "Id": "66925727",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "MC\\MC_FT_Concrete_03.wav",
+      "CachePath": "SFX/MC/MC_FT_Concrete_03_818F3B66.wem"
+     },
+     {
       "Id": "70109824",
       "Language": "SFX",
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "MC_SFX_Gun_Shoot_04.wav",
       "CachePath": "SFX/MC_SFX_Gun_Shoot_04_818F3B66.wem"
-     },
-     {
-      "Id": "75654975",
-      "Language": "SFX",
-      "Streaming": "false",
-      "Location": "Memory",
-      "ShortName": "AMB\\SP\\MC_FT_Concrete_03.wav",
-      "CachePath": "SFX/AMB/SP/MC_FT_Concrete_03_818F3B66.wem"
-     },
-     {
-      "Id": "81610070",
-      "Language": "SFX",
-      "Streaming": "false",
-      "Location": "Memory",
-      "ShortName": "AMB\\SP\\MC_FT_Metal_02.wav",
-      "CachePath": "SFX/AMB/SP/MC_FT_Metal_02_818F3B66.wem"
      },
      {
       "Id": "97955047",
@@ -1265,28 +1320,12 @@
       "CachePath": "SFX/AMB/SP/MC_FT_Metal_Land_03_818F3B66.wem"
      },
      {
-      "Id": "99306815",
-      "Language": "SFX",
-      "Streaming": "false",
-      "Location": "Memory",
-      "ShortName": "AMB\\SP\\MC_FT_Metal_01.wav",
-      "CachePath": "SFX/AMB/SP/MC_FT_Metal_01_818F3B66.wem"
-     },
-     {
       "Id": "101923972",
       "Language": "SFX",
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "SFX\\MC_SFX_PickupWeapon_04.wav",
       "CachePath": "SFX/SFX/MC_SFX_PickupWeapon_04_818F3B66.wem"
-     },
-     {
-      "Id": "104687879",
-      "Language": "SFX",
-      "Streaming": "false",
-      "Location": "Memory",
-      "ShortName": "AMB\\SP\\MC_FT_Metal_05.wav",
-      "CachePath": "SFX/AMB/SP/MC_FT_Metal_05_818F3B66.wem"
      },
      {
       "Id": "109232168",
@@ -1345,28 +1384,20 @@
       "CachePath": "SFX/AMB/SP/MC_FT_Metal_Jump_04_818F3B66.wem"
      },
      {
-      "Id": "163843360",
-      "Language": "SFX",
-      "Streaming": "false",
-      "Location": "Memory",
-      "ShortName": "AMB\\SP\\MC_FT_Concrete_12.wav",
-      "CachePath": "SFX/AMB/SP/MC_FT_Concrete_12_818F3B66.wem"
-     },
-     {
-      "Id": "174467291",
-      "Language": "SFX",
-      "Streaming": "false",
-      "Location": "Memory",
-      "ShortName": "AMB\\SP\\MC_FT_Metal_12.wav",
-      "CachePath": "SFX/AMB/SP/MC_FT_Metal_12_818F3B66.wem"
-     },
-     {
       "Id": "187397785",
       "Language": "SFX",
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "AMB\\SP\\MC_FT_Sand_Land_04.wav",
       "CachePath": "SFX/AMB/SP/MC_FT_Sand_Land_04_818F3B66.wem"
+     },
+     {
+      "Id": "204180770",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "MC\\MC_FT_Concrete_04.wav",
+      "CachePath": "SFX/MC/MC_FT_Concrete_04_818F3B66.wem"
      },
      {
       "Id": "211150638",
@@ -1377,28 +1408,12 @@
       "CachePath": "SFX/AMB/SP/MC_FT_Sand_01_818F3B66.wem"
      },
      {
-      "Id": "225595462",
+      "Id": "221302388",
       "Language": "SFX",
       "Streaming": "false",
       "Location": "Memory",
-      "ShortName": "AMB\\SP\\MC_FT_Metal_11.wav",
-      "CachePath": "SFX/AMB/SP/MC_FT_Metal_11_818F3B66.wem"
-     },
-     {
-      "Id": "267703531",
-      "Language": "SFX",
-      "Streaming": "false",
-      "Location": "Memory",
-      "ShortName": "AMB\\SP\\MC_FT_Concrete_05.wav",
-      "CachePath": "SFX/AMB/SP/MC_FT_Concrete_05_818F3B66.wem"
-     },
-     {
-      "Id": "268013152",
-      "Language": "SFX",
-      "Streaming": "false",
-      "Location": "Memory",
-      "ShortName": "AMB\\SP\\MC_FT_Concrete_07.wav",
-      "CachePath": "SFX/AMB/SP/MC_FT_Concrete_07_818F3B66.wem"
+      "ShortName": "MC\\MC_FT_Metal_09.wav",
+      "CachePath": "SFX/MC/MC_FT_Metal_09_818F3B66.wem"
      },
      {
       "Id": "282121010",
@@ -1407,14 +1422,6 @@
       "Location": "Memory",
       "ShortName": "AMB\\SP\\MC_FT_Sand_Land_05.wav",
       "CachePath": "SFX/AMB/SP/MC_FT_Sand_Land_05_818F3B66.wem"
-     },
-     {
-      "Id": "300270566",
-      "Language": "SFX",
-      "Streaming": "false",
-      "Location": "Memory",
-      "ShortName": "AMB\\SP\\MC_FT_Metal_06.wav",
-      "CachePath": "SFX/AMB/SP/MC_FT_Metal_06_818F3B66.wem"
      },
      {
       "Id": "305528684",
@@ -1433,12 +1440,28 @@
       "CachePath": "SFX/AMB/SP/MC_FT_Concrete_Land_04_818F3B66.wem"
      },
      {
+      "Id": "330839300",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "MC\\MC_FT_Concrete_10.wav",
+      "CachePath": "SFX/MC/MC_FT_Concrete_10_818F3B66.wem"
+     },
+     {
       "Id": "339856009",
       "Language": "SFX",
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "AMB\\SP\\MC_FT_Metal_Jump_01.wav",
       "CachePath": "SFX/AMB/SP/MC_FT_Metal_Jump_01_818F3B66.wem"
+     },
+     {
+      "Id": "370717002",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "MC\\MC_FT_Concrete_01.wav",
+      "CachePath": "SFX/MC/MC_FT_Concrete_01_818F3B66.wem"
      },
      {
       "Id": "387146543",
@@ -1449,6 +1472,22 @@
       "CachePath": "SFX/AMB/SP/MC_FT_Sand_05_818F3B66.wem"
      },
      {
+      "Id": "393881080",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "MC\\MC_FT_Metal_11.wav",
+      "CachePath": "SFX/MC/MC_FT_Metal_11_818F3B66.wem"
+     },
+     {
+      "Id": "394666974",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "MC\\MC_FT_Metal_04.wav",
+      "CachePath": "SFX/MC/MC_FT_Metal_04_818F3B66.wem"
+     },
+     {
       "Id": "395573930",
       "Language": "SFX",
       "Streaming": "false",
@@ -1457,12 +1496,12 @@
       "CachePath": "SFX/AMB/SP/MC_FT_Metal_Land_04_818F3B66.wem"
      },
      {
-      "Id": "402066446",
+      "Id": "407698228",
       "Language": "SFX",
       "Streaming": "false",
       "Location": "Memory",
-      "ShortName": "AMB\\SP\\MC_FT_Metal_03.wav",
-      "CachePath": "SFX/AMB/SP/MC_FT_Metal_03_818F3B66.wem"
+      "ShortName": "MC\\MC_FT_Metal_06.wav",
+      "CachePath": "SFX/MC/MC_FT_Metal_06_818F3B66.wem"
      },
      {
       "Id": "418331982",
@@ -1505,12 +1544,12 @@
       "CachePath": "SFX/AMB/SP/MC_FT_Metal_Land_02_818F3B66.wem"
      },
      {
-      "Id": "480059959",
+      "Id": "472445877",
       "Language": "SFX",
       "Streaming": "false",
       "Location": "Memory",
-      "ShortName": "AMB\\SP\\MC_FT_Concrete_02.wav",
-      "CachePath": "SFX/AMB/SP/MC_FT_Concrete_02_818F3B66.wem"
+      "ShortName": "MC\\MC_FT_Concrete_12.wav",
+      "CachePath": "SFX/MC/MC_FT_Concrete_12_818F3B66.wem"
      },
      {
       "Id": "483253408",
@@ -1537,14 +1576,6 @@
       "CachePath": "SFX/SFX/MC_SFX_PickupWeapon_03_818F3B66.wem"
      },
      {
-      "Id": "534496258",
-      "Language": "SFX",
-      "Streaming": "false",
-      "Location": "Memory",
-      "ShortName": "AMB\\SP\\MC_FT_Concrete_11.wav",
-      "CachePath": "SFX/AMB/SP/MC_FT_Concrete_11_818F3B66.wem"
-     },
-     {
       "Id": "541415762",
       "Language": "SFX",
       "Streaming": "false",
@@ -1561,20 +1592,20 @@
       "CachePath": "SFX/AMB/SP/MC_FT_Sand_12_818F3B66.wem"
      },
      {
-      "Id": "592388296",
+      "Id": "567050137",
       "Language": "SFX",
       "Streaming": "false",
       "Location": "Memory",
-      "ShortName": "AMB\\SP\\MC_FT_Metal_10.wav",
-      "CachePath": "SFX/AMB/SP/MC_FT_Metal_10_818F3B66.wem"
+      "ShortName": "MC\\MC_FT_Metal_07.wav",
+      "CachePath": "SFX/MC/MC_FT_Metal_07_818F3B66.wem"
      },
      {
-      "Id": "602677679",
+      "Id": "573783568",
       "Language": "SFX",
       "Streaming": "false",
       "Location": "Memory",
-      "ShortName": "AMB\\SP\\MC_FT_Concrete_01.wav",
-      "CachePath": "SFX/AMB/SP/MC_FT_Concrete_01_818F3B66.wem"
+      "ShortName": "MC\\MC_FT_Concrete_11.wav",
+      "CachePath": "SFX/MC/MC_FT_Concrete_11_818F3B66.wem"
      },
      {
       "Id": "607185623",
@@ -1617,12 +1648,28 @@
       "CachePath": "SFX/AMB/SP/MC_FT_Sand_03_818F3B66.wem"
      },
      {
-      "Id": "655344864",
+      "Id": "646411553",
       "Language": "SFX",
       "Streaming": "false",
       "Location": "Memory",
-      "ShortName": "AMB\\SP\\MC_FT_Concrete_04.wav",
-      "CachePath": "SFX/AMB/SP/MC_FT_Concrete_04_818F3B66.wem"
+      "ShortName": "MC\\MC_FT_Metal_10.wav",
+      "CachePath": "SFX/MC/MC_FT_Metal_10_818F3B66.wem"
+     },
+     {
+      "Id": "653322693",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "MC\\MC_FT_Concrete_07.wav",
+      "CachePath": "SFX/MC/MC_FT_Concrete_07_818F3B66.wem"
+     },
+     {
+      "Id": "655628158",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "MC\\MC_FT_Metal_05.wav",
+      "CachePath": "SFX/MC/MC_FT_Metal_05_818F3B66.wem"
      },
      {
       "Id": "673489173",
@@ -1649,6 +1696,14 @@
       "CachePath": "SFX/AMB/SP/MC_FT_Sand_07_818F3B66.wem"
      },
      {
+      "Id": "727417662",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "MC\\MC_FT_Metal_02.wav",
+      "CachePath": "SFX/MC/MC_FT_Metal_02_818F3B66.wem"
+     },
+     {
       "Id": "728432909",
       "Language": "SFX",
       "Streaming": "false",
@@ -1663,14 +1718,6 @@
       "Location": "Memory",
       "ShortName": "AMB\\SP\\MC_FT_Concrete_Jump_03.wav",
       "CachePath": "SFX/AMB/SP/MC_FT_Concrete_Jump_03_818F3B66.wem"
-     },
-     {
-      "Id": "764749319",
-      "Language": "SFX",
-      "Streaming": "false",
-      "Location": "Memory",
-      "ShortName": "AMB\\SP\\MC_FT_Metal_09.wav",
-      "CachePath": "SFX/AMB/SP/MC_FT_Metal_09_818F3B66.wem"
      },
      {
       "Id": "779936328",
@@ -1689,20 +1736,20 @@
       "CachePath": "SFX/AMB/SP/MC_FT_Concrete_Jump_05_818F3B66.wem"
      },
      {
-      "Id": "814998601",
+      "Id": "801578443",
       "Language": "SFX",
       "Streaming": "false",
       "Location": "Memory",
-      "ShortName": "AMB\\SP\\MC_FT_Concrete_08.wav",
-      "CachePath": "SFX/AMB/SP/MC_FT_Concrete_08_818F3B66.wem"
+      "ShortName": "MC\\MC_FT_Concrete_06.wav",
+      "CachePath": "SFX/MC/MC_FT_Concrete_06_818F3B66.wem"
      },
      {
-      "Id": "816346842",
+      "Id": "808130812",
       "Language": "SFX",
       "Streaming": "false",
       "Location": "Memory",
-      "ShortName": "AMB\\SP\\MC_FT_Concrete_09.wav",
-      "CachePath": "SFX/AMB/SP/MC_FT_Concrete_09_818F3B66.wem"
+      "ShortName": "MC\\MC_FT_Concrete_09.wav",
+      "CachePath": "SFX/MC/MC_FT_Concrete_09_818F3B66.wem"
      },
      {
       "Id": "838939217",
@@ -1721,20 +1768,20 @@
       "CachePath": "SFX/AMB/SP/MC_FT_Metal_Jump_03_818F3B66.wem"
      },
      {
-      "Id": "888066358",
+      "Id": "874237085",
       "Language": "SFX",
       "Streaming": "false",
       "Location": "Memory",
-      "ShortName": "AMB\\SP\\MC_FT_Metal_07.wav",
-      "CachePath": "SFX/AMB/SP/MC_FT_Metal_07_818F3B66.wem"
+      "ShortName": "MC\\MC_FT_Concrete_08.wav",
+      "CachePath": "SFX/MC/MC_FT_Concrete_08_818F3B66.wem"
      },
      {
-      "Id": "898538319",
+      "Id": "881721480",
       "Language": "SFX",
       "Streaming": "false",
       "Location": "Memory",
-      "ShortName": "AMB\\SP\\MC_FT_Metal_04.wav",
-      "CachePath": "SFX/AMB/SP/MC_FT_Metal_04_818F3B66.wem"
+      "ShortName": "MC\\MC_FT_Metal_08.wav",
+      "CachePath": "SFX/MC/MC_FT_Metal_08_818F3B66.wem"
      },
      {
       "Id": "910413546",
@@ -1753,12 +1800,28 @@
       "CachePath": "SFX/AMB/SP/MC_FT_Sand_11_818F3B66.wem"
      },
      {
+      "Id": "969386271",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "MC\\MC_FT_Metal_12.wav",
+      "CachePath": "SFX/MC/MC_FT_Metal_12_818F3B66.wem"
+     },
+     {
       "Id": "971911144",
       "Language": "SFX",
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "AMB\\SP\\MC_FT_Sand_Jump_04.wav",
       "CachePath": "SFX/AMB/SP/MC_FT_Sand_Jump_04_818F3B66.wem"
+     },
+     {
+      "Id": "993891927",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "MC\\MC_FT_Metal_01.wav",
+      "CachePath": "SFX/MC/MC_FT_Metal_01_818F3B66.wem"
      },
      {
       "Id": "1003274806",
@@ -1769,12 +1832,12 @@
       "CachePath": "SFX/AMB/SP/MC_FT_Sand_Land_01_818F3B66.wem"
      },
      {
-      "Id": "1036129781",
+      "Id": "1038551214",
       "Language": "SFX",
       "Streaming": "false",
       "Location": "Memory",
-      "ShortName": "AMB\\SP\\MC_FT_Concrete_10.wav",
-      "CachePath": "SFX/AMB/SP/MC_FT_Concrete_10_818F3B66.wem"
+      "ShortName": "MC\\MC_FT_Concrete_05.wav",
+      "CachePath": "SFX/MC/MC_FT_Concrete_05_818F3B66.wem"
      }
     ],
     "Plugins": {
@@ -1837,6 +1900,14 @@
       }
      ],
      "ShareSets": [
+      {
+       "Id": "1008402193",
+       "Name": "Low_Pass_20KHz",
+       "ObjectPath": "\\Effects\\Factory Effects\\Parametric EQ\\Low Pass Filters\\Low_Pass_20KHz",
+       "GUID": "{830124FB-B9D5-4AE8-846E-E94A74652666}",
+       "LibName": "Wwise Parametric EQ",
+       "LibId": "6881283"
+      },
       {
        "Id": "3442768367",
        "Name": "Hall_Large_Dark",
@@ -2036,7 +2107,7 @@
       "ObjectPath": "\\Events\\MC_WU\\Play_MC_FOL_FT_SW",
       "GUID": "{770A8171-A3BF-4A55-9CA5-93ECE5CBF8BD}",
       "DurationType": "OneShot",
-      "DurationMin": "0.20717718",
+      "DurationMin": "0.20782226",
       "DurationMax": "0.8268297",
       "SwitchContainers": [
        {
@@ -2049,40 +2120,40 @@
         },
         "MediaRefs": [
          {
-          "Id": "28276971"
+          "Id": "64776164"
          },
          {
-          "Id": "75654975"
+          "Id": "66925727"
          },
          {
-          "Id": "163843360"
+          "Id": "204180770"
          },
          {
-          "Id": "267703531"
+          "Id": "330839300"
          },
          {
-          "Id": "268013152"
+          "Id": "370717002"
          },
          {
-          "Id": "480059959"
+          "Id": "472445877"
          },
          {
-          "Id": "534496258"
+          "Id": "573783568"
          },
          {
-          "Id": "602677679"
+          "Id": "653322693"
          },
          {
-          "Id": "655344864"
+          "Id": "801578443"
          },
          {
-          "Id": "814998601"
+          "Id": "808130812"
          },
          {
-          "Id": "816346842"
+          "Id": "874237085"
          },
          {
-          "Id": "1036129781"
+          "Id": "1038551214"
          }
         ]
        },
@@ -2141,40 +2212,40 @@
         },
         "MediaRefs": [
          {
-          "Id": "4962513"
+          "Id": "57293249"
          },
          {
-          "Id": "81610070"
+          "Id": "221302388"
          },
          {
-          "Id": "99306815"
+          "Id": "393881080"
          },
          {
-          "Id": "104687879"
+          "Id": "394666974"
          },
          {
-          "Id": "174467291"
+          "Id": "407698228"
          },
          {
-          "Id": "225595462"
+          "Id": "567050137"
          },
          {
-          "Id": "300270566"
+          "Id": "646411553"
          },
          {
-          "Id": "402066446"
+          "Id": "655628158"
          },
          {
-          "Id": "592388296"
+          "Id": "727417662"
          },
          {
-          "Id": "764749319"
+          "Id": "881721480"
          },
          {
-          "Id": "888066358"
+          "Id": "969386271"
          },
          {
-          "Id": "898538319"
+          "Id": "993891927"
          }
         ]
        },
@@ -2188,40 +2259,40 @@
         },
         "MediaRefs": [
          {
-          "Id": "28276971"
+          "Id": "64776164"
          },
          {
-          "Id": "75654975"
+          "Id": "66925727"
          },
          {
-          "Id": "163843360"
+          "Id": "204180770"
          },
          {
-          "Id": "267703531"
+          "Id": "330839300"
          },
          {
-          "Id": "268013152"
+          "Id": "370717002"
          },
          {
-          "Id": "480059959"
+          "Id": "472445877"
          },
          {
-          "Id": "534496258"
+          "Id": "573783568"
          },
          {
-          "Id": "602677679"
+          "Id": "653322693"
          },
          {
-          "Id": "655344864"
+          "Id": "801578443"
          },
          {
-          "Id": "814998601"
+          "Id": "808130812"
          },
          {
-          "Id": "816346842"
+          "Id": "874237085"
          },
          {
-          "Id": "1036129781"
+          "Id": "1038551214"
          }
         ]
        },
@@ -2280,40 +2351,40 @@
         },
         "MediaRefs": [
          {
-          "Id": "4962513"
+          "Id": "57293249"
          },
          {
-          "Id": "81610070"
+          "Id": "221302388"
          },
          {
-          "Id": "99306815"
+          "Id": "393881080"
          },
          {
-          "Id": "104687879"
+          "Id": "394666974"
          },
          {
-          "Id": "174467291"
+          "Id": "407698228"
          },
          {
-          "Id": "225595462"
+          "Id": "567050137"
          },
          {
-          "Id": "300270566"
+          "Id": "646411553"
          },
          {
-          "Id": "402066446"
+          "Id": "655628158"
          },
          {
-          "Id": "592388296"
+          "Id": "727417662"
          },
          {
-          "Id": "764749319"
+          "Id": "881721480"
          },
          {
-          "Id": "888066358"
+          "Id": "969386271"
          },
          {
-          "Id": "898538319"
+          "Id": "993891927"
          }
         ]
        }
@@ -2463,7 +2534,7 @@
      {
       "Id": "367558429",
       "Name": "RVB_Voices",
-      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\Voices\\RVB_Voices",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Voices",
       "GUID": "{483EAB60-BC92-484F-9830-D1776233B15C}",
       "PluginRefs": {
        "ShareSets": [
@@ -2527,6 +2598,19 @@
        "Custom": [
         {
          "Id": "97605317"
+        }
+       ]
+      }
+     },
+     {
+      "Id": "2561323002",
+      "Name": "AUX_LPF",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\AUX_LPF",
+      "GUID": "{5D5AAEA6-57CB-46FD-9802-C041695A5809}",
+      "PluginRefs": {
+       "ShareSets": [
+        {
+         "Id": "1008402193"
         }
        ]
       }
@@ -2620,7 +2704,7 @@
     "Type": "User",
     "GUID": "{48187E94-2869-42A3-9E99-A12DF1DA86DF}",
     "Language": "SFX",
-    "Hash": "{BC28BDB4-180C-F55B-E198-C1CDBD0658F1}",
+    "Hash": "{6DD75665-0468-1CCA-BF8B-AA750C9618F5}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\FOES_Invisible_SB",
     "ShortName": "FOES_Invisible_SB",
     "Path": "FOES_Invisible_SB.bnk",
@@ -2684,6 +2768,14 @@
       }
      ],
      "ShareSets": [
+      {
+       "Id": "1008402193",
+       "Name": "Low_Pass_20KHz",
+       "ObjectPath": "\\Effects\\Factory Effects\\Parametric EQ\\Low Pass Filters\\Low_Pass_20KHz",
+       "GUID": "{830124FB-B9D5-4AE8-846E-E94A74652666}",
+       "LibName": "Wwise Parametric EQ",
+       "LibId": "6881283"
+      },
       {
        "Id": "3442768367",
        "Name": "Hall_Large_Dark",
@@ -2768,7 +2860,7 @@
      {
       "Id": "367558429",
       "Name": "RVB_Voices",
-      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\Voices\\RVB_Voices",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Voices",
       "GUID": "{483EAB60-BC92-484F-9830-D1776233B15C}",
       "PluginRefs": {
        "ShareSets": [
@@ -2837,6 +2929,19 @@
       }
      },
      {
+      "Id": "2561323002",
+      "Name": "AUX_LPF",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\AUX_LPF",
+      "GUID": "{5D5AAEA6-57CB-46FD-9802-C041695A5809}",
+      "PluginRefs": {
+       "ShareSets": [
+        {
+         "Id": "1008402193"
+        }
+       ]
+      }
+     },
+     {
       "Id": "3571340017",
       "Name": "RVB_Hub",
       "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Hub",
@@ -2897,7 +3002,7 @@
     "Type": "User",
     "GUID": "{9B915276-16F3-4721-B819-126344F97366}",
     "Language": "SFX",
-    "Hash": "{F0D65CF9-2320-6D7D-179F-26F7AA2A7FB3}",
+    "Hash": "{EFC11ECD-61A9-CAEF-2912-D928ABDA26AA}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\VOICES_SB",
     "ShortName": "VOICES_SB",
     "Path": "VOICES_SB.bnk",
@@ -3105,8 +3210,14 @@
        {
         "Id": "367558429",
         "Name": "RVB_Voices",
-        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\Voices\\RVB_Voices",
+        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Voices",
         "GUID": "{483EAB60-BC92-484F-9830-D1776233B15C}"
+       },
+       {
+        "Id": "2561323002",
+        "Name": "AUX_LPF",
+        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\AUX_LPF",
+        "GUID": "{5D5AAEA6-57CB-46FD-9802-C041695A5809}"
        }
       ]
      },
@@ -3127,8 +3238,14 @@
        {
         "Id": "367558429",
         "Name": "RVB_Voices",
-        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\Voices\\RVB_Voices",
+        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Voices",
         "GUID": "{483EAB60-BC92-484F-9830-D1776233B15C}"
+       },
+       {
+        "Id": "2561323002",
+        "Name": "AUX_LPF",
+        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\AUX_LPF",
+        "GUID": "{5D5AAEA6-57CB-46FD-9802-C041695A5809}"
        }
       ]
      },
@@ -3149,8 +3266,14 @@
        {
         "Id": "367558429",
         "Name": "RVB_Voices",
-        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\Voices\\RVB_Voices",
+        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Voices",
         "GUID": "{483EAB60-BC92-484F-9830-D1776233B15C}"
+       },
+       {
+        "Id": "2561323002",
+        "Name": "AUX_LPF",
+        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\AUX_LPF",
+        "GUID": "{5D5AAEA6-57CB-46FD-9802-C041695A5809}"
        }
       ]
      },
@@ -3171,8 +3294,14 @@
        {
         "Id": "367558429",
         "Name": "RVB_Voices",
-        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\Voices\\RVB_Voices",
+        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Voices",
         "GUID": "{483EAB60-BC92-484F-9830-D1776233B15C}"
+       },
+       {
+        "Id": "2561323002",
+        "Name": "AUX_LPF",
+        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\AUX_LPF",
+        "GUID": "{5D5AAEA6-57CB-46FD-9802-C041695A5809}"
        }
       ]
      },
@@ -3193,8 +3322,14 @@
        {
         "Id": "367558429",
         "Name": "RVB_Voices",
-        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\Voices\\RVB_Voices",
+        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Voices",
         "GUID": "{483EAB60-BC92-484F-9830-D1776233B15C}"
+       },
+       {
+        "Id": "2561323002",
+        "Name": "AUX_LPF",
+        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\AUX_LPF",
+        "GUID": "{5D5AAEA6-57CB-46FD-9802-C041695A5809}"
        }
       ]
      },
@@ -3215,8 +3350,14 @@
        {
         "Id": "367558429",
         "Name": "RVB_Voices",
-        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\Voices\\RVB_Voices",
+        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Voices",
         "GUID": "{483EAB60-BC92-484F-9830-D1776233B15C}"
+       },
+       {
+        "Id": "2561323002",
+        "Name": "AUX_LPF",
+        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\AUX_LPF",
+        "GUID": "{5D5AAEA6-57CB-46FD-9802-C041695A5809}"
        }
       ]
      },
@@ -3237,8 +3378,14 @@
        {
         "Id": "367558429",
         "Name": "RVB_Voices",
-        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\Voices\\RVB_Voices",
+        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Voices",
         "GUID": "{483EAB60-BC92-484F-9830-D1776233B15C}"
+       },
+       {
+        "Id": "2561323002",
+        "Name": "AUX_LPF",
+        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\AUX_LPF",
+        "GUID": "{5D5AAEA6-57CB-46FD-9802-C041695A5809}"
        }
       ]
      },
@@ -3259,8 +3406,14 @@
        {
         "Id": "367558429",
         "Name": "RVB_Voices",
-        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\Voices\\RVB_Voices",
+        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Voices",
         "GUID": "{483EAB60-BC92-484F-9830-D1776233B15C}"
+       },
+       {
+        "Id": "2561323002",
+        "Name": "AUX_LPF",
+        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\AUX_LPF",
+        "GUID": "{5D5AAEA6-57CB-46FD-9802-C041695A5809}"
        }
       ]
      },
@@ -3281,8 +3434,14 @@
        {
         "Id": "367558429",
         "Name": "RVB_Voices",
-        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\Voices\\RVB_Voices",
+        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Voices",
         "GUID": "{483EAB60-BC92-484F-9830-D1776233B15C}"
+       },
+       {
+        "Id": "2561323002",
+        "Name": "AUX_LPF",
+        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\AUX_LPF",
+        "GUID": "{5D5AAEA6-57CB-46FD-9802-C041695A5809}"
        }
       ]
      },
@@ -3303,8 +3462,14 @@
        {
         "Id": "367558429",
         "Name": "RVB_Voices",
-        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\Voices\\RVB_Voices",
+        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Voices",
         "GUID": "{483EAB60-BC92-484F-9830-D1776233B15C}"
+       },
+       {
+        "Id": "2561323002",
+        "Name": "AUX_LPF",
+        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\AUX_LPF",
+        "GUID": "{5D5AAEA6-57CB-46FD-9802-C041695A5809}"
        }
       ]
      },
@@ -3325,8 +3490,14 @@
        {
         "Id": "367558429",
         "Name": "RVB_Voices",
-        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\Voices\\RVB_Voices",
+        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Voices",
         "GUID": "{483EAB60-BC92-484F-9830-D1776233B15C}"
+       },
+       {
+        "Id": "2561323002",
+        "Name": "AUX_LPF",
+        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\AUX_LPF",
+        "GUID": "{5D5AAEA6-57CB-46FD-9802-C041695A5809}"
        }
       ]
      },
@@ -3347,8 +3518,14 @@
        {
         "Id": "367558429",
         "Name": "RVB_Voices",
-        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\Voices\\RVB_Voices",
+        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Voices",
         "GUID": "{483EAB60-BC92-484F-9830-D1776233B15C}"
+       },
+       {
+        "Id": "2561323002",
+        "Name": "AUX_LPF",
+        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\AUX_LPF",
+        "GUID": "{5D5AAEA6-57CB-46FD-9802-C041695A5809}"
        }
       ]
      },
@@ -3369,8 +3546,14 @@
        {
         "Id": "367558429",
         "Name": "RVB_Voices",
-        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\Voices\\RVB_Voices",
+        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Voices",
         "GUID": "{483EAB60-BC92-484F-9830-D1776233B15C}"
+       },
+       {
+        "Id": "2561323002",
+        "Name": "AUX_LPF",
+        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\AUX_LPF",
+        "GUID": "{5D5AAEA6-57CB-46FD-9802-C041695A5809}"
        }
       ]
      },
@@ -3391,8 +3574,14 @@
        {
         "Id": "367558429",
         "Name": "RVB_Voices",
-        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\Voices\\RVB_Voices",
+        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Voices",
         "GUID": "{483EAB60-BC92-484F-9830-D1776233B15C}"
+       },
+       {
+        "Id": "2561323002",
+        "Name": "AUX_LPF",
+        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\AUX_LPF",
+        "GUID": "{5D5AAEA6-57CB-46FD-9802-C041695A5809}"
        }
       ]
      },
@@ -3413,8 +3602,14 @@
        {
         "Id": "367558429",
         "Name": "RVB_Voices",
-        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\Voices\\RVB_Voices",
+        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Voices",
         "GUID": "{483EAB60-BC92-484F-9830-D1776233B15C}"
+       },
+       {
+        "Id": "2561323002",
+        "Name": "AUX_LPF",
+        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\AUX_LPF",
+        "GUID": "{5D5AAEA6-57CB-46FD-9802-C041695A5809}"
        }
       ]
      },
@@ -3435,8 +3630,14 @@
        {
         "Id": "367558429",
         "Name": "RVB_Voices",
-        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\Voices\\RVB_Voices",
+        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Voices",
         "GUID": "{483EAB60-BC92-484F-9830-D1776233B15C}"
+       },
+       {
+        "Id": "2561323002",
+        "Name": "AUX_LPF",
+        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\AUX_LPF",
+        "GUID": "{5D5AAEA6-57CB-46FD-9802-C041695A5809}"
        }
       ]
      },
@@ -3457,8 +3658,14 @@
        {
         "Id": "367558429",
         "Name": "RVB_Voices",
-        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\Voices\\RVB_Voices",
+        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Voices",
         "GUID": "{483EAB60-BC92-484F-9830-D1776233B15C}"
+       },
+       {
+        "Id": "2561323002",
+        "Name": "AUX_LPF",
+        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\AUX_LPF",
+        "GUID": "{5D5AAEA6-57CB-46FD-9802-C041695A5809}"
        }
       ]
      },
@@ -3479,8 +3686,14 @@
        {
         "Id": "367558429",
         "Name": "RVB_Voices",
-        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\Voices\\RVB_Voices",
+        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Voices",
         "GUID": "{483EAB60-BC92-484F-9830-D1776233B15C}"
+       },
+       {
+        "Id": "2561323002",
+        "Name": "AUX_LPF",
+        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\AUX_LPF",
+        "GUID": "{5D5AAEA6-57CB-46FD-9802-C041695A5809}"
        }
       ]
      },
@@ -3501,8 +3714,14 @@
        {
         "Id": "367558429",
         "Name": "RVB_Voices",
-        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\Voices\\RVB_Voices",
+        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Voices",
         "GUID": "{483EAB60-BC92-484F-9830-D1776233B15C}"
+       },
+       {
+        "Id": "2561323002",
+        "Name": "AUX_LPF",
+        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\AUX_LPF",
+        "GUID": "{5D5AAEA6-57CB-46FD-9802-C041695A5809}"
        }
       ]
      },
@@ -3523,8 +3742,14 @@
        {
         "Id": "367558429",
         "Name": "RVB_Voices",
-        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\Voices\\RVB_Voices",
+        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Voices",
         "GUID": "{483EAB60-BC92-484F-9830-D1776233B15C}"
+       },
+       {
+        "Id": "2561323002",
+        "Name": "AUX_LPF",
+        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\AUX_LPF",
+        "GUID": "{5D5AAEA6-57CB-46FD-9802-C041695A5809}"
        }
       ]
      },
@@ -3545,8 +3770,14 @@
        {
         "Id": "367558429",
         "Name": "RVB_Voices",
-        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\Voices\\RVB_Voices",
+        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Voices",
         "GUID": "{483EAB60-BC92-484F-9830-D1776233B15C}"
+       },
+       {
+        "Id": "2561323002",
+        "Name": "AUX_LPF",
+        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\AUX_LPF",
+        "GUID": "{5D5AAEA6-57CB-46FD-9802-C041695A5809}"
        }
       ]
      },
@@ -3567,8 +3798,14 @@
        {
         "Id": "367558429",
         "Name": "RVB_Voices",
-        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\Voices\\RVB_Voices",
+        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Voices",
         "GUID": "{483EAB60-BC92-484F-9830-D1776233B15C}"
+       },
+       {
+        "Id": "2561323002",
+        "Name": "AUX_LPF",
+        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\AUX_LPF",
+        "GUID": "{5D5AAEA6-57CB-46FD-9802-C041695A5809}"
        }
       ]
      },
@@ -3589,8 +3826,14 @@
        {
         "Id": "367558429",
         "Name": "RVB_Voices",
-        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\Voices\\RVB_Voices",
+        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Voices",
         "GUID": "{483EAB60-BC92-484F-9830-D1776233B15C}"
+       },
+       {
+        "Id": "2561323002",
+        "Name": "AUX_LPF",
+        "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\AUX_LPF",
+        "GUID": "{5D5AAEA6-57CB-46FD-9802-C041695A5809}"
        }
       ]
      }
@@ -3601,7 +3844,7 @@
     "Type": "User",
     "GUID": "{8CC30184-23AF-4DB5-9844-9B04DF10A650}",
     "Language": "SFX",
-    "Hash": "{C0C22FAA-FE18-AD2B-F00A-E3D6A31F2792}",
+    "Hash": "{CA0ADCC1-E5DC-FFBA-720B-D32E6D3A6F47}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\FOES_Tourelle_SB",
     "ShortName": "FOES_Tourelle_SB",
     "Path": "FOES_Tourelle_SB.bnk",
@@ -3731,6 +3974,14 @@
       }
      ],
      "ShareSets": [
+      {
+       "Id": "1008402193",
+       "Name": "Low_Pass_20KHz",
+       "ObjectPath": "\\Effects\\Factory Effects\\Parametric EQ\\Low Pass Filters\\Low_Pass_20KHz",
+       "GUID": "{830124FB-B9D5-4AE8-846E-E94A74652666}",
+       "LibName": "Wwise Parametric EQ",
+       "LibId": "6881283"
+      },
       {
        "Id": "3442768367",
        "Name": "Hall_Large_Dark",
@@ -3865,7 +4116,7 @@
      {
       "Id": "367558429",
       "Name": "RVB_Voices",
-      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\Voices\\RVB_Voices",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Voices",
       "GUID": "{483EAB60-BC92-484F-9830-D1776233B15C}",
       "PluginRefs": {
        "ShareSets": [
@@ -3934,6 +4185,19 @@
       }
      },
      {
+      "Id": "2561323002",
+      "Name": "AUX_LPF",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\AUX_LPF",
+      "GUID": "{5D5AAEA6-57CB-46FD-9802-C041695A5809}",
+      "PluginRefs": {
+       "ShareSets": [
+        {
+         "Id": "1008402193"
+        }
+       ]
+      }
+     },
+     {
       "Id": "3571340017",
       "Name": "RVB_Hub",
       "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Hub",
@@ -3994,7 +4258,7 @@
     "Type": "User",
     "GUID": "{9DC5CBA4-02D0-4677-A565-21ECA413E694}",
     "Language": "SFX",
-    "Hash": "{4AEBC43D-6B16-64C7-D2A9-D14964C343C3}",
+    "Hash": "{34481070-3ED7-4EEA-6EF1-CB27E3055E22}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\AMB_SB",
     "ShortName": "AMB_SB",
     "Path": "AMB_SB.bnk",
@@ -4208,6 +4472,14 @@
       "CachePath": "SFX/AMB/AMB_PAD_Crowd_FBC78EF0.wem"
      },
      {
+      "Id": "788907204",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB\\Pads\\AMB_PAD_CorpseTrap.wav",
+      "CachePath": "SFX/AMB/Pads/AMB_PAD_CorpseTrap_FBC78EF0.wem"
+     },
+     {
       "Id": "809714582",
       "Language": "SFX",
       "Streaming": "false",
@@ -4246,6 +4518,14 @@
       "Location": "Memory",
       "ShortName": "AMB\\RFX\\AMB_RFX_Crowd_Pitched_Reaction_03.wav",
       "CachePath": "SFX/AMB/RFX/AMB_RFX_Crowd_Pitched_Reaction_03_818F3B66.wem"
+     },
+     {
+      "Id": "838454934",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB\\Pads\\AMB_PAD_ControlCenter.wav",
+      "CachePath": "SFX/AMB/Pads/AMB_PAD_ControlCenter_FBC78EF0.wem"
      },
      {
       "Id": "843502340",
@@ -4326,6 +4606,14 @@
       "Location": "Memory",
       "ShortName": "AMB\\Pads\\AMB_RFX_Applause_02.wav",
       "CachePath": "SFX/AMB/Pads/AMB_RFX_Applause_02_818F3B66.wem"
+     },
+     {
+      "Id": "1019889613",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB\\Pads\\AMB_PAD_Pyramid_Closed.wav",
+      "CachePath": "SFX/AMB/Pads/AMB_PAD_Pyramid_Closed_FBC78EF0.wem"
      },
      {
       "Id": "1022096015",
@@ -4420,6 +4708,14 @@
       }
      ],
      "ShareSets": [
+      {
+       "Id": "1008402193",
+       "Name": "Low_Pass_20KHz",
+       "ObjectPath": "\\Effects\\Factory Effects\\Parametric EQ\\Low Pass Filters\\Low_Pass_20KHz",
+       "GUID": "{830124FB-B9D5-4AE8-846E-E94A74652666}",
+       "LibName": "Wwise Parametric EQ",
+       "LibId": "6881283"
+      },
       {
        "Id": "3442768367",
        "Name": "Hall_Large_Dark",
@@ -4590,6 +4886,32 @@
       ]
      },
      {
+      "Id": "1977891013",
+      "Name": "Play_AMB_PAD_ControlCenter",
+      "ObjectPath": "\\Events\\AMB_WU\\Play_AMB_PAD_ControlCenter",
+      "GUID": "{36CC78C6-483D-4AB2-9AF1-71F27874043E}",
+      "MaxAttenuation": "3000",
+      "DurationType": "Infinite",
+      "MediaRefs": [
+       {
+        "Id": "838454934"
+       }
+      ]
+     },
+     {
+      "Id": "1229646826",
+      "Name": "Play_AMB_PAD_CorpseTrap",
+      "ObjectPath": "\\Events\\AMB_WU\\Play_AMB_PAD_CorpseTrap",
+      "GUID": "{06E4EAB2-C55E-4652-84C1-FD484B705D76}",
+      "MaxAttenuation": "3000",
+      "DurationType": "Infinite",
+      "MediaRefs": [
+       {
+        "Id": "788907204"
+       }
+      ]
+     },
+     {
       "Id": "2972533464",
       "Name": "Play_AMB_PAD_Hub",
       "ObjectPath": "\\Events\\AMB_WU\\Play_AMB_PAD_Hub",
@@ -4599,6 +4921,19 @@
       "MediaRefs": [
        {
         "Id": "683095756"
+       }
+      ]
+     },
+     {
+      "Id": "297916660",
+      "Name": "Play_AMB_PAD_Pyramid_Closed",
+      "ObjectPath": "\\Events\\AMB_WU\\Play_AMB_PAD_Pyramid_Closed",
+      "GUID": "{F627B9DE-2BDF-4BC2-B74E-5E799A3FBDBF}",
+      "MaxAttenuation": "3000",
+      "DurationType": "Infinite",
+      "MediaRefs": [
+       {
+        "Id": "1019889613"
        }
       ]
      }
@@ -4669,7 +5004,7 @@
      {
       "Id": "367558429",
       "Name": "RVB_Voices",
-      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\Voices\\RVB_Voices",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Voices",
       "GUID": "{483EAB60-BC92-484F-9830-D1776233B15C}",
       "PluginRefs": {
        "ShareSets": [
@@ -4733,6 +5068,19 @@
        "Custom": [
         {
          "Id": "97605317"
+        }
+       ]
+      }
+     },
+     {
+      "Id": "2561323002",
+      "Name": "AUX_LPF",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\AUX_LPF",
+      "GUID": "{5D5AAEA6-57CB-46FD-9802-C041695A5809}",
+      "PluginRefs": {
+       "ShareSets": [
+        {
+         "Id": "1008402193"
         }
        ]
       }
@@ -4999,6 +5347,6 @@
     ]
    }
   ],
-  "FileHash": "{6C3C5E77-19D8-0B00-BA51-D0E68D828E0E}"
+  "FileHash": "{F23A5D08-601E-0782-2B02-E9AC57C38756}"
  }
 }

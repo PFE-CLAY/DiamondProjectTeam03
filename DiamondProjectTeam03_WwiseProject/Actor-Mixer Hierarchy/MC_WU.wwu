@@ -152,7 +152,7 @@
 								</Sound>
 							</ChildrenList>
 						</RandomSequenceContainer>
-						<RandomSequenceContainer Name="MC_SFX_PickupWeapon_RC" ID="{2039D8A2-903F-476A-B075-F87940F35922}" ShortID="393909649">
+						<RandomSequenceContainer Name="MC_SFX_UpdateAmmo_RC" ID="{2039D8A2-903F-476A-B075-F87940F35922}" ShortID="393909649">
 							<PropertyList>
 								<Property Name="GlobalOrPerObject" Type="int16" Value="0"/>
 								<Property Name="NormalOrShuffle" Type="int16" Value="0"/>

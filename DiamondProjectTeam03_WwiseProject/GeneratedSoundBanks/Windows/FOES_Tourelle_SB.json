@@ -10,7 +10,7 @@
     "Type": "User",
     "GUID": "{8CC30184-23AF-4DB5-9844-9B04DF10A650}",
     "Language": "SFX",
-    "Hash": "{C0C22FAA-FE18-AD2B-F00A-E3D6A31F2792}",
+    "Hash": "{CA0ADCC1-E5DC-FFBA-720B-D32E6D3A6F47}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\FOES_Tourelle_SB",
     "ShortName": "FOES_Tourelle_SB",
     "Path": "FOES_Tourelle_SB.bnk",
@@ -140,6 +140,14 @@
       }
      ],
      "ShareSets": [
+      {
+       "Id": "1008402193",
+       "Name": "Low_Pass_20KHz",
+       "ObjectPath": "\\Effects\\Factory Effects\\Parametric EQ\\Low Pass Filters\\Low_Pass_20KHz",
+       "GUID": "{830124FB-B9D5-4AE8-846E-E94A74652666}",
+       "LibName": "Wwise Parametric EQ",
+       "LibId": "6881283"
+      },
       {
        "Id": "3442768367",
        "Name": "Hall_Large_Dark",
@@ -274,7 +282,7 @@
      {
       "Id": "367558429",
       "Name": "RVB_Voices",
-      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\Voices\\RVB_Voices",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Voices",
       "GUID": "{483EAB60-BC92-484F-9830-D1776233B15C}",
       "PluginRefs": {
        "ShareSets": [
@@ -343,6 +351,19 @@
       }
      },
      {
+      "Id": "2561323002",
+      "Name": "AUX_LPF",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\AUX_LPF",
+      "GUID": "{5D5AAEA6-57CB-46FD-9802-C041695A5809}",
+      "PluginRefs": {
+       "ShareSets": [
+        {
+         "Id": "1008402193"
+        }
+       ]
+      }
+     },
+     {
       "Id": "3571340017",
       "Name": "RVB_Hub",
       "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Hub",
@@ -399,6 +420,6 @@
     ]
    }
   ],
-  "FileHash": "{9A9E84F3-F668-80DF-D63F-5BC737F29DD4}"
+  "FileHash": "{F6464CC3-A09B-3A16-9603-1D6AD511AE96}"
  }
 }

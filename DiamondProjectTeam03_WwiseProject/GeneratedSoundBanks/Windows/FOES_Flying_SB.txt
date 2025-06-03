@@ -27,11 +27,12 @@ Audio Bus	ID	Name			Wwise Object Path	Notes
 	4056684167	Master			\Master_WU\Master	
 
 Auxiliary Bus	ID	Name			Wwise Object Path	Notes
-	367558429	RVB_Voices			\Master_WU\Master\Voices\RVB_Voices	
+	367558429	RVB_Voices			\Master_WU\Master\RVB_Voices	
 	395111090	RVB_BlackHouses			\Master_WU\Master\RVB_BlackHouses	
 	1215931641	RVB_Arena			\Master_WU\Master\RVB_Arena	
 	1408817756	RVB_RFX_Arena			\Master_WU\Master\RVB_RFX_Arena	
 	2344250611	RVB_Basement			\Master_WU\Master\RVB_Basement	
+	2561323002	AUX_LPF			\Master_WU\Master\AUX_LPF	
 	3571340017	RVB_Hub			\Master_WU\Master\RVB_Hub	
 	3670521640	RVB_Pyramid			\Master_WU\Master\RVB_Pyramid	
 
@@ -43,6 +44,7 @@ Effect plug-ins	ID	Name	Type				Notes
 	403656092	Have_U_Ever_Been_Outside (Custom)	Wwise RoomVerb			
 	498081942	Hall_Large_Dark (Custom)	Wwise RoomVerb			
 	688337969	Hall_Small_Bright (Custom)	Wwise RoomVerb			
+	1008402193	Low_Pass_20KHz	Wwise Parametric EQ			
 	3442768367	Hall_Large_Dark	Wwise RoomVerb			
 	3487820010	One_Tap_Half_Second	Wwise Delay			
 

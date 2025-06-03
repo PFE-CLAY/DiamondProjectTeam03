@@ -10,7 +10,7 @@
     "Type": "User",
     "GUID": "{701ECBBD-9C7B-4030-8CDB-749EE5D1C7B9}",
     "Language": "SFX",
-    "Hash": "{3C52751F-F203-8457-A76F-5316363322F3}",
+    "Hash": "{105ED3DD-BC4F-3033-CA6A-40DA8A58EB75}",
     "ObjectPath": "Init",
     "ShortName": "Init",
     "Path": "Init.bnk",
@@ -74,6 +74,14 @@
       }
      ],
      "ShareSets": [
+      {
+       "Id": "1008402193",
+       "Name": "Low_Pass_20KHz",
+       "ObjectPath": "\\Effects\\Factory Effects\\Parametric EQ\\Low Pass Filters\\Low_Pass_20KHz",
+       "GUID": "{830124FB-B9D5-4AE8-846E-E94A74652666}",
+       "LibName": "Wwise Parametric EQ",
+       "LibId": "6881283"
+      },
       {
        "Id": "3442768367",
        "Name": "Hall_Large_Dark",
@@ -182,7 +190,7 @@
      {
       "Id": "367558429",
       "Name": "RVB_Voices",
-      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\Voices\\RVB_Voices",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Voices",
       "GUID": "{483EAB60-BC92-484F-9830-D1776233B15C}",
       "PluginRefs": {
        "ShareSets": [
@@ -246,6 +254,19 @@
        "Custom": [
         {
          "Id": "97605317"
+        }
+       ]
+      }
+     },
+     {
+      "Id": "2561323002",
+      "Name": "AUX_LPF",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\AUX_LPF",
+      "GUID": "{5D5AAEA6-57CB-46FD-9802-C041695A5809}",
+      "PluginRefs": {
+       "ShareSets": [
+        {
+         "Id": "1008402193"
         }
        ]
       }
@@ -343,6 +364,6 @@
     ]
    }
   ],
-  "FileHash": "{85D3C68E-A865-DC77-30E4-83A7A5F1EED7}"
+  "FileHash": "{D3FF8AAD-A24B-A73F-5247-C7CC1C154949}"
  }
 }

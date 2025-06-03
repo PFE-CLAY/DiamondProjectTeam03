@@ -10,7 +10,7 @@
     "Type": "User",
     "GUID": "{ADC2D189-6608-4828-BC9C-6EF6F90834DB}",
     "Language": "SFX",
-    "Hash": "{4F64AA41-1489-4A99-B625-24B877A37007}",
+    "Hash": "{E8CEF62C-1D06-8949-2AF8-C3703931A98B}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\MC_SB",
     "ShortName": "MC_SB",
     "Path": "MC_SB.bnk",
@@ -134,6 +134,14 @@
       "Location": "Memory",
       "ShortName": "AMB\\SP\\MC_FT_Concrete_Jump_02.wav",
       "CachePath": "SFX/AMB/SP/MC_FT_Concrete_Jump_02_818F3B66.wem"
+     },
+     {
+      "Id": "130136752",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "MC_SFX_Weapon_Armed.wav",
+      "CachePath": "SFX/MC_SFX_Weapon_Armed_818F3B66.wem"
      },
      {
       "Id": "138501133",
@@ -294,14 +302,6 @@
       "Location": "Memory",
       "ShortName": "SFX\\MC_SFX_Weapon_NoAmmo.wav",
       "CachePath": "SFX/SFX/MC_SFX_Weapon_NoAmmo_818F3B66.wem"
-     },
-     {
-      "Id": "421361594",
-      "Language": "SFX",
-      "Streaming": "false",
-      "Location": "Memory",
-      "ShortName": "MC_SFX_Gun_Shoot_05.wav",
-      "CachePath": "SFX/MC_SFX_Gun_Shoot_05_818F3B66.wem"
      },
      {
       "Id": "430767489",
@@ -512,14 +512,6 @@
       "CachePath": "SFX/AMB/SP/MC_FT_Concrete_Jump_03_818F3B66.wem"
      },
      {
-      "Id": "772410827",
-      "Language": "SFX",
-      "Streaming": "false",
-      "Location": "Memory",
-      "ShortName": "SFX\\MC_SFX_Weapon_Armed.wav",
-      "CachePath": "SFX/SFX/MC_SFX_Weapon_Armed_818F3B66.wem"
-     },
-     {
       "Id": "779936328",
       "Language": "SFX",
       "Streaming": "false",
@@ -697,6 +689,32 @@
        "GUID": "{846A0309-936D-4337-BF4B-E6792E655155}",
        "LibName": "Wwise RoomVerb",
        "LibId": "7733251"
+      }
+     ],
+     "ShareSets": [
+      {
+       "Id": "1008402193",
+       "Name": "Low_Pass_20KHz",
+       "ObjectPath": "\\Effects\\Factory Effects\\Parametric EQ\\Low Pass Filters\\Low_Pass_20KHz",
+       "GUID": "{830124FB-B9D5-4AE8-846E-E94A74652666}",
+       "LibName": "Wwise Parametric EQ",
+       "LibId": "6881283"
+      },
+      {
+       "Id": "3442768367",
+       "Name": "Hall_Large_Dark",
+       "ObjectPath": "\\Effects\\Factory Effects\\RoomVerb\\Halls\\Hall_Large_Dark",
+       "GUID": "{0F6A7D6D-131C-4650-9561-FC05F5C7A37B}",
+       "LibName": "Wwise RoomVerb",
+       "LibId": "7733251"
+      },
+      {
+       "Id": "3487820010",
+       "Name": "One_Tap_Half_Second",
+       "ObjectPath": "\\Effects\\Factory Effects\\Delay\\One_Tap_Half_Second",
+       "GUID": "{B8FE0D3B-7AAB-4344-89FE-177602B7BF19}",
+       "LibName": "Wwise Delay",
+       "LibId": "6946819"
       }
      ]
     },
@@ -1170,8 +1188,8 @@
       "ObjectPath": "\\Events\\MC_WU\\Play_MC_SFX_Gun_Shoot_RC",
       "GUID": "{19EDAAA1-DF79-4328-9566-97F28CD19D08}",
       "DurationType": "OneShot",
-      "DurationMin": "0.80338675",
-      "DurationMax": "1.8403275",
+      "DurationMin": "1.1600068",
+      "DurationMax": "2.3467753",
       "MediaRefs": [
        {
         "Id": "36917763"
@@ -1181,9 +1199,6 @@
        },
        {
         "Id": "70109824"
-       },
-       {
-        "Id": "421361594"
        },
        {
         "Id": "610918733"
@@ -1226,7 +1241,7 @@
       "DurationMax": "3.3666666",
       "MediaRefs": [
        {
-        "Id": "772410827"
+        "Id": "130136752"
        }
       ]
      },
@@ -1309,6 +1324,22 @@
     ],
     "AuxBusses": [
      {
+      "Id": "367558429",
+      "Name": "RVB_Voices",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Voices",
+      "GUID": "{483EAB60-BC92-484F-9830-D1776233B15C}",
+      "PluginRefs": {
+       "ShareSets": [
+        {
+         "Id": "3442768367"
+        },
+        {
+         "Id": "3487820010"
+        }
+       ]
+      }
+     },
+     {
       "Id": "395111090",
       "Name": "RVB_BlackHouses",
       "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_BlackHouses",
@@ -1364,6 +1395,19 @@
       }
      },
      {
+      "Id": "2561323002",
+      "Name": "AUX_LPF",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\AUX_LPF",
+      "GUID": "{5D5AAEA6-57CB-46FD-9802-C041695A5809}",
+      "PluginRefs": {
+       "ShareSets": [
+        {
+         "Id": "1008402193"
+        }
+       ]
+      }
+     },
+     {
       "Id": "3571340017",
       "Name": "RVB_Hub",
       "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Hub",
@@ -1388,6 +1432,34 @@
         }
        ]
       }
+     }
+    ],
+    "StateGroups": [
+     {
+      "Id": "3929688590",
+      "Name": "InsideOutside",
+      "ObjectPath": "\\States\\Default Work Unit\\InsideOutside",
+      "GUID": "{2CE28D5C-F27B-42D7-9D91-1905B53C4C3C}",
+      "States": [
+       {
+        "Id": "645492555",
+        "Name": "Out",
+        "ObjectPath": "\\States\\Default Work Unit\\InsideOutside\\Out",
+        "GUID": "{C04B12A4-672A-478D-A191-EED95AAB3C6D}"
+       },
+       {
+        "Id": "748895195",
+        "Name": "None",
+        "ObjectPath": "\\States\\Default Work Unit\\InsideOutside\\None",
+        "GUID": "{EEC88170-01B2-4B8A-87BF-B7151380ADB4}"
+       },
+       {
+        "Id": "1752637612",
+        "Name": "In",
+        "ObjectPath": "\\States\\Default Work Unit\\InsideOutside\\In",
+        "GUID": "{BFBB05BE-0B19-41C7-B759-C85C0C60B1D8}"
+       }
+      ]
      }
     ],
     "SwitchGroups": [
@@ -1420,6 +1492,6 @@
     ]
    }
   ],
-  "FileHash": "{A6003B5B-1F82-2AD5-3231-AA0B9D5ADC6B}"
+  "FileHash": "{477F6A96-C4D6-6578-B78D-864C1A9557D4}"
  }
 }

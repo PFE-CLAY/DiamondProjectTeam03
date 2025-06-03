@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SoundBanksInfo Platform="Mac" BasePlatform="Mac" SchemaVersion="16" SoundBankVersion="150">
 	<SoundBanks>
-		<SoundBank Id="2765162312" Type="User" GUID="{9B915276-16F3-4721-B819-126344F97366}" Language="SFX" Hash="{F0D65CF9-2320-6D7D-179F-26F7AA2A7FB3}">
+		<SoundBank Id="2765162312" Type="User" GUID="{9B915276-16F3-4721-B819-126344F97366}" Language="SFX" Hash="{EFC11ECD-61A9-CAEF-2912-D928ABDA26AA}">
 			<ObjectPath>\SoundBanks\SoundBanks_WU\VOICES_SB</ObjectPath>
 			<ShortName>VOICES_SB</ShortName>
 			<Path>VOICES_SB.bnk</Path>
@@ -105,7 +105,8 @@
 						<MediaRef Id="93564485"/>
 					</MediaRefs>
 					<AuxBusRefs>
-						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Voices\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}"/>
+						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}"/>
+						<AuxBusRef Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}"/>
 					</AuxBusRefs>
 				</Event>
 				<Event Id="432124422" Name="Play_DUB_ARENA_1_1_0" ObjectPath="\Events\VOICES_WU\Play_DUB_ARENA_1_1_0" GUID="{4D51FF6E-B699-4F64-9342-EA27E6FB1544}" DurationType="OneShot" DurationMin="5.3754582" DurationMax="5.3754582">
@@ -113,7 +114,8 @@
 						<MediaRef Id="898148885"/>
 					</MediaRefs>
 					<AuxBusRefs>
-						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Voices\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}"/>
+						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}"/>
+						<AuxBusRef Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}"/>
 					</AuxBusRefs>
 				</Event>
 				<Event Id="432124423" Name="Play_DUB_ARENA_1_1_1" ObjectPath="\Events\VOICES_WU\Play_DUB_ARENA_1_1_1" GUID="{27536445-6BFB-41C6-BC9E-54347C22D514}" DurationType="OneShot" DurationMin="2.5813334" DurationMax="2.5813334">
@@ -121,7 +123,8 @@
 						<MediaRef Id="500906151"/>
 					</MediaRefs>
 					<AuxBusRefs>
-						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Voices\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}"/>
+						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}"/>
+						<AuxBusRef Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}"/>
 					</AuxBusRefs>
 				</Event>
 				<Event Id="432124420" Name="Play_DUB_ARENA_1_1_2" ObjectPath="\Events\VOICES_WU\Play_DUB_ARENA_1_1_2" GUID="{DE0F7AE6-9779-495E-AA81-79548E94F86D}" DurationType="OneShot" DurationMin="2.7846458" DurationMax="2.7846458">
@@ -129,7 +132,8 @@
 						<MediaRef Id="338368799"/>
 					</MediaRefs>
 					<AuxBusRefs>
-						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Voices\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}"/>
+						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}"/>
+						<AuxBusRef Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}"/>
 					</AuxBusRefs>
 				</Event>
 				<Event Id="431683137" Name="Play_DUB_ARENA_1_2_0" ObjectPath="\Events\VOICES_WU\Play_DUB_ARENA_1_2_0" GUID="{C445715B-3FA8-4FBC-AB70-822C92FBB16B}" DurationType="OneShot" DurationMin="3.629021" DurationMax="3.629021">
@@ -137,7 +141,8 @@
 						<MediaRef Id="687283735"/>
 					</MediaRefs>
 					<AuxBusRefs>
-						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Voices\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}"/>
+						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}"/>
+						<AuxBusRef Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}"/>
 					</AuxBusRefs>
 				</Event>
 				<Event Id="431683136" Name="Play_DUB_ARENA_1_2_1" ObjectPath="\Events\VOICES_WU\Play_DUB_ARENA_1_2_1" GUID="{91178517-FD31-404C-BD96-C93C088E3CC4}" DurationType="OneShot" DurationMin="3.111125" DurationMax="3.111125">
@@ -145,7 +150,8 @@
 						<MediaRef Id="1008445025"/>
 					</MediaRefs>
 					<AuxBusRefs>
-						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Voices\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}"/>
+						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}"/>
+						<AuxBusRef Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}"/>
 					</AuxBusRefs>
 				</Event>
 				<Event Id="431683139" Name="Play_DUB_ARENA_1_2_2" ObjectPath="\Events\VOICES_WU\Play_DUB_ARENA_1_2_2" GUID="{746849AC-4863-4498-9421-326BA34079B6}" DurationType="OneShot" DurationMin="5.2867084" DurationMax="5.2867084">
@@ -153,7 +159,8 @@
 						<MediaRef Id="7231555"/>
 					</MediaRefs>
 					<AuxBusRefs>
-						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Voices\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}"/>
+						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}"/>
+						<AuxBusRef Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}"/>
 					</AuxBusRefs>
 				</Event>
 				<Event Id="431683138" Name="Play_DUB_ARENA_1_2_3" ObjectPath="\Events\VOICES_WU\Play_DUB_ARENA_1_2_3" GUID="{2CE4857B-BB5A-42DF-B161-ABAB474C8636}" DurationType="OneShot" DurationMin="5.847521" DurationMax="5.847521">
@@ -161,7 +168,8 @@
 						<MediaRef Id="83922193"/>
 					</MediaRefs>
 					<AuxBusRefs>
-						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Voices\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}"/>
+						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}"/>
+						<AuxBusRef Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}"/>
 					</AuxBusRefs>
 				</Event>
 				<Event Id="3653030008" Name="Play_DUB_ARENA_1_3_0" ObjectPath="\Events\VOICES_WU\Play_DUB_ARENA_1_3_0" GUID="{D4B8EC1E-8BCC-47F8-BDCC-CE8B7FC3ED1C}" DurationType="OneShot" DurationMin="6.983125" DurationMax="6.983125">
@@ -169,7 +177,8 @@
 						<MediaRef Id="289625457"/>
 					</MediaRefs>
 					<AuxBusRefs>
-						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Voices\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}"/>
+						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}"/>
+						<AuxBusRef Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}"/>
 					</AuxBusRefs>
 				</Event>
 				<Event Id="3653030009" Name="Play_DUB_ARENA_1_3_1" ObjectPath="\Events\VOICES_WU\Play_DUB_ARENA_1_3_1" GUID="{D97FF8EC-ED87-4915-9E9E-1C708E08A828}" DurationType="OneShot" DurationMin="3.3593957" DurationMax="3.3593957">
@@ -177,7 +186,8 @@
 						<MediaRef Id="1031568460"/>
 					</MediaRefs>
 					<AuxBusRefs>
-						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Voices\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}"/>
+						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}"/>
+						<AuxBusRef Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}"/>
 					</AuxBusRefs>
 				</Event>
 				<Event Id="3653030010" Name="Play_DUB_ARENA_1_3_2" ObjectPath="\Events\VOICES_WU\Play_DUB_ARENA_1_3_2" GUID="{0746558A-9F04-4B0B-B346-9BA6CF66D24C}" DurationType="OneShot" DurationMin="7.75375" DurationMax="7.75375">
@@ -185,7 +195,8 @@
 						<MediaRef Id="881110537"/>
 					</MediaRefs>
 					<AuxBusRefs>
-						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Voices\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}"/>
+						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}"/>
+						<AuxBusRef Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}"/>
 					</AuxBusRefs>
 				</Event>
 				<Event Id="3652588723" Name="Play_DUB_ARENA_1_4_0" ObjectPath="\Events\VOICES_WU\Play_DUB_ARENA_1_4_0" GUID="{809EBE6E-E883-4D44-87C4-923BF4435E0D}" DurationType="OneShot" DurationMin="8.455104" DurationMax="8.455104">
@@ -193,7 +204,8 @@
 						<MediaRef Id="952186329"/>
 					</MediaRefs>
 					<AuxBusRefs>
-						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Voices\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}"/>
+						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}"/>
+						<AuxBusRef Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}"/>
 					</AuxBusRefs>
 				</Event>
 				<Event Id="431536106" Name="Play_DUB_ARENA_1_5_0" ObjectPath="\Events\VOICES_WU\Play_DUB_ARENA_1_5_0" GUID="{2945E4E8-A2EB-4D65-B4D4-F7738BA67018}" DurationType="OneShot" DurationMin="4.879229" DurationMax="4.879229">
@@ -201,7 +213,8 @@
 						<MediaRef Id="899907561"/>
 					</MediaRefs>
 					<AuxBusRefs>
-						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Voices\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}"/>
+						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}"/>
+						<AuxBusRef Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}"/>
 					</AuxBusRefs>
 				</Event>
 				<Event Id="430991653" Name="Play_DUB_ARENA_1_6_0" ObjectPath="\Events\VOICES_WU\Play_DUB_ARENA_1_6_0" GUID="{5A59BF8D-9B94-480D-A8BE-25466AFDDDAF}" DurationType="OneShot" DurationMin="10.083875" DurationMax="10.083875">
@@ -209,7 +222,8 @@
 						<MediaRef Id="435995496"/>
 					</MediaRefs>
 					<AuxBusRefs>
-						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Voices\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}"/>
+						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}"/>
+						<AuxBusRef Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}"/>
 					</AuxBusRefs>
 				</Event>
 				<Event Id="431138716" Name="Play_DUB_ARENA_1_7_0" ObjectPath="\Events\VOICES_WU\Play_DUB_ARENA_1_7_0" GUID="{F6358FF6-964A-43B2-B731-095E10582A7A}" DurationType="OneShot" DurationMin="4.7953334" DurationMax="4.7953334">
@@ -217,7 +231,8 @@
 						<MediaRef Id="73406871"/>
 					</MediaRefs>
 					<AuxBusRefs>
-						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Voices\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}"/>
+						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}"/>
+						<AuxBusRef Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}"/>
 					</AuxBusRefs>
 				</Event>
 				<Event Id="3651897111" Name="Play_DUB_ARENA_1_8_0" ObjectPath="\Events\VOICES_WU\Play_DUB_ARENA_1_8_0" GUID="{6C548FEA-C807-4A6A-B0D6-C9C265D28446}" DurationType="OneShot" DurationMin="5.6705" DurationMax="5.6705">
@@ -225,7 +240,8 @@
 						<MediaRef Id="140616404"/>
 					</MediaRefs>
 					<AuxBusRefs>
-						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Voices\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}"/>
+						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}"/>
+						<AuxBusRef Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}"/>
 					</AuxBusRefs>
 				</Event>
 				<Event Id="3652044174" Name="Play_DUB_ARENA_1_9_0" ObjectPath="\Events\VOICES_WU\Play_DUB_ARENA_1_9_0" GUID="{EFF04B34-33D4-45A1-B15C-C75DF1C2FE84}" DurationType="OneShot" DurationMin="2.0564792" DurationMax="2.0564792">
@@ -233,7 +249,8 @@
 						<MediaRef Id="767088532"/>
 					</MediaRefs>
 					<AuxBusRefs>
-						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Voices\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}"/>
+						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}"/>
+						<AuxBusRef Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}"/>
 					</AuxBusRefs>
 				</Event>
 				<Event Id="3652044175" Name="Play_DUB_ARENA_1_9_1" ObjectPath="\Events\VOICES_WU\Play_DUB_ARENA_1_9_1" GUID="{80641E23-366E-4E92-9C60-75DC0F6F4B16}" DurationType="OneShot" DurationMin="3.72625" DurationMax="3.72625">
@@ -241,7 +258,8 @@
 						<MediaRef Id="166584951"/>
 					</MediaRefs>
 					<AuxBusRefs>
-						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Voices\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}"/>
+						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}"/>
+						<AuxBusRef Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}"/>
 					</AuxBusRefs>
 				</Event>
 				<Event Id="3652044172" Name="Play_DUB_ARENA_1_9_2" ObjectPath="\Events\VOICES_WU\Play_DUB_ARENA_1_9_2" GUID="{EADA4396-85FC-46B2-90D0-883FFB9406F7}" DurationType="OneShot" DurationMin="0.73702085" DurationMax="0.73702085">
@@ -249,7 +267,8 @@
 						<MediaRef Id="157392684"/>
 					</MediaRefs>
 					<AuxBusRefs>
-						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Voices\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}"/>
+						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}"/>
+						<AuxBusRef Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}"/>
 					</AuxBusRefs>
 				</Event>
 				<Event Id="3652044173" Name="Play_DUB_ARENA_1_9_3" ObjectPath="\Events\VOICES_WU\Play_DUB_ARENA_1_9_3" GUID="{1D57409D-4D8B-4606-B981-BDD320FD64EB}" DurationType="OneShot" DurationMin="0.8344167" DurationMax="0.8344167">
@@ -257,7 +276,8 @@
 						<MediaRef Id="278418833"/>
 					</MediaRefs>
 					<AuxBusRefs>
-						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Voices\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}"/>
+						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}"/>
+						<AuxBusRef Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}"/>
 					</AuxBusRefs>
 				</Event>
 				<Event Id="3652044170" Name="Play_DUB_ARENA_1_9_4" ObjectPath="\Events\VOICES_WU\Play_DUB_ARENA_1_9_4" GUID="{56D08A81-9E18-4348-AB5F-9AD1B9C7E045}" DurationType="OneShot" DurationMin="1.1080834" DurationMax="1.1080834">
@@ -265,7 +285,8 @@
 						<MediaRef Id="115645254"/>
 					</MediaRefs>
 					<AuxBusRefs>
-						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Voices\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}"/>
+						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}"/>
+						<AuxBusRef Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}"/>
 					</AuxBusRefs>
 				</Event>
 				<Event Id="3652044171" Name="Play_DUB_ARENA_1_9_5" ObjectPath="\Events\VOICES_WU\Play_DUB_ARENA_1_9_5" GUID="{6C020C9C-BAF0-41AB-9564-CAFCF453F546}" DurationType="OneShot" DurationMin="2.2469792" DurationMax="2.2469792">
@@ -273,7 +294,8 @@
 						<MediaRef Id="279456589"/>
 					</MediaRefs>
 					<AuxBusRefs>
-						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Voices\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}"/>
+						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}"/>
+						<AuxBusRef Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}"/>
 					</AuxBusRefs>
 				</Event>
 				<Event Id="3652044168" Name="Play_DUB_ARENA_1_9_6" ObjectPath="\Events\VOICES_WU\Play_DUB_ARENA_1_9_6" GUID="{1EBCCAD9-8483-4BE3-AFBC-EA3F1550B975}" DurationType="OneShot" DurationMin="4.590271" DurationMax="4.590271">
@@ -281,11 +303,12 @@
 						<MediaRef Id="411650085"/>
 					</MediaRefs>
 					<AuxBusRefs>
-						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Voices\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}"/>
+						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}"/>
+						<AuxBusRef Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}"/>
 					</AuxBusRefs>
 				</Event>
 			</Events>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{FF7A17C8-9DA4-59CF-5B7A-AA78ED2EF66C}</FileHash>
+	<FileHash>{48EDD1F1-6D36-DD9D-F947-3C870848B9E2}</FileHash>
 </SoundBanksInfo>
