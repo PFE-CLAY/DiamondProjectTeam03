@@ -1,0 +1,58 @@
+Event	ID	Name			Wwise Object Path	Notes
+	430991653	Play_DUB_ARENA_1_6_0			\VOICES_WU\Play_DUB_ARENA_1_6_0	
+	431138716	Play_DUB_ARENA_1_7_0			\VOICES_WU\Play_DUB_ARENA_1_7_0	
+	431536106	Play_DUB_ARENA_1_5_0			\VOICES_WU\Play_DUB_ARENA_1_5_0	
+	431683136	Play_DUB_ARENA_1_2_1			\VOICES_WU\Play_DUB_ARENA_1_2_1	
+	431683137	Play_DUB_ARENA_1_2_0			\VOICES_WU\Play_DUB_ARENA_1_2_0	
+	431683138	Play_DUB_ARENA_1_2_3			\VOICES_WU\Play_DUB_ARENA_1_2_3	
+	431683139	Play_DUB_ARENA_1_2_2			\VOICES_WU\Play_DUB_ARENA_1_2_2	
+	432124420	Play_DUB_ARENA_1_1_2			\VOICES_WU\Play_DUB_ARENA_1_1_2	
+	432124422	Play_DUB_ARENA_1_1_0			\VOICES_WU\Play_DUB_ARENA_1_1_0	
+	432124423	Play_DUB_ARENA_1_1_1			\VOICES_WU\Play_DUB_ARENA_1_1_1	
+	3651897111	Play_DUB_ARENA_1_8_0			\VOICES_WU\Play_DUB_ARENA_1_8_0	
+	3652044168	Play_DUB_ARENA_1_9_6			\VOICES_WU\Play_DUB_ARENA_1_9_6	
+	3652044170	Play_DUB_ARENA_1_9_4			\VOICES_WU\Play_DUB_ARENA_1_9_4	
+	3652044171	Play_DUB_ARENA_1_9_5			\VOICES_WU\Play_DUB_ARENA_1_9_5	
+	3652044172	Play_DUB_ARENA_1_9_2			\VOICES_WU\Play_DUB_ARENA_1_9_2	
+	3652044173	Play_DUB_ARENA_1_9_3			\VOICES_WU\Play_DUB_ARENA_1_9_3	
+	3652044174	Play_DUB_ARENA_1_9_0			\VOICES_WU\Play_DUB_ARENA_1_9_0	
+	3652044175	Play_DUB_ARENA_1_9_1			\VOICES_WU\Play_DUB_ARENA_1_9_1	
+	3652588723	Play_DUB_ARENA_1_4_0			\VOICES_WU\Play_DUB_ARENA_1_4_0	
+	3653030008	Play_DUB_ARENA_1_3_0			\VOICES_WU\Play_DUB_ARENA_1_3_0	
+	3653030009	Play_DUB_ARENA_1_3_1			\VOICES_WU\Play_DUB_ARENA_1_3_1	
+	3653030010	Play_DUB_ARENA_1_3_2			\VOICES_WU\Play_DUB_ARENA_1_3_2	
+	3653177071	Play_DUB_ARENA_1_0_0			\VOICES_WU\Play_DUB_ARENA_1_0_0	
+
+State Group	ID	Name			Wwise Object Path	Notes
+	3929688590	InsideOutside			\Default Work Unit\InsideOutside	
+
+State	ID	Name	State Group			Notes
+	645492555	Out	InsideOutside			
+	748895195	None	InsideOutside			
+	1752637612	In	InsideOutside			
+
+In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	7231555	DUB_ARENA_1_2_2	E:\GitHub\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\DUB_ARENA_1_2_2_818F3B66.wem		\Actor-Mixer Hierarchy\VOICES\VOICES\DUB_ARENA_1_2_2		507620
+	73406871	DUB_ARENA_1_7_0	E:\GitHub\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\DUB_ARENA_1_7_0_818F3B66.wem		\Actor-Mixer Hierarchy\VOICES\VOICES\DUB_ARENA_1_7_0		460448
+	83922193	DUB_ARENA_1_2_3	E:\GitHub\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\DUB_ARENA_1_2_3_818F3B66.wem		\Actor-Mixer Hierarchy\VOICES\VOICES\DUB_ARENA_1_2_3		561458
+	93564485	DUB_ARENA_1_0_0	E:\GitHub\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\DUB_ARENA_1_0_0_818F3B66.wem		\Actor-Mixer Hierarchy\VOICES\VOICES\DUB_ARENA_1_0_0		1088018
+	115645254	DUB_ARENA_1_9_4	E:\GitHub\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\DUB_ARENA_1_9_4_818F3B66.wem		\Actor-Mixer Hierarchy\VOICES\VOICES\DUB_ARENA_1_9_4		106472
+	140616404	DUB_ARENA_1_8_0	E:\GitHub\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\DUB_ARENA_1_8_0_818F3B66.wem		\Actor-Mixer Hierarchy\VOICES\VOICES\DUB_ARENA_1_8_0		544464
+	157392684	DUB_ARENA_1_9_2	E:\GitHub\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\DUB_ARENA_1_9_2_818F3B66.wem		\Actor-Mixer Hierarchy\VOICES\VOICES\DUB_ARENA_1_9_2		70850
+	166584951	DUB_ARENA_1_9_1	E:\GitHub\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\DUB_ARENA_1_9_1_818F3B66.wem		\Actor-Mixer Hierarchy\VOICES\VOICES\DUB_ARENA_1_9_1		357816
+	278418833	DUB_ARENA_1_9_3	E:\GitHub\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\DUB_ARENA_1_9_3_818F3B66.wem		\Actor-Mixer Hierarchy\VOICES\VOICES\DUB_ARENA_1_9_3		80200
+	279456589	DUB_ARENA_1_9_5	E:\GitHub\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\DUB_ARENA_1_9_5_818F3B66.wem		\Actor-Mixer Hierarchy\VOICES\VOICES\DUB_ARENA_1_9_5		215806
+	289625457	DUB_ARENA_1_3_0	E:\GitHub\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\DUB_ARENA_1_3_0_818F3B66.wem		\Actor-Mixer Hierarchy\VOICES\VOICES\DUB_ARENA_1_3_0		670476
+	338368799	DUB_ARENA_1_1_2	E:\GitHub\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\DUB_ARENA_1_1_2_818F3B66.wem		\Actor-Mixer Hierarchy\VOICES\VOICES\DUB_ARENA_1_1_2		267422
+	411650085	DUB_ARENA_1_9_6	E:\GitHub\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\DUB_ARENA_1_9_6_818F3B66.wem		\Actor-Mixer Hierarchy\VOICES\VOICES\DUB_ARENA_1_9_6		440762
+	435995496	DUB_ARENA_1_6_0	E:\GitHub\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\DUB_ARENA_1_6_0_818F3B66.wem		\Actor-Mixer Hierarchy\VOICES\VOICES\DUB_ARENA_1_6_0		968148
+	500906151	DUB_ARENA_1_1_1	E:\GitHub\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\DUB_ARENA_1_1_1_818F3B66.wem		\Actor-Mixer Hierarchy\VOICES\VOICES\DUB_ARENA_1_1_1		247904
+	687283735	DUB_ARENA_1_2_0	E:\GitHub\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\DUB_ARENA_1_2_0_818F3B66.wem		\Actor-Mixer Hierarchy\VOICES\VOICES\DUB_ARENA_1_2_0		348482
+	767088532	DUB_ARENA_1_9_0	E:\GitHub\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\DUB_ARENA_1_9_0_818F3B66.wem		\Actor-Mixer Hierarchy\VOICES\VOICES\DUB_ARENA_1_9_0		197518
+	881110537	DUB_ARENA_1_3_2	E:\GitHub\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\DUB_ARENA_1_3_2_818F3B66.wem		\Actor-Mixer Hierarchy\VOICES\VOICES\DUB_ARENA_1_3_2		744456
+	898148885	DUB_ARENA_1_1_0	E:\GitHub\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\DUB_ARENA_1_1_0_818F3B66.wem		\Actor-Mixer Hierarchy\VOICES\VOICES\DUB_ARENA_1_1_0		516140
+	899907561	DUB_ARENA_1_5_0	E:\GitHub\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\DUB_ARENA_1_5_0_818F3B66.wem		\Actor-Mixer Hierarchy\VOICES\VOICES\DUB_ARENA_1_5_0		468502
+	952186329	DUB_ARENA_1_4_0	E:\GitHub\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\DUB_ARENA_1_4_0_818F3B66.wem		\Actor-Mixer Hierarchy\VOICES\VOICES\DUB_ARENA_1_4_0		811786
+	1008445025	DUB_ARENA_1_2_1	E:\GitHub\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\DUB_ARENA_1_2_1_818F3B66.wem		\Actor-Mixer Hierarchy\VOICES\VOICES\DUB_ARENA_1_2_1		298764
+	1031568460	DUB_ARENA_1_3_1	E:\GitHub\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\DUB_ARENA_1_3_1_818F3B66.wem		\Actor-Mixer Hierarchy\VOICES\VOICES\DUB_ARENA_1_3_1		322598
+
