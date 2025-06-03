@@ -6,6 +6,14 @@ Event	ID	Name			Wwise Object Path	Notes
 	3540367002	Play_UI_MainMenu_Button_Validation_03			\UI_WU\Play_UI_MainMenu_Button_Validation_03	
 	3540367003	Play_UI_MainMenu_Button_Validation_02			\UI_WU\Play_UI_MainMenu_Button_Validation_02	
 
+State Group	ID	Name			Wwise Object Path	Notes
+	3929688590	InsideOutside			\Default Work Unit\InsideOutside	
+
+State	ID	Name	State Group			Notes
+	645492555	Out	InsideOutside			
+	748895195	None	InsideOutside			
+	1752637612	In	InsideOutside			
+
 Audio Bus	ID	Name			Wwise Object Path	Notes
 	109159411	Game_Global			\Master_WU\Master\Game_Global	
 	393239870	SFX			\Master_WU\Master\Game_Global\SFX	
@@ -19,18 +27,32 @@ Audio Bus	ID	Name			Wwise Object Path	Notes
 	4056684167	Master			\Master_WU\Master	
 
 Auxiliary Bus	ID	Name			Wwise Object Path	Notes
+	367558429	RVB_Voices			\Master_WU\Master\RVB_Voices	
+	395111090	RVB_BlackHouses			\Master_WU\Master\RVB_BlackHouses	
 	1215931641	RVB_Arena			\Master_WU\Master\RVB_Arena	
 	1408817756	RVB_RFX_Arena			\Master_WU\Master\RVB_RFX_Arena	
+	2344250611	RVB_Basement			\Master_WU\Master\RVB_Basement	
+	2561323002	AUX_LPF			\Master_WU\Master\AUX_LPF	
 	3571340017	RVB_Hub			\Master_WU\Master\RVB_Hub	
+	3670521640	RVB_Pyramid			\Master_WU\Master\RVB_Pyramid	
 
 Effect plug-ins	ID	Name	Type				Notes
+	16383166	Hall_Medium_Bright (Custom)	Wwise RoomVerb			
+	97605317	Hall_Medium_Dark (Custom)	Wwise RoomVerb			
 	169636257	Have_U_Ever_Been_Outside (Custom)	Wwise RoomVerb			
+	272452003	Echoes_Linear (Custom)	Wwise Delay			
+	403656092	Have_U_Ever_Been_Outside (Custom)	Wwise RoomVerb			
+	498081942	Hall_Large_Dark (Custom)	Wwise RoomVerb			
+	688337969	Hall_Small_Bright (Custom)	Wwise RoomVerb			
+	1008402193	Low_Pass_20KHz	Wwise Parametric EQ			
+	3442768367	Hall_Large_Dark	Wwise RoomVerb			
+	3487820010	One_Tap_Half_Second	Wwise Delay			
 
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
-	109319961	UI_MainMenu_Button_Back_01	G:\Unreal\Unreal_Projects\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\UI_MainMenu_Button_Back_01_818F3B66.wem		\Actor-Mixer Hierarchy\UI_WU\Back\UI_MainMenu_Button_Back_01		194136
-	463196028	UI_MainMenu_Button_Back_02	G:\Unreal\Unreal_Projects\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\UI_MainMenu_Button_Back_02_818F3B66.wem		\Actor-Mixer Hierarchy\UI_WU\Back\UI_MainMenu_Button_Back_02		194136
-	665852765	UI_MainMenu_Button_Back_03	G:\Unreal\Unreal_Projects\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\UI_MainMenu_Button_Back_03_818F3B66.wem		\Actor-Mixer Hierarchy\UI_WU\Back\UI_MainMenu_Button_Back_03		141216
-	702949171	UI_MainMenu_Button_Validation_02	G:\Unreal\Unreal_Projects\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\UI_MainMenu_Button_Validation_02_818F3B66.wem		\Actor-Mixer Hierarchy\UI_WU\Validation\UI_MainMenu_Button_Validation_02		209768
-	853115927	UI_MainMenu_Button_Validation_01	G:\Unreal\Unreal_Projects\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\UI_MainMenu_Button_Validation_01_818F3B66.wem		\Actor-Mixer Hierarchy\UI_WU\Validation\UI_MainMenu_Button_Validation_01		209768
-	1007928850	UI_MainMenu_Button_Validation_03	G:\Unreal\Unreal_Projects\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\UI_MainMenu_Button_Validation_03_818F3B66.wem		\Actor-Mixer Hierarchy\UI_WU\Validation\UI_MainMenu_Button_Validation_03		191560
+	109319961	UI_MainMenu_Button_Back_01	E:\GitHub\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\UI_MainMenu_Button_Back_01_818F3B66.wem		\Actor-Mixer Hierarchy\UI_WU\Back\UI_MainMenu_Button_Back_01		194136
+	463196028	UI_MainMenu_Button_Back_02	E:\GitHub\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\UI_MainMenu_Button_Back_02_818F3B66.wem		\Actor-Mixer Hierarchy\UI_WU\Back\UI_MainMenu_Button_Back_02		194136
+	665852765	UI_MainMenu_Button_Back_03	E:\GitHub\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\UI_MainMenu_Button_Back_03_818F3B66.wem		\Actor-Mixer Hierarchy\UI_WU\Back\UI_MainMenu_Button_Back_03		141216
+	702949171	UI_MainMenu_Button_Validation_02	E:\GitHub\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\UI_MainMenu_Button_Validation_02_818F3B66.wem		\Actor-Mixer Hierarchy\UI_WU\Validation\UI_MainMenu_Button_Validation_02		209768
+	853115927	UI_MainMenu_Button_Validation_01	E:\GitHub\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\UI_MainMenu_Button_Validation_01_818F3B66.wem		\Actor-Mixer Hierarchy\UI_WU\Validation\UI_MainMenu_Button_Validation_01		209768
+	1007928850	UI_MainMenu_Button_Validation_03	E:\GitHub\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\UI_MainMenu_Button_Validation_03_818F3B66.wem		\Actor-Mixer Hierarchy\UI_WU\Validation\UI_MainMenu_Button_Validation_03		191560
 

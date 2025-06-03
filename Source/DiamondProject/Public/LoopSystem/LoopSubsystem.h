@@ -7,7 +7,7 @@
 #include "Subsystems/GameInstanceSubsystem.h"
 #include "LoopSubsystem.generated.h"
 
-class APreplanData;
+class UPreplanDataWidget;
 class UPreplanStep;
 
 /**
@@ -17,6 +17,8 @@ UCLASS()
 class DIAMONDPROJECT_API ULoopSubsystem : public UGameInstanceSubsystem
 {
 	GENERATED_BODY()
+
+	virtual void Initialize(FSubsystemCollectionBase& Collection) override;
 
 	UPROPERTY()
 	bool bIsInit = false;
@@ -37,7 +39,7 @@ public:
 	UPROPERTY(BlueprintReadOnly)
 	TArray<TObjectPtr<UDataTable>> PreplanDreamSubtitlesArray;
 
-private:	
+private:
 	UFUNCTION(BlueprintCallable)
 	void ReloadScene();
 
@@ -45,13 +47,25 @@ private:
 	bool IsAnyPreviousStepActive(const UPreplanStep* PreplanStep);
 
 	UFUNCTION()
+	void InitializePreplanSteps();
+	
+	UFUNCTION()
 	void InitializePreplanAdvices();
+
+	UFUNCTION()
+	void InitializePreplanLinks();
+
+	UFUNCTION()
+	void SetPreplanVisibility(UPreplanDataWidget* PreplanData, bool bIsVisible);
+
+	UFUNCTION()
+	void CreatePreplanStep(UPreplanDataWidget* PreplanDataWidget);
 
 public:
 	UFUNCTION()
 	void OnAdvicesVisibilityChanged(bool bNewVisibility);
 	
-	UFUNCTION()
+	UFUNCTION(BlueprintCallable)
 	void InitializePreplan();
 
 	UFUNCTION(BlueprintCallable)

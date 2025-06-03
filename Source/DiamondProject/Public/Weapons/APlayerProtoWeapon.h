@@ -9,6 +9,8 @@
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnDropped, ADiamondProjectCharacter*, PickUpCharacter);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnFire, int, CurrentAmmo, FVector, HitLocation);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnUpdateAmmo, int, newAmmoCount);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnHit, FHitResult, HitInfo);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnPickedUp);
 
 UCLASS(Blueprintable, BlueprintType, ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
 class DIAMONDPROJECT_API UAPlayerProtoWeapon : public UTP_WeaponComponent
@@ -25,6 +27,12 @@ public:
 
  UPROPERTY(BlueprintAssignable, Category = "Events")
  FOnUpdateAmmo OnUpdateAmmo;
+
+ UPROPERTY(BlueprintAssignable, Category = "Events")
+ FOnHit OnHit;
+
+ UPROPERTY(BlueprintAssignable, Category = "Events")
+ FOnPickedUp OnPickedUpWeapon;
 
 private:
  float LastFireTime = 0.f;
