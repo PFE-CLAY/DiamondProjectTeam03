@@ -14,6 +14,8 @@ AEnemy::AEnemy()
 {
 	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
+	ShootPoint = CreateDefaultSubobject<USceneComponent>("ShootPoint");
+	ShootPoint->SetupAttachment(GetMesh());
 }
 
 // Called when the game starts or when spawned
@@ -69,7 +71,7 @@ void AEnemy::Shoot()
 {
 	
 	if(bCanAttack){
-		FVector const Location = GetActorLocation();
+		FVector const Location = ShootPoint->GetComponentLocation();
 		FRotator const Rotation = (PlayerPawn->GetActorLocation() - GetActorLocation()).Rotation();
 		bCanAttack = false;
 		FActorSpawnParameters SpawnInfo;
