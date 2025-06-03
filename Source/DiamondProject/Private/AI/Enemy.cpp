@@ -72,7 +72,7 @@ void AEnemy::Shoot()
 	
 	if(bCanAttack){
 		FVector const Location = ShootPoint->GetComponentLocation();
-		FRotator const Rotation = (PlayerPawn->GetActorLocation() - GetActorLocation()).Rotation();
+		FRotator const Rotation = (PlayerPawn->GetActorLocation() - ShootPoint->GetComponentLocation()).Rotation();
 		bCanAttack = false;
 		FActorSpawnParameters SpawnInfo;
 		SpawnInfo.Name = "aze";
