@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="16" SoundBankVersion="150">
 	<SoundBanks>
-		<SoundBank Id="3256182613" Type="User" GUID="{9DC5CBA4-02D0-4677-A565-21ECA413E694}" Language="SFX" Hash="{263200E2-9129-2900-879D-D70764ABF5C2}">
+		<SoundBank Id="3256182613" Type="User" GUID="{9DC5CBA4-02D0-4677-A565-21ECA413E694}" Language="SFX" Hash="{7F2D58DE-DF4F-4903-C564-7F249EE37B0F}">
 			<ObjectPath>\SoundBanks\SoundBanks_WU\AMB_SB</ObjectPath>
 			<ShortName>AMB_SB</ShortName>
 			<Path>AMB_SB.bnk</Path>
@@ -110,6 +110,10 @@
 					<ShortName>AMB\AMB_PAD_Crowd.wav</ShortName>
 					<CachePath>SFX/AMB/AMB_PAD_Crowd_FBC78EF0.wem</CachePath>
 				</File>
+				<File Id="788907204" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\Pads\AMB_PAD_CorpseTrap.wav</ShortName>
+					<CachePath>SFX/AMB/Pads/AMB_PAD_CorpseTrap_FBC78EF0.wem</CachePath>
+				</File>
 				<File Id="809714582" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\RFX\AMB_RFX_WarHorns_07.wav</ShortName>
 					<CachePath>SFX/AMB/RFX/AMB_RFX_WarHorns_07_818F3B66.wem</CachePath>
@@ -129,6 +133,10 @@
 				<File Id="832253334" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\RFX\AMB_RFX_Crowd_Pitched_Reaction_03.wav</ShortName>
 					<CachePath>SFX/AMB/RFX/AMB_RFX_Crowd_Pitched_Reaction_03_818F3B66.wem</CachePath>
+				</File>
+				<File Id="838454934" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\Pads\AMB_PAD_ControlCenter.wav</ShortName>
+					<CachePath>SFX/AMB/Pads/AMB_PAD_ControlCenter_FBC78EF0.wem</CachePath>
 				</File>
 				<File Id="843502340" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\RFX\AMB_RFX_Crowd_ClassicReaction_02.wav</ShortName>
@@ -169,6 +177,10 @@
 				<File Id="966132969" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\Pads\AMB_RFX_Applause_02.wav</ShortName>
 					<CachePath>SFX/AMB/Pads/AMB_RFX_Applause_02_818F3B66.wem</CachePath>
+				</File>
+				<File Id="1019889613" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\Pads\AMB_PAD_Pyramid_Closed.wav</ShortName>
+					<CachePath>SFX/AMB/Pads/AMB_PAD_Pyramid_Closed_FBC78EF0.wem</CachePath>
 				</File>
 				<File Id="1022096015" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\Pads\AMB_RFX_Applause_03.wav</ShortName>
@@ -250,9 +262,24 @@
 						<AuxBusRef Id="1408817756" Name="RVB_RFX_Arena" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_RFX_Arena" GUID="{CC7A2F05-EE75-4E8E-B097-98A1938CB5E4}"/>
 					</AuxBusRefs>
 				</Event>
+				<Event Id="1977891013" Name="Play_AMB_PAD_ControlCenter" ObjectPath="\Events\AMB_WU\Play_AMB_PAD_ControlCenter" GUID="{36CC78C6-483D-4AB2-9AF1-71F27874043E}" MaxAttenuation="3000" DurationType="Infinite">
+					<MediaRefs>
+						<MediaRef Id="838454934"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="1229646826" Name="Play_AMB_PAD_CorpseTrap" ObjectPath="\Events\AMB_WU\Play_AMB_PAD_CorpseTrap" GUID="{06E4EAB2-C55E-4652-84C1-FD484B705D76}" MaxAttenuation="3000" DurationType="Infinite">
+					<MediaRefs>
+						<MediaRef Id="788907204"/>
+					</MediaRefs>
+				</Event>
 				<Event Id="2972533464" Name="Play_AMB_PAD_Hub" ObjectPath="\Events\AMB_WU\Play_AMB_PAD_Hub" GUID="{E1692669-CD47-4C1F-9271-81F40DE53532}" MaxAttenuation="1000" DurationType="Infinite">
 					<MediaRefs>
 						<MediaRef Id="683095756"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="297916660" Name="Play_AMB_PAD_Pyramid_Closed" ObjectPath="\Events\AMB_WU\Play_AMB_PAD_Pyramid_Closed" GUID="{F627B9DE-2BDF-4BC2-B74E-5E799A3FBDBF}" MaxAttenuation="3000" DurationType="Infinite">
+					<MediaRefs>
+						<MediaRef Id="1019889613"/>
 					</MediaRefs>
 				</Event>
 			</Events>
@@ -315,5 +342,5 @@
 			</AuxBusses>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{6FC83AEA-0090-C9F6-9E1E-FC90CB73B173}</FileHash>
+	<FileHash>{339693F3-5BCB-3E32-5671-7FB97FCB0B3C}</FileHash>
 </SoundBanksInfo>
