@@ -147,13 +147,16 @@ void ULoopSubsystem::InitializePreplanAdvices()
 			
 		TObjectPtr<UPreplanStep>* PreplanStepPtr = PreplanSteps.Find(PreplanDataActor->PreplanID);
 		if (PreplanStepPtr == nullptr || PreplanStepPtr->Get() == nullptr){
-			return;
-		}
-
-		PreplanDataActor->SetActorHiddenInGame(
+			PreplanDataActor->SetActorHiddenInGame(
+			!SettingsSubsystem->IsPreplanInSceneVisible());
+		} else
+		{
+			PreplanDataActor->SetActorHiddenInGame(
 			!SettingsSubsystem->IsPreplanInSceneVisible() ||
 			!PreplanStepPtr->Get()->bIsStepActive);
-		PreplanStepPtr->Get()->PreplanAdvices.Add(PreplanDataActor);
+			PreplanStepPtr->Get()->PreplanAdvices.Add(PreplanDataActor);
+		}
+
 	}
 }
 
