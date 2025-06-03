@@ -9,6 +9,7 @@
 /**
  * 
  */
+class UPreplanLinkWidget;
 class UPreplanDataWidget;
 class APreplanAdvice;
 
@@ -26,6 +27,12 @@ public:
 
 	UPROPERTY()
 	TArray<TObjectPtr<APreplanAdvice>> PreplanAdvices;
+
+	UPROPERTY()
+	TArray<TObjectPtr<UPreplanLinkWidget>> OutLinks;
+
+	UPROPERTY()
+	TArray<TObjectPtr<UPreplanLinkWidget>> InLinks;
 	
 	UPROPERTY()
 	bool bIsStepActive = false;
