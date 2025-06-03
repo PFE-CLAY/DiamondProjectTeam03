@@ -1,11 +1,11 @@
 Event	ID	Name			Wwise Object Path	Notes
 	294373914	Play_MC_FOL_FT_SW			\MC_WU\Play_MC_FOL_FT_SW	
 	1177297501	Play_MC_SFX_Gun_Shoot_RC			\MC_WU\Play_MC_SFX_Gun_Shoot_RC	
-	1820563873	Play_MC_SFX_PickupWeapon_RC			\MC_WU\Play_MC_SFX_PickupWeapon_RC	
 	2116962020	Play_MC_FOL_FT_Land_SW			\MC_WU\Play_MC_FOL_FT_Land_SW	
 	2749485653	Play_MC_FOL_FT_Jump_SW			\MC_WU\Play_MC_FOL_FT_Jump_SW	
 	3400800083	Play_MC_SFX_Weapon_NoAmmo_RC			\MC_WU\Play_MC_SFX_Weapon_NoAmmo_RC	
 	3961249933	Play_MC_SFX_Weapon_Armed_RC			\MC_WU\Play_MC_SFX_Weapon_Armed_RC	
+	4122495842	Play_MC_SFX_UpdateAmmo_RC			\MC_WU\Play_MC_SFX_UpdateAmmo_RC	
 
 Switch Group	ID	Name			Wwise Object Path	Notes
 	757195373	SW_Material			\Default Work Unit\SW_Material	

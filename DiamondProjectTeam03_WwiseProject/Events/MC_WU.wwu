@@ -51,7 +51,7 @@
 						</Action>
 					</ChildrenList>
 				</Event>
-				<Event Name="Play_MC_SFX_PickupWeapon_RC" ID="{4C30DC19-451C-449E-9B9A-AADEEAB14B44}">
+				<Event Name="Play_MC_SFX_UpdateAmmo_RC" ID="{4C30DC19-451C-449E-9B9A-AADEEAB14B44}">
 					<ChildrenList>
 						<Action Name="" ID="{F2B46034-C2AA-4A87-B00E-3117534AC8A4}" ShortID="186710299">
 							<ReferenceList>

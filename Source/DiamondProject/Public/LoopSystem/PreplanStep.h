@@ -9,7 +9,7 @@
 /**
  * 
  */
-class APreplanData;
+class UPreplanDataWidget;
 class APreplanAdvice;
 
 UCLASS()
@@ -22,7 +22,7 @@ public:
 	int NbActivations = 0;
 	
 	UPROPERTY()
-	TObjectPtr<APreplanData> PreplanData;
+	TObjectPtr<UPreplanDataWidget> PreplanData;
 
 	UPROPERTY()
 	TArray<TObjectPtr<APreplanAdvice>> PreplanAdvices;

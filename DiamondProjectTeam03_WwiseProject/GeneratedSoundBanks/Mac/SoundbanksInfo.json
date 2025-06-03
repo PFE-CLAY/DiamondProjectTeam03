@@ -18,7 +18,7 @@
     "Type": "User",
     "GUID": "{46F08C13-7BDA-47D5-A653-BDFCDAD2487B}",
     "Language": "SFX",
-    "Hash": "{06BA05D0-C2EA-ED4C-7995-917AF8A25DD2}",
+    "Hash": "{FEC0151D-6568-73FC-F065-33A4D2F833EA}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\FOES_Flying_SB",
     "ShortName": "FOES_Flying_SB",
     "Path": "FOES_Flying_SB.bnk",
@@ -81,6 +81,22 @@
        "GUID": "{4EC028FC-6FD5-4AC6-A71F-B2CB8F1117DF}",
        "LibName": "Wwise RoomVerb",
        "LibId": "7733251"
+      },
+      {
+       "Id": "913803451",
+       "Name": "Octave_Up (Custom)",
+       "ObjectPath": "\\Actor-Mixer Hierarchy\\FOES_Flying_WU\\FOES_Flying\\FOES_SFX_Flying\\FOES_SFX_Flying_Shoot_RC\\[Effect Slot [0]: (Pitch Shifter)]\\Octave_Up (Custom)",
+       "GUID": "{2F00A97A-7EA5-4071-B9A5-B685BC249C27}",
+       "LibName": "Wwise Pitch Shifter",
+       "LibId": "8912899"
+      },
+      {
+       "Id": "963626000",
+       "Name": "Dist_Flying_Shots (Custom)",
+       "ObjectPath": "\\Actor-Mixer Hierarchy\\FOES_Flying_WU\\FOES_Flying\\FOES_SFX_Flying\\FOES_SFX_Flying_Shoot_RC\\[Effect Slot [1]: (Guitar Distortion)]\\Dist_Flying_Shots (Custom)",
+       "GUID": "{71204E36-4F7C-4B89-9BD6-E0036788D676}",
+       "LibName": "Wwise Guitar Distortion",
+       "LibId": "8257539"
       }
      ]
     },
@@ -90,7 +106,7 @@
       "Name": "Play_FOES_SFX_Flying_Idle_LP",
       "ObjectPath": "\\Events\\FOES_Flying_WU\\Play_FOES_SFX_Flying_Idle_LP",
       "GUID": "{CF4E623B-F60A-4740-B500-0E5586E75310}",
-      "MaxAttenuation": "3000",
+      "MaxAttenuation": "2000",
       "DurationType": "Infinite",
       "MediaRefs": [
        {
@@ -105,8 +121,8 @@
       "GUID": "{615B6DF4-5110-477A-ADAD-83075E2A2CC2}",
       "MaxAttenuation": "2000",
       "DurationType": "OneShot",
-      "DurationMin": "2.2750027",
-      "DurationMax": "3.1742759",
+      "DurationMin": "1.5138968",
+      "DurationMax": "1.9747615",
       "MediaRefs": [
        {
         "Id": "45515045"
@@ -123,7 +139,17 @@
        {
         "Id": "821998844"
        }
-      ]
+      ],
+      "PluginRefs": {
+       "Custom": [
+        {
+         "Id": "913803451"
+        },
+        {
+         "Id": "963626000"
+        }
+       ]
+      }
      },
      {
       "Id": "3718813633",
@@ -239,7 +265,7 @@
     "Type": "User",
     "GUID": "{701ECBBD-9C7B-4030-8CDB-749EE5D1C7B9}",
     "Language": "SFX",
-    "Hash": "{D050A5DA-AB44-335B-9776-7E03A43F726C}",
+    "Hash": "{4CE71B63-6A3A-1ED2-765C-3739144B631F}",
     "ObjectPath": "Init",
     "ShortName": "Init",
     "Path": "Init.bnk",
@@ -657,7 +683,7 @@
     "Type": "User",
     "GUID": "{ADC2D189-6608-4828-BC9C-6EF6F90834DB}",
     "Language": "SFX",
-    "Hash": "{7FFCB4F9-232B-89E6-AE63-B1C2DA61444D}",
+    "Hash": "{1BCEA6A0-A769-73E9-6F2A-9E211AA99E4A}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\MC_SB",
     "ShortName": "MC_SB",
     "Path": "MC_SB.bnk",
@@ -1790,9 +1816,9 @@
       ]
      },
      {
-      "Id": "1820563873",
-      "Name": "Play_MC_SFX_PickupWeapon_RC",
-      "ObjectPath": "\\Events\\MC_WU\\Play_MC_SFX_PickupWeapon_RC",
+      "Id": "4122495842",
+      "Name": "Play_MC_SFX_UpdateAmmo_RC",
+      "ObjectPath": "\\Events\\MC_WU\\Play_MC_SFX_UpdateAmmo_RC",
       "GUID": "{4C30DC19-451C-449E-9B9A-AADEEAB14B44}",
       "DurationType": "OneShot",
       "DurationMin": "2.5657325",
@@ -3144,6 +3170,6 @@
     ]
    }
   ],
-  "FileHash": "{916FB12C-0CEB-DFAC-91D6-95C8059D7823}"
+  "FileHash": "{411FC39C-9029-B447-31B7-6B995BB924DE}"
  }
 }
