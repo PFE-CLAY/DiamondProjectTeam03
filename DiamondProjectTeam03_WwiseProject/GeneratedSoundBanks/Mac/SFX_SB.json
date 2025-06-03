@@ -10,12 +10,12 @@
     "Type": "User",
     "GUID": "{459D1F67-52BD-4FA1-B846-B8F3A50C2C5F}",
     "Language": "SFX",
-    "Hash": "{02BE1600-7C47-6A2A-12CF-4A10D9F2CF3F}",
+    "Hash": "{B571FF43-03E3-0F51-E76C-22555D138B0E}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\SFX_SB",
     "ShortName": "SFX_SB",
     "Path": "SFX_SB.bnk"
    }
   ],
-  "FileHash": "{32F3FB0C-BF4D-BC1D-BE71-74547CF691EE}"
+  "FileHash": "{0271A0BD-EED4-A620-3815-8197442BD97C}"
  }
 }
