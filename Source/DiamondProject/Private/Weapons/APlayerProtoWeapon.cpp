@@ -151,7 +151,7 @@ bool UAPlayerProtoWeapon::AttachWeapon(ADiamondProjectCharacter* TargetCharacter
     }
 
     Character->CurrentWeapon = this;
-    OnUpdateAmmo.Broadcast(CurrentAmmo);
+    OnPickedUpWeapon.Broadcast();
     return true;
 }
 
