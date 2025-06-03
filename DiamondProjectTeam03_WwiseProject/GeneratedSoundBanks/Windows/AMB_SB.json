@@ -10,7 +10,7 @@
     "Type": "User",
     "GUID": "{9DC5CBA4-02D0-4677-A565-21ECA413E694}",
     "Language": "SFX",
-    "Hash": "{263200E2-9129-2900-879D-D70764ABF5C2}",
+    "Hash": "{7F2D58DE-DF4F-4903-C564-7F249EE37B0F}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\AMB_SB",
     "ShortName": "AMB_SB",
     "Path": "AMB_SB.bnk",
@@ -224,6 +224,14 @@
       "CachePath": "SFX/AMB/AMB_PAD_Crowd_FBC78EF0.wem"
      },
      {
+      "Id": "788907204",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB\\Pads\\AMB_PAD_CorpseTrap.wav",
+      "CachePath": "SFX/AMB/Pads/AMB_PAD_CorpseTrap_FBC78EF0.wem"
+     },
+     {
       "Id": "809714582",
       "Language": "SFX",
       "Streaming": "false",
@@ -262,6 +270,14 @@
       "Location": "Memory",
       "ShortName": "AMB\\RFX\\AMB_RFX_Crowd_Pitched_Reaction_03.wav",
       "CachePath": "SFX/AMB/RFX/AMB_RFX_Crowd_Pitched_Reaction_03_818F3B66.wem"
+     },
+     {
+      "Id": "838454934",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB\\Pads\\AMB_PAD_ControlCenter.wav",
+      "CachePath": "SFX/AMB/Pads/AMB_PAD_ControlCenter_FBC78EF0.wem"
      },
      {
       "Id": "843502340",
@@ -342,6 +358,14 @@
       "Location": "Memory",
       "ShortName": "AMB\\Pads\\AMB_RFX_Applause_02.wav",
       "CachePath": "SFX/AMB/Pads/AMB_RFX_Applause_02_818F3B66.wem"
+     },
+     {
+      "Id": "1019889613",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB\\Pads\\AMB_PAD_Pyramid_Closed.wav",
+      "CachePath": "SFX/AMB/Pads/AMB_PAD_Pyramid_Closed_FBC78EF0.wem"
      },
      {
       "Id": "1022096015",
@@ -588,6 +612,32 @@
       ]
      },
      {
+      "Id": "1977891013",
+      "Name": "Play_AMB_PAD_ControlCenter",
+      "ObjectPath": "\\Events\\AMB_WU\\Play_AMB_PAD_ControlCenter",
+      "GUID": "{36CC78C6-483D-4AB2-9AF1-71F27874043E}",
+      "MaxAttenuation": "3000",
+      "DurationType": "Infinite",
+      "MediaRefs": [
+       {
+        "Id": "838454934"
+       }
+      ]
+     },
+     {
+      "Id": "1229646826",
+      "Name": "Play_AMB_PAD_CorpseTrap",
+      "ObjectPath": "\\Events\\AMB_WU\\Play_AMB_PAD_CorpseTrap",
+      "GUID": "{06E4EAB2-C55E-4652-84C1-FD484B705D76}",
+      "MaxAttenuation": "3000",
+      "DurationType": "Infinite",
+      "MediaRefs": [
+       {
+        "Id": "788907204"
+       }
+      ]
+     },
+     {
       "Id": "2972533464",
       "Name": "Play_AMB_PAD_Hub",
       "ObjectPath": "\\Events\\AMB_WU\\Play_AMB_PAD_Hub",
@@ -597,6 +647,19 @@
       "MediaRefs": [
        {
         "Id": "683095756"
+       }
+      ]
+     },
+     {
+      "Id": "297916660",
+      "Name": "Play_AMB_PAD_Pyramid_Closed",
+      "ObjectPath": "\\Events\\AMB_WU\\Play_AMB_PAD_Pyramid_Closed",
+      "GUID": "{F627B9DE-2BDF-4BC2-B74E-5E799A3FBDBF}",
+      "MaxAttenuation": "3000",
+      "DurationType": "Infinite",
+      "MediaRefs": [
+       {
+        "Id": "1019889613"
        }
       ]
      }
@@ -748,6 +811,6 @@
     ]
    }
   ],
-  "FileHash": "{D6CE7041-9475-21A0-1EE1-572076BFB830}"
+  "FileHash": "{FC7C1EEA-EAFE-E8C1-2002-A883CD319824}"
  }
 }
