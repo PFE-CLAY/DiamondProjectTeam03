@@ -15,7 +15,7 @@ public:
 	// Sets default values for this actor's properties
 	ASunFollower();
 
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	AActor* SunActor;
 
 protected:
