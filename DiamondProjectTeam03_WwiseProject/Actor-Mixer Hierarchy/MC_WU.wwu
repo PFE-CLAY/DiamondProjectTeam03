@@ -150,28 +150,6 @@
 										<ActiveSource Name="MC_SFX_Gun_Shoot_03" ID="{8DBDBFFE-3B02-4DBE-82AD-A1F435D60E57}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
-								<Sound Name="MC_SFX_Gun_Shoot_05" ID="{602A1F94-C819-427C-8637-8DA031F65F23}" ShortID="998826124">
-									<ReferenceList>
-										<Reference Name="Conversion">
-											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
-										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D02282EE-6893-403D-9438-D481AB659EA3}"/>
-										</Reference>
-									</ReferenceList>
-									<ChildrenList>
-										<AudioFileSource Name="MC_SFX_Gun_Shoot_05" ID="{D00B95C1-1955-4CEA-8095-ECFA3F41DF99}">
-											<Language>SFX</Language>
-											<AudioFile>MC_SFX_Gun_Shoot_05.wav</AudioFile>
-											<MediaIDList>
-												<MediaID ID="421361594"/>
-											</MediaIDList>
-										</AudioFileSource>
-									</ChildrenList>
-									<ActiveSourceList>
-										<ActiveSource Name="MC_SFX_Gun_Shoot_05" ID="{D00B95C1-1955-4CEA-8095-ECFA3F41DF99}" Platform="Linked"/>
-									</ActiveSourceList>
-								</Sound>
 							</ChildrenList>
 						</RandomSequenceContainer>
 						<RandomSequenceContainer Name="MC_SFX_PickupWeapon_RC" ID="{2039D8A2-903F-476A-B075-F87940F35922}" ShortID="393909649">
@@ -340,9 +318,16 @@
 												<MediaID ID="772410827"/>
 											</MediaIDList>
 										</AudioFileSource>
+										<AudioFileSource Name="MC_SFX_Weapon_Armed_01" ID="{20AC27F9-3148-4B10-94F7-BA1D8A1F55B5}">
+											<Language>SFX</Language>
+											<AudioFile>MC_SFX_Weapon_Armed.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="130136752"/>
+											</MediaIDList>
+										</AudioFileSource>
 									</ChildrenList>
 									<ActiveSourceList>
-										<ActiveSource Name="MC_SFX_Weapon_Armed" ID="{C45C2653-E6B7-46FC-A180-901275E0F9F0}" Platform="Linked"/>
+										<ActiveSource Name="MC_SFX_Weapon_Armed_01" ID="{20AC27F9-3148-4B10-94F7-BA1D8A1F55B5}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
 							</ChildrenList>

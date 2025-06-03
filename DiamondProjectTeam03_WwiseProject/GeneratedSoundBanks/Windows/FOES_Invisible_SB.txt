@@ -1,3 +1,11 @@
+State Group	ID	Name			Wwise Object Path	Notes
+	3929688590	InsideOutside			\Default Work Unit\InsideOutside	
+
+State	ID	Name	State Group			Notes
+	645492555	Out	InsideOutside			
+	748895195	None	InsideOutside			
+	1752637612	In	InsideOutside			
+
 Audio Bus	ID	Name			Wwise Object Path	Notes
 	109159411	Game_Global			\Master_WU\Master\Game_Global	
 	393239870	SFX			\Master_WU\Master\Game_Global\SFX	
@@ -11,6 +19,7 @@ Audio Bus	ID	Name			Wwise Object Path	Notes
 	4056684167	Master			\Master_WU\Master	
 
 Auxiliary Bus	ID	Name			Wwise Object Path	Notes
+	367558429	RVB_Voices			\Master_WU\Master\Voices\RVB_Voices	
 	395111090	RVB_BlackHouses			\Master_WU\Master\RVB_BlackHouses	
 	1215931641	RVB_Arena			\Master_WU\Master\RVB_Arena	
 	1408817756	RVB_RFX_Arena			\Master_WU\Master\RVB_RFX_Arena	
@@ -26,4 +35,6 @@ Effect plug-ins	ID	Name	Type				Notes
 	403656092	Have_U_Ever_Been_Outside (Custom)	Wwise RoomVerb			
 	498081942	Hall_Large_Dark (Custom)	Wwise RoomVerb			
 	688337969	Hall_Small_Bright (Custom)	Wwise RoomVerb			
+	3442768367	Hall_Large_Dark	Wwise RoomVerb			
+	3487820010	One_Tap_Half_Second	Wwise Delay			
 

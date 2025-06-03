@@ -10,7 +10,7 @@
     "Type": "User",
     "GUID": "{8CC30184-23AF-4DB5-9844-9B04DF10A650}",
     "Language": "SFX",
-    "Hash": "{674A76FF-4872-F762-A1DF-F28A7DE0B50C}",
+    "Hash": "{C0C22FAA-FE18-AD2B-F00A-E3D6A31F2792}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\FOES_Tourelle_SB",
     "ShortName": "FOES_Tourelle_SB",
     "Path": "FOES_Tourelle_SB.bnk",
@@ -138,6 +138,24 @@
        "LibName": "Wwise RoomVerb",
        "LibId": "7733251"
       }
+     ],
+     "ShareSets": [
+      {
+       "Id": "3442768367",
+       "Name": "Hall_Large_Dark",
+       "ObjectPath": "\\Effects\\Factory Effects\\RoomVerb\\Halls\\Hall_Large_Dark",
+       "GUID": "{0F6A7D6D-131C-4650-9561-FC05F5C7A37B}",
+       "LibName": "Wwise RoomVerb",
+       "LibId": "7733251"
+      },
+      {
+       "Id": "3487820010",
+       "Name": "One_Tap_Half_Second",
+       "ObjectPath": "\\Effects\\Factory Effects\\Delay\\One_Tap_Half_Second",
+       "GUID": "{B8FE0D3B-7AAB-4344-89FE-177602B7BF19}",
+       "LibName": "Wwise Delay",
+       "LibId": "6946819"
+      }
      ]
     },
     "Events": [
@@ -254,6 +272,22 @@
     ],
     "AuxBusses": [
      {
+      "Id": "367558429",
+      "Name": "RVB_Voices",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\Voices\\RVB_Voices",
+      "GUID": "{483EAB60-BC92-484F-9830-D1776233B15C}",
+      "PluginRefs": {
+       "ShareSets": [
+        {
+         "Id": "3442768367"
+        },
+        {
+         "Id": "3487820010"
+        }
+       ]
+      }
+     },
+     {
       "Id": "395111090",
       "Name": "RVB_BlackHouses",
       "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_BlackHouses",
@@ -334,9 +368,37 @@
        ]
       }
      }
+    ],
+    "StateGroups": [
+     {
+      "Id": "3929688590",
+      "Name": "InsideOutside",
+      "ObjectPath": "\\States\\Default Work Unit\\InsideOutside",
+      "GUID": "{2CE28D5C-F27B-42D7-9D91-1905B53C4C3C}",
+      "States": [
+       {
+        "Id": "645492555",
+        "Name": "Out",
+        "ObjectPath": "\\States\\Default Work Unit\\InsideOutside\\Out",
+        "GUID": "{C04B12A4-672A-478D-A191-EED95AAB3C6D}"
+       },
+       {
+        "Id": "748895195",
+        "Name": "None",
+        "ObjectPath": "\\States\\Default Work Unit\\InsideOutside\\None",
+        "GUID": "{EEC88170-01B2-4B8A-87BF-B7151380ADB4}"
+       },
+       {
+        "Id": "1752637612",
+        "Name": "In",
+        "ObjectPath": "\\States\\Default Work Unit\\InsideOutside\\In",
+        "GUID": "{BFBB05BE-0B19-41C7-B759-C85C0C60B1D8}"
+       }
+      ]
+     }
     ]
    }
   ],
-  "FileHash": "{C3E7FCDA-9346-8160-09A1-98E21361818D}"
+  "FileHash": "{9A9E84F3-F668-80DF-D63F-5BC737F29DD4}"
  }
 }

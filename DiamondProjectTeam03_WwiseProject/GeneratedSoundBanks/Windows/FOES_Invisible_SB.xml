@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="16" SoundBankVersion="150">
 	<SoundBanks>
-		<SoundBank Id="2516814376" Type="User" GUID="{48187E94-2869-42A3-9E99-A12DF1DA86DF}" Language="SFX" Hash="{5EFE4B06-2C67-1DB8-5429-5DD205FE5B9C}">
+		<SoundBank Id="2516814376" Type="User" GUID="{48187E94-2869-42A3-9E99-A12DF1DA86DF}" Language="SFX" Hash="{BC28BDB4-180C-F55B-E198-C1CDBD0658F1}">
 			<ObjectPath>\SoundBanks\SoundBanks_WU\FOES_Invisible_SB</ObjectPath>
 			<ShortName>FOES_Invisible_SB</ShortName>
 			<Path>FOES_Invisible_SB.bnk</Path>
@@ -15,6 +15,10 @@
 					<Plugin Id="498081942" Name="Hall_Large_Dark (Custom)" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Pyramid\[Effect Slot [0]: (RoomVerb)]\Hall_Large_Dark (Custom)" GUID="{8E1228B5-2A98-4B87-B429-B348D1C6D236}" LibName="Wwise RoomVerb" LibId="7733251"/>
 					<Plugin Id="688337969" Name="Hall_Small_Bright (Custom)" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_BlackHouses\[Effect Slot [0]: (RoomVerb)]\Hall_Small_Bright (Custom)" GUID="{846A0309-936D-4337-BF4B-E6792E655155}" LibName="Wwise RoomVerb" LibId="7733251"/>
 				</Custom>
+				<ShareSets>
+					<Plugin Id="3442768367" Name="Hall_Large_Dark" ObjectPath="\Effects\Factory Effects\RoomVerb\Halls\Hall_Large_Dark" GUID="{0F6A7D6D-131C-4650-9561-FC05F5C7A37B}" LibName="Wwise RoomVerb" LibId="7733251"/>
+					<Plugin Id="3487820010" Name="One_Tap_Half_Second" ObjectPath="\Effects\Factory Effects\Delay\One_Tap_Half_Second" GUID="{B8FE0D3B-7AAB-4344-89FE-177602B7BF19}" LibName="Wwise Delay" LibId="6946819"/>
+				</ShareSets>
 			</Plugins>
 			<Busses>
 				<Bus Id="109159411" Name="Game_Global" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global" GUID="{FAD5C029-0A02-4BD2-97F7-F8C20B7A95BD}"/>
@@ -29,6 +33,14 @@
 				<Bus Id="4056684167" Name="Master" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master" GUID="{F3A976BC-47E9-46E5-9EEC-F566BB39DBEE}"/>
 			</Busses>
 			<AuxBusses>
+				<AuxBus Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Voices\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}">
+					<PluginRefs>
+						<ShareSets>
+							<PluginRef Id="3442768367"/>
+							<PluginRef Id="3487820010"/>
+						</ShareSets>
+					</PluginRefs>
+				</AuxBus>
 				<AuxBus Id="395111090" Name="RVB_BlackHouses" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_BlackHouses" GUID="{17B5E8F9-026F-4941-A027-1C0641AB0C14}">
 					<PluginRefs>
 						<Custom>
@@ -73,7 +85,16 @@
 					</PluginRefs>
 				</AuxBus>
 			</AuxBusses>
+			<StateGroups>
+				<StateGroup Id="3929688590" Name="InsideOutside" ObjectPath="\States\Default Work Unit\InsideOutside" GUID="{2CE28D5C-F27B-42D7-9D91-1905B53C4C3C}">
+					<States>
+						<State Id="645492555" Name="Out" ObjectPath="\States\Default Work Unit\InsideOutside\Out" GUID="{C04B12A4-672A-478D-A191-EED95AAB3C6D}"/>
+						<State Id="748895195" Name="None" ObjectPath="\States\Default Work Unit\InsideOutside\None" GUID="{EEC88170-01B2-4B8A-87BF-B7151380ADB4}"/>
+						<State Id="1752637612" Name="In" ObjectPath="\States\Default Work Unit\InsideOutside\In" GUID="{BFBB05BE-0B19-41C7-B759-C85C0C60B1D8}"/>
+					</States>
+				</StateGroup>
+			</StateGroups>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{84441F7D-3CF7-6124-5967-2FFD67CFE8EB}</FileHash>
+	<FileHash>{FDD38885-7C70-628A-1A05-811B440F07F1}</FileHash>
 </SoundBanksInfo>

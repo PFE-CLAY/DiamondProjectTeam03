@@ -4,25 +4,18 @@
   "BasePlatform": "Mac",
   "PluginLibs": [
    {
+    "LibName": "Wwise Delay",
+    "LibId": "6946819",
+    "Type": "Effect",
+    "DLL": "AkDelay",
+    "StaticLib": "AkDelayFX"
+   },
+   {
     "LibName": "Wwise RoomVerb",
     "LibId": "7733251",
     "Type": "Effect",
     "DLL": "AkRoomVerb",
     "StaticLib": "AkRoomVerbFX"
-   },
-   {
-    "LibName": "Wwise Guitar Distortion",
-    "LibId": "8257539",
-    "Type": "Effect",
-    "DLL": "AkGuitarDistortion",
-    "StaticLib": "AkGuitarDistortionFX"
-   },
-   {
-    "LibName": "Wwise Pitch Shifter",
-    "LibId": "8912899",
-    "Type": "Effect",
-    "DLL": "AkPitchShifter",
-    "StaticLib": "AkPitchShifterFX"
    },
    {
     "LibName": "System",
@@ -35,6 +28,6 @@
     "Type": "AudioDevice"
    }
   ],
-  "FileHash": "{BBDEA523-7272-712E-A28B-CEBEF561839C}"
+  "FileHash": "{1CFE33C1-F58E-DCD1-120E-81B5A3C7CDA4}"
  }
 }

@@ -9,7 +9,7 @@
 	</RootPaths>
 	<DialogueEvents/>
 	<SoundBanks>
-		<SoundBank Id="459280130" Type="User" GUID="{46F08C13-7BDA-47D5-A653-BDFCDAD2487B}" Language="SFX" Hash="{FEC0151D-6568-73FC-F065-33A4D2F833EA}">
+		<SoundBank Id="459280130" Type="User" GUID="{46F08C13-7BDA-47D5-A653-BDFCDAD2487B}" Language="SFX" Hash="{0DC126AA-5BBF-124D-51C3-ACDCCDF0C1CF}">
 			<ObjectPath>\SoundBanks\SoundBanks_WU\FOES_Flying_SB</ObjectPath>
 			<ShortName>FOES_Flying_SB</ShortName>
 			<Path>FOES_Flying_SB.bnk</Path>
@@ -41,10 +41,18 @@
 			</Media>
 			<Plugins>
 				<Custom>
+					<Plugin Id="16383166" Name="Hall_Medium_Bright (Custom)" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Hub\[Effect Slot [0]: (RoomVerb)]\Hall_Medium_Bright (Custom)" GUID="{2B8E8BE0-9B77-422E-880F-E9F637DE5BCF}" LibName="Wwise RoomVerb" LibId="7733251"/>
+					<Plugin Id="97605317" Name="Hall_Medium_Dark (Custom)" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Basement\[Effect Slot [0]: (RoomVerb)]\Hall_Medium_Dark (Custom)" GUID="{8C478E3B-5F92-4AEE-A130-8EAD54778042}" LibName="Wwise RoomVerb" LibId="7733251"/>
 					<Plugin Id="169636257" Name="Have_U_Ever_Been_Outside (Custom)" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_RFX_Arena\[Effect Slot [0]: (RoomVerb)]\Have_U_Ever_Been_Outside (Custom)" GUID="{4EC028FC-6FD5-4AC6-A71F-B2CB8F1117DF}" LibName="Wwise RoomVerb" LibId="7733251"/>
-					<Plugin Id="913803451" Name="Octave_Up (Custom)" ObjectPath="\Actor-Mixer Hierarchy\FOES_Flying_WU\FOES_Flying\FOES_SFX_Flying\FOES_SFX_Flying_Shoot_RC\[Effect Slot [0]: (Pitch Shifter)]\Octave_Up (Custom)" GUID="{2F00A97A-7EA5-4071-B9A5-B685BC249C27}" LibName="Wwise Pitch Shifter" LibId="8912899"/>
-					<Plugin Id="963626000" Name="Dist_Flying_Shots (Custom)" ObjectPath="\Actor-Mixer Hierarchy\FOES_Flying_WU\FOES_Flying\FOES_SFX_Flying\FOES_SFX_Flying_Shoot_RC\[Effect Slot [1]: (Guitar Distortion)]\Dist_Flying_Shots (Custom)" GUID="{71204E36-4F7C-4B89-9BD6-E0036788D676}" LibName="Wwise Guitar Distortion" LibId="8257539"/>
+					<Plugin Id="272452003" Name="Echoes_Linear (Custom)" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Arena\[Effect Slot [1]: (Delay)]\Echoes_Linear (Custom)" GUID="{977B3548-DD8F-4D11-AE62-48D4E99C3447}" LibName="Wwise Delay" LibId="6946819"/>
+					<Plugin Id="403656092" Name="Have_U_Ever_Been_Outside (Custom)" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Arena\[Effect Slot [0]: (RoomVerb)]\Have_U_Ever_Been_Outside (Custom)" GUID="{0C674E07-FB9A-4697-AC82-7C943290C81C}" LibName="Wwise RoomVerb" LibId="7733251"/>
+					<Plugin Id="498081942" Name="Hall_Large_Dark (Custom)" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Pyramid\[Effect Slot [0]: (RoomVerb)]\Hall_Large_Dark (Custom)" GUID="{8E1228B5-2A98-4B87-B429-B348D1C6D236}" LibName="Wwise RoomVerb" LibId="7733251"/>
+					<Plugin Id="688337969" Name="Hall_Small_Bright (Custom)" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_BlackHouses\[Effect Slot [0]: (RoomVerb)]\Hall_Small_Bright (Custom)" GUID="{846A0309-936D-4337-BF4B-E6792E655155}" LibName="Wwise RoomVerb" LibId="7733251"/>
 				</Custom>
+				<ShareSets>
+					<Plugin Id="3442768367" Name="Hall_Large_Dark" ObjectPath="\Effects\Factory Effects\RoomVerb\Halls\Hall_Large_Dark" GUID="{0F6A7D6D-131C-4650-9561-FC05F5C7A37B}" LibName="Wwise RoomVerb" LibId="7733251"/>
+					<Plugin Id="3487820010" Name="One_Tap_Half_Second" ObjectPath="\Effects\Factory Effects\Delay\One_Tap_Half_Second" GUID="{B8FE0D3B-7AAB-4344-89FE-177602B7BF19}" LibName="Wwise Delay" LibId="6946819"/>
+				</ShareSets>
 			</Plugins>
 			<Events>
 				<Event Id="3816121295" Name="Play_FOES_SFX_Flying_Idle_LP" ObjectPath="\Events\FOES_Flying_WU\Play_FOES_SFX_Flying_Idle_LP" GUID="{CF4E623B-F60A-4740-B500-0E5586E75310}" MaxAttenuation="2000" DurationType="Infinite">
@@ -52,7 +60,7 @@
 						<MediaRef Id="202392697"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="1810073987" Name="Play_FOES_SFX_Flying_Shoot_RC" ObjectPath="\Events\FOES_Flying_WU\Play_FOES_SFX_Flying_Shoot_RC" GUID="{615B6DF4-5110-477A-ADAD-83075E2A2CC2}" MaxAttenuation="2000" DurationType="OneShot" DurationMin="1.5138968" DurationMax="1.9747615">
+				<Event Id="1810073987" Name="Play_FOES_SFX_Flying_Shoot_RC" ObjectPath="\Events\FOES_Flying_WU\Play_FOES_SFX_Flying_Shoot_RC" GUID="{615B6DF4-5110-477A-ADAD-83075E2A2CC2}" MaxAttenuation="2000" DurationType="OneShot" DurationMin="1.4621503" DurationMax="2.2117178">
 					<MediaRefs>
 						<MediaRef Id="45515045"/>
 						<MediaRef Id="195673243"/>
@@ -60,12 +68,6 @@
 						<MediaRef Id="732571760"/>
 						<MediaRef Id="821998844"/>
 					</MediaRefs>
-					<PluginRefs>
-						<Custom>
-							<PluginRef Id="913803451"/>
-							<PluginRef Id="963626000"/>
-						</Custom>
-					</PluginRefs>
 				</Event>
 				<Event Id="3718813633" Name="Stop_FOES_SFX_Flying_Idle_LP" ObjectPath="\Events\FOES_Flying_WU\Stop_FOES_SFX_Flying_Idle_LP" GUID="{9C4A0482-8257-4724-B64F-85F88099C5B0}" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
 			</Events>
@@ -82,7 +84,29 @@
 				<Bus Id="4056684167" Name="Master" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master" GUID="{F3A976BC-47E9-46E5-9EEC-F566BB39DBEE}"/>
 			</Busses>
 			<AuxBusses>
-				<AuxBus Id="1215931641" Name="RVB_Arena" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Arena" GUID="{54C7EBDA-4885-4850-8969-FB63BDACC807}"/>
+				<AuxBus Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Voices\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}">
+					<PluginRefs>
+						<ShareSets>
+							<PluginRef Id="3442768367"/>
+							<PluginRef Id="3487820010"/>
+						</ShareSets>
+					</PluginRefs>
+				</AuxBus>
+				<AuxBus Id="395111090" Name="RVB_BlackHouses" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_BlackHouses" GUID="{17B5E8F9-026F-4941-A027-1C0641AB0C14}">
+					<PluginRefs>
+						<Custom>
+							<PluginRef Id="688337969"/>
+						</Custom>
+					</PluginRefs>
+				</AuxBus>
+				<AuxBus Id="1215931641" Name="RVB_Arena" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Arena" GUID="{54C7EBDA-4885-4850-8969-FB63BDACC807}">
+					<PluginRefs>
+						<Custom>
+							<PluginRef Id="272452003"/>
+							<PluginRef Id="403656092"/>
+						</Custom>
+					</PluginRefs>
+				</AuxBus>
 				<AuxBus Id="1408817756" Name="RVB_RFX_Arena" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_RFX_Arena" GUID="{CC7A2F05-EE75-4E8E-B097-98A1938CB5E4}">
 					<PluginRefs>
 						<Custom>
@@ -90,20 +114,59 @@
 						</Custom>
 					</PluginRefs>
 				</AuxBus>
-				<AuxBus Id="3571340017" Name="RVB_Hub" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Hub" GUID="{D499EBE4-F26A-48E5-B89D-1F7C43D829E3}"/>
+				<AuxBus Id="2344250611" Name="RVB_Basement" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Basement" GUID="{BF09F5DA-71E8-4CAC-B0EB-19A1C29389BA}">
+					<PluginRefs>
+						<Custom>
+							<PluginRef Id="97605317"/>
+						</Custom>
+					</PluginRefs>
+				</AuxBus>
+				<AuxBus Id="3571340017" Name="RVB_Hub" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Hub" GUID="{D499EBE4-F26A-48E5-B89D-1F7C43D829E3}">
+					<PluginRefs>
+						<Custom>
+							<PluginRef Id="16383166"/>
+						</Custom>
+					</PluginRefs>
+				</AuxBus>
+				<AuxBus Id="3670521640" Name="RVB_Pyramid" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Pyramid" GUID="{668EA0D2-771E-452F-B241-11793F9755B0}">
+					<PluginRefs>
+						<Custom>
+							<PluginRef Id="498081942"/>
+						</Custom>
+					</PluginRefs>
+				</AuxBus>
 			</AuxBusses>
 			<GameParameters>
 				<GameParameter Id="3590742338" Name="RTPC_Speed_Flying" ObjectPath="\Game Parameters\Default Work Unit\RTPC_Speed_Flying" GUID="{4A0C67E7-2443-47A8-B5EB-86C8F65C73EB}"/>
 			</GameParameters>
+			<StateGroups>
+				<StateGroup Id="3929688590" Name="InsideOutside" ObjectPath="\States\Default Work Unit\InsideOutside" GUID="{2CE28D5C-F27B-42D7-9D91-1905B53C4C3C}">
+					<States>
+						<State Id="645492555" Name="Out" ObjectPath="\States\Default Work Unit\InsideOutside\Out" GUID="{C04B12A4-672A-478D-A191-EED95AAB3C6D}"/>
+						<State Id="748895195" Name="None" ObjectPath="\States\Default Work Unit\InsideOutside\None" GUID="{EEC88170-01B2-4B8A-87BF-B7151380ADB4}"/>
+						<State Id="1752637612" Name="In" ObjectPath="\States\Default Work Unit\InsideOutside\In" GUID="{BFBB05BE-0B19-41C7-B759-C85C0C60B1D8}"/>
+					</States>
+				</StateGroup>
+			</StateGroups>
 		</SoundBank>
-		<SoundBank Id="1355168291" Type="User" GUID="{701ECBBD-9C7B-4030-8CDB-749EE5D1C7B9}" Language="SFX" Hash="{7934D874-C376-1821-0883-AFB48ADDF3DA}">
+		<SoundBank Id="1355168291" Type="User" GUID="{701ECBBD-9C7B-4030-8CDB-749EE5D1C7B9}" Language="SFX" Hash="{F9335172-2091-63F0-5050-B49335AA4BD9}">
 			<ObjectPath>Init</ObjectPath>
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
 			<Plugins>
 				<Custom>
+					<Plugin Id="16383166" Name="Hall_Medium_Bright (Custom)" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Hub\[Effect Slot [0]: (RoomVerb)]\Hall_Medium_Bright (Custom)" GUID="{2B8E8BE0-9B77-422E-880F-E9F637DE5BCF}" LibName="Wwise RoomVerb" LibId="7733251"/>
+					<Plugin Id="97605317" Name="Hall_Medium_Dark (Custom)" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Basement\[Effect Slot [0]: (RoomVerb)]\Hall_Medium_Dark (Custom)" GUID="{8C478E3B-5F92-4AEE-A130-8EAD54778042}" LibName="Wwise RoomVerb" LibId="7733251"/>
 					<Plugin Id="169636257" Name="Have_U_Ever_Been_Outside (Custom)" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_RFX_Arena\[Effect Slot [0]: (RoomVerb)]\Have_U_Ever_Been_Outside (Custom)" GUID="{4EC028FC-6FD5-4AC6-A71F-B2CB8F1117DF}" LibName="Wwise RoomVerb" LibId="7733251"/>
+					<Plugin Id="272452003" Name="Echoes_Linear (Custom)" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Arena\[Effect Slot [1]: (Delay)]\Echoes_Linear (Custom)" GUID="{977B3548-DD8F-4D11-AE62-48D4E99C3447}" LibName="Wwise Delay" LibId="6946819"/>
+					<Plugin Id="403656092" Name="Have_U_Ever_Been_Outside (Custom)" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Arena\[Effect Slot [0]: (RoomVerb)]\Have_U_Ever_Been_Outside (Custom)" GUID="{0C674E07-FB9A-4697-AC82-7C943290C81C}" LibName="Wwise RoomVerb" LibId="7733251"/>
+					<Plugin Id="498081942" Name="Hall_Large_Dark (Custom)" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Pyramid\[Effect Slot [0]: (RoomVerb)]\Hall_Large_Dark (Custom)" GUID="{8E1228B5-2A98-4B87-B429-B348D1C6D236}" LibName="Wwise RoomVerb" LibId="7733251"/>
+					<Plugin Id="688337969" Name="Hall_Small_Bright (Custom)" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_BlackHouses\[Effect Slot [0]: (RoomVerb)]\Hall_Small_Bright (Custom)" GUID="{846A0309-936D-4337-BF4B-E6792E655155}" LibName="Wwise RoomVerb" LibId="7733251"/>
 				</Custom>
+				<ShareSets>
+					<Plugin Id="3442768367" Name="Hall_Large_Dark" ObjectPath="\Effects\Factory Effects\RoomVerb\Halls\Hall_Large_Dark" GUID="{0F6A7D6D-131C-4650-9561-FC05F5C7A37B}" LibName="Wwise RoomVerb" LibId="7733251"/>
+					<Plugin Id="3487820010" Name="One_Tap_Half_Second" ObjectPath="\Effects\Factory Effects\Delay\One_Tap_Half_Second" GUID="{B8FE0D3B-7AAB-4344-89FE-177602B7BF19}" LibName="Wwise Delay" LibId="6946819"/>
+				</ShareSets>
 				<AudioDevices>
 					<Plugin Id="2317455096" Name="No_Output" ObjectPath="\Audio Devices\Default Work Unit\No_Output" GUID="{A1B1475A-B55F-4479-A7C3-DBD7912FC3E0}" LibName="No Output" LibId="11862023"/>
 					<Plugin Id="3859886410" Name="System" ObjectPath="\Audio Devices\Default Work Unit\System" GUID="{2120331D-1E44-4F44-9FF4-1BD59ADC3B07}" LibName="System" LibId="11403271"/>
@@ -123,7 +186,29 @@
 				<Bus Id="4056684167" Name="Master" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master" GUID="{F3A976BC-47E9-46E5-9EEC-F566BB39DBEE}"/>
 			</Busses>
 			<AuxBusses>
-				<AuxBus Id="1215931641" Name="RVB_Arena" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Arena" GUID="{54C7EBDA-4885-4850-8969-FB63BDACC807}"/>
+				<AuxBus Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Voices\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}">
+					<PluginRefs>
+						<ShareSets>
+							<PluginRef Id="3442768367"/>
+							<PluginRef Id="3487820010"/>
+						</ShareSets>
+					</PluginRefs>
+				</AuxBus>
+				<AuxBus Id="395111090" Name="RVB_BlackHouses" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_BlackHouses" GUID="{17B5E8F9-026F-4941-A027-1C0641AB0C14}">
+					<PluginRefs>
+						<Custom>
+							<PluginRef Id="688337969"/>
+						</Custom>
+					</PluginRefs>
+				</AuxBus>
+				<AuxBus Id="1215931641" Name="RVB_Arena" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Arena" GUID="{54C7EBDA-4885-4850-8969-FB63BDACC807}">
+					<PluginRefs>
+						<Custom>
+							<PluginRef Id="272452003"/>
+							<PluginRef Id="403656092"/>
+						</Custom>
+					</PluginRefs>
+				</AuxBus>
 				<AuxBus Id="1408817756" Name="RVB_RFX_Arena" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_RFX_Arena" GUID="{CC7A2F05-EE75-4E8E-B097-98A1938CB5E4}">
 					<PluginRefs>
 						<Custom>
@@ -131,11 +216,40 @@
 						</Custom>
 					</PluginRefs>
 				</AuxBus>
-				<AuxBus Id="3571340017" Name="RVB_Hub" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Hub" GUID="{D499EBE4-F26A-48E5-B89D-1F7C43D829E3}"/>
+				<AuxBus Id="2344250611" Name="RVB_Basement" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Basement" GUID="{BF09F5DA-71E8-4CAC-B0EB-19A1C29389BA}">
+					<PluginRefs>
+						<Custom>
+							<PluginRef Id="97605317"/>
+						</Custom>
+					</PluginRefs>
+				</AuxBus>
+				<AuxBus Id="3571340017" Name="RVB_Hub" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Hub" GUID="{D499EBE4-F26A-48E5-B89D-1F7C43D829E3}">
+					<PluginRefs>
+						<Custom>
+							<PluginRef Id="16383166"/>
+						</Custom>
+					</PluginRefs>
+				</AuxBus>
+				<AuxBus Id="3670521640" Name="RVB_Pyramid" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Pyramid" GUID="{668EA0D2-771E-452F-B241-11793F9755B0}">
+					<PluginRefs>
+						<Custom>
+							<PluginRef Id="498081942"/>
+						</Custom>
+					</PluginRefs>
+				</AuxBus>
 			</AuxBusses>
 			<GameParameters>
 				<GameParameter Id="3590742338" Name="RTPC_Speed_Flying" ObjectPath="\Game Parameters\Default Work Unit\RTPC_Speed_Flying" GUID="{4A0C67E7-2443-47A8-B5EB-86C8F65C73EB}"/>
 			</GameParameters>
+			<StateGroups>
+				<StateGroup Id="3929688590" Name="InsideOutside" ObjectPath="\States\Default Work Unit\InsideOutside" GUID="{2CE28D5C-F27B-42D7-9D91-1905B53C4C3C}">
+					<States>
+						<State Id="645492555" Name="Out" ObjectPath="\States\Default Work Unit\InsideOutside\Out" GUID="{C04B12A4-672A-478D-A191-EED95AAB3C6D}"/>
+						<State Id="748895195" Name="None" ObjectPath="\States\Default Work Unit\InsideOutside\None" GUID="{EEC88170-01B2-4B8A-87BF-B7151380ADB4}"/>
+						<State Id="1752637612" Name="In" ObjectPath="\States\Default Work Unit\InsideOutside\In" GUID="{BFBB05BE-0B19-41C7-B759-C85C0C60B1D8}"/>
+					</States>
+				</StateGroup>
+			</StateGroups>
 			<SwitchGroups>
 				<SwitchGroup Id="757195373" Name="SW_Material" ObjectPath="\Switches\Default Work Unit\SW_Material" GUID="{828E8B9F-6B07-4984-BFE7-B76CEA058A8B}">
 					<Switches>
@@ -146,7 +260,7 @@
 				</SwitchGroup>
 			</SwitchGroups>
 		</SoundBank>
-		<SoundBank Id="1734647573" Type="User" GUID="{6B7E0BFB-A825-46AA-907A-12621FC4038F}" Language="SFX" Hash="{11B8418C-6918-F348-4DE0-38893901FE38}">
+		<SoundBank Id="1734647573" Type="User" GUID="{6B7E0BFB-A825-46AA-907A-12621FC4038F}" Language="SFX" Hash="{7941D649-1B0A-9110-DB6A-AC9FDFBBC734}">
 			<ObjectPath>\SoundBanks\SoundBanks_WU\UI_SB</ObjectPath>
 			<ShortName>UI_SB</ShortName>
 			<Path>UI_SB.bnk</Path>
@@ -178,8 +292,18 @@
 			</Media>
 			<Plugins>
 				<Custom>
+					<Plugin Id="16383166" Name="Hall_Medium_Bright (Custom)" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Hub\[Effect Slot [0]: (RoomVerb)]\Hall_Medium_Bright (Custom)" GUID="{2B8E8BE0-9B77-422E-880F-E9F637DE5BCF}" LibName="Wwise RoomVerb" LibId="7733251"/>
+					<Plugin Id="97605317" Name="Hall_Medium_Dark (Custom)" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Basement\[Effect Slot [0]: (RoomVerb)]\Hall_Medium_Dark (Custom)" GUID="{8C478E3B-5F92-4AEE-A130-8EAD54778042}" LibName="Wwise RoomVerb" LibId="7733251"/>
 					<Plugin Id="169636257" Name="Have_U_Ever_Been_Outside (Custom)" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_RFX_Arena\[Effect Slot [0]: (RoomVerb)]\Have_U_Ever_Been_Outside (Custom)" GUID="{4EC028FC-6FD5-4AC6-A71F-B2CB8F1117DF}" LibName="Wwise RoomVerb" LibId="7733251"/>
+					<Plugin Id="272452003" Name="Echoes_Linear (Custom)" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Arena\[Effect Slot [1]: (Delay)]\Echoes_Linear (Custom)" GUID="{977B3548-DD8F-4D11-AE62-48D4E99C3447}" LibName="Wwise Delay" LibId="6946819"/>
+					<Plugin Id="403656092" Name="Have_U_Ever_Been_Outside (Custom)" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Arena\[Effect Slot [0]: (RoomVerb)]\Have_U_Ever_Been_Outside (Custom)" GUID="{0C674E07-FB9A-4697-AC82-7C943290C81C}" LibName="Wwise RoomVerb" LibId="7733251"/>
+					<Plugin Id="498081942" Name="Hall_Large_Dark (Custom)" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Pyramid\[Effect Slot [0]: (RoomVerb)]\Hall_Large_Dark (Custom)" GUID="{8E1228B5-2A98-4B87-B429-B348D1C6D236}" LibName="Wwise RoomVerb" LibId="7733251"/>
+					<Plugin Id="688337969" Name="Hall_Small_Bright (Custom)" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_BlackHouses\[Effect Slot [0]: (RoomVerb)]\Hall_Small_Bright (Custom)" GUID="{846A0309-936D-4337-BF4B-E6792E655155}" LibName="Wwise RoomVerb" LibId="7733251"/>
 				</Custom>
+				<ShareSets>
+					<Plugin Id="3442768367" Name="Hall_Large_Dark" ObjectPath="\Effects\Factory Effects\RoomVerb\Halls\Hall_Large_Dark" GUID="{0F6A7D6D-131C-4650-9561-FC05F5C7A37B}" LibName="Wwise RoomVerb" LibId="7733251"/>
+					<Plugin Id="3487820010" Name="One_Tap_Half_Second" ObjectPath="\Effects\Factory Effects\Delay\One_Tap_Half_Second" GUID="{B8FE0D3B-7AAB-4344-89FE-177602B7BF19}" LibName="Wwise Delay" LibId="6946819"/>
+				</ShareSets>
 			</Plugins>
 			<Events>
 				<Event Id="242330496" Name="Play_UI_MainMenu_Button_Back_01" ObjectPath="\Events\UI_WU\Play_UI_MainMenu_Button_Back_01" GUID="{01C0CAE4-081F-4B6C-B86A-6C2B06CE1B6E}" DurationType="OneShot" DurationMin="1.1" DurationMax="1.1">
@@ -226,7 +350,29 @@
 				<Bus Id="4056684167" Name="Master" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master" GUID="{F3A976BC-47E9-46E5-9EEC-F566BB39DBEE}"/>
 			</Busses>
 			<AuxBusses>
-				<AuxBus Id="1215931641" Name="RVB_Arena" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Arena" GUID="{54C7EBDA-4885-4850-8969-FB63BDACC807}"/>
+				<AuxBus Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Voices\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}">
+					<PluginRefs>
+						<ShareSets>
+							<PluginRef Id="3442768367"/>
+							<PluginRef Id="3487820010"/>
+						</ShareSets>
+					</PluginRefs>
+				</AuxBus>
+				<AuxBus Id="395111090" Name="RVB_BlackHouses" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_BlackHouses" GUID="{17B5E8F9-026F-4941-A027-1C0641AB0C14}">
+					<PluginRefs>
+						<Custom>
+							<PluginRef Id="688337969"/>
+						</Custom>
+					</PluginRefs>
+				</AuxBus>
+				<AuxBus Id="1215931641" Name="RVB_Arena" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Arena" GUID="{54C7EBDA-4885-4850-8969-FB63BDACC807}">
+					<PluginRefs>
+						<Custom>
+							<PluginRef Id="272452003"/>
+							<PluginRef Id="403656092"/>
+						</Custom>
+					</PluginRefs>
+				</AuxBus>
 				<AuxBus Id="1408817756" Name="RVB_RFX_Arena" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_RFX_Arena" GUID="{CC7A2F05-EE75-4E8E-B097-98A1938CB5E4}">
 					<PluginRefs>
 						<Custom>
@@ -234,10 +380,39 @@
 						</Custom>
 					</PluginRefs>
 				</AuxBus>
-				<AuxBus Id="3571340017" Name="RVB_Hub" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Hub" GUID="{D499EBE4-F26A-48E5-B89D-1F7C43D829E3}"/>
+				<AuxBus Id="2344250611" Name="RVB_Basement" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Basement" GUID="{BF09F5DA-71E8-4CAC-B0EB-19A1C29389BA}">
+					<PluginRefs>
+						<Custom>
+							<PluginRef Id="97605317"/>
+						</Custom>
+					</PluginRefs>
+				</AuxBus>
+				<AuxBus Id="3571340017" Name="RVB_Hub" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Hub" GUID="{D499EBE4-F26A-48E5-B89D-1F7C43D829E3}">
+					<PluginRefs>
+						<Custom>
+							<PluginRef Id="16383166"/>
+						</Custom>
+					</PluginRefs>
+				</AuxBus>
+				<AuxBus Id="3670521640" Name="RVB_Pyramid" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Pyramid" GUID="{668EA0D2-771E-452F-B241-11793F9755B0}">
+					<PluginRefs>
+						<Custom>
+							<PluginRef Id="498081942"/>
+						</Custom>
+					</PluginRefs>
+				</AuxBus>
 			</AuxBusses>
+			<StateGroups>
+				<StateGroup Id="3929688590" Name="InsideOutside" ObjectPath="\States\Default Work Unit\InsideOutside" GUID="{2CE28D5C-F27B-42D7-9D91-1905B53C4C3C}">
+					<States>
+						<State Id="645492555" Name="Out" ObjectPath="\States\Default Work Unit\InsideOutside\Out" GUID="{C04B12A4-672A-478D-A191-EED95AAB3C6D}"/>
+						<State Id="748895195" Name="None" ObjectPath="\States\Default Work Unit\InsideOutside\None" GUID="{EEC88170-01B2-4B8A-87BF-B7151380ADB4}"/>
+						<State Id="1752637612" Name="In" ObjectPath="\States\Default Work Unit\InsideOutside\In" GUID="{BFBB05BE-0B19-41C7-B759-C85C0C60B1D8}"/>
+					</States>
+				</StateGroup>
+			</StateGroups>
 		</SoundBank>
-		<SoundBank Id="1956625499" Type="User" GUID="{ADC2D189-6608-4828-BC9C-6EF6F90834DB}" Language="SFX" Hash="{1BCEA6A0-A769-73E9-6F2A-9E211AA99E4A}">
+		<SoundBank Id="1956625499" Type="User" GUID="{ADC2D189-6608-4828-BC9C-6EF6F90834DB}" Language="SFX" Hash="{1197DEB1-3260-D819-2500-1CEF87099813}">
 			<ObjectPath>\SoundBanks\SoundBanks_WU\MC_SB</ObjectPath>
 			<ShortName>MC_SB</ShortName>
 			<Path>MC_SB.bnk</Path>
@@ -313,6 +488,10 @@
 				<File Id="114517244" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\SP\MC_FT_Concrete_Jump_02.wav</ShortName>
 					<CachePath>SFX/AMB/SP/MC_FT_Concrete_Jump_02_818F3B66.wem</CachePath>
+				</File>
+				<File Id="130136752" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>MC_SFX_Weapon_Armed.wav</ShortName>
+					<CachePath>SFX/MC_SFX_Weapon_Armed_818F3B66.wem</CachePath>
 				</File>
 				<File Id="138501133" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\SP\MC_FT_Concrete_Land_05.wav</ShortName>
@@ -393,10 +572,6 @@
 				<File Id="418331982" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>SFX\MC_SFX_Weapon_NoAmmo.wav</ShortName>
 					<CachePath>SFX/SFX/MC_SFX_Weapon_NoAmmo_818F3B66.wem</CachePath>
-				</File>
-				<File Id="421361594" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>MC_SFX_Gun_Shoot_05.wav</ShortName>
-					<CachePath>SFX/MC_SFX_Gun_Shoot_05_818F3B66.wem</CachePath>
 				</File>
 				<File Id="430767489" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\SP\MC_FT_Sand_Land_03.wav</ShortName>
@@ -498,10 +673,6 @@
 					<ShortName>AMB\SP\MC_FT_Metal_09.wav</ShortName>
 					<CachePath>SFX/AMB/SP/MC_FT_Metal_09_818F3B66.wem</CachePath>
 				</File>
-				<File Id="772410827" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>SFX\MC_SFX_Weapon_Armed.wav</ShortName>
-					<CachePath>SFX/SFX/MC_SFX_Weapon_Armed_818F3B66.wem</CachePath>
-				</File>
 				<File Id="779936328" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\SP\MC_FT_Sand_02.wav</ShortName>
 					<CachePath>SFX/AMB/SP/MC_FT_Sand_02_818F3B66.wem</CachePath>
@@ -557,8 +728,18 @@
 			</Media>
 			<Plugins>
 				<Custom>
+					<Plugin Id="16383166" Name="Hall_Medium_Bright (Custom)" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Hub\[Effect Slot [0]: (RoomVerb)]\Hall_Medium_Bright (Custom)" GUID="{2B8E8BE0-9B77-422E-880F-E9F637DE5BCF}" LibName="Wwise RoomVerb" LibId="7733251"/>
+					<Plugin Id="97605317" Name="Hall_Medium_Dark (Custom)" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Basement\[Effect Slot [0]: (RoomVerb)]\Hall_Medium_Dark (Custom)" GUID="{8C478E3B-5F92-4AEE-A130-8EAD54778042}" LibName="Wwise RoomVerb" LibId="7733251"/>
 					<Plugin Id="169636257" Name="Have_U_Ever_Been_Outside (Custom)" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_RFX_Arena\[Effect Slot [0]: (RoomVerb)]\Have_U_Ever_Been_Outside (Custom)" GUID="{4EC028FC-6FD5-4AC6-A71F-B2CB8F1117DF}" LibName="Wwise RoomVerb" LibId="7733251"/>
+					<Plugin Id="272452003" Name="Echoes_Linear (Custom)" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Arena\[Effect Slot [1]: (Delay)]\Echoes_Linear (Custom)" GUID="{977B3548-DD8F-4D11-AE62-48D4E99C3447}" LibName="Wwise Delay" LibId="6946819"/>
+					<Plugin Id="403656092" Name="Have_U_Ever_Been_Outside (Custom)" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Arena\[Effect Slot [0]: (RoomVerb)]\Have_U_Ever_Been_Outside (Custom)" GUID="{0C674E07-FB9A-4697-AC82-7C943290C81C}" LibName="Wwise RoomVerb" LibId="7733251"/>
+					<Plugin Id="498081942" Name="Hall_Large_Dark (Custom)" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Pyramid\[Effect Slot [0]: (RoomVerb)]\Hall_Large_Dark (Custom)" GUID="{8E1228B5-2A98-4B87-B429-B348D1C6D236}" LibName="Wwise RoomVerb" LibId="7733251"/>
+					<Plugin Id="688337969" Name="Hall_Small_Bright (Custom)" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_BlackHouses\[Effect Slot [0]: (RoomVerb)]\Hall_Small_Bright (Custom)" GUID="{846A0309-936D-4337-BF4B-E6792E655155}" LibName="Wwise RoomVerb" LibId="7733251"/>
 				</Custom>
+				<ShareSets>
+					<Plugin Id="3442768367" Name="Hall_Large_Dark" ObjectPath="\Effects\Factory Effects\RoomVerb\Halls\Hall_Large_Dark" GUID="{0F6A7D6D-131C-4650-9561-FC05F5C7A37B}" LibName="Wwise RoomVerb" LibId="7733251"/>
+					<Plugin Id="3487820010" Name="One_Tap_Half_Second" ObjectPath="\Effects\Factory Effects\Delay\One_Tap_Half_Second" GUID="{B8FE0D3B-7AAB-4344-89FE-177602B7BF19}" LibName="Wwise Delay" LibId="6946819"/>
+				</ShareSets>
 			</Plugins>
 			<Events>
 				<Event Id="2749485653" Name="Play_MC_FOL_FT_Jump_SW" ObjectPath="\Events\MC_WU\Play_MC_FOL_FT_Jump_SW" GUID="{84F52436-C579-4C37-9804-C7D11AEDCC08}" DurationType="OneShot" DurationMin="0.42432198" DurationMax="0.92546445">
@@ -735,12 +916,11 @@
 						</SwitchContainer>
 					</SwitchContainers>
 				</Event>
-				<Event Id="1177297501" Name="Play_MC_SFX_Gun_Shoot_RC" ObjectPath="\Events\MC_WU\Play_MC_SFX_Gun_Shoot_RC" GUID="{19EDAAA1-DF79-4328-9566-97F28CD19D08}" DurationType="OneShot" DurationMin="0.80338675" DurationMax="1.8403275">
+				<Event Id="1177297501" Name="Play_MC_SFX_Gun_Shoot_RC" ObjectPath="\Events\MC_WU\Play_MC_SFX_Gun_Shoot_RC" GUID="{19EDAAA1-DF79-4328-9566-97F28CD19D08}" DurationType="OneShot" DurationMin="1.1600068" DurationMax="2.3467753">
 					<MediaRefs>
 						<MediaRef Id="36917763"/>
 						<MediaRef Id="62282605"/>
 						<MediaRef Id="70109824"/>
-						<MediaRef Id="421361594"/>
 						<MediaRef Id="610918733"/>
 					</MediaRefs>
 				</Event>
@@ -755,7 +935,7 @@
 				</Event>
 				<Event Id="3961249933" Name="Play_MC_SFX_Weapon_Armed_RC" ObjectPath="\Events\MC_WU\Play_MC_SFX_Weapon_Armed_RC" GUID="{E22125BE-E0CB-4EC0-A4CB-7460BE42B80E}" DurationType="OneShot" DurationMin="3.3666666" DurationMax="3.3666666">
 					<MediaRefs>
-						<MediaRef Id="772410827"/>
+						<MediaRef Id="130136752"/>
 					</MediaRefs>
 				</Event>
 				<Event Id="3400800083" Name="Play_MC_SFX_Weapon_NoAmmo_RC" ObjectPath="\Events\MC_WU\Play_MC_SFX_Weapon_NoAmmo_RC" GUID="{708ACD16-F6BC-49F8-85D6-8076E283E48F}" DurationType="OneShot" DurationMin="1.7806667" DurationMax="1.7806667">
@@ -777,7 +957,29 @@
 				<Bus Id="4056684167" Name="Master" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master" GUID="{F3A976BC-47E9-46E5-9EEC-F566BB39DBEE}"/>
 			</Busses>
 			<AuxBusses>
-				<AuxBus Id="1215931641" Name="RVB_Arena" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Arena" GUID="{54C7EBDA-4885-4850-8969-FB63BDACC807}"/>
+				<AuxBus Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Voices\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}">
+					<PluginRefs>
+						<ShareSets>
+							<PluginRef Id="3442768367"/>
+							<PluginRef Id="3487820010"/>
+						</ShareSets>
+					</PluginRefs>
+				</AuxBus>
+				<AuxBus Id="395111090" Name="RVB_BlackHouses" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_BlackHouses" GUID="{17B5E8F9-026F-4941-A027-1C0641AB0C14}">
+					<PluginRefs>
+						<Custom>
+							<PluginRef Id="688337969"/>
+						</Custom>
+					</PluginRefs>
+				</AuxBus>
+				<AuxBus Id="1215931641" Name="RVB_Arena" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Arena" GUID="{54C7EBDA-4885-4850-8969-FB63BDACC807}">
+					<PluginRefs>
+						<Custom>
+							<PluginRef Id="272452003"/>
+							<PluginRef Id="403656092"/>
+						</Custom>
+					</PluginRefs>
+				</AuxBus>
 				<AuxBus Id="1408817756" Name="RVB_RFX_Arena" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_RFX_Arena" GUID="{CC7A2F05-EE75-4E8E-B097-98A1938CB5E4}">
 					<PluginRefs>
 						<Custom>
@@ -785,8 +987,37 @@
 						</Custom>
 					</PluginRefs>
 				</AuxBus>
-				<AuxBus Id="3571340017" Name="RVB_Hub" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Hub" GUID="{D499EBE4-F26A-48E5-B89D-1F7C43D829E3}"/>
+				<AuxBus Id="2344250611" Name="RVB_Basement" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Basement" GUID="{BF09F5DA-71E8-4CAC-B0EB-19A1C29389BA}">
+					<PluginRefs>
+						<Custom>
+							<PluginRef Id="97605317"/>
+						</Custom>
+					</PluginRefs>
+				</AuxBus>
+				<AuxBus Id="3571340017" Name="RVB_Hub" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Hub" GUID="{D499EBE4-F26A-48E5-B89D-1F7C43D829E3}">
+					<PluginRefs>
+						<Custom>
+							<PluginRef Id="16383166"/>
+						</Custom>
+					</PluginRefs>
+				</AuxBus>
+				<AuxBus Id="3670521640" Name="RVB_Pyramid" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Pyramid" GUID="{668EA0D2-771E-452F-B241-11793F9755B0}">
+					<PluginRefs>
+						<Custom>
+							<PluginRef Id="498081942"/>
+						</Custom>
+					</PluginRefs>
+				</AuxBus>
 			</AuxBusses>
+			<StateGroups>
+				<StateGroup Id="3929688590" Name="InsideOutside" ObjectPath="\States\Default Work Unit\InsideOutside" GUID="{2CE28D5C-F27B-42D7-9D91-1905B53C4C3C}">
+					<States>
+						<State Id="645492555" Name="Out" ObjectPath="\States\Default Work Unit\InsideOutside\Out" GUID="{C04B12A4-672A-478D-A191-EED95AAB3C6D}"/>
+						<State Id="748895195" Name="None" ObjectPath="\States\Default Work Unit\InsideOutside\None" GUID="{EEC88170-01B2-4B8A-87BF-B7151380ADB4}"/>
+						<State Id="1752637612" Name="In" ObjectPath="\States\Default Work Unit\InsideOutside\In" GUID="{BFBB05BE-0B19-41C7-B759-C85C0C60B1D8}"/>
+					</States>
+				</StateGroup>
+			</StateGroups>
 			<SwitchGroups>
 				<SwitchGroup Id="757195373" Name="SW_Material" ObjectPath="\Switches\Default Work Unit\SW_Material" GUID="{828E8B9F-6B07-4984-BFE7-B76CEA058A8B}">
 					<Switches>
@@ -797,14 +1028,24 @@
 				</SwitchGroup>
 			</SwitchGroups>
 		</SoundBank>
-		<SoundBank Id="2516814376" Type="User" GUID="{48187E94-2869-42A3-9E99-A12DF1DA86DF}" Language="SFX" Hash="{C96EC5F5-E48D-9B1B-CFF8-653DECDF38A6}">
+		<SoundBank Id="2516814376" Type="User" GUID="{48187E94-2869-42A3-9E99-A12DF1DA86DF}" Language="SFX" Hash="{BC28BDB4-180C-F55B-E198-C1CDBD0658F1}">
 			<ObjectPath>\SoundBanks\SoundBanks_WU\FOES_Invisible_SB</ObjectPath>
 			<ShortName>FOES_Invisible_SB</ShortName>
 			<Path>FOES_Invisible_SB.bnk</Path>
 			<Plugins>
 				<Custom>
+					<Plugin Id="16383166" Name="Hall_Medium_Bright (Custom)" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Hub\[Effect Slot [0]: (RoomVerb)]\Hall_Medium_Bright (Custom)" GUID="{2B8E8BE0-9B77-422E-880F-E9F637DE5BCF}" LibName="Wwise RoomVerb" LibId="7733251"/>
+					<Plugin Id="97605317" Name="Hall_Medium_Dark (Custom)" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Basement\[Effect Slot [0]: (RoomVerb)]\Hall_Medium_Dark (Custom)" GUID="{8C478E3B-5F92-4AEE-A130-8EAD54778042}" LibName="Wwise RoomVerb" LibId="7733251"/>
 					<Plugin Id="169636257" Name="Have_U_Ever_Been_Outside (Custom)" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_RFX_Arena\[Effect Slot [0]: (RoomVerb)]\Have_U_Ever_Been_Outside (Custom)" GUID="{4EC028FC-6FD5-4AC6-A71F-B2CB8F1117DF}" LibName="Wwise RoomVerb" LibId="7733251"/>
+					<Plugin Id="272452003" Name="Echoes_Linear (Custom)" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Arena\[Effect Slot [1]: (Delay)]\Echoes_Linear (Custom)" GUID="{977B3548-DD8F-4D11-AE62-48D4E99C3447}" LibName="Wwise Delay" LibId="6946819"/>
+					<Plugin Id="403656092" Name="Have_U_Ever_Been_Outside (Custom)" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Arena\[Effect Slot [0]: (RoomVerb)]\Have_U_Ever_Been_Outside (Custom)" GUID="{0C674E07-FB9A-4697-AC82-7C943290C81C}" LibName="Wwise RoomVerb" LibId="7733251"/>
+					<Plugin Id="498081942" Name="Hall_Large_Dark (Custom)" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Pyramid\[Effect Slot [0]: (RoomVerb)]\Hall_Large_Dark (Custom)" GUID="{8E1228B5-2A98-4B87-B429-B348D1C6D236}" LibName="Wwise RoomVerb" LibId="7733251"/>
+					<Plugin Id="688337969" Name="Hall_Small_Bright (Custom)" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_BlackHouses\[Effect Slot [0]: (RoomVerb)]\Hall_Small_Bright (Custom)" GUID="{846A0309-936D-4337-BF4B-E6792E655155}" LibName="Wwise RoomVerb" LibId="7733251"/>
 				</Custom>
+				<ShareSets>
+					<Plugin Id="3442768367" Name="Hall_Large_Dark" ObjectPath="\Effects\Factory Effects\RoomVerb\Halls\Hall_Large_Dark" GUID="{0F6A7D6D-131C-4650-9561-FC05F5C7A37B}" LibName="Wwise RoomVerb" LibId="7733251"/>
+					<Plugin Id="3487820010" Name="One_Tap_Half_Second" ObjectPath="\Effects\Factory Effects\Delay\One_Tap_Half_Second" GUID="{B8FE0D3B-7AAB-4344-89FE-177602B7BF19}" LibName="Wwise Delay" LibId="6946819"/>
+				</ShareSets>
 			</Plugins>
 			<Busses>
 				<Bus Id="109159411" Name="Game_Global" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global" GUID="{FAD5C029-0A02-4BD2-97F7-F8C20B7A95BD}"/>
@@ -819,7 +1060,29 @@
 				<Bus Id="4056684167" Name="Master" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master" GUID="{F3A976BC-47E9-46E5-9EEC-F566BB39DBEE}"/>
 			</Busses>
 			<AuxBusses>
-				<AuxBus Id="1215931641" Name="RVB_Arena" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Arena" GUID="{54C7EBDA-4885-4850-8969-FB63BDACC807}"/>
+				<AuxBus Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Voices\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}">
+					<PluginRefs>
+						<ShareSets>
+							<PluginRef Id="3442768367"/>
+							<PluginRef Id="3487820010"/>
+						</ShareSets>
+					</PluginRefs>
+				</AuxBus>
+				<AuxBus Id="395111090" Name="RVB_BlackHouses" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_BlackHouses" GUID="{17B5E8F9-026F-4941-A027-1C0641AB0C14}">
+					<PluginRefs>
+						<Custom>
+							<PluginRef Id="688337969"/>
+						</Custom>
+					</PluginRefs>
+				</AuxBus>
+				<AuxBus Id="1215931641" Name="RVB_Arena" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Arena" GUID="{54C7EBDA-4885-4850-8969-FB63BDACC807}">
+					<PluginRefs>
+						<Custom>
+							<PluginRef Id="272452003"/>
+							<PluginRef Id="403656092"/>
+						</Custom>
+					</PluginRefs>
+				</AuxBus>
 				<AuxBus Id="1408817756" Name="RVB_RFX_Arena" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_RFX_Arena" GUID="{CC7A2F05-EE75-4E8E-B097-98A1938CB5E4}">
 					<PluginRefs>
 						<Custom>
@@ -827,10 +1090,324 @@
 						</Custom>
 					</PluginRefs>
 				</AuxBus>
-				<AuxBus Id="3571340017" Name="RVB_Hub" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Hub" GUID="{D499EBE4-F26A-48E5-B89D-1F7C43D829E3}"/>
+				<AuxBus Id="2344250611" Name="RVB_Basement" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Basement" GUID="{BF09F5DA-71E8-4CAC-B0EB-19A1C29389BA}">
+					<PluginRefs>
+						<Custom>
+							<PluginRef Id="97605317"/>
+						</Custom>
+					</PluginRefs>
+				</AuxBus>
+				<AuxBus Id="3571340017" Name="RVB_Hub" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Hub" GUID="{D499EBE4-F26A-48E5-B89D-1F7C43D829E3}">
+					<PluginRefs>
+						<Custom>
+							<PluginRef Id="16383166"/>
+						</Custom>
+					</PluginRefs>
+				</AuxBus>
+				<AuxBus Id="3670521640" Name="RVB_Pyramid" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Pyramid" GUID="{668EA0D2-771E-452F-B241-11793F9755B0}">
+					<PluginRefs>
+						<Custom>
+							<PluginRef Id="498081942"/>
+						</Custom>
+					</PluginRefs>
+				</AuxBus>
 			</AuxBusses>
+			<StateGroups>
+				<StateGroup Id="3929688590" Name="InsideOutside" ObjectPath="\States\Default Work Unit\InsideOutside" GUID="{2CE28D5C-F27B-42D7-9D91-1905B53C4C3C}">
+					<States>
+						<State Id="645492555" Name="Out" ObjectPath="\States\Default Work Unit\InsideOutside\Out" GUID="{C04B12A4-672A-478D-A191-EED95AAB3C6D}"/>
+						<State Id="748895195" Name="None" ObjectPath="\States\Default Work Unit\InsideOutside\None" GUID="{EEC88170-01B2-4B8A-87BF-B7151380ADB4}"/>
+						<State Id="1752637612" Name="In" ObjectPath="\States\Default Work Unit\InsideOutside\In" GUID="{BFBB05BE-0B19-41C7-B759-C85C0C60B1D8}"/>
+					</States>
+				</StateGroup>
+			</StateGroups>
 		</SoundBank>
-		<SoundBank Id="3250948517" Type="User" GUID="{8CC30184-23AF-4DB5-9844-9B04DF10A650}" Language="SFX" Hash="{FC854766-77E4-D367-5F8C-74EB0B9E0D79}">
+		<SoundBank Id="2765162312" Type="User" GUID="{9B915276-16F3-4721-B819-126344F97366}" Language="SFX" Hash="{F0D65CF9-2320-6D7D-179F-26F7AA2A7FB3}">
+			<ObjectPath>\SoundBanks\SoundBanks_WU\VOICES_SB</ObjectPath>
+			<ShortName>VOICES_SB</ShortName>
+			<Path>VOICES_SB.bnk</Path>
+			<Media>
+				<File Id="7231555" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>DUB_ARENA_1_2_2.wav</ShortName>
+					<CachePath>SFX/DUB_ARENA_1_2_2_818F3B66.wem</CachePath>
+				</File>
+				<File Id="73406871" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>DUB_ARENA_1_7_0.wav</ShortName>
+					<CachePath>SFX/DUB_ARENA_1_7_0_818F3B66.wem</CachePath>
+				</File>
+				<File Id="83922193" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>DUB_ARENA_1_2_3.wav</ShortName>
+					<CachePath>SFX/DUB_ARENA_1_2_3_818F3B66.wem</CachePath>
+				</File>
+				<File Id="93564485" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>DUB_ARENA_1_0_0.wav</ShortName>
+					<CachePath>SFX/DUB_ARENA_1_0_0_818F3B66.wem</CachePath>
+				</File>
+				<File Id="115645254" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>DUB_ARENA_1_9_4.wav</ShortName>
+					<CachePath>SFX/DUB_ARENA_1_9_4_818F3B66.wem</CachePath>
+				</File>
+				<File Id="140616404" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>DUB_ARENA_1_8_0.wav</ShortName>
+					<CachePath>SFX/DUB_ARENA_1_8_0_818F3B66.wem</CachePath>
+				</File>
+				<File Id="157392684" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>DUB_ARENA_1_9_2.wav</ShortName>
+					<CachePath>SFX/DUB_ARENA_1_9_2_818F3B66.wem</CachePath>
+				</File>
+				<File Id="166584951" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>DUB_ARENA_1_9_1.wav</ShortName>
+					<CachePath>SFX/DUB_ARENA_1_9_1_818F3B66.wem</CachePath>
+				</File>
+				<File Id="278418833" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>DUB_ARENA_1_9_3.wav</ShortName>
+					<CachePath>SFX/DUB_ARENA_1_9_3_818F3B66.wem</CachePath>
+				</File>
+				<File Id="279456589" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>DUB_ARENA_1_9_5.wav</ShortName>
+					<CachePath>SFX/DUB_ARENA_1_9_5_818F3B66.wem</CachePath>
+				</File>
+				<File Id="289625457" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>DUB_ARENA_1_3_0.wav</ShortName>
+					<CachePath>SFX/DUB_ARENA_1_3_0_818F3B66.wem</CachePath>
+				</File>
+				<File Id="338368799" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>DUB_ARENA_1_1_2.wav</ShortName>
+					<CachePath>SFX/DUB_ARENA_1_1_2_818F3B66.wem</CachePath>
+				</File>
+				<File Id="411650085" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>DUB_ARENA_1_9_6.wav</ShortName>
+					<CachePath>SFX/DUB_ARENA_1_9_6_818F3B66.wem</CachePath>
+				</File>
+				<File Id="435995496" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>DUB_ARENA_1_6_0.wav</ShortName>
+					<CachePath>SFX/DUB_ARENA_1_6_0_818F3B66.wem</CachePath>
+				</File>
+				<File Id="500906151" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>DUB_ARENA_1_1_1.wav</ShortName>
+					<CachePath>SFX/DUB_ARENA_1_1_1_818F3B66.wem</CachePath>
+				</File>
+				<File Id="687283735" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>DUB_ARENA_1_2_0.wav</ShortName>
+					<CachePath>SFX/DUB_ARENA_1_2_0_818F3B66.wem</CachePath>
+				</File>
+				<File Id="767088532" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>DUB_ARENA_1_9_0.wav</ShortName>
+					<CachePath>SFX/DUB_ARENA_1_9_0_818F3B66.wem</CachePath>
+				</File>
+				<File Id="881110537" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>DUB_ARENA_1_3_2.wav</ShortName>
+					<CachePath>SFX/DUB_ARENA_1_3_2_818F3B66.wem</CachePath>
+				</File>
+				<File Id="898148885" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>DUB_ARENA_1_1_0.wav</ShortName>
+					<CachePath>SFX/DUB_ARENA_1_1_0_818F3B66.wem</CachePath>
+				</File>
+				<File Id="899907561" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>DUB_ARENA_1_5_0.wav</ShortName>
+					<CachePath>SFX/DUB_ARENA_1_5_0_818F3B66.wem</CachePath>
+				</File>
+				<File Id="952186329" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>DUB_ARENA_1_4_0.wav</ShortName>
+					<CachePath>SFX/DUB_ARENA_1_4_0_818F3B66.wem</CachePath>
+				</File>
+				<File Id="1008445025" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>DUB_ARENA_1_2_1.wav</ShortName>
+					<CachePath>SFX/DUB_ARENA_1_2_1_818F3B66.wem</CachePath>
+				</File>
+				<File Id="1031568460" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>DUB_ARENA_1_3_1.wav</ShortName>
+					<CachePath>SFX/DUB_ARENA_1_3_1_818F3B66.wem</CachePath>
+				</File>
+			</Media>
+			<Events>
+				<Event Id="3653177071" Name="Play_DUB_ARENA_1_0_0" ObjectPath="\Events\VOICES_WU\Play_DUB_ARENA_1_0_0" GUID="{6CB2E320-5F3F-4792-B1C8-029B1D05BDA8}" DurationType="OneShot" DurationMin="11.3325205" DurationMax="11.3325205">
+					<MediaRefs>
+						<MediaRef Id="93564485"/>
+					</MediaRefs>
+					<AuxBusRefs>
+						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Voices\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}"/>
+					</AuxBusRefs>
+				</Event>
+				<Event Id="432124422" Name="Play_DUB_ARENA_1_1_0" ObjectPath="\Events\VOICES_WU\Play_DUB_ARENA_1_1_0" GUID="{4D51FF6E-B699-4F64-9342-EA27E6FB1544}" DurationType="OneShot" DurationMin="5.3754582" DurationMax="5.3754582">
+					<MediaRefs>
+						<MediaRef Id="898148885"/>
+					</MediaRefs>
+					<AuxBusRefs>
+						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Voices\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}"/>
+					</AuxBusRefs>
+				</Event>
+				<Event Id="432124423" Name="Play_DUB_ARENA_1_1_1" ObjectPath="\Events\VOICES_WU\Play_DUB_ARENA_1_1_1" GUID="{27536445-6BFB-41C6-BC9E-54347C22D514}" DurationType="OneShot" DurationMin="2.5813334" DurationMax="2.5813334">
+					<MediaRefs>
+						<MediaRef Id="500906151"/>
+					</MediaRefs>
+					<AuxBusRefs>
+						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Voices\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}"/>
+					</AuxBusRefs>
+				</Event>
+				<Event Id="432124420" Name="Play_DUB_ARENA_1_1_2" ObjectPath="\Events\VOICES_WU\Play_DUB_ARENA_1_1_2" GUID="{DE0F7AE6-9779-495E-AA81-79548E94F86D}" DurationType="OneShot" DurationMin="2.7846458" DurationMax="2.7846458">
+					<MediaRefs>
+						<MediaRef Id="338368799"/>
+					</MediaRefs>
+					<AuxBusRefs>
+						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Voices\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}"/>
+					</AuxBusRefs>
+				</Event>
+				<Event Id="431683137" Name="Play_DUB_ARENA_1_2_0" ObjectPath="\Events\VOICES_WU\Play_DUB_ARENA_1_2_0" GUID="{C445715B-3FA8-4FBC-AB70-822C92FBB16B}" DurationType="OneShot" DurationMin="3.629021" DurationMax="3.629021">
+					<MediaRefs>
+						<MediaRef Id="687283735"/>
+					</MediaRefs>
+					<AuxBusRefs>
+						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Voices\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}"/>
+					</AuxBusRefs>
+				</Event>
+				<Event Id="431683136" Name="Play_DUB_ARENA_1_2_1" ObjectPath="\Events\VOICES_WU\Play_DUB_ARENA_1_2_1" GUID="{91178517-FD31-404C-BD96-C93C088E3CC4}" DurationType="OneShot" DurationMin="3.111125" DurationMax="3.111125">
+					<MediaRefs>
+						<MediaRef Id="1008445025"/>
+					</MediaRefs>
+					<AuxBusRefs>
+						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Voices\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}"/>
+					</AuxBusRefs>
+				</Event>
+				<Event Id="431683139" Name="Play_DUB_ARENA_1_2_2" ObjectPath="\Events\VOICES_WU\Play_DUB_ARENA_1_2_2" GUID="{746849AC-4863-4498-9421-326BA34079B6}" DurationType="OneShot" DurationMin="5.2867084" DurationMax="5.2867084">
+					<MediaRefs>
+						<MediaRef Id="7231555"/>
+					</MediaRefs>
+					<AuxBusRefs>
+						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Voices\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}"/>
+					</AuxBusRefs>
+				</Event>
+				<Event Id="431683138" Name="Play_DUB_ARENA_1_2_3" ObjectPath="\Events\VOICES_WU\Play_DUB_ARENA_1_2_3" GUID="{2CE4857B-BB5A-42DF-B161-ABAB474C8636}" DurationType="OneShot" DurationMin="5.847521" DurationMax="5.847521">
+					<MediaRefs>
+						<MediaRef Id="83922193"/>
+					</MediaRefs>
+					<AuxBusRefs>
+						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Voices\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}"/>
+					</AuxBusRefs>
+				</Event>
+				<Event Id="3653030008" Name="Play_DUB_ARENA_1_3_0" ObjectPath="\Events\VOICES_WU\Play_DUB_ARENA_1_3_0" GUID="{D4B8EC1E-8BCC-47F8-BDCC-CE8B7FC3ED1C}" DurationType="OneShot" DurationMin="6.983125" DurationMax="6.983125">
+					<MediaRefs>
+						<MediaRef Id="289625457"/>
+					</MediaRefs>
+					<AuxBusRefs>
+						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Voices\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}"/>
+					</AuxBusRefs>
+				</Event>
+				<Event Id="3653030009" Name="Play_DUB_ARENA_1_3_1" ObjectPath="\Events\VOICES_WU\Play_DUB_ARENA_1_3_1" GUID="{D97FF8EC-ED87-4915-9E9E-1C708E08A828}" DurationType="OneShot" DurationMin="3.3593957" DurationMax="3.3593957">
+					<MediaRefs>
+						<MediaRef Id="1031568460"/>
+					</MediaRefs>
+					<AuxBusRefs>
+						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Voices\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}"/>
+					</AuxBusRefs>
+				</Event>
+				<Event Id="3653030010" Name="Play_DUB_ARENA_1_3_2" ObjectPath="\Events\VOICES_WU\Play_DUB_ARENA_1_3_2" GUID="{0746558A-9F04-4B0B-B346-9BA6CF66D24C}" DurationType="OneShot" DurationMin="7.75375" DurationMax="7.75375">
+					<MediaRefs>
+						<MediaRef Id="881110537"/>
+					</MediaRefs>
+					<AuxBusRefs>
+						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Voices\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}"/>
+					</AuxBusRefs>
+				</Event>
+				<Event Id="3652588723" Name="Play_DUB_ARENA_1_4_0" ObjectPath="\Events\VOICES_WU\Play_DUB_ARENA_1_4_0" GUID="{809EBE6E-E883-4D44-87C4-923BF4435E0D}" DurationType="OneShot" DurationMin="8.455104" DurationMax="8.455104">
+					<MediaRefs>
+						<MediaRef Id="952186329"/>
+					</MediaRefs>
+					<AuxBusRefs>
+						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Voices\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}"/>
+					</AuxBusRefs>
+				</Event>
+				<Event Id="431536106" Name="Play_DUB_ARENA_1_5_0" ObjectPath="\Events\VOICES_WU\Play_DUB_ARENA_1_5_0" GUID="{2945E4E8-A2EB-4D65-B4D4-F7738BA67018}" DurationType="OneShot" DurationMin="4.879229" DurationMax="4.879229">
+					<MediaRefs>
+						<MediaRef Id="899907561"/>
+					</MediaRefs>
+					<AuxBusRefs>
+						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Voices\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}"/>
+					</AuxBusRefs>
+				</Event>
+				<Event Id="430991653" Name="Play_DUB_ARENA_1_6_0" ObjectPath="\Events\VOICES_WU\Play_DUB_ARENA_1_6_0" GUID="{5A59BF8D-9B94-480D-A8BE-25466AFDDDAF}" DurationType="OneShot" DurationMin="10.083875" DurationMax="10.083875">
+					<MediaRefs>
+						<MediaRef Id="435995496"/>
+					</MediaRefs>
+					<AuxBusRefs>
+						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Voices\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}"/>
+					</AuxBusRefs>
+				</Event>
+				<Event Id="431138716" Name="Play_DUB_ARENA_1_7_0" ObjectPath="\Events\VOICES_WU\Play_DUB_ARENA_1_7_0" GUID="{F6358FF6-964A-43B2-B731-095E10582A7A}" DurationType="OneShot" DurationMin="4.7953334" DurationMax="4.7953334">
+					<MediaRefs>
+						<MediaRef Id="73406871"/>
+					</MediaRefs>
+					<AuxBusRefs>
+						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Voices\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}"/>
+					</AuxBusRefs>
+				</Event>
+				<Event Id="3651897111" Name="Play_DUB_ARENA_1_8_0" ObjectPath="\Events\VOICES_WU\Play_DUB_ARENA_1_8_0" GUID="{6C548FEA-C807-4A6A-B0D6-C9C265D28446}" DurationType="OneShot" DurationMin="5.6705" DurationMax="5.6705">
+					<MediaRefs>
+						<MediaRef Id="140616404"/>
+					</MediaRefs>
+					<AuxBusRefs>
+						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Voices\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}"/>
+					</AuxBusRefs>
+				</Event>
+				<Event Id="3652044174" Name="Play_DUB_ARENA_1_9_0" ObjectPath="\Events\VOICES_WU\Play_DUB_ARENA_1_9_0" GUID="{EFF04B34-33D4-45A1-B15C-C75DF1C2FE84}" DurationType="OneShot" DurationMin="2.0564792" DurationMax="2.0564792">
+					<MediaRefs>
+						<MediaRef Id="767088532"/>
+					</MediaRefs>
+					<AuxBusRefs>
+						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Voices\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}"/>
+					</AuxBusRefs>
+				</Event>
+				<Event Id="3652044175" Name="Play_DUB_ARENA_1_9_1" ObjectPath="\Events\VOICES_WU\Play_DUB_ARENA_1_9_1" GUID="{80641E23-366E-4E92-9C60-75DC0F6F4B16}" DurationType="OneShot" DurationMin="3.72625" DurationMax="3.72625">
+					<MediaRefs>
+						<MediaRef Id="166584951"/>
+					</MediaRefs>
+					<AuxBusRefs>
+						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Voices\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}"/>
+					</AuxBusRefs>
+				</Event>
+				<Event Id="3652044172" Name="Play_DUB_ARENA_1_9_2" ObjectPath="\Events\VOICES_WU\Play_DUB_ARENA_1_9_2" GUID="{EADA4396-85FC-46B2-90D0-883FFB9406F7}" DurationType="OneShot" DurationMin="0.73702085" DurationMax="0.73702085">
+					<MediaRefs>
+						<MediaRef Id="157392684"/>
+					</MediaRefs>
+					<AuxBusRefs>
+						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Voices\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}"/>
+					</AuxBusRefs>
+				</Event>
+				<Event Id="3652044173" Name="Play_DUB_ARENA_1_9_3" ObjectPath="\Events\VOICES_WU\Play_DUB_ARENA_1_9_3" GUID="{1D57409D-4D8B-4606-B981-BDD320FD64EB}" DurationType="OneShot" DurationMin="0.8344167" DurationMax="0.8344167">
+					<MediaRefs>
+						<MediaRef Id="278418833"/>
+					</MediaRefs>
+					<AuxBusRefs>
+						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Voices\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}"/>
+					</AuxBusRefs>
+				</Event>
+				<Event Id="3652044170" Name="Play_DUB_ARENA_1_9_4" ObjectPath="\Events\VOICES_WU\Play_DUB_ARENA_1_9_4" GUID="{56D08A81-9E18-4348-AB5F-9AD1B9C7E045}" DurationType="OneShot" DurationMin="1.1080834" DurationMax="1.1080834">
+					<MediaRefs>
+						<MediaRef Id="115645254"/>
+					</MediaRefs>
+					<AuxBusRefs>
+						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Voices\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}"/>
+					</AuxBusRefs>
+				</Event>
+				<Event Id="3652044171" Name="Play_DUB_ARENA_1_9_5" ObjectPath="\Events\VOICES_WU\Play_DUB_ARENA_1_9_5" GUID="{6C020C9C-BAF0-41AB-9564-CAFCF453F546}" DurationType="OneShot" DurationMin="2.2469792" DurationMax="2.2469792">
+					<MediaRefs>
+						<MediaRef Id="279456589"/>
+					</MediaRefs>
+					<AuxBusRefs>
+						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Voices\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}"/>
+					</AuxBusRefs>
+				</Event>
+				<Event Id="3652044168" Name="Play_DUB_ARENA_1_9_6" ObjectPath="\Events\VOICES_WU\Play_DUB_ARENA_1_9_6" GUID="{1EBCCAD9-8483-4BE3-AFBC-EA3F1550B975}" DurationType="OneShot" DurationMin="4.590271" DurationMax="4.590271">
+					<MediaRefs>
+						<MediaRef Id="411650085"/>
+					</MediaRefs>
+					<AuxBusRefs>
+						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Voices\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}"/>
+					</AuxBusRefs>
+				</Event>
+			</Events>
+		</SoundBank>
+		<SoundBank Id="3250948517" Type="User" GUID="{8CC30184-23AF-4DB5-9844-9B04DF10A650}" Language="SFX" Hash="{C0C22FAA-FE18-AD2B-F00A-E3D6A31F2792}">
 			<ObjectPath>\SoundBanks\SoundBanks_WU\FOES_Tourelle_SB</ObjectPath>
 			<ShortName>FOES_Tourelle_SB</ShortName>
 			<Path>FOES_Tourelle_SB.bnk</Path>
@@ -870,8 +1447,18 @@
 			</Media>
 			<Plugins>
 				<Custom>
+					<Plugin Id="16383166" Name="Hall_Medium_Bright (Custom)" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Hub\[Effect Slot [0]: (RoomVerb)]\Hall_Medium_Bright (Custom)" GUID="{2B8E8BE0-9B77-422E-880F-E9F637DE5BCF}" LibName="Wwise RoomVerb" LibId="7733251"/>
+					<Plugin Id="97605317" Name="Hall_Medium_Dark (Custom)" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Basement\[Effect Slot [0]: (RoomVerb)]\Hall_Medium_Dark (Custom)" GUID="{8C478E3B-5F92-4AEE-A130-8EAD54778042}" LibName="Wwise RoomVerb" LibId="7733251"/>
 					<Plugin Id="169636257" Name="Have_U_Ever_Been_Outside (Custom)" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_RFX_Arena\[Effect Slot [0]: (RoomVerb)]\Have_U_Ever_Been_Outside (Custom)" GUID="{4EC028FC-6FD5-4AC6-A71F-B2CB8F1117DF}" LibName="Wwise RoomVerb" LibId="7733251"/>
+					<Plugin Id="272452003" Name="Echoes_Linear (Custom)" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Arena\[Effect Slot [1]: (Delay)]\Echoes_Linear (Custom)" GUID="{977B3548-DD8F-4D11-AE62-48D4E99C3447}" LibName="Wwise Delay" LibId="6946819"/>
+					<Plugin Id="403656092" Name="Have_U_Ever_Been_Outside (Custom)" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Arena\[Effect Slot [0]: (RoomVerb)]\Have_U_Ever_Been_Outside (Custom)" GUID="{0C674E07-FB9A-4697-AC82-7C943290C81C}" LibName="Wwise RoomVerb" LibId="7733251"/>
+					<Plugin Id="498081942" Name="Hall_Large_Dark (Custom)" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Pyramid\[Effect Slot [0]: (RoomVerb)]\Hall_Large_Dark (Custom)" GUID="{8E1228B5-2A98-4B87-B429-B348D1C6D236}" LibName="Wwise RoomVerb" LibId="7733251"/>
+					<Plugin Id="688337969" Name="Hall_Small_Bright (Custom)" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_BlackHouses\[Effect Slot [0]: (RoomVerb)]\Hall_Small_Bright (Custom)" GUID="{846A0309-936D-4337-BF4B-E6792E655155}" LibName="Wwise RoomVerb" LibId="7733251"/>
 				</Custom>
+				<ShareSets>
+					<Plugin Id="3442768367" Name="Hall_Large_Dark" ObjectPath="\Effects\Factory Effects\RoomVerb\Halls\Hall_Large_Dark" GUID="{0F6A7D6D-131C-4650-9561-FC05F5C7A37B}" LibName="Wwise RoomVerb" LibId="7733251"/>
+					<Plugin Id="3487820010" Name="One_Tap_Half_Second" ObjectPath="\Effects\Factory Effects\Delay\One_Tap_Half_Second" GUID="{B8FE0D3B-7AAB-4344-89FE-177602B7BF19}" LibName="Wwise Delay" LibId="6946819"/>
+				</ShareSets>
 			</Plugins>
 			<Events>
 				<Event Id="305372709" Name="Play_FOES_SFX_Tourelle_Death_RC" ObjectPath="\Events\FOES_Tourelle_WU\Play_FOES_SFX_Tourelle_Death_RC" GUID="{03966878-2B14-4479-9F3B-3C317D6EB7B1}" MaxAttenuation="3000" DurationType="OneShot" DurationMin="2.8365834" DurationMax="3.2426875">
@@ -904,7 +1491,29 @@
 				<Bus Id="4056684167" Name="Master" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master" GUID="{F3A976BC-47E9-46E5-9EEC-F566BB39DBEE}"/>
 			</Busses>
 			<AuxBusses>
-				<AuxBus Id="1215931641" Name="RVB_Arena" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Arena" GUID="{54C7EBDA-4885-4850-8969-FB63BDACC807}"/>
+				<AuxBus Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Voices\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}">
+					<PluginRefs>
+						<ShareSets>
+							<PluginRef Id="3442768367"/>
+							<PluginRef Id="3487820010"/>
+						</ShareSets>
+					</PluginRefs>
+				</AuxBus>
+				<AuxBus Id="395111090" Name="RVB_BlackHouses" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_BlackHouses" GUID="{17B5E8F9-026F-4941-A027-1C0641AB0C14}">
+					<PluginRefs>
+						<Custom>
+							<PluginRef Id="688337969"/>
+						</Custom>
+					</PluginRefs>
+				</AuxBus>
+				<AuxBus Id="1215931641" Name="RVB_Arena" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Arena" GUID="{54C7EBDA-4885-4850-8969-FB63BDACC807}">
+					<PluginRefs>
+						<Custom>
+							<PluginRef Id="272452003"/>
+							<PluginRef Id="403656092"/>
+						</Custom>
+					</PluginRefs>
+				</AuxBus>
 				<AuxBus Id="1408817756" Name="RVB_RFX_Arena" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_RFX_Arena" GUID="{CC7A2F05-EE75-4E8E-B097-98A1938CB5E4}">
 					<PluginRefs>
 						<Custom>
@@ -912,10 +1521,39 @@
 						</Custom>
 					</PluginRefs>
 				</AuxBus>
-				<AuxBus Id="3571340017" Name="RVB_Hub" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Hub" GUID="{D499EBE4-F26A-48E5-B89D-1F7C43D829E3}"/>
+				<AuxBus Id="2344250611" Name="RVB_Basement" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Basement" GUID="{BF09F5DA-71E8-4CAC-B0EB-19A1C29389BA}">
+					<PluginRefs>
+						<Custom>
+							<PluginRef Id="97605317"/>
+						</Custom>
+					</PluginRefs>
+				</AuxBus>
+				<AuxBus Id="3571340017" Name="RVB_Hub" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Hub" GUID="{D499EBE4-F26A-48E5-B89D-1F7C43D829E3}">
+					<PluginRefs>
+						<Custom>
+							<PluginRef Id="16383166"/>
+						</Custom>
+					</PluginRefs>
+				</AuxBus>
+				<AuxBus Id="3670521640" Name="RVB_Pyramid" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Pyramid" GUID="{668EA0D2-771E-452F-B241-11793F9755B0}">
+					<PluginRefs>
+						<Custom>
+							<PluginRef Id="498081942"/>
+						</Custom>
+					</PluginRefs>
+				</AuxBus>
 			</AuxBusses>
+			<StateGroups>
+				<StateGroup Id="3929688590" Name="InsideOutside" ObjectPath="\States\Default Work Unit\InsideOutside" GUID="{2CE28D5C-F27B-42D7-9D91-1905B53C4C3C}">
+					<States>
+						<State Id="645492555" Name="Out" ObjectPath="\States\Default Work Unit\InsideOutside\Out" GUID="{C04B12A4-672A-478D-A191-EED95AAB3C6D}"/>
+						<State Id="748895195" Name="None" ObjectPath="\States\Default Work Unit\InsideOutside\None" GUID="{EEC88170-01B2-4B8A-87BF-B7151380ADB4}"/>
+						<State Id="1752637612" Name="In" ObjectPath="\States\Default Work Unit\InsideOutside\In" GUID="{BFBB05BE-0B19-41C7-B759-C85C0C60B1D8}"/>
+					</States>
+				</StateGroup>
+			</StateGroups>
 		</SoundBank>
-		<SoundBank Id="3256182613" Type="User" GUID="{9DC5CBA4-02D0-4677-A565-21ECA413E694}" Language="SFX" Hash="{59009633-8F0C-DA94-B70D-F4CCA6263F72}">
+		<SoundBank Id="3256182613" Type="User" GUID="{9DC5CBA4-02D0-4677-A565-21ECA413E694}" Language="SFX" Hash="{4AEBC43D-6B16-64C7-D2A9-D14964C343C3}">
 			<ObjectPath>\SoundBanks\SoundBanks_WU\AMB_SB</ObjectPath>
 			<ShortName>AMB_SB</ShortName>
 			<Path>AMB_SB.bnk</Path>
@@ -1103,8 +1741,18 @@
 			</Media>
 			<Plugins>
 				<Custom>
+					<Plugin Id="16383166" Name="Hall_Medium_Bright (Custom)" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Hub\[Effect Slot [0]: (RoomVerb)]\Hall_Medium_Bright (Custom)" GUID="{2B8E8BE0-9B77-422E-880F-E9F637DE5BCF}" LibName="Wwise RoomVerb" LibId="7733251"/>
+					<Plugin Id="97605317" Name="Hall_Medium_Dark (Custom)" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Basement\[Effect Slot [0]: (RoomVerb)]\Hall_Medium_Dark (Custom)" GUID="{8C478E3B-5F92-4AEE-A130-8EAD54778042}" LibName="Wwise RoomVerb" LibId="7733251"/>
 					<Plugin Id="169636257" Name="Have_U_Ever_Been_Outside (Custom)" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_RFX_Arena\[Effect Slot [0]: (RoomVerb)]\Have_U_Ever_Been_Outside (Custom)" GUID="{4EC028FC-6FD5-4AC6-A71F-B2CB8F1117DF}" LibName="Wwise RoomVerb" LibId="7733251"/>
+					<Plugin Id="272452003" Name="Echoes_Linear (Custom)" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Arena\[Effect Slot [1]: (Delay)]\Echoes_Linear (Custom)" GUID="{977B3548-DD8F-4D11-AE62-48D4E99C3447}" LibName="Wwise Delay" LibId="6946819"/>
+					<Plugin Id="403656092" Name="Have_U_Ever_Been_Outside (Custom)" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Arena\[Effect Slot [0]: (RoomVerb)]\Have_U_Ever_Been_Outside (Custom)" GUID="{0C674E07-FB9A-4697-AC82-7C943290C81C}" LibName="Wwise RoomVerb" LibId="7733251"/>
+					<Plugin Id="498081942" Name="Hall_Large_Dark (Custom)" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Pyramid\[Effect Slot [0]: (RoomVerb)]\Hall_Large_Dark (Custom)" GUID="{8E1228B5-2A98-4B87-B429-B348D1C6D236}" LibName="Wwise RoomVerb" LibId="7733251"/>
+					<Plugin Id="688337969" Name="Hall_Small_Bright (Custom)" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_BlackHouses\[Effect Slot [0]: (RoomVerb)]\Hall_Small_Bright (Custom)" GUID="{846A0309-936D-4337-BF4B-E6792E655155}" LibName="Wwise RoomVerb" LibId="7733251"/>
 				</Custom>
+				<ShareSets>
+					<Plugin Id="3442768367" Name="Hall_Large_Dark" ObjectPath="\Effects\Factory Effects\RoomVerb\Halls\Hall_Large_Dark" GUID="{0F6A7D6D-131C-4650-9561-FC05F5C7A37B}" LibName="Wwise RoomVerb" LibId="7733251"/>
+					<Plugin Id="3487820010" Name="One_Tap_Half_Second" ObjectPath="\Effects\Factory Effects\Delay\One_Tap_Half_Second" GUID="{B8FE0D3B-7AAB-4344-89FE-177602B7BF19}" LibName="Wwise Delay" LibId="6946819"/>
+				</ShareSets>
 			</Plugins>
 			<Events>
 				<Event Id="3817670132" Name="Play_AMB_Arena_Crowd" ObjectPath="\Events\AMB_WU\Play_AMB_Arena_Crowd" GUID="{044D5574-12FD-4A7D-829F-E12D304EBC61}" MaxAttenuation="3000" DurationType="Infinite">
@@ -1177,7 +1825,29 @@
 				<Bus Id="4056684167" Name="Master" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master" GUID="{F3A976BC-47E9-46E5-9EEC-F566BB39DBEE}"/>
 			</Busses>
 			<AuxBusses>
-				<AuxBus Id="1215931641" Name="RVB_Arena" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Arena" GUID="{54C7EBDA-4885-4850-8969-FB63BDACC807}"/>
+				<AuxBus Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Voices\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}">
+					<PluginRefs>
+						<ShareSets>
+							<PluginRef Id="3442768367"/>
+							<PluginRef Id="3487820010"/>
+						</ShareSets>
+					</PluginRefs>
+				</AuxBus>
+				<AuxBus Id="395111090" Name="RVB_BlackHouses" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_BlackHouses" GUID="{17B5E8F9-026F-4941-A027-1C0641AB0C14}">
+					<PluginRefs>
+						<Custom>
+							<PluginRef Id="688337969"/>
+						</Custom>
+					</PluginRefs>
+				</AuxBus>
+				<AuxBus Id="1215931641" Name="RVB_Arena" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Arena" GUID="{54C7EBDA-4885-4850-8969-FB63BDACC807}">
+					<PluginRefs>
+						<Custom>
+							<PluginRef Id="272452003"/>
+							<PluginRef Id="403656092"/>
+						</Custom>
+					</PluginRefs>
+				</AuxBus>
 				<AuxBus Id="1408817756" Name="RVB_RFX_Arena" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_RFX_Arena" GUID="{CC7A2F05-EE75-4E8E-B097-98A1938CB5E4}">
 					<PluginRefs>
 						<Custom>
@@ -1185,15 +1855,44 @@
 						</Custom>
 					</PluginRefs>
 				</AuxBus>
-				<AuxBus Id="3571340017" Name="RVB_Hub" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Hub" GUID="{D499EBE4-F26A-48E5-B89D-1F7C43D829E3}"/>
+				<AuxBus Id="2344250611" Name="RVB_Basement" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Basement" GUID="{BF09F5DA-71E8-4CAC-B0EB-19A1C29389BA}">
+					<PluginRefs>
+						<Custom>
+							<PluginRef Id="97605317"/>
+						</Custom>
+					</PluginRefs>
+				</AuxBus>
+				<AuxBus Id="3571340017" Name="RVB_Hub" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Hub" GUID="{D499EBE4-F26A-48E5-B89D-1F7C43D829E3}">
+					<PluginRefs>
+						<Custom>
+							<PluginRef Id="16383166"/>
+						</Custom>
+					</PluginRefs>
+				</AuxBus>
+				<AuxBus Id="3670521640" Name="RVB_Pyramid" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Pyramid" GUID="{668EA0D2-771E-452F-B241-11793F9755B0}">
+					<PluginRefs>
+						<Custom>
+							<PluginRef Id="498081942"/>
+						</Custom>
+					</PluginRefs>
+				</AuxBus>
 			</AuxBusses>
+			<StateGroups>
+				<StateGroup Id="3929688590" Name="InsideOutside" ObjectPath="\States\Default Work Unit\InsideOutside" GUID="{2CE28D5C-F27B-42D7-9D91-1905B53C4C3C}">
+					<States>
+						<State Id="645492555" Name="Out" ObjectPath="\States\Default Work Unit\InsideOutside\Out" GUID="{C04B12A4-672A-478D-A191-EED95AAB3C6D}"/>
+						<State Id="748895195" Name="None" ObjectPath="\States\Default Work Unit\InsideOutside\None" GUID="{EEC88170-01B2-4B8A-87BF-B7151380ADB4}"/>
+						<State Id="1752637612" Name="In" ObjectPath="\States\Default Work Unit\InsideOutside\In" GUID="{BFBB05BE-0B19-41C7-B759-C85C0C60B1D8}"/>
+					</States>
+				</StateGroup>
+			</StateGroups>
 		</SoundBank>
-		<SoundBank Id="3896292454" Type="User" GUID="{459D1F67-52BD-4FA1-B846-B8F3A50C2C5F}" Language="SFX" Hash="{02BE1600-7C47-6A2A-12CF-4A10D9F2CF3F}">
+		<SoundBank Id="3896292454" Type="User" GUID="{459D1F67-52BD-4FA1-B846-B8F3A50C2C5F}" Language="SFX" Hash="{B571FF43-03E3-0F51-E76C-22555D138B0E}">
 			<ObjectPath>\SoundBanks\SoundBanks_WU\SFX_SB</ObjectPath>
 			<ShortName>SFX_SB</ShortName>
 			<Path>SFX_SB.bnk</Path>
 		</SoundBank>
-		<SoundBank Id="4155742227" Type="User" GUID="{D2378E68-5468-4849-BC4A-8FC6D8A3BF29}" Language="SFX" Hash="{8B83ED19-30EC-C727-F297-C7768A285F71}">
+		<SoundBank Id="4155742227" Type="User" GUID="{D2378E68-5468-4849-BC4A-8FC6D8A3BF29}" Language="SFX" Hash="{3B2DB062-4BBA-A159-2E6F-D6643CD23CDD}">
 			<ObjectPath>\SoundBanks\SoundBanks_WU\GPE_SB</ObjectPath>
 			<ShortName>GPE_SB</ShortName>
 			<Path>GPE_SB.bnk</Path>
@@ -1278,5 +1977,5 @@
 			</Events>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{72D5BE83-10DB-B164-D752-9BE0411F7C07}</FileHash>
+	<FileHash>{D00104DD-78BA-591D-15C2-D4B195BA507F}</FileHash>
 </SoundBanksInfo>
