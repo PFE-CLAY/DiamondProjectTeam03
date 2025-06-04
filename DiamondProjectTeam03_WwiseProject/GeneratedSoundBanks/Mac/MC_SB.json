@@ -10,7 +10,7 @@
     "Type": "User",
     "GUID": "{ADC2D189-6608-4828-BC9C-6EF6F90834DB}",
     "Language": "SFX",
-    "Hash": "{E8CEF62C-1D06-8949-2AF8-C3703931A98B}",
+    "Hash": "{12E31BCF-E69B-C54E-94D6-D1D64329FAED}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\MC_SB",
     "ShortName": "MC_SB",
     "Path": "MC_SB.bnk",
@@ -1454,6 +1454,12 @@
         "GUID": "{EEC88170-01B2-4B8A-87BF-B7151380ADB4}"
        },
        {
+        "Id": "1051960422",
+        "Name": "TargetInsidePyramid",
+        "ObjectPath": "\\States\\Default Work Unit\\InsideOutside\\TargetInsidePyramid",
+        "GUID": "{1E0BA403-7723-4863-B8DD-93A6A3CA72ED}"
+       },
+       {
         "Id": "1752637612",
         "Name": "In",
         "ObjectPath": "\\States\\Default Work Unit\\InsideOutside\\In",
@@ -1492,6 +1498,6 @@
     ]
    }
   ],
-  "FileHash": "{AE8FFE8B-7D19-5F6E-5364-0D10420B621D}"
+  "FileHash": "{2C44AA58-2097-8655-7940-7FB0A00CCEAB}"
  }
 }

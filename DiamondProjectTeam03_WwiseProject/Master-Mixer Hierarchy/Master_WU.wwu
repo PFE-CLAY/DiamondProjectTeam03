@@ -380,6 +380,10 @@
 											</PropertyList>
 										</CustomState>
 									</CustomState>
+									<CustomState>
+										<StateRef Name="TargetInsidePyramid" ID="{1E0BA403-7723-4863-B8DD-93A6A3CA72ED}"/>
+										<CustomState Name="" ID="{84F29390-F399-4B49-835E-B08113A6509C}" ShortID="805666453"/>
+									</CustomState>
 								</CustomStateList>
 							</StateInfo>
 							<ObjectLists>
@@ -401,6 +405,10 @@
 														<CustomState>
 															<StateRef Name="Out" ID="{C04B12A4-672A-478D-A191-EED95AAB3C6D}"/>
 															<CustomState Name="" ID="{C527CD77-A565-4D89-A677-4F5D167A6604}" ShortID="429271467"/>
+														</CustomState>
+														<CustomState>
+															<StateRef Name="TargetInsidePyramid" ID="{1E0BA403-7723-4863-B8DD-93A6A3CA72ED}"/>
+															<CustomState Name="" ID="{6DC1F058-D3AB-4AAA-A5F1-EA3853BD8413}" ShortID="888449890"/>
 														</CustomState>
 													</CustomStateList>
 												</StateInfo>
@@ -424,6 +432,10 @@
 														<CustomState>
 															<StateRef Name="Out" ID="{C04B12A4-672A-478D-A191-EED95AAB3C6D}"/>
 															<CustomState Name="" ID="{90AF01B4-5893-4D89-8CBC-442D322D55FA}" ShortID="1027270272"/>
+														</CustomState>
+														<CustomState>
+															<StateRef Name="TargetInsidePyramid" ID="{1E0BA403-7723-4863-B8DD-93A6A3CA72ED}"/>
+															<CustomState Name="" ID="{64686CEE-CD07-4F83-BA71-B2B09C88875D}" ShortID="872384879"/>
 														</CustomState>
 													</CustomStateList>
 												</StateInfo>
