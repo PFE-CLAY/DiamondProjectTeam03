@@ -440,7 +440,7 @@
 				</StateGroup>
 			</StateGroups>
 		</SoundBank>
-		<SoundBank Id="1956625499" Type="User" GUID="{ADC2D189-6608-4828-BC9C-6EF6F90834DB}" Language="SFX" Hash="{12E31BCF-E69B-C54E-94D6-D1D64329FAED}">
+		<SoundBank Id="1956625499" Type="User" GUID="{ADC2D189-6608-4828-BC9C-6EF6F90834DB}" Language="SFX" Hash="{EECCDF9A-5917-9CCB-5047-CC62B536CAB8}">
 			<ObjectPath>\SoundBanks\SoundBanks_WU\MC_SB</ObjectPath>
 			<ShortName>MC_SB</ShortName>
 			<Path>MC_SB.bnk</Path>
@@ -448,6 +448,10 @@
 				<File Id="16112564" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\SP\MC_FT_Concrete_Land_01.wav</ShortName>
 					<CachePath>SFX/AMB/SP/MC_FT_Concrete_Land_01_818F3B66.wem</CachePath>
+				</File>
+				<File Id="17784281" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SFX\MC_GetHit.wav</ShortName>
+					<CachePath>SFX/SFX/MC_GetHit_818F3B66.wem</CachePath>
 				</File>
 				<File Id="34141530" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\SP\MC_FT_Sand_Jump_01.wav</ShortName>
@@ -944,6 +948,11 @@
 							</MediaRefs>
 						</SwitchContainer>
 					</SwitchContainers>
+				</Event>
+				<Event Id="950272542" Name="Play_MC_GetHit" ObjectPath="\Events\MC_WU\Play_MC_GetHit" GUID="{DFDAAAFE-1AD5-4D67-9145-D4089C5F1FA9}" DurationType="OneShot" DurationMin="1.4506171" DurationMax="2.525671">
+					<MediaRefs>
+						<MediaRef Id="17784281"/>
+					</MediaRefs>
 				</Event>
 				<Event Id="1177297501" Name="Play_MC_SFX_Gun_Shoot_RC" ObjectPath="\Events\MC_WU\Play_MC_SFX_Gun_Shoot_RC" GUID="{19EDAAA1-DF79-4328-9566-97F28CD19D08}" DurationType="OneShot" DurationMin="1.1600068" DurationMax="2.3467753">
 					<MediaRefs>
@@ -2217,5 +2226,5 @@
 			</Events>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{7918F968-1C48-B45F-AE62-11D0DC0B5A2D}</FileHash>
+	<FileHash>{F5C9B035-5886-2159-3FA9-3B453503AF0F}</FileHash>
 </SoundBanksInfo>

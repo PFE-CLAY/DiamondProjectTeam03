@@ -1242,7 +1242,7 @@
     "Type": "User",
     "GUID": "{ADC2D189-6608-4828-BC9C-6EF6F90834DB}",
     "Language": "SFX",
-    "Hash": "{12E31BCF-E69B-C54E-94D6-D1D64329FAED}",
+    "Hash": "{EECCDF9A-5917-9CCB-5047-CC62B536CAB8}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\MC_SB",
     "ShortName": "MC_SB",
     "Path": "MC_SB.bnk",
@@ -1254,6 +1254,14 @@
       "Location": "Memory",
       "ShortName": "AMB\\SP\\MC_FT_Concrete_Land_01.wav",
       "CachePath": "SFX/AMB/SP/MC_FT_Concrete_Land_01_818F3B66.wem"
+     },
+     {
+      "Id": "17784281",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "SFX\\MC_GetHit.wav",
+      "CachePath": "SFX/SFX/MC_GetHit_818F3B66.wem"
      },
      {
       "Id": "34141530",
@@ -2411,6 +2419,20 @@
           "Id": "993891927"
          }
         ]
+       }
+      ]
+     },
+     {
+      "Id": "950272542",
+      "Name": "Play_MC_GetHit",
+      "ObjectPath": "\\Events\\MC_WU\\Play_MC_GetHit",
+      "GUID": "{DFDAAAFE-1AD5-4D67-9145-D4089C5F1FA9}",
+      "DurationType": "OneShot",
+      "DurationMin": "1.4506171",
+      "DurationMax": "2.525671",
+      "MediaRefs": [
+       {
+        "Id": "17784281"
        }
       ]
      },
@@ -5709,6 +5731,6 @@
     ]
    }
   ],
-  "FileHash": "{7BC27032-EC57-1AB2-172C-98D2DA31C99F}"
+  "FileHash": "{824E0707-BBFC-502E-2EFB-2D225FDBFA80}"
  }
 }
