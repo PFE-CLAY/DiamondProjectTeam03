@@ -41,7 +41,7 @@
 								</Property>
 								<Property Name="Volume" Type="Real64">
 									<ValueList>
-										<Value>1</Value>
+										<Value>4</Value>
 									</ValueList>
 									<ModifierList>
 										<ModifierInfo>
@@ -606,9 +606,13 @@
 				</ActorMixer>
 				<Sound Name="FOES_SFX_Projectil" ID="{D3BEFEBA-0EE3-431C-9B3C-9E9E434DFA27}" ShortID="568143545">
 					<PropertyList>
+						<Property Name="3DSpatialization" Type="int16" Value="2"/>
 						<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
 					</PropertyList>
 					<ReferenceList>
+						<Reference Name="Attenuation">
+							<ObjectRef Name="ATT_projectil" ID="{495272BA-12A1-4BE5-9B2A-9D612A13AB55}" WorkUnitID="{80E6C39A-0B4B-410F-BBC0-DD9D6BE12A5B}"/>
+						</Reference>
 						<Reference Name="Conversion">
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
 						</Reference>
@@ -646,7 +650,7 @@
 														<PointList>
 															<Point>
 																<XPos>0</XPos>
-																<YPos>-4800</YPos>
+																<YPos>39</YPos>
 																<Flags>5</Flags>
 															</Point>
 															<Point>
