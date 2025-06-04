@@ -2360,6 +2360,28 @@
 								<ActiveSource Name="SFX_Door_Pyramid_Open" ID="{A256B736-376E-440B-8174-676AB195196C}" Platform="Linked"/>
 							</ActiveSourceList>
 						</Sound>
+						<Sound Name="SFX_Button_Backstage" ID="{72BF121A-3099-4017-8DD7-FA9711022C5D}" ShortID="183715551">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D02282EE-6893-403D-9438-D481AB659EA3}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="SFX_Button_Backstage" ID="{C407DFE2-9309-45BA-8275-993B085D239E}">
+									<Language>SFX</Language>
+									<AudioFile>SFX\SFX_Button_Backstage.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="756613996"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="SFX_Button_Backstage" ID="{C407DFE2-9309-45BA-8275-993B085D239E}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
 					</ChildrenList>
 				</ActorMixer>
 			</ChildrenList>
