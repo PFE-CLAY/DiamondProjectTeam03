@@ -98,7 +98,9 @@
 						<Property Name="Color" Type="int16" Value="17"/>
 						<Property Name="OverrideColor" Type="bool" Value="True"/>
 					</PropertyList>
-					<ObjectInclusionList/>
+					<ObjectInclusionList>
+						<ObjectRef Name="SFX_WU" ID="{16CB7426-B996-4AC9-A2E3-C140ABEA16E4}" WorkUnitID="{16CB7426-B996-4AC9-A2E3-C140ABEA16E4}" Origin="Manual" Filter="7"/>
+					</ObjectInclusionList>
 					<ObjectExclusionList/>
 					<GameSyncExclusionList/>
 				</SoundBank>
