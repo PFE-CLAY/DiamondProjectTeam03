@@ -687,6 +687,43 @@
 						<ActiveSource Name="FOES_SFX_Projectil" ID="{276820C7-615F-471A-8F09-7F6D76E04632}" Platform="Linked"/>
 					</ActiveSourceList>
 				</Sound>
+				<Sound Name="MC_GetHit" ID="{5D617966-FDDA-44AC-9F6F-03A2FAD68554}" ShortID="911885635">
+					<PropertyList>
+						<Property Name="Pitch" Type="int32">
+							<ModifierList>
+								<ModifierInfo>
+									<Modifier Name="" ID="{1A1DA9FA-0D08-4C3B-963F-CD4D6EE7B134}">
+										<PropertyList>
+											<Property Name="Enabled" Type="bool" Value="True"/>
+											<Property Name="Max" Type="Real64" Value="556"/>
+											<Property Name="Min" Type="Real64" Value="-404"/>
+										</PropertyList>
+									</Modifier>
+								</ModifierInfo>
+							</ModifierList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D02282EE-6893-403D-9438-D481AB659EA3}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="MC_GetHit" ID="{238C65A8-F788-4155-B70C-430A1DB2974F}">
+							<Language>SFX</Language>
+							<AudioFile>SFX\MC_GetHit.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="17784281"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="MC_GetHit" ID="{238C65A8-F788-4155-B70C-430A1DB2974F}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
 			</ChildrenList>
 		</WorkUnit>
 	</AudioObjects>
