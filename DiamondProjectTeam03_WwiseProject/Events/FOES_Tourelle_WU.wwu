@@ -32,6 +32,31 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="Play_FOES_SFX_Projectil" ID="{B21D01D5-2B89-4090-9F00-456FE3EF49C7}">
+					<ChildrenList>
+						<Action Name="" ID="{863DEDD0-33F3-4D56-923E-F4A54D9AF346}" ShortID="848145948">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="FOES_SFX_Projectil" ID="{D3BEFEBA-0EE3-431C-9B3C-9E9E434DFA27}" WorkUnitID="{1C36EC12-43A5-4F7F-BD34-ADCCF4CCEFF3}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Stop_FOES_SFX_Projectil" ID="{DD66D73B-753F-4CEE-9201-B7AEDEE761D6}">
+					<ChildrenList>
+						<Action Name="" ID="{115496B5-884A-46BB-8F52-DFA5BC09ACC6}" ShortID="435750330">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="FOES_SFX_Projectil" ID="{D3BEFEBA-0EE3-431C-9B3C-9E9E434DFA27}" WorkUnitID="{1C36EC12-43A5-4F7F-BD34-ADCCF4CCEFF3}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>
