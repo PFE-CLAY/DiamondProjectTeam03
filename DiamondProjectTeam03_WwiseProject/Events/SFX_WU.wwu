@@ -40,6 +40,38 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="Play_SFX_HourGlass_Idle_LP" ID="{0994537E-EF34-4F9C-A1D4-F9FFCF6E9CD1}">
+					<ChildrenList>
+						<Action Name="" ID="{9ED1F5A7-0210-422C-B21A-6465902BF796}" ShortID="57268842">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="SFX_HourGlass_Idle_LP" ID="{825EA0A0-DE0C-48E0-87D4-C6658E4C5FA2}" WorkUnitID="{5DFA8BAE-0AEA-4A3F-92EC-FBABE50597A1}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{E7B1E2D8-71E4-4977-B0C0-4A1EAE6D5BFC}" ShortID="638783412">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="36"/>
+								<Property Name="SeekPercent" Type="Real64" Value="100">
+									<ModifierList>
+										<ModifierInfo>
+											<Modifier Name="" ID="{69B9C60D-95AA-48AF-AA99-9AA9A2BDFF04}">
+												<PropertyList>
+													<Property Name="Enabled" Type="bool" Value="True"/>
+												</PropertyList>
+											</Modifier>
+										</ModifierInfo>
+									</ModifierList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="SFX_HourGlass_Idle_LP" ID="{825EA0A0-DE0C-48E0-87D4-C6658E4C5FA2}" WorkUnitID="{5DFA8BAE-0AEA-4A3F-92EC-FBABE50597A1}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

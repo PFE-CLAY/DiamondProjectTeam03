@@ -10,7 +10,7 @@
     "Type": "User",
     "GUID": "{459D1F67-52BD-4FA1-B846-B8F3A50C2C5F}",
     "Language": "SFX",
-    "Hash": "{36FAA1A6-83AE-65F6-E381-35439058CD1D}",
+    "Hash": "{7E3B5390-4075-F55C-E8D1-5E6044DD92BC}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\SFX_SB",
     "ShortName": "SFX_SB",
     "Path": "SFX_SB.bnk",
@@ -22,6 +22,14 @@
       "Location": "Memory",
       "ShortName": "MC\\SFX_Door_Pyramid_Open.wav",
       "CachePath": "SFX/MC/SFX_Door_Pyramid_Open_818F3B66.wem"
+     },
+     {
+      "Id": "794556847",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "MC\\SFX_HourGlass_Idle_LP.wav",
+      "CachePath": "SFX/MC/SFX_HourGlass_Idle_LP_FBC78EF0.wem"
      },
      {
       "Id": "862611700",
@@ -84,10 +92,23 @@
         "Id": "1049815799"
        }
       ]
+     },
+     {
+      "Id": "2563465684",
+      "Name": "Play_SFX_HourGlass_Idle_LP",
+      "ObjectPath": "\\Events\\SFX_WU\\Play_SFX_HourGlass_Idle_LP",
+      "GUID": "{0994537E-EF34-4F9C-A1D4-F9FFCF6E9CD1}",
+      "MaxAttenuation": "150000",
+      "DurationType": "Infinite",
+      "MediaRefs": [
+       {
+        "Id": "794556847"
+       }
+      ]
      }
     ]
    }
   ],
-  "FileHash": "{FFB61324-CCC5-2F36-82CF-7BC0CCFD8A34}"
+  "FileHash": "{985F630B-8B8D-7AA2-E1B0-E7D3C674CB6A}"
  }
 }
