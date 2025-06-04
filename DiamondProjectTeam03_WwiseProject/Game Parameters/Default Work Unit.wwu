@@ -9,6 +9,12 @@
 						<Property Name="Max" Type="Real64" Value="25"/>
 					</PropertyList>
 				</GameParameter>
+				<GameParameter Name="RTPC_Tourelle_Projectil" ID="{00C509F2-F7BB-46D5-A5C8-1D7FA60484C0}">
+					<PropertyList>
+						<Property Name="BindToBuiltInParam" Type="int16" Value="1"/>
+						<Property Name="InitialValue" Type="Real64" Value="0"/>
+					</PropertyList>
+				</GameParameter>
 			</ChildrenList>
 		</WorkUnit>
 	</GameParameters>
