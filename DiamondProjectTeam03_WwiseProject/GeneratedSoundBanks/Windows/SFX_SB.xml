@@ -1,11 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="16" SoundBankVersion="150">
 	<SoundBanks>
-		<SoundBank Id="3896292454" Type="User" GUID="{459D1F67-52BD-4FA1-B846-B8F3A50C2C5F}" Language="SFX" Hash="{B571FF43-03E3-0F51-E76C-22555D138B0E}">
+		<SoundBank Id="3896292454" Type="User" GUID="{459D1F67-52BD-4FA1-B846-B8F3A50C2C5F}" Language="SFX" Hash="{36FAA1A6-83AE-65F6-E381-35439058CD1D}">
 			<ObjectPath>\SoundBanks\SoundBanks_WU\SFX_SB</ObjectPath>
 			<ShortName>SFX_SB</ShortName>
 			<Path>SFX_SB.bnk</Path>
+			<Media>
+				<File Id="482790053" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>MC\SFX_Door_Pyramid_Open.wav</ShortName>
+					<CachePath>SFX/MC/SFX_Door_Pyramid_Open_818F3B66.wem</CachePath>
+				</File>
+				<File Id="862611700" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>MC\SFX_Door_Pyramid.wav</ShortName>
+					<CachePath>SFX/MC/SFX_Door_Pyramid_B3EF6B4D.wem</CachePath>
+				</File>
+				<File Id="1049815799" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>MC\SFX_HourGlass_Destruction_2D.wav</ShortName>
+					<CachePath>SFX/MC/SFX_HourGlass_Destruction_2D_818F3B66.wem</CachePath>
+				</File>
+			</Media>
+			<Events>
+				<Event Id="1447435678" Name="Play_SFX_Door_Pyramid_Close" ObjectPath="\Events\SFX_WU\Play_SFX_Door_Pyramid_Close" GUID="{1829F329-FCFF-4E10-8065-7D10B11DDA83}" MaxAttenuation="2000" DurationType="OneShot" DurationMin="5.4468756" DurationMax="5.4468756">
+					<MediaRefs>
+						<MediaRef Id="862611700"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="582941242" Name="Play_SFX_Door_Pyramid_Open" ObjectPath="\Events\SFX_WU\Play_SFX_Door_Pyramid_Open" GUID="{03DAD17B-66BC-4B93-B7D8-6E1B8239766D}" MaxAttenuation="2000" DurationType="OneShot" DurationMin="4.623" DurationMax="4.623">
+					<MediaRefs>
+						<MediaRef Id="482790053"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="2496075354" Name="Play_SFX_HourGlass_Destruction_2D" ObjectPath="\Events\SFX_WU\Play_SFX_HourGlass_Destruction_2D" GUID="{FDD8C402-5336-447B-B1DA-70926B131299}" DurationType="OneShot" DurationMin="18.631792" DurationMax="18.631792">
+					<MediaRefs>
+						<MediaRef Id="1049815799"/>
+					</MediaRefs>
+				</Event>
+			</Events>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{0E57CF68-2197-5100-1642-B3FB1CB61DC8}</FileHash>
+	<FileHash>{2787FCB1-4265-A069-2BBF-45A6DE9FCEB0}</FileHash>
 </SoundBanksInfo>
