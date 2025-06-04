@@ -36,7 +36,7 @@ public:
 	void OnCollision(AActor* OverlappedActor, AActor* OtherActor);
 
 	UFUNCTION(BlueprintImplementableEvent)
-	void OnDestroyed();
+	void OnProjectileDestroyed();
 
 	
 };
