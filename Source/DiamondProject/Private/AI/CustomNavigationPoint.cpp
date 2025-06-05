@@ -30,12 +30,13 @@ void ACustomNavigationPoint::Tick(float DeltaTime)
 
 void ACustomNavigationPoint::	PointEffect()
 {
-	
+	if(bShouldPlayDialogue) OnPlayDialogue();
 	switch (PointType){
 	case EPointType::None:
 		break;
 	case EPointType::Crouch:
-		Allied->OnCrouch();
+		if(bShouldStayCrouched) Allied->OnCrouch();
+		else Allied->OnCrouchTimeLimited(TimeToWaitCrouched);
 		break;
 	case EPointType::Choice:
 		Allied->GetNewPath(PathArray[WantedPathIndex]);
