@@ -9,6 +9,7 @@
 #include "CustomNavigationPoint.generated.h"
 
 class APath;
+class UAkAudioEvent;
 
 UCLASS()
 class DIAMONDPROJECT_API ACustomNavigationPoint : public AActor
@@ -28,6 +29,12 @@ public:
 	
 	UPROPERTY(EditAnywhere)
 	bool bShouldWait;
+
+	UPROPERTY(EditAnywhere)
+	bool bShouldPlayDialogue;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, meta=(EditCondition="bShouldPlaySound"))
+	UAkAudioEvent* Dialogue;
 
 	UPROPERTY(EditAnywhere, meta=(EditCondition="bShouldWait"))
 	float TimeToWait;
@@ -56,5 +63,7 @@ public:
 	UFUNCTION()
 	void PointEffect();
 
+	UFUNCTION(BlueprintImplementableEvent)
+	void OnPlayDialogue();
 	
 };

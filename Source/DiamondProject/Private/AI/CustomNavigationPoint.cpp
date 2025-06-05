@@ -30,7 +30,7 @@ void ACustomNavigationPoint::Tick(float DeltaTime)
 
 void ACustomNavigationPoint::	PointEffect()
 {
-	
+	if(bShouldPlayDialogue) OnPlayDialogue();
 	switch (PointType){
 	case EPointType::None:
 		break;
