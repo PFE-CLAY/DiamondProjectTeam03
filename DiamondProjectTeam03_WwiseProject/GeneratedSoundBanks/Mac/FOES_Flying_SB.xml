@@ -144,11 +144,12 @@
 					<States>
 						<State Id="645492555" Name="Out" ObjectPath="\States\Default Work Unit\InsideOutside\Out" GUID="{C04B12A4-672A-478D-A191-EED95AAB3C6D}"/>
 						<State Id="748895195" Name="None" ObjectPath="\States\Default Work Unit\InsideOutside\None" GUID="{EEC88170-01B2-4B8A-87BF-B7151380ADB4}"/>
+						<State Id="1051960422" Name="TargetInsidePyramid" ObjectPath="\States\Default Work Unit\InsideOutside\TargetInsidePyramid" GUID="{1E0BA403-7723-4863-B8DD-93A6A3CA72ED}"/>
 						<State Id="1752637612" Name="In" ObjectPath="\States\Default Work Unit\InsideOutside\In" GUID="{BFBB05BE-0B19-41C7-B759-C85C0C60B1D8}"/>
 					</States>
 				</StateGroup>
 			</StateGroups>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{7957EE88-825A-6A59-8EBD-DD0B2CAFC32C}</FileHash>
+	<FileHash>{1C06F309-82EF-1C87-660E-7295E009A563}</FileHash>
 </SoundBanksInfo>

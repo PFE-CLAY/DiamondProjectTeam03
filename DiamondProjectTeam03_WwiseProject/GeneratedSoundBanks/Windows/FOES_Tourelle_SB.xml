@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="16" SoundBankVersion="150">
 	<SoundBanks>
-		<SoundBank Id="3250948517" Type="User" GUID="{8CC30184-23AF-4DB5-9844-9B04DF10A650}" Language="SFX" Hash="{CA0ADCC1-E5DC-FFBA-720B-D32E6D3A6F47}">
+		<SoundBank Id="3250948517" Type="User" GUID="{8CC30184-23AF-4DB5-9844-9B04DF10A650}" Language="SFX" Hash="{7D2DE924-4B4C-AECE-FFC7-0B2ECE9408EE}">
 			<ObjectPath>\SoundBanks\SoundBanks_WU\FOES_Tourelle_SB</ObjectPath>
 			<ShortName>FOES_Tourelle_SB</ShortName>
 			<Path>FOES_Tourelle_SB.bnk</Path>
@@ -22,21 +22,29 @@
 					<ShortName>FOES_SFX_Tourelle_Shoot_01.wav</ShortName>
 					<CachePath>SFX/FOES_SFX_Tourelle_Shoot_01_818F3B66.wem</CachePath>
 				</File>
-				<File Id="427986118" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>AMB\RFX\FOES_SFX_Tourelle_Death_01.wav</ShortName>
-					<CachePath>SFX/AMB/RFX/FOES_SFX_Tourelle_Death_01_818F3B66.wem</CachePath>
-				</File>
 				<File Id="515409144" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>FOES_SFX_Tourelle_Shoot_03.wav</ShortName>
 					<CachePath>SFX/FOES_SFX_Tourelle_Shoot_03_818F3B66.wem</CachePath>
 				</File>
-				<File Id="705394855" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>AMB\RFX\FOES_SFX_Tourelle_Death_03.wav</ShortName>
-					<CachePath>SFX/AMB/RFX/FOES_SFX_Tourelle_Death_03_818F3B66.wem</CachePath>
+				<File Id="546468767" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SFX\FOES_SFX_Tourelle_Death_04.wav</ShortName>
+					<CachePath>SFX/SFX/FOES_SFX_Tourelle_Death_04_818F3B66.wem</CachePath>
 				</File>
-				<File Id="1008799864" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>AMB\RFX\FOES_SFX_Tourelle_Death_02.wav</ShortName>
-					<CachePath>SFX/AMB/RFX/FOES_SFX_Tourelle_Death_02_818F3B66.wem</CachePath>
+				<File Id="726017957" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SFX\FOES_SFX_Tourelle_Death_01.wav</ShortName>
+					<CachePath>SFX/SFX/FOES_SFX_Tourelle_Death_01_818F3B66.wem</CachePath>
+				</File>
+				<File Id="786312046" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SFX\FOES_SFX_Tourelle_Death_02.wav</ShortName>
+					<CachePath>SFX/SFX/FOES_SFX_Tourelle_Death_02_818F3B66.wem</CachePath>
+				</File>
+				<File Id="885262966" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SFX\FOES_SFX_Projectil.wav</ShortName>
+					<CachePath>SFX/SFX/FOES_SFX_Projectil_FBC78EF0.wem</CachePath>
+				</File>
+				<File Id="1052042829" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SFX\FOES_SFX_Tourelle_Death_03.wav</ShortName>
+					<CachePath>SFX/SFX/FOES_SFX_Tourelle_Death_03_818F3B66.wem</CachePath>
 				</File>
 			</Media>
 			<Plugins>
@@ -56,11 +64,17 @@
 				</ShareSets>
 			</Plugins>
 			<Events>
-				<Event Id="305372709" Name="Play_FOES_SFX_Tourelle_Death_RC" ObjectPath="\Events\FOES_Tourelle_WU\Play_FOES_SFX_Tourelle_Death_RC" GUID="{03966878-2B14-4479-9F3B-3C317D6EB7B1}" MaxAttenuation="3000" DurationType="OneShot" DurationMin="2.8365834" DurationMax="3.2426875">
+				<Event Id="696694406" Name="Play_FOES_SFX_Projectil" ObjectPath="\Events\FOES_Tourelle_WU\Play_FOES_SFX_Projectil" GUID="{B21D01D5-2B89-4090-9F00-456FE3EF49C7}" MaxAttenuation="10" DurationType="Infinite">
 					<MediaRefs>
-						<MediaRef Id="427986118"/>
-						<MediaRef Id="705394855"/>
-						<MediaRef Id="1008799864"/>
+						<MediaRef Id="885262966"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="305372709" Name="Play_FOES_SFX_Tourelle_Death_RC" ObjectPath="\Events\FOES_Tourelle_WU\Play_FOES_SFX_Tourelle_Death_RC" GUID="{03966878-2B14-4479-9F3B-3C317D6EB7B1}" MaxAttenuation="3000" DurationType="OneShot" DurationMin="1.3826165" DurationMax="2.620923">
+					<MediaRefs>
+						<MediaRef Id="546468767"/>
+						<MediaRef Id="726017957"/>
+						<MediaRef Id="786312046"/>
+						<MediaRef Id="1052042829"/>
 					</MediaRefs>
 				</Event>
 				<Event Id="2480809816" Name="Play_FOES_SFX_Tourelle_Shoot_RC" ObjectPath="\Events\FOES_Tourelle_WU\Play_FOES_SFX_Tourelle_Shoot_RC" GUID="{140E36FB-31F3-4C66-AC5D-E9E86C57BA68}" MaxAttenuation="3000" DurationType="OneShot" DurationMin="1.2318597" DurationMax="2.567487">
@@ -72,6 +86,7 @@
 						<MediaRef Id="515409144"/>
 					</MediaRefs>
 				</Event>
+				<Event Id="4047329776" Name="Stop_FOES_SFX_Projectil" ObjectPath="\Events\FOES_Tourelle_WU\Stop_FOES_SFX_Projectil" GUID="{DD66D73B-753F-4CEE-9201-B7AEDEE761D6}" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
 			</Events>
 			<Busses>
 				<Bus Id="109159411" Name="Game_Global" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global" GUID="{FAD5C029-0A02-4BD2-97F7-F8C20B7A95BD}"/>
@@ -145,16 +160,20 @@
 					</PluginRefs>
 				</AuxBus>
 			</AuxBusses>
+			<GameParameters>
+				<GameParameter Id="2176662110" Name="RTPC_Tourelle_Projectil" ObjectPath="\Game Parameters\Default Work Unit\RTPC_Tourelle_Projectil" GUID="{00C509F2-F7BB-46D5-A5C8-1D7FA60484C0}"/>
+			</GameParameters>
 			<StateGroups>
 				<StateGroup Id="3929688590" Name="InsideOutside" ObjectPath="\States\Default Work Unit\InsideOutside" GUID="{2CE28D5C-F27B-42D7-9D91-1905B53C4C3C}">
 					<States>
 						<State Id="645492555" Name="Out" ObjectPath="\States\Default Work Unit\InsideOutside\Out" GUID="{C04B12A4-672A-478D-A191-EED95AAB3C6D}"/>
 						<State Id="748895195" Name="None" ObjectPath="\States\Default Work Unit\InsideOutside\None" GUID="{EEC88170-01B2-4B8A-87BF-B7151380ADB4}"/>
+						<State Id="1051960422" Name="TargetInsidePyramid" ObjectPath="\States\Default Work Unit\InsideOutside\TargetInsidePyramid" GUID="{1E0BA403-7723-4863-B8DD-93A6A3CA72ED}"/>
 						<State Id="1752637612" Name="In" ObjectPath="\States\Default Work Unit\InsideOutside\In" GUID="{BFBB05BE-0B19-41C7-B759-C85C0C60B1D8}"/>
 					</States>
 				</StateGroup>
 			</StateGroups>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{4DA53914-1B90-4A34-592B-95F2118741A6}</FileHash>
+	<FileHash>{8D28F4DA-6CA1-6467-D416-B33AEC691894}</FileHash>
 </SoundBanksInfo>

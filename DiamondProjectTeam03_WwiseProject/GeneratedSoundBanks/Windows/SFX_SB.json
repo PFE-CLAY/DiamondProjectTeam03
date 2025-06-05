@@ -10,12 +10,105 @@
     "Type": "User",
     "GUID": "{459D1F67-52BD-4FA1-B846-B8F3A50C2C5F}",
     "Language": "SFX",
-    "Hash": "{B571FF43-03E3-0F51-E76C-22555D138B0E}",
+    "Hash": "{7E3B5390-4075-F55C-E8D1-5E6044DD92BC}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\SFX_SB",
     "ShortName": "SFX_SB",
-    "Path": "SFX_SB.bnk"
+    "Path": "SFX_SB.bnk",
+    "Media": [
+     {
+      "Id": "482790053",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "MC\\SFX_Door_Pyramid_Open.wav",
+      "CachePath": "SFX/MC/SFX_Door_Pyramid_Open_818F3B66.wem"
+     },
+     {
+      "Id": "794556847",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "MC\\SFX_HourGlass_Idle_LP.wav",
+      "CachePath": "SFX/MC/SFX_HourGlass_Idle_LP_FBC78EF0.wem"
+     },
+     {
+      "Id": "862611700",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "MC\\SFX_Door_Pyramid.wav",
+      "CachePath": "SFX/MC/SFX_Door_Pyramid_B3EF6B4D.wem"
+     },
+     {
+      "Id": "1049815799",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "MC\\SFX_HourGlass_Destruction_2D.wav",
+      "CachePath": "SFX/MC/SFX_HourGlass_Destruction_2D_818F3B66.wem"
+     }
+    ],
+    "Events": [
+     {
+      "Id": "1447435678",
+      "Name": "Play_SFX_Door_Pyramid_Close",
+      "ObjectPath": "\\Events\\SFX_WU\\Play_SFX_Door_Pyramid_Close",
+      "GUID": "{1829F329-FCFF-4E10-8065-7D10B11DDA83}",
+      "MaxAttenuation": "2000",
+      "DurationType": "OneShot",
+      "DurationMin": "5.4468756",
+      "DurationMax": "5.4468756",
+      "MediaRefs": [
+       {
+        "Id": "862611700"
+       }
+      ]
+     },
+     {
+      "Id": "582941242",
+      "Name": "Play_SFX_Door_Pyramid_Open",
+      "ObjectPath": "\\Events\\SFX_WU\\Play_SFX_Door_Pyramid_Open",
+      "GUID": "{03DAD17B-66BC-4B93-B7D8-6E1B8239766D}",
+      "MaxAttenuation": "2000",
+      "DurationType": "OneShot",
+      "DurationMin": "4.623",
+      "DurationMax": "4.623",
+      "MediaRefs": [
+       {
+        "Id": "482790053"
+       }
+      ]
+     },
+     {
+      "Id": "2496075354",
+      "Name": "Play_SFX_HourGlass_Destruction_2D",
+      "ObjectPath": "\\Events\\SFX_WU\\Play_SFX_HourGlass_Destruction_2D",
+      "GUID": "{FDD8C402-5336-447B-B1DA-70926B131299}",
+      "DurationType": "OneShot",
+      "DurationMin": "18.631792",
+      "DurationMax": "18.631792",
+      "MediaRefs": [
+       {
+        "Id": "1049815799"
+       }
+      ]
+     },
+     {
+      "Id": "2563465684",
+      "Name": "Play_SFX_HourGlass_Idle_LP",
+      "ObjectPath": "\\Events\\SFX_WU\\Play_SFX_HourGlass_Idle_LP",
+      "GUID": "{0994537E-EF34-4F9C-A1D4-F9FFCF6E9CD1}",
+      "MaxAttenuation": "150000",
+      "DurationType": "Infinite",
+      "MediaRefs": [
+       {
+        "Id": "794556847"
+       }
+      ]
+     }
+    ]
    }
   ],
-  "FileHash": "{A5D23BA9-638C-42E6-A156-2D4C109FA041}"
+  "FileHash": "{985F630B-8B8D-7AA2-E1B0-E7D3C674CB6A}"
  }
 }
