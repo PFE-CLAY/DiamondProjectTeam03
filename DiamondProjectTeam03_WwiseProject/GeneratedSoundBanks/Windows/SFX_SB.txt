@@ -1,6 +1,12 @@
 Event	ID	Name			Wwise Object Path	Notes
-	1623238786	Play_SFX_Button_Backstage			\SFX_WU\Play_SFX_Button_Backstage	
+	582941242	Play_SFX_Door_Pyramid_Open			\SFX_WU\Play_SFX_Door_Pyramid_Open	
+	1447435678	Play_SFX_Door_Pyramid_Close			\SFX_WU\Play_SFX_Door_Pyramid_Close	
+	2496075354	Play_SFX_HourGlass_Destruction_2D			\SFX_WU\Play_SFX_HourGlass_Destruction_2D	
+	2563465684	Play_SFX_HourGlass_Idle_LP			\SFX_WU\Play_SFX_HourGlass_Idle_LP	
 
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
-	756613996	SFX_Button_Backstage	E:\GitHub\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Windows\SFX\SFX\SFX_Button_Backstage_818F3B66.wem		\Actor-Mixer Hierarchy\SFX_WU\SFX\SFX_Button_Backstage		90260
+	482790053	SFX_Door_Pyramid_Open	G:\Unreal\Unreal_Projects\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Windows\SFX\MC\SFX_Door_Pyramid_Open_818F3B66.wem		\Actor-Mixer Hierarchy\SFX_WU\SFX\SFX_Door_Pyramid_Open		443904
+	794556847	SFX_HourGlass_Idle_LP	G:\Unreal\Unreal_Projects\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Windows\SFX\MC\SFX_HourGlass_Idle_LP_FBC78EF0.wem		\Actor-Mixer Hierarchy\SFX_WU\SFX\SFX_HourGlass_Idle_LP		6044636
+	862611700	SFX_Door_Pyramid_Close	G:\Unreal\Unreal_Projects\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Windows\SFX\MC\SFX_Door_Pyramid_B3EF6B4D.wem		\Actor-Mixer Hierarchy\SFX_WU\SFX\SFX_Door_Pyramid_Close		522996
+	1049815799	SFX_HourGlass_Destruction_2D	G:\Unreal\Unreal_Projects\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Windows\SFX\MC\SFX_HourGlass_Destruction_2D_818F3B66.wem		\Actor-Mixer Hierarchy\SFX_WU\SFX\SFX_HourGlass_Destruction_2D		3577400
 
