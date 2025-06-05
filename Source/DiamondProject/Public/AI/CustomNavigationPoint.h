@@ -26,18 +26,6 @@ private:
 public:
 	// Sets default values for this actor's properties
 	ACustomNavigationPoint();
-	
-	UPROPERTY(EditAnywhere)
-	bool bShouldWait;
-
-	UPROPERTY(EditAnywhere)
-	bool bShouldPlayDialogue;
-
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, meta=(EditCondition="bShouldPlaySound"))
-	UAkAudioEvent* Dialogue;
-
-	UPROPERTY(EditAnywhere, meta=(EditCondition="bShouldWait"))
-	float TimeToWait;
 
 	UPROPERTY(EditAnywhere, Category="NavPoint")
 	EPointType PointType;
@@ -48,6 +36,24 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="NavPoint", meta=(EditCondition="PointType == EPointType::Choice"))
 	int WantedPathIndex = 0;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="NavPoint", meta=(EditCondition="PointType == EPointType::Crouch"))
+	bool bShouldStayCrouched;
+
+	UPROPERTY(EditAnywhere, Category="NavPoint", meta=(EditCondition="PointType == EPointType::Crouch && !bShouldStayCrouched"))
+	float TimeToWaitCrouched;
+	
+	UPROPERTY(EditAnywhere, Category="NavPoint")
+	bool bShouldWait;
+
+	UPROPERTY(EditAnywhere, Category="NavPoint", meta=(EditCondition="bShouldWait"))
+	float TimeToWait;
+
+	UPROPERTY(EditAnywhere, Category="NavPoint")
+	bool bShouldPlayDialogue;
+
+	UPROPERTY(EditAnywhere, Category="NavPoint", BlueprintReadOnly, meta=(EditCondition="bShouldPlayDialogue"))
+	UAkAudioEvent* Dialogue;
+	
 	UPROPERTY()
 	AAllied* Allied;
 	
