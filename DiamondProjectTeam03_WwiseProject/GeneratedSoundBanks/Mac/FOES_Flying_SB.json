@@ -404,6 +404,12 @@
         "GUID": "{EEC88170-01B2-4B8A-87BF-B7151380ADB4}"
        },
        {
+        "Id": "1051960422",
+        "Name": "TargetInsidePyramid",
+        "ObjectPath": "\\States\\Default Work Unit\\InsideOutside\\TargetInsidePyramid",
+        "GUID": "{1E0BA403-7723-4863-B8DD-93A6A3CA72ED}"
+       },
+       {
         "Id": "1752637612",
         "Name": "In",
         "ObjectPath": "\\States\\Default Work Unit\\InsideOutside\\In",
@@ -414,6 +420,6 @@
     ]
    }
   ],
-  "FileHash": "{E8ACC33E-74F9-AA27-C412-45D4ECEEE174}"
+  "FileHash": "{7A08F9B3-DD3F-DAAF-8EB6-4BCCCF834E7C}"
  }
 }

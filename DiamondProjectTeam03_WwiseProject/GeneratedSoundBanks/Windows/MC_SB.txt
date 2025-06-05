@@ -1,5 +1,6 @@
 Event	ID	Name			Wwise Object Path	Notes
 	294373914	Play_MC_FOL_FT_SW			\MC_WU\Play_MC_FOL_FT_SW	
+	950272542	Play_MC_GetHit			\MC_WU\Play_MC_GetHit	
 	1177297501	Play_MC_SFX_Gun_Shoot_RC			\MC_WU\Play_MC_SFX_Gun_Shoot_RC	
 	2116962020	Play_MC_FOL_FT_Land_SW			\MC_WU\Play_MC_FOL_FT_Land_SW	
 	2749485653	Play_MC_FOL_FT_Jump_SW			\MC_WU\Play_MC_FOL_FT_Jump_SW	
@@ -21,6 +22,7 @@ State Group	ID	Name			Wwise Object Path	Notes
 State	ID	Name	State Group			Notes
 	645492555	Out	InsideOutside			
 	748895195	None	InsideOutside			
+	1051960422	TargetInsidePyramid	InsideOutside			
 	1752637612	In	InsideOutside			
 
 Audio Bus	ID	Name			Wwise Object Path	Notes
@@ -59,6 +61,7 @@ Effect plug-ins	ID	Name	Type				Notes
 
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	16112564	MC_FT_Concrete_Land_01	E:\GitHub\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Windows\SFX\AMB\SP\MC_FT_Concrete_Land_01_818F3B66.wem		\Actor-Mixer Hierarchy\MC_WU\MC_FOL\MC_FOL_FT_Land_SW\MC_FOL_FT_Concrete_Land\MC_FT_Concrete_Land_01		37490
+	17784281	MC_GetHit	E:\GitHub\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Windows\SFX\SFX\MC_GetHit_818F3B66.wem		\Actor-Mixer Hierarchy\FOES_Tourelle_WU\MC_GetHit		192096
 	34141530	MC_FT_Sand_Jump_01	E:\GitHub\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Windows\SFX\AMB\SP\MC_FT_Sand_Jump_01_818F3B66.wem		\Actor-Mixer Hierarchy\MC_WU\MC_FOL\MC_FOL_FT_Jump_SW\MC_FOL_FT_Sand_Jump\MC_FT_Sand_Jump_01		80140
 	36917763	MC_SFX_Gun_Shoot_01	E:\GitHub\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Windows\SFX\MC_SFX_Gun_Shoot_01_818F3B66.wem		\Actor-Mixer Hierarchy\MC_WU\MC_SFX\MC_SFX_Gun_Shoot_RC\MC_SFX_Gun_Shoot_01		277324
 	44684202	MC_FT_Sand_08	E:\GitHub\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Windows\SFX\AMB\SP\MC_FT_Sand_08_818F3B66.wem		\Actor-Mixer Hierarchy\MC_WU\MC_FOL\MC_FOL_FT_SW\MC_FOL_FT_Sand\MC_FT_Sand_08		56062
