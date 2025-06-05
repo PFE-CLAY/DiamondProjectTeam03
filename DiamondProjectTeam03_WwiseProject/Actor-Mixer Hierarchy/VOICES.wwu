@@ -3,7 +3,7 @@
 	<AudioObjects>
 		<WorkUnit Name="VOICES" ID="{46DADE32-2503-4D70-A7EF-8385A6296709}" PersistMode="Standalone">
 			<ChildrenList>
-				<ActorMixer Name="VOICES" ID="{80F29803-99F8-4A4C-BD96-1F8BE7683B02}" ShortID="159156522">
+				<ActorMixer Name="VOICES_ARENA" ID="{80F29803-99F8-4A4C-BD96-1F8BE7683B02}" ShortID="159156522">
 					<ReferenceList>
 						<Reference Name="Conversion">
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
@@ -558,8 +558,295 @@
 									</PropertyList>
 								</CustomState>
 							</CustomState>
+							<CustomState>
+								<StateRef Name="TargetInsidePyramid" ID="{1E0BA403-7723-4863-B8DD-93A6A3CA72ED}"/>
+								<CustomState Name="" ID="{58E161C1-E30E-4173-BD16-DF26FFE6C8FD}" ShortID="935738317"/>
+							</CustomState>
 						</CustomStateList>
 					</StateInfo>
+				</ActorMixer>
+				<ActorMixer Name="VOICES_ALLY" ID="{89CF48A7-6094-4CF0-B7A2-A3D62E818C83}" ShortID="892518813">
+					<PropertyList>
+						<Property Name="Pitch" Type="int32">
+							<ValueList>
+								<Value>-130</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D02282EE-6893-403D-9438-D481AB659EA3}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<Sound Name="DUB_ALLY_1_0_0" ID="{54E12FBC-646A-46A4-B147-6E6A3875AE53}" ShortID="620258673">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D02282EE-6893-403D-9438-D481AB659EA3}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="DUB_ALLY_1_0_0" ID="{DCD9C9E0-E375-4919-9AAA-5815CF1CF85D}">
+									<Language>SFX</Language>
+									<AudioFile>DUB_ALLY_1_0_0.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="675447814"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="DUB_ALLY_1_0_0" ID="{DCD9C9E0-E375-4919-9AAA-5815CF1CF85D}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="DUB_ALLY_1_0_1" ID="{F911E07D-3E23-4E32-BA25-88CB13BCB67D}" ShortID="605746682">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D02282EE-6893-403D-9438-D481AB659EA3}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="DUB_ALLY_1_0_1" ID="{91B08425-953F-493D-BF29-9F8AC7475513}">
+									<Language>SFX</Language>
+									<AudioFile>DUB_ALLY_1_0_1.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="700914992"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="DUB_ALLY_1_0_1" ID="{91B08425-953F-493D-BF29-9F8AC7475513}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="DUB_ALLY_1_0_2" ID="{8F926FFE-F47B-4344-A562-9F9FBAEFAA66}" ShortID="739723640">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D02282EE-6893-403D-9438-D481AB659EA3}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="DUB_ALLY_1_0_2" ID="{6AECA5A9-CC1B-425E-A263-E633D9CC502C}">
+									<Language>SFX</Language>
+									<AudioFile>DUB_ALLY_1_0_2.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="276376101"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="DUB_ALLY_1_0_2" ID="{6AECA5A9-CC1B-425E-A263-E633D9CC502C}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="DUB_ALLY_1_1_0" ID="{CFCE2458-0175-478C-AAFE-FEBD62716B87}" ShortID="750085024">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D02282EE-6893-403D-9438-D481AB659EA3}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="DUB_ALLY_1_1_0" ID="{42DA28EF-460E-425A-A8DA-AAF1FE508CB8}">
+									<Language>SFX</Language>
+									<AudioFile>DUB_ALLY_1_1_0.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="381597154"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="DUB_ALLY_1_1_0" ID="{42DA28EF-460E-425A-A8DA-AAF1FE508CB8}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="DUB_ALLY_1_2_0" ID="{0899C6B3-7BEE-48B6-BE81-1E52AC208FB9}" ShortID="423678734">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D02282EE-6893-403D-9438-D481AB659EA3}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="DUB_ALLY_1_2_0" ID="{D9DDC6C7-8C9A-4A2E-9A0B-F16609EF06ED}">
+									<Language>SFX</Language>
+									<AudioFile>DUB_ALLY_1_2_0.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="199901849"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="DUB_ALLY_1_2_0" ID="{D9DDC6C7-8C9A-4A2E-9A0B-F16609EF06ED}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="DUB_ALLY_1_3_0" ID="{EDEE159E-4DD2-44EA-8C2F-CA4551F70D01}" ShortID="667183611">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D02282EE-6893-403D-9438-D481AB659EA3}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="DUB_ALLY_1_3_0" ID="{9D086AAC-71D5-4CE7-A1FF-19F0BC72E48F}">
+									<Language>SFX</Language>
+									<AudioFile>DUB_ALLY_1_3_0.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="12434701"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="DUB_ALLY_1_3_0" ID="{9D086AAC-71D5-4CE7-A1FF-19F0BC72E48F}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="DUB_ALLY_1_4_0" ID="{D2D4A124-DBD5-493B-87D9-B194D8C432F9}" ShortID="375047414">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D02282EE-6893-403D-9438-D481AB659EA3}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="DUB_ALLY_1_4_0" ID="{D9C2714E-E073-4541-9DF9-B15FA9185E3B}">
+									<Language>SFX</Language>
+									<AudioFile>DUB_ALLY_1_4_0.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="45960235"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="DUB_ALLY_1_4_0" ID="{D9C2714E-E073-4541-9DF9-B15FA9185E3B}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="DUB_ALLY_1_5_0" ID="{B24C6459-03EA-44D4-8FB4-997D0DFB6E65}" ShortID="766876983">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D02282EE-6893-403D-9438-D481AB659EA3}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="DUB_ALLY_1_5_0" ID="{7A4CAA23-4D85-45D8-9576-3DBA8D477E11}">
+									<Language>SFX</Language>
+									<AudioFile>DUB_ALLY_1_5_0.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="753350392"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="DUB_ALLY_1_5_0" ID="{7A4CAA23-4D85-45D8-9576-3DBA8D477E11}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="DUB_ALLY_1_6_0" ID="{3ABCA74B-04C8-4F7C-A389-4BE1C31F279E}" ShortID="712681160">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D02282EE-6893-403D-9438-D481AB659EA3}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="DUB_ALLY_1_6_0" ID="{F7EB51E1-F252-4C9B-9055-46D9B772F497}">
+									<Language>SFX</Language>
+									<AudioFile>DUB_ALLY_1_6_0.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="338492853"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="DUB_ALLY_1_6_0" ID="{F7EB51E1-F252-4C9B-9055-46D9B772F497}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="DUB_ALLY_1_6_1" ID="{E1D1746A-B92F-4189-96A8-571F1DF58EC1}" ShortID="14379523">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D02282EE-6893-403D-9438-D481AB659EA3}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="DUB_ALLY_1_6_1" ID="{1909A250-C96D-42BD-8184-AB743EC70D8B}">
+									<Language>SFX</Language>
+									<AudioFile>DUB_ALLY_1_6_1.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="315927435"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="DUB_ALLY_1_6_1" ID="{1909A250-C96D-42BD-8184-AB743EC70D8B}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="DUB_ALLY_1_7_0" ID="{E4D67A20-9AA1-4A40-9D44-55FF22686084}" ShortID="745372293">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D02282EE-6893-403D-9438-D481AB659EA3}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="DUB_ALLY_1_7_0" ID="{48CE61B4-E25E-490F-B906-86AD13BDD8B3}">
+									<Language>SFX</Language>
+									<AudioFile>DUB_ALLY_1_7_0.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="981954510"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="DUB_ALLY_1_7_0" ID="{48CE61B4-E25E-490F-B906-86AD13BDD8B3}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="DUB_ALLY_1_8_0" ID="{AD43833C-6D90-4773-8DB1-9D6D3245FE5F}" ShortID="233853492">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D02282EE-6893-403D-9438-D481AB659EA3}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="DUB_ALLY_1_8_0" ID="{8CA80B9E-32D6-47B1-B7FA-400AC05B8BFC}">
+									<Language>SFX</Language>
+									<AudioFile>DUB_ALLY_1_8_0.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="84247758"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="DUB_ALLY_1_8_0" ID="{8CA80B9E-32D6-47B1-B7FA-400AC05B8BFC}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+					</ChildrenList>
 				</ActorMixer>
 			</ChildrenList>
 		</WorkUnit>

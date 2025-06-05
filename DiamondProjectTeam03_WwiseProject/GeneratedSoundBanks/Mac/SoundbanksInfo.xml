@@ -152,12 +152,13 @@
 					<States>
 						<State Id="645492555" Name="Out" ObjectPath="\States\Default Work Unit\InsideOutside\Out" GUID="{C04B12A4-672A-478D-A191-EED95AAB3C6D}"/>
 						<State Id="748895195" Name="None" ObjectPath="\States\Default Work Unit\InsideOutside\None" GUID="{EEC88170-01B2-4B8A-87BF-B7151380ADB4}"/>
+						<State Id="1051960422" Name="TargetInsidePyramid" ObjectPath="\States\Default Work Unit\InsideOutside\TargetInsidePyramid" GUID="{1E0BA403-7723-4863-B8DD-93A6A3CA72ED}"/>
 						<State Id="1752637612" Name="In" ObjectPath="\States\Default Work Unit\InsideOutside\In" GUID="{BFBB05BE-0B19-41C7-B759-C85C0C60B1D8}"/>
 					</States>
 				</StateGroup>
 			</StateGroups>
 		</SoundBank>
-		<SoundBank Id="1355168291" Type="User" GUID="{701ECBBD-9C7B-4030-8CDB-749EE5D1C7B9}" Language="SFX" Hash="{105ED3DD-BC4F-3033-CA6A-40DA8A58EB75}">
+		<SoundBank Id="1355168291" Type="User" GUID="{701ECBBD-9C7B-4030-8CDB-749EE5D1C7B9}" Language="SFX" Hash="{C4C36FD9-30BF-18DE-6334-1A2BC3683097}">
 			<ObjectPath>Init</ObjectPath>
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
@@ -255,6 +256,7 @@
 				</AuxBus>
 			</AuxBusses>
 			<GameParameters>
+				<GameParameter Id="2176662110" Name="RTPC_Tourelle_Projectil" ObjectPath="\Game Parameters\Default Work Unit\RTPC_Tourelle_Projectil" GUID="{00C509F2-F7BB-46D5-A5C8-1D7FA60484C0}"/>
 				<GameParameter Id="3590742338" Name="RTPC_Speed_Flying" ObjectPath="\Game Parameters\Default Work Unit\RTPC_Speed_Flying" GUID="{4A0C67E7-2443-47A8-B5EB-86C8F65C73EB}"/>
 			</GameParameters>
 			<StateGroups>
@@ -262,6 +264,7 @@
 					<States>
 						<State Id="645492555" Name="Out" ObjectPath="\States\Default Work Unit\InsideOutside\Out" GUID="{C04B12A4-672A-478D-A191-EED95AAB3C6D}"/>
 						<State Id="748895195" Name="None" ObjectPath="\States\Default Work Unit\InsideOutside\None" GUID="{EEC88170-01B2-4B8A-87BF-B7151380ADB4}"/>
+						<State Id="1051960422" Name="TargetInsidePyramid" ObjectPath="\States\Default Work Unit\InsideOutside\TargetInsidePyramid" GUID="{1E0BA403-7723-4863-B8DD-93A6A3CA72ED}"/>
 						<State Id="1752637612" Name="In" ObjectPath="\States\Default Work Unit\InsideOutside\In" GUID="{BFBB05BE-0B19-41C7-B759-C85C0C60B1D8}"/>
 					</States>
 				</StateGroup>
@@ -431,12 +434,13 @@
 					<States>
 						<State Id="645492555" Name="Out" ObjectPath="\States\Default Work Unit\InsideOutside\Out" GUID="{C04B12A4-672A-478D-A191-EED95AAB3C6D}"/>
 						<State Id="748895195" Name="None" ObjectPath="\States\Default Work Unit\InsideOutside\None" GUID="{EEC88170-01B2-4B8A-87BF-B7151380ADB4}"/>
+						<State Id="1051960422" Name="TargetInsidePyramid" ObjectPath="\States\Default Work Unit\InsideOutside\TargetInsidePyramid" GUID="{1E0BA403-7723-4863-B8DD-93A6A3CA72ED}"/>
 						<State Id="1752637612" Name="In" ObjectPath="\States\Default Work Unit\InsideOutside\In" GUID="{BFBB05BE-0B19-41C7-B759-C85C0C60B1D8}"/>
 					</States>
 				</StateGroup>
 			</StateGroups>
 		</SoundBank>
-		<SoundBank Id="1956625499" Type="User" GUID="{ADC2D189-6608-4828-BC9C-6EF6F90834DB}" Language="SFX" Hash="{E8CEF62C-1D06-8949-2AF8-C3703931A98B}">
+		<SoundBank Id="1956625499" Type="User" GUID="{ADC2D189-6608-4828-BC9C-6EF6F90834DB}" Language="SFX" Hash="{EECCDF9A-5917-9CCB-5047-CC62B536CAB8}">
 			<ObjectPath>\SoundBanks\SoundBanks_WU\MC_SB</ObjectPath>
 			<ShortName>MC_SB</ShortName>
 			<Path>MC_SB.bnk</Path>
@@ -444,6 +448,10 @@
 				<File Id="16112564" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\SP\MC_FT_Concrete_Land_01.wav</ShortName>
 					<CachePath>SFX/AMB/SP/MC_FT_Concrete_Land_01_818F3B66.wem</CachePath>
+				</File>
+				<File Id="17784281" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SFX\MC_GetHit.wav</ShortName>
+					<CachePath>SFX/SFX/MC_GetHit_818F3B66.wem</CachePath>
 				</File>
 				<File Id="34141530" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\SP\MC_FT_Sand_Jump_01.wav</ShortName>
@@ -941,6 +949,11 @@
 						</SwitchContainer>
 					</SwitchContainers>
 				</Event>
+				<Event Id="950272542" Name="Play_MC_GetHit" ObjectPath="\Events\MC_WU\Play_MC_GetHit" GUID="{DFDAAAFE-1AD5-4D67-9145-D4089C5F1FA9}" DurationType="OneShot" DurationMin="1.4506171" DurationMax="2.525671">
+					<MediaRefs>
+						<MediaRef Id="17784281"/>
+					</MediaRefs>
+				</Event>
 				<Event Id="1177297501" Name="Play_MC_SFX_Gun_Shoot_RC" ObjectPath="\Events\MC_WU\Play_MC_SFX_Gun_Shoot_RC" GUID="{19EDAAA1-DF79-4328-9566-97F28CD19D08}" DurationType="OneShot" DurationMin="1.1600068" DurationMax="2.3467753">
 					<MediaRefs>
 						<MediaRef Id="36917763"/>
@@ -1046,6 +1059,7 @@
 					<States>
 						<State Id="645492555" Name="Out" ObjectPath="\States\Default Work Unit\InsideOutside\Out" GUID="{C04B12A4-672A-478D-A191-EED95AAB3C6D}"/>
 						<State Id="748895195" Name="None" ObjectPath="\States\Default Work Unit\InsideOutside\None" GUID="{EEC88170-01B2-4B8A-87BF-B7151380ADB4}"/>
+						<State Id="1051960422" Name="TargetInsidePyramid" ObjectPath="\States\Default Work Unit\InsideOutside\TargetInsidePyramid" GUID="{1E0BA403-7723-4863-B8DD-93A6A3CA72ED}"/>
 						<State Id="1752637612" Name="In" ObjectPath="\States\Default Work Unit\InsideOutside\In" GUID="{BFBB05BE-0B19-41C7-B759-C85C0C60B1D8}"/>
 					</States>
 				</StateGroup>
@@ -1157,12 +1171,13 @@
 					<States>
 						<State Id="645492555" Name="Out" ObjectPath="\States\Default Work Unit\InsideOutside\Out" GUID="{C04B12A4-672A-478D-A191-EED95AAB3C6D}"/>
 						<State Id="748895195" Name="None" ObjectPath="\States\Default Work Unit\InsideOutside\None" GUID="{EEC88170-01B2-4B8A-87BF-B7151380ADB4}"/>
+						<State Id="1051960422" Name="TargetInsidePyramid" ObjectPath="\States\Default Work Unit\InsideOutside\TargetInsidePyramid" GUID="{1E0BA403-7723-4863-B8DD-93A6A3CA72ED}"/>
 						<State Id="1752637612" Name="In" ObjectPath="\States\Default Work Unit\InsideOutside\In" GUID="{BFBB05BE-0B19-41C7-B759-C85C0C60B1D8}"/>
 					</States>
 				</StateGroup>
 			</StateGroups>
 		</SoundBank>
-		<SoundBank Id="2765162312" Type="User" GUID="{9B915276-16F3-4721-B819-126344F97366}" Language="SFX" Hash="{EFC11ECD-61A9-CAEF-2912-D928ABDA26AA}">
+		<SoundBank Id="2765162312" Type="User" GUID="{9B915276-16F3-4721-B819-126344F97366}" Language="SFX" Hash="{22469D0C-9882-0080-2536-2ADBCEE943E0}">
 			<ObjectPath>\SoundBanks\SoundBanks_WU\VOICES_SB</ObjectPath>
 			<ShortName>VOICES_SB</ShortName>
 			<Path>VOICES_SB.bnk</Path>
@@ -1171,6 +1186,14 @@
 					<ShortName>DUB_ARENA_1_2_2.wav</ShortName>
 					<CachePath>SFX/DUB_ARENA_1_2_2_818F3B66.wem</CachePath>
 				</File>
+				<File Id="12434701" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>DUB_ALLY_1_3_0.wav</ShortName>
+					<CachePath>SFX/DUB_ALLY_1_3_0_818F3B66.wem</CachePath>
+				</File>
+				<File Id="45960235" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>DUB_ALLY_1_4_0.wav</ShortName>
+					<CachePath>SFX/DUB_ALLY_1_4_0_818F3B66.wem</CachePath>
+				</File>
 				<File Id="73406871" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>DUB_ARENA_1_7_0.wav</ShortName>
 					<CachePath>SFX/DUB_ARENA_1_7_0_818F3B66.wem</CachePath>
@@ -1178,6 +1201,10 @@
 				<File Id="83922193" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>DUB_ARENA_1_2_3.wav</ShortName>
 					<CachePath>SFX/DUB_ARENA_1_2_3_818F3B66.wem</CachePath>
+				</File>
+				<File Id="84247758" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>DUB_ALLY_1_8_0.wav</ShortName>
+					<CachePath>SFX/DUB_ALLY_1_8_0_818F3B66.wem</CachePath>
 				</File>
 				<File Id="93564485" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>DUB_ARENA_1_0_0.wav</ShortName>
@@ -1199,6 +1226,14 @@
 					<ShortName>DUB_ARENA_1_9_1.wav</ShortName>
 					<CachePath>SFX/DUB_ARENA_1_9_1_818F3B66.wem</CachePath>
 				</File>
+				<File Id="199901849" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>DUB_ALLY_1_2_0.wav</ShortName>
+					<CachePath>SFX/DUB_ALLY_1_2_0_818F3B66.wem</CachePath>
+				</File>
+				<File Id="276376101" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>DUB_ALLY_1_0_2.wav</ShortName>
+					<CachePath>SFX/DUB_ALLY_1_0_2_818F3B66.wem</CachePath>
+				</File>
 				<File Id="278418833" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>DUB_ARENA_1_9_3.wav</ShortName>
 					<CachePath>SFX/DUB_ARENA_1_9_3_818F3B66.wem</CachePath>
@@ -1211,9 +1246,21 @@
 					<ShortName>DUB_ARENA_1_3_0.wav</ShortName>
 					<CachePath>SFX/DUB_ARENA_1_3_0_818F3B66.wem</CachePath>
 				</File>
+				<File Id="315927435" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>DUB_ALLY_1_6_1.wav</ShortName>
+					<CachePath>SFX/DUB_ALLY_1_6_1_818F3B66.wem</CachePath>
+				</File>
 				<File Id="338368799" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>DUB_ARENA_1_1_2.wav</ShortName>
 					<CachePath>SFX/DUB_ARENA_1_1_2_818F3B66.wem</CachePath>
+				</File>
+				<File Id="338492853" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>DUB_ALLY_1_6_0.wav</ShortName>
+					<CachePath>SFX/DUB_ALLY_1_6_0_818F3B66.wem</CachePath>
+				</File>
+				<File Id="381597154" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>DUB_ALLY_1_1_0.wav</ShortName>
+					<CachePath>SFX/DUB_ALLY_1_1_0_818F3B66.wem</CachePath>
 				</File>
 				<File Id="411650085" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>DUB_ARENA_1_9_6.wav</ShortName>
@@ -1227,9 +1274,21 @@
 					<ShortName>DUB_ARENA_1_1_1.wav</ShortName>
 					<CachePath>SFX/DUB_ARENA_1_1_1_818F3B66.wem</CachePath>
 				</File>
+				<File Id="675447814" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>DUB_ALLY_1_0_0.wav</ShortName>
+					<CachePath>SFX/DUB_ALLY_1_0_0_818F3B66.wem</CachePath>
+				</File>
 				<File Id="687283735" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>DUB_ARENA_1_2_0.wav</ShortName>
 					<CachePath>SFX/DUB_ARENA_1_2_0_818F3B66.wem</CachePath>
+				</File>
+				<File Id="700914992" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>DUB_ALLY_1_0_1.wav</ShortName>
+					<CachePath>SFX/DUB_ALLY_1_0_1_818F3B66.wem</CachePath>
+				</File>
+				<File Id="753350392" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>DUB_ALLY_1_5_0.wav</ShortName>
+					<CachePath>SFX/DUB_ALLY_1_5_0_818F3B66.wem</CachePath>
 				</File>
 				<File Id="767088532" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>DUB_ARENA_1_9_0.wav</ShortName>
@@ -1251,6 +1310,10 @@
 					<ShortName>DUB_ARENA_1_4_0.wav</ShortName>
 					<CachePath>SFX/DUB_ARENA_1_4_0_818F3B66.wem</CachePath>
 				</File>
+				<File Id="981954510" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>DUB_ALLY_1_7_0.wav</ShortName>
+					<CachePath>SFX/DUB_ALLY_1_7_0_818F3B66.wem</CachePath>
+				</File>
 				<File Id="1008445025" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>DUB_ARENA_1_2_1.wav</ShortName>
 					<CachePath>SFX/DUB_ARENA_1_2_1_818F3B66.wem</CachePath>
@@ -1261,7 +1324,67 @@
 				</File>
 			</Media>
 			<Events>
-				<Event Id="3653177071" Name="Play_DUB_ARENA_1_0_0" ObjectPath="\Events\VOICES_WU\Play_DUB_ARENA_1_0_0" GUID="{6CB2E320-5F3F-4792-B1C8-029B1D05BDA8}" DurationType="OneShot" DurationMin="11.3325205" DurationMax="11.3325205">
+				<Event Id="224580060" Name="Play_DUB_ALLY_1_0_0" ObjectPath="\Events\VOICES_WU\ALLY\Play_DUB_ALLY_1_0_0" GUID="{9F96A97A-7CD0-40FE-8F5A-DBC3B18BA896}" DurationType="OneShot" DurationMin="6.7155595" DurationMax="6.7155595">
+					<MediaRefs>
+						<MediaRef Id="675447814"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="224580061" Name="Play_DUB_ALLY_1_0_1" ObjectPath="\Events\VOICES_WU\ALLY\Play_DUB_ALLY_1_0_1" GUID="{2A374C83-3AF0-4BA0-8A14-901DA3F2F6DC}" DurationType="OneShot" DurationMin="4.883933" DurationMax="4.883933">
+					<MediaRefs>
+						<MediaRef Id="700914992"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="224580062" Name="Play_DUB_ALLY_1_0_2" ObjectPath="\Events\VOICES_WU\ALLY\Play_DUB_ALLY_1_0_2" GUID="{3713AC7A-830D-4D17-BBDE-B07E086AC0EA}" DurationType="OneShot" DurationMin="8.468875" DurationMax="8.468875">
+					<MediaRefs>
+						<MediaRef Id="276376101"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="224432997" Name="Play_DUB_ALLY_1_1_0" ObjectPath="\Events\VOICES_WU\ALLY\Play_DUB_ALLY_1_1_0" GUID="{E89BD675-9B49-4310-B78F-A95B7FF89CE1}" DurationType="OneShot" DurationMin="4.5633903" DurationMax="4.5633903">
+					<MediaRefs>
+						<MediaRef Id="381597154"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="224874282" Name="Play_DUB_ALLY_1_2_0" ObjectPath="\Events\VOICES_WU\ALLY\Play_DUB_ALLY_1_2_0" GUID="{65109B34-CC45-4D18-A9FE-36DBD194EFC8}" DurationType="OneShot" DurationMin="2.5934453" DurationMax="2.5934453">
+					<MediaRefs>
+						<MediaRef Id="199901849"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="3445926899" Name="Play_DUB_ALLY_1_3_0" ObjectPath="\Events\VOICES_WU\ALLY\Play_DUB_ALLY_1_3_0" GUID="{E8053C0C-DFBF-470A-91FC-BE37A0718140}" DurationType="OneShot" DurationMin="3.9183755" DurationMax="3.9183755">
+					<MediaRefs>
+						<MediaRef Id="12434701"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="3446471352" Name="Play_DUB_ALLY_1_4_0" ObjectPath="\Events\VOICES_WU\ALLY\Play_DUB_ALLY_1_4_0" GUID="{E2A38D49-55D6-459A-820D-2728166A2E38}" DurationType="OneShot" DurationMin="3.050712" DurationMax="3.050712">
+					<MediaRefs>
+						<MediaRef Id="45960235"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="225021313" Name="Play_DUB_ALLY_1_5_0" ObjectPath="\Events\VOICES_WU\ALLY\Play_DUB_ALLY_1_5_0" GUID="{98283835-5A72-485F-BC7F-D1FE516F0BED}" DurationType="OneShot" DurationMin="6.907216" DurationMax="6.907216">
+					<MediaRefs>
+						<MediaRef Id="753350392"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="225565766" Name="Play_DUB_ALLY_1_6_0" ObjectPath="\Events\VOICES_WU\ALLY\Play_DUB_ALLY_1_6_0" GUID="{4385C1FA-94CC-437A-AD35-153210E76491}" DurationType="OneShot" DurationMin="3.6959293" DurationMax="3.6959293">
+					<MediaRefs>
+						<MediaRef Id="338492853"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="225565767" Name="Play_DUB_ALLY_1_6_1" ObjectPath="\Events\VOICES_WU\ALLY\Play_DUB_ALLY_1_6_1" GUID="{081FB818-BCA9-4AB7-8B96-799941566E22}" DurationType="OneShot" DurationMin="0.98509604" DurationMax="0.98509604">
+					<MediaRefs>
+						<MediaRef Id="315927435"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="3446618415" Name="Play_DUB_ALLY_1_7_0" ObjectPath="\Events\VOICES_WU\ALLY\Play_DUB_ALLY_1_7_0" GUID="{597D5DD9-17B4-4440-8CC0-486223252911}" DurationType="OneShot" DurationMin="7.1776547" DurationMax="7.1776547">
+					<MediaRefs>
+						<MediaRef Id="981954510"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="223300100" Name="Play_DUB_ALLY_1_8_0" ObjectPath="\Events\VOICES_WU\ALLY\Play_DUB_ALLY_1_8_0" GUID="{BD6DFD3A-46D9-48FB-AF2A-0FA3E604A037}" DurationType="OneShot" DurationMin="4.7907324" DurationMax="4.7907324">
+					<MediaRefs>
+						<MediaRef Id="84247758"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="3653177071" Name="Play_DUB_ARENA_1_0_0" ObjectPath="\Events\VOICES_WU\ARENA\Play_DUB_ARENA_1_0_0" GUID="{6CB2E320-5F3F-4792-B1C8-029B1D05BDA8}" DurationType="OneShot" DurationMin="11.3325205" DurationMax="11.3325205">
 					<MediaRefs>
 						<MediaRef Id="93564485"/>
 					</MediaRefs>
@@ -1270,7 +1393,7 @@
 						<AuxBusRef Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}"/>
 					</AuxBusRefs>
 				</Event>
-				<Event Id="432124422" Name="Play_DUB_ARENA_1_1_0" ObjectPath="\Events\VOICES_WU\Play_DUB_ARENA_1_1_0" GUID="{4D51FF6E-B699-4F64-9342-EA27E6FB1544}" DurationType="OneShot" DurationMin="5.3754582" DurationMax="5.3754582">
+				<Event Id="432124422" Name="Play_DUB_ARENA_1_1_0" ObjectPath="\Events\VOICES_WU\ARENA\Play_DUB_ARENA_1_1_0" GUID="{4D51FF6E-B699-4F64-9342-EA27E6FB1544}" DurationType="OneShot" DurationMin="5.3754582" DurationMax="5.3754582">
 					<MediaRefs>
 						<MediaRef Id="898148885"/>
 					</MediaRefs>
@@ -1279,7 +1402,7 @@
 						<AuxBusRef Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}"/>
 					</AuxBusRefs>
 				</Event>
-				<Event Id="432124423" Name="Play_DUB_ARENA_1_1_1" ObjectPath="\Events\VOICES_WU\Play_DUB_ARENA_1_1_1" GUID="{27536445-6BFB-41C6-BC9E-54347C22D514}" DurationType="OneShot" DurationMin="2.5813334" DurationMax="2.5813334">
+				<Event Id="432124423" Name="Play_DUB_ARENA_1_1_1" ObjectPath="\Events\VOICES_WU\ARENA\Play_DUB_ARENA_1_1_1" GUID="{27536445-6BFB-41C6-BC9E-54347C22D514}" DurationType="OneShot" DurationMin="2.5813334" DurationMax="2.5813334">
 					<MediaRefs>
 						<MediaRef Id="500906151"/>
 					</MediaRefs>
@@ -1288,7 +1411,7 @@
 						<AuxBusRef Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}"/>
 					</AuxBusRefs>
 				</Event>
-				<Event Id="432124420" Name="Play_DUB_ARENA_1_1_2" ObjectPath="\Events\VOICES_WU\Play_DUB_ARENA_1_1_2" GUID="{DE0F7AE6-9779-495E-AA81-79548E94F86D}" DurationType="OneShot" DurationMin="2.7846458" DurationMax="2.7846458">
+				<Event Id="432124420" Name="Play_DUB_ARENA_1_1_2" ObjectPath="\Events\VOICES_WU\ARENA\Play_DUB_ARENA_1_1_2" GUID="{DE0F7AE6-9779-495E-AA81-79548E94F86D}" DurationType="OneShot" DurationMin="2.7846458" DurationMax="2.7846458">
 					<MediaRefs>
 						<MediaRef Id="338368799"/>
 					</MediaRefs>
@@ -1297,7 +1420,7 @@
 						<AuxBusRef Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}"/>
 					</AuxBusRefs>
 				</Event>
-				<Event Id="431683137" Name="Play_DUB_ARENA_1_2_0" ObjectPath="\Events\VOICES_WU\Play_DUB_ARENA_1_2_0" GUID="{C445715B-3FA8-4FBC-AB70-822C92FBB16B}" DurationType="OneShot" DurationMin="3.629021" DurationMax="3.629021">
+				<Event Id="431683137" Name="Play_DUB_ARENA_1_2_0" ObjectPath="\Events\VOICES_WU\ARENA\Play_DUB_ARENA_1_2_0" GUID="{C445715B-3FA8-4FBC-AB70-822C92FBB16B}" DurationType="OneShot" DurationMin="3.629021" DurationMax="3.629021">
 					<MediaRefs>
 						<MediaRef Id="687283735"/>
 					</MediaRefs>
@@ -1306,7 +1429,7 @@
 						<AuxBusRef Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}"/>
 					</AuxBusRefs>
 				</Event>
-				<Event Id="431683136" Name="Play_DUB_ARENA_1_2_1" ObjectPath="\Events\VOICES_WU\Play_DUB_ARENA_1_2_1" GUID="{91178517-FD31-404C-BD96-C93C088E3CC4}" DurationType="OneShot" DurationMin="3.111125" DurationMax="3.111125">
+				<Event Id="431683136" Name="Play_DUB_ARENA_1_2_1" ObjectPath="\Events\VOICES_WU\ARENA\Play_DUB_ARENA_1_2_1" GUID="{91178517-FD31-404C-BD96-C93C088E3CC4}" DurationType="OneShot" DurationMin="3.111125" DurationMax="3.111125">
 					<MediaRefs>
 						<MediaRef Id="1008445025"/>
 					</MediaRefs>
@@ -1315,7 +1438,7 @@
 						<AuxBusRef Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}"/>
 					</AuxBusRefs>
 				</Event>
-				<Event Id="431683139" Name="Play_DUB_ARENA_1_2_2" ObjectPath="\Events\VOICES_WU\Play_DUB_ARENA_1_2_2" GUID="{746849AC-4863-4498-9421-326BA34079B6}" DurationType="OneShot" DurationMin="5.2867084" DurationMax="5.2867084">
+				<Event Id="431683139" Name="Play_DUB_ARENA_1_2_2" ObjectPath="\Events\VOICES_WU\ARENA\Play_DUB_ARENA_1_2_2" GUID="{746849AC-4863-4498-9421-326BA34079B6}" DurationType="OneShot" DurationMin="5.2867084" DurationMax="5.2867084">
 					<MediaRefs>
 						<MediaRef Id="7231555"/>
 					</MediaRefs>
@@ -1324,7 +1447,7 @@
 						<AuxBusRef Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}"/>
 					</AuxBusRefs>
 				</Event>
-				<Event Id="431683138" Name="Play_DUB_ARENA_1_2_3" ObjectPath="\Events\VOICES_WU\Play_DUB_ARENA_1_2_3" GUID="{2CE4857B-BB5A-42DF-B161-ABAB474C8636}" DurationType="OneShot" DurationMin="5.847521" DurationMax="5.847521">
+				<Event Id="431683138" Name="Play_DUB_ARENA_1_2_3" ObjectPath="\Events\VOICES_WU\ARENA\Play_DUB_ARENA_1_2_3" GUID="{2CE4857B-BB5A-42DF-B161-ABAB474C8636}" DurationType="OneShot" DurationMin="5.847521" DurationMax="5.847521">
 					<MediaRefs>
 						<MediaRef Id="83922193"/>
 					</MediaRefs>
@@ -1333,7 +1456,7 @@
 						<AuxBusRef Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}"/>
 					</AuxBusRefs>
 				</Event>
-				<Event Id="3653030008" Name="Play_DUB_ARENA_1_3_0" ObjectPath="\Events\VOICES_WU\Play_DUB_ARENA_1_3_0" GUID="{D4B8EC1E-8BCC-47F8-BDCC-CE8B7FC3ED1C}" DurationType="OneShot" DurationMin="6.983125" DurationMax="6.983125">
+				<Event Id="3653030008" Name="Play_DUB_ARENA_1_3_0" ObjectPath="\Events\VOICES_WU\ARENA\Play_DUB_ARENA_1_3_0" GUID="{D4B8EC1E-8BCC-47F8-BDCC-CE8B7FC3ED1C}" DurationType="OneShot" DurationMin="6.983125" DurationMax="6.983125">
 					<MediaRefs>
 						<MediaRef Id="289625457"/>
 					</MediaRefs>
@@ -1342,7 +1465,7 @@
 						<AuxBusRef Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}"/>
 					</AuxBusRefs>
 				</Event>
-				<Event Id="3653030009" Name="Play_DUB_ARENA_1_3_1" ObjectPath="\Events\VOICES_WU\Play_DUB_ARENA_1_3_1" GUID="{D97FF8EC-ED87-4915-9E9E-1C708E08A828}" DurationType="OneShot" DurationMin="3.3593957" DurationMax="3.3593957">
+				<Event Id="3653030009" Name="Play_DUB_ARENA_1_3_1" ObjectPath="\Events\VOICES_WU\ARENA\Play_DUB_ARENA_1_3_1" GUID="{D97FF8EC-ED87-4915-9E9E-1C708E08A828}" DurationType="OneShot" DurationMin="3.3593957" DurationMax="3.3593957">
 					<MediaRefs>
 						<MediaRef Id="1031568460"/>
 					</MediaRefs>
@@ -1351,7 +1474,7 @@
 						<AuxBusRef Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}"/>
 					</AuxBusRefs>
 				</Event>
-				<Event Id="3653030010" Name="Play_DUB_ARENA_1_3_2" ObjectPath="\Events\VOICES_WU\Play_DUB_ARENA_1_3_2" GUID="{0746558A-9F04-4B0B-B346-9BA6CF66D24C}" DurationType="OneShot" DurationMin="7.75375" DurationMax="7.75375">
+				<Event Id="3653030010" Name="Play_DUB_ARENA_1_3_2" ObjectPath="\Events\VOICES_WU\ARENA\Play_DUB_ARENA_1_3_2" GUID="{0746558A-9F04-4B0B-B346-9BA6CF66D24C}" DurationType="OneShot" DurationMin="7.75375" DurationMax="7.75375">
 					<MediaRefs>
 						<MediaRef Id="881110537"/>
 					</MediaRefs>
@@ -1360,7 +1483,7 @@
 						<AuxBusRef Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}"/>
 					</AuxBusRefs>
 				</Event>
-				<Event Id="3652588723" Name="Play_DUB_ARENA_1_4_0" ObjectPath="\Events\VOICES_WU\Play_DUB_ARENA_1_4_0" GUID="{809EBE6E-E883-4D44-87C4-923BF4435E0D}" DurationType="OneShot" DurationMin="8.455104" DurationMax="8.455104">
+				<Event Id="3652588723" Name="Play_DUB_ARENA_1_4_0" ObjectPath="\Events\VOICES_WU\ARENA\Play_DUB_ARENA_1_4_0" GUID="{809EBE6E-E883-4D44-87C4-923BF4435E0D}" DurationType="OneShot" DurationMin="8.455104" DurationMax="8.455104">
 					<MediaRefs>
 						<MediaRef Id="952186329"/>
 					</MediaRefs>
@@ -1369,7 +1492,7 @@
 						<AuxBusRef Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}"/>
 					</AuxBusRefs>
 				</Event>
-				<Event Id="431536106" Name="Play_DUB_ARENA_1_5_0" ObjectPath="\Events\VOICES_WU\Play_DUB_ARENA_1_5_0" GUID="{2945E4E8-A2EB-4D65-B4D4-F7738BA67018}" DurationType="OneShot" DurationMin="4.879229" DurationMax="4.879229">
+				<Event Id="431536106" Name="Play_DUB_ARENA_1_5_0" ObjectPath="\Events\VOICES_WU\ARENA\Play_DUB_ARENA_1_5_0" GUID="{2945E4E8-A2EB-4D65-B4D4-F7738BA67018}" DurationType="OneShot" DurationMin="4.879229" DurationMax="4.879229">
 					<MediaRefs>
 						<MediaRef Id="899907561"/>
 					</MediaRefs>
@@ -1378,7 +1501,7 @@
 						<AuxBusRef Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}"/>
 					</AuxBusRefs>
 				</Event>
-				<Event Id="430991653" Name="Play_DUB_ARENA_1_6_0" ObjectPath="\Events\VOICES_WU\Play_DUB_ARENA_1_6_0" GUID="{5A59BF8D-9B94-480D-A8BE-25466AFDDDAF}" DurationType="OneShot" DurationMin="10.083875" DurationMax="10.083875">
+				<Event Id="430991653" Name="Play_DUB_ARENA_1_6_0" ObjectPath="\Events\VOICES_WU\ARENA\Play_DUB_ARENA_1_6_0" GUID="{5A59BF8D-9B94-480D-A8BE-25466AFDDDAF}" DurationType="OneShot" DurationMin="10.083875" DurationMax="10.083875">
 					<MediaRefs>
 						<MediaRef Id="435995496"/>
 					</MediaRefs>
@@ -1387,7 +1510,7 @@
 						<AuxBusRef Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}"/>
 					</AuxBusRefs>
 				</Event>
-				<Event Id="431138716" Name="Play_DUB_ARENA_1_7_0" ObjectPath="\Events\VOICES_WU\Play_DUB_ARENA_1_7_0" GUID="{F6358FF6-964A-43B2-B731-095E10582A7A}" DurationType="OneShot" DurationMin="4.7953334" DurationMax="4.7953334">
+				<Event Id="431138716" Name="Play_DUB_ARENA_1_7_0" ObjectPath="\Events\VOICES_WU\ARENA\Play_DUB_ARENA_1_7_0" GUID="{F6358FF6-964A-43B2-B731-095E10582A7A}" DurationType="OneShot" DurationMin="4.7953334" DurationMax="4.7953334">
 					<MediaRefs>
 						<MediaRef Id="73406871"/>
 					</MediaRefs>
@@ -1396,7 +1519,7 @@
 						<AuxBusRef Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}"/>
 					</AuxBusRefs>
 				</Event>
-				<Event Id="3651897111" Name="Play_DUB_ARENA_1_8_0" ObjectPath="\Events\VOICES_WU\Play_DUB_ARENA_1_8_0" GUID="{6C548FEA-C807-4A6A-B0D6-C9C265D28446}" DurationType="OneShot" DurationMin="5.6705" DurationMax="5.6705">
+				<Event Id="3651897111" Name="Play_DUB_ARENA_1_8_0" ObjectPath="\Events\VOICES_WU\ARENA\Play_DUB_ARENA_1_8_0" GUID="{6C548FEA-C807-4A6A-B0D6-C9C265D28446}" DurationType="OneShot" DurationMin="5.6705" DurationMax="5.6705">
 					<MediaRefs>
 						<MediaRef Id="140616404"/>
 					</MediaRefs>
@@ -1405,7 +1528,7 @@
 						<AuxBusRef Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}"/>
 					</AuxBusRefs>
 				</Event>
-				<Event Id="3652044174" Name="Play_DUB_ARENA_1_9_0" ObjectPath="\Events\VOICES_WU\Play_DUB_ARENA_1_9_0" GUID="{EFF04B34-33D4-45A1-B15C-C75DF1C2FE84}" DurationType="OneShot" DurationMin="2.0564792" DurationMax="2.0564792">
+				<Event Id="3652044174" Name="Play_DUB_ARENA_1_9_0" ObjectPath="\Events\VOICES_WU\ARENA\Play_DUB_ARENA_1_9_0" GUID="{EFF04B34-33D4-45A1-B15C-C75DF1C2FE84}" DurationType="OneShot" DurationMin="2.0564792" DurationMax="2.0564792">
 					<MediaRefs>
 						<MediaRef Id="767088532"/>
 					</MediaRefs>
@@ -1414,7 +1537,7 @@
 						<AuxBusRef Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}"/>
 					</AuxBusRefs>
 				</Event>
-				<Event Id="3652044175" Name="Play_DUB_ARENA_1_9_1" ObjectPath="\Events\VOICES_WU\Play_DUB_ARENA_1_9_1" GUID="{80641E23-366E-4E92-9C60-75DC0F6F4B16}" DurationType="OneShot" DurationMin="3.72625" DurationMax="3.72625">
+				<Event Id="3652044175" Name="Play_DUB_ARENA_1_9_1" ObjectPath="\Events\VOICES_WU\ARENA\Play_DUB_ARENA_1_9_1" GUID="{80641E23-366E-4E92-9C60-75DC0F6F4B16}" DurationType="OneShot" DurationMin="3.72625" DurationMax="3.72625">
 					<MediaRefs>
 						<MediaRef Id="166584951"/>
 					</MediaRefs>
@@ -1423,7 +1546,7 @@
 						<AuxBusRef Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}"/>
 					</AuxBusRefs>
 				</Event>
-				<Event Id="3652044172" Name="Play_DUB_ARENA_1_9_2" ObjectPath="\Events\VOICES_WU\Play_DUB_ARENA_1_9_2" GUID="{EADA4396-85FC-46B2-90D0-883FFB9406F7}" DurationType="OneShot" DurationMin="0.73702085" DurationMax="0.73702085">
+				<Event Id="3652044172" Name="Play_DUB_ARENA_1_9_2" ObjectPath="\Events\VOICES_WU\ARENA\Play_DUB_ARENA_1_9_2" GUID="{EADA4396-85FC-46B2-90D0-883FFB9406F7}" DurationType="OneShot" DurationMin="0.73702085" DurationMax="0.73702085">
 					<MediaRefs>
 						<MediaRef Id="157392684"/>
 					</MediaRefs>
@@ -1432,7 +1555,7 @@
 						<AuxBusRef Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}"/>
 					</AuxBusRefs>
 				</Event>
-				<Event Id="3652044173" Name="Play_DUB_ARENA_1_9_3" ObjectPath="\Events\VOICES_WU\Play_DUB_ARENA_1_9_3" GUID="{1D57409D-4D8B-4606-B981-BDD320FD64EB}" DurationType="OneShot" DurationMin="0.8344167" DurationMax="0.8344167">
+				<Event Id="3652044173" Name="Play_DUB_ARENA_1_9_3" ObjectPath="\Events\VOICES_WU\ARENA\Play_DUB_ARENA_1_9_3" GUID="{1D57409D-4D8B-4606-B981-BDD320FD64EB}" DurationType="OneShot" DurationMin="0.8344167" DurationMax="0.8344167">
 					<MediaRefs>
 						<MediaRef Id="278418833"/>
 					</MediaRefs>
@@ -1441,7 +1564,7 @@
 						<AuxBusRef Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}"/>
 					</AuxBusRefs>
 				</Event>
-				<Event Id="3652044170" Name="Play_DUB_ARENA_1_9_4" ObjectPath="\Events\VOICES_WU\Play_DUB_ARENA_1_9_4" GUID="{56D08A81-9E18-4348-AB5F-9AD1B9C7E045}" DurationType="OneShot" DurationMin="1.1080834" DurationMax="1.1080834">
+				<Event Id="3652044170" Name="Play_DUB_ARENA_1_9_4" ObjectPath="\Events\VOICES_WU\ARENA\Play_DUB_ARENA_1_9_4" GUID="{56D08A81-9E18-4348-AB5F-9AD1B9C7E045}" DurationType="OneShot" DurationMin="1.1080834" DurationMax="1.1080834">
 					<MediaRefs>
 						<MediaRef Id="115645254"/>
 					</MediaRefs>
@@ -1450,7 +1573,7 @@
 						<AuxBusRef Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}"/>
 					</AuxBusRefs>
 				</Event>
-				<Event Id="3652044171" Name="Play_DUB_ARENA_1_9_5" ObjectPath="\Events\VOICES_WU\Play_DUB_ARENA_1_9_5" GUID="{6C020C9C-BAF0-41AB-9564-CAFCF453F546}" DurationType="OneShot" DurationMin="2.2469792" DurationMax="2.2469792">
+				<Event Id="3652044171" Name="Play_DUB_ARENA_1_9_5" ObjectPath="\Events\VOICES_WU\ARENA\Play_DUB_ARENA_1_9_5" GUID="{6C020C9C-BAF0-41AB-9564-CAFCF453F546}" DurationType="OneShot" DurationMin="2.2469792" DurationMax="2.2469792">
 					<MediaRefs>
 						<MediaRef Id="279456589"/>
 					</MediaRefs>
@@ -1459,7 +1582,7 @@
 						<AuxBusRef Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}"/>
 					</AuxBusRefs>
 				</Event>
-				<Event Id="3652044168" Name="Play_DUB_ARENA_1_9_6" ObjectPath="\Events\VOICES_WU\Play_DUB_ARENA_1_9_6" GUID="{1EBCCAD9-8483-4BE3-AFBC-EA3F1550B975}" DurationType="OneShot" DurationMin="4.590271" DurationMax="4.590271">
+				<Event Id="3652044168" Name="Play_DUB_ARENA_1_9_6" ObjectPath="\Events\VOICES_WU\ARENA\Play_DUB_ARENA_1_9_6" GUID="{1EBCCAD9-8483-4BE3-AFBC-EA3F1550B975}" DurationType="OneShot" DurationMin="4.590271" DurationMax="4.590271">
 					<MediaRefs>
 						<MediaRef Id="411650085"/>
 					</MediaRefs>
@@ -1470,7 +1593,7 @@
 				</Event>
 			</Events>
 		</SoundBank>
-		<SoundBank Id="3250948517" Type="User" GUID="{8CC30184-23AF-4DB5-9844-9B04DF10A650}" Language="SFX" Hash="{CA0ADCC1-E5DC-FFBA-720B-D32E6D3A6F47}">
+		<SoundBank Id="3250948517" Type="User" GUID="{8CC30184-23AF-4DB5-9844-9B04DF10A650}" Language="SFX" Hash="{7D2DE924-4B4C-AECE-FFC7-0B2ECE9408EE}">
 			<ObjectPath>\SoundBanks\SoundBanks_WU\FOES_Tourelle_SB</ObjectPath>
 			<ShortName>FOES_Tourelle_SB</ShortName>
 			<Path>FOES_Tourelle_SB.bnk</Path>
@@ -1491,21 +1614,29 @@
 					<ShortName>FOES_SFX_Tourelle_Shoot_01.wav</ShortName>
 					<CachePath>SFX/FOES_SFX_Tourelle_Shoot_01_818F3B66.wem</CachePath>
 				</File>
-				<File Id="427986118" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>AMB\RFX\FOES_SFX_Tourelle_Death_01.wav</ShortName>
-					<CachePath>SFX/AMB/RFX/FOES_SFX_Tourelle_Death_01_818F3B66.wem</CachePath>
-				</File>
 				<File Id="515409144" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>FOES_SFX_Tourelle_Shoot_03.wav</ShortName>
 					<CachePath>SFX/FOES_SFX_Tourelle_Shoot_03_818F3B66.wem</CachePath>
 				</File>
-				<File Id="705394855" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>AMB\RFX\FOES_SFX_Tourelle_Death_03.wav</ShortName>
-					<CachePath>SFX/AMB/RFX/FOES_SFX_Tourelle_Death_03_818F3B66.wem</CachePath>
+				<File Id="546468767" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SFX\FOES_SFX_Tourelle_Death_04.wav</ShortName>
+					<CachePath>SFX/SFX/FOES_SFX_Tourelle_Death_04_818F3B66.wem</CachePath>
 				</File>
-				<File Id="1008799864" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>AMB\RFX\FOES_SFX_Tourelle_Death_02.wav</ShortName>
-					<CachePath>SFX/AMB/RFX/FOES_SFX_Tourelle_Death_02_818F3B66.wem</CachePath>
+				<File Id="726017957" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SFX\FOES_SFX_Tourelle_Death_01.wav</ShortName>
+					<CachePath>SFX/SFX/FOES_SFX_Tourelle_Death_01_818F3B66.wem</CachePath>
+				</File>
+				<File Id="786312046" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SFX\FOES_SFX_Tourelle_Death_02.wav</ShortName>
+					<CachePath>SFX/SFX/FOES_SFX_Tourelle_Death_02_818F3B66.wem</CachePath>
+				</File>
+				<File Id="885262966" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SFX\FOES_SFX_Projectil.wav</ShortName>
+					<CachePath>SFX/SFX/FOES_SFX_Projectil_FBC78EF0.wem</CachePath>
+				</File>
+				<File Id="1052042829" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SFX\FOES_SFX_Tourelle_Death_03.wav</ShortName>
+					<CachePath>SFX/SFX/FOES_SFX_Tourelle_Death_03_818F3B66.wem</CachePath>
 				</File>
 			</Media>
 			<Plugins>
@@ -1525,11 +1656,17 @@
 				</ShareSets>
 			</Plugins>
 			<Events>
-				<Event Id="305372709" Name="Play_FOES_SFX_Tourelle_Death_RC" ObjectPath="\Events\FOES_Tourelle_WU\Play_FOES_SFX_Tourelle_Death_RC" GUID="{03966878-2B14-4479-9F3B-3C317D6EB7B1}" MaxAttenuation="3000" DurationType="OneShot" DurationMin="2.8365834" DurationMax="3.2426875">
+				<Event Id="696694406" Name="Play_FOES_SFX_Projectil" ObjectPath="\Events\FOES_Tourelle_WU\Play_FOES_SFX_Projectil" GUID="{B21D01D5-2B89-4090-9F00-456FE3EF49C7}" MaxAttenuation="10" DurationType="Infinite">
 					<MediaRefs>
-						<MediaRef Id="427986118"/>
-						<MediaRef Id="705394855"/>
-						<MediaRef Id="1008799864"/>
+						<MediaRef Id="885262966"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="305372709" Name="Play_FOES_SFX_Tourelle_Death_RC" ObjectPath="\Events\FOES_Tourelle_WU\Play_FOES_SFX_Tourelle_Death_RC" GUID="{03966878-2B14-4479-9F3B-3C317D6EB7B1}" MaxAttenuation="3000" DurationType="OneShot" DurationMin="1.3826165" DurationMax="2.620923">
+					<MediaRefs>
+						<MediaRef Id="546468767"/>
+						<MediaRef Id="726017957"/>
+						<MediaRef Id="786312046"/>
+						<MediaRef Id="1052042829"/>
 					</MediaRefs>
 				</Event>
 				<Event Id="2480809816" Name="Play_FOES_SFX_Tourelle_Shoot_RC" ObjectPath="\Events\FOES_Tourelle_WU\Play_FOES_SFX_Tourelle_Shoot_RC" GUID="{140E36FB-31F3-4C66-AC5D-E9E86C57BA68}" MaxAttenuation="3000" DurationType="OneShot" DurationMin="1.2318597" DurationMax="2.567487">
@@ -1541,6 +1678,7 @@
 						<MediaRef Id="515409144"/>
 					</MediaRefs>
 				</Event>
+				<Event Id="4047329776" Name="Stop_FOES_SFX_Projectil" ObjectPath="\Events\FOES_Tourelle_WU\Stop_FOES_SFX_Projectil" GUID="{DD66D73B-753F-4CEE-9201-B7AEDEE761D6}" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
 			</Events>
 			<Busses>
 				<Bus Id="109159411" Name="Game_Global" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global" GUID="{FAD5C029-0A02-4BD2-97F7-F8C20B7A95BD}"/>
@@ -1614,11 +1752,15 @@
 					</PluginRefs>
 				</AuxBus>
 			</AuxBusses>
+			<GameParameters>
+				<GameParameter Id="2176662110" Name="RTPC_Tourelle_Projectil" ObjectPath="\Game Parameters\Default Work Unit\RTPC_Tourelle_Projectil" GUID="{00C509F2-F7BB-46D5-A5C8-1D7FA60484C0}"/>
+			</GameParameters>
 			<StateGroups>
 				<StateGroup Id="3929688590" Name="InsideOutside" ObjectPath="\States\Default Work Unit\InsideOutside" GUID="{2CE28D5C-F27B-42D7-9D91-1905B53C4C3C}">
 					<States>
 						<State Id="645492555" Name="Out" ObjectPath="\States\Default Work Unit\InsideOutside\Out" GUID="{C04B12A4-672A-478D-A191-EED95AAB3C6D}"/>
 						<State Id="748895195" Name="None" ObjectPath="\States\Default Work Unit\InsideOutside\None" GUID="{EEC88170-01B2-4B8A-87BF-B7151380ADB4}"/>
+						<State Id="1051960422" Name="TargetInsidePyramid" ObjectPath="\States\Default Work Unit\InsideOutside\TargetInsidePyramid" GUID="{1E0BA403-7723-4863-B8DD-93A6A3CA72ED}"/>
 						<State Id="1752637612" Name="In" ObjectPath="\States\Default Work Unit\InsideOutside\In" GUID="{BFBB05BE-0B19-41C7-B759-C85C0C60B1D8}"/>
 					</States>
 				</StateGroup>
@@ -1988,6 +2130,7 @@
 					<States>
 						<State Id="645492555" Name="Out" ObjectPath="\States\Default Work Unit\InsideOutside\Out" GUID="{C04B12A4-672A-478D-A191-EED95AAB3C6D}"/>
 						<State Id="748895195" Name="None" ObjectPath="\States\Default Work Unit\InsideOutside\None" GUID="{EEC88170-01B2-4B8A-87BF-B7151380ADB4}"/>
+						<State Id="1051960422" Name="TargetInsidePyramid" ObjectPath="\States\Default Work Unit\InsideOutside\TargetInsidePyramid" GUID="{1E0BA403-7723-4863-B8DD-93A6A3CA72ED}"/>
 						<State Id="1752637612" Name="In" ObjectPath="\States\Default Work Unit\InsideOutside\In" GUID="{BFBB05BE-0B19-41C7-B759-C85C0C60B1D8}"/>
 					</States>
 				</StateGroup>
@@ -2083,5 +2226,5 @@
 			</Events>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{A3FE74F1-E549-C388-EE72-71CB229CF958}</FileHash>
+	<FileHash>{F5C9B035-5886-2159-3FA9-3B453503AF0F}</FileHash>
 </SoundBanksInfo>

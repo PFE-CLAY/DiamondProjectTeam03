@@ -78,6 +78,7 @@ void ADroneCadaver::CarryBody()
 void ADroneCadaver::ThrowBody()
 {
 	TargetBody->PhysicsHandle->ReleaseComponent();
+	
 	bShouldGrab = false;
 	if(CadaverArray.IsEmpty())
 	{

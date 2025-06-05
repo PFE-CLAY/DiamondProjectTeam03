@@ -10,7 +10,7 @@
     "Type": "User",
     "GUID": "{8CC30184-23AF-4DB5-9844-9B04DF10A650}",
     "Language": "SFX",
-    "Hash": "{CA0ADCC1-E5DC-FFBA-720B-D32E6D3A6F47}",
+    "Hash": "{7D2DE924-4B4C-AECE-FFC7-0B2ECE9408EE}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\FOES_Tourelle_SB",
     "ShortName": "FOES_Tourelle_SB",
     "Path": "FOES_Tourelle_SB.bnk",
@@ -48,14 +48,6 @@
       "CachePath": "SFX/FOES_SFX_Tourelle_Shoot_01_818F3B66.wem"
      },
      {
-      "Id": "427986118",
-      "Language": "SFX",
-      "Streaming": "false",
-      "Location": "Memory",
-      "ShortName": "AMB\\RFX\\FOES_SFX_Tourelle_Death_01.wav",
-      "CachePath": "SFX/AMB/RFX/FOES_SFX_Tourelle_Death_01_818F3B66.wem"
-     },
-     {
       "Id": "515409144",
       "Language": "SFX",
       "Streaming": "false",
@@ -64,20 +56,44 @@
       "CachePath": "SFX/FOES_SFX_Tourelle_Shoot_03_818F3B66.wem"
      },
      {
-      "Id": "705394855",
+      "Id": "546468767",
       "Language": "SFX",
       "Streaming": "false",
       "Location": "Memory",
-      "ShortName": "AMB\\RFX\\FOES_SFX_Tourelle_Death_03.wav",
-      "CachePath": "SFX/AMB/RFX/FOES_SFX_Tourelle_Death_03_818F3B66.wem"
+      "ShortName": "SFX\\FOES_SFX_Tourelle_Death_04.wav",
+      "CachePath": "SFX/SFX/FOES_SFX_Tourelle_Death_04_818F3B66.wem"
      },
      {
-      "Id": "1008799864",
+      "Id": "726017957",
       "Language": "SFX",
       "Streaming": "false",
       "Location": "Memory",
-      "ShortName": "AMB\\RFX\\FOES_SFX_Tourelle_Death_02.wav",
-      "CachePath": "SFX/AMB/RFX/FOES_SFX_Tourelle_Death_02_818F3B66.wem"
+      "ShortName": "SFX\\FOES_SFX_Tourelle_Death_01.wav",
+      "CachePath": "SFX/SFX/FOES_SFX_Tourelle_Death_01_818F3B66.wem"
+     },
+     {
+      "Id": "786312046",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "SFX\\FOES_SFX_Tourelle_Death_02.wav",
+      "CachePath": "SFX/SFX/FOES_SFX_Tourelle_Death_02_818F3B66.wem"
+     },
+     {
+      "Id": "885262966",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "SFX\\FOES_SFX_Projectil.wav",
+      "CachePath": "SFX/SFX/FOES_SFX_Projectil_FBC78EF0.wem"
+     },
+     {
+      "Id": "1052042829",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "SFX\\FOES_SFX_Tourelle_Death_03.wav",
+      "CachePath": "SFX/SFX/FOES_SFX_Tourelle_Death_03_818F3B66.wem"
      }
     ],
     "Plugins": {
@@ -168,23 +184,39 @@
     },
     "Events": [
      {
+      "Id": "696694406",
+      "Name": "Play_FOES_SFX_Projectil",
+      "ObjectPath": "\\Events\\FOES_Tourelle_WU\\Play_FOES_SFX_Projectil",
+      "GUID": "{B21D01D5-2B89-4090-9F00-456FE3EF49C7}",
+      "MaxAttenuation": "10",
+      "DurationType": "Infinite",
+      "MediaRefs": [
+       {
+        "Id": "885262966"
+       }
+      ]
+     },
+     {
       "Id": "305372709",
       "Name": "Play_FOES_SFX_Tourelle_Death_RC",
       "ObjectPath": "\\Events\\FOES_Tourelle_WU\\Play_FOES_SFX_Tourelle_Death_RC",
       "GUID": "{03966878-2B14-4479-9F3B-3C317D6EB7B1}",
       "MaxAttenuation": "3000",
       "DurationType": "OneShot",
-      "DurationMin": "2.8365834",
-      "DurationMax": "3.2426875",
+      "DurationMin": "1.3826165",
+      "DurationMax": "2.620923",
       "MediaRefs": [
        {
-        "Id": "427986118"
+        "Id": "546468767"
        },
        {
-        "Id": "705394855"
+        "Id": "726017957"
        },
        {
-        "Id": "1008799864"
+        "Id": "786312046"
+       },
+       {
+        "Id": "1052042829"
        }
       ]
      },
@@ -214,6 +246,16 @@
         "Id": "515409144"
        }
       ]
+     },
+     {
+      "Id": "4047329776",
+      "Name": "Stop_FOES_SFX_Projectil",
+      "ObjectPath": "\\Events\\FOES_Tourelle_WU\\Stop_FOES_SFX_Projectil",
+      "GUID": "{DD66D73B-753F-4CEE-9201-B7AEDEE761D6}",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0"
      }
     ],
     "Busses": [
@@ -390,6 +432,14 @@
       }
      }
     ],
+    "GameParameters": [
+     {
+      "Id": "2176662110",
+      "Name": "RTPC_Tourelle_Projectil",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\RTPC_Tourelle_Projectil",
+      "GUID": "{00C509F2-F7BB-46D5-A5C8-1D7FA60484C0}"
+     }
+    ],
     "StateGroups": [
      {
       "Id": "3929688590",
@@ -410,6 +460,12 @@
         "GUID": "{EEC88170-01B2-4B8A-87BF-B7151380ADB4}"
        },
        {
+        "Id": "1051960422",
+        "Name": "TargetInsidePyramid",
+        "ObjectPath": "\\States\\Default Work Unit\\InsideOutside\\TargetInsidePyramid",
+        "GUID": "{1E0BA403-7723-4863-B8DD-93A6A3CA72ED}"
+       },
+       {
         "Id": "1752637612",
         "Name": "In",
         "ObjectPath": "\\States\\Default Work Unit\\InsideOutside\\In",
@@ -420,6 +476,6 @@
     ]
    }
   ],
-  "FileHash": "{08AF557A-23A5-C4CE-3E43-8DAA95A008A5}"
+  "FileHash": "{93342938-2533-684F-1985-6778473B618E}"
  }
 }

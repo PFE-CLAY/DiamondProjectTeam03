@@ -31,7 +31,7 @@ int32 UWwiseManagerSubsystem::PostEvent(UAkAudioEvent* Event, AActor* TargetActo
 			Callback = FOnAkPostEventCallback();
 			Callback.BindUFunction(WwiseHandler, "HandleCallback");
 		} else {
-			UE_LOG(LogTemp, Error, TEXT("[UWwiseManagerSubsystem::PostEvent] WwiseHandlerComponent not found on TargetActor!"));
+			UE_LOG(LogTemp, Error, TEXT("[UWwiseManagerSubsystem::PostEvent] WwiseHandlerComponent not found on TargetActor: %s!"), *TargetActor->GetName());
 		}
 		PlayingID = UAkGameplayStatics::PostEvent(Event, TargetActor, WwiseHandler->CallbackMask, Callback);
 		WwiseHandler->LastPlayedID = PlayingID;

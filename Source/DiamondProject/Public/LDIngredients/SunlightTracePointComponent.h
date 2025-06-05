@@ -24,6 +24,9 @@ public:
 	UPROPERTY()
 	bool bIsInSunlight = false;
 
+	UFUNCTION(BlueprintCallable, Category="Sunlight Detection")
+	void SetShowVisualizer(bool bNewState);
+
 private:
 	UPROPERTY()
 	UStaticMeshComponent* VisualizerMesh = nullptr;
@@ -32,5 +35,6 @@ private:
 	UMultiSunlightDetectorComponent* CachedDetectorComponent = nullptr;
 
 	void FindAndRegisterWithDetector();
+	virtual void PostEditChangeProperty(FPropertyChangedEvent& PropertyChangedEvent) override;
 	void CreateVisualizerMesh();
 };

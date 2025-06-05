@@ -6,6 +6,73 @@
 				<Property Name="Color" Type="int16" Value="17"/>
 				<Property Name="OverrideColor" Type="bool" Value="True"/>
 			</PropertyList>
+			<ChildrenList>
+				<Event Name="Play_SFX_Door_Pyramid_Close" ID="{1829F329-FCFF-4E10-8065-7D10B11DDA83}">
+					<ChildrenList>
+						<Action Name="" ID="{4A49C00B-CFEC-48FB-8038-F29B5621A1F0}" ShortID="229555431">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="SFX_Door_Pyramid_Close" ID="{917B837D-2E1F-4002-BB7B-FD12BC71AF1B}" WorkUnitID="{5DFA8BAE-0AEA-4A3F-92EC-FBABE50597A1}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_SFX_Door_Pyramid_Open" ID="{03DAD17B-66BC-4B93-B7D8-6E1B8239766D}">
+					<ChildrenList>
+						<Action Name="" ID="{0C9B4A7F-84C9-4CDA-A96E-2FC03C7FFE98}" ShortID="107131939">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="SFX_Door_Pyramid_Open" ID="{D47113E2-351B-489E-ADCD-0598F6B33665}" WorkUnitID="{5DFA8BAE-0AEA-4A3F-92EC-FBABE50597A1}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_SFX_HourGlass_Destruction_2D" ID="{FDD8C402-5336-447B-B1DA-70926B131299}">
+					<ChildrenList>
+						<Action Name="" ID="{A6552DFC-5D3E-4EA6-9493-E2025F657885}" ShortID="386515138">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="SFX_HourGlass_Destruction_2D" ID="{7730167D-3CED-4E43-AC74-4A4BB5F34520}" WorkUnitID="{5DFA8BAE-0AEA-4A3F-92EC-FBABE50597A1}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_SFX_HourGlass_Idle_LP" ID="{0994537E-EF34-4F9C-A1D4-F9FFCF6E9CD1}">
+					<ChildrenList>
+						<Action Name="" ID="{9ED1F5A7-0210-422C-B21A-6465902BF796}" ShortID="57268842">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="SFX_HourGlass_Idle_LP" ID="{825EA0A0-DE0C-48E0-87D4-C6658E4C5FA2}" WorkUnitID="{5DFA8BAE-0AEA-4A3F-92EC-FBABE50597A1}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{E7B1E2D8-71E4-4977-B0C0-4A1EAE6D5BFC}" ShortID="638783412">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="36"/>
+								<Property Name="SeekPercent" Type="Real64" Value="100">
+									<ModifierList>
+										<ModifierInfo>
+											<Modifier Name="" ID="{69B9C60D-95AA-48AF-AA99-9AA9A2BDFF04}">
+												<PropertyList>
+													<Property Name="Enabled" Type="bool" Value="True"/>
+												</PropertyList>
+											</Modifier>
+										</ModifierInfo>
+									</ModifierList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="SFX_HourGlass_Idle_LP" ID="{825EA0A0-DE0C-48E0-87D4-C6658E4C5FA2}" WorkUnitID="{5DFA8BAE-0AEA-4A3F-92EC-FBABE50597A1}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+			</ChildrenList>
 		</WorkUnit>
 	</Events>
 </WwiseDocument>
