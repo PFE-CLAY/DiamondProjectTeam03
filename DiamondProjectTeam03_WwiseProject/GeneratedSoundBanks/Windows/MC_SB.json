@@ -10,7 +10,7 @@
     "Type": "User",
     "GUID": "{ADC2D189-6608-4828-BC9C-6EF6F90834DB}",
     "Language": "SFX",
-    "Hash": "{E8CEF62C-1D06-8949-2AF8-C3703931A98B}",
+    "Hash": "{EECCDF9A-5917-9CCB-5047-CC62B536CAB8}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\MC_SB",
     "ShortName": "MC_SB",
     "Path": "MC_SB.bnk",
@@ -22,6 +22,14 @@
       "Location": "Memory",
       "ShortName": "AMB\\SP\\MC_FT_Concrete_Land_01.wav",
       "CachePath": "SFX/AMB/SP/MC_FT_Concrete_Land_01_818F3B66.wem"
+     },
+     {
+      "Id": "17784281",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "SFX\\MC_GetHit.wav",
+      "CachePath": "SFX/SFX/MC_GetHit_818F3B66.wem"
      },
      {
       "Id": "34141530",
@@ -1183,6 +1191,20 @@
       ]
      },
      {
+      "Id": "950272542",
+      "Name": "Play_MC_GetHit",
+      "ObjectPath": "\\Events\\MC_WU\\Play_MC_GetHit",
+      "GUID": "{DFDAAAFE-1AD5-4D67-9145-D4089C5F1FA9}",
+      "DurationType": "OneShot",
+      "DurationMin": "1.4506171",
+      "DurationMax": "2.525671",
+      "MediaRefs": [
+       {
+        "Id": "17784281"
+       }
+      ]
+     },
+     {
       "Id": "1177297501",
       "Name": "Play_MC_SFX_Gun_Shoot_RC",
       "ObjectPath": "\\Events\\MC_WU\\Play_MC_SFX_Gun_Shoot_RC",
@@ -1454,6 +1476,12 @@
         "GUID": "{EEC88170-01B2-4B8A-87BF-B7151380ADB4}"
        },
        {
+        "Id": "1051960422",
+        "Name": "TargetInsidePyramid",
+        "ObjectPath": "\\States\\Default Work Unit\\InsideOutside\\TargetInsidePyramid",
+        "GUID": "{1E0BA403-7723-4863-B8DD-93A6A3CA72ED}"
+       },
+       {
         "Id": "1752637612",
         "Name": "In",
         "ObjectPath": "\\States\\Default Work Unit\\InsideOutside\\In",
@@ -1492,6 +1520,6 @@
     ]
    }
   ],
-  "FileHash": "{477F6A96-C4D6-6578-B78D-864C1A9557D4}"
+  "FileHash": "{866F8E69-CEB9-6328-C96D-A06A89D57DCC}"
  }
 }

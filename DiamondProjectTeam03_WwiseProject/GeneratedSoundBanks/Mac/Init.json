@@ -10,7 +10,7 @@
     "Type": "User",
     "GUID": "{701ECBBD-9C7B-4030-8CDB-749EE5D1C7B9}",
     "Language": "SFX",
-    "Hash": "{105ED3DD-BC4F-3033-CA6A-40DA8A58EB75}",
+    "Hash": "{C4C36FD9-30BF-18DE-6334-1A2BC3683097}",
     "ObjectPath": "Init",
     "ShortName": "Init",
     "Path": "Init.bnk",
@@ -300,6 +300,12 @@
     ],
     "GameParameters": [
      {
+      "Id": "2176662110",
+      "Name": "RTPC_Tourelle_Projectil",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\RTPC_Tourelle_Projectil",
+      "GUID": "{00C509F2-F7BB-46D5-A5C8-1D7FA60484C0}"
+     },
+     {
       "Id": "3590742338",
       "Name": "RTPC_Speed_Flying",
       "ObjectPath": "\\Game Parameters\\Default Work Unit\\RTPC_Speed_Flying",
@@ -324,6 +330,12 @@
         "Name": "None",
         "ObjectPath": "\\States\\Default Work Unit\\InsideOutside\\None",
         "GUID": "{EEC88170-01B2-4B8A-87BF-B7151380ADB4}"
+       },
+       {
+        "Id": "1051960422",
+        "Name": "TargetInsidePyramid",
+        "ObjectPath": "\\States\\Default Work Unit\\InsideOutside\\TargetInsidePyramid",
+        "GUID": "{1E0BA403-7723-4863-B8DD-93A6A3CA72ED}"
        },
        {
         "Id": "1752637612",
@@ -364,6 +376,6 @@
     ]
    }
   ],
-  "FileHash": "{D3FF8AAD-A24B-A73F-5247-C7CC1C154949}"
+  "FileHash": "{B3D1D4C4-A7B0-390F-7A67-1DA09F87C4DB}"
  }
 }
