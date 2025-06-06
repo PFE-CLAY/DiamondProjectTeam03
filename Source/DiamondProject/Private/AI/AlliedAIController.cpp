@@ -20,15 +20,15 @@ void AAlliedAIController::BeginPlay()
 {
 	Super::BeginPlay();
 	AlliedControlled = Cast<AAllied>(GetPawn());
-	
-	
-	
+
 }
 
 void AAlliedAIController::OnMoveCompleted(FAIRequestID RequestID, EPathFollowingResult::Type Result)
 {
 	Super::OnMoveCompleted(RequestID, Result);
-	AlliedControlled->Path->PatrolPoints[AlliedControlled->Position]->PointEffect();
+	ACustomNavigationPoint* CurrentPoint = AlliedControlled->Path->PatrolPoints[AlliedControlled->Position];
+	CurrentPoint->PointEffect();
+	
 	AlliedControlled->Position++;
 	
 	if(AlliedControlled->Position >= AlliedControlled->Path->PatrolPoints.Num())
@@ -39,7 +39,8 @@ void AAlliedAIController::OnMoveCompleted(FAIRequestID RequestID, EPathFollowing
 		else return;
 			
 	}
-	
+
+	if(CurrentPoint->PointType == EPointType::Crouch) return;
 	
 	ACustomNavigationPoint* CurrentNavigationPoint = AlliedControlled->GetCurrentNavigationPoint();
 	if(CurrentNavigationPoint != nullptr && CurrentNavigationPoint->bShouldWait){
