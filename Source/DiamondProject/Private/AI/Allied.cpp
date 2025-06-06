@@ -72,6 +72,11 @@ void AAllied::GetNewPath(APath* NewPath)
 	Path->SetAllied(this);
 }
 
+void AAllied::OnCrouchTimeLimited_Implementation(float Duration)
+{
+	GetCharacterMovement()->DisableMovement();
+}
+
 void AAllied::OnCrouch_Implementation()
 {
 	GetCharacterMovement()->DisableMovement();
