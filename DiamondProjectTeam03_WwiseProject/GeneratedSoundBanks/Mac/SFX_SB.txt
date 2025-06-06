@@ -1,0 +1,6 @@
+Event	ID	Name			Wwise Object Path	Notes
+	1623238786	Play_SFX_Button_Backstage			\SFX_WU\Play_SFX_Button_Backstage	
+
+In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	756613996	SFX_Button_Backstage	E:\GitHub\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\SFX\SFX_Button_Backstage_818F3B66.wem		\Actor-Mixer Hierarchy\SFX_WU\SFX\SFX_Button_Backstage		90260
+
