@@ -64,11 +64,7 @@ protected:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category="Enemy Behavior")
 	USceneComponent* ShootPoint;
 
-	UPROPERTY()
-	TArray<AActor*> AllTargetActors;
-
-	UPROPERTY()
-	TArray<AActor*> AllActorsInRange;
+	
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -77,7 +73,7 @@ protected:
 	void OnDeath();
 
 	UFUNCTION(BlueprintCallable, Category = "Enemy")
-	bool IsTargetOnSight(FRotator Rotation, FVector Location);
+	bool IsPlayerOnSight(FRotator Rotation, FVector Location);
 
 	UFUNCTION(BlueprintCallable, BlueprintPure, Category = "Enemy")
 	virtual FRotator GetDirectionRotation(AActor* OriginActor, AActor* TargetActor);
@@ -92,13 +88,13 @@ private:
 	void SetNewAttackTimer();
 
 	UFUNCTION(BlueprintCallable, Category = "Enemy")
-	void Shoot(AActor* Target);
+	void Shoot();
 
 	UFUNCTION(BlueprintCallable, Category = "Enemy")
 
 	void RemoveEnemyFromSpawnerList();
 	
-	
+
 public:
 	
 	// Sets default values for this character's properties
@@ -117,12 +113,6 @@ public:
 
 	UPROPERTY(BlueprintAssignable, Category="Sunlight Detection")
 	FOnEnemyShoot OnEnemyShoot;
-
-	UFUNCTION(BlueprintCallable, BlueprintPure)
-	AActor* GetClosestAliveTarget();
-
-	UFUNCTION(BlueprintCallable)
-	bool IsAnyTargetInRange();
 
 	
 };
