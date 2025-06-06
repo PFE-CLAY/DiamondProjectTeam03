@@ -34,6 +34,7 @@ void ACustomNavigationPoint::PointEffect_Implementation()
 	if(bShouldPlayDialogue) OnPlayDialogue();
 	switch (PointType){
 	case EPointType::None:
+		Allied->Patrol();
 		break;
 	case EPointType::Crouch:
 		if(bShouldStayCrouched) Allied->OnCrouch();
