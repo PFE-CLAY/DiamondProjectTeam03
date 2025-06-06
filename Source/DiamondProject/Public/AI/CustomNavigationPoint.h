@@ -15,7 +15,10 @@ UCLASS()
 class DIAMONDPROJECT_API ACustomNavigationPoint : public AActor
 {
 	GENERATED_BODY()
-	
+
+	UDELEGATE(BlueprintCallable)
+	DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnPointEffectEvent);
+
 	
 protected:
 	
@@ -66,7 +69,7 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
-	UFUNCTION()
+	UFUNCTION(BlueprintNativeEvent)
 	void PointEffect();
 
 	UFUNCTION(BlueprintImplementableEvent)
