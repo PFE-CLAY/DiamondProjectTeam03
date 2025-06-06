@@ -35,6 +35,5 @@ private:
 	UMultiSunlightDetectorComponent* CachedDetectorComponent = nullptr;
 
 	void FindAndRegisterWithDetector();
-	virtual void PostEditChangeProperty(FPropertyChangedEvent& PropertyChangedEvent) override;
 	void CreateVisualizerMesh();
 };
