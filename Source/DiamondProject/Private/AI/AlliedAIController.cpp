@@ -26,30 +26,27 @@ void AAlliedAIController::BeginPlay()
 void AAlliedAIController::OnMoveCompleted(FAIRequestID RequestID, EPathFollowingResult::Type Result)
 {
 	Super::OnMoveCompleted(RequestID, Result);
-	ACustomNavigationPoint* CurrentPoint = AlliedControlled->Path->PatrolPoints[AlliedControlled->Position];
-	CurrentPoint->PointEffect();
+	
+	ACustomNavigationPoint* CurrentNavigationPoint = AlliedControlled->GetCurrentNavigationPoint();
+	if(CurrentNavigationPoint == nullptr) return;
 	
 	AlliedControlled->Position++;
-	
+
+	if(CurrentNavigationPoint->bShouldWait){
+		FTimerHandle TimerHandle;
+		GetWorldTimerManager().SetTimer(TimerHandle, CurrentNavigationPoint, &ACustomNavigationPoint::PointEffect, CurrentNavigationPoint->TimeToWait, false);
+		return;
+	}
+	CurrentNavigationPoint->PointEffect();
+	if(CurrentNavigationPoint->PointType == EPointType::Crouch) return;
 	if(AlliedControlled->Position >= AlliedControlled->Path->PatrolPoints.Num())
 	{
 		if(AlliedControlled->bShouldLoop){
 			AlliedControlled->Position = 0;
 		}
 		else return;
-			
-	}
-
-	if(CurrentPoint->PointType == EPointType::Crouch) return;
-	
-	ACustomNavigationPoint* CurrentNavigationPoint = AlliedControlled->GetCurrentNavigationPoint();
-	if(CurrentNavigationPoint != nullptr && CurrentNavigationPoint->bShouldWait){
-		FTimerHandle TimerHandle;
-		GetWorldTimerManager().SetTimer(TimerHandle, this, &AAlliedAIController::StartPatrol, CurrentNavigationPoint->TimeToWait, false);
-		return;
 	}
 	
-	AlliedControlled->Patrol();
 	
 }
 
@@ -57,6 +54,7 @@ void AAlliedAIController::StartPatrol()
 {
 	AlliedControlled->Patrol();
 }
+
 
 // Called every frame
 void AAlliedAIController::Tick(float DeltaTime)
