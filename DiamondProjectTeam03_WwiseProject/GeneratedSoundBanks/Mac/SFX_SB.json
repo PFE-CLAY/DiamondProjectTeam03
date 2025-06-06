@@ -10,12 +10,38 @@
     "Type": "User",
     "GUID": "{459D1F67-52BD-4FA1-B846-B8F3A50C2C5F}",
     "Language": "SFX",
-    "Hash": "{B571FF43-03E3-0F51-E76C-22555D138B0E}",
+    "Hash": "{83D76FD2-B343-B629-61D7-984BD4482C66}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\SFX_SB",
     "ShortName": "SFX_SB",
-    "Path": "SFX_SB.bnk"
+    "Path": "SFX_SB.bnk",
+    "Media": [
+     {
+      "Id": "756613996",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "SFX\\SFX_Button_Backstage.wav",
+      "CachePath": "SFX/SFX/SFX_Button_Backstage_818F3B66.wem"
+     }
+    ],
+    "Events": [
+     {
+      "Id": "1623238786",
+      "Name": "Play_SFX_Button_Backstage",
+      "ObjectPath": "\\Events\\SFX_WU\\Play_SFX_Button_Backstage",
+      "GUID": "{28025076-9703-41F8-8A62-52587A60DAAC}",
+      "DurationType": "OneShot",
+      "DurationMin": "0.9392083",
+      "DurationMax": "0.9392083",
+      "MediaRefs": [
+       {
+        "Id": "756613996"
+       }
+      ]
+     }
+    ]
    }
   ],
-  "FileHash": "{0271A0BD-EED4-A620-3815-8197442BD97C}"
+  "FileHash": "{8BB2C242-B5D3-DF98-74C6-37D2D7768FA7}"
  }
 }
