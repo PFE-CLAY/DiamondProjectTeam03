@@ -88,16 +88,3 @@ void USunlightTracePointComponent::FindAndRegisterWithDetector()
         CachedDetectorComponent->RegisterTracePoint(this);
     }
 }
-
-#if WITH_EDITOR
-void USunlightTracePointComponent::PostEditChangeProperty(FPropertyChangedEvent& PropertyChangedEvent)
-{
-    Super::PostEditChangeProperty(PropertyChangedEvent);
-
-    if (PropertyChangedEvent.Property
-        && PropertyChangedEvent.Property->GetFName() == GET_MEMBER_NAME_CHECKED(USunlightTracePointComponent, bShowVisualizer))
-    {
-        SetShowVisualizer(bShowVisualizer);
-    }
-}
-#endif
