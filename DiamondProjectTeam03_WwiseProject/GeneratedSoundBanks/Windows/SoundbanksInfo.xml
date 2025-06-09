@@ -2203,7 +2203,7 @@
 				</Event>
 			</Events>
 		</SoundBank>
-		<SoundBank Id="4155742227" Type="User" GUID="{D2378E68-5468-4849-BC4A-8FC6D8A3BF29}" Language="SFX" Hash="{3B2DB062-4BBA-A159-2E6F-D6643CD23CDD}">
+		<SoundBank Id="4155742227" Type="User" GUID="{D2378E68-5468-4849-BC4A-8FC6D8A3BF29}" Language="SFX" Hash="{300DAA90-0833-F57B-DF28-55F0E9C80A0A}">
 			<ObjectPath>\SoundBanks\SoundBanks_WU\GPE_SB</ObjectPath>
 			<ShortName>GPE_SB</ShortName>
 			<Path>GPE_SB.bnk</Path>
@@ -2215,6 +2215,10 @@
 				<File Id="131763475" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>MC_SFX_Dash_05.wav</ShortName>
 					<CachePath>SFX/MC_SFX_Dash_05_818F3B66.wem</CachePath>
+				</File>
+				<File Id="226141576" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>MC\GPE_JumpPads_Mecha_01.wav</ShortName>
+					<CachePath>SFX/MC/GPE_JumpPads_Mecha_01_818F3B66.wem</CachePath>
 				</File>
 				<File Id="275758801" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\RFX\GPE_JumpPads_Activation-002.wav</ShortName>
@@ -2236,6 +2240,10 @@
 					<ShortName>AMB\RFX\SFX_CorpseTrap_Closing.wav</ShortName>
 					<CachePath>SFX/AMB/RFX/SFX_CorpseTrap_Closing_818F3B66.wem</CachePath>
 				</File>
+				<File Id="831778911" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>MC\GPE_JumpPads_Mecha_03.wav</ShortName>
+					<CachePath>SFX/MC/GPE_JumpPads_Mecha_03_818F3B66.wem</CachePath>
+				</File>
 				<File Id="865971538" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\RFX\GPE_JumpPads_Activation-003.wav</ShortName>
 					<CachePath>SFX/AMB/RFX/GPE_JumpPads_Activation-003_818F3B66.wem</CachePath>
@@ -2248,20 +2256,47 @@
 					<ShortName>MC_SFX_Dash_04.wav</ShortName>
 					<CachePath>SFX/MC_SFX_Dash_04_818F3B66.wem</CachePath>
 				</File>
+				<File Id="932156054" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>MC\GPE_JumpPads_Mecha_04.wav</ShortName>
+					<CachePath>SFX/MC/GPE_JumpPads_Mecha_04_818F3B66.wem</CachePath>
+				</File>
 				<File Id="978522934" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\RFX\SFX_CorpseTrap_Opening.wav</ShortName>
 					<CachePath>SFX/AMB/RFX/SFX_CorpseTrap_Opening_818F3B66.wem</CachePath>
 				</File>
+				<File Id="1032185961" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>MC\GPE_JumpPads_Mecha_02.wav</ShortName>
+					<CachePath>SFX/MC/GPE_JumpPads_Mecha_02_818F3B66.wem</CachePath>
+				</File>
+				<File Id="1037685382" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>MC\GPE_JumpPads_Mecha_05.wav</ShortName>
+					<CachePath>SFX/MC/GPE_JumpPads_Mecha_05_818F3B66.wem</CachePath>
+				</File>
 			</Media>
+			<Plugins>
+				<ShareSets>
+					<Plugin Id="1590660382" Name="Nearly_Forever" ObjectPath="\Effects\Factory Effects\Delay\Nearly_Forever" GUID="{38550FDA-9236-4FC5-8AE0-68DB08164B25}" LibName="Wwise Delay" LibId="6946819"/>
+				</ShareSets>
+			</Plugins>
 			<Events>
 				<Event Id="575283655" Name="Play_GPE_JumPads_RC" ObjectPath="\Events\GPE_WU\Play_GPE_JumPads_RC" GUID="{32F429C1-2B0E-427B-9F12-8775F5CFF0AD}" MaxAttenuation="2000" DurationType="OneShot" DurationMin="1.1072708" DurationMax="1.8">
 					<MediaRefs>
 						<MediaRef Id="131763475"/>
+						<MediaRef Id="226141576"/>
 						<MediaRef Id="280528909"/>
 						<MediaRef Id="411674623"/>
+						<MediaRef Id="831778911"/>
 						<MediaRef Id="890446006"/>
 						<MediaRef Id="925500281"/>
+						<MediaRef Id="932156054"/>
+						<MediaRef Id="1032185961"/>
+						<MediaRef Id="1037685382"/>
 					</MediaRefs>
+					<PluginRefs>
+						<ShareSets>
+							<PluginRef Id="1590660382"/>
+						</ShareSets>
+					</PluginRefs>
 				</Event>
 				<Event Id="2353660422" Name="Play_GPE_JumpPads_Activation_RC" ObjectPath="\Events\GPE_WU\Play_GPE_JumpPads_Activation_RC" GUID="{7A4A1C10-6F19-4EFC-9649-9850E9202517}" MaxAttenuation="2000" DurationType="OneShot" DurationMin="3.2564793" DurationMax="3.8888958">
 					<MediaRefs>
@@ -2288,5 +2323,5 @@
 			</Events>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{4EF37A9D-12FD-5A16-7EFA-B5A312CC7C90}</FileHash>
+	<FileHash>{0522EDA2-CBDE-C420-C5F7-D8883199D62E}</FileHash>
 </SoundBanksInfo>

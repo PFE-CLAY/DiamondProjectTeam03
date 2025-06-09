@@ -5725,7 +5725,7 @@
     "Type": "User",
     "GUID": "{D2378E68-5468-4849-BC4A-8FC6D8A3BF29}",
     "Language": "SFX",
-    "Hash": "{3B2DB062-4BBA-A159-2E6F-D6643CD23CDD}",
+    "Hash": "{300DAA90-0833-F57B-DF28-55F0E9C80A0A}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\GPE_SB",
     "ShortName": "GPE_SB",
     "Path": "GPE_SB.bnk",
@@ -5745,6 +5745,14 @@
       "Location": "Memory",
       "ShortName": "MC_SFX_Dash_05.wav",
       "CachePath": "SFX/MC_SFX_Dash_05_818F3B66.wem"
+     },
+     {
+      "Id": "226141576",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "MC\\GPE_JumpPads_Mecha_01.wav",
+      "CachePath": "SFX/MC/GPE_JumpPads_Mecha_01_818F3B66.wem"
      },
      {
       "Id": "275758801",
@@ -5787,6 +5795,14 @@
       "CachePath": "SFX/AMB/RFX/SFX_CorpseTrap_Closing_818F3B66.wem"
      },
      {
+      "Id": "831778911",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "MC\\GPE_JumpPads_Mecha_03.wav",
+      "CachePath": "SFX/MC/GPE_JumpPads_Mecha_03_818F3B66.wem"
+     },
+     {
       "Id": "865971538",
       "Language": "SFX",
       "Streaming": "false",
@@ -5811,14 +5827,50 @@
       "CachePath": "SFX/MC_SFX_Dash_04_818F3B66.wem"
      },
      {
+      "Id": "932156054",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "MC\\GPE_JumpPads_Mecha_04.wav",
+      "CachePath": "SFX/MC/GPE_JumpPads_Mecha_04_818F3B66.wem"
+     },
+     {
       "Id": "978522934",
       "Language": "SFX",
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "AMB\\RFX\\SFX_CorpseTrap_Opening.wav",
       "CachePath": "SFX/AMB/RFX/SFX_CorpseTrap_Opening_818F3B66.wem"
+     },
+     {
+      "Id": "1032185961",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "MC\\GPE_JumpPads_Mecha_02.wav",
+      "CachePath": "SFX/MC/GPE_JumpPads_Mecha_02_818F3B66.wem"
+     },
+     {
+      "Id": "1037685382",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "MC\\GPE_JumpPads_Mecha_05.wav",
+      "CachePath": "SFX/MC/GPE_JumpPads_Mecha_05_818F3B66.wem"
      }
     ],
+    "Plugins": {
+     "ShareSets": [
+      {
+       "Id": "1590660382",
+       "Name": "Nearly_Forever",
+       "ObjectPath": "\\Effects\\Factory Effects\\Delay\\Nearly_Forever",
+       "GUID": "{38550FDA-9236-4FC5-8AE0-68DB08164B25}",
+       "LibName": "Wwise Delay",
+       "LibId": "6946819"
+      }
+     ]
+    },
     "Events": [
      {
       "Id": "575283655",
@@ -5834,18 +5886,40 @@
         "Id": "131763475"
        },
        {
+        "Id": "226141576"
+       },
+       {
         "Id": "280528909"
        },
        {
         "Id": "411674623"
        },
        {
+        "Id": "831778911"
+       },
+       {
         "Id": "890446006"
        },
        {
         "Id": "925500281"
+       },
+       {
+        "Id": "932156054"
+       },
+       {
+        "Id": "1032185961"
+       },
+       {
+        "Id": "1037685382"
        }
-      ]
+      ],
+      "PluginRefs": {
+       "ShareSets": [
+        {
+         "Id": "1590660382"
+        }
+       ]
+      }
      },
      {
       "Id": "2353660422",
@@ -5916,6 +5990,6 @@
     ]
    }
   ],
-  "FileHash": "{37FF234B-5ACB-1786-2404-E630824A4F89}"
+  "FileHash": "{BD2A5634-6852-5F39-AB42-BA9CDDAC9822}"
  }
 }
