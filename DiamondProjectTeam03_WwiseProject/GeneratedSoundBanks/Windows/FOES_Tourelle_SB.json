@@ -10,7 +10,7 @@
     "Type": "User",
     "GUID": "{8CC30184-23AF-4DB5-9844-9B04DF10A650}",
     "Language": "SFX",
-    "Hash": "{7D2DE924-4B4C-AECE-FFC7-0B2ECE9408EE}",
+    "Hash": "{48FEA8E5-070B-5F95-5A70-42DAF98CE5C2}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\FOES_Tourelle_SB",
     "ShortName": "FOES_Tourelle_SB",
     "Path": "FOES_Tourelle_SB.bnk",
@@ -318,6 +318,12 @@
       "Name": "Master",
       "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master",
       "GUID": "{F3A976BC-47E9-46E5-9EEC-F566BB39DBEE}"
+     },
+     {
+      "Id": "4219618961",
+      "Name": "AMB_Crowd",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\Game_Global\\AMB_Crowd",
+      "GUID": "{985719AF-3534-41FC-A751-99E11C3F7784}"
      }
     ],
     "AuxBusses": [
@@ -434,6 +440,12 @@
     ],
     "GameParameters": [
      {
+      "Id": "1190880401",
+      "Name": "RTPC_DoorPyramid",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\RTPC_DoorPyramid",
+      "GUID": "{D2AEC1CE-EF9E-486E-AE8B-FB121AC42B53}"
+     },
+     {
       "Id": "2176662110",
       "Name": "RTPC_Tourelle_Projectil",
       "ObjectPath": "\\Game Parameters\\Default Work Unit\\RTPC_Tourelle_Projectil",
@@ -476,6 +488,6 @@
     ]
    }
   ],
-  "FileHash": "{4CEA61DA-9B32-E3FD-8F05-17413B8C4CCA}"
+  "FileHash": "{D7F7918F-DD5E-D887-7D91-9677C9FD3D87}"
  }
 }

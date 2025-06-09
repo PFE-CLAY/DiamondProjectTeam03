@@ -10,7 +10,7 @@
     "Type": "User",
     "GUID": "{48187E94-2869-42A3-9E99-A12DF1DA86DF}",
     "Language": "SFX",
-    "Hash": "{6DD75665-0468-1CCA-BF8B-AA750C9618F5}",
+    "Hash": "{928110CA-B920-F6C4-9FF1-5C5ED7ED8084}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\FOES_Invisible_SB",
     "ShortName": "FOES_Invisible_SB",
     "Path": "FOES_Invisible_SB.bnk",
@@ -160,6 +160,12 @@
       "Name": "Master",
       "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master",
       "GUID": "{F3A976BC-47E9-46E5-9EEC-F566BB39DBEE}"
+     },
+     {
+      "Id": "4219618961",
+      "Name": "AMB_Crowd",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\Game_Global\\AMB_Crowd",
+      "GUID": "{985719AF-3534-41FC-A751-99E11C3F7784}"
      }
     ],
     "AuxBusses": [
@@ -274,6 +280,14 @@
       }
      }
     ],
+    "GameParameters": [
+     {
+      "Id": "1190880401",
+      "Name": "RTPC_DoorPyramid",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\RTPC_DoorPyramid",
+      "GUID": "{D2AEC1CE-EF9E-486E-AE8B-FB121AC42B53}"
+     }
+    ],
     "StateGroups": [
      {
       "Id": "3929688590",
@@ -310,6 +324,6 @@
     ]
    }
   ],
-  "FileHash": "{0620E8D9-84DE-16F4-4DA1-E6F3F76440CB}"
+  "FileHash": "{B51F5A0A-61F8-46E3-A369-694271E2DCF8}"
  }
 }

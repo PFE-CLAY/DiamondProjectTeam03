@@ -16,6 +16,13 @@
 								</Reference>
 							</ReferenceList>
 						</Action>
+						<Action Name="" ID="{2992DC8B-C2F3-4A93-8B8E-59DEBF67AA5C}" ShortID="563889027">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="GPE_JumpPads_Mecha_RC" ID="{2CA10FF8-FE9F-4D89-96F7-1EA16689B415}" WorkUnitID="{DBF8DB4E-51F0-47EF-9DC3-F34DD62EE3B6}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
 					</ChildrenList>
 				</Event>
 				<Event Name="Play_SFX_CorpseTrap_Opening" ID="{3B91810C-60F0-4DA1-8459-1EC729C58878}">

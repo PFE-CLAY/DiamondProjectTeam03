@@ -10,7 +10,11 @@
     "Type": "User",
     "GUID": "{ADC2D189-6608-4828-BC9C-6EF6F90834DB}",
     "Language": "SFX",
+<<<<<<< HEAD
     "Hash": "{F25D6A6E-354E-F6C5-38F7-181AF23F7C6F}",
+=======
+    "Hash": "{8D516405-C7EF-C99C-495C-95C0919A27D8}",
+>>>>>>> 6adac832d2a81a4aad582c25a10da3ffebb1f4d6
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\MC_SB",
     "ShortName": "MC_SB",
     "Path": "MC_SB.bnk",
@@ -1341,6 +1345,12 @@
       "Name": "Master",
       "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master",
       "GUID": "{F3A976BC-47E9-46E5-9EEC-F566BB39DBEE}"
+     },
+     {
+      "Id": "4219618961",
+      "Name": "AMB_Crowd",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\Game_Global\\AMB_Crowd",
+      "GUID": "{985719AF-3534-41FC-A751-99E11C3F7784}"
      }
     ],
     "AuxBusses": [
@@ -1455,6 +1465,14 @@
       }
      }
     ],
+    "GameParameters": [
+     {
+      "Id": "1190880401",
+      "Name": "RTPC_DoorPyramid",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\RTPC_DoorPyramid",
+      "GUID": "{D2AEC1CE-EF9E-486E-AE8B-FB121AC42B53}"
+     }
+    ],
     "StateGroups": [
      {
       "Id": "3929688590",
@@ -1519,6 +1537,10 @@
     ]
    }
   ],
+<<<<<<< HEAD
   "FileHash": "{C2A31775-E612-04C1-7D6F-0741114FEB98}"
+=======
+  "FileHash": "{D6353250-3439-6880-BDD7-902B2A4A55F9}"
+>>>>>>> 6adac832d2a81a4aad582c25a10da3ffebb1f4d6
  }
 }
