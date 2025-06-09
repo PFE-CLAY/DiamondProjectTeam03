@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="16" SoundBankVersion="150">
 	<SoundBanks>
-		<SoundBank Id="1956625499" Type="User" GUID="{ADC2D189-6608-4828-BC9C-6EF6F90834DB}" Language="SFX" Hash="{EECCDF9A-5917-9CCB-5047-CC62B536CAB8}">
+		<SoundBank Id="1956625499" Type="User" GUID="{ADC2D189-6608-4828-BC9C-6EF6F90834DB}" Language="SFX" Hash="{8D516405-C7EF-C99C-495C-95C0919A27D8}">
 			<ObjectPath>\SoundBanks\SoundBanks_WU\MC_SB</ObjectPath>
 			<ShortName>MC_SB</ShortName>
 			<Path>MC_SB.bnk</Path>
@@ -554,6 +554,7 @@
 				<Bus Id="3623095082" Name="FOES_Flying" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global\FOES_Flying" GUID="{439831F9-AA50-4CD2-98C3-ACD8B187380E}"/>
 				<Bus Id="3991942870" Name="Music" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Music" GUID="{08156595-7637-4348-AC3C-2EDE3FCCB08F}"/>
 				<Bus Id="4056684167" Name="Master" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master" GUID="{F3A976BC-47E9-46E5-9EEC-F566BB39DBEE}"/>
+				<Bus Id="4219618961" Name="AMB_Crowd" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global\AMB_Crowd" GUID="{985719AF-3534-41FC-A751-99E11C3F7784}"/>
 			</Busses>
 			<AuxBusses>
 				<AuxBus Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}">
@@ -615,6 +616,9 @@
 					</PluginRefs>
 				</AuxBus>
 			</AuxBusses>
+			<GameParameters>
+				<GameParameter Id="1190880401" Name="RTPC_DoorPyramid" ObjectPath="\Game Parameters\Default Work Unit\RTPC_DoorPyramid" GUID="{D2AEC1CE-EF9E-486E-AE8B-FB121AC42B53}"/>
+			</GameParameters>
 			<StateGroups>
 				<StateGroup Id="3929688590" Name="InsideOutside" ObjectPath="\States\Default Work Unit\InsideOutside" GUID="{2CE28D5C-F27B-42D7-9D91-1905B53C4C3C}">
 					<States>
@@ -636,5 +640,5 @@
 			</SwitchGroups>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{9F7114A8-FDEA-8B17-BDA8-4DB06794D991}</FileHash>
+	<FileHash>{F8009F41-2EFE-DE58-BD17-7FA656B15C8B}</FileHash>
 </SoundBanksInfo>

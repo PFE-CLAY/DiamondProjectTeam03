@@ -7,6 +7,6 @@ Event	ID	Name			Wwise Object Path	Notes
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	482790053	SFX_Door_Pyramid_Open	G:\Unreal\Unreal_Projects\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Windows\SFX\MC\SFX_Door_Pyramid_Open_818F3B66.wem		\Actor-Mixer Hierarchy\SFX_WU\SFX\SFX_Door_Pyramid_Open		443904
 	794556847	SFX_HourGlass_Idle_LP	G:\Unreal\Unreal_Projects\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Windows\SFX\MC\SFX_HourGlass_Idle_LP_FBC78EF0.wem		\Actor-Mixer Hierarchy\SFX_WU\SFX\SFX_HourGlass_Idle_LP		6044636
-	862611700	SFX_Door_Pyramid_Close	G:\Unreal\Unreal_Projects\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Windows\SFX\MC\SFX_Door_Pyramid_B3EF6B4D.wem		\Actor-Mixer Hierarchy\SFX_WU\SFX\SFX_Door_Pyramid_Close		522996
+	862611700	SFX_Door_Pyramid_Close	G:\Unreal\Unreal_Projects\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Windows\SFX\MC\SFX_Door_Pyramid_AA228216.wem		\Actor-Mixer Hierarchy\SFX_WU\SFX\SFX_Door_Pyramid_Close		522996
 	1049815799	SFX_HourGlass_Destruction_2D	G:\Unreal\Unreal_Projects\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Windows\SFX\MC\SFX_HourGlass_Destruction_2D_818F3B66.wem		\Actor-Mixer Hierarchy\SFX_WU\SFX\SFX_HourGlass_Destruction_2D		3577400
 
