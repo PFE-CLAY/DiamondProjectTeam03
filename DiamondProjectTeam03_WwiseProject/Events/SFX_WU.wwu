@@ -72,6 +72,17 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="Play_SFX_Button_Backstage" ID="{F8593F23-32CE-4C34-A551-35034A61FD79}">
+					<ChildrenList>
+						<Action Name="" ID="{13C79EAC-8B9B-456D-9800-0B44604D0E8F}" ShortID="53645925">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="SFX_Button_Backstage" ID="{FE84BD95-D09A-4FE5-B89F-68DC0D184DF9}" WorkUnitID="{5DFA8BAE-0AEA-4A3F-92EC-FBABE50597A1}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

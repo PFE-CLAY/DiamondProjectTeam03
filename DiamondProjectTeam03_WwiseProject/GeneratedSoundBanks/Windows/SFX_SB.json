@@ -10,7 +10,7 @@
     "Type": "User",
     "GUID": "{459D1F67-52BD-4FA1-B846-B8F3A50C2C5F}",
     "Language": "SFX",
-    "Hash": "{7E3B5390-4075-F55C-E8D1-5E6044DD92BC}",
+    "Hash": "{19E7EC44-CA5D-5511-35D5-4CF8444F717D}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\SFX_SB",
     "ShortName": "SFX_SB",
     "Path": "SFX_SB.bnk",
@@ -22,6 +22,14 @@
       "Location": "Memory",
       "ShortName": "MC\\SFX_Door_Pyramid_Open.wav",
       "CachePath": "SFX/MC/SFX_Door_Pyramid_Open_818F3B66.wem"
+     },
+     {
+      "Id": "640927559",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "SFX_Button_Backstage.wav",
+      "CachePath": "SFX/SFX_Button_Backstage_818F3B66.wem"
      },
      {
       "Id": "794556847",
@@ -37,7 +45,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "MC\\SFX_Door_Pyramid.wav",
-      "CachePath": "SFX/MC/SFX_Door_Pyramid_B3EF6B4D.wem"
+      "CachePath": "SFX/MC/SFX_Door_Pyramid_AA228216.wem"
      },
      {
       "Id": "1049815799",
@@ -49,6 +57,21 @@
      }
     ],
     "Events": [
+     {
+      "Id": "1623238786",
+      "Name": "Play_SFX_Button_Backstage",
+      "ObjectPath": "\\Events\\SFX_WU\\Play_SFX_Button_Backstage",
+      "GUID": "{F8593F23-32CE-4C34-A551-35034A61FD79}",
+      "MaxAttenuation": "2000",
+      "DurationType": "OneShot",
+      "DurationMin": "0.9392083",
+      "DurationMax": "0.9392083",
+      "MediaRefs": [
+       {
+        "Id": "640927559"
+       }
+      ]
+     },
      {
       "Id": "1447435678",
       "Name": "Play_SFX_Door_Pyramid_Close",
@@ -109,6 +132,6 @@
     ]
    }
   ],
-  "FileHash": "{985F630B-8B8D-7AA2-E1B0-E7D3C674CB6A}"
+  "FileHash": "{8FD76680-0A23-63B8-A3D8-17DDB78C9100}"
  }
 }

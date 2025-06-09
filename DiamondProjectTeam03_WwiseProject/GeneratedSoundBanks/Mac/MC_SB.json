@@ -10,7 +10,7 @@
     "Type": "User",
     "GUID": "{ADC2D189-6608-4828-BC9C-6EF6F90834DB}",
     "Language": "SFX",
-    "Hash": "{EECCDF9A-5917-9CCB-5047-CC62B536CAB8}",
+    "Hash": "{F25D6A6E-354E-F6C5-38F7-181AF23F7C6F}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\MC_SB",
     "ShortName": "MC_SB",
     "Path": "MC_SB.bnk",
@@ -29,7 +29,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "SFX\\MC_GetHit.wav",
-      "CachePath": "SFX/SFX/MC_GetHit_818F3B66.wem"
+      "CachePath": "SFX/SFX/MC_GetHit_FBC78EF0.wem"
      },
      {
       "Id": "34141530",
@@ -1195,9 +1195,8 @@
       "Name": "Play_MC_GetHit",
       "ObjectPath": "\\Events\\MC_WU\\Play_MC_GetHit",
       "GUID": "{DFDAAAFE-1AD5-4D67-9145-D4089C5F1FA9}",
-      "DurationType": "OneShot",
-      "DurationMin": "1.4506171",
-      "DurationMax": "2.525671",
+      "MaxAttenuation": "1000",
+      "DurationType": "Infinite",
       "MediaRefs": [
        {
         "Id": "17784281"
@@ -1520,6 +1519,6 @@
     ]
    }
   ],
-  "FileHash": "{4FC20104-1104-3DD9-7B9C-B6E5DF07E259}"
+  "FileHash": "{8C268F13-E7A9-78AF-A22A-E85CC017130B}"
  }
 }
