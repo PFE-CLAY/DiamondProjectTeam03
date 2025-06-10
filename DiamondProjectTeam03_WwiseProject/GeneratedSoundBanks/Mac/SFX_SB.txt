@@ -6,9 +6,15 @@ Event	ID	Name			Wwise Object Path	Notes
 	2563465684	Play_SFX_HourGlass_Idle_LP			\SFX_WU\Play_SFX_HourGlass_Idle_LP	
 
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	57706824	SFX_BlackSand_Glitchy_2s_Stereo_06	E:\GitHub\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\SFX_BlackSand_Glitchy_2s_Stereo_06_818F3B66.wem		\Actor-Mixer Hierarchy\SFX_WU\SFX\SFX_BlackSand_Texture\Glitchy_Stereo\SFX_BlackSand_Glitchy_2s_Stereo_06		683064
+	418805659	SFX_BlackSand_Glitchy_2s_Stereo_04	E:\GitHub\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\SFX_BlackSand_Glitchy_2s_Stereo_04_818F3B66.wem		\Actor-Mixer Hierarchy\SFX_WU\SFX\SFX_BlackSand_Texture\Glitchy_Stereo\SFX_BlackSand_Glitchy_2s_Stereo_04		690016
+	460314317	SFX_BlackSand_Glitchy_2s_Stereo_02	E:\GitHub\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\SFX_BlackSand_Glitchy_2s_Stereo_02_818F3B66.wem		\Actor-Mixer Hierarchy\SFX_WU\SFX\SFX_BlackSand_Texture\Glitchy_Stereo\SFX_BlackSand_Glitchy_2s_Stereo_02		672704
 	482790053	SFX_Door_Pyramid_Open	E:\GitHub\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\MC\SFX_Door_Pyramid_Open_818F3B66.wem		\Actor-Mixer Hierarchy\SFX_WU\SFX\SFX_Door_Pyramid_Open		443904
+	498448547	SFX_BlackSand_Glitchy_2s_Stereo_01	E:\GitHub\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\SFX_BlackSand_Glitchy_2s_Stereo_01_818F3B66.wem		\Actor-Mixer Hierarchy\SFX_WU\SFX\SFX_BlackSand_Texture\Glitchy_Stereo\SFX_BlackSand_Glitchy_2s_Stereo_01		666696
 	640927559	SFX_Button_Backstage	E:\GitHub\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\SFX_Button_Backstage_818F3B66.wem		\Actor-Mixer Hierarchy\SFX_WU\SFX\SFX_Button_Backstage		90260
 	794556847	SFX_HourGlass_Idle_LP	E:\GitHub\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\MC\SFX_HourGlass_Idle_LP_FBC78EF0.wem		\Actor-Mixer Hierarchy\SFX_WU\SFX\SFX_HourGlass_Idle_LP		6044636
 	862611700	SFX_Door_Pyramid_Close	E:\GitHub\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\MC\SFX_Door_Pyramid_AA228216.wem		\Actor-Mixer Hierarchy\SFX_WU\SFX\SFX_Door_Pyramid_Close		522996
+	1013981530	SFX_BlackSand_Glitchy_2s_Stereo_05	E:\GitHub\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\SFX_BlackSand_Glitchy_2s_Stereo_05_818F3B66.wem		\Actor-Mixer Hierarchy\SFX_WU\SFX\SFX_BlackSand_Texture\Glitchy_Stereo\SFX_BlackSand_Glitchy_2s_Stereo_05		687216
+	1028643509	SFX_BlackSand_Glitchy_2s_Stereo_03	E:\GitHub\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\SFX_BlackSand_Glitchy_2s_Stereo_03_818F3B66.wem		\Actor-Mixer Hierarchy\SFX_WU\SFX\SFX_BlackSand_Texture\Glitchy_Stereo\SFX_BlackSand_Glitchy_2s_Stereo_03		703156
 	1049815799	SFX_HourGlass_Destruction_2D	E:\GitHub\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\MC\SFX_HourGlass_Destruction_2D_818F3B66.wem		\Actor-Mixer Hierarchy\SFX_WU\SFX\SFX_HourGlass_Destruction_2D		3577400
 

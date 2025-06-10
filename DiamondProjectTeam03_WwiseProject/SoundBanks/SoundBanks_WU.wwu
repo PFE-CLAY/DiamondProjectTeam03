@@ -61,6 +61,7 @@
 						<ObjectRef Name="Master_WU" ID="{A9F2777E-FBA3-4BC0-B5B3-14E0777A7B23}" WorkUnitID="{A9F2777E-FBA3-4BC0-B5B3-14E0777A7B23}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_AMB_PAD_Pyramid_Closed" ID="{F627B9DE-2BDF-4BC2-B74E-5E799A3FBDBF}" WorkUnitID="{1BF409B0-B754-4C8B-AEBF-EFEE5E6D5D4D}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_AMB_PAD_Hub" ID="{E1692669-CD47-4C1F-9271-81F40DE53532}" WorkUnitID="{1BF409B0-B754-4C8B-AEBF-EFEE5E6D5D4D}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_AMB_SP_Incinerator" ID="{C2B84120-2D73-4FB5-AAF0-B5573838C530}" WorkUnitID="{1BF409B0-B754-4C8B-AEBF-EFEE5E6D5D4D}" Origin="Manual" Filter="7"/>
 					</ObjectInclusionList>
 					<ObjectExclusionList/>
 					<GameSyncExclusionList/>

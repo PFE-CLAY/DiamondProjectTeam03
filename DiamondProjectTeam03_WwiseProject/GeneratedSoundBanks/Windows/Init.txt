@@ -3,6 +3,7 @@ State Group	ID	Name			Wwise Object Path	Notes
 
 State	ID	Name	State Group			Notes
 	645492555	Out	InsideOutside			
+	646625282	Hub	InsideOutside			
 	748895195	None	InsideOutside			
 	1051960422	TargetInsidePyramid	InsideOutside			
 	1752637612	In	InsideOutside			
