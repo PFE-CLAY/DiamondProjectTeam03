@@ -10,7 +10,7 @@
     "Type": "User",
     "GUID": "{ADC2D189-6608-4828-BC9C-6EF6F90834DB}",
     "Language": "SFX",
-    "Hash": "{5408FA06-544B-67AF-3D27-1100118099DD}",
+    "Hash": "{658892D1-4D4A-BC0D-04AC-731B424514BB}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\MC_SB",
     "ShortName": "MC_SB",
     "Path": "MC_SB.bnk",
@@ -1533,6 +1533,6 @@
     ]
    }
   ],
-  "FileHash": "{A60D7D0A-4B5F-6B1E-48BC-E18CBE304576}"
+  "FileHash": "{EC2D8D25-D715-591E-A4A6-24A01F508558}"
  }
 }

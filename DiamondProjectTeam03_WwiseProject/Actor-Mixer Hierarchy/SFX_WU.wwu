@@ -2572,9 +2572,9 @@
 															<PointList>
 																<Point>
 																	<XPos>0</XPos>
-																	<YPos>-4.93851</YPos>
+																	<YPos>-0.46774</YPos>
 																	<Flags>5</Flags>
-																	<SegmentShape>Log1</SegmentShape>
+																	<SegmentShape>Exp1</SegmentShape>
 																</Point>
 																<Point>
 																	<XPos>150000</XPos>
