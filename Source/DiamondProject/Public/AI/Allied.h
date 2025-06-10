@@ -84,6 +84,9 @@ public:
 
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category="Movements")
 	void OnCrouch();
+
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category="Movements")
+	void OnUncrouch();
 	
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category="Movements")
 	void OnCrouchTimeLimited(float Duration);

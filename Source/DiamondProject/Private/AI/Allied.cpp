@@ -47,7 +47,9 @@ void AAllied::Patrol()
 	if(Position < Path->PatrolPoints.Num()){
 		AnimInstance->bIsMoving = true;
 		FAIMoveRequest MoveRequest;
-		MoveRequest.SetGoalLocation(Path->PatrolPoints[Position]->GetActorLocation());
+		ACustomNavigationPoint* NavPoint = Path->PatrolPoints[Position];
+		
+		MoveRequest.SetGoalLocation(NavPoint->GetActorLocation());
 		AIController->MoveTo(MoveRequest, nullptr);
 	}
 	else
@@ -73,14 +75,19 @@ void AAllied::GetNewPath(APath* NewPath)
 	Patrol();
 }
 
+void AAllied::OnUncrouch_Implementation()
+{
+	
+}
+
 void AAllied::OnCrouchTimeLimited_Implementation(float Duration)
 {
-	GetCharacterMovement()->DisableMovement();
+	//GetCharacterMovement()->DisableMovement();
 }
 
 void AAllied::OnCrouch_Implementation()
 {
-	GetCharacterMovement()->DisableMovement();
+	//GetCharacterMovement()->DisableMovement();
 }
 
 // Called every frame

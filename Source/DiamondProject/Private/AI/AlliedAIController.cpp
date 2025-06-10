@@ -6,6 +6,7 @@
 #include "AI/Allied.h"
 #include "AI/CustomNavigationPoint.h"
 #include "AI/Path.h"
+#include "Navigation/PathFollowingComponent.h"
 
 
 // Sets default values
@@ -29,14 +30,13 @@ void AAlliedAIController::OnMoveCompleted(FAIRequestID RequestID, EPathFollowing
 	
 	ACustomNavigationPoint* CurrentNavigationPoint = AlliedControlled->GetCurrentNavigationPoint();
 	if(CurrentNavigationPoint == nullptr) return;
-	
 	AlliedControlled->Position++;
 
 	if(CurrentNavigationPoint->bShouldWait){
-		FTimerHandle TimerHandle;
-		GetWorldTimerManager().SetTimer(TimerHandle, CurrentNavigationPoint, &ACustomNavigationPoint::PointEffect, CurrentNavigationPoint->TimeToWait, false);
+		CurrentNavigationPoint->StartTimer();
 		return;
 	}
+	
 	CurrentNavigationPoint->PointEffect();
 	if(CurrentNavigationPoint->PointType == EPointType::Crouch) return;
 	if(AlliedControlled->Position >= AlliedControlled->Path->PatrolPoints.Num())

@@ -28,6 +28,16 @@ void ACustomNavigationPoint::Tick(float DeltaTime)
 	Super::Tick(DeltaTime);
 }
 
+void ACustomNavigationPoint::StopTimer()
+{
+	GetWorldTimerManager().ClearTimer(TimerHandle);
+	PointEffect();
+}
+
+void ACustomNavigationPoint::StartTimer()
+{
+	GetWorldTimerManager().SetTimer(TimerHandle, this, &ACustomNavigationPoint::PointEffect, TimeToWait, false);
+}
 void ACustomNavigationPoint::PointEffect_Implementation()
 {
 	
