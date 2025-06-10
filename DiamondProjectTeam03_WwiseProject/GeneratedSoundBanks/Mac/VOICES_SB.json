@@ -10,7 +10,7 @@
     "Type": "User",
     "GUID": "{9B915276-16F3-4721-B819-126344F97366}",
     "Language": "SFX",
-    "Hash": "{22469D0C-9882-0080-2536-2ADBCEE943E0}",
+    "Hash": "{719F26AD-73DC-CF5C-3DAE-7E9D29BA61EC}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\VOICES_SB",
     "ShortName": "VOICES_SB",
     "Path": "VOICES_SB.bnk",
@@ -1112,6 +1112,6 @@
     ]
    }
   ],
-  "FileHash": "{21F72C02-6164-BCCE-3B6F-27BF7F7260F0}"
+  "FileHash": "{A24F75F8-2084-7226-B323-4CF2BEA11FA5}"
  }
 }
