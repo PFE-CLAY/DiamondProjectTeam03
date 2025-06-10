@@ -17,7 +17,7 @@ protected:
 
 	UPROPERTY(BlueprintReadWrite, Category = "Turret Behavior")
 	int Position;
-	
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -29,6 +29,7 @@ private:
 	void StartPatrol();
 public:
 	ATurretEnemy();
+	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
