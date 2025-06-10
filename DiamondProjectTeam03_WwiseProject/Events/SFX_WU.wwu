@@ -38,6 +38,16 @@
 								</Reference>
 							</ReferenceList>
 						</Action>
+						<Action Name="" ID="{686D178B-9785-4416-A246-CD29D000043E}" ShortID="533482858">
+							<PropertyList>
+								<Property Name="Delay" Type="Real64" Value="6.1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Glitchy_Stereo" ID="{16769621-B0C1-48C4-8B68-EE1781E6558F}" WorkUnitID="{5DFA8BAE-0AEA-4A3F-92EC-FBABE50597A1}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
 					</ChildrenList>
 				</Event>
 				<Event Name="Play_SFX_HourGlass_Idle_LP" ID="{0994537E-EF34-4F9C-A1D4-F9FFCF6E9CD1}">
