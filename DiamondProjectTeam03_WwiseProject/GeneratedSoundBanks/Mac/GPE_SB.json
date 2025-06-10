@@ -10,7 +10,7 @@
     "Type": "User",
     "GUID": "{D2378E68-5468-4849-BC4A-8FC6D8A3BF29}",
     "Language": "SFX",
-    "Hash": "{3B2DB062-4BBA-A159-2E6F-D6643CD23CDD}",
+    "Hash": "{38342F44-D7B1-F005-C6E6-CAF9CAB9DC18}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\GPE_SB",
     "ShortName": "GPE_SB",
     "Path": "GPE_SB.bnk",
@@ -30,6 +30,14 @@
       "Location": "Memory",
       "ShortName": "MC_SFX_Dash_05.wav",
       "CachePath": "SFX/MC_SFX_Dash_05_818F3B66.wem"
+     },
+     {
+      "Id": "226141576",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "MC\\GPE_JumpPads_Mecha_01.wav",
+      "CachePath": "SFX/MC/GPE_JumpPads_Mecha_01_818F3B66.wem"
      },
      {
       "Id": "275758801",
@@ -72,6 +80,22 @@
       "CachePath": "SFX/AMB/RFX/SFX_CorpseTrap_Closing_818F3B66.wem"
      },
      {
+      "Id": "729439879",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "MC\\GPE_Elevator_Start.wav",
+      "CachePath": "SFX/MC/GPE_Elevator_Start_818F3B66.wem"
+     },
+     {
+      "Id": "831778911",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "MC\\GPE_JumpPads_Mecha_03.wav",
+      "CachePath": "SFX/MC/GPE_JumpPads_Mecha_03_818F3B66.wem"
+     },
+     {
       "Id": "865971538",
       "Language": "SFX",
       "Streaming": "false",
@@ -88,6 +112,14 @@
       "CachePath": "SFX/MC_SFX_Dash_03_818F3B66.wem"
      },
      {
+      "Id": "904242620",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "MC\\GPE_Elevator_LP.wav",
+      "CachePath": "SFX/MC/GPE_Elevator_LP_FBC78EF0.wem"
+     },
+     {
       "Id": "925500281",
       "Language": "SFX",
       "Streaming": "false",
@@ -96,15 +128,74 @@
       "CachePath": "SFX/MC_SFX_Dash_04_818F3B66.wem"
      },
      {
+      "Id": "929577030",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "MC\\GPE_Elevator_Stop.wav",
+      "CachePath": "SFX/MC/GPE_Elevator_Stop_818F3B66.wem"
+     },
+     {
+      "Id": "932156054",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "MC\\GPE_JumpPads_Mecha_04.wav",
+      "CachePath": "SFX/MC/GPE_JumpPads_Mecha_04_818F3B66.wem"
+     },
+     {
       "Id": "978522934",
       "Language": "SFX",
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "AMB\\RFX\\SFX_CorpseTrap_Opening.wav",
       "CachePath": "SFX/AMB/RFX/SFX_CorpseTrap_Opening_818F3B66.wem"
+     },
+     {
+      "Id": "1032185961",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "MC\\GPE_JumpPads_Mecha_02.wav",
+      "CachePath": "SFX/MC/GPE_JumpPads_Mecha_02_818F3B66.wem"
+     },
+     {
+      "Id": "1037685382",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "MC\\GPE_JumpPads_Mecha_05.wav",
+      "CachePath": "SFX/MC/GPE_JumpPads_Mecha_05_818F3B66.wem"
      }
     ],
+    "Plugins": {
+     "ShareSets": [
+      {
+       "Id": "1590660382",
+       "Name": "Nearly_Forever",
+       "ObjectPath": "\\Effects\\Factory Effects\\Delay\\Nearly_Forever",
+       "GUID": "{38550FDA-9236-4FC5-8AE0-68DB08164B25}",
+       "LibName": "Wwise Delay",
+       "LibId": "6946819"
+      }
+     ]
+    },
     "Events": [
+     {
+      "Id": "3621014260",
+      "Name": "Play_Elevator",
+      "ObjectPath": "\\Events\\GPE_WU\\Play_Elevator",
+      "GUID": "{188D4000-553D-4750-9060-D75200C9FF92}",
+      "DurationType": "Infinite",
+      "MediaRefs": [
+       {
+        "Id": "729439879"
+       },
+       {
+        "Id": "904242620"
+       }
+      ]
+     },
      {
       "Id": "575283655",
       "Name": "Play_GPE_JumPads_RC",
@@ -119,18 +210,40 @@
         "Id": "131763475"
        },
        {
+        "Id": "226141576"
+       },
+       {
         "Id": "280528909"
        },
        {
         "Id": "411674623"
        },
        {
+        "Id": "831778911"
+       },
+       {
         "Id": "890446006"
        },
        {
         "Id": "925500281"
+       },
+       {
+        "Id": "932156054"
+       },
+       {
+        "Id": "1032185961"
+       },
+       {
+        "Id": "1037685382"
        }
-      ]
+      ],
+      "PluginRefs": {
+       "ShareSets": [
+        {
+         "Id": "1590660382"
+        }
+       ]
+      }
      },
      {
       "Id": "2353660422",
@@ -197,10 +310,24 @@
         "Id": "978522934"
        }
       ]
+     },
+     {
+      "Id": "895316894",
+      "Name": "Stop_Elevator",
+      "ObjectPath": "\\Events\\GPE_WU\\Stop_Elevator",
+      "GUID": "{DF176BD1-7C8C-4DFE-89C2-A2EC858724EC}",
+      "DurationType": "OneShot",
+      "DurationMin": "2.233146",
+      "DurationMax": "2.233146",
+      "MediaRefs": [
+       {
+        "Id": "929577030"
+       }
+      ]
      }
     ]
    }
   ],
-  "FileHash": "{3FC1B6A0-8809-C7D2-D1CD-0E74F7C921E9}"
+  "FileHash": "{0BA4177B-EDD7-0DFC-609E-1A3E01DF4EB9}"
  }
 }

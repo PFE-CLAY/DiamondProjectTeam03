@@ -10,7 +10,7 @@
     "Type": "User",
     "GUID": "{46F08C13-7BDA-47D5-A653-BDFCDAD2487B}",
     "Language": "SFX",
-    "Hash": "{FEE00F70-8251-3614-C7C8-A06B1AF92F49}",
+    "Hash": "{3620EAA2-30A7-80C3-B04F-0EEE64E6AD44}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\FOES_Flying_SB",
     "ShortName": "FOES_Flying_SB",
     "Path": "FOES_Flying_SB.bnk",
@@ -262,6 +262,12 @@
       "Name": "Master",
       "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master",
       "GUID": "{F3A976BC-47E9-46E5-9EEC-F566BB39DBEE}"
+     },
+     {
+      "Id": "4219618961",
+      "Name": "AMB_Crowd",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\Game_Global\\AMB_Crowd",
+      "GUID": "{985719AF-3534-41FC-A751-99E11C3F7784}"
      }
     ],
     "AuxBusses": [
@@ -378,6 +384,12 @@
     ],
     "GameParameters": [
      {
+      "Id": "1190880401",
+      "Name": "RTPC_DoorPyramid",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\RTPC_DoorPyramid",
+      "GUID": "{D2AEC1CE-EF9E-486E-AE8B-FB121AC42B53}"
+     },
+     {
       "Id": "3590742338",
       "Name": "RTPC_Speed_Flying",
       "ObjectPath": "\\Game Parameters\\Default Work Unit\\RTPC_Speed_Flying",
@@ -396,6 +408,12 @@
         "Name": "Out",
         "ObjectPath": "\\States\\Default Work Unit\\InsideOutside\\Out",
         "GUID": "{C04B12A4-672A-478D-A191-EED95AAB3C6D}"
+       },
+       {
+        "Id": "646625282",
+        "Name": "Hub",
+        "ObjectPath": "\\States\\Default Work Unit\\InsideOutside\\Hub",
+        "GUID": "{E8B28850-8267-42D7-9412-3B19F0F04B6C}"
        },
        {
         "Id": "748895195",
@@ -420,6 +438,6 @@
     ]
    }
   ],
-  "FileHash": "{1C6D3C52-90A4-78E2-7CD6-5EB6E64716F9}"
+  "FileHash": "{5A0EA2AB-DFBB-0478-42A0-7B3156478A34}"
  }
 }
