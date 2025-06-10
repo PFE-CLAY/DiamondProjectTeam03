@@ -5,16 +5,24 @@ Event	ID	Name			Wwise Object Path	Notes
 	2467711998	Play_SFX_CorpseTrap_Opening			\GPE_WU\Play_SFX_CorpseTrap_Opening	
 	3930718940	Play_GPE_PillarDestroyed			\GPE_WU\Play_GPE_PillarDestroyed	
 
+Effect plug-ins	ID	Name	Type				Notes
+	1590660382	Nearly_Forever	Wwise Delay			
+
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	53581153	GPE_PillarDestroyed	E:\GitHub\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\AMB\RFX\GPE_PillarDestroyed_818F3B66.wem		\Actor-Mixer Hierarchy\GPE_WU\GPE\GPE_Pillars\GPE_PillarDestroyed		405316
 	131763475	GPE_JumpPads_05	E:\GitHub\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\MC_SFX_Dash_05_818F3B66.wem		\Actor-Mixer Hierarchy\GPE_WU\GPE\GPE_JumpPads\GPE_JumpPads_RC\GPE_JumpPads_05		275312
+	226141576	GPE_JumpPads_Mecha_01	E:\GitHub\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\MC\GPE_JumpPads_Mecha_01_818F3B66.wem		\Actor-Mixer Hierarchy\GPE_WU\GPE\GPE_JumpPads\GPE_JumpPads_Mecha_RC\GPE_JumpPads_Mecha_01		58928
 	275758801	GPE_JumpPads_Activation_02	E:\GitHub\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\AMB\RFX\GPE_JumpPads_Activation-002_818F3B66.wem		\Actor-Mixer Hierarchy\GPE_WU\GPE\GPE_JumpPads\GPE_JumpPads_Activation_RC\GPE_JumpPads_Activation_02		746764
 	280528909	GPE_JumpPads_01	E:\GitHub\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\MC_SFX_Dash_01_818F3B66.wem		\Actor-Mixer Hierarchy\GPE_WU\GPE\GPE_JumpPads\GPE_JumpPads_RC\GPE_JumpPads_01		288096
 	411674623	GPE_JumpPads_02	E:\GitHub\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\MC_SFX_Dash_02_818F3B66.wem		\Actor-Mixer Hierarchy\GPE_WU\GPE\GPE_JumpPads\GPE_JumpPads_RC\GPE_JumpPads_02		345696
 	423129361	GPE_JumpPads_Activation_01	E:\GitHub\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\AMB\RFX\GPE_JumpPads_Activation-001_818F3B66.wem		\Actor-Mixer Hierarchy\GPE_WU\GPE\GPE_JumpPads\GPE_JumpPads_Activation_RC\GPE_JumpPads_Activation_01		625340
 	434078456	SFX_CorpseTrap_Closing	E:\GitHub\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\AMB\RFX\SFX_CorpseTrap_Closing_818F3B66.wem		\Actor-Mixer Hierarchy\GPE_WU\GPE\GPE_CorpseTrap\SFX_CorpseTrap_Closing		237584
+	831778911	GPE_JumpPads_Mecha_03	E:\GitHub\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\MC\GPE_JumpPads_Mecha_03_818F3B66.wem		\Actor-Mixer Hierarchy\GPE_WU\GPE\GPE_JumpPads\GPE_JumpPads_Mecha_RC\GPE_JumpPads_Mecha_03		90602
 	865971538	GPE_JumpPads_Activation_03	E:\GitHub\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\AMB\RFX\GPE_JumpPads_Activation-003_818F3B66.wem		\Actor-Mixer Hierarchy\GPE_WU\GPE\GPE_JumpPads\GPE_JumpPads_Activation_RC\GPE_JumpPads_Activation_03		643816
 	890446006	GPE_JumpPads_03	E:\GitHub\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\MC_SFX_Dash_03_818F3B66.wem		\Actor-Mixer Hierarchy\GPE_WU\GPE\GPE_JumpPads\GPE_JumpPads_RC\GPE_JumpPads_03		212692
 	925500281	GPE_JumpPads_04	E:\GitHub\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\MC_SFX_Dash_04_818F3B66.wem		\Actor-Mixer Hierarchy\GPE_WU\GPE\GPE_JumpPads\GPE_JumpPads_RC\GPE_JumpPads_04		313696
+	932156054	GPE_JumpPads_Mecha_04	E:\GitHub\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\MC\GPE_JumpPads_Mecha_04_818F3B66.wem		\Actor-Mixer Hierarchy\GPE_WU\GPE\GPE_JumpPads\GPE_JumpPads_Mecha_RC\GPE_JumpPads_Mecha_04		103474
 	978522934	SFX_CorpseTrap_Opening	E:\GitHub\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\AMB\RFX\SFX_CorpseTrap_Opening_818F3B66.wem		\Actor-Mixer Hierarchy\GPE_WU\GPE\GPE_CorpseTrap\SFX_CorpseTrap_Opening		228578
+	1032185961	GPE_JumpPads_Mecha_02	E:\GitHub\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\MC\GPE_JumpPads_Mecha_02_818F3B66.wem		\Actor-Mixer Hierarchy\GPE_WU\GPE\GPE_JumpPads\GPE_JumpPads_Mecha_RC\GPE_JumpPads_Mecha_02		90818
+	1037685382	GPE_JumpPads_Mecha_05	E:\GitHub\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\MC\GPE_JumpPads_Mecha_05_818F3B66.wem		\Actor-Mixer Hierarchy\GPE_WU\GPE\GPE_JumpPads\GPE_JumpPads_Mecha_RC\GPE_JumpPads_Mecha_05		88998
 
