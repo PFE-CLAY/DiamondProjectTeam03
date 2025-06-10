@@ -130,6 +130,18 @@
 					<ObjectExclusionList/>
 					<GameSyncExclusionList/>
 				</SoundBank>
+				<SoundBank Name="MUS_SB" ID="{4B32F9EE-D939-4AEA-A633-697781A78CE3}">
+					<PropertyList>
+						<Property Name="Color" Type="int16" Value="21"/>
+						<Property Name="OverrideColor" Type="bool" Value="True"/>
+					</PropertyList>
+					<ObjectInclusionList>
+						<ObjectRef Name="MUS_WU" ID="{E96921F1-C278-4664-92E6-7E226124E722}" WorkUnitID="{E96921F1-C278-4664-92E6-7E226124E722}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="MUS_WU" ID="{08BF5C28-C058-481A-9682-718C5A7E58B0}" WorkUnitID="{08BF5C28-C058-481A-9682-718C5A7E58B0}" Origin="Manual" Filter="7"/>
+					</ObjectInclusionList>
+					<ObjectExclusionList/>
+					<GameSyncExclusionList/>
+				</SoundBank>
 			</ChildrenList>
 		</WorkUnit>
 	</SoundBanks>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{E96921F1-C278-4664-92E6-7E226124E722}" SchemaVersion="119">
+	<Events>
+		<WorkUnit Name="MUS_WU" ID="{E96921F1-C278-4664-92E6-7E226124E722}" PersistMode="Standalone">
+			<PropertyList>
+				<Property Name="Color" Type="int16" Value="8"/>
+				<Property Name="OverrideColor" Type="bool" Value="True"/>
+			</PropertyList>
+			<ChildrenList>
+				<Event Name="Play_MUS_ARENA" ID="{FCFD5ACC-2CA9-4324-8CC4-F10D48548642}">
+					<ChildrenList>
+						<Action Name="" ID="{7C6DBC90-1082-4681-B484-5FA0A89552A8}" ShortID="396070327">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="MUS_ARENA" ID="{97AB55CD-69C5-45E8-B2A6-0FA67392749B}" WorkUnitID="{08BF5C28-C058-481A-9682-718C5A7E58B0}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+			</ChildrenList>
+		</WorkUnit>
+	</Events>
+</WwiseDocument>
