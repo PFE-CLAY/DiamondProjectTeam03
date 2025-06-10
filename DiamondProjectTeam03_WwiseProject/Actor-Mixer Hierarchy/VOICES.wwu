@@ -576,6 +576,7 @@
 				</ActorMixer>
 				<ActorMixer Name="VOICES_ALLY" ID="{89CF48A7-6094-4CF0-B7A2-A3D62E818C83}" ShortID="892518813">
 					<PropertyList>
+						<Property Name="EnableAttenuation" Type="bool" Value="False"/>
 						<Property Name="Pitch" Type="int32">
 							<ValueList>
 								<Value>-130</Value>

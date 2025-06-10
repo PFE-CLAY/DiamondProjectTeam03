@@ -3155,7 +3155,7 @@
     "Type": "User",
     "GUID": "{9B915276-16F3-4721-B819-126344F97366}",
     "Language": "SFX",
-    "Hash": "{719F26AD-73DC-CF5C-3DAE-7E9D29BA61EC}",
+    "Hash": "{26473094-3AEA-C48B-D9AC-AD3EBACFBA3B}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\VOICES_SB",
     "ShortName": "VOICES_SB",
     "Path": "VOICES_SB.bnk",
@@ -4749,7 +4749,7 @@
     "Type": "User",
     "GUID": "{9DC5CBA4-02D0-4677-A565-21ECA413E694}",
     "Language": "SFX",
-    "Hash": "{AFCBE00C-10AE-CADE-9311-2BC22ED1B70B}",
+    "Hash": "{4AB3D9EE-E4CC-6090-990E-EA844E969CEA}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\AMB_SB",
     "ShortName": "AMB_SB",
     "Path": "AMB_SB.bnk",
@@ -4921,6 +4921,14 @@
       "Location": "Memory",
       "ShortName": "AMB\\RFX\\AMB_RFX_Crowd_Individual_01.wav",
       "CachePath": "SFX/AMB/RFX/AMB_RFX_Crowd_Individual_01_818F3B66.wem"
+     },
+     {
+      "Id": "754770262",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB\\SP\\AMB_SP_Incinerator.wav",
+      "CachePath": "SFX/AMB/SP/AMB_SP_Incinerator_FBC78EF0.wem"
      },
      {
       "Id": "754998867",
@@ -5427,6 +5435,19 @@
         "Id": "1019889613"
        }
       ]
+     },
+     {
+      "Id": "770793257",
+      "Name": "Play_AMB_SP_Incinerator",
+      "ObjectPath": "\\Events\\AMB_WU\\Play_AMB_SP_Incinerator",
+      "GUID": "{C2B84120-2D73-4FB5-AAF0-B5573838C530}",
+      "MaxAttenuation": "2000",
+      "DurationType": "Infinite",
+      "MediaRefs": [
+       {
+        "Id": "754770262"
+       }
+      ]
      }
     ],
     "Busses": [
@@ -5663,11 +5684,35 @@
     "Type": "User",
     "GUID": "{459D1F67-52BD-4FA1-B846-B8F3A50C2C5F}",
     "Language": "SFX",
-    "Hash": "{19E7EC44-CA5D-5511-35D5-4CF8444F717D}",
+    "Hash": "{68818888-3A57-7299-D1F6-4776DF84D192}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\SFX_SB",
     "ShortName": "SFX_SB",
     "Path": "SFX_SB.bnk",
     "Media": [
+     {
+      "Id": "57706824",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "SFX_BlackSand_Glitchy_2s_Stereo_06.wav",
+      "CachePath": "SFX/SFX_BlackSand_Glitchy_2s_Stereo_06_818F3B66.wem"
+     },
+     {
+      "Id": "418805659",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "SFX_BlackSand_Glitchy_2s_Stereo_04.wav",
+      "CachePath": "SFX/SFX_BlackSand_Glitchy_2s_Stereo_04_818F3B66.wem"
+     },
+     {
+      "Id": "460314317",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "SFX_BlackSand_Glitchy_2s_Stereo_02.wav",
+      "CachePath": "SFX/SFX_BlackSand_Glitchy_2s_Stereo_02_818F3B66.wem"
+     },
      {
       "Id": "482790053",
       "Language": "SFX",
@@ -5675,6 +5720,14 @@
       "Location": "Memory",
       "ShortName": "MC\\SFX_Door_Pyramid_Open.wav",
       "CachePath": "SFX/MC/SFX_Door_Pyramid_Open_818F3B66.wem"
+     },
+     {
+      "Id": "498448547",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "SFX_BlackSand_Glitchy_2s_Stereo_01.wav",
+      "CachePath": "SFX/SFX_BlackSand_Glitchy_2s_Stereo_01_818F3B66.wem"
      },
      {
       "Id": "640927559",
@@ -5699,6 +5752,22 @@
       "Location": "Memory",
       "ShortName": "MC\\SFX_Door_Pyramid.wav",
       "CachePath": "SFX/MC/SFX_Door_Pyramid_AA228216.wem"
+     },
+     {
+      "Id": "1013981530",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "SFX_BlackSand_Glitchy_2s_Stereo_05.wav",
+      "CachePath": "SFX/SFX_BlackSand_Glitchy_2s_Stereo_05_818F3B66.wem"
+     },
+     {
+      "Id": "1028643509",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "SFX_BlackSand_Glitchy_2s_Stereo_03.wav",
+      "CachePath": "SFX/SFX_BlackSand_Glitchy_2s_Stereo_03_818F3B66.wem"
      },
      {
       "Id": "1049815799",
@@ -5764,6 +5833,24 @@
       "DurationMin": "18.631792",
       "DurationMax": "18.631792",
       "MediaRefs": [
+       {
+        "Id": "57706824"
+       },
+       {
+        "Id": "418805659"
+       },
+       {
+        "Id": "460314317"
+       },
+       {
+        "Id": "498448547"
+       },
+       {
+        "Id": "1013981530"
+       },
+       {
+        "Id": "1028643509"
+       },
        {
         "Id": "1049815799"
        }
@@ -6054,6 +6141,6 @@
     ]
    }
   ],
-  "FileHash": "{8BED0B81-08E7-762F-B808-0D913DA15461}"
+  "FileHash": "{7901CE9E-F545-BCFE-7544-33F8AD60B87F}"
  }
 }

@@ -10,11 +10,35 @@
     "Type": "User",
     "GUID": "{459D1F67-52BD-4FA1-B846-B8F3A50C2C5F}",
     "Language": "SFX",
-    "Hash": "{19E7EC44-CA5D-5511-35D5-4CF8444F717D}",
+    "Hash": "{68818888-3A57-7299-D1F6-4776DF84D192}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\SFX_SB",
     "ShortName": "SFX_SB",
     "Path": "SFX_SB.bnk",
     "Media": [
+     {
+      "Id": "57706824",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "SFX_BlackSand_Glitchy_2s_Stereo_06.wav",
+      "CachePath": "SFX/SFX_BlackSand_Glitchy_2s_Stereo_06_818F3B66.wem"
+     },
+     {
+      "Id": "418805659",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "SFX_BlackSand_Glitchy_2s_Stereo_04.wav",
+      "CachePath": "SFX/SFX_BlackSand_Glitchy_2s_Stereo_04_818F3B66.wem"
+     },
+     {
+      "Id": "460314317",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "SFX_BlackSand_Glitchy_2s_Stereo_02.wav",
+      "CachePath": "SFX/SFX_BlackSand_Glitchy_2s_Stereo_02_818F3B66.wem"
+     },
      {
       "Id": "482790053",
       "Language": "SFX",
@@ -22,6 +46,14 @@
       "Location": "Memory",
       "ShortName": "MC\\SFX_Door_Pyramid_Open.wav",
       "CachePath": "SFX/MC/SFX_Door_Pyramid_Open_818F3B66.wem"
+     },
+     {
+      "Id": "498448547",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "SFX_BlackSand_Glitchy_2s_Stereo_01.wav",
+      "CachePath": "SFX/SFX_BlackSand_Glitchy_2s_Stereo_01_818F3B66.wem"
      },
      {
       "Id": "640927559",
@@ -46,6 +78,22 @@
       "Location": "Memory",
       "ShortName": "MC\\SFX_Door_Pyramid.wav",
       "CachePath": "SFX/MC/SFX_Door_Pyramid_AA228216.wem"
+     },
+     {
+      "Id": "1013981530",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "SFX_BlackSand_Glitchy_2s_Stereo_05.wav",
+      "CachePath": "SFX/SFX_BlackSand_Glitchy_2s_Stereo_05_818F3B66.wem"
+     },
+     {
+      "Id": "1028643509",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "SFX_BlackSand_Glitchy_2s_Stereo_03.wav",
+      "CachePath": "SFX/SFX_BlackSand_Glitchy_2s_Stereo_03_818F3B66.wem"
      },
      {
       "Id": "1049815799",
@@ -112,6 +160,24 @@
       "DurationMax": "18.631792",
       "MediaRefs": [
        {
+        "Id": "57706824"
+       },
+       {
+        "Id": "418805659"
+       },
+       {
+        "Id": "460314317"
+       },
+       {
+        "Id": "498448547"
+       },
+       {
+        "Id": "1013981530"
+       },
+       {
+        "Id": "1028643509"
+       },
+       {
         "Id": "1049815799"
        }
       ]
@@ -132,6 +198,6 @@
     ]
    }
   ],
-  "FileHash": "{930FF85E-D3B3-67B5-5C9E-38F7AA120761}"
+  "FileHash": "{8C37D81E-1139-A263-FAE5-7EB926CCEE07}"
  }
 }

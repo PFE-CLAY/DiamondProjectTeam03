@@ -10,7 +10,7 @@
     "Type": "User",
     "GUID": "{9DC5CBA4-02D0-4677-A565-21ECA413E694}",
     "Language": "SFX",
-    "Hash": "{AFCBE00C-10AE-CADE-9311-2BC22ED1B70B}",
+    "Hash": "{4AB3D9EE-E4CC-6090-990E-EA844E969CEA}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\AMB_SB",
     "ShortName": "AMB_SB",
     "Path": "AMB_SB.bnk",
@@ -182,6 +182,14 @@
       "Location": "Memory",
       "ShortName": "AMB\\RFX\\AMB_RFX_Crowd_Individual_01.wav",
       "CachePath": "SFX/AMB/RFX/AMB_RFX_Crowd_Individual_01_818F3B66.wem"
+     },
+     {
+      "Id": "754770262",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB\\SP\\AMB_SP_Incinerator.wav",
+      "CachePath": "SFX/AMB/SP/AMB_SP_Incinerator_FBC78EF0.wem"
      },
      {
       "Id": "754998867",
@@ -688,6 +696,19 @@
         "Id": "1019889613"
        }
       ]
+     },
+     {
+      "Id": "770793257",
+      "Name": "Play_AMB_SP_Incinerator",
+      "ObjectPath": "\\Events\\AMB_WU\\Play_AMB_SP_Incinerator",
+      "GUID": "{C2B84120-2D73-4FB5-AAF0-B5573838C530}",
+      "MaxAttenuation": "2000",
+      "DurationType": "Infinite",
+      "MediaRefs": [
+       {
+        "Id": "754770262"
+       }
+      ]
      }
     ],
     "Busses": [
@@ -920,6 +941,6 @@
     ]
    }
   ],
-  "FileHash": "{730B6A41-D2A3-27AF-1188-5F07241892A4}"
+  "FileHash": "{DB46A9D9-5580-D216-D375-E419EF51C3FA}"
  }
 }

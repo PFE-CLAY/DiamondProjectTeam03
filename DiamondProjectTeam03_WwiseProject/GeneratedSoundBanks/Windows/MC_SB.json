@@ -1483,6 +1483,12 @@
         "GUID": "{C04B12A4-672A-478D-A191-EED95AAB3C6D}"
        },
        {
+        "Id": "646625282",
+        "Name": "Hub",
+        "ObjectPath": "\\States\\Default Work Unit\\InsideOutside\\Hub",
+        "GUID": "{E8B28850-8267-42D7-9412-3B19F0F04B6C}"
+       },
+       {
         "Id": "748895195",
         "Name": "None",
         "ObjectPath": "\\States\\Default Work Unit\\InsideOutside\\None",
@@ -1533,6 +1539,6 @@
     ]
    }
   ],
-  "FileHash": "{A60D7D0A-4B5F-6B1E-48BC-E18CBE304576}"
+  "FileHash": "{304BEF93-413A-0DF9-C81F-879013A505EF}"
  }
 }

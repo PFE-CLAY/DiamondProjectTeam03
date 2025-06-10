@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="16" SoundBankVersion="150">
 	<SoundBanks>
-		<SoundBank Id="3256182613" Type="User" GUID="{9DC5CBA4-02D0-4677-A565-21ECA413E694}" Language="SFX" Hash="{AFCBE00C-10AE-CADE-9311-2BC22ED1B70B}">
+		<SoundBank Id="3256182613" Type="User" GUID="{9DC5CBA4-02D0-4677-A565-21ECA413E694}" Language="SFX" Hash="{4AB3D9EE-E4CC-6090-990E-EA844E969CEA}">
 			<ObjectPath>\SoundBanks\SoundBanks_WU\AMB_SB</ObjectPath>
 			<ShortName>AMB_SB</ShortName>
 			<Path>AMB_SB.bnk</Path>
@@ -89,6 +89,10 @@
 				<File Id="742879851" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\RFX\AMB_RFX_Crowd_Individual_01.wav</ShortName>
 					<CachePath>SFX/AMB/RFX/AMB_RFX_Crowd_Individual_01_818F3B66.wem</CachePath>
+				</File>
+				<File Id="754770262" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\SP\AMB_SP_Incinerator.wav</ShortName>
+					<CachePath>SFX/AMB/SP/AMB_SP_Incinerator_FBC78EF0.wem</CachePath>
 				</File>
 				<File Id="754998867" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\RFX\AMB_RFX_WarHorns_01.wav</ShortName>
@@ -287,6 +291,11 @@
 						<MediaRef Id="1019889613"/>
 					</MediaRefs>
 				</Event>
+				<Event Id="770793257" Name="Play_AMB_SP_Incinerator" ObjectPath="\Events\AMB_WU\Play_AMB_SP_Incinerator" GUID="{C2B84120-2D73-4FB5-AAF0-B5573838C530}" MaxAttenuation="2000" DurationType="Infinite">
+					<MediaRefs>
+						<MediaRef Id="754770262"/>
+					</MediaRefs>
+				</Event>
 			</Events>
 			<Busses>
 				<Bus Id="109159411" Name="Game_Global" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global" GUID="{FAD5C029-0A02-4BD2-97F7-F8C20B7A95BD}"/>
@@ -377,5 +386,5 @@
 			</StateGroups>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{3D361A5C-4E1B-5C83-A535-7A2435B19442}</FileHash>
+	<FileHash>{B5D9AF98-997D-7B38-11CB-F163BA2D44E6}</FileHash>
 </SoundBanksInfo>
