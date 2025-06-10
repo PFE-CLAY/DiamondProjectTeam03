@@ -141,6 +141,17 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="Play_AMB_SP_Incinerator" ID="{C2B84120-2D73-4FB5-AAF0-B5573838C530}">
+					<ChildrenList>
+						<Action Name="" ID="{9CBDA8F9-BE1D-4AE2-9D4B-21F1DCE52A9B}" ShortID="24941360">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="AMB_SP_Incinerator" ID="{CDFB15D9-8310-4722-86F1-7202CE6DD4CB}" WorkUnitID="{183124D0-ACA8-4AFA-A8E9-44C003A151DE}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

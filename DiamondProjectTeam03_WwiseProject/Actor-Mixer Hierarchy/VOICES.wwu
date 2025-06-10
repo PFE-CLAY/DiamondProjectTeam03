@@ -545,8 +545,17 @@
 								<StateRef Name="In" ID="{BFBB05BE-0B19-41C7-B759-C85C0C60B1D8}"/>
 								<CustomState Name="" ID="{5947F9F4-7813-479D-9E50-31D9C610173F}" ShortID="611316238">
 									<PropertyList>
-										<Property Name="Lowpass" Type="int16" Value="64"/>
+										<Property Name="Lowpass" Type="int16" Value="75"/>
 										<Property Name="UserAuxSendVolume1" Type="Real64" Value="108"/>
+									</PropertyList>
+								</CustomState>
+							</CustomState>
+							<CustomState>
+								<StateRef Name="Hub" ID="{E8B28850-8267-42D7-9412-3B19F0F04B6C}"/>
+								<CustomState Name="" ID="{40C788AB-0E05-46DB-9C05-5B547B999BB8}" ShortID="714793882">
+									<PropertyList>
+										<Property Name="Lowpass" Type="int16" Value="59"/>
+										<Property Name="UserAuxSendVolume1" Type="Real64" Value="26"/>
 									</PropertyList>
 								</CustomState>
 							</CustomState>
@@ -567,6 +576,7 @@
 				</ActorMixer>
 				<ActorMixer Name="VOICES_ALLY" ID="{89CF48A7-6094-4CF0-B7A2-A3D62E818C83}" ShortID="892518813">
 					<PropertyList>
+						<Property Name="EnableAttenuation" Type="bool" Value="False"/>
 						<Property Name="Pitch" Type="int32">
 							<ValueList>
 								<Value>-130</Value>
