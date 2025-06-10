@@ -418,6 +418,12 @@
         "GUID": "{C04B12A4-672A-478D-A191-EED95AAB3C6D}"
        },
        {
+        "Id": "646625282",
+        "Name": "Hub",
+        "ObjectPath": "\\States\\Default Work Unit\\InsideOutside\\Hub",
+        "GUID": "{E8B28850-8267-42D7-9412-3B19F0F04B6C}"
+       },
+       {
         "Id": "748895195",
         "Name": "None",
         "ObjectPath": "\\States\\Default Work Unit\\InsideOutside\\None",
@@ -440,11 +446,47 @@
     ]
    },
    {
+    "Id": "1329476194",
+    "Type": "User",
+    "GUID": "{4B32F9EE-D939-4AEA-A633-697781A78CE3}",
+    "Language": "SFX",
+    "Hash": "{8C576C27-EF9B-5611-8A3B-E0915C4CB78E}",
+    "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\MUS_SB",
+    "ShortName": "MUS_SB",
+    "Path": "MUS_SB.bnk",
+    "Media": [
+     {
+      "Id": "185337180",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "JV BLACK SAND V1.wav",
+      "CachePath": "SFX/JV BLACK SAND V1_818F3B66.wem"
+     }
+    ],
+    "Events": [
+     {
+      "Id": "1117189211",
+      "Name": "Play_MUS_ARENA",
+      "ObjectPath": "\\Events\\MUS_WU\\Play_MUS_ARENA",
+      "GUID": "{FCFD5ACC-2CA9-4324-8CC4-F10D48548642}",
+      "DurationType": "OneShot",
+      "DurationMin": "281.6",
+      "DurationMax": "281.6",
+      "MediaRefs": [
+       {
+        "Id": "185337180"
+       }
+      ]
+     }
+    ]
+   },
+   {
     "Id": "1355168291",
     "Type": "User",
     "GUID": "{701ECBBD-9C7B-4030-8CDB-749EE5D1C7B9}",
     "Language": "SFX",
-    "Hash": "{16EEC8EC-FB94-EA9B-1792-D5ACF278D212}",
+    "Hash": "{590B3C71-EBF8-CB23-E155-9B9336658ACE}",
     "ObjectPath": "Init",
     "ShortName": "Init",
     "Path": "Init.bnk",
@@ -770,6 +812,12 @@
         "Name": "Out",
         "ObjectPath": "\\States\\Default Work Unit\\InsideOutside\\Out",
         "GUID": "{C04B12A4-672A-478D-A191-EED95AAB3C6D}"
+       },
+       {
+        "Id": "646625282",
+        "Name": "Hub",
+        "ObjectPath": "\\States\\Default Work Unit\\InsideOutside\\Hub",
+        "GUID": "{E8B28850-8267-42D7-9412-3B19F0F04B6C}"
        },
        {
         "Id": "748895195",
@@ -1252,6 +1300,12 @@
         "Name": "Out",
         "ObjectPath": "\\States\\Default Work Unit\\InsideOutside\\Out",
         "GUID": "{C04B12A4-672A-478D-A191-EED95AAB3C6D}"
+       },
+       {
+        "Id": "646625282",
+        "Name": "Hub",
+        "ObjectPath": "\\States\\Default Work Unit\\InsideOutside\\Hub",
+        "GUID": "{E8B28850-8267-42D7-9412-3B19F0F04B6C}"
        },
        {
         "Id": "748895195",
@@ -2753,6 +2807,12 @@
         "GUID": "{C04B12A4-672A-478D-A191-EED95AAB3C6D}"
        },
        {
+        "Id": "646625282",
+        "Name": "Hub",
+        "ObjectPath": "\\States\\Default Work Unit\\InsideOutside\\Hub",
+        "GUID": "{E8B28850-8267-42D7-9412-3B19F0F04B6C}"
+       },
+       {
         "Id": "748895195",
         "Name": "None",
         "ObjectPath": "\\States\\Default Work Unit\\InsideOutside\\None",
@@ -3099,6 +3159,12 @@
         "GUID": "{C04B12A4-672A-478D-A191-EED95AAB3C6D}"
        },
        {
+        "Id": "646625282",
+        "Name": "Hub",
+        "ObjectPath": "\\States\\Default Work Unit\\InsideOutside\\Hub",
+        "GUID": "{E8B28850-8267-42D7-9412-3B19F0F04B6C}"
+       },
+       {
         "Id": "748895195",
         "Name": "None",
         "ObjectPath": "\\States\\Default Work Unit\\InsideOutside\\None",
@@ -3125,7 +3191,7 @@
     "Type": "User",
     "GUID": "{9B915276-16F3-4721-B819-126344F97366}",
     "Language": "SFX",
-    "Hash": "{22469D0C-9882-0080-2536-2ADBCEE943E0}",
+    "Hash": "{26473094-3AEA-C48B-D9AC-AD3EBACFBA3B}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\VOICES_SB",
     "ShortName": "VOICES_SB",
     "Path": "VOICES_SB.bnk",
@@ -4687,6 +4753,12 @@
         "GUID": "{C04B12A4-672A-478D-A191-EED95AAB3C6D}"
        },
        {
+        "Id": "646625282",
+        "Name": "Hub",
+        "ObjectPath": "\\States\\Default Work Unit\\InsideOutside\\Hub",
+        "GUID": "{E8B28850-8267-42D7-9412-3B19F0F04B6C}"
+       },
+       {
         "Id": "748895195",
         "Name": "None",
         "ObjectPath": "\\States\\Default Work Unit\\InsideOutside\\None",
@@ -4713,7 +4785,7 @@
     "Type": "User",
     "GUID": "{9DC5CBA4-02D0-4677-A565-21ECA413E694}",
     "Language": "SFX",
-    "Hash": "{AFCBE00C-10AE-CADE-9311-2BC22ED1B70B}",
+    "Hash": "{4AB3D9EE-E4CC-6090-990E-EA844E969CEA}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\AMB_SB",
     "ShortName": "AMB_SB",
     "Path": "AMB_SB.bnk",
@@ -4885,6 +4957,14 @@
       "Location": "Memory",
       "ShortName": "AMB\\RFX\\AMB_RFX_Crowd_Individual_01.wav",
       "CachePath": "SFX/AMB/RFX/AMB_RFX_Crowd_Individual_01_818F3B66.wem"
+     },
+     {
+      "Id": "754770262",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB\\SP\\AMB_SP_Incinerator.wav",
+      "CachePath": "SFX/AMB/SP/AMB_SP_Incinerator_FBC78EF0.wem"
      },
      {
       "Id": "754998867",
@@ -5391,6 +5471,19 @@
         "Id": "1019889613"
        }
       ]
+     },
+     {
+      "Id": "770793257",
+      "Name": "Play_AMB_SP_Incinerator",
+      "ObjectPath": "\\Events\\AMB_WU\\Play_AMB_SP_Incinerator",
+      "GUID": "{C2B84120-2D73-4FB5-AAF0-B5573838C530}",
+      "MaxAttenuation": "2000",
+      "DurationType": "Infinite",
+      "MediaRefs": [
+       {
+        "Id": "754770262"
+       }
+      ]
      }
     ],
     "Busses": [
@@ -5593,6 +5686,12 @@
         "Name": "Out",
         "ObjectPath": "\\States\\Default Work Unit\\InsideOutside\\Out",
         "GUID": "{C04B12A4-672A-478D-A191-EED95AAB3C6D}"
+       },
+       {
+        "Id": "646625282",
+        "Name": "Hub",
+        "ObjectPath": "\\States\\Default Work Unit\\InsideOutside\\Hub",
+        "GUID": "{E8B28850-8267-42D7-9412-3B19F0F04B6C}"
        },
        {
         "Id": "748895195",
@@ -6131,6 +6230,6 @@
     ]
    }
   ],
-  "FileHash": "{23A425B9-99E7-D7AB-013E-E8A29EA23F7C}"
+  "FileHash": "{C276DB26-1DBE-289D-DDC1-965352A974E2}"
  }
 }
