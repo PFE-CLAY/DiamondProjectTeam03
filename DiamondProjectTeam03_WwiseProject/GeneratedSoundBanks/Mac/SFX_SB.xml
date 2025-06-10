@@ -1,11 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SoundBanksInfo Platform="Mac" BasePlatform="Mac" SchemaVersion="16" SoundBankVersion="150">
 	<SoundBanks>
-		<SoundBank Id="3896292454" Type="User" GUID="{459D1F67-52BD-4FA1-B846-B8F3A50C2C5F}" Language="SFX" Hash="{B571FF43-03E3-0F51-E76C-22555D138B0E}">
+		<SoundBank Id="3896292454" Type="User" GUID="{459D1F67-52BD-4FA1-B846-B8F3A50C2C5F}" Language="SFX" Hash="{83D76FD2-B343-B629-61D7-984BD4482C66}">
 			<ObjectPath>\SoundBanks\SoundBanks_WU\SFX_SB</ObjectPath>
 			<ShortName>SFX_SB</ShortName>
 			<Path>SFX_SB.bnk</Path>
+			<Media>
+				<File Id="756613996" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SFX\SFX_Button_Backstage.wav</ShortName>
+					<CachePath>SFX/SFX/SFX_Button_Backstage_818F3B66.wem</CachePath>
+				</File>
+			</Media>
+			<Events>
+				<Event Id="1623238786" Name="Play_SFX_Button_Backstage" ObjectPath="\Events\SFX_WU\Play_SFX_Button_Backstage" GUID="{28025076-9703-41F8-8A62-52587A60DAAC}" DurationType="OneShot" DurationMin="0.9392083" DurationMax="0.9392083">
+					<MediaRefs>
+						<MediaRef Id="756613996"/>
+					</MediaRefs>
+				</Event>
+			</Events>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{91178B34-6B6B-5E51-D9A6-80E392D0251E}</FileHash>
+	<FileHash>{0F45AF2A-7630-0EE7-C00A-C94288EC25B3}</FileHash>
 </SoundBanksInfo>
