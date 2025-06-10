@@ -163,7 +163,7 @@
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
 						</Reference>
 						<Reference Name="OutputBus">
-							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D02282EE-6893-403D-9438-D481AB659EA3}"/>
+							<ObjectRef Name="AMB" ID="{C1595F21-FBBF-4B04-AC1A-78D86879A937}" WorkUnitID="{A9F2777E-FBA3-4BC0-B5B3-14E0777A7B23}"/>
 						</Reference>
 					</ReferenceList>
 					<ChildrenList>
@@ -182,6 +182,7 @@
 										<Property Name="3DSpatialization" Type="int16" Value="1"/>
 										<Property Name="EnableDiffraction" Type="bool" Value="True"/>
 										<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+										<Property Name="OverrideOutput" Type="bool" Value="True"/>
 										<Property Name="OverridePositioning" Type="bool" Value="True"/>
 										<Property Name="Volume" Type="Real64">
 											<ValueList>
@@ -338,7 +339,7 @@
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
 										</Reference>
 										<Reference Name="OutputBus">
-											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D02282EE-6893-403D-9438-D481AB659EA3}"/>
+											<ObjectRef Name="AMB_Crowd" ID="{985719AF-3534-41FC-A751-99E11C3F7784}" WorkUnitID="{A9F2777E-FBA3-4BC0-B5B3-14E0777A7B23}"/>
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
@@ -691,13 +692,14 @@
 								<Sound Name="AMB_SP_Crowd_Bronca_LP" ID="{891EABF8-CB8A-49E6-BCDE-FED5BABE8317}" ShortID="767277014">
 									<PropertyList>
 										<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+										<Property Name="OverrideOutput" Type="bool" Value="True"/>
 									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
 										</Reference>
 										<Reference Name="OutputBus">
-											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D02282EE-6893-403D-9438-D481AB659EA3}"/>
+											<ObjectRef Name="AMB_Crowd" ID="{985719AF-3534-41FC-A751-99E11C3F7784}" WorkUnitID="{A9F2777E-FBA3-4BC0-B5B3-14E0777A7B23}"/>
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
@@ -714,12 +716,15 @@
 									</ActiveSourceList>
 								</Sound>
 								<Sound Name="AMB_SP_Crowd_Bronca_Long" ID="{69AEB1E7-A1AE-4ABA-B8A2-EE2DE41DED1E}" ShortID="725877171">
+									<PropertyList>
+										<Property Name="OverrideOutput" Type="bool" Value="True"/>
+									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
 										</Reference>
 										<Reference Name="OutputBus">
-											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D02282EE-6893-403D-9438-D481AB659EA3}"/>
+											<ObjectRef Name="AMB_Crowd" ID="{985719AF-3534-41FC-A751-99E11C3F7784}" WorkUnitID="{A9F2777E-FBA3-4BC0-B5B3-14E0777A7B23}"/>
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
@@ -737,9 +742,155 @@
 								</Sound>
 								<Sound Name="AMB_SP_Incinerator" ID="{CDFB15D9-8310-4722-86F1-7202CE6DD4CB}" ShortID="643250516">
 									<PropertyList>
+										<Property Name="3DSpatialization" Type="int16" Value="2"/>
 										<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+										<Property Name="OverridePositioning" Type="bool" Value="True"/>
 									</PropertyList>
 									<ReferenceList>
+										<Reference Name="Attenuation">
+											<Custom CreatedFrom="{F52F7C5F-FE35-4688-9788-917AD912F4DF}">
+												<Attenuation Name="ATT_20m (Custom)" ID="{E4434273-9438-4182-AC93-65F200594CA0}" ShortID="65880148">
+													<PropertyList>
+														<Property Name="RadiusMax" Type="Real64" Value="2000"/>
+													</PropertyList>
+													<CurveUsageInfoList>
+														<VolumeDryUsage>
+															<CurveUsageInfo Platform="Linked" CurveToUse="Custom">
+																<Curve Name="VolumeDry" ID="{D4A74912-A579-4ABA-B24D-7EF34A297AC5}">
+																	<PropertyList>
+																		<Property Name="Flags" Type="int32" Value="3"/>
+																	</PropertyList>
+																	<PointList>
+																		<Point>
+																			<XPos>0</XPos>
+																			<YPos>0</YPos>
+																			<Flags>5</Flags>
+																			<SegmentShape>Log1</SegmentShape>
+																		</Point>
+																		<Point>
+																			<XPos>2000</XPos>
+																			<YPos>-200</YPos>
+																			<Flags>37</Flags>
+																		</Point>
+																	</PointList>
+																</Curve>
+															</CurveUsageInfo>
+														</VolumeDryUsage>
+														<VolumeWetGameUsage>
+															<CurveUsageInfo Platform="Linked" CurveToUse="UseVolumeDry"/>
+														</VolumeWetGameUsage>
+														<VolumeWetUserUsage>
+															<CurveUsageInfo Platform="Linked" CurveToUse="UseVolumeDry"/>
+														</VolumeWetUserUsage>
+														<LowPassFilterUsage>
+															<CurveUsageInfo Platform="Linked" CurveToUse="Custom">
+																<Curve Name="LowPassFilter" ID="{DA803FB5-CE89-4EEF-8D48-C5434A6843DB}">
+																	<PropertyList>
+																		<Property Name="Flags" Type="int32" Value="65537"/>
+																	</PropertyList>
+																	<PointList>
+																		<Point>
+																			<XPos>0</XPos>
+																			<YPos>0</YPos>
+																			<Flags>5</Flags>
+																			<SegmentShape>Exp1</SegmentShape>
+																		</Point>
+																		<Point>
+																			<XPos>2000</XPos>
+																			<YPos>63</YPos>
+																			<Flags>37</Flags>
+																		</Point>
+																	</PointList>
+																</Curve>
+															</CurveUsageInfo>
+														</LowPassFilterUsage>
+														<HighPassFilterUsage>
+															<CurveUsageInfo Platform="Linked" CurveToUse="None"/>
+														</HighPassFilterUsage>
+														<SpreadUsage>
+															<CurveUsageInfo Platform="Linked" CurveToUse="Custom">
+																<Curve Name="Spread" ID="{C1AC20BA-92F5-4FF9-8F2E-53FBB44F3FB1}">
+																	<PropertyList>
+																		<Property Name="Flags" Type="int32" Value="1"/>
+																	</PropertyList>
+																	<PointList>
+																		<Point>
+																			<XPos>0</XPos>
+																			<YPos>100</YPos>
+																			<Flags>5</Flags>
+																			<SegmentShape>Log3</SegmentShape>
+																		</Point>
+																		<Point>
+																			<XPos>2000</XPos>
+																			<YPos>0</YPos>
+																			<Flags>37</Flags>
+																		</Point>
+																	</PointList>
+																</Curve>
+															</CurveUsageInfo>
+														</SpreadUsage>
+														<FocusUsage>
+															<CurveUsageInfo Platform="Linked" CurveToUse="Custom">
+																<Curve Name="Focus" ID="{FDF46DAE-B95B-4DEE-B08D-61C9307327D1}">
+																	<PropertyList>
+																		<Property Name="Flags" Type="int32" Value="1"/>
+																	</PropertyList>
+																	<PointList>
+																		<Point>
+																			<XPos>0</XPos>
+																			<YPos>100</YPos>
+																			<Flags>5</Flags>
+																			<SegmentShape>Log3</SegmentShape>
+																		</Point>
+																		<Point>
+																			<XPos>2000</XPos>
+																			<YPos>0</YPos>
+																			<Flags>37</Flags>
+																		</Point>
+																	</PointList>
+																</Curve>
+															</CurveUsageInfo>
+														</FocusUsage>
+														<ObstructionVolumeUsage>
+															<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+														</ObstructionVolumeUsage>
+														<ObstructionLPFUsage>
+															<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+														</ObstructionLPFUsage>
+														<ObstructionHPFUsage>
+															<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+														</ObstructionHPFUsage>
+														<OcclusionVolumeUsage>
+															<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+														</OcclusionVolumeUsage>
+														<OcclusionLPFUsage>
+															<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+														</OcclusionLPFUsage>
+														<OcclusionHPFUsage>
+															<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+														</OcclusionHPFUsage>
+														<DiffractionVolumeUsage>
+															<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+														</DiffractionVolumeUsage>
+														<DiffractionLPFUsage>
+															<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+														</DiffractionLPFUsage>
+														<DiffractionHPFUsage>
+															<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+														</DiffractionHPFUsage>
+														<TransmissionVolumeUsage>
+															<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+														</TransmissionVolumeUsage>
+														<TransmissionLPFUsage>
+															<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+														</TransmissionLPFUsage>
+														<TransmissionHPFUsage>
+															<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+														</TransmissionHPFUsage>
+													</CurveUsageInfoList>
+												</Attenuation>
+											</Custom>
+										</Reference>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
 										</Reference>
@@ -763,12 +914,15 @@
 							</ChildrenList>
 						</ActorMixer>
 						<ActorMixer Name="AMB_RFX_AM" ID="{BE20B3A2-D59D-4897-9CCE-D6D7FB7AD81C}" ShortID="624136808">
+							<PropertyList>
+								<Property Name="OverrideOutput" Type="bool" Value="True"/>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
 								</Reference>
 								<Reference Name="OutputBus">
-									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D02282EE-6893-403D-9438-D481AB659EA3}"/>
+									<ObjectRef Name="AMB_Crowd" ID="{985719AF-3534-41FC-A751-99E11C3F7784}" WorkUnitID="{A9F2777E-FBA3-4BC0-B5B3-14E0777A7B23}"/>
 								</Reference>
 							</ReferenceList>
 							<ChildrenList>

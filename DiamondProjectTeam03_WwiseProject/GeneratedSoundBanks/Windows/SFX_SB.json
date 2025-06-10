@@ -10,11 +10,35 @@
     "Type": "User",
     "GUID": "{459D1F67-52BD-4FA1-B846-B8F3A50C2C5F}",
     "Language": "SFX",
-    "Hash": "{7E3B5390-4075-F55C-E8D1-5E6044DD92BC}",
+    "Hash": "{D7A00705-C95C-8875-6423-0805997B4F05}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\SFX_SB",
     "ShortName": "SFX_SB",
     "Path": "SFX_SB.bnk",
     "Media": [
+     {
+      "Id": "57706824",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "SFX_BlackSand_Glitchy_2s_Stereo_06.wav",
+      "CachePath": "SFX/SFX_BlackSand_Glitchy_2s_Stereo_06_818F3B66.wem"
+     },
+     {
+      "Id": "418805659",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "SFX_BlackSand_Glitchy_2s_Stereo_04.wav",
+      "CachePath": "SFX/SFX_BlackSand_Glitchy_2s_Stereo_04_818F3B66.wem"
+     },
+     {
+      "Id": "460314317",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "SFX_BlackSand_Glitchy_2s_Stereo_02.wav",
+      "CachePath": "SFX/SFX_BlackSand_Glitchy_2s_Stereo_02_818F3B66.wem"
+     },
      {
       "Id": "482790053",
       "Language": "SFX",
@@ -22,6 +46,22 @@
       "Location": "Memory",
       "ShortName": "MC\\SFX_Door_Pyramid_Open.wav",
       "CachePath": "SFX/MC/SFX_Door_Pyramid_Open_818F3B66.wem"
+     },
+     {
+      "Id": "498448547",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "SFX_BlackSand_Glitchy_2s_Stereo_01.wav",
+      "CachePath": "SFX/SFX_BlackSand_Glitchy_2s_Stereo_01_818F3B66.wem"
+     },
+     {
+      "Id": "640927559",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "SFX_Button_Backstage.wav",
+      "CachePath": "SFX/SFX_Button_Backstage_818F3B66.wem"
      },
      {
       "Id": "794556847",
@@ -37,7 +77,23 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "MC\\SFX_Door_Pyramid.wav",
-      "CachePath": "SFX/MC/SFX_Door_Pyramid_B3EF6B4D.wem"
+      "CachePath": "SFX/MC/SFX_Door_Pyramid_AA228216.wem"
+     },
+     {
+      "Id": "1013981530",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "SFX_BlackSand_Glitchy_2s_Stereo_05.wav",
+      "CachePath": "SFX/SFX_BlackSand_Glitchy_2s_Stereo_05_818F3B66.wem"
+     },
+     {
+      "Id": "1028643509",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "SFX_BlackSand_Glitchy_2s_Stereo_03.wav",
+      "CachePath": "SFX/SFX_BlackSand_Glitchy_2s_Stereo_03_818F3B66.wem"
      },
      {
       "Id": "1049815799",
@@ -49,6 +105,21 @@
      }
     ],
     "Events": [
+     {
+      "Id": "1623238786",
+      "Name": "Play_SFX_Button_Backstage",
+      "ObjectPath": "\\Events\\SFX_WU\\Play_SFX_Button_Backstage",
+      "GUID": "{F8593F23-32CE-4C34-A551-35034A61FD79}",
+      "MaxAttenuation": "2000",
+      "DurationType": "OneShot",
+      "DurationMin": "0.9392083",
+      "DurationMax": "0.9392083",
+      "MediaRefs": [
+       {
+        "Id": "640927559"
+       }
+      ]
+     },
      {
       "Id": "1447435678",
       "Name": "Play_SFX_Door_Pyramid_Close",
@@ -89,6 +160,24 @@
       "DurationMax": "18.631792",
       "MediaRefs": [
        {
+        "Id": "57706824"
+       },
+       {
+        "Id": "418805659"
+       },
+       {
+        "Id": "460314317"
+       },
+       {
+        "Id": "498448547"
+       },
+       {
+        "Id": "1013981530"
+       },
+       {
+        "Id": "1028643509"
+       },
+       {
         "Id": "1049815799"
        }
       ]
@@ -109,6 +198,6 @@
     ]
    }
   ],
-  "FileHash": "{985F630B-8B8D-7AA2-E1B0-E7D3C674CB6A}"
+  "FileHash": "{319377B6-864E-71F3-AFB8-988BAA6B8800}"
  }
 }
