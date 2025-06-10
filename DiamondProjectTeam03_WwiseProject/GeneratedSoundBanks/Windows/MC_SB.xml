@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="16" SoundBankVersion="150">
 	<SoundBanks>
-<<<<<<< HEAD
-		<SoundBank Id="1956625499" Type="User" GUID="{ADC2D189-6608-4828-BC9C-6EF6F90834DB}" Language="SFX" Hash="{F25D6A6E-354E-F6C5-38F7-181AF23F7C6F}">
-=======
-		<SoundBank Id="1956625499" Type="User" GUID="{ADC2D189-6608-4828-BC9C-6EF6F90834DB}" Language="SFX" Hash="{8D516405-C7EF-C99C-495C-95C0919A27D8}">
->>>>>>> 6adac832d2a81a4aad582c25a10da3ffebb1f4d6
+		<SoundBank Id="1956625499" Type="User" GUID="{ADC2D189-6608-4828-BC9C-6EF6F90834DB}" Language="SFX" Hash="{5408FA06-544B-67AF-3D27-1100118099DD}">
 			<ObjectPath>\SoundBanks\SoundBanks_WU\MC_SB</ObjectPath>
 			<ShortName>MC_SB</ShortName>
 			<Path>MC_SB.bnk</Path>
@@ -514,7 +510,7 @@
 						</SwitchContainer>
 					</SwitchContainers>
 				</Event>
-				<Event Id="950272542" Name="Play_MC_GetHit" ObjectPath="\Events\MC_WU\Play_MC_GetHit" GUID="{DFDAAAFE-1AD5-4D67-9145-D4089C5F1FA9}" MaxAttenuation="1000" DurationType="Infinite">
+				<Event Id="950272542" Name="Play_MC_GetHit" ObjectPath="\Events\MC_WU\Play_MC_GetHit" GUID="{DFDAAAFE-1AD5-4D67-9145-D4089C5F1FA9}" MaxAttenuation="2000" DurationType="Infinite">
 					<MediaRefs>
 						<MediaRef Id="17784281"/>
 					</MediaRefs>
@@ -644,9 +640,5 @@
 			</SwitchGroups>
 		</SoundBank>
 	</SoundBanks>
-<<<<<<< HEAD
-	<FileHash>{F074B338-B9F3-1392-1276-06AE0B442C8F}</FileHash>
-=======
-	<FileHash>{F8009F41-2EFE-DE58-BD17-7FA656B15C8B}</FileHash>
->>>>>>> 6adac832d2a81a4aad582c25a10da3ffebb1f4d6
+	<FileHash>{4AC71D01-016F-7E65-ECA3-BA4DB50C4D69}</FileHash>
 </SoundBanksInfo>

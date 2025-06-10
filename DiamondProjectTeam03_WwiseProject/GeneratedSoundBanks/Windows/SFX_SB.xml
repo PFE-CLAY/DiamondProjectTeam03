@@ -1,18 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="16" SoundBankVersion="150">
 	<SoundBanks>
-<<<<<<< HEAD
-		<SoundBank Id="3896292454" Type="User" GUID="{459D1F67-52BD-4FA1-B846-B8F3A50C2C5F}" Language="SFX" Hash="{19E7EC44-CA5D-5511-35D5-4CF8444F717D}">
-=======
-		<SoundBank Id="3896292454" Type="User" GUID="{459D1F67-52BD-4FA1-B846-B8F3A50C2C5F}" Language="SFX" Hash="{A472E1F2-67FC-57F1-C3AD-BD347DB4CBF5}">
->>>>>>> 6adac832d2a81a4aad582c25a10da3ffebb1f4d6
+		<SoundBank Id="3896292454" Type="User" GUID="{459D1F67-52BD-4FA1-B846-B8F3A50C2C5F}" Language="SFX" Hash="{68818888-3A57-7299-D1F6-4776DF84D192}">
 			<ObjectPath>\SoundBanks\SoundBanks_WU\SFX_SB</ObjectPath>
 			<ShortName>SFX_SB</ShortName>
 			<Path>SFX_SB.bnk</Path>
 			<Media>
+				<File Id="57706824" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SFX_BlackSand_Glitchy_2s_Stereo_06.wav</ShortName>
+					<CachePath>SFX/SFX_BlackSand_Glitchy_2s_Stereo_06_818F3B66.wem</CachePath>
+				</File>
+				<File Id="418805659" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SFX_BlackSand_Glitchy_2s_Stereo_04.wav</ShortName>
+					<CachePath>SFX/SFX_BlackSand_Glitchy_2s_Stereo_04_818F3B66.wem</CachePath>
+				</File>
+				<File Id="460314317" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SFX_BlackSand_Glitchy_2s_Stereo_02.wav</ShortName>
+					<CachePath>SFX/SFX_BlackSand_Glitchy_2s_Stereo_02_818F3B66.wem</CachePath>
+				</File>
 				<File Id="482790053" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>MC\SFX_Door_Pyramid_Open.wav</ShortName>
 					<CachePath>SFX/MC/SFX_Door_Pyramid_Open_818F3B66.wem</CachePath>
+				</File>
+				<File Id="498448547" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SFX_BlackSand_Glitchy_2s_Stereo_01.wav</ShortName>
+					<CachePath>SFX/SFX_BlackSand_Glitchy_2s_Stereo_01_818F3B66.wem</CachePath>
 				</File>
 				<File Id="640927559" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>SFX_Button_Backstage.wav</ShortName>
@@ -25,6 +37,14 @@
 				<File Id="862611700" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>MC\SFX_Door_Pyramid.wav</ShortName>
 					<CachePath>SFX/MC/SFX_Door_Pyramid_AA228216.wem</CachePath>
+				</File>
+				<File Id="1013981530" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SFX_BlackSand_Glitchy_2s_Stereo_05.wav</ShortName>
+					<CachePath>SFX/SFX_BlackSand_Glitchy_2s_Stereo_05_818F3B66.wem</CachePath>
+				</File>
+				<File Id="1028643509" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SFX_BlackSand_Glitchy_2s_Stereo_03.wav</ShortName>
+					<CachePath>SFX/SFX_BlackSand_Glitchy_2s_Stereo_03_818F3B66.wem</CachePath>
 				</File>
 				<File Id="1049815799" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>MC\SFX_HourGlass_Destruction_2D.wav</ShortName>
@@ -49,6 +69,12 @@
 				</Event>
 				<Event Id="2496075354" Name="Play_SFX_HourGlass_Destruction_2D" ObjectPath="\Events\SFX_WU\Play_SFX_HourGlass_Destruction_2D" GUID="{FDD8C402-5336-447B-B1DA-70926B131299}" DurationType="OneShot" DurationMin="18.631792" DurationMax="18.631792">
 					<MediaRefs>
+						<MediaRef Id="57706824"/>
+						<MediaRef Id="418805659"/>
+						<MediaRef Id="460314317"/>
+						<MediaRef Id="498448547"/>
+						<MediaRef Id="1013981530"/>
+						<MediaRef Id="1028643509"/>
 						<MediaRef Id="1049815799"/>
 					</MediaRefs>
 				</Event>
@@ -60,9 +86,5 @@
 			</Events>
 		</SoundBank>
 	</SoundBanks>
-<<<<<<< HEAD
-	<FileHash>{2702844D-10D0-BE68-2B07-CC01B6FA85FF}</FileHash>
-=======
-	<FileHash>{DB143E0A-3C38-E9AD-FEB0-10B7F11BAC2F}</FileHash>
->>>>>>> 6adac832d2a81a4aad582c25a10da3ffebb1f4d6
+	<FileHash>{5B06D49C-D387-16E9-E491-4E6E5ED816F8}</FileHash>
 </SoundBanksInfo>
