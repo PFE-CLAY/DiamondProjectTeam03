@@ -141,8 +141,7 @@
 						</Effect>
 						<Effect Name="Nearly_Forever" ID="{38550FDA-9236-4FC5-8AE0-68DB08164B25}" PluginName="Wwise Delay" CompanyID="0" PluginID="106" PluginType="3">
 							<PropertyList>
-								<Property Name="DelayTime" Type="Real32" Value="0.6"/>
-								<Property Name="Feedback" Type="Real32" Value="80"/>
+								<Property Name="DelayTime" Type="Real32" Value="0.2"/>
 								<Property Name="WetDryMix" Type="Real32" Value="30"/>
 							</PropertyList>
 						</Effect>

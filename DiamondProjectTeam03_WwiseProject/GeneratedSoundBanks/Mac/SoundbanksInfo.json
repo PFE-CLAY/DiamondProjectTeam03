@@ -18,7 +18,7 @@
     "Type": "User",
     "GUID": "{46F08C13-7BDA-47D5-A653-BDFCDAD2487B}",
     "Language": "SFX",
-    "Hash": "{FEE00F70-8251-3614-C7C8-A06B1AF92F49}",
+    "Hash": "{3620EAA2-30A7-80C3-B04F-0EEE64E6AD44}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\FOES_Flying_SB",
     "ShortName": "FOES_Flying_SB",
     "Path": "FOES_Flying_SB.bnk",
@@ -270,6 +270,12 @@
       "Name": "Master",
       "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master",
       "GUID": "{F3A976BC-47E9-46E5-9EEC-F566BB39DBEE}"
+     },
+     {
+      "Id": "4219618961",
+      "Name": "AMB_Crowd",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\Game_Global\\AMB_Crowd",
+      "GUID": "{985719AF-3534-41FC-A751-99E11C3F7784}"
      }
     ],
     "AuxBusses": [
@@ -386,6 +392,12 @@
     ],
     "GameParameters": [
      {
+      "Id": "1190880401",
+      "Name": "RTPC_DoorPyramid",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\RTPC_DoorPyramid",
+      "GUID": "{D2AEC1CE-EF9E-486E-AE8B-FB121AC42B53}"
+     },
+     {
       "Id": "3590742338",
       "Name": "RTPC_Speed_Flying",
       "ObjectPath": "\\Game Parameters\\Default Work Unit\\RTPC_Speed_Flying",
@@ -404,6 +416,12 @@
         "Name": "Out",
         "ObjectPath": "\\States\\Default Work Unit\\InsideOutside\\Out",
         "GUID": "{C04B12A4-672A-478D-A191-EED95AAB3C6D}"
+       },
+       {
+        "Id": "646625282",
+        "Name": "Hub",
+        "ObjectPath": "\\States\\Default Work Unit\\InsideOutside\\Hub",
+        "GUID": "{E8B28850-8267-42D7-9412-3B19F0F04B6C}"
        },
        {
         "Id": "748895195",
@@ -432,7 +450,7 @@
     "Type": "User",
     "GUID": "{701ECBBD-9C7B-4030-8CDB-749EE5D1C7B9}",
     "Language": "SFX",
-    "Hash": "{C4C36FD9-30BF-18DE-6334-1A2BC3683097}",
+    "Hash": "{EBA7DA66-7C0F-AF6C-7E10-6DC318BF023A}",
     "ObjectPath": "Init",
     "ShortName": "Init",
     "Path": "Init.bnk",
@@ -606,6 +624,12 @@
       "Name": "Master",
       "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master",
       "GUID": "{F3A976BC-47E9-46E5-9EEC-F566BB39DBEE}"
+     },
+     {
+      "Id": "4219618961",
+      "Name": "AMB_Crowd",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\Game_Global\\AMB_Crowd",
+      "GUID": "{985719AF-3534-41FC-A751-99E11C3F7784}"
      }
     ],
     "AuxBusses": [
@@ -722,6 +746,12 @@
     ],
     "GameParameters": [
      {
+      "Id": "1190880401",
+      "Name": "RTPC_DoorPyramid",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\RTPC_DoorPyramid",
+      "GUID": "{D2AEC1CE-EF9E-486E-AE8B-FB121AC42B53}"
+     },
+     {
       "Id": "2176662110",
       "Name": "RTPC_Tourelle_Projectil",
       "ObjectPath": "\\Game Parameters\\Default Work Unit\\RTPC_Tourelle_Projectil",
@@ -746,6 +776,12 @@
         "Name": "Out",
         "ObjectPath": "\\States\\Default Work Unit\\InsideOutside\\Out",
         "GUID": "{C04B12A4-672A-478D-A191-EED95AAB3C6D}"
+       },
+       {
+        "Id": "646625282",
+        "Name": "Hub",
+        "ObjectPath": "\\States\\Default Work Unit\\InsideOutside\\Hub",
+        "GUID": "{E8B28850-8267-42D7-9412-3B19F0F04B6C}"
        },
        {
         "Id": "748895195",
@@ -802,7 +838,7 @@
     "Type": "User",
     "GUID": "{6B7E0BFB-A825-46AA-907A-12621FC4038F}",
     "Language": "SFX",
-    "Hash": "{03DA66E4-26F7-B0CA-8C92-6AAB929A3342}",
+    "Hash": "{163EF847-B689-1918-3477-2FAA6EED8DE6}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\UI_SB",
     "ShortName": "UI_SB",
     "Path": "UI_SB.bnk",
@@ -1088,6 +1124,12 @@
       "Name": "Master",
       "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master",
       "GUID": "{F3A976BC-47E9-46E5-9EEC-F566BB39DBEE}"
+     },
+     {
+      "Id": "4219618961",
+      "Name": "AMB_Crowd",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\Game_Global\\AMB_Crowd",
+      "GUID": "{985719AF-3534-41FC-A751-99E11C3F7784}"
      }
     ],
     "AuxBusses": [
@@ -1202,6 +1244,14 @@
       }
      }
     ],
+    "GameParameters": [
+     {
+      "Id": "1190880401",
+      "Name": "RTPC_DoorPyramid",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\RTPC_DoorPyramid",
+      "GUID": "{D2AEC1CE-EF9E-486E-AE8B-FB121AC42B53}"
+     }
+    ],
     "StateGroups": [
      {
       "Id": "3929688590",
@@ -1214,6 +1264,12 @@
         "Name": "Out",
         "ObjectPath": "\\States\\Default Work Unit\\InsideOutside\\Out",
         "GUID": "{C04B12A4-672A-478D-A191-EED95AAB3C6D}"
+       },
+       {
+        "Id": "646625282",
+        "Name": "Hub",
+        "ObjectPath": "\\States\\Default Work Unit\\InsideOutside\\Hub",
+        "GUID": "{E8B28850-8267-42D7-9412-3B19F0F04B6C}"
        },
        {
         "Id": "748895195",
@@ -1242,7 +1298,7 @@
     "Type": "User",
     "GUID": "{ADC2D189-6608-4828-BC9C-6EF6F90834DB}",
     "Language": "SFX",
-    "Hash": "{EECCDF9A-5917-9CCB-5047-CC62B536CAB8}",
+    "Hash": "{5408FA06-544B-67AF-3D27-1100118099DD}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\MC_SB",
     "ShortName": "MC_SB",
     "Path": "MC_SB.bnk",
@@ -1261,7 +1317,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "SFX\\MC_GetHit.wav",
-      "CachePath": "SFX/SFX/MC_GetHit_818F3B66.wem"
+      "CachePath": "SFX/SFX/MC_GetHit_FBC78EF0.wem"
      },
      {
       "Id": "34141530",
@@ -2427,9 +2483,8 @@
       "Name": "Play_MC_GetHit",
       "ObjectPath": "\\Events\\MC_WU\\Play_MC_GetHit",
       "GUID": "{DFDAAAFE-1AD5-4D67-9145-D4089C5F1FA9}",
-      "DurationType": "OneShot",
-      "DurationMin": "1.4506171",
-      "DurationMax": "2.525671",
+      "MaxAttenuation": "2000",
+      "DurationType": "Infinite",
       "MediaRefs": [
        {
         "Id": "17784281"
@@ -2574,6 +2629,12 @@
       "Name": "Master",
       "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master",
       "GUID": "{F3A976BC-47E9-46E5-9EEC-F566BB39DBEE}"
+     },
+     {
+      "Id": "4219618961",
+      "Name": "AMB_Crowd",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\Game_Global\\AMB_Crowd",
+      "GUID": "{985719AF-3534-41FC-A751-99E11C3F7784}"
      }
     ],
     "AuxBusses": [
@@ -2688,6 +2749,14 @@
       }
      }
     ],
+    "GameParameters": [
+     {
+      "Id": "1190880401",
+      "Name": "RTPC_DoorPyramid",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\RTPC_DoorPyramid",
+      "GUID": "{D2AEC1CE-EF9E-486E-AE8B-FB121AC42B53}"
+     }
+    ],
     "StateGroups": [
      {
       "Id": "3929688590",
@@ -2700,6 +2769,12 @@
         "Name": "Out",
         "ObjectPath": "\\States\\Default Work Unit\\InsideOutside\\Out",
         "GUID": "{C04B12A4-672A-478D-A191-EED95AAB3C6D}"
+       },
+       {
+        "Id": "646625282",
+        "Name": "Hub",
+        "ObjectPath": "\\States\\Default Work Unit\\InsideOutside\\Hub",
+        "GUID": "{E8B28850-8267-42D7-9412-3B19F0F04B6C}"
        },
        {
         "Id": "748895195",
@@ -2756,7 +2831,7 @@
     "Type": "User",
     "GUID": "{48187E94-2869-42A3-9E99-A12DF1DA86DF}",
     "Language": "SFX",
-    "Hash": "{6DD75665-0468-1CCA-BF8B-AA750C9618F5}",
+    "Hash": "{928110CA-B920-F6C4-9FF1-5C5ED7ED8084}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\FOES_Invisible_SB",
     "ShortName": "FOES_Invisible_SB",
     "Path": "FOES_Invisible_SB.bnk",
@@ -2906,6 +2981,12 @@
       "Name": "Master",
       "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master",
       "GUID": "{F3A976BC-47E9-46E5-9EEC-F566BB39DBEE}"
+     },
+     {
+      "Id": "4219618961",
+      "Name": "AMB_Crowd",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\Game_Global\\AMB_Crowd",
+      "GUID": "{985719AF-3534-41FC-A751-99E11C3F7784}"
      }
     ],
     "AuxBusses": [
@@ -3020,6 +3101,14 @@
       }
      }
     ],
+    "GameParameters": [
+     {
+      "Id": "1190880401",
+      "Name": "RTPC_DoorPyramid",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\RTPC_DoorPyramid",
+      "GUID": "{D2AEC1CE-EF9E-486E-AE8B-FB121AC42B53}"
+     }
+    ],
     "StateGroups": [
      {
       "Id": "3929688590",
@@ -3032,6 +3121,12 @@
         "Name": "Out",
         "ObjectPath": "\\States\\Default Work Unit\\InsideOutside\\Out",
         "GUID": "{C04B12A4-672A-478D-A191-EED95AAB3C6D}"
+       },
+       {
+        "Id": "646625282",
+        "Name": "Hub",
+        "ObjectPath": "\\States\\Default Work Unit\\InsideOutside\\Hub",
+        "GUID": "{E8B28850-8267-42D7-9412-3B19F0F04B6C}"
        },
        {
         "Id": "748895195",
@@ -3060,7 +3155,7 @@
     "Type": "User",
     "GUID": "{9B915276-16F3-4721-B819-126344F97366}",
     "Language": "SFX",
-    "Hash": "{22469D0C-9882-0080-2536-2ADBCEE943E0}",
+    "Hash": "{26473094-3AEA-C48B-D9AC-AD3EBACFBA3B}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\VOICES_SB",
     "ShortName": "VOICES_SB",
     "Path": "VOICES_SB.bnk",
@@ -4166,7 +4261,7 @@
     "Type": "User",
     "GUID": "{8CC30184-23AF-4DB5-9844-9B04DF10A650}",
     "Language": "SFX",
-    "Hash": "{7D2DE924-4B4C-AECE-FFC7-0B2ECE9408EE}",
+    "Hash": "{48FEA8E5-070B-5F95-5A70-42DAF98CE5C2}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\FOES_Tourelle_SB",
     "ShortName": "FOES_Tourelle_SB",
     "Path": "FOES_Tourelle_SB.bnk",
@@ -4474,6 +4569,12 @@
       "Name": "Master",
       "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master",
       "GUID": "{F3A976BC-47E9-46E5-9EEC-F566BB39DBEE}"
+     },
+     {
+      "Id": "4219618961",
+      "Name": "AMB_Crowd",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\Game_Global\\AMB_Crowd",
+      "GUID": "{985719AF-3534-41FC-A751-99E11C3F7784}"
      }
     ],
     "AuxBusses": [
@@ -4590,6 +4691,12 @@
     ],
     "GameParameters": [
      {
+      "Id": "1190880401",
+      "Name": "RTPC_DoorPyramid",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\RTPC_DoorPyramid",
+      "GUID": "{D2AEC1CE-EF9E-486E-AE8B-FB121AC42B53}"
+     },
+     {
       "Id": "2176662110",
       "Name": "RTPC_Tourelle_Projectil",
       "ObjectPath": "\\Game Parameters\\Default Work Unit\\RTPC_Tourelle_Projectil",
@@ -4608,6 +4715,12 @@
         "Name": "Out",
         "ObjectPath": "\\States\\Default Work Unit\\InsideOutside\\Out",
         "GUID": "{C04B12A4-672A-478D-A191-EED95AAB3C6D}"
+       },
+       {
+        "Id": "646625282",
+        "Name": "Hub",
+        "ObjectPath": "\\States\\Default Work Unit\\InsideOutside\\Hub",
+        "GUID": "{E8B28850-8267-42D7-9412-3B19F0F04B6C}"
        },
        {
         "Id": "748895195",
@@ -4636,7 +4749,7 @@
     "Type": "User",
     "GUID": "{9DC5CBA4-02D0-4677-A565-21ECA413E694}",
     "Language": "SFX",
-    "Hash": "{34481070-3ED7-4EEA-6EF1-CB27E3055E22}",
+    "Hash": "{4AB3D9EE-E4CC-6090-990E-EA844E969CEA}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\AMB_SB",
     "ShortName": "AMB_SB",
     "Path": "AMB_SB.bnk",
@@ -4808,6 +4921,14 @@
       "Location": "Memory",
       "ShortName": "AMB\\RFX\\AMB_RFX_Crowd_Individual_01.wav",
       "CachePath": "SFX/AMB/RFX/AMB_RFX_Crowd_Individual_01_818F3B66.wem"
+     },
+     {
+      "Id": "754770262",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB\\SP\\AMB_SP_Incinerator.wav",
+      "CachePath": "SFX/AMB/SP/AMB_SP_Incinerator_FBC78EF0.wem"
      },
      {
       "Id": "754998867",
@@ -5314,6 +5435,19 @@
         "Id": "1019889613"
        }
       ]
+     },
+     {
+      "Id": "770793257",
+      "Name": "Play_AMB_SP_Incinerator",
+      "ObjectPath": "\\Events\\AMB_WU\\Play_AMB_SP_Incinerator",
+      "GUID": "{C2B84120-2D73-4FB5-AAF0-B5573838C530}",
+      "MaxAttenuation": "2000",
+      "DurationType": "Infinite",
+      "MediaRefs": [
+       {
+        "Id": "754770262"
+       }
+      ]
      }
     ],
     "Busses": [
@@ -5376,6 +5510,12 @@
       "Name": "Master",
       "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master",
       "GUID": "{F3A976BC-47E9-46E5-9EEC-F566BB39DBEE}"
+     },
+     {
+      "Id": "4219618961",
+      "Name": "AMB_Crowd",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\Game_Global\\AMB_Crowd",
+      "GUID": "{985719AF-3534-41FC-A751-99E11C3F7784}"
      }
     ],
     "AuxBusses": [
@@ -5490,6 +5630,14 @@
       }
      }
     ],
+    "GameParameters": [
+     {
+      "Id": "1190880401",
+      "Name": "RTPC_DoorPyramid",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\RTPC_DoorPyramid",
+      "GUID": "{D2AEC1CE-EF9E-486E-AE8B-FB121AC42B53}"
+     }
+    ],
     "StateGroups": [
      {
       "Id": "3929688590",
@@ -5502,6 +5650,12 @@
         "Name": "Out",
         "ObjectPath": "\\States\\Default Work Unit\\InsideOutside\\Out",
         "GUID": "{C04B12A4-672A-478D-A191-EED95AAB3C6D}"
+       },
+       {
+        "Id": "646625282",
+        "Name": "Hub",
+        "ObjectPath": "\\States\\Default Work Unit\\InsideOutside\\Hub",
+        "GUID": "{E8B28850-8267-42D7-9412-3B19F0F04B6C}"
        },
        {
         "Id": "748895195",
@@ -5530,18 +5684,98 @@
     "Type": "User",
     "GUID": "{459D1F67-52BD-4FA1-B846-B8F3A50C2C5F}",
     "Language": "SFX",
-    "Hash": "{83D76FD2-B343-B629-61D7-984BD4482C66}",
+    "Hash": "{68818888-3A57-7299-D1F6-4776DF84D192}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\SFX_SB",
     "ShortName": "SFX_SB",
     "Path": "SFX_SB.bnk",
     "Media": [
      {
-      "Id": "756613996",
+      "Id": "57706824",
       "Language": "SFX",
       "Streaming": "false",
       "Location": "Memory",
-      "ShortName": "SFX\\SFX_Button_Backstage.wav",
-      "CachePath": "SFX/SFX/SFX_Button_Backstage_818F3B66.wem"
+      "ShortName": "SFX_BlackSand_Glitchy_2s_Stereo_06.wav",
+      "CachePath": "SFX/SFX_BlackSand_Glitchy_2s_Stereo_06_818F3B66.wem"
+     },
+     {
+      "Id": "418805659",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "SFX_BlackSand_Glitchy_2s_Stereo_04.wav",
+      "CachePath": "SFX/SFX_BlackSand_Glitchy_2s_Stereo_04_818F3B66.wem"
+     },
+     {
+      "Id": "460314317",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "SFX_BlackSand_Glitchy_2s_Stereo_02.wav",
+      "CachePath": "SFX/SFX_BlackSand_Glitchy_2s_Stereo_02_818F3B66.wem"
+     },
+     {
+      "Id": "482790053",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "MC\\SFX_Door_Pyramid_Open.wav",
+      "CachePath": "SFX/MC/SFX_Door_Pyramid_Open_818F3B66.wem"
+     },
+     {
+      "Id": "498448547",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "SFX_BlackSand_Glitchy_2s_Stereo_01.wav",
+      "CachePath": "SFX/SFX_BlackSand_Glitchy_2s_Stereo_01_818F3B66.wem"
+     },
+     {
+      "Id": "640927559",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "SFX_Button_Backstage.wav",
+      "CachePath": "SFX/SFX_Button_Backstage_818F3B66.wem"
+     },
+     {
+      "Id": "794556847",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "MC\\SFX_HourGlass_Idle_LP.wav",
+      "CachePath": "SFX/MC/SFX_HourGlass_Idle_LP_FBC78EF0.wem"
+     },
+     {
+      "Id": "862611700",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "MC\\SFX_Door_Pyramid.wav",
+      "CachePath": "SFX/MC/SFX_Door_Pyramid_AA228216.wem"
+     },
+     {
+      "Id": "1013981530",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "SFX_BlackSand_Glitchy_2s_Stereo_05.wav",
+      "CachePath": "SFX/SFX_BlackSand_Glitchy_2s_Stereo_05_818F3B66.wem"
+     },
+     {
+      "Id": "1028643509",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "SFX_BlackSand_Glitchy_2s_Stereo_03.wav",
+      "CachePath": "SFX/SFX_BlackSand_Glitchy_2s_Stereo_03_818F3B66.wem"
+     },
+     {
+      "Id": "1049815799",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "MC\\SFX_HourGlass_Destruction_2D.wav",
+      "CachePath": "SFX/MC/SFX_HourGlass_Destruction_2D_818F3B66.wem"
      }
     ],
     "Events": [
@@ -5549,13 +5783,89 @@
       "Id": "1623238786",
       "Name": "Play_SFX_Button_Backstage",
       "ObjectPath": "\\Events\\SFX_WU\\Play_SFX_Button_Backstage",
-      "GUID": "{28025076-9703-41F8-8A62-52587A60DAAC}",
+      "GUID": "{F8593F23-32CE-4C34-A551-35034A61FD79}",
+      "MaxAttenuation": "2000",
       "DurationType": "OneShot",
       "DurationMin": "0.9392083",
       "DurationMax": "0.9392083",
       "MediaRefs": [
        {
-        "Id": "756613996"
+        "Id": "640927559"
+       }
+      ]
+     },
+     {
+      "Id": "1447435678",
+      "Name": "Play_SFX_Door_Pyramid_Close",
+      "ObjectPath": "\\Events\\SFX_WU\\Play_SFX_Door_Pyramid_Close",
+      "GUID": "{1829F329-FCFF-4E10-8065-7D10B11DDA83}",
+      "MaxAttenuation": "2000",
+      "DurationType": "OneShot",
+      "DurationMin": "5.4468756",
+      "DurationMax": "5.4468756",
+      "MediaRefs": [
+       {
+        "Id": "862611700"
+       }
+      ]
+     },
+     {
+      "Id": "582941242",
+      "Name": "Play_SFX_Door_Pyramid_Open",
+      "ObjectPath": "\\Events\\SFX_WU\\Play_SFX_Door_Pyramid_Open",
+      "GUID": "{03DAD17B-66BC-4B93-B7D8-6E1B8239766D}",
+      "MaxAttenuation": "2000",
+      "DurationType": "OneShot",
+      "DurationMin": "4.623",
+      "DurationMax": "4.623",
+      "MediaRefs": [
+       {
+        "Id": "482790053"
+       }
+      ]
+     },
+     {
+      "Id": "2496075354",
+      "Name": "Play_SFX_HourGlass_Destruction_2D",
+      "ObjectPath": "\\Events\\SFX_WU\\Play_SFX_HourGlass_Destruction_2D",
+      "GUID": "{FDD8C402-5336-447B-B1DA-70926B131299}",
+      "DurationType": "OneShot",
+      "DurationMin": "18.631792",
+      "DurationMax": "18.631792",
+      "MediaRefs": [
+       {
+        "Id": "57706824"
+       },
+       {
+        "Id": "418805659"
+       },
+       {
+        "Id": "460314317"
+       },
+       {
+        "Id": "498448547"
+       },
+       {
+        "Id": "1013981530"
+       },
+       {
+        "Id": "1028643509"
+       },
+       {
+        "Id": "1049815799"
+       }
+      ]
+     },
+     {
+      "Id": "2563465684",
+      "Name": "Play_SFX_HourGlass_Idle_LP",
+      "ObjectPath": "\\Events\\SFX_WU\\Play_SFX_HourGlass_Idle_LP",
+      "GUID": "{0994537E-EF34-4F9C-A1D4-F9FFCF6E9CD1}",
+      "MaxAttenuation": "150000",
+      "DurationType": "Infinite",
+      "MediaRefs": [
+       {
+        "Id": "794556847"
        }
       ]
      }
@@ -5566,7 +5876,7 @@
     "Type": "User",
     "GUID": "{D2378E68-5468-4849-BC4A-8FC6D8A3BF29}",
     "Language": "SFX",
-    "Hash": "{3B2DB062-4BBA-A159-2E6F-D6643CD23CDD}",
+    "Hash": "{300DAA90-0833-F57B-DF28-55F0E9C80A0A}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\GPE_SB",
     "ShortName": "GPE_SB",
     "Path": "GPE_SB.bnk",
@@ -5586,6 +5896,14 @@
       "Location": "Memory",
       "ShortName": "MC_SFX_Dash_05.wav",
       "CachePath": "SFX/MC_SFX_Dash_05_818F3B66.wem"
+     },
+     {
+      "Id": "226141576",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "MC\\GPE_JumpPads_Mecha_01.wav",
+      "CachePath": "SFX/MC/GPE_JumpPads_Mecha_01_818F3B66.wem"
      },
      {
       "Id": "275758801",
@@ -5628,6 +5946,14 @@
       "CachePath": "SFX/AMB/RFX/SFX_CorpseTrap_Closing_818F3B66.wem"
      },
      {
+      "Id": "831778911",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "MC\\GPE_JumpPads_Mecha_03.wav",
+      "CachePath": "SFX/MC/GPE_JumpPads_Mecha_03_818F3B66.wem"
+     },
+     {
       "Id": "865971538",
       "Language": "SFX",
       "Streaming": "false",
@@ -5652,14 +5978,50 @@
       "CachePath": "SFX/MC_SFX_Dash_04_818F3B66.wem"
      },
      {
+      "Id": "932156054",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "MC\\GPE_JumpPads_Mecha_04.wav",
+      "CachePath": "SFX/MC/GPE_JumpPads_Mecha_04_818F3B66.wem"
+     },
+     {
       "Id": "978522934",
       "Language": "SFX",
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "AMB\\RFX\\SFX_CorpseTrap_Opening.wav",
       "CachePath": "SFX/AMB/RFX/SFX_CorpseTrap_Opening_818F3B66.wem"
+     },
+     {
+      "Id": "1032185961",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "MC\\GPE_JumpPads_Mecha_02.wav",
+      "CachePath": "SFX/MC/GPE_JumpPads_Mecha_02_818F3B66.wem"
+     },
+     {
+      "Id": "1037685382",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "MC\\GPE_JumpPads_Mecha_05.wav",
+      "CachePath": "SFX/MC/GPE_JumpPads_Mecha_05_818F3B66.wem"
      }
     ],
+    "Plugins": {
+     "ShareSets": [
+      {
+       "Id": "1590660382",
+       "Name": "Nearly_Forever",
+       "ObjectPath": "\\Effects\\Factory Effects\\Delay\\Nearly_Forever",
+       "GUID": "{38550FDA-9236-4FC5-8AE0-68DB08164B25}",
+       "LibName": "Wwise Delay",
+       "LibId": "6946819"
+      }
+     ]
+    },
     "Events": [
      {
       "Id": "575283655",
@@ -5675,18 +6037,40 @@
         "Id": "131763475"
        },
        {
+        "Id": "226141576"
+       },
+       {
         "Id": "280528909"
        },
        {
         "Id": "411674623"
        },
        {
+        "Id": "831778911"
+       },
+       {
         "Id": "890446006"
        },
        {
         "Id": "925500281"
+       },
+       {
+        "Id": "932156054"
+       },
+       {
+        "Id": "1032185961"
+       },
+       {
+        "Id": "1037685382"
        }
-      ]
+      ],
+      "PluginRefs": {
+       "ShareSets": [
+        {
+         "Id": "1590660382"
+        }
+       ]
+      }
      },
      {
       "Id": "2353660422",
@@ -5757,6 +6141,6 @@
     ]
    }
   ],
-  "FileHash": "{BF968FCA-7F84-BFE5-8963-601E87263B9C}"
+  "FileHash": "{7901CE9E-F545-BCFE-7544-33F8AD60B87F}"
  }
 }
