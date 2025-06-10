@@ -153,6 +153,7 @@
 				<StateGroup Id="3929688590" Name="InsideOutside" ObjectPath="\States\Default Work Unit\InsideOutside" GUID="{2CE28D5C-F27B-42D7-9D91-1905B53C4C3C}">
 					<States>
 						<State Id="645492555" Name="Out" ObjectPath="\States\Default Work Unit\InsideOutside\Out" GUID="{C04B12A4-672A-478D-A191-EED95AAB3C6D}"/>
+						<State Id="646625282" Name="Hub" ObjectPath="\States\Default Work Unit\InsideOutside\Hub" GUID="{E8B28850-8267-42D7-9412-3B19F0F04B6C}"/>
 						<State Id="748895195" Name="None" ObjectPath="\States\Default Work Unit\InsideOutside\None" GUID="{EEC88170-01B2-4B8A-87BF-B7151380ADB4}"/>
 						<State Id="1051960422" Name="TargetInsidePyramid" ObjectPath="\States\Default Work Unit\InsideOutside\TargetInsidePyramid" GUID="{1E0BA403-7723-4863-B8DD-93A6A3CA72ED}"/>
 						<State Id="1752637612" Name="In" ObjectPath="\States\Default Work Unit\InsideOutside\In" GUID="{BFBB05BE-0B19-41C7-B759-C85C0C60B1D8}"/>
@@ -160,7 +161,25 @@
 				</StateGroup>
 			</StateGroups>
 		</SoundBank>
-		<SoundBank Id="1355168291" Type="User" GUID="{701ECBBD-9C7B-4030-8CDB-749EE5D1C7B9}" Language="SFX" Hash="{16EEC8EC-FB94-EA9B-1792-D5ACF278D212}">
+		<SoundBank Id="1329476194" Type="User" GUID="{4B32F9EE-D939-4AEA-A633-697781A78CE3}" Language="SFX" Hash="{8C576C27-EF9B-5611-8A3B-E0915C4CB78E}">
+			<ObjectPath>\SoundBanks\SoundBanks_WU\MUS_SB</ObjectPath>
+			<ShortName>MUS_SB</ShortName>
+			<Path>MUS_SB.bnk</Path>
+			<Media>
+				<File Id="185337180" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>JV BLACK SAND V1.wav</ShortName>
+					<CachePath>SFX/JV BLACK SAND V1_818F3B66.wem</CachePath>
+				</File>
+			</Media>
+			<Events>
+				<Event Id="1117189211" Name="Play_MUS_ARENA" ObjectPath="\Events\MUS_WU\Play_MUS_ARENA" GUID="{FCFD5ACC-2CA9-4324-8CC4-F10D48548642}" DurationType="OneShot" DurationMin="281.6" DurationMax="281.6">
+					<MediaRefs>
+						<MediaRef Id="185337180"/>
+					</MediaRefs>
+				</Event>
+			</Events>
+		</SoundBank>
+		<SoundBank Id="1355168291" Type="User" GUID="{701ECBBD-9C7B-4030-8CDB-749EE5D1C7B9}" Language="SFX" Hash="{590B3C71-EBF8-CB23-E155-9B9336658ACE}">
 			<ObjectPath>Init</ObjectPath>
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
@@ -267,6 +286,7 @@
 				<StateGroup Id="3929688590" Name="InsideOutside" ObjectPath="\States\Default Work Unit\InsideOutside" GUID="{2CE28D5C-F27B-42D7-9D91-1905B53C4C3C}">
 					<States>
 						<State Id="645492555" Name="Out" ObjectPath="\States\Default Work Unit\InsideOutside\Out" GUID="{C04B12A4-672A-478D-A191-EED95AAB3C6D}"/>
+						<State Id="646625282" Name="Hub" ObjectPath="\States\Default Work Unit\InsideOutside\Hub" GUID="{E8B28850-8267-42D7-9412-3B19F0F04B6C}"/>
 						<State Id="748895195" Name="None" ObjectPath="\States\Default Work Unit\InsideOutside\None" GUID="{EEC88170-01B2-4B8A-87BF-B7151380ADB4}"/>
 						<State Id="1051960422" Name="TargetInsidePyramid" ObjectPath="\States\Default Work Unit\InsideOutside\TargetInsidePyramid" GUID="{1E0BA403-7723-4863-B8DD-93A6A3CA72ED}"/>
 						<State Id="1752637612" Name="In" ObjectPath="\States\Default Work Unit\InsideOutside\In" GUID="{BFBB05BE-0B19-41C7-B759-C85C0C60B1D8}"/>
@@ -441,6 +461,7 @@
 				<StateGroup Id="3929688590" Name="InsideOutside" ObjectPath="\States\Default Work Unit\InsideOutside" GUID="{2CE28D5C-F27B-42D7-9D91-1905B53C4C3C}">
 					<States>
 						<State Id="645492555" Name="Out" ObjectPath="\States\Default Work Unit\InsideOutside\Out" GUID="{C04B12A4-672A-478D-A191-EED95AAB3C6D}"/>
+						<State Id="646625282" Name="Hub" ObjectPath="\States\Default Work Unit\InsideOutside\Hub" GUID="{E8B28850-8267-42D7-9412-3B19F0F04B6C}"/>
 						<State Id="748895195" Name="None" ObjectPath="\States\Default Work Unit\InsideOutside\None" GUID="{EEC88170-01B2-4B8A-87BF-B7151380ADB4}"/>
 						<State Id="1051960422" Name="TargetInsidePyramid" ObjectPath="\States\Default Work Unit\InsideOutside\TargetInsidePyramid" GUID="{1E0BA403-7723-4863-B8DD-93A6A3CA72ED}"/>
 						<State Id="1752637612" Name="In" ObjectPath="\States\Default Work Unit\InsideOutside\In" GUID="{BFBB05BE-0B19-41C7-B759-C85C0C60B1D8}"/>
@@ -1070,6 +1091,7 @@
 				<StateGroup Id="3929688590" Name="InsideOutside" ObjectPath="\States\Default Work Unit\InsideOutside" GUID="{2CE28D5C-F27B-42D7-9D91-1905B53C4C3C}">
 					<States>
 						<State Id="645492555" Name="Out" ObjectPath="\States\Default Work Unit\InsideOutside\Out" GUID="{C04B12A4-672A-478D-A191-EED95AAB3C6D}"/>
+						<State Id="646625282" Name="Hub" ObjectPath="\States\Default Work Unit\InsideOutside\Hub" GUID="{E8B28850-8267-42D7-9412-3B19F0F04B6C}"/>
 						<State Id="748895195" Name="None" ObjectPath="\States\Default Work Unit\InsideOutside\None" GUID="{EEC88170-01B2-4B8A-87BF-B7151380ADB4}"/>
 						<State Id="1051960422" Name="TargetInsidePyramid" ObjectPath="\States\Default Work Unit\InsideOutside\TargetInsidePyramid" GUID="{1E0BA403-7723-4863-B8DD-93A6A3CA72ED}"/>
 						<State Id="1752637612" Name="In" ObjectPath="\States\Default Work Unit\InsideOutside\In" GUID="{BFBB05BE-0B19-41C7-B759-C85C0C60B1D8}"/>
@@ -1186,6 +1208,7 @@
 				<StateGroup Id="3929688590" Name="InsideOutside" ObjectPath="\States\Default Work Unit\InsideOutside" GUID="{2CE28D5C-F27B-42D7-9D91-1905B53C4C3C}">
 					<States>
 						<State Id="645492555" Name="Out" ObjectPath="\States\Default Work Unit\InsideOutside\Out" GUID="{C04B12A4-672A-478D-A191-EED95AAB3C6D}"/>
+						<State Id="646625282" Name="Hub" ObjectPath="\States\Default Work Unit\InsideOutside\Hub" GUID="{E8B28850-8267-42D7-9412-3B19F0F04B6C}"/>
 						<State Id="748895195" Name="None" ObjectPath="\States\Default Work Unit\InsideOutside\None" GUID="{EEC88170-01B2-4B8A-87BF-B7151380ADB4}"/>
 						<State Id="1051960422" Name="TargetInsidePyramid" ObjectPath="\States\Default Work Unit\InsideOutside\TargetInsidePyramid" GUID="{1E0BA403-7723-4863-B8DD-93A6A3CA72ED}"/>
 						<State Id="1752637612" Name="In" ObjectPath="\States\Default Work Unit\InsideOutside\In" GUID="{BFBB05BE-0B19-41C7-B759-C85C0C60B1D8}"/>
@@ -1193,7 +1216,7 @@
 				</StateGroup>
 			</StateGroups>
 		</SoundBank>
-		<SoundBank Id="2765162312" Type="User" GUID="{9B915276-16F3-4721-B819-126344F97366}" Language="SFX" Hash="{22469D0C-9882-0080-2536-2ADBCEE943E0}">
+		<SoundBank Id="2765162312" Type="User" GUID="{9B915276-16F3-4721-B819-126344F97366}" Language="SFX" Hash="{26473094-3AEA-C48B-D9AC-AD3EBACFBA3B}">
 			<ObjectPath>\SoundBanks\SoundBanks_WU\VOICES_SB</ObjectPath>
 			<ShortName>VOICES_SB</ShortName>
 			<Path>VOICES_SB.bnk</Path>
@@ -1777,6 +1800,7 @@
 				<StateGroup Id="3929688590" Name="InsideOutside" ObjectPath="\States\Default Work Unit\InsideOutside" GUID="{2CE28D5C-F27B-42D7-9D91-1905B53C4C3C}">
 					<States>
 						<State Id="645492555" Name="Out" ObjectPath="\States\Default Work Unit\InsideOutside\Out" GUID="{C04B12A4-672A-478D-A191-EED95AAB3C6D}"/>
+						<State Id="646625282" Name="Hub" ObjectPath="\States\Default Work Unit\InsideOutside\Hub" GUID="{E8B28850-8267-42D7-9412-3B19F0F04B6C}"/>
 						<State Id="748895195" Name="None" ObjectPath="\States\Default Work Unit\InsideOutside\None" GUID="{EEC88170-01B2-4B8A-87BF-B7151380ADB4}"/>
 						<State Id="1051960422" Name="TargetInsidePyramid" ObjectPath="\States\Default Work Unit\InsideOutside\TargetInsidePyramid" GUID="{1E0BA403-7723-4863-B8DD-93A6A3CA72ED}"/>
 						<State Id="1752637612" Name="In" ObjectPath="\States\Default Work Unit\InsideOutside\In" GUID="{BFBB05BE-0B19-41C7-B759-C85C0C60B1D8}"/>
@@ -1784,7 +1808,7 @@
 				</StateGroup>
 			</StateGroups>
 		</SoundBank>
-		<SoundBank Id="3256182613" Type="User" GUID="{9DC5CBA4-02D0-4677-A565-21ECA413E694}" Language="SFX" Hash="{AFCBE00C-10AE-CADE-9311-2BC22ED1B70B}">
+		<SoundBank Id="3256182613" Type="User" GUID="{9DC5CBA4-02D0-4677-A565-21ECA413E694}" Language="SFX" Hash="{4AB3D9EE-E4CC-6090-990E-EA844E969CEA}">
 			<ObjectPath>\SoundBanks\SoundBanks_WU\AMB_SB</ObjectPath>
 			<ShortName>AMB_SB</ShortName>
 			<Path>AMB_SB.bnk</Path>
@@ -1872,6 +1896,10 @@
 				<File Id="742879851" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\RFX\AMB_RFX_Crowd_Individual_01.wav</ShortName>
 					<CachePath>SFX/AMB/RFX/AMB_RFX_Crowd_Individual_01_818F3B66.wem</CachePath>
+				</File>
+				<File Id="754770262" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\SP\AMB_SP_Incinerator.wav</ShortName>
+					<CachePath>SFX/AMB/SP/AMB_SP_Incinerator_FBC78EF0.wem</CachePath>
 				</File>
 				<File Id="754998867" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\RFX\AMB_RFX_WarHorns_01.wav</ShortName>
@@ -2070,6 +2098,11 @@
 						<MediaRef Id="1019889613"/>
 					</MediaRefs>
 				</Event>
+				<Event Id="770793257" Name="Play_AMB_SP_Incinerator" ObjectPath="\Events\AMB_WU\Play_AMB_SP_Incinerator" GUID="{C2B84120-2D73-4FB5-AAF0-B5573838C530}" MaxAttenuation="2000" DurationType="Infinite">
+					<MediaRefs>
+						<MediaRef Id="754770262"/>
+					</MediaRefs>
+				</Event>
 			</Events>
 			<Busses>
 				<Bus Id="109159411" Name="Game_Global" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global" GUID="{FAD5C029-0A02-4BD2-97F7-F8C20B7A95BD}"/>
@@ -2151,6 +2184,7 @@
 				<StateGroup Id="3929688590" Name="InsideOutside" ObjectPath="\States\Default Work Unit\InsideOutside" GUID="{2CE28D5C-F27B-42D7-9D91-1905B53C4C3C}">
 					<States>
 						<State Id="645492555" Name="Out" ObjectPath="\States\Default Work Unit\InsideOutside\Out" GUID="{C04B12A4-672A-478D-A191-EED95AAB3C6D}"/>
+						<State Id="646625282" Name="Hub" ObjectPath="\States\Default Work Unit\InsideOutside\Hub" GUID="{E8B28850-8267-42D7-9412-3B19F0F04B6C}"/>
 						<State Id="748895195" Name="None" ObjectPath="\States\Default Work Unit\InsideOutside\None" GUID="{EEC88170-01B2-4B8A-87BF-B7151380ADB4}"/>
 						<State Id="1051960422" Name="TargetInsidePyramid" ObjectPath="\States\Default Work Unit\InsideOutside\TargetInsidePyramid" GUID="{1E0BA403-7723-4863-B8DD-93A6A3CA72ED}"/>
 						<State Id="1752637612" Name="In" ObjectPath="\States\Default Work Unit\InsideOutside\In" GUID="{BFBB05BE-0B19-41C7-B759-C85C0C60B1D8}"/>
@@ -2385,5 +2419,5 @@
 			</Events>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{B66E21B1-4FD7-9FFB-B449-FD37D9BAAB81}</FileHash>
+	<FileHash>{4EEE1ADC-05D4-4391-4025-DF4F7A25CC58}</FileHash>
 </SoundBanksInfo>

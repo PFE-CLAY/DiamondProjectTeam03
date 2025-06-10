@@ -10,7 +10,7 @@
     "Type": "User",
     "GUID": "{D2378E68-5468-4849-BC4A-8FC6D8A3BF29}",
     "Language": "SFX",
-    "Hash": "{300DAA90-0833-F57B-DF28-55F0E9C80A0A}",
+    "Hash": "{38342F44-D7B1-F005-C6E6-CAF9CAB9DC18}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\GPE_SB",
     "ShortName": "GPE_SB",
     "Path": "GPE_SB.bnk",
@@ -80,6 +80,14 @@
       "CachePath": "SFX/AMB/RFX/SFX_CorpseTrap_Closing_818F3B66.wem"
      },
      {
+      "Id": "729439879",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "MC\\GPE_Elevator_Start.wav",
+      "CachePath": "SFX/MC/GPE_Elevator_Start_818F3B66.wem"
+     },
+     {
       "Id": "831778911",
       "Language": "SFX",
       "Streaming": "false",
@@ -104,12 +112,28 @@
       "CachePath": "SFX/MC_SFX_Dash_03_818F3B66.wem"
      },
      {
+      "Id": "904242620",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "MC\\GPE_Elevator_LP.wav",
+      "CachePath": "SFX/MC/GPE_Elevator_LP_FBC78EF0.wem"
+     },
+     {
       "Id": "925500281",
       "Language": "SFX",
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "MC_SFX_Dash_04.wav",
       "CachePath": "SFX/MC_SFX_Dash_04_818F3B66.wem"
+     },
+     {
+      "Id": "929577030",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "MC\\GPE_Elevator_Stop.wav",
+      "CachePath": "SFX/MC/GPE_Elevator_Stop_818F3B66.wem"
      },
      {
       "Id": "932156054",
@@ -157,6 +181,21 @@
      ]
     },
     "Events": [
+     {
+      "Id": "3621014260",
+      "Name": "Play_Elevator",
+      "ObjectPath": "\\Events\\GPE_WU\\Play_Elevator",
+      "GUID": "{188D4000-553D-4750-9060-D75200C9FF92}",
+      "DurationType": "Infinite",
+      "MediaRefs": [
+       {
+        "Id": "729439879"
+       },
+       {
+        "Id": "904242620"
+       }
+      ]
+     },
      {
       "Id": "575283655",
       "Name": "Play_GPE_JumPads_RC",
@@ -271,10 +310,24 @@
         "Id": "978522934"
        }
       ]
+     },
+     {
+      "Id": "895316894",
+      "Name": "Stop_Elevator",
+      "ObjectPath": "\\Events\\GPE_WU\\Stop_Elevator",
+      "GUID": "{DF176BD1-7C8C-4DFE-89C2-A2EC858724EC}",
+      "DurationType": "OneShot",
+      "DurationMin": "2.233146",
+      "DurationMax": "2.233146",
+      "MediaRefs": [
+       {
+        "Id": "929577030"
+       }
+      ]
      }
     ]
    }
   ],
-  "FileHash": "{CFE9F217-B329-0C84-6A9A-01EBDB08FF3A}"
+  "FileHash": "{0BA4177B-EDD7-0DFC-609E-1A3E01DF4EB9}"
  }
 }
