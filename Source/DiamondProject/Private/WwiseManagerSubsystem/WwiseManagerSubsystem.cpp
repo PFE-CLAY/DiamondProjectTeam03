@@ -29,7 +29,7 @@ int32 UWwiseManagerSubsystem::PostEvent(UAkAudioEvent* Event, AActor* TargetActo
 		WwiseHandler = TargetActor->FindComponentByClass<UWwiseHandlerComponent>();
 		if (WwiseHandler) {
 			Callback = FOnAkPostEventCallback();
-			Callback.BindUFunction(WwiseHandler, "HandleCallback");
+			Callback.BindDynamic(WwiseHandler, &UWwiseHandlerComponent::HandleCallback);
 		} else {
 			UE_LOG(LogTemp, Error, TEXT("[UWwiseManagerSubsystem::PostEvent] WwiseHandlerComponent not found on TargetActor: %s!"), *TargetActor->GetName());
 		}

@@ -24,6 +24,11 @@ void UWwiseHandlerComponent::BeginPlay()
 	UE_LOG(LogTemp, Log, TEXT("WwiseHandlerComponent BeginPlay called on %s callback Mask is egal to : %d"), *GetOwner()->GetName(), CallbackMask);
 }
 
+void UWwiseHandlerComponent::EndPlay(const EEndPlayReason::Type EndPlayReason)
+{
+}
+
+
 // Called every frame
 void UWwiseHandlerComponent::TickComponent(float DeltaTime, ELevelTick TickType,
                                            FActorComponentTickFunction* ThisTickFunction)
@@ -31,8 +36,7 @@ void UWwiseHandlerComponent::TickComponent(float DeltaTime, ELevelTick TickType,
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 }
 
-
-void UWwiseHandlerComponent::HandleCallback_Implementation(EAkCallbackType CallbackType, UAkCallbackInfo* CallbackInfo)
+void UWwiseHandlerComponent::HandleCallback(EAkCallbackType CallbackType, UAkCallbackInfo* CallbackInfo)
 {
 	switch (CallbackType) {
 		case EAkCallbackType::EndOfEvent:
@@ -60,7 +64,7 @@ void UWwiseHandlerComponent::HandleCallback_Implementation(EAkCallbackType Callb
 	}
 }
 
-void UWwiseHandlerComponent::OnEndOfEventCallback_Implementation(UAkEventCallbackInfo* CallbackInfo)
+void UWwiseHandlerComponent::OnEndOfEventCallback(UAkEventCallbackInfo* CallbackInfo, UWwiseHandlerComponent* owner)
 {
 	UE_LOG(LogTemp, Log, TEXT("[Wwise] EndOfEvent triggered in %s"), *GetOwner()->GetName());
 	if (CallbackInfo == nullptr) {
@@ -70,7 +74,7 @@ void UWwiseHandlerComponent::OnEndOfEventCallback_Implementation(UAkEventCallbac
 	EndOfEventCallbackDelegate.Broadcast(CallbackInfo, this);
 }
 
-void UWwiseHandlerComponent::OnMarkerCallback_Implementation(UAkMarkerCallbackInfo* CallbackInfo)
+void UWwiseHandlerComponent::OnMarkerCallback(UAkMarkerCallbackInfo* CallbackInfo, UWwiseHandlerComponent* owner)
 {
 	if (CallbackInfo == nullptr) {
 		UE_LOG(LogTemp, Error, TEXT("[OnMarkerCallback] CallbackInfo is null!"));
@@ -81,7 +85,7 @@ void UWwiseHandlerComponent::OnMarkerCallback_Implementation(UAkMarkerCallbackIn
 	MarkerCallbackDelegate.Broadcast(CallbackInfo, this);
 }
 
-void UWwiseHandlerComponent::OnDurationCallback_Implementation(UAkDurationCallbackInfo* CallbackInfo)
+void UWwiseHandlerComponent::OnDurationCallback(UAkDurationCallbackInfo* CallbackInfo, UWwiseHandlerComponent* owner)
 {
 	if (CallbackInfo == nullptr) {
 		UE_LOG(LogTemp, Error, TEXT("[OnDurationCallback] CallbackInfo is null!"));
@@ -92,7 +96,7 @@ void UWwiseHandlerComponent::OnDurationCallback_Implementation(UAkDurationCallba
 	DurationCallbackDelegate.Broadcast(CallbackInfo, this);
 }
 
-void UWwiseHandlerComponent::OnStarvationCallback_Implementation(UAkEventCallbackInfo* CallbackInfo)
+void UWwiseHandlerComponent::OnStarvationCallback(UAkEventCallbackInfo* CallbackInfo, UWwiseHandlerComponent* owner)
 {
 	if (CallbackInfo == nullptr) {
 		UE_LOG(LogTemp, Error, TEXT("[OnStarvationCallback] CallbackInfo is null!"));
@@ -103,7 +107,7 @@ void UWwiseHandlerComponent::OnStarvationCallback_Implementation(UAkEventCallbac
 	StarvationCallbackDelegate.Broadcast(CallbackInfo, this);
 }
 
-void UWwiseHandlerComponent::OnMusicPlayStartedCallback_Implementation(UAkEventCallbackInfo* CallbackInfo)
+void UWwiseHandlerComponent::OnMusicPlayStartedCallback(UAkEventCallbackInfo* CallbackInfo, UWwiseHandlerComponent* owner)
 {
 	if (CallbackInfo == nullptr) {
 		UE_LOG(LogTemp, Error, TEXT("[OnMusicPlayStartedCallback] CallbackInfo is null!"));
@@ -114,7 +118,7 @@ void UWwiseHandlerComponent::OnMusicPlayStartedCallback_Implementation(UAkEventC
 	MusicPlayStartedCallbackDelegate.Broadcast(CallbackInfo, this);
 }
 
-void UWwiseHandlerComponent::OnMidiEventCallback_Implementation(UAkMIDIEventCallbackInfo* CallbackInfo)
+void UWwiseHandlerComponent::OnMidiEventCallback(UAkMIDIEventCallbackInfo* CallbackInfo, UWwiseHandlerComponent* ownerzh)
 {
 	if (CallbackInfo == nullptr) {
 		UE_LOG(LogTemp, Error, TEXT("[OnMidiEventCallback] CallbackInfo is null!"));
