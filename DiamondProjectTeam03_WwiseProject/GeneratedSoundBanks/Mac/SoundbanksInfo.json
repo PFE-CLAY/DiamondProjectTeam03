@@ -446,6 +446,42 @@
     ]
    },
    {
+    "Id": "1329476194",
+    "Type": "User",
+    "GUID": "{4B32F9EE-D939-4AEA-A633-697781A78CE3}",
+    "Language": "SFX",
+    "Hash": "{8C576C27-EF9B-5611-8A3B-E0915C4CB78E}",
+    "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\MUS_SB",
+    "ShortName": "MUS_SB",
+    "Path": "MUS_SB.bnk",
+    "Media": [
+     {
+      "Id": "185337180",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "JV BLACK SAND V1.wav",
+      "CachePath": "SFX/JV BLACK SAND V1_818F3B66.wem"
+     }
+    ],
+    "Events": [
+     {
+      "Id": "1117189211",
+      "Name": "Play_MUS_ARENA",
+      "ObjectPath": "\\Events\\MUS_WU\\Play_MUS_ARENA",
+      "GUID": "{FCFD5ACC-2CA9-4324-8CC4-F10D48548642}",
+      "DurationType": "OneShot",
+      "DurationMin": "281.6",
+      "DurationMax": "281.6",
+      "MediaRefs": [
+       {
+        "Id": "185337180"
+       }
+      ]
+     }
+    ]
+   },
+   {
     "Id": "1355168291",
     "Type": "User",
     "GUID": "{701ECBBD-9C7B-4030-8CDB-749EE5D1C7B9}",
@@ -1298,7 +1334,7 @@
     "Type": "User",
     "GUID": "{ADC2D189-6608-4828-BC9C-6EF6F90834DB}",
     "Language": "SFX",
-    "Hash": "{5408FA06-544B-67AF-3D27-1100118099DD}",
+    "Hash": "{658892D1-4D4A-BC0D-04AC-731B424514BB}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\MC_SB",
     "ShortName": "MC_SB",
     "Path": "MC_SB.bnk",
@@ -5684,7 +5720,7 @@
     "Type": "User",
     "GUID": "{459D1F67-52BD-4FA1-B846-B8F3A50C2C5F}",
     "Language": "SFX",
-    "Hash": "{68818888-3A57-7299-D1F6-4776DF84D192}",
+    "Hash": "{D7A00705-C95C-8875-6423-0805997B4F05}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\SFX_SB",
     "ShortName": "SFX_SB",
     "Path": "SFX_SB.bnk",
@@ -5876,7 +5912,7 @@
     "Type": "User",
     "GUID": "{D2378E68-5468-4849-BC4A-8FC6D8A3BF29}",
     "Language": "SFX",
-    "Hash": "{300DAA90-0833-F57B-DF28-55F0E9C80A0A}",
+    "Hash": "{38342F44-D7B1-F005-C6E6-CAF9CAB9DC18}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\GPE_SB",
     "ShortName": "GPE_SB",
     "Path": "GPE_SB.bnk",
@@ -5946,6 +5982,14 @@
       "CachePath": "SFX/AMB/RFX/SFX_CorpseTrap_Closing_818F3B66.wem"
      },
      {
+      "Id": "729439879",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "MC\\GPE_Elevator_Start.wav",
+      "CachePath": "SFX/MC/GPE_Elevator_Start_818F3B66.wem"
+     },
+     {
       "Id": "831778911",
       "Language": "SFX",
       "Streaming": "false",
@@ -5970,12 +6014,28 @@
       "CachePath": "SFX/MC_SFX_Dash_03_818F3B66.wem"
      },
      {
+      "Id": "904242620",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "MC\\GPE_Elevator_LP.wav",
+      "CachePath": "SFX/MC/GPE_Elevator_LP_FBC78EF0.wem"
+     },
+     {
       "Id": "925500281",
       "Language": "SFX",
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "MC_SFX_Dash_04.wav",
       "CachePath": "SFX/MC_SFX_Dash_04_818F3B66.wem"
+     },
+     {
+      "Id": "929577030",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "MC\\GPE_Elevator_Stop.wav",
+      "CachePath": "SFX/MC/GPE_Elevator_Stop_818F3B66.wem"
      },
      {
       "Id": "932156054",
@@ -6023,6 +6083,21 @@
      ]
     },
     "Events": [
+     {
+      "Id": "3621014260",
+      "Name": "Play_Elevator",
+      "ObjectPath": "\\Events\\GPE_WU\\Play_Elevator",
+      "GUID": "{188D4000-553D-4750-9060-D75200C9FF92}",
+      "DurationType": "Infinite",
+      "MediaRefs": [
+       {
+        "Id": "729439879"
+       },
+       {
+        "Id": "904242620"
+       }
+      ]
+     },
      {
       "Id": "575283655",
       "Name": "Play_GPE_JumPads_RC",
@@ -6137,10 +6212,24 @@
         "Id": "978522934"
        }
       ]
+     },
+     {
+      "Id": "895316894",
+      "Name": "Stop_Elevator",
+      "ObjectPath": "\\Events\\GPE_WU\\Stop_Elevator",
+      "GUID": "{DF176BD1-7C8C-4DFE-89C2-A2EC858724EC}",
+      "DurationType": "OneShot",
+      "DurationMin": "2.233146",
+      "DurationMax": "2.233146",
+      "MediaRefs": [
+       {
+        "Id": "929577030"
+       }
+      ]
      }
     ]
    }
   ],
-  "FileHash": "{7901CE9E-F545-BCFE-7544-33F8AD60B87F}"
+  "FileHash": "{DADB5018-DE8B-3906-5A64-CBF7013B9BBF}"
  }
 }

@@ -161,6 +161,24 @@
 				</StateGroup>
 			</StateGroups>
 		</SoundBank>
+		<SoundBank Id="1329476194" Type="User" GUID="{4B32F9EE-D939-4AEA-A633-697781A78CE3}" Language="SFX" Hash="{8C576C27-EF9B-5611-8A3B-E0915C4CB78E}">
+			<ObjectPath>\SoundBanks\SoundBanks_WU\MUS_SB</ObjectPath>
+			<ShortName>MUS_SB</ShortName>
+			<Path>MUS_SB.bnk</Path>
+			<Media>
+				<File Id="185337180" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>JV BLACK SAND V1.wav</ShortName>
+					<CachePath>SFX/JV BLACK SAND V1_818F3B66.wem</CachePath>
+				</File>
+			</Media>
+			<Events>
+				<Event Id="1117189211" Name="Play_MUS_ARENA" ObjectPath="\Events\MUS_WU\Play_MUS_ARENA" GUID="{FCFD5ACC-2CA9-4324-8CC4-F10D48548642}" DurationType="OneShot" DurationMin="281.6" DurationMax="281.6">
+					<MediaRefs>
+						<MediaRef Id="185337180"/>
+					</MediaRefs>
+				</Event>
+			</Events>
+		</SoundBank>
 		<SoundBank Id="1355168291" Type="User" GUID="{701ECBBD-9C7B-4030-8CDB-749EE5D1C7B9}" Language="SFX" Hash="{EBA7DA66-7C0F-AF6C-7E10-6DC318BF023A}">
 			<ObjectPath>Init</ObjectPath>
 			<ShortName>Init</ShortName>
@@ -451,7 +469,7 @@
 				</StateGroup>
 			</StateGroups>
 		</SoundBank>
-		<SoundBank Id="1956625499" Type="User" GUID="{ADC2D189-6608-4828-BC9C-6EF6F90834DB}" Language="SFX" Hash="{5408FA06-544B-67AF-3D27-1100118099DD}">
+		<SoundBank Id="1956625499" Type="User" GUID="{ADC2D189-6608-4828-BC9C-6EF6F90834DB}" Language="SFX" Hash="{658892D1-4D4A-BC0D-04AC-731B424514BB}">
 			<ObjectPath>\SoundBanks\SoundBanks_WU\MC_SB</ObjectPath>
 			<ShortName>MC_SB</ShortName>
 			<Path>MC_SB.bnk</Path>
@@ -2174,7 +2192,7 @@
 				</StateGroup>
 			</StateGroups>
 		</SoundBank>
-		<SoundBank Id="3896292454" Type="User" GUID="{459D1F67-52BD-4FA1-B846-B8F3A50C2C5F}" Language="SFX" Hash="{68818888-3A57-7299-D1F6-4776DF84D192}">
+		<SoundBank Id="3896292454" Type="User" GUID="{459D1F67-52BD-4FA1-B846-B8F3A50C2C5F}" Language="SFX" Hash="{D7A00705-C95C-8875-6423-0805997B4F05}">
 			<ObjectPath>\SoundBanks\SoundBanks_WU\SFX_SB</ObjectPath>
 			<ShortName>SFX_SB</ShortName>
 			<Path>SFX_SB.bnk</Path>
@@ -2258,7 +2276,7 @@
 				</Event>
 			</Events>
 		</SoundBank>
-		<SoundBank Id="4155742227" Type="User" GUID="{D2378E68-5468-4849-BC4A-8FC6D8A3BF29}" Language="SFX" Hash="{300DAA90-0833-F57B-DF28-55F0E9C80A0A}">
+		<SoundBank Id="4155742227" Type="User" GUID="{D2378E68-5468-4849-BC4A-8FC6D8A3BF29}" Language="SFX" Hash="{38342F44-D7B1-F005-C6E6-CAF9CAB9DC18}">
 			<ObjectPath>\SoundBanks\SoundBanks_WU\GPE_SB</ObjectPath>
 			<ShortName>GPE_SB</ShortName>
 			<Path>GPE_SB.bnk</Path>
@@ -2295,6 +2313,10 @@
 					<ShortName>AMB\RFX\SFX_CorpseTrap_Closing.wav</ShortName>
 					<CachePath>SFX/AMB/RFX/SFX_CorpseTrap_Closing_818F3B66.wem</CachePath>
 				</File>
+				<File Id="729439879" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>MC\GPE_Elevator_Start.wav</ShortName>
+					<CachePath>SFX/MC/GPE_Elevator_Start_818F3B66.wem</CachePath>
+				</File>
 				<File Id="831778911" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>MC\GPE_JumpPads_Mecha_03.wav</ShortName>
 					<CachePath>SFX/MC/GPE_JumpPads_Mecha_03_818F3B66.wem</CachePath>
@@ -2307,9 +2329,17 @@
 					<ShortName>MC_SFX_Dash_03.wav</ShortName>
 					<CachePath>SFX/MC_SFX_Dash_03_818F3B66.wem</CachePath>
 				</File>
+				<File Id="904242620" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>MC\GPE_Elevator_LP.wav</ShortName>
+					<CachePath>SFX/MC/GPE_Elevator_LP_FBC78EF0.wem</CachePath>
+				</File>
 				<File Id="925500281" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>MC_SFX_Dash_04.wav</ShortName>
 					<CachePath>SFX/MC_SFX_Dash_04_818F3B66.wem</CachePath>
+				</File>
+				<File Id="929577030" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>MC\GPE_Elevator_Stop.wav</ShortName>
+					<CachePath>SFX/MC/GPE_Elevator_Stop_818F3B66.wem</CachePath>
 				</File>
 				<File Id="932156054" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>MC\GPE_JumpPads_Mecha_04.wav</ShortName>
@@ -2334,6 +2364,12 @@
 				</ShareSets>
 			</Plugins>
 			<Events>
+				<Event Id="3621014260" Name="Play_Elevator" ObjectPath="\Events\GPE_WU\Play_Elevator" GUID="{188D4000-553D-4750-9060-D75200C9FF92}" DurationType="Infinite">
+					<MediaRefs>
+						<MediaRef Id="729439879"/>
+						<MediaRef Id="904242620"/>
+					</MediaRefs>
+				</Event>
 				<Event Id="575283655" Name="Play_GPE_JumPads_RC" ObjectPath="\Events\GPE_WU\Play_GPE_JumPads_RC" GUID="{32F429C1-2B0E-427B-9F12-8775F5CFF0AD}" MaxAttenuation="2000" DurationType="OneShot" DurationMin="1.1072708" DurationMax="1.8">
 					<MediaRefs>
 						<MediaRef Id="131763475"/>
@@ -2375,8 +2411,13 @@
 						<MediaRef Id="978522934"/>
 					</MediaRefs>
 				</Event>
+				<Event Id="895316894" Name="Stop_Elevator" ObjectPath="\Events\GPE_WU\Stop_Elevator" GUID="{DF176BD1-7C8C-4DFE-89C2-A2EC858724EC}" DurationType="OneShot" DurationMin="2.233146" DurationMax="2.233146">
+					<MediaRefs>
+						<MediaRef Id="929577030"/>
+					</MediaRefs>
+				</Event>
 			</Events>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{816CFD7C-C338-4AC6-BDCD-01D4B5C97DD7}</FileHash>
+	<FileHash>{F6A87692-679E-51CD-B727-89C178F5CF8E}</FileHash>
 </SoundBanksInfo>

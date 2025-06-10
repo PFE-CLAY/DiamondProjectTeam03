@@ -1,0 +1,47 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Windows",
+  "BasePlatform": "Windows",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "150",
+  "SoundBanks": [
+   {
+    "Id": "1329476194",
+    "Type": "User",
+    "GUID": "{4B32F9EE-D939-4AEA-A633-697781A78CE3}",
+    "Language": "SFX",
+    "Hash": "{8C576C27-EF9B-5611-8A3B-E0915C4CB78E}",
+    "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\MUS_SB",
+    "ShortName": "MUS_SB",
+    "Path": "MUS_SB.bnk",
+    "Media": [
+     {
+      "Id": "185337180",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "JV BLACK SAND V1.wav",
+      "CachePath": "SFX/JV BLACK SAND V1_818F3B66.wem"
+     }
+    ],
+    "Events": [
+     {
+      "Id": "1117189211",
+      "Name": "Play_MUS_ARENA",
+      "ObjectPath": "\\Events\\MUS_WU\\Play_MUS_ARENA",
+      "GUID": "{FCFD5ACC-2CA9-4324-8CC4-F10D48548642}",
+      "DurationType": "OneShot",
+      "DurationMin": "281.6",
+      "DurationMax": "281.6",
+      "MediaRefs": [
+       {
+        "Id": "185337180"
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "FileHash": "{21F27A52-3DCA-DB5C-9561-2F084F924448}"
+ }
+}
