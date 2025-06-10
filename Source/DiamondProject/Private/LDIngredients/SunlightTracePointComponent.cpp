@@ -14,11 +14,11 @@ USunlightTracePointComponent::USunlightTracePointComponent()
 void USunlightTracePointComponent::OnRegister()
 {
     Super::OnRegister();
-    
+
     if (bShowVisualizer) {
         CreateVisualizerMesh();
     }
-    
+
     if (GetWorld() && !GetWorld()->IsGameWorld()) {
         FindAndRegisterWithDetector();
     }
@@ -28,22 +28,20 @@ void USunlightTracePointComponent::CreateVisualizerMesh()
 {
     if (VisualizerMesh || IsRunningCommandlet())
         return;
-    
+
     VisualizerMesh = NewObject<UStaticMeshComponent>(this, UStaticMeshComponent::StaticClass(),
         TEXT("VisualizerMesh"), RF_Transactional);
-        
     if (!VisualizerMesh)
         return;
-        
-    VisualizerMesh->SetupAttachment(this);
-    
-    if (!CachedCubeMesh) {
-        CachedCubeMesh = LoadObject<UStaticMesh>(nullptr, TEXT("/Engine/BasicShapes/Cube.Cube"));
-    }
-    
-    VisualizerMesh->SetStaticMesh(CachedCubeMesh);
 
-    
+    VisualizerMesh->SetupAttachment(this);
+
+    if (!CachedCubeMesh) {
+        CachedCubeMesh = LoadObject<UStaticMesh>(nullptr,
+            TEXT("/Game/Project/Assets/Sun_Detector/S_Sun_Detector.S_Sun_Detector"));
+    }
+
+    VisualizerMesh->SetStaticMesh(CachedCubeMesh);
     VisualizerMesh->SetRelativeScale3D(FVector(0.1f, 0.1f, 0.1f));
     VisualizerMesh->SetCollisionEnabled(ECollisionEnabled::NoCollision);
     VisualizerMesh->RegisterComponent();
@@ -57,19 +55,26 @@ void USunlightTracePointComponent::OnUnregister()
     }
 
     CachedCubeMesh = nullptr;
-    
+
     Super::OnUnregister();
 }
 
 void USunlightTracePointComponent::BeginPlay()
 {
     Super::BeginPlay();
-    
+
     if (VisualizerMesh) {
         VisualizerMesh->SetHiddenInGame(!bShowVisualizer);
     }
-    
     FindAndRegisterWithDetector();
+}
+
+void USunlightTracePointComponent::SetShowVisualizer(bool bNewState)
+{
+    bShowVisualizer = bNewState;
+    if (VisualizerMesh) {
+        VisualizerMesh->SetHiddenInGame(!bShowVisualizer);
+    }
 }
 
 void USunlightTracePointComponent::FindAndRegisterWithDetector()
@@ -77,7 +82,6 @@ void USunlightTracePointComponent::FindAndRegisterWithDetector()
     const AActor* Owner = GetOwner();
     if (!Owner)
         return;
-    
 
     if (UMultiSunlightDetectorComponent* DetectorComponent = Owner->FindComponentByClass<UMultiSunlightDetectorComponent>()) {
         CachedDetectorComponent = DetectorComponent;

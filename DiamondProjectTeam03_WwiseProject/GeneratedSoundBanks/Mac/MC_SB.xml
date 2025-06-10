@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SoundBanksInfo Platform="Mac" BasePlatform="Mac" SchemaVersion="16" SoundBankVersion="150">
 	<SoundBanks>
-		<SoundBank Id="1956625499" Type="User" GUID="{ADC2D189-6608-4828-BC9C-6EF6F90834DB}" Language="SFX" Hash="{E8CEF62C-1D06-8949-2AF8-C3703931A98B}">
+		<SoundBank Id="1956625499" Type="User" GUID="{ADC2D189-6608-4828-BC9C-6EF6F90834DB}" Language="SFX" Hash="{EECCDF9A-5917-9CCB-5047-CC62B536CAB8}">
 			<ObjectPath>\SoundBanks\SoundBanks_WU\MC_SB</ObjectPath>
 			<ShortName>MC_SB</ShortName>
 			<Path>MC_SB.bnk</Path>
@@ -9,6 +9,10 @@
 				<File Id="16112564" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\SP\MC_FT_Concrete_Land_01.wav</ShortName>
 					<CachePath>SFX/AMB/SP/MC_FT_Concrete_Land_01_818F3B66.wem</CachePath>
+				</File>
+				<File Id="17784281" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SFX\MC_GetHit.wav</ShortName>
+					<CachePath>SFX/SFX/MC_GetHit_818F3B66.wem</CachePath>
 				</File>
 				<File Id="34141530" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\SP\MC_FT_Sand_Jump_01.wav</ShortName>
@@ -506,6 +510,11 @@
 						</SwitchContainer>
 					</SwitchContainers>
 				</Event>
+				<Event Id="950272542" Name="Play_MC_GetHit" ObjectPath="\Events\MC_WU\Play_MC_GetHit" GUID="{DFDAAAFE-1AD5-4D67-9145-D4089C5F1FA9}" DurationType="OneShot" DurationMin="1.4506171" DurationMax="2.525671">
+					<MediaRefs>
+						<MediaRef Id="17784281"/>
+					</MediaRefs>
+				</Event>
 				<Event Id="1177297501" Name="Play_MC_SFX_Gun_Shoot_RC" ObjectPath="\Events\MC_WU\Play_MC_SFX_Gun_Shoot_RC" GUID="{19EDAAA1-DF79-4328-9566-97F28CD19D08}" DurationType="OneShot" DurationMin="1.1600068" DurationMax="2.3467753">
 					<MediaRefs>
 						<MediaRef Id="36917763"/>
@@ -611,6 +620,7 @@
 					<States>
 						<State Id="645492555" Name="Out" ObjectPath="\States\Default Work Unit\InsideOutside\Out" GUID="{C04B12A4-672A-478D-A191-EED95AAB3C6D}"/>
 						<State Id="748895195" Name="None" ObjectPath="\States\Default Work Unit\InsideOutside\None" GUID="{EEC88170-01B2-4B8A-87BF-B7151380ADB4}"/>
+						<State Id="1051960422" Name="TargetInsidePyramid" ObjectPath="\States\Default Work Unit\InsideOutside\TargetInsidePyramid" GUID="{1E0BA403-7723-4863-B8DD-93A6A3CA72ED}"/>
 						<State Id="1752637612" Name="In" ObjectPath="\States\Default Work Unit\InsideOutside\In" GUID="{BFBB05BE-0B19-41C7-B759-C85C0C60B1D8}"/>
 					</States>
 				</StateGroup>
@@ -626,5 +636,5 @@
 			</SwitchGroups>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{E01493D0-1A16-8013-3C81-A20F46C457BA}</FileHash>
+	<FileHash>{56E6423A-C64B-538C-168C-602676694797}</FileHash>
 </SoundBanksInfo>

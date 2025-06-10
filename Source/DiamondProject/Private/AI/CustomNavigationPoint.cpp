@@ -28,14 +28,17 @@ void ACustomNavigationPoint::Tick(float DeltaTime)
 	Super::Tick(DeltaTime);
 }
 
-void ACustomNavigationPoint::	PointEffect()
+void ACustomNavigationPoint::PointEffect_Implementation()
 {
 	
+	if(bShouldPlayDialogue) OnPlayDialogue();
 	switch (PointType){
 	case EPointType::None:
+		Allied->Patrol();
 		break;
 	case EPointType::Crouch:
-		Allied->OnCrouch();
+		if(bShouldStayCrouched) Allied->OnCrouch();
+		else Allied->OnCrouchTimeLimited(TimeToWaitCrouched);
 		break;
 	case EPointType::Choice:
 		Allied->GetNewPath(PathArray[WantedPathIndex]);
@@ -43,5 +46,9 @@ void ACustomNavigationPoint::	PointEffect()
 	}
 	
 }
+
+
+
+
 
 

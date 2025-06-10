@@ -40,9 +40,11 @@
 						<Property Name="OverrideColor" Type="bool" Value="True"/>
 					</PropertyList>
 					<ObjectInclusionList>
+						<ObjectRef Name="Play_FOES_SFX_Projectil" ID="{B21D01D5-2B89-4090-9F00-456FE3EF49C7}" WorkUnitID="{F38C7AC6-6811-4B1E-A7A4-2F26EBB9F864}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_FOES_SFX_Tourelle_Death_RC" ID="{03966878-2B14-4479-9F3B-3C317D6EB7B1}" WorkUnitID="{F38C7AC6-6811-4B1E-A7A4-2F26EBB9F864}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Master_WU" ID="{A9F2777E-FBA3-4BC0-B5B3-14E0777A7B23}" WorkUnitID="{A9F2777E-FBA3-4BC0-B5B3-14E0777A7B23}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_FOES_SFX_Tourelle_Shoot_RC" ID="{140E36FB-31F3-4C66-AC5D-E9E86C57BA68}" WorkUnitID="{F38C7AC6-6811-4B1E-A7A4-2F26EBB9F864}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Stop_FOES_SFX_Projectil" ID="{DD66D73B-753F-4CEE-9201-B7AEDEE761D6}" WorkUnitID="{F38C7AC6-6811-4B1E-A7A4-2F26EBB9F864}" Origin="Manual" Filter="7"/>
 					</ObjectInclusionList>
 					<ObjectExclusionList/>
 					<GameSyncExclusionList/>
@@ -96,7 +98,9 @@
 						<Property Name="Color" Type="int16" Value="17"/>
 						<Property Name="OverrideColor" Type="bool" Value="True"/>
 					</PropertyList>
-					<ObjectInclusionList/>
+					<ObjectInclusionList>
+						<ObjectRef Name="SFX_WU" ID="{16CB7426-B996-4AC9-A2E3-C140ABEA16E4}" WorkUnitID="{16CB7426-B996-4AC9-A2E3-C140ABEA16E4}" Origin="Manual" Filter="7"/>
+					</ObjectInclusionList>
 					<ObjectExclusionList/>
 					<GameSyncExclusionList/>
 				</SoundBank>

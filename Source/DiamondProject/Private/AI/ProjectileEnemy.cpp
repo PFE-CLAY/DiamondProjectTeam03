@@ -6,6 +6,7 @@
 #include "AI/Enemy.h"
 #include "LoopSystem/AC_Health.h"
 #include "DiamondProject/DiamondProjectCharacter.h"
+#include "Engine/Engine.h"
 
 // Sets default values
 AProjectileEnemy::AProjectileEnemy()
@@ -38,10 +39,12 @@ void AProjectileEnemy::OnCollision(AActor* OverlappedActor, AActor* OtherActor)
 			HealthComponent->DecreaseHealth(ProjectileDamage);
 		}
 		
-		K2_DestroyActor();
+		OnProjectileDestroyed();
+		return;
+	}
+	else if (Cast<AEnemy>(OtherActor)){
+		return;
 	}
 	
-	
+	OnProjectileDestroyed();
 }
-
-

@@ -67,9 +67,15 @@ ACustomNavigationPoint* AAllied::GetCurrentNavigationPoint()
 
 void AAllied::GetNewPath(APath* NewPath)
 {
-	Position = -1;
+	Position = 0;
 	Path = NewPath;
 	Path->SetAllied(this);
+	Patrol();
+}
+
+void AAllied::OnCrouchTimeLimited_Implementation(float Duration)
+{
+	GetCharacterMovement()->DisableMovement();
 }
 
 void AAllied::OnCrouch_Implementation()

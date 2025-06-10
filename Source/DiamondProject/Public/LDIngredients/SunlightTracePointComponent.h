@@ -24,6 +24,9 @@ public:
 	UPROPERTY()
 	bool bIsInSunlight = false;
 
+	UFUNCTION(BlueprintCallable, Category="Sunlight Detection")
+	void SetShowVisualizer(bool bNewState);
+
 private:
 	UPROPERTY()
 	UStaticMeshComponent* VisualizerMesh = nullptr;

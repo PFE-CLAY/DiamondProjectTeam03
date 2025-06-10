@@ -9,12 +9,16 @@
 #include "CustomNavigationPoint.generated.h"
 
 class APath;
+class UAkAudioEvent;
 
 UCLASS()
 class DIAMONDPROJECT_API ACustomNavigationPoint : public AActor
 {
 	GENERATED_BODY()
-	
+
+	UDELEGATE(BlueprintCallable)
+	DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnPointEffectEvent);
+
 	
 protected:
 	
@@ -25,12 +29,6 @@ private:
 public:
 	// Sets default values for this actor's properties
 	ACustomNavigationPoint();
-	
-	UPROPERTY(EditAnywhere)
-	bool bShouldWait;
-
-	UPROPERTY(EditAnywhere, meta=(EditCondition="bShouldWait"))
-	float TimeToWait;
 
 	UPROPERTY(EditAnywhere, Category="NavPoint")
 	EPointType PointType;
@@ -41,6 +39,24 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="NavPoint", meta=(EditCondition="PointType == EPointType::Choice"))
 	int WantedPathIndex = 0;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="NavPoint", meta=(EditCondition="PointType == EPointType::Crouch"))
+	bool bShouldStayCrouched;
+
+	UPROPERTY(EditAnywhere, Category="NavPoint", meta=(EditCondition="PointType == EPointType::Crouch && !bShouldStayCrouched"))
+	float TimeToWaitCrouched;
+	
+	UPROPERTY(EditAnywhere, Category="NavPoint")
+	bool bShouldWait;
+
+	UPROPERTY(EditAnywhere, Category="NavPoint", meta=(EditCondition="bShouldWait"))
+	float TimeToWait;
+
+	UPROPERTY(EditAnywhere, Category="NavPoint")
+	bool bShouldPlayDialogue;
+
+	UPROPERTY(EditAnywhere, Category="NavPoint", BlueprintReadOnly, meta=(EditCondition="bShouldPlayDialogue"))
+	UAkAudioEvent* Dialogue;
+	
 	UPROPERTY()
 	AAllied* Allied;
 	
@@ -53,8 +69,10 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
-	UFUNCTION()
+	UFUNCTION(BlueprintNativeEvent)
 	void PointEffect();
 
+	UFUNCTION(BlueprintImplementableEvent)
+	void OnPlayDialogue();
 	
 };
