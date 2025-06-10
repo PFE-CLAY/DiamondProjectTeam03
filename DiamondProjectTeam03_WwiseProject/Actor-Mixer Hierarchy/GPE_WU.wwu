@@ -580,6 +580,9 @@
 							</ReferenceList>
 							<ChildrenList>
 								<RandomSequenceContainer Name="GPE_JumpPads_RC" ID="{741A3B08-3097-4286-8BC0-0211BC41AB86}" ShortID="274971516">
+									<PropertyList>
+										<Property Name="OverrideEffect" Type="bool" Value="True"/>
+									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
@@ -700,6 +703,21 @@
 											</ActiveSourceList>
 										</Sound>
 									</ChildrenList>
+									<ObjectLists>
+										<ObjectList Name="Effects">
+											<Reference>
+												<Local>
+													<EffectSlot Name="" ID="{3B00C50D-F7B4-4375-B7B8-903365B8C754}" ShortID="228672043">
+														<ReferenceList>
+															<Reference Name="Effect" PluginName="Wwise Delay" CompanyID="0" PluginID="106" PluginType="3">
+																<ObjectRef Name="Nearly_Forever" ID="{38550FDA-9236-4FC5-8AE0-68DB08164B25}" WorkUnitID="{E8613F7D-BAD3-45CD-A3ED-505576F31277}"/>
+															</Reference>
+														</ReferenceList>
+													</EffectSlot>
+												</Local>
+											</Reference>
+										</ObjectList>
+									</ObjectLists>
 								</RandomSequenceContainer>
 								<RandomSequenceContainer Name="GPE_JumpPads_Activation_RC" ID="{79130F1C-42F1-4262-8C87-8838DC091D27}" ShortID="680051876">
 									<ReferenceList>
@@ -779,6 +797,237 @@
 										</Sound>
 									</ChildrenList>
 								</RandomSequenceContainer>
+								<RandomSequenceContainer Name="GPE_JumpPads_Mecha_RC" ID="{2CA10FF8-FE9F-4D89-96F7-1EA16689B415}" ShortID="413266624">
+									<PropertyList>
+										<Property Name="NormalOrShuffle" Type="int16" Value="0"/>
+										<Property Name="Pitch" Type="int32">
+											<ModifierList>
+												<ModifierInfo>
+													<Modifier Name="" ID="{3D21503E-8851-4D3C-A08E-C12AF0E83540}">
+														<PropertyList>
+															<Property Name="Enabled" Type="bool" Value="True"/>
+															<Property Name="Max" Type="Real64" Value="100"/>
+															<Property Name="Min" Type="Real64" Value="-100"/>
+														</PropertyList>
+													</Modifier>
+												</ModifierInfo>
+											</ModifierList>
+										</Property>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>-9</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D02282EE-6893-403D-9438-D481AB659EA3}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<Sound Name="GPE_JumpPads_Mecha_01" ID="{F6D3C08F-A539-4A30-879F-3172555363B2}" ShortID="779784052">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D02282EE-6893-403D-9438-D481AB659EA3}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="GPE_JumpPads_Mecha_01" ID="{EBAF8700-59ED-4AD2-833B-58674D65BC71}">
+													<Language>SFX</Language>
+													<AudioFile>MC\GPE_JumpPads_Mecha_01.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="226141576"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="GPE_JumpPads_Mecha_01" ID="{EBAF8700-59ED-4AD2-833B-58674D65BC71}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="GPE_JumpPads_Mecha_02" ID="{52285DCC-5BA4-4EEA-BAE6-4616159034EE}" ShortID="291351755">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D02282EE-6893-403D-9438-D481AB659EA3}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="GPE_JumpPads_Mecha_02" ID="{C8A80B34-A37D-4694-900F-69EC97272A1E}">
+													<Language>SFX</Language>
+													<AudioFile>MC\GPE_JumpPads_Mecha_02.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="1032185961"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="GPE_JumpPads_Mecha_02" ID="{C8A80B34-A37D-4694-900F-69EC97272A1E}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="GPE_JumpPads_Mecha_03" ID="{4820B57C-B042-4BC3-A044-6C5855E8B717}" ShortID="763281119">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D02282EE-6893-403D-9438-D481AB659EA3}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="GPE_JumpPads_Mecha_03" ID="{8114E181-FBDD-4EAA-86C8-C3F2C2A28881}">
+													<Language>SFX</Language>
+													<AudioFile>MC\GPE_JumpPads_Mecha_03.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="831778911"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="GPE_JumpPads_Mecha_03" ID="{8114E181-FBDD-4EAA-86C8-C3F2C2A28881}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="GPE_JumpPads_Mecha_04" ID="{F10CC422-FDE3-472B-94A6-CA2A31A1AAA4}" ShortID="881782599">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D02282EE-6893-403D-9438-D481AB659EA3}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="GPE_JumpPads_Mecha_04" ID="{B5D92F3A-800A-49FB-843C-737C265495AD}">
+													<Language>SFX</Language>
+													<AudioFile>MC\GPE_JumpPads_Mecha_04.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="932156054"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="GPE_JumpPads_Mecha_04" ID="{B5D92F3A-800A-49FB-843C-737C265495AD}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="GPE_JumpPads_Mecha_05" ID="{4C292F08-7FF1-4A16-A521-4282D2A8DE68}" ShortID="480689514">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D02282EE-6893-403D-9438-D481AB659EA3}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="GPE_JumpPads_Mecha_05" ID="{AE86D941-011F-4E7E-A9D0-53C69A381191}">
+													<Language>SFX</Language>
+													<AudioFile>MC\GPE_JumpPads_Mecha_05.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="1037685382"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="GPE_JumpPads_Mecha_05" ID="{AE86D941-011F-4E7E-A9D0-53C69A381191}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
+								</RandomSequenceContainer>
+							</ChildrenList>
+						</ActorMixer>
+						<ActorMixer Name="GPE_Elevator" ID="{D59F468A-A018-429E-A8FF-C6BBA7373AC8}" ShortID="697765990">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D02282EE-6893-403D-9438-D481AB659EA3}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<Sound Name="GPE_Elevator_Start" ID="{AFFDF530-8207-4692-9FE7-E548A4468767}" ShortID="903956710">
+									<PropertyList>
+										<Property Name="UseGameAuxSends" Type="bool" Value="True"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D02282EE-6893-403D-9438-D481AB659EA3}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="GPE_Elevator_Start" ID="{6B10000B-FA8E-4673-BD40-5E04E25D39D3}">
+											<Language>SFX</Language>
+											<AudioFile>MC\GPE_Elevator_Start.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="729439879"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="GPE_Elevator_Start" ID="{6B10000B-FA8E-4673-BD40-5E04E25D39D3}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="GPE_Elevator_Stop" ID="{A9687C8E-2508-4EB9-9867-5CD238D3E9EF}" ShortID="27218419">
+									<PropertyList>
+										<Property Name="UseGameAuxSends" Type="bool" Value="True"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D02282EE-6893-403D-9438-D481AB659EA3}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="GPE_Elevator_Stop" ID="{C38A8DD5-3607-4D2B-AEDF-83C703D4A2C8}">
+											<Language>SFX</Language>
+											<AudioFile>MC\GPE_Elevator_Stop.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="929577030"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="GPE_Elevator_Stop" ID="{C38A8DD5-3607-4D2B-AEDF-83C703D4A2C8}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="GPE_Elevator_LP" ID="{9C47210C-E75A-4C40-A7F2-DEA31F1E606B}" ShortID="337152708">
+									<PropertyList>
+										<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+										<Property Name="UseGameAuxSends" Type="bool" Value="True"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D02282EE-6893-403D-9438-D481AB659EA3}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="GPE_Elevator_LP" ID="{A6120D36-7F07-476E-BC4F-D297AD29D0BE}">
+											<Language>SFX</Language>
+											<AudioFile>MC\GPE_Elevator_LP.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="904242620"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="GPE_Elevator_LP" ID="{A6120D36-7F07-476E-BC4F-D297AD29D0BE}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
 							</ChildrenList>
 						</ActorMixer>
 					</ChildrenList>

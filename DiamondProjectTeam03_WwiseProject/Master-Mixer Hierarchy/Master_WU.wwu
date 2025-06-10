@@ -217,6 +217,51 @@
 										<Property Name="OverrideColor" Type="bool" Value="True"/>
 									</PropertyList>
 								</Bus>
+								<Bus Name="AMB_Crowd" ID="{985719AF-3534-41FC-A751-99E11C3F7784}">
+									<PropertyList>
+										<Property Name="Color" Type="int16" Value="4"/>
+										<Property Name="OverrideColor" Type="bool" Value="True"/>
+									</PropertyList>
+									<ObjectLists>
+										<ObjectList Name="RTPC">
+											<Reference>
+												<Local>
+													<RTPC Name="" ID="{CD6E49F8-C750-4BBA-A397-ED5C7C258622}" ShortID="917176778">
+														<PropertyList>
+															<Property Name="PropertyName" Type="string" Value="BusVolume"/>
+														</PropertyList>
+														<ReferenceList>
+															<Reference Name="ControlInput">
+																<ObjectRef Name="RTPC_DoorPyramid" ID="{D2AEC1CE-EF9E-486E-AE8B-FB121AC42B53}" WorkUnitID="{AF741D90-A9C1-41EB-958D-616E32A16F46}"/>
+															</Reference>
+															<Reference Name="Curve">
+																<Custom>
+																	<Curve Name="" ID="{AB494965-4966-4FEE-BCB8-E70AF96AC593}">
+																		<PropertyList>
+																			<Property Name="Flags" Type="int32" Value="3"/>
+																		</PropertyList>
+																		<PointList>
+																			<Point>
+																				<XPos>0</XPos>
+																				<YPos>0.03187</YPos>
+																				<Flags>5</Flags>
+																			</Point>
+																			<Point>
+																				<XPos>100</XPos>
+																				<YPos>-200</YPos>
+																				<Flags>37</Flags>
+																			</Point>
+																		</PointList>
+																	</Curve>
+																</Custom>
+															</Reference>
+														</ReferenceList>
+													</RTPC>
+												</Local>
+											</Reference>
+										</ObjectList>
+									</ObjectLists>
+								</Bus>
 							</ChildrenList>
 						</Bus>
 						<AuxBus Name="RVB_Pyramid" ID="{668EA0D2-771E-452F-B241-11793F9755B0}">
@@ -373,6 +418,10 @@
 										<CustomState Name="" ID="{6F390043-5B0E-4A07-AFFA-749237BC7C55}" ShortID="303216598"/>
 									</CustomState>
 									<CustomState>
+										<StateRef Name="Hub" ID="{E8B28850-8267-42D7-9412-3B19F0F04B6C}"/>
+										<CustomState Name="" ID="{1046D9E6-22E0-4995-AA87-89F34CF11F7B}" ShortID="219328415"/>
+									</CustomState>
+									<CustomState>
 										<StateRef Name="Out" ID="{C04B12A4-672A-478D-A191-EED95AAB3C6D}"/>
 										<CustomState Name="" ID="{EA849628-7128-47EC-8FFE-AA919F58A754}" ShortID="841146632">
 											<PropertyList>
@@ -403,6 +452,10 @@
 															<CustomState Name="" ID="{06C38F48-829E-4C3B-87F9-870D270CD45A}" ShortID="117232785"/>
 														</CustomState>
 														<CustomState>
+															<StateRef Name="Hub" ID="{E8B28850-8267-42D7-9412-3B19F0F04B6C}"/>
+															<CustomState Name="" ID="{CA750816-AAA9-4FF9-B03A-3635F6318F80}" ShortID="201826601"/>
+														</CustomState>
+														<CustomState>
 															<StateRef Name="Out" ID="{C04B12A4-672A-478D-A191-EED95AAB3C6D}"/>
 															<CustomState Name="" ID="{C527CD77-A565-4D89-A677-4F5D167A6604}" ShortID="429271467"/>
 														</CustomState>
@@ -428,6 +481,10 @@
 														<CustomState>
 															<StateRef Name="In" ID="{BFBB05BE-0B19-41C7-B759-C85C0C60B1D8}"/>
 															<CustomState Name="" ID="{E067D01E-468E-490B-B5C6-CE98DAA6ECF2}" ShortID="463107666"/>
+														</CustomState>
+														<CustomState>
+															<StateRef Name="Hub" ID="{E8B28850-8267-42D7-9412-3B19F0F04B6C}"/>
+															<CustomState Name="" ID="{450912B3-E08B-4049-83CB-AEAB2A175FF2}" ShortID="707700399"/>
 														</CustomState>
 														<CustomState>
 															<StateRef Name="Out" ID="{C04B12A4-672A-478D-A191-EED95AAB3C6D}"/>
