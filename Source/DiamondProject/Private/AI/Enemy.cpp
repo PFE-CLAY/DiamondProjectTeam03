@@ -2,12 +2,12 @@
 
 
 #include "AI/Enemy.h"
-#include "AI/ProjectileEnemy.h"
 #include "Components/BoxComponent.h"
 #include "DiamondProject/DiamondProjectCharacter.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "Kismet/KismetMathLibrary.h"
 #include "AI/EnemySpawner.h"
+#include "AI/ProjectileEnemy.h"
 #include "Kismet/GameplayStatics.h"
 #include "LoopSystem/AC_Health.h"
 
@@ -16,8 +16,9 @@ AEnemy::AEnemy()
 {
 	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
-	ShootPoint = CreateDefaultSubobject<USceneComponent>("ShootPoint");
+	USceneComponent* ShootPoint = CreateDefaultSubobject<USceneComponent>("ShootPoint");
 	ShootPoint->SetupAttachment(GetMesh());
+	ShootPoints.Add(ShootPoint);
 }
 
 // Called when the game starts or when spawned
@@ -30,7 +31,6 @@ void AEnemy::BeginPlay()
 	DetectionRange = BaseDetectionRange;
 	PlayerPawn = GetWorld()->GetFirstPlayerController()->GetPawn();
 	GetCharacterMovement()->MaxWalkSpeed = MovementSpeed;
-	
 }
 
 void AEnemy::OnDeath()
@@ -108,31 +108,70 @@ bool AEnemy::IsAnyTargetInRange()
 	
 }
 
+USceneComponent* AEnemy::GetNextShootPoint()
+{
+	USceneComponent* shootPoint = nullptr;
+	if (ShootPoints.Num() > 0)
+	{
+		IndexShootPoint = (IndexShootPoint + 1) % ShootPoints.Num();
+		shootPoint = ShootPoints[IndexShootPoint];
+	}
+	return shootPoint;
+}
 
+USceneComponent* AEnemy::GetCurrentShootPoint()
+{
+	USceneComponent* shootPoint = nullptr;
+	if (ShootPoints.Num() > 0)
+	{
+		shootPoint = ShootPoints[IndexShootPoint];
+	}
+	return shootPoint;
+}
+
+void AEnemy::AddShootPoint(USceneComponent* ShootPoint)
+{
+	if (ShootPoint && !ShootPoints.Contains(ShootPoint))
+	{
+		ShootPoints.Add(ShootPoint);
+	}
+}
+
+void AEnemy::RemoveShootPoint(USceneComponent* ShootPoint)
+{
+	if (ShootPoint)
+	{
+		ShootPoints.Remove(ShootPoint);
+	}
+}
 
 void AEnemy::Shoot(AActor* Target)
 {
-	
-	if(bCanAttack){
-		FVector const Location = ShootPoint->GetComponentLocation();
-		FRotator const Rotation = (Target->GetActorLocation() - ShootPoint->GetComponentLocation()).Rotation();
-		bCanAttack = false;
-		FActorSpawnParameters SpawnInfo;
-		SpawnInfo.Name = "aze";
-		AActor* ProjectileSpawned = nullptr;
-		if (GetWorld()) {
-			ProjectileSpawned = GetWorld()->SpawnActor(Projectile, &Location, &Rotation);
-			OnEnemyShoot.Broadcast();
+	if(bCanAttack)
+	{
+		USceneComponent* ShootPoint = GetNextShootPoint();
+		if (ShootPoint != nullptr)
+		{
+			FVector const Location = ShootPoint->GetComponentLocation();
+			FRotator const Rotation = (Target->GetActorLocation() - ShootPoint->GetComponentLocation()).Rotation();
+			bCanAttack = false;
+			FActorSpawnParameters SpawnInfo;
+			SpawnInfo.Name = "aze";
+			AActor* ProjectileSpawned = nullptr;
+			if (GetWorld()) {
+				ProjectileSpawned = GetWorld()->SpawnActor(Projectile, &Location, &Rotation);
+				OnEnemyShoot.Broadcast();
+			}
+		
+			if(ProjectileSpawned == nullptr){
+				return;
+			}
+		
+			AProjectileEnemy* ProjectileInstance = Cast<AProjectileEnemy>(ProjectileSpawned);
+			ProjectileInstance->ProjectileDamage = AttackDamage;
+		
+			SetNewAttackTimer();
 		}
-		
-		if(ProjectileSpawned == nullptr){
-			return;
-		}
-		
-		AProjectileEnemy* ProjectileInstance = Cast<AProjectileEnemy>(ProjectileSpawned);
-		ProjectileInstance->ProjectileDamage = AttackDamage;
-		
-		SetNewAttackTimer();
 	}
 }
 
@@ -162,7 +201,6 @@ FRotator AEnemy::GetDirectionRotation(AActor* OriginActor, AActor* TargetActor)
 		TargetActor->GetActorLocation());
 	return Rotation;
 }
-
 
 void AEnemy::SetNewAttackTimer()
 {
