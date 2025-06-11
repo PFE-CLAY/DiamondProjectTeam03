@@ -10,18 +10,26 @@
     "Type": "User",
     "GUID": "{4B32F9EE-D939-4AEA-A633-697781A78CE3}",
     "Language": "SFX",
-    "Hash": "{8C576C27-EF9B-5611-8A3B-E0915C4CB78E}",
+    "Hash": "{62083953-1ABE-4629-8459-AA35FDAB825A}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\MUS_SB",
     "ShortName": "MUS_SB",
     "Path": "MUS_SB.bnk",
     "Media": [
      {
-      "Id": "185337180",
+      "Id": "721910099",
       "Language": "SFX",
       "Streaming": "false",
       "Location": "Memory",
-      "ShortName": "JV BLACK SAND V1.wav",
-      "CachePath": "SFX/JV BLACK SAND V1_818F3B66.wem"
+      "ShortName": "JV BLACK SAND MIX V2.wav",
+      "CachePath": "SFX/JV BLACK SAND MIX V2_818F3B66.wem"
+     },
+     {
+      "Id": "1072494655",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "MUS_Blacksands_Hub.wav",
+      "CachePath": "SFX/MUS_Blacksands_Hub_67AD3CF9.wem"
      }
     ],
     "Events": [
@@ -31,17 +39,44 @@
       "ObjectPath": "\\Events\\MUS_WU\\Play_MUS_ARENA",
       "GUID": "{FCFD5ACC-2CA9-4324-8CC4-F10D48548642}",
       "DurationType": "OneShot",
-      "DurationMin": "281.6",
-      "DurationMax": "281.6",
+      "DurationMin": "259.2",
+      "DurationMax": "259.2",
       "MediaRefs": [
        {
-        "Id": "185337180"
+        "Id": "721910099"
+       }
+      ]
+     },
+     {
+      "Id": "2485576600",
+      "Name": "Play_MUS_Blacksands_Hub",
+      "ObjectPath": "\\Events\\MUS_WU\\Play_MUS_Blacksands_Hub",
+      "GUID": "{5EFDE9D3-947B-4379-BC68-9A8FC45B710A}",
+      "DurationType": "Infinite",
+      "MediaRefs": [
+       {
+        "Id": "1072494655"
+       }
+      ]
+     },
+     {
+      "Id": "888771158",
+      "Name": "Stop_MUS_Blacksands_Hub",
+      "ObjectPath": "\\Events\\MUS_WU\\Stop_MUS_Blacksands_Hub",
+      "GUID": "{60E90B0F-AFEA-4121-8616-69BB7F5853C0}",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0",
+      "MediaRefs": [
+       {
+        "Id": "1072494655"
        }
       ]
      }
     ]
    }
   ],
-  "FileHash": "{72444D6B-FFFD-D307-F58B-183B47859ACF}"
+  "FileHash": "{635AA32F-C901-91D9-296E-93E8146977DD}"
  }
 }

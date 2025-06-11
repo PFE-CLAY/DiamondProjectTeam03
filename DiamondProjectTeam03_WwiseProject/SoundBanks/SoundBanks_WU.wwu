@@ -116,7 +116,6 @@
 						<ObjectRef Name="Play_GPE_PillarDestroyed" ID="{65F84DEF-9AA8-456B-A6AF-7249DA8CED54}" WorkUnitID="{44DB29AC-F5E7-466B-9313-B33937B56A9D}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_Elevator" ID="{188D4000-553D-4750-9060-D75200C9FF92}" WorkUnitID="{44DB29AC-F5E7-466B-9313-B33937B56A9D}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_SFX_CorpseTrap_Opening" ID="{3B91810C-60F0-4DA1-8459-1EC729C58878}" WorkUnitID="{44DB29AC-F5E7-466B-9313-B33937B56A9D}" Origin="Manual" Filter="7"/>
-						<ObjectRef Name="Stop_Elevator" ID="{DF176BD1-7C8C-4DFE-89C2-A2EC858724EC}" WorkUnitID="{44DB29AC-F5E7-466B-9313-B33937B56A9D}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_GPE_JumpPads_Activation_RC" ID="{7A4A1C10-6F19-4EFC-9649-9850E9202517}" WorkUnitID="{44DB29AC-F5E7-466B-9313-B33937B56A9D}" Origin="Manual" Filter="7"/>
 					</ObjectInclusionList>
 					<ObjectExclusionList/>
