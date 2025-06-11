@@ -10,7 +10,7 @@
     "Type": "User",
     "GUID": "{D2378E68-5468-4849-BC4A-8FC6D8A3BF29}",
     "Language": "SFX",
-    "Hash": "{38342F44-D7B1-F005-C6E6-CAF9CAB9DC18}",
+    "Hash": "{80266133-A537-3180-AE75-DB61097E95F3}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\GPE_SB",
     "ShortName": "GPE_SB",
     "Path": "GPE_SB.bnk",
@@ -193,6 +193,9 @@
        },
        {
         "Id": "904242620"
+       },
+       {
+        "Id": "929577030"
        }
       ]
      },
@@ -310,24 +313,10 @@
         "Id": "978522934"
        }
       ]
-     },
-     {
-      "Id": "895316894",
-      "Name": "Stop_Elevator",
-      "ObjectPath": "\\Events\\GPE_WU\\Stop_Elevator",
-      "GUID": "{DF176BD1-7C8C-4DFE-89C2-A2EC858724EC}",
-      "DurationType": "OneShot",
-      "DurationMin": "2.233146",
-      "DurationMax": "2.233146",
-      "MediaRefs": [
-       {
-        "Id": "929577030"
-       }
-      ]
      }
     ]
    }
   ],
-  "FileHash": "{4F9BD04A-5027-3A63-9491-E3F771F8E3EC}"
+  "FileHash": "{7A34D4F3-E2A1-9723-B9C3-289F77250763}"
  }
 }

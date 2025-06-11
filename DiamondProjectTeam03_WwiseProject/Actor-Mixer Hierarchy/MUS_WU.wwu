@@ -18,6 +18,13 @@
 					</ReferenceList>
 					<ChildrenList>
 						<Sound Name="MUS_ARENA" ID="{97AB55CD-69C5-45E8-B2A6-0FA67392749B}" ShortID="963755956">
+							<PropertyList>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>-11</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
@@ -34,9 +41,62 @@
 										<MediaID ID="185337180"/>
 									</MediaIDList>
 								</AudioFileSource>
+								<AudioFileSource Name="JV BLACK SAND MIX V2" ID="{A51E5C04-8EDA-4EDB-AE1A-DD27E6B129DD}">
+									<Language>SFX</Language>
+									<AudioFile>JV BLACK SAND MIX V2.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="721910099"/>
+									</MediaIDList>
+								</AudioFileSource>
 							</ChildrenList>
 							<ActiveSourceList>
-								<ActiveSource Name="JV BLACK SAND V1" ID="{8DB2E8C2-E95A-40AC-BAE2-A8FCBB2359E2}" Platform="Linked"/>
+								<ActiveSource Name="JV BLACK SAND MIX V2" ID="{A51E5C04-8EDA-4EDB-AE1A-DD27E6B129DD}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+					</ChildrenList>
+				</ActorMixer>
+				<ActorMixer Name="MUS_HUB" ID="{6D9E618E-820C-4409-B8EC-2F356C87A13E}" ShortID="428369284">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D02282EE-6893-403D-9438-D481AB659EA3}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<Sound Name="MUS_Blacksands_Hub" ID="{BA415DAB-038B-44F9-A019-63A88B3EDBFA}" ShortID="404348724">
+							<PropertyList>
+								<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>-3</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D02282EE-6893-403D-9438-D481AB659EA3}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="MUS_Blacksands_Hub" ID="{0AB70D20-C797-4C0E-8C54-F73B85902E7D}">
+									<PropertyList>
+										<Property Name="LoopBegin" Type="Real64" Value="30.2483186663066"/>
+										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+									</PropertyList>
+									<Language>SFX</Language>
+									<AudioFile>MUS_Blacksands_Hub.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="1072494655"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="MUS_Blacksands_Hub" ID="{0AB70D20-C797-4C0E-8C54-F73B85902E7D}" Platform="Linked"/>
 							</ActiveSourceList>
 						</Sound>
 					</ChildrenList>

@@ -955,6 +955,11 @@
 								<Sound Name="GPE_Elevator_Start" ID="{AFFDF530-8207-4692-9FE7-E548A4468767}" ShortID="903956710">
 									<PropertyList>
 										<Property Name="UseGameAuxSends" Type="bool" Value="True"/>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>-6</Value>
+											</ValueList>
+										</Property>
 									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Conversion">
@@ -980,6 +985,11 @@
 								<Sound Name="GPE_Elevator_Stop" ID="{A9687C8E-2508-4EB9-9867-5CD238D3E9EF}" ShortID="27218419">
 									<PropertyList>
 										<Property Name="UseGameAuxSends" Type="bool" Value="True"/>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>-3</Value>
+											</ValueList>
+										</Property>
 									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Conversion">
