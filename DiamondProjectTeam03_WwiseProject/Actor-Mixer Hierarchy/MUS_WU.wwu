@@ -18,6 +18,13 @@
 					</ReferenceList>
 					<ChildrenList>
 						<Sound Name="MUS_ARENA" ID="{97AB55CD-69C5-45E8-B2A6-0FA67392749B}" ShortID="963755956">
+							<PropertyList>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>-11</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
@@ -34,9 +41,16 @@
 										<MediaID ID="185337180"/>
 									</MediaIDList>
 								</AudioFileSource>
+								<AudioFileSource Name="JV BLACK SAND MIX V2" ID="{A51E5C04-8EDA-4EDB-AE1A-DD27E6B129DD}">
+									<Language>SFX</Language>
+									<AudioFile>JV BLACK SAND MIX V2.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="721910099"/>
+									</MediaIDList>
+								</AudioFileSource>
 							</ChildrenList>
 							<ActiveSourceList>
-								<ActiveSource Name="JV BLACK SAND V1" ID="{8DB2E8C2-E95A-40AC-BAE2-A8FCBB2359E2}" Platform="Linked"/>
+								<ActiveSource Name="JV BLACK SAND MIX V2" ID="{A51E5C04-8EDA-4EDB-AE1A-DD27E6B129DD}" Platform="Linked"/>
 							</ActiveSourceList>
 						</Sound>
 					</ChildrenList>
