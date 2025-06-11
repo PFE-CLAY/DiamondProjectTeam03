@@ -44,10 +44,21 @@ void AAllied::BeginPlay()
 void AAllied::Patrol()
 {
 	if(Path->PatrolPoints.IsEmpty()) return;
-	if(Position < Path->PatrolPoints.Num()){
+	UEnum* EnumPtr = FindObject<UEnum>(ANY_PACKAGE, TEXT("EPointType"), true);
+	if (EnumPtr)
+	{
+		FString EnumName = EnumPtr->GetNameStringByValue(static_cast<int64>(Path->PatrolPoints[PositionID]->PointType));
+		
+		//GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Purple, EnumName);
+		//GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow, Path->PatrolPoints[Position].GetName());
+	}
+	
+	if(PositionID < Path->PatrolPoints.Num()){
 		AnimInstance->bIsMoving = true;
 		FAIMoveRequest MoveRequest;
-		MoveRequest.SetGoalLocation(Path->PatrolPoints[Position]->GetActorLocation());
+		ACustomNavigationPoint* NavPoint = Path->PatrolPoints[PositionID];
+		
+		MoveRequest.SetGoalLocation(NavPoint->GetActorLocation());
 		AIController->MoveTo(MoveRequest, nullptr);
 	}
 	else
@@ -61,32 +72,38 @@ void AAllied::Patrol()
 ACustomNavigationPoint* AAllied::GetCurrentNavigationPoint()
 {
 	
-	if(Path->PatrolPoints[Position] != nullptr){ return Path->PatrolPoints[Position];}
+	if(Path->PatrolPoints[PositionID] != nullptr){ return Path->PatrolPoints[PositionID];}
 	return nullptr;
 }
 
 void AAllied::GetNewPath(APath* NewPath)
 {
-	Position = 0;
+	PositionID = 0;
 	Path = NewPath;
 	Path->SetAllied(this);
 	Patrol();
 }
 
+void AAllied::OnUncrouch_Implementation()
+{
+	
+}
+
 void AAllied::OnCrouchTimeLimited_Implementation(float Duration)
 {
-	GetCharacterMovement()->DisableMovement();
+	//GetCharacterMovement()->DisableMovement();
 }
 
 void AAllied::OnCrouch_Implementation()
 {
-	GetCharacterMovement()->DisableMovement();
+	//GetCharacterMovement()->DisableMovement();
 }
 
 // Called every frame
 void AAllied::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+	GEngine->AddOnScreenDebugMessage(30, 15.0f, FColor::White, FString::Printf(TEXT("My value is: %d"), PositionID));
 }
 
 // Called to bind functionality to input

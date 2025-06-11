@@ -29,7 +29,7 @@ public:
 	AAllied();
 
 	UPROPERTY()
-	int Position = 0;
+	int PositionID = 0;
 
 	UPROPERTY(EditAnywhere, Category = "Movements")
 	bool bShouldLoop = false;
@@ -84,6 +84,9 @@ public:
 
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category="Movements")
 	void OnCrouch();
+
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category="Movements")
+	void OnUncrouch();
 	
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category="Movements")
 	void OnCrouchTimeLimited(float Duration);

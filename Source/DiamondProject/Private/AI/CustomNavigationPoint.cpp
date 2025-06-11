@@ -26,7 +26,26 @@ void ACustomNavigationPoint::BeginPlay()
 void ACustomNavigationPoint::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+	if(PointType == EPointType::Choice) GEngine->AddOnScreenDebugMessage(666, 5.f, FColor::Blue, FString::Printf(TEXT("AAAAAA = %f"), GetWorldTimerManager().GetTimerElapsed(TimerHandle)));
+
+	
 }
+
+void ACustomNavigationPoint::StopTimer()
+{
+	
+	if(GetWorldTimerManager().IsTimerActive(TimerHandle)){
+		GetWorldTimerManager().ClearTimer(TimerHandle);
+	}
+	PointEffect();
+}
+
+void ACustomNavigationPoint::StartTimer()
+{
+	GetWorldTimerManager().SetTimer(TimerHandle, this, &ACustomNavigationPoint::PointEffect, TimeToWait, false);
+}
+
+
 
 void ACustomNavigationPoint::PointEffect_Implementation()
 {
@@ -41,6 +60,7 @@ void ACustomNavigationPoint::PointEffect_Implementation()
 		else Allied->OnCrouchTimeLimited(TimeToWaitCrouched);
 		break;
 	case EPointType::Choice:
+		
 		Allied->GetNewPath(PathArray[WantedPathIndex]);
 		break;
 	}

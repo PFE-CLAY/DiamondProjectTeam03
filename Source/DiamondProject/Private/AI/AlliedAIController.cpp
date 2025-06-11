@@ -6,6 +6,7 @@
 #include "AI/Allied.h"
 #include "AI/CustomNavigationPoint.h"
 #include "AI/Path.h"
+#include "Navigation/PathFollowingComponent.h"
 
 
 // Sets default values
@@ -26,23 +27,29 @@ void AAlliedAIController::BeginPlay()
 void AAlliedAIController::OnMoveCompleted(FAIRequestID RequestID, EPathFollowingResult::Type Result)
 {
 	Super::OnMoveCompleted(RequestID, Result);
-	
+	UEnum* EnumPtr = FindObject<UEnum>(ANY_PACKAGE, TEXT("EPathFollowingResult"), true);
+	if (EnumPtr)
+	{
+		FString EnumName = EnumPtr->GetNameStringByValue(static_cast<int64>(Result));
+		//GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Red, EnumName);
+	}
 	ACustomNavigationPoint* CurrentNavigationPoint = AlliedControlled->GetCurrentNavigationPoint();
+	CurrentNavigationPoint->OnArrivingOnPoint();
 	if(CurrentNavigationPoint == nullptr) return;
-	
-	AlliedControlled->Position++;
+	AlliedControlled->PositionID++;
+	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Magenta, FString::Printf(TEXT("AAAAAA = %d"), AlliedControlled->PositionID));
 
 	if(CurrentNavigationPoint->bShouldWait){
-		FTimerHandle TimerHandle;
-		GetWorldTimerManager().SetTimer(TimerHandle, CurrentNavigationPoint, &ACustomNavigationPoint::PointEffect, CurrentNavigationPoint->TimeToWait, false);
+		CurrentNavigationPoint->StartTimer();
 		return;
 	}
+	
 	CurrentNavigationPoint->PointEffect();
 	if(CurrentNavigationPoint->PointType == EPointType::Crouch) return;
-	if(AlliedControlled->Position >= AlliedControlled->Path->PatrolPoints.Num())
+	if(AlliedControlled->PositionID >= AlliedControlled->Path->PatrolPoints.Num())
 	{
 		if(AlliedControlled->bShouldLoop){
-			AlliedControlled->Position = 0;
+			AlliedControlled->PositionID = 0;
 		}
 		else return;
 	}
