@@ -45,13 +45,23 @@ int32 UWwiseManagerSubsystem::PostEvent(UAkAudioEvent* Event, AActor* TargetActo
 	return PlayingID;
 }
 
+int32 UWwiseManagerSubsystem::PostEventWithoutActor(UAkAudioEvent* Event)
+{
+	AkPlayingID PlayingID = AK_INVALID_PLAYING_ID;
+	
+	if (Event) {
+		PlayingID = UAkGameplayStatics::PostEvent(Event, nullptr, 0, FOnAkPostEventCallback());
+	}
+	return PlayingID;
+}
+
 void UWwiseManagerSubsystem::SetRTPCValue(const UAkRtpc* RTPCValue, float Value, int32 InterpolationTimeMs, AActor* Actor)
 {
 	if (RTPCValue && Actor) {
 		UAkGameplayStatics::SetRTPCValue(RTPCValue, Value, InterpolationTimeMs, Actor, FName());
-		UE_LOG(LogTemp, Log, TEXT("Set RTPC Value: %s to %f"), *RTPCValue->GetName(), Value);
+		UE_LOG(LogTemp, Log, TEXT("[UWwiseManagerSubsystem::SetRTPC] Set RTPC Value: %s to %f"), *RTPCValue->GetName(), Value);
 	} else {
-		UE_LOG(LogTemp, Warning, TEXT("RTPCValue or Actor is null!"));
+		UE_LOG(LogTemp, Warning, TEXT("[UWwiseManagerSubsystem::SetRTPC] RTPCValue or Actor is null!"));
 	}
 }
 
@@ -68,18 +78,18 @@ void UWwiseManagerSubsystem::SetCategoryVolume(ESoundCategory Category, float Vo
 	
 	if (!RTPCName.IsEmpty()) {
 		UAkGameplayStatics::SetRTPCValue(nullptr, Volume, InterpolateTimeMs, TargetActor, FName(RTPCName));
-		UE_LOG(LogTemp, Log, TEXT("Set volume for %s to %f"), *RTPCName, Volume);
+		UE_LOG(LogTemp, Log, TEXT("[UWwiseManagerSubsystem::SetCategoryVolume] Set volume for %s to %f"), *RTPCName, Volume);
 	}
 }
 
 void UWwiseManagerSubsystem::SetSwitch(const UAkSwitchValue* SwitchValue, AActor* Actor, FName SwitchGroup, FName SwitchState)
 {
-	UE_LOG(LogTemp, Log, TEXT("Setting Switch State: %s to %s from actor: %s"), *SwitchGroup.ToString(), *SwitchState.ToString(), *Actor->GetName());
+	UE_LOG(LogTemp, Log, TEXT("[UWwiseManagerSubsystem::SetSwitch] Setting Switch State: %s to %s from actor: %s"), *SwitchGroup.ToString(), *SwitchState.ToString(), *Actor->GetName());
 	UAkGameplayStatics::SetSwitch(SwitchValue, Actor, SwitchGroup, SwitchState);
 }
 
 void UWwiseManagerSubsystem::SetState(const UAkStateValue* StateValue, FName stateGroup, FName state)
 {
-	UE_LOG(LogTemp, Log, TEXT("Setting State: %s to %s"), *stateGroup.ToString(), *state.ToString());
+	UE_LOG(LogTemp, Log, TEXT("[UWwiseManagerSubsystem::SetState] Setting State: %s to %s"), *stateGroup.ToString(), *state.ToString());
 	UAkGameplayStatics::SetState(StateValue, stateGroup, state);
 }

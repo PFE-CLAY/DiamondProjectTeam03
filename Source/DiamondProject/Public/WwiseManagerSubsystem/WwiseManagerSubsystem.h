@@ -35,6 +35,9 @@ public:
 	
 	UFUNCTION(BlueprintCallable, Category = "Wwise SubSystem")
 	int32 PostEvent(UAkAudioEvent* Event, AActor* TargetActor);
+
+	UFUNCTION(BlueprintCallable, Category = "Wwise SubSystem")
+	int32 PostEventWithoutActor(UAkAudioEvent* Event);
 	
 	UFUNCTION(BlueprintCallable, Category = "Wwise SubSystem")
 	void SetRTPCValue(const UAkRtpc* RTPCValue, float Value, int32 InterpolationTimeMs, AActor* Actor);
