@@ -93,6 +93,17 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="Play_SFX_EndCinematic" ID="{6045A319-19E1-40D4-AEC6-4D6054A6BBE3}">
+					<ChildrenList>
+						<Action Name="" ID="{3EAF9B25-50E6-4B1B-99D1-017A998B631C}" ShortID="809789368">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="SFX_EndCinematic" ID="{0476BF4C-BD5C-4173-90A2-78BF69344089}" WorkUnitID="{5DFA8BAE-0AEA-4A3F-92EC-FBABE50597A1}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>
