@@ -103,7 +103,7 @@ void AAllied::OnCrouch_Implementation()
 void AAllied::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-	GEngine->AddOnScreenDebugMessage(30, 15.0f, FColor::White, FString::Printf(TEXT("My value is: %d"), PositionID));
+	//GEngine->AddOnScreenDebugMessage(30, 15.0f, FColor::White, FString::Printf(TEXT("My value is: %d"), PositionID));
 }
 
 // Called to bind functionality to input

@@ -26,9 +26,14 @@ void ACustomNavigationPoint::BeginPlay()
 void ACustomNavigationPoint::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-	if(PointType == EPointType::Choice) GEngine->AddOnScreenDebugMessage(666, 5.f, FColor::Blue, FString::Printf(TEXT("AAAAAA = %f"), GetWorldTimerManager().GetTimerElapsed(TimerHandle)));
+	//if(PointType == EPointType::Choice) GEngine->AddOnScreenDebugMessage(666, 5.f, FColor::Blue, FString::Printf(TEXT("AAAAAA = %f"), GetWorldTimerManager().GetTimerElapsed(TimerHandle)));
 
 	
+}
+
+void ACustomNavigationPoint::PlayVoiceline()
+{
+	if(bShouldPlayDialogue) OnPlayDialogue();
 }
 
 void ACustomNavigationPoint::StopTimer()
@@ -50,7 +55,7 @@ void ACustomNavigationPoint::StartTimer()
 void ACustomNavigationPoint::PointEffect_Implementation()
 {
 	
-	if(bShouldPlayDialogue) OnPlayDialogue();
+	
 	switch (PointType){
 	case EPointType::None:
 		Allied->Patrol();
