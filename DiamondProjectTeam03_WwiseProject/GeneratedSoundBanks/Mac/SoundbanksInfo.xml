@@ -161,7 +161,7 @@
 				</StateGroup>
 			</StateGroups>
 		</SoundBank>
-		<SoundBank Id="1329476194" Type="User" GUID="{4B32F9EE-D939-4AEA-A633-697781A78CE3}" Language="SFX" Hash="{62083953-1ABE-4629-8459-AA35FDAB825A}">
+		<SoundBank Id="1329476194" Type="User" GUID="{4B32F9EE-D939-4AEA-A633-697781A78CE3}" Language="SFX" Hash="{2ECA7E35-640E-8DCD-28CE-45572CCBCFD3}">
 			<ObjectPath>\SoundBanks\SoundBanks_WU\MUS_SB</ObjectPath>
 			<ShortName>MUS_SB</ShortName>
 			<Path>MUS_SB.bnk</Path>
@@ -1230,7 +1230,7 @@
 				</StateGroup>
 			</StateGroups>
 		</SoundBank>
-		<SoundBank Id="2765162312" Type="User" GUID="{9B915276-16F3-4721-B819-126344F97366}" Language="SFX" Hash="{AF3D65C2-D82C-1D59-E84E-A5A2F0AA5F49}">
+		<SoundBank Id="2765162312" Type="User" GUID="{9B915276-16F3-4721-B819-126344F97366}" Language="SFX" Hash="{F166C757-2C21-9127-F4BF-D092530AAB30}">
 			<ObjectPath>\SoundBanks\SoundBanks_WU\VOICES_SB</ObjectPath>
 			<ShortName>VOICES_SB</ShortName>
 			<Path>VOICES_SB.bnk</Path>
@@ -1245,7 +1245,7 @@
 				</File>
 				<File Id="45960235" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>DUB_ALLY_1_4_0.wav</ShortName>
-					<CachePath>SFX/DUB_ALLY_1_4_0_818F3B66.wem</CachePath>
+					<CachePath>SFX/DUB_ALLY_1_4_0_B42FC9A2.wem</CachePath>
 				</File>
 				<File Id="73406871" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>DUB_ARENA_1_7_0.wav</ShortName>
@@ -1298,6 +1298,10 @@
 				<File Id="289625457" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>DUB_ARENA_1_3_0.wav</ShortName>
 					<CachePath>SFX/DUB_ARENA_1_3_0_818F3B66.wem</CachePath>
+				</File>
+				<File Id="305437427" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>DUB_ALLY_1_4_0.wav</ShortName>
+					<CachePath>SFX/DUB_ALLY_1_4_0_E0C25F29.wem</CachePath>
 				</File>
 				<File Id="315927435" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>DUB_ALLY_1_6_1.wav</ShortName>
@@ -1407,7 +1411,12 @@
 						<MediaRef Id="12434701"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="3446471352" Name="Play_DUB_ALLY_1_4_0" ObjectPath="\Events\VOICES_WU\ALLY\Play_DUB_ALLY_1_4_0" GUID="{E2A38D49-55D6-459A-820D-2728166A2E38}" DurationType="OneShot" DurationMin="3.050712" DurationMax="3.050712">
+				<Event Id="3446471352" Name="Play_DUB_ALLY_1_4_0" ObjectPath="\Events\VOICES_WU\ALLY\Play_DUB_ALLY_1_4_0" GUID="{E1F85B8A-4F18-4DB3-8AE4-F7660419F33F}" DurationType="OneShot" DurationMin="1.269327" DurationMax="1.269327">
+					<MediaRefs>
+						<MediaRef Id="305437427"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="3446471353" Name="Play_DUB_ALLY_1_4_1" ObjectPath="\Events\VOICES_WU\ALLY\Play_DUB_ALLY_1_4_1" GUID="{C3297B53-25D6-4948-8D75-CBAAD1EC4D31}" DurationType="OneShot" DurationMin="1.8102334" DurationMax="1.8102334">
 					<MediaRefs>
 						<MediaRef Id="45960235"/>
 					</MediaRefs>
@@ -2206,7 +2215,7 @@
 				</StateGroup>
 			</StateGroups>
 		</SoundBank>
-		<SoundBank Id="3896292454" Type="User" GUID="{459D1F67-52BD-4FA1-B846-B8F3A50C2C5F}" Language="SFX" Hash="{D7A00705-C95C-8875-6423-0805997B4F05}">
+		<SoundBank Id="3896292454" Type="User" GUID="{459D1F67-52BD-4FA1-B846-B8F3A50C2C5F}" Language="SFX" Hash="{5E8BE29B-3E92-B6EB-9A5F-D137D73BE309}">
 			<ObjectPath>\SoundBanks\SoundBanks_WU\SFX_SB</ObjectPath>
 			<ShortName>SFX_SB</ShortName>
 			<Path>SFX_SB.bnk</Path>
@@ -2239,6 +2248,10 @@
 					<ShortName>MC\SFX_HourGlass_Idle_LP.wav</ShortName>
 					<CachePath>SFX/MC/SFX_HourGlass_Idle_LP_FBC78EF0.wem</CachePath>
 				</File>
+				<File Id="846163179" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>MC\SFX_EndCinematic.wav</ShortName>
+					<CachePath>SFX/MC/SFX_EndCinematic_818F3B66.wem</CachePath>
+				</File>
 				<File Id="862611700" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>MC\SFX_Door_Pyramid.wav</ShortName>
 					<CachePath>SFX/MC/SFX_Door_Pyramid_AA228216.wem</CachePath>
@@ -2270,6 +2283,11 @@
 				<Event Id="582941242" Name="Play_SFX_Door_Pyramid_Open" ObjectPath="\Events\SFX_WU\Play_SFX_Door_Pyramid_Open" GUID="{03DAD17B-66BC-4B93-B7D8-6E1B8239766D}" MaxAttenuation="2000" DurationType="OneShot" DurationMin="4.623" DurationMax="4.623">
 					<MediaRefs>
 						<MediaRef Id="482790053"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="3780890544" Name="Play_SFX_EndCinematic" ObjectPath="\Events\SFX_WU\Play_SFX_EndCinematic" GUID="{6045A319-19E1-40D4-AEC6-4D6054A6BBE3}" DurationType="OneShot" DurationMin="33.23227" DurationMax="33.23227">
+					<MediaRefs>
+						<MediaRef Id="846163179"/>
 					</MediaRefs>
 				</Event>
 				<Event Id="2496075354" Name="Play_SFX_HourGlass_Destruction_2D" ObjectPath="\Events\SFX_WU\Play_SFX_HourGlass_Destruction_2D" GUID="{FDD8C402-5336-447B-B1DA-70926B131299}" DurationType="OneShot" DurationMin="18.631792" DurationMax="18.631792">
@@ -2429,5 +2447,5 @@
 			</Events>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{9D069479-A7F3-1323-6010-251B8D399F13}</FileHash>
+	<FileHash>{E697F489-7311-4978-06EC-D3B89659592E}</FileHash>
 </SoundBanksInfo>
