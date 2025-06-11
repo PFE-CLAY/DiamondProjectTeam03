@@ -1,0 +1,6 @@
+Event	ID	Name			Wwise Object Path	Notes
+	1117189211	Play_MUS_ARENA			\MUS_WU\Play_MUS_ARENA	
+
+In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	185337180	MUS_ARENA	E:\GitHub\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\JV BLACK SAND V1_818F3B66.wem		\Actor-Mixer Hierarchy\MUS_WU\MUS_ARENA\MUS_ARENA		27033696
+
