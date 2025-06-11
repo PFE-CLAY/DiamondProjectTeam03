@@ -1,7 +1,6 @@
 Event	ID	Name			Wwise Object Path	Notes
 	575283655	Play_GPE_JumPads_RC			\GPE_WU\Play_GPE_JumPads_RC	
 	616160567	Play_SFX_CorpseTrap_Closing			\GPE_WU\Play_SFX_CorpseTrap_Closing	
-	895316894	Stop_Elevator			\GPE_WU\Stop_Elevator	
 	2353660422	Play_GPE_JumpPads_Activation_RC			\GPE_WU\Play_GPE_JumpPads_Activation_RC	
 	2467711998	Play_SFX_CorpseTrap_Opening			\GPE_WU\Play_SFX_CorpseTrap_Opening	
 	3621014260	Play_Elevator			\GPE_WU\Play_Elevator	

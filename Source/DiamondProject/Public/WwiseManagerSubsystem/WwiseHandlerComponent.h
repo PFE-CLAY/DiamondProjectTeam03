@@ -26,6 +26,8 @@ protected:
 	// Called when the game starts
 	virtual void BeginPlay() override;
 
+	virtual void EndPlay(const EEndPlayReason::Type EndPlayReason) override;
+
 public:
 	// Called every frame
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType,
@@ -42,58 +44,44 @@ public:
 	UPROPERTY(BlueprintAssignable, Category="Wwise|Callback")
 	FHandleCallbackDelegate HandleCallbackDelegate;
 	
-	UFUNCTION(BlueprintImplementableEvent, Category = "Wwise|Event")
+	UFUNCTION()
 	void HandleCallback(EAkCallbackType CallbackType, UAkCallbackInfo* CallbackInfo);
 
 	UPROPERTY(BlueprintAssignable, Category="Wwise|Callback")
 	FEndOfEventCallbackDelegate EndOfEventCallbackDelegate;
 	
-	UFUNCTION(BlueprintImplementableEvent, Category = "Wwise|Event")
+	UFUNCTION()
 	void OnEndOfEventCallback(UAkEventCallbackInfo* CallbackInfo, UWwiseHandlerComponent* owner);
 
 	UPROPERTY(BlueprintAssignable, Category="Wwise|Callback")
 	FMarkerCallbackDelegate MarkerCallbackDelegate;
 	
-	UFUNCTION(BlueprintImplementableEvent, Category = "Wwise|Event")
+	UFUNCTION(/*BlueprintImplementableEvent, Category = "Wwise|Event"*/)
 	void OnMarkerCallback(UAkMarkerCallbackInfo* CallbackInfo, UWwiseHandlerComponent* owner);
 
 	UPROPERTY(BlueprintAssignable, Category="Wwise|Callback")
 	FDurationCallbackDelegate DurationCallbackDelegate;
 	
-	UFUNCTION(BlueprintImplementableEvent, Category = "Wwise|Event")
+	UFUNCTION()
 	void OnDurationCallback(UAkDurationCallbackInfo* CallbackInfo, UWwiseHandlerComponent* owner);
 
 	UPROPERTY(BlueprintAssignable, Category="Wwise|Callback")
 	FStarvationCallbackDelegate StarvationCallbackDelegate;
 	
-	UFUNCTION(BlueprintImplementableEvent, Category = "Wwise|Event")
+	UFUNCTION()
 	void OnStarvationCallback(UAkEventCallbackInfo* CallbackInfo, UWwiseHandlerComponent* owner);
 
 	UPROPERTY(BlueprintAssignable, Category="Wwise|Callback")
 	FMusicPlayStartedCallbackDelegate MusicPlayStartedCallbackDelegate;
 	
-	UFUNCTION(BlueprintImplementableEvent, Category = "Wwise|Event")
+	UFUNCTION()
 	void OnMusicPlayStartedCallback(UAkEventCallbackInfo* CallbackInfo, UWwiseHandlerComponent* owner);
 
 	UPROPERTY(BlueprintAssignable, Category="Wwise|Callback")
 	FMidiEventCallbackDelegate MidiEventCallbackDelegate;
 	
-	UFUNCTION(BlueprintImplementableEvent, Category = "Wwise|Event")
+	UFUNCTION()
 	void OnMidiEventCallback(UAkMIDIEventCallbackInfo* CallbackInfo, UWwiseHandlerComponent* owner);
-
-	void HandleCallback_Implementation(EAkCallbackType CallbackType, UAkCallbackInfo* CallbackInfo);
-
-	void OnEndOfEventCallback_Implementation(UAkEventCallbackInfo* CallbackInfo);
-
-	void OnMarkerCallback_Implementation(UAkMarkerCallbackInfo* CallbackInfo);
-
-	void OnDurationCallback_Implementation(UAkDurationCallbackInfo* CallbackInfo);
-
-	void OnStarvationCallback_Implementation(UAkEventCallbackInfo* CallbackInfo);
-
-	void OnMusicPlayStartedCallback_Implementation(UAkEventCallbackInfo* CallbackInfo);
-
-	void OnMidiEventCallback_Implementation(UAkMIDIEventCallbackInfo* CallbackInfo);
 
 	UFUNCTION(BlueprintCallable, Category = "Wwise|Mask")
 	void AddMaskToCallbackMask(EAkCallbackType CallbackType);
@@ -108,16 +96,3 @@ public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Wwise|Wwise Event")
 	int32 LastPlayedID = 0;
 };
-
-// 5
-// 13
-// 45
-// 173
-// 429
-// 941
-// 1965
-// 4013
-// 8109
-// 16301
-// 32685
-// 98221

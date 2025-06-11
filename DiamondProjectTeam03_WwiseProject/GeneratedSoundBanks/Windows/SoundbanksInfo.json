@@ -450,7 +450,7 @@
     "Type": "User",
     "GUID": "{4B32F9EE-D939-4AEA-A633-697781A78CE3}",
     "Language": "SFX",
-    "Hash": "{8C576C27-EF9B-5611-8A3B-E0915C4CB78E}",
+    "Hash": "{99C2F85F-6C85-D61A-56B8-9D9722D7AD07}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\MUS_SB",
     "ShortName": "MUS_SB",
     "Path": "MUS_SB.bnk",
@@ -462,6 +462,14 @@
       "Location": "Memory",
       "ShortName": "JV BLACK SAND V1.wav",
       "CachePath": "SFX/JV BLACK SAND V1_818F3B66.wem"
+     },
+     {
+      "Id": "1072494655",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "MUS_Blacksands_Hub.wav",
+      "CachePath": "SFX/MUS_Blacksands_Hub_414085DB.wem"
      }
     ],
     "Events": [
@@ -476,6 +484,33 @@
       "MediaRefs": [
        {
         "Id": "185337180"
+       }
+      ]
+     },
+     {
+      "Id": "2485576600",
+      "Name": "Play_MUS_Blacksands_Hub",
+      "ObjectPath": "\\Events\\MUS_WU\\Play_MUS_Blacksands_Hub",
+      "GUID": "{5EFDE9D3-947B-4379-BC68-9A8FC45B710A}",
+      "DurationType": "Infinite",
+      "MediaRefs": [
+       {
+        "Id": "1072494655"
+       }
+      ]
+     },
+     {
+      "Id": "888771158",
+      "Name": "Stop_MUS_Blacksands_Hub",
+      "ObjectPath": "\\Events\\MUS_WU\\Stop_MUS_Blacksands_Hub",
+      "GUID": "{60E90B0F-AFEA-4121-8616-69BB7F5853C0}",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0",
+      "MediaRefs": [
+       {
+        "Id": "1072494655"
        }
       ]
      }
@@ -5720,7 +5755,7 @@
     "Type": "User",
     "GUID": "{459D1F67-52BD-4FA1-B846-B8F3A50C2C5F}",
     "Language": "SFX",
-    "Hash": "{D7A00705-C95C-8875-6423-0805997B4F05}",
+    "Hash": "{5E8BE29B-3E92-B6EB-9A5F-D137D73BE309}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\SFX_SB",
     "ShortName": "SFX_SB",
     "Path": "SFX_SB.bnk",
@@ -5780,6 +5815,14 @@
       "Location": "Memory",
       "ShortName": "MC\\SFX_HourGlass_Idle_LP.wav",
       "CachePath": "SFX/MC/SFX_HourGlass_Idle_LP_FBC78EF0.wem"
+     },
+     {
+      "Id": "846163179",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "MC\\SFX_EndCinematic.wav",
+      "CachePath": "SFX/MC/SFX_EndCinematic_818F3B66.wem"
      },
      {
       "Id": "862611700",
@@ -5861,6 +5904,20 @@
       ]
      },
      {
+      "Id": "3780890544",
+      "Name": "Play_SFX_EndCinematic",
+      "ObjectPath": "\\Events\\SFX_WU\\Play_SFX_EndCinematic",
+      "GUID": "{6045A319-19E1-40D4-AEC6-4D6054A6BBE3}",
+      "DurationType": "OneShot",
+      "DurationMin": "33.23227",
+      "DurationMax": "33.23227",
+      "MediaRefs": [
+       {
+        "Id": "846163179"
+       }
+      ]
+     },
+     {
       "Id": "2496075354",
       "Name": "Play_SFX_HourGlass_Destruction_2D",
       "ObjectPath": "\\Events\\SFX_WU\\Play_SFX_HourGlass_Destruction_2D",
@@ -5912,7 +5969,7 @@
     "Type": "User",
     "GUID": "{D2378E68-5468-4849-BC4A-8FC6D8A3BF29}",
     "Language": "SFX",
-    "Hash": "{38342F44-D7B1-F005-C6E6-CAF9CAB9DC18}",
+    "Hash": "{80266133-A537-3180-AE75-DB61097E95F3}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\GPE_SB",
     "ShortName": "GPE_SB",
     "Path": "GPE_SB.bnk",
@@ -6095,6 +6152,9 @@
        },
        {
         "Id": "904242620"
+       },
+       {
+        "Id": "929577030"
        }
       ]
      },
@@ -6212,24 +6272,10 @@
         "Id": "978522934"
        }
       ]
-     },
-     {
-      "Id": "895316894",
-      "Name": "Stop_Elevator",
-      "ObjectPath": "\\Events\\GPE_WU\\Stop_Elevator",
-      "GUID": "{DF176BD1-7C8C-4DFE-89C2-A2EC858724EC}",
-      "DurationType": "OneShot",
-      "DurationMin": "2.233146",
-      "DurationMax": "2.233146",
-      "MediaRefs": [
-       {
-        "Id": "929577030"
-       }
-      ]
      }
     ]
    }
   ],
-  "FileHash": "{C276DB26-1DBE-289D-DDC1-965352A974E2}"
+  "FileHash": "{D309AD02-C54B-D1BE-C9DD-45B2A0701C32}"
  }
 }
