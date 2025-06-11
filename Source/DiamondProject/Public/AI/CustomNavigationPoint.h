@@ -81,6 +81,9 @@ public:
 	UFUNCTION(BlueprintImplementableEvent)
 	void OnPlayDialogue();
 
+	UFUNCTION()
+	void PlayVoiceline();
+
 	UFUNCTION(BlueprintCallable)
 	void StopTimer();
 

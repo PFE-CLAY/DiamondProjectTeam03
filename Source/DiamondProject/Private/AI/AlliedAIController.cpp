@@ -37,7 +37,8 @@ void AAlliedAIController::OnMoveCompleted(FAIRequestID RequestID, EPathFollowing
 	CurrentNavigationPoint->OnArrivingOnPoint();
 	if(CurrentNavigationPoint == nullptr) return;
 	AlliedControlled->PositionID++;
-	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Magenta, FString::Printf(TEXT("AAAAAA = %d"), AlliedControlled->PositionID));
+	CurrentNavigationPoint->PlayVoiceline();
+	//GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Magenta, FString::Printf(TEXT("AAAAAA = %d"), AlliedControlled->PositionID));
 
 	if(CurrentNavigationPoint->bShouldWait){
 		CurrentNavigationPoint->StartTimer();
