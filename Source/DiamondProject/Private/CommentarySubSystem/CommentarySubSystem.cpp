@@ -11,13 +11,13 @@
 void UCommentarySubSystem::Initialize(FSubsystemCollectionBase& Collection)
 {
 	Super::Initialize(Collection);
-	UE_LOG(LogTemp, Log, TEXT("WwiseAudioManagerSubsystem Initialized"));
+	UE_LOG(LogTemp, Log, TEXT("[UCommentarySubSystem] Initialized"));
 }
 
 void UCommentarySubSystem::Deinitialize()
 {
 	Super::Deinitialize();
-	UE_LOG(LogTemp, Log, TEXT("WwiseAudioManagerSubsystem Deinitialized"));
+	UE_LOG(LogTemp, Log, TEXT("[UCommentarySubSystem] Deinitialized"));
 }
 
 void UCommentarySubSystem::PlayCommentaryEvent(class UAkAudioEvent* Event, const int priority)

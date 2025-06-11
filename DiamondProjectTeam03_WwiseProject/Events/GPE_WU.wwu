@@ -89,14 +89,11 @@
 								</Reference>
 							</ReferenceList>
 						</Action>
-					</ChildrenList>
-				</Event>
-				<Event Name="Stop_Elevator" ID="{DF176BD1-7C8C-4DFE-89C2-A2EC858724EC}">
-					<ChildrenList>
-						<Action Name="" ID="{AD9D317E-7C4E-48AC-B03D-801CE21E052E}" ShortID="874456856">
+						<Action Name="" ID="{030A54A2-F9A2-48EB-AC11-A34924DBAB3F}" ShortID="475999421">
 							<PropertyList>
 								<Property Name="ActionType" Type="int16" Value="2"/>
-								<Property Name="FadeTime" Type="Real64" Value="0.8"/>
+								<Property Name="Delay" Type="Real64" Value="9.5"/>
+								<Property Name="FadeTime" Type="Real64" Value="1"/>
 							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Target">
@@ -104,7 +101,10 @@
 								</Reference>
 							</ReferenceList>
 						</Action>
-						<Action Name="" ID="{38651543-0F91-4F54-95E4-290DADC79F27}" ShortID="569112015">
+						<Action Name="" ID="{D401B35D-D1C6-4BED-AF2F-516ED5FA8A99}" ShortID="574030401">
+							<PropertyList>
+								<Property Name="Delay" Type="Real64" Value="9.5"/>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Target">
 									<ObjectRef Name="GPE_Elevator_Stop" ID="{A9687C8E-2508-4EB9-9867-5CD238D3E9EF}" WorkUnitID="{DBF8DB4E-51F0-47EF-9DC3-F34DD62EE3B6}"/>
