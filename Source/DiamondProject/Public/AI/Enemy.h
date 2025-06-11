@@ -10,6 +10,7 @@
 #include "Enemy.generated.h"
 
 class AEnemySpawner;
+class UShootPointComponent;
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnEnemyShoot);
 
@@ -40,12 +41,15 @@ protected:
 
 	UPROPERTY(BlueprintReadWrite, Category = "Enemy Behavior")
 	float DetectionRange;
-	
+
 	UPROPERTY(BlueprintReadOnly, Category = "Enemy Behavior");
 	bool bCanAttack = true;
 
 	UPROPERTY(EditDefaultsOnly, Category = "Enemy Behavior")
 	UClass* Projectile;
+	
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category="Enemy Behavior")
+	TArray<USceneComponent*> ShootPoints;
 
 	UPROPERTY()
 	APawn* PlayerPawn;
@@ -61,8 +65,8 @@ protected:
 	UPROPERTY()
 	AAIController* AIController;
 
-	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category="Enemy Behavior")
-	USceneComponent* ShootPoint;
+	UPROPERTY(BlueprintReadOnly)
+	int IndexShootPoint = 0;
 
 	UPROPERTY()
 	TArray<AActor*> AllTargetActors;
@@ -81,6 +85,7 @@ protected:
 
 	UFUNCTION(BlueprintCallable, BlueprintPure, Category = "Enemy")
 	virtual FRotator GetDirectionRotation(AActor* OriginActor, AActor* TargetActor);
+
 private:
 	UFUNCTION(BlueprintCallable, Category = "Enemy")
 	void DetectPlayer(AActor* Actor);
@@ -95,7 +100,6 @@ private:
 	void Shoot(AActor* Target);
 
 	UFUNCTION(BlueprintCallable, Category = "Enemy")
-
 	void RemoveEnemyFromSpawnerList();
 	
 	
@@ -124,5 +128,15 @@ public:
 	UFUNCTION(BlueprintCallable)
 	bool IsAnyTargetInRange();
 
-	
+	UFUNCTION()
+	USceneComponent* GetNextShootPoint();
+
+	UFUNCTION(BlueprintCallable, BlueprintPure)
+	USceneComponent* GetCurrentShootPoint();
+
+	UFUNCTION()
+	void AddShootPoint(USceneComponent* ShootPoint);
+
+	UFUNCTION()
+	void RemoveShootPoint(USceneComponent* ShootPoint);
 };
