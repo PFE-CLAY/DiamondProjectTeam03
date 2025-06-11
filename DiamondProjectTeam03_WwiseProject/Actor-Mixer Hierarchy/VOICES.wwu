@@ -740,10 +740,15 @@
 							</ReferenceList>
 							<ChildrenList>
 								<AudioFileSource Name="DUB_ALLY_1_4_0" ID="{D9C2714E-E073-4541-9DF9-B15FA9185E3B}">
+									<PropertyList>
+										<Property Name="LoopBegin" Type="Real64" Value="0"/>
+										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+										<Property Name="TrimEnd" Type="Real64" Value="1.17750275807723"/>
+									</PropertyList>
 									<Language>SFX</Language>
 									<AudioFile>DUB_ALLY_1_4_0.wav</AudioFile>
 									<MediaIDList>
-										<MediaID ID="45960235"/>
+										<MediaID ID="305437427"/>
 									</MediaIDList>
 								</AudioFileSource>
 							</ChildrenList>
@@ -859,6 +864,33 @@
 							</ChildrenList>
 							<ActiveSourceList>
 								<ActiveSource Name="DUB_ALLY_1_8_0" ID="{8CA80B9E-32D6-47B1-B7FA-400AC05B8BFC}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="DUB_ALLY_1_4_01" ID="{080FA2BD-DC58-4BF6-820E-9600A319BC84}" ShortID="989590926">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D02282EE-6893-403D-9438-D481AB659EA3}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="DUB_ALLY_1_4_0" ID="{49F969D2-1A11-4416-BB4E-F15F6DE41473}">
+									<PropertyList>
+										<Property Name="LoopBegin" Type="Real64" Value="1.15074133175729"/>
+										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+										<Property Name="TrimBegin" Type="Real64" Value="1.15074133175729"/>
+									</PropertyList>
+									<Language>SFX</Language>
+									<AudioFile>DUB_ALLY_1_4_0.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="45960235"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="DUB_ALLY_1_4_0" ID="{49F969D2-1A11-4416-BB4E-F15F6DE41473}" Platform="Linked"/>
 							</ActiveSourceList>
 						</Sound>
 					</ChildrenList>
