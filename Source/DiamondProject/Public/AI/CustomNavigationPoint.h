@@ -56,6 +56,9 @@ public:
 
 	UPROPERTY(EditAnywhere, Category="NavPoint", BlueprintReadOnly, meta=(EditCondition="bShouldPlayDialogue"))
 	UAkAudioEvent* Dialogue;
+
+	UPROPERTY(EditAnywhere, Category="NavPoint", BlueprintReadOnly, meta=(EditCondition="bShouldPlayDialogue"))
+	UDataTable* Subtitles;
 	
 	UPROPERTY(BlueprintReadOnly)
 	AAllied* Allied;
