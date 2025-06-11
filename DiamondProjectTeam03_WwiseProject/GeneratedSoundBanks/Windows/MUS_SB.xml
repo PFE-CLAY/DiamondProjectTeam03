@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="16" SoundBankVersion="150">
 	<SoundBanks>
-		<SoundBank Id="1329476194" Type="User" GUID="{4B32F9EE-D939-4AEA-A633-697781A78CE3}" Language="SFX" Hash="{62083953-1ABE-4629-8459-AA35FDAB825A}">
+		<SoundBank Id="1329476194" Type="User" GUID="{4B32F9EE-D939-4AEA-A633-697781A78CE3}" Language="SFX" Hash="{99C2F85F-6C85-D61A-56B8-9D9722D7AD07}">
 			<ObjectPath>\SoundBanks\SoundBanks_WU\MUS_SB</ObjectPath>
 			<ShortName>MUS_SB</ShortName>
 			<Path>MUS_SB.bnk</Path>
 			<Media>
-				<File Id="721910099" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>JV BLACK SAND MIX V2.wav</ShortName>
-					<CachePath>SFX/JV BLACK SAND MIX V2_818F3B66.wem</CachePath>
+				<File Id="185337180" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>JV BLACK SAND V1.wav</ShortName>
+					<CachePath>SFX/JV BLACK SAND V1_818F3B66.wem</CachePath>
 				</File>
 				<File Id="1072494655" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>MUS_Blacksands_Hub.wav</ShortName>
-					<CachePath>SFX/MUS_Blacksands_Hub_67AD3CF9.wem</CachePath>
+					<CachePath>SFX/MUS_Blacksands_Hub_414085DB.wem</CachePath>
 				</File>
 			</Media>
 			<Events>
-				<Event Id="1117189211" Name="Play_MUS_ARENA" ObjectPath="\Events\MUS_WU\Play_MUS_ARENA" GUID="{FCFD5ACC-2CA9-4324-8CC4-F10D48548642}" DurationType="OneShot" DurationMin="259.2" DurationMax="259.2">
+				<Event Id="1117189211" Name="Play_MUS_ARENA" ObjectPath="\Events\MUS_WU\Play_MUS_ARENA" GUID="{FCFD5ACC-2CA9-4324-8CC4-F10D48548642}" DurationType="OneShot" DurationMin="281.6" DurationMax="281.6">
 					<MediaRefs>
-						<MediaRef Id="721910099"/>
+						<MediaRef Id="185337180"/>
 					</MediaRefs>
 				</Event>
 				<Event Id="2485576600" Name="Play_MUS_Blacksands_Hub" ObjectPath="\Events\MUS_WU\Play_MUS_Blacksands_Hub" GUID="{5EFDE9D3-947B-4379-BC68-9A8FC45B710A}" DurationType="Infinite">
@@ -34,5 +34,5 @@
 			</Events>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{0D3B6C61-9868-9966-218B-CB9C97A2BE40}</FileHash>
+	<FileHash>{BB355588-6AC1-9AD0-7BD9-0BAD8578FAD5}</FileHash>
 </SoundBanksInfo>
