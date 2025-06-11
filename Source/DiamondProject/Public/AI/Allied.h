@@ -29,7 +29,7 @@ public:
 	AAllied();
 
 	UPROPERTY()
-	int Position = 0;
+	int PositionID = 0;
 
 	UPROPERTY(EditAnywhere, Category = "Movements")
 	bool bShouldLoop = false;
