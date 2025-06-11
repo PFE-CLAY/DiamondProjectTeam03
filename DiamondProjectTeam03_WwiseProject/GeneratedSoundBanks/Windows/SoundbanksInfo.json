@@ -450,7 +450,7 @@
     "Type": "User",
     "GUID": "{4B32F9EE-D939-4AEA-A633-697781A78CE3}",
     "Language": "SFX",
-    "Hash": "{8C576C27-EF9B-5611-8A3B-E0915C4CB78E}",
+    "Hash": "{D8C10D94-0AE6-EC9E-487F-95B6B7E73977}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\MUS_SB",
     "ShortName": "MUS_SB",
     "Path": "MUS_SB.bnk",
@@ -462,6 +462,14 @@
       "Location": "Memory",
       "ShortName": "JV BLACK SAND V1.wav",
       "CachePath": "SFX/JV BLACK SAND V1_818F3B66.wem"
+     },
+     {
+      "Id": "1072494655",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "MUS_Blacksands_Hub.wav",
+      "CachePath": "SFX/MUS_Blacksands_Hub_414085DB.wem"
      }
     ],
     "Events": [
@@ -476,6 +484,33 @@
       "MediaRefs": [
        {
         "Id": "185337180"
+       }
+      ]
+     },
+     {
+      "Id": "2485576600",
+      "Name": "Play_MUS_Blacksands_Hub",
+      "ObjectPath": "\\Events\\MUS_WU\\Play_MUS_Blacksands_Hub",
+      "GUID": "{5EFDE9D3-947B-4379-BC68-9A8FC45B710A}",
+      "DurationType": "Infinite",
+      "MediaRefs": [
+       {
+        "Id": "1072494655"
+       }
+      ]
+     },
+     {
+      "Id": "888771158",
+      "Name": "Stop_MUS_Blacksands_Hub",
+      "ObjectPath": "\\Events\\MUS_WU\\Stop_MUS_Blacksands_Hub",
+      "GUID": "{60E90B0F-AFEA-4121-8616-69BB7F5853C0}",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0",
+      "MediaRefs": [
+       {
+        "Id": "1072494655"
        }
       ]
      }
@@ -5912,7 +5947,7 @@
     "Type": "User",
     "GUID": "{D2378E68-5468-4849-BC4A-8FC6D8A3BF29}",
     "Language": "SFX",
-    "Hash": "{38342F44-D7B1-F005-C6E6-CAF9CAB9DC18}",
+    "Hash": "{80266133-A537-3180-AE75-DB61097E95F3}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\GPE_SB",
     "ShortName": "GPE_SB",
     "Path": "GPE_SB.bnk",
@@ -6095,6 +6130,9 @@
        },
        {
         "Id": "904242620"
+       },
+       {
+        "Id": "929577030"
        }
       ]
      },
@@ -6212,24 +6250,10 @@
         "Id": "978522934"
        }
       ]
-     },
-     {
-      "Id": "895316894",
-      "Name": "Stop_Elevator",
-      "ObjectPath": "\\Events\\GPE_WU\\Stop_Elevator",
-      "GUID": "{DF176BD1-7C8C-4DFE-89C2-A2EC858724EC}",
-      "DurationType": "OneShot",
-      "DurationMin": "2.233146",
-      "DurationMax": "2.233146",
-      "MediaRefs": [
-       {
-        "Id": "929577030"
-       }
-      ]
      }
     ]
    }
   ],
-  "FileHash": "{C276DB26-1DBE-289D-DDC1-965352A974E2}"
+  "FileHash": "{FF19816B-1AB4-FF0B-ACCE-DC9A9C4727F6}"
  }
 }
