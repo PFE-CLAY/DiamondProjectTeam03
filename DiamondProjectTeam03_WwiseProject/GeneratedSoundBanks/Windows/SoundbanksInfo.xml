@@ -161,7 +161,7 @@
 				</StateGroup>
 			</StateGroups>
 		</SoundBank>
-		<SoundBank Id="1329476194" Type="User" GUID="{4B32F9EE-D939-4AEA-A633-697781A78CE3}" Language="SFX" Hash="{D8C10D94-0AE6-EC9E-487F-95B6B7E73977}">
+		<SoundBank Id="1329476194" Type="User" GUID="{4B32F9EE-D939-4AEA-A633-697781A78CE3}" Language="SFX" Hash="{99C2F85F-6C85-D61A-56B8-9D9722D7AD07}">
 			<ObjectPath>\SoundBanks\SoundBanks_WU\MUS_SB</ObjectPath>
 			<ShortName>MUS_SB</ShortName>
 			<Path>MUS_SB.bnk</Path>
@@ -2206,7 +2206,7 @@
 				</StateGroup>
 			</StateGroups>
 		</SoundBank>
-		<SoundBank Id="3896292454" Type="User" GUID="{459D1F67-52BD-4FA1-B846-B8F3A50C2C5F}" Language="SFX" Hash="{D7A00705-C95C-8875-6423-0805997B4F05}">
+		<SoundBank Id="3896292454" Type="User" GUID="{459D1F67-52BD-4FA1-B846-B8F3A50C2C5F}" Language="SFX" Hash="{5E8BE29B-3E92-B6EB-9A5F-D137D73BE309}">
 			<ObjectPath>\SoundBanks\SoundBanks_WU\SFX_SB</ObjectPath>
 			<ShortName>SFX_SB</ShortName>
 			<Path>SFX_SB.bnk</Path>
@@ -2239,6 +2239,10 @@
 					<ShortName>MC\SFX_HourGlass_Idle_LP.wav</ShortName>
 					<CachePath>SFX/MC/SFX_HourGlass_Idle_LP_FBC78EF0.wem</CachePath>
 				</File>
+				<File Id="846163179" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>MC\SFX_EndCinematic.wav</ShortName>
+					<CachePath>SFX/MC/SFX_EndCinematic_818F3B66.wem</CachePath>
+				</File>
 				<File Id="862611700" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>MC\SFX_Door_Pyramid.wav</ShortName>
 					<CachePath>SFX/MC/SFX_Door_Pyramid_AA228216.wem</CachePath>
@@ -2270,6 +2274,11 @@
 				<Event Id="582941242" Name="Play_SFX_Door_Pyramid_Open" ObjectPath="\Events\SFX_WU\Play_SFX_Door_Pyramid_Open" GUID="{03DAD17B-66BC-4B93-B7D8-6E1B8239766D}" MaxAttenuation="2000" DurationType="OneShot" DurationMin="4.623" DurationMax="4.623">
 					<MediaRefs>
 						<MediaRef Id="482790053"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="3780890544" Name="Play_SFX_EndCinematic" ObjectPath="\Events\SFX_WU\Play_SFX_EndCinematic" GUID="{6045A319-19E1-40D4-AEC6-4D6054A6BBE3}" DurationType="OneShot" DurationMin="33.23227" DurationMax="33.23227">
+					<MediaRefs>
+						<MediaRef Id="846163179"/>
 					</MediaRefs>
 				</Event>
 				<Event Id="2496075354" Name="Play_SFX_HourGlass_Destruction_2D" ObjectPath="\Events\SFX_WU\Play_SFX_HourGlass_Destruction_2D" GUID="{FDD8C402-5336-447B-B1DA-70926B131299}" DurationType="OneShot" DurationMin="18.631792" DurationMax="18.631792">
@@ -2429,5 +2438,5 @@
 			</Events>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{E4704DAF-05F4-65D6-0226-1B465306C7DC}</FileHash>
+	<FileHash>{EBDE0FF1-5E6E-5483-960F-092C36377E83}</FileHash>
 </SoundBanksInfo>
