@@ -2,3 +2,9 @@
 
 
 #include "LoopSystem/PreplanDataWidget.h"
+#include "LoopSystem/PreplanStep.h"
+
+void UPreplanDataWidget::SetStep(UPreplanStep* Step)
+{
+	PreplanStep = Step;
+}

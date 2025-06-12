@@ -34,9 +34,12 @@ public:
 	UPROPERTY()
 	TArray<TObjectPtr<UPreplanLinkWidget>> InLinks;
 	
-	UPROPERTY()
+	UPROPERTY(BlueprintReadOnly)
 	bool bIsStepActive = false;
 
-	UPROPERTY()
+	UPROPERTY(BlueprintReadOnly)
 	bool bIsStepVisible = false;
+	
+	UPROPERTY(BlueprintReadWrite)
+	bool bIsAlreadySeen = false;
 };
