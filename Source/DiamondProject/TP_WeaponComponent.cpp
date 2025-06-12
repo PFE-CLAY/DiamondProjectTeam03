@@ -123,7 +123,6 @@ bool UTP_WeaponComponent::AttachWeapon(ADiamondProjectCharacter* TargetCharacter
 void UTP_WeaponComponent::EndPlay(const EEndPlayReason::Type EndPlayReason)
 	{
 	//Log this item name in console
-	UE_LOG(LogTemp, Warning, TEXT("WeaponComponent %s has ended play %d"), *GetFullName(), EndPlayReason);
 	if (Character == nullptr)
 	{
 		return;

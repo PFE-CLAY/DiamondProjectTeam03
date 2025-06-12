@@ -450,7 +450,7 @@
     "Type": "User",
     "GUID": "{4B32F9EE-D939-4AEA-A633-697781A78CE3}",
     "Language": "SFX",
-    "Hash": "{62083953-1ABE-4629-8459-AA35FDAB825A}",
+    "Hash": "{2ECA7E35-640E-8DCD-28CE-45572CCBCFD3}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\MUS_SB",
     "ShortName": "MUS_SB",
     "Path": "MUS_SB.bnk",
@@ -3226,7 +3226,7 @@
     "Type": "User",
     "GUID": "{9B915276-16F3-4721-B819-126344F97366}",
     "Language": "SFX",
-    "Hash": "{AF3D65C2-D82C-1D59-E84E-A5A2F0AA5F49}",
+    "Hash": "{F166C757-2C21-9127-F4BF-D092530AAB30}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\VOICES_SB",
     "ShortName": "VOICES_SB",
     "Path": "VOICES_SB.bnk",
@@ -3253,7 +3253,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "DUB_ALLY_1_4_0.wav",
-      "CachePath": "SFX/DUB_ALLY_1_4_0_818F3B66.wem"
+      "CachePath": "SFX/DUB_ALLY_1_4_0_B42FC9A2.wem"
      },
      {
       "Id": "73406871",
@@ -3358,6 +3358,14 @@
       "Location": "Memory",
       "ShortName": "DUB_ARENA_1_3_0.wav",
       "CachePath": "SFX/DUB_ARENA_1_3_0_818F3B66.wem"
+     },
+     {
+      "Id": "305437427",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "DUB_ALLY_1_4_0.wav",
+      "CachePath": "SFX/DUB_ALLY_1_4_0_E0C25F29.wem"
      },
      {
       "Id": "315927435",
@@ -3601,10 +3609,24 @@
       "Id": "3446471352",
       "Name": "Play_DUB_ALLY_1_4_0",
       "ObjectPath": "\\Events\\VOICES_WU\\ALLY\\Play_DUB_ALLY_1_4_0",
-      "GUID": "{E2A38D49-55D6-459A-820D-2728166A2E38}",
+      "GUID": "{E1F85B8A-4F18-4DB3-8AE4-F7660419F33F}",
       "DurationType": "OneShot",
-      "DurationMin": "3.050712",
-      "DurationMax": "3.050712",
+      "DurationMin": "1.269327",
+      "DurationMax": "1.269327",
+      "MediaRefs": [
+       {
+        "Id": "305437427"
+       }
+      ]
+     },
+     {
+      "Id": "3446471353",
+      "Name": "Play_DUB_ALLY_1_4_1",
+      "ObjectPath": "\\Events\\VOICES_WU\\ALLY\\Play_DUB_ALLY_1_4_1",
+      "GUID": "{C3297B53-25D6-4948-8D75-CBAAD1EC4D31}",
+      "DurationType": "OneShot",
+      "DurationMin": "1.8102334",
+      "DurationMax": "1.8102334",
       "MediaRefs": [
        {
         "Id": "45960235"
@@ -5755,7 +5777,7 @@
     "Type": "User",
     "GUID": "{459D1F67-52BD-4FA1-B846-B8F3A50C2C5F}",
     "Language": "SFX",
-    "Hash": "{D7A00705-C95C-8875-6423-0805997B4F05}",
+    "Hash": "{5E8BE29B-3E92-B6EB-9A5F-D137D73BE309}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\SFX_SB",
     "ShortName": "SFX_SB",
     "Path": "SFX_SB.bnk",
@@ -5815,6 +5837,14 @@
       "Location": "Memory",
       "ShortName": "MC\\SFX_HourGlass_Idle_LP.wav",
       "CachePath": "SFX/MC/SFX_HourGlass_Idle_LP_FBC78EF0.wem"
+     },
+     {
+      "Id": "846163179",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "MC\\SFX_EndCinematic.wav",
+      "CachePath": "SFX/MC/SFX_EndCinematic_818F3B66.wem"
      },
      {
       "Id": "862611700",
@@ -5892,6 +5922,20 @@
       "MediaRefs": [
        {
         "Id": "482790053"
+       }
+      ]
+     },
+     {
+      "Id": "3780890544",
+      "Name": "Play_SFX_EndCinematic",
+      "ObjectPath": "\\Events\\SFX_WU\\Play_SFX_EndCinematic",
+      "GUID": "{6045A319-19E1-40D4-AEC6-4D6054A6BBE3}",
+      "DurationType": "OneShot",
+      "DurationMin": "33.23227",
+      "DurationMax": "33.23227",
+      "MediaRefs": [
+       {
+        "Id": "846163179"
        }
       ]
      },
@@ -6254,6 +6298,6 @@
     ]
    }
   ],
-  "FileHash": "{F1F72E32-EA45-FE45-062A-E32262BDD415}"
+  "FileHash": "{367CBD40-9BBB-A066-E497-639B2D36FBD2}"
  }
 }

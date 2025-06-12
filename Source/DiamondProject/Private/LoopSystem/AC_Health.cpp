@@ -17,15 +17,15 @@ void UAC_Health::BeginPlay()
 
 void UAC_Health::DecreaseOneHealth()
 {
-	ChangeHealth(CurrentHealth - 1);
+	ChangeHealth(CurrentHealth - 1, nullptr);
 }
 
-void UAC_Health::DecreaseHealth(int Damage) 
+void UAC_Health::DecreaseHealth(int Damage, const AActor* DamageDealer) 
 {
-	ChangeHealth(CurrentHealth - Damage);
+	ChangeHealth(CurrentHealth - Damage, DamageDealer);
 }
 
-void UAC_Health::ChangeHealth(int NewHealth)
+void UAC_Health::ChangeHealth(int NewHealth, const AActor* DamageDealer)
 {
 	if (!bIsInvincible) {
 		NewHealth = FMath::Clamp(NewHealth, 0, MaxHealth);
@@ -33,11 +33,11 @@ void UAC_Health::ChangeHealth(int NewHealth)
 	}
 	
 	if (CurrentHealth == 0 && !bIsDead) {
-		OnDeathEvent.Broadcast();
+		OnDeathEvent.Broadcast(DamageDealer);
 		bIsDead = true;
 	}
 	
-	OnHealthChangedEvent.Broadcast(CurrentHealth);
+	OnHealthChangedEvent.Broadcast(CurrentHealth, DamageDealer);
 }
 
 void UAC_Health::FullHeal()
