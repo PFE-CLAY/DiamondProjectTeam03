@@ -38,6 +38,16 @@
 								</Reference>
 							</ReferenceList>
 						</Action>
+						<Action Name="" ID="{686D178B-9785-4416-A246-CD29D000043E}" ShortID="533482858">
+							<PropertyList>
+								<Property Name="Delay" Type="Real64" Value="6.1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Glitchy_Stereo" ID="{16769621-B0C1-48C4-8B68-EE1781E6558F}" WorkUnitID="{5DFA8BAE-0AEA-4A3F-92EC-FBABE50597A1}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
 					</ChildrenList>
 				</Event>
 				<Event Name="Play_SFX_HourGlass_Idle_LP" ID="{0994537E-EF34-4F9C-A1D4-F9FFCF6E9CD1}">
@@ -67,6 +77,28 @@
 							<ReferenceList>
 								<Reference Name="Target">
 									<ObjectRef Name="SFX_HourGlass_Idle_LP" ID="{825EA0A0-DE0C-48E0-87D4-C6658E4C5FA2}" WorkUnitID="{5DFA8BAE-0AEA-4A3F-92EC-FBABE50597A1}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_SFX_Button_Backstage" ID="{F8593F23-32CE-4C34-A551-35034A61FD79}">
+					<ChildrenList>
+						<Action Name="" ID="{13C79EAC-8B9B-456D-9800-0B44604D0E8F}" ShortID="53645925">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="SFX_Button_Backstage" ID="{FE84BD95-D09A-4FE5-B89F-68DC0D184DF9}" WorkUnitID="{5DFA8BAE-0AEA-4A3F-92EC-FBABE50597A1}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_SFX_EndCinematic" ID="{6045A319-19E1-40D4-AEC6-4D6054A6BBE3}">
+					<ChildrenList>
+						<Action Name="" ID="{3EAF9B25-50E6-4B1B-99D1-017A998B631C}" ShortID="809789368">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="SFX_EndCinematic" ID="{0476BF4C-BD5C-4173-90A2-78BF69344089}" WorkUnitID="{5DFA8BAE-0AEA-4A3F-92EC-FBABE50597A1}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>

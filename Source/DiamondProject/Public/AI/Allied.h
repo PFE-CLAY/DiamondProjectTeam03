@@ -29,7 +29,7 @@ public:
 	AAllied();
 
 	UPROPERTY()
-	int Position = 0;
+	int PositionID = 0;
 
 	UPROPERTY(EditAnywhere, Category = "Movements")
 	bool bShouldLoop = false;
@@ -58,6 +58,9 @@ public:
 	UPROPERTY(EditAnywhere, Category = "Movements")
 	bool bShouldPlayOnStart = false;
 
+	UPROPERTY()
+	ACustomNavigationPoint* LastNavigationPoint;
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -84,6 +87,9 @@ public:
 
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category="Movements")
 	void OnCrouch();
+
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category="Movements")
+	void OnUncrouch();
 	
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category="Movements")
 	void OnCrouchTimeLimited(float Duration);

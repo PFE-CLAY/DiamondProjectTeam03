@@ -12,7 +12,11 @@ State Group	ID	Name			Wwise Object Path	Notes
 State	ID	Name	State Group			Notes
 	645492555	Out	InsideOutside			
 	748895195	None	InsideOutside			
+	1051960422	TargetInsidePyramid	InsideOutside			
 	1752637612	In	InsideOutside			
+
+Game Parameter	ID	Name			Wwise Object Path	Notes
+	1190880401	RTPC_DoorPyramid			\Default Work Unit\RTPC_DoorPyramid	
 
 Audio Bus	ID	Name			Wwise Object Path	Notes
 	109159411	Game_Global			\Master_WU\Master\Game_Global	
@@ -25,6 +29,7 @@ Audio Bus	ID	Name			Wwise Object Path	Notes
 	3623095082	FOES_Flying			\Master_WU\Master\Game_Global\FOES_Flying	
 	3991942870	Music			\Master_WU\Master\Music	
 	4056684167	Master			\Master_WU\Master	
+	4219618961	AMB_Crowd			\Master_WU\Master\Game_Global\AMB_Crowd	
 
 Auxiliary Bus	ID	Name			Wwise Object Path	Notes
 	367558429	RVB_Voices			\Master_WU\Master\RVB_Voices	

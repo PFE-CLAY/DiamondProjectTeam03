@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SoundBanksInfo Platform="Mac" BasePlatform="Mac" SchemaVersion="16" SoundBankVersion="150">
 	<SoundBanks>
-		<SoundBank Id="2765162312" Type="User" GUID="{9B915276-16F3-4721-B819-126344F97366}" Language="SFX" Hash="{22469D0C-9882-0080-2536-2ADBCEE943E0}">
+		<SoundBank Id="2765162312" Type="User" GUID="{9B915276-16F3-4721-B819-126344F97366}" Language="SFX" Hash="{F166C757-2C21-9127-F4BF-D092530AAB30}">
 			<ObjectPath>\SoundBanks\SoundBanks_WU\VOICES_SB</ObjectPath>
 			<ShortName>VOICES_SB</ShortName>
 			<Path>VOICES_SB.bnk</Path>
@@ -16,7 +16,7 @@
 				</File>
 				<File Id="45960235" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>DUB_ALLY_1_4_0.wav</ShortName>
-					<CachePath>SFX/DUB_ALLY_1_4_0_818F3B66.wem</CachePath>
+					<CachePath>SFX/DUB_ALLY_1_4_0_B42FC9A2.wem</CachePath>
 				</File>
 				<File Id="73406871" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>DUB_ARENA_1_7_0.wav</ShortName>
@@ -69,6 +69,10 @@
 				<File Id="289625457" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>DUB_ARENA_1_3_0.wav</ShortName>
 					<CachePath>SFX/DUB_ARENA_1_3_0_818F3B66.wem</CachePath>
+				</File>
+				<File Id="305437427" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>DUB_ALLY_1_4_0.wav</ShortName>
+					<CachePath>SFX/DUB_ALLY_1_4_0_E0C25F29.wem</CachePath>
 				</File>
 				<File Id="315927435" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>DUB_ALLY_1_6_1.wav</ShortName>
@@ -178,7 +182,12 @@
 						<MediaRef Id="12434701"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="3446471352" Name="Play_DUB_ALLY_1_4_0" ObjectPath="\Events\VOICES_WU\ALLY\Play_DUB_ALLY_1_4_0" GUID="{E2A38D49-55D6-459A-820D-2728166A2E38}" DurationType="OneShot" DurationMin="3.050712" DurationMax="3.050712">
+				<Event Id="3446471352" Name="Play_DUB_ALLY_1_4_0" ObjectPath="\Events\VOICES_WU\ALLY\Play_DUB_ALLY_1_4_0" GUID="{E1F85B8A-4F18-4DB3-8AE4-F7660419F33F}" DurationType="OneShot" DurationMin="1.269327" DurationMax="1.269327">
+					<MediaRefs>
+						<MediaRef Id="305437427"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="3446471353" Name="Play_DUB_ALLY_1_4_1" ObjectPath="\Events\VOICES_WU\ALLY\Play_DUB_ALLY_1_4_1" GUID="{C3297B53-25D6-4948-8D75-CBAAD1EC4D31}" DurationType="OneShot" DurationMin="1.8102334" DurationMax="1.8102334">
 					<MediaRefs>
 						<MediaRef Id="45960235"/>
 					</MediaRefs>
@@ -418,5 +427,5 @@
 			</Events>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{424A2F6E-FEE3-38AF-5953-03D7A0280F32}</FileHash>
+	<FileHash>{9BB19CD6-D446-918F-277B-C18F64CAD1FB}</FileHash>
 </SoundBanksInfo>

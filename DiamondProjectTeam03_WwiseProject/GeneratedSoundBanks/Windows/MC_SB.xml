@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="16" SoundBankVersion="150">
 	<SoundBanks>
-		<SoundBank Id="1956625499" Type="User" GUID="{ADC2D189-6608-4828-BC9C-6EF6F90834DB}" Language="SFX" Hash="{EECCDF9A-5917-9CCB-5047-CC62B536CAB8}">
+		<SoundBank Id="1956625499" Type="User" GUID="{ADC2D189-6608-4828-BC9C-6EF6F90834DB}" Language="SFX" Hash="{658892D1-4D4A-BC0D-04AC-731B424514BB}">
 			<ObjectPath>\SoundBanks\SoundBanks_WU\MC_SB</ObjectPath>
 			<ShortName>MC_SB</ShortName>
 			<Path>MC_SB.bnk</Path>
@@ -12,7 +12,7 @@
 				</File>
 				<File Id="17784281" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>SFX\MC_GetHit.wav</ShortName>
-					<CachePath>SFX/SFX/MC_GetHit_818F3B66.wem</CachePath>
+					<CachePath>SFX/SFX/MC_GetHit_FBC78EF0.wem</CachePath>
 				</File>
 				<File Id="34141530" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\SP\MC_FT_Sand_Jump_01.wav</ShortName>
@@ -510,7 +510,7 @@
 						</SwitchContainer>
 					</SwitchContainers>
 				</Event>
-				<Event Id="950272542" Name="Play_MC_GetHit" ObjectPath="\Events\MC_WU\Play_MC_GetHit" GUID="{DFDAAAFE-1AD5-4D67-9145-D4089C5F1FA9}" DurationType="OneShot" DurationMin="1.4506171" DurationMax="2.525671">
+				<Event Id="950272542" Name="Play_MC_GetHit" ObjectPath="\Events\MC_WU\Play_MC_GetHit" GUID="{DFDAAAFE-1AD5-4D67-9145-D4089C5F1FA9}" MaxAttenuation="2000" DurationType="Infinite">
 					<MediaRefs>
 						<MediaRef Id="17784281"/>
 					</MediaRefs>
@@ -554,6 +554,7 @@
 				<Bus Id="3623095082" Name="FOES_Flying" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global\FOES_Flying" GUID="{439831F9-AA50-4CD2-98C3-ACD8B187380E}"/>
 				<Bus Id="3991942870" Name="Music" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Music" GUID="{08156595-7637-4348-AC3C-2EDE3FCCB08F}"/>
 				<Bus Id="4056684167" Name="Master" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master" GUID="{F3A976BC-47E9-46E5-9EEC-F566BB39DBEE}"/>
+				<Bus Id="4219618961" Name="AMB_Crowd" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global\AMB_Crowd" GUID="{985719AF-3534-41FC-A751-99E11C3F7784}"/>
 			</Busses>
 			<AuxBusses>
 				<AuxBus Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}">
@@ -615,10 +616,14 @@
 					</PluginRefs>
 				</AuxBus>
 			</AuxBusses>
+			<GameParameters>
+				<GameParameter Id="1190880401" Name="RTPC_DoorPyramid" ObjectPath="\Game Parameters\Default Work Unit\RTPC_DoorPyramid" GUID="{D2AEC1CE-EF9E-486E-AE8B-FB121AC42B53}"/>
+			</GameParameters>
 			<StateGroups>
 				<StateGroup Id="3929688590" Name="InsideOutside" ObjectPath="\States\Default Work Unit\InsideOutside" GUID="{2CE28D5C-F27B-42D7-9D91-1905B53C4C3C}">
 					<States>
 						<State Id="645492555" Name="Out" ObjectPath="\States\Default Work Unit\InsideOutside\Out" GUID="{C04B12A4-672A-478D-A191-EED95AAB3C6D}"/>
+						<State Id="646625282" Name="Hub" ObjectPath="\States\Default Work Unit\InsideOutside\Hub" GUID="{E8B28850-8267-42D7-9412-3B19F0F04B6C}"/>
 						<State Id="748895195" Name="None" ObjectPath="\States\Default Work Unit\InsideOutside\None" GUID="{EEC88170-01B2-4B8A-87BF-B7151380ADB4}"/>
 						<State Id="1051960422" Name="TargetInsidePyramid" ObjectPath="\States\Default Work Unit\InsideOutside\TargetInsidePyramid" GUID="{1E0BA403-7723-4863-B8DD-93A6A3CA72ED}"/>
 						<State Id="1752637612" Name="In" ObjectPath="\States\Default Work Unit\InsideOutside\In" GUID="{BFBB05BE-0B19-41C7-B759-C85C0C60B1D8}"/>
@@ -636,5 +641,5 @@
 			</SwitchGroups>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{9F7114A8-FDEA-8B17-BDA8-4DB06794D991}</FileHash>
+	<FileHash>{CFB769D0-36C0-AE5E-3F83-161F170C6FD5}</FileHash>
 </SoundBanksInfo>

@@ -10,7 +10,7 @@
     "Type": "User",
     "GUID": "{ADC2D189-6608-4828-BC9C-6EF6F90834DB}",
     "Language": "SFX",
-    "Hash": "{EECCDF9A-5917-9CCB-5047-CC62B536CAB8}",
+    "Hash": "{658892D1-4D4A-BC0D-04AC-731B424514BB}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\MC_SB",
     "ShortName": "MC_SB",
     "Path": "MC_SB.bnk",
@@ -29,7 +29,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "SFX\\MC_GetHit.wav",
-      "CachePath": "SFX/SFX/MC_GetHit_818F3B66.wem"
+      "CachePath": "SFX/SFX/MC_GetHit_FBC78EF0.wem"
      },
      {
       "Id": "34141530",
@@ -1195,9 +1195,8 @@
       "Name": "Play_MC_GetHit",
       "ObjectPath": "\\Events\\MC_WU\\Play_MC_GetHit",
       "GUID": "{DFDAAAFE-1AD5-4D67-9145-D4089C5F1FA9}",
-      "DurationType": "OneShot",
-      "DurationMin": "1.4506171",
-      "DurationMax": "2.525671",
+      "MaxAttenuation": "2000",
+      "DurationType": "Infinite",
       "MediaRefs": [
        {
         "Id": "17784281"
@@ -1342,6 +1341,12 @@
       "Name": "Master",
       "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master",
       "GUID": "{F3A976BC-47E9-46E5-9EEC-F566BB39DBEE}"
+     },
+     {
+      "Id": "4219618961",
+      "Name": "AMB_Crowd",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\Game_Global\\AMB_Crowd",
+      "GUID": "{985719AF-3534-41FC-A751-99E11C3F7784}"
      }
     ],
     "AuxBusses": [
@@ -1456,6 +1461,14 @@
       }
      }
     ],
+    "GameParameters": [
+     {
+      "Id": "1190880401",
+      "Name": "RTPC_DoorPyramid",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\RTPC_DoorPyramid",
+      "GUID": "{D2AEC1CE-EF9E-486E-AE8B-FB121AC42B53}"
+     }
+    ],
     "StateGroups": [
      {
       "Id": "3929688590",
@@ -1468,6 +1481,12 @@
         "Name": "Out",
         "ObjectPath": "\\States\\Default Work Unit\\InsideOutside\\Out",
         "GUID": "{C04B12A4-672A-478D-A191-EED95AAB3C6D}"
+       },
+       {
+        "Id": "646625282",
+        "Name": "Hub",
+        "ObjectPath": "\\States\\Default Work Unit\\InsideOutside\\Hub",
+        "GUID": "{E8B28850-8267-42D7-9412-3B19F0F04B6C}"
        },
        {
         "Id": "748895195",
@@ -1520,6 +1539,6 @@
     ]
    }
   ],
-  "FileHash": "{4FC20104-1104-3DD9-7B9C-B6E5DF07E259}"
+  "FileHash": "{EE502FD3-3900-A774-F6AA-E6C087ABA001}"
  }
 }

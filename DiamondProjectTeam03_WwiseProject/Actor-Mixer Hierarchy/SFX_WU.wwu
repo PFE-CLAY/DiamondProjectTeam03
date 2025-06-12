@@ -8,6 +8,9 @@
 			</PropertyList>
 			<ChildrenList>
 				<ActorMixer Name="SFX" ID="{88C4E94F-8754-4B71-8AB8-0D9D8E981D6F}" ShortID="464322740">
+					<PropertyList>
+						<Property Name="UseGameAuxSends" Type="bool" Value="True"/>
+					</PropertyList>
 					<ReferenceList>
 						<Reference Name="Conversion">
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
@@ -1879,6 +1882,18 @@
 									</ChildrenList>
 								</RandomSequenceContainer>
 								<RandomSequenceContainer Name="Glitchy_Stereo" ID="{16769621-B0C1-48C4-8B68-EE1781E6558F}" ShortID="350839005">
+									<PropertyList>
+										<Property Name="Pitch" Type="int32">
+											<ValueList>
+												<Value>-1140</Value>
+											</ValueList>
+										</Property>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>-4.5</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
@@ -2560,9 +2575,9 @@
 															<PointList>
 																<Point>
 																	<XPos>0</XPos>
-																	<YPos>-4.93851</YPos>
+																	<YPos>-0.46774</YPos>
 																	<Flags>5</Flags>
-																	<SegmentShape>Log1</SegmentShape>
+																	<SegmentShape>Exp1</SegmentShape>
 																</Point>
 																<Point>
 																	<XPos>150000</XPos>
@@ -2706,6 +2721,57 @@
 							</ChildrenList>
 							<ActiveSourceList>
 								<ActiveSource Name="SFX_HourGlass_Idle_LP" ID="{F8980771-6A78-4846-A113-17853CA1695F}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="SFX_Button_Backstage" ID="{FE84BD95-D09A-4FE5-B89F-68DC0D184DF9}" ShortID="925331480">
+							<PropertyList>
+								<Property Name="3DSpatialization" Type="int16" Value="2"/>
+								<Property Name="OverridePositioning" Type="bool" Value="True"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Attenuation">
+									<ObjectRef Name="ATT_20m" ID="{F52F7C5F-FE35-4688-9788-917AD912F4DF}" WorkUnitID="{3B4DA992-D06B-45A8-A1FE-AF5B7C9D33CA}"/>
+								</Reference>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D02282EE-6893-403D-9438-D481AB659EA3}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="SFX_Button_Backstage" ID="{FF2FDB76-8D18-490D-B6B0-9AFBC26E9030}">
+									<Language>SFX</Language>
+									<AudioFile>SFX_Button_Backstage.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="640927559"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="SFX_Button_Backstage" ID="{FF2FDB76-8D18-490D-B6B0-9AFBC26E9030}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="SFX_EndCinematic" ID="{0476BF4C-BD5C-4173-90A2-78BF69344089}" ShortID="1036630347">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D02282EE-6893-403D-9438-D481AB659EA3}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="SFX_EndCinematic" ID="{1A85E61A-7125-4B54-BBB0-08C9CC5F4194}">
+									<Language>SFX</Language>
+									<AudioFile>MC\SFX_EndCinematic.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="846163179"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="SFX_EndCinematic" ID="{1A85E61A-7125-4B54-BBB0-08C9CC5F4194}" Platform="Linked"/>
 							</ActiveSourceList>
 						</Sound>
 					</ChildrenList>

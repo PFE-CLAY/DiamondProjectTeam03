@@ -20,6 +20,7 @@ Event	ID	Name			Wwise Object Path	Notes
 	432124423	Play_DUB_ARENA_1_1_1			\VOICES_WU\ARENA\Play_DUB_ARENA_1_1_1	
 	3445926899	Play_DUB_ALLY_1_3_0			\VOICES_WU\ALLY\Play_DUB_ALLY_1_3_0	
 	3446471352	Play_DUB_ALLY_1_4_0			\VOICES_WU\ALLY\Play_DUB_ALLY_1_4_0	
+	3446471353	Play_DUB_ALLY_1_4_1			\VOICES_WU\ALLY\Play_DUB_ALLY_1_4_1	
 	3446618415	Play_DUB_ALLY_1_7_0			\VOICES_WU\ALLY\Play_DUB_ALLY_1_7_0	
 	3651897111	Play_DUB_ARENA_1_8_0			\VOICES_WU\ARENA\Play_DUB_ARENA_1_8_0	
 	3652044168	Play_DUB_ARENA_1_9_6			\VOICES_WU\ARENA\Play_DUB_ARENA_1_9_6	
@@ -40,6 +41,7 @@ State Group	ID	Name			Wwise Object Path	Notes
 
 State	ID	Name	State Group			Notes
 	645492555	Out	InsideOutside			
+	646625282	Hub	InsideOutside			
 	748895195	None	InsideOutside			
 	1051960422	TargetInsidePyramid	InsideOutside			
 	1752637612	In	InsideOutside			
@@ -47,7 +49,7 @@ State	ID	Name	State Group			Notes
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	7231555	DUB_ARENA_1_2_2	E:\GitHub\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\DUB_ARENA_1_2_2_818F3B66.wem		\Actor-Mixer Hierarchy\VOICES\VOICES_ARENA\DUB_ARENA_1_2_2		507620
 	12434701	DUB_ALLY_1_3_0	E:\GitHub\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\DUB_ALLY_1_3_0_818F3B66.wem		\Actor-Mixer Hierarchy\VOICES\VOICES_ALLY\DUB_ALLY_1_3_0		349048
-	45960235	DUB_ALLY_1_4_0	E:\GitHub\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\DUB_ALLY_1_4_0_818F3B66.wem		\Actor-Mixer Hierarchy\VOICES\VOICES_ALLY\DUB_ALLY_1_4_0		271778
+	45960235	DUB_ALLY_1_4_1	E:\GitHub\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\DUB_ALLY_1_4_0_B42FC9A2.wem		\Actor-Mixer Hierarchy\VOICES\VOICES_ALLY\DUB_ALLY_1_4_1		161306
 	73406871	DUB_ARENA_1_7_0	E:\GitHub\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\DUB_ARENA_1_7_0_818F3B66.wem		\Actor-Mixer Hierarchy\VOICES\VOICES_ARENA\DUB_ARENA_1_7_0		460448
 	83922193	DUB_ARENA_1_2_3	E:\GitHub\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\DUB_ARENA_1_2_3_818F3B66.wem		\Actor-Mixer Hierarchy\VOICES\VOICES_ARENA\DUB_ARENA_1_2_3		561458
 	84247758	DUB_ALLY_1_8_0	E:\GitHub\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\DUB_ALLY_1_8_0_818F3B66.wem		\Actor-Mixer Hierarchy\VOICES\VOICES_ALLY\DUB_ALLY_1_8_0		426736
@@ -61,6 +63,7 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	278418833	DUB_ARENA_1_9_3	E:\GitHub\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\DUB_ARENA_1_9_3_818F3B66.wem		\Actor-Mixer Hierarchy\VOICES\VOICES_ARENA\DUB_ARENA_1_9_3		80200
 	279456589	DUB_ARENA_1_9_5	E:\GitHub\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\DUB_ARENA_1_9_5_818F3B66.wem		\Actor-Mixer Hierarchy\VOICES\VOICES_ARENA\DUB_ARENA_1_9_5		215806
 	289625457	DUB_ARENA_1_3_0	E:\GitHub\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\DUB_ARENA_1_3_0_818F3B66.wem		\Actor-Mixer Hierarchy\VOICES\VOICES_ARENA\DUB_ARENA_1_3_0		670476
+	305437427	DUB_ALLY_1_4_0	E:\GitHub\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\DUB_ALLY_1_4_0_E0C25F29.wem		\Actor-Mixer Hierarchy\VOICES\VOICES_ALLY\DUB_ALLY_1_4_0		113136
 	315927435	DUB_ALLY_1_6_1	E:\GitHub\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\DUB_ALLY_1_6_1_818F3B66.wem		\Actor-Mixer Hierarchy\VOICES\VOICES_ALLY\DUB_ALLY_1_6_1		87824
 	338368799	DUB_ARENA_1_1_2	E:\GitHub\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\DUB_ARENA_1_1_2_818F3B66.wem		\Actor-Mixer Hierarchy\VOICES\VOICES_ARENA\DUB_ARENA_1_1_2		267422
 	338492853	DUB_ALLY_1_6_0	E:\GitHub\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\DUB_ALLY_1_6_0_818F3B66.wem		\Actor-Mixer Hierarchy\VOICES\VOICES_ALLY\DUB_ALLY_1_6_0		329238

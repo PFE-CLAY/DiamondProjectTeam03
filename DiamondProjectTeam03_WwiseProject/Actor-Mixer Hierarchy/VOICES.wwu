@@ -545,8 +545,17 @@
 								<StateRef Name="In" ID="{BFBB05BE-0B19-41C7-B759-C85C0C60B1D8}"/>
 								<CustomState Name="" ID="{5947F9F4-7813-479D-9E50-31D9C610173F}" ShortID="611316238">
 									<PropertyList>
-										<Property Name="Lowpass" Type="int16" Value="64"/>
+										<Property Name="Lowpass" Type="int16" Value="75"/>
 										<Property Name="UserAuxSendVolume1" Type="Real64" Value="108"/>
+									</PropertyList>
+								</CustomState>
+							</CustomState>
+							<CustomState>
+								<StateRef Name="Hub" ID="{E8B28850-8267-42D7-9412-3B19F0F04B6C}"/>
+								<CustomState Name="" ID="{40C788AB-0E05-46DB-9C05-5B547B999BB8}" ShortID="714793882">
+									<PropertyList>
+										<Property Name="Lowpass" Type="int16" Value="59"/>
+										<Property Name="UserAuxSendVolume1" Type="Real64" Value="26"/>
 									</PropertyList>
 								</CustomState>
 							</CustomState>
@@ -567,9 +576,15 @@
 				</ActorMixer>
 				<ActorMixer Name="VOICES_ALLY" ID="{89CF48A7-6094-4CF0-B7A2-A3D62E818C83}" ShortID="892518813">
 					<PropertyList>
+						<Property Name="EnableAttenuation" Type="bool" Value="False"/>
 						<Property Name="Pitch" Type="int32">
 							<ValueList>
 								<Value>-130</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>3</Value>
 							</ValueList>
 						</Property>
 					</PropertyList>
@@ -725,10 +740,15 @@
 							</ReferenceList>
 							<ChildrenList>
 								<AudioFileSource Name="DUB_ALLY_1_4_0" ID="{D9C2714E-E073-4541-9DF9-B15FA9185E3B}">
+									<PropertyList>
+										<Property Name="LoopBegin" Type="Real64" Value="0"/>
+										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+										<Property Name="TrimEnd" Type="Real64" Value="1.17750275807723"/>
+									</PropertyList>
 									<Language>SFX</Language>
 									<AudioFile>DUB_ALLY_1_4_0.wav</AudioFile>
 									<MediaIDList>
-										<MediaID ID="45960235"/>
+										<MediaID ID="305437427"/>
 									</MediaIDList>
 								</AudioFileSource>
 							</ChildrenList>
@@ -844,6 +864,33 @@
 							</ChildrenList>
 							<ActiveSourceList>
 								<ActiveSource Name="DUB_ALLY_1_8_0" ID="{8CA80B9E-32D6-47B1-B7FA-400AC05B8BFC}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="DUB_ALLY_1_4_1" ID="{080FA2BD-DC58-4BF6-820E-9600A319BC84}" ShortID="989590926">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D02282EE-6893-403D-9438-D481AB659EA3}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="DUB_ALLY_1_4_0" ID="{49F969D2-1A11-4416-BB4E-F15F6DE41473}">
+									<PropertyList>
+										<Property Name="LoopBegin" Type="Real64" Value="1.15074133175729"/>
+										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+										<Property Name="TrimBegin" Type="Real64" Value="1.15074133175729"/>
+									</PropertyList>
+									<Language>SFX</Language>
+									<AudioFile>DUB_ALLY_1_4_0.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="45960235"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="DUB_ALLY_1_4_0" ID="{49F969D2-1A11-4416-BB4E-F15F6DE41473}" Platform="Linked"/>
 							</ActiveSourceList>
 						</Sound>
 					</ChildrenList>

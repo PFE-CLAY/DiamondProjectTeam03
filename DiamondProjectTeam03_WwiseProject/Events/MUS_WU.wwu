@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{E96921F1-C278-4664-92E6-7E226124E722}" SchemaVersion="119">
+	<Events>
+		<WorkUnit Name="MUS_WU" ID="{E96921F1-C278-4664-92E6-7E226124E722}" PersistMode="Standalone">
+			<PropertyList>
+				<Property Name="Color" Type="int16" Value="8"/>
+				<Property Name="OverrideColor" Type="bool" Value="True"/>
+			</PropertyList>
+			<ChildrenList>
+				<Event Name="Play_MUS_ARENA" ID="{FCFD5ACC-2CA9-4324-8CC4-F10D48548642}">
+					<ChildrenList>
+						<Action Name="" ID="{7C6DBC90-1082-4681-B484-5FA0A89552A8}" ShortID="396070327">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="MUS_ARENA" ID="{97AB55CD-69C5-45E8-B2A6-0FA67392749B}" WorkUnitID="{08BF5C28-C058-481A-9682-718C5A7E58B0}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_MUS_Blacksands_Hub" ID="{5EFDE9D3-947B-4379-BC68-9A8FC45B710A}">
+					<ChildrenList>
+						<Action Name="" ID="{EEB26CDD-69E7-4946-8F1F-A53DEB18C25A}" ShortID="1009322023">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="MUS_Blacksands_Hub" ID="{BA415DAB-038B-44F9-A019-63A88B3EDBFA}" WorkUnitID="{08BF5C28-C058-481A-9682-718C5A7E58B0}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Stop_MUS_Blacksands_Hub" ID="{60E90B0F-AFEA-4121-8616-69BB7F5853C0}">
+					<ChildrenList>
+						<Action Name="" ID="{E88E32F0-B2B4-445B-8911-2BEFF9C84C09}" ShortID="402971357">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+								<Property Name="FadeTime" Type="Real64" Value="5"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="MUS_Blacksands_Hub" ID="{BA415DAB-038B-44F9-A019-63A88B3EDBFA}" WorkUnitID="{08BF5C28-C058-481A-9682-718C5A7E58B0}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+			</ChildrenList>
+		</WorkUnit>
+	</Events>
+</WwiseDocument>

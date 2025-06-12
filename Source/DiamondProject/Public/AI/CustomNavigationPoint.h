@@ -45,7 +45,7 @@ public:
 	UPROPERTY(EditAnywhere, Category="NavPoint", meta=(EditCondition="PointType == EPointType::Crouch && !bShouldStayCrouched"))
 	float TimeToWaitCrouched;
 	
-	UPROPERTY(EditAnywhere, Category="NavPoint")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="NavPoint")
 	bool bShouldWait;
 
 	UPROPERTY(EditAnywhere, Category="NavPoint", meta=(EditCondition="bShouldWait"))
@@ -56,9 +56,15 @@ public:
 
 	UPROPERTY(EditAnywhere, Category="NavPoint", BlueprintReadOnly, meta=(EditCondition="bShouldPlayDialogue"))
 	UAkAudioEvent* Dialogue;
+
+	UPROPERTY(EditAnywhere, Category="NavPoint", BlueprintReadOnly, meta=(EditCondition="bShouldPlayDialogue"))
+	UDataTable* Subtitles;
 	
-	UPROPERTY()
+	UPROPERTY(BlueprintReadOnly)
 	AAllied* Allied;
+
+	UPROPERTY()
+	FTimerHandle TimerHandle;
 	
 
 protected:
@@ -74,5 +80,21 @@ public:
 
 	UFUNCTION(BlueprintImplementableEvent)
 	void OnPlayDialogue();
+
+	UFUNCTION()
+	void PlayVoiceline();
+
+	UFUNCTION(BlueprintCallable)
+	void StopTimer();
+
+	UFUNCTION()
+	void StartTimer();
+
+	UFUNCTION(BlueprintImplementableEvent)
+	void OnArrivingOnPoint();
+
+	UFUNCTION(BlueprintImplementableEvent)
+	void OnQuittingPoint();
+
 	
 };

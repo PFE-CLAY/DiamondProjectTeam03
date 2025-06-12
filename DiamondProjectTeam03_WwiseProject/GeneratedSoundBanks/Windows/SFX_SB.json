@@ -10,11 +10,35 @@
     "Type": "User",
     "GUID": "{459D1F67-52BD-4FA1-B846-B8F3A50C2C5F}",
     "Language": "SFX",
-    "Hash": "{7E3B5390-4075-F55C-E8D1-5E6044DD92BC}",
+    "Hash": "{5E8BE29B-3E92-B6EB-9A5F-D137D73BE309}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\SFX_SB",
     "ShortName": "SFX_SB",
     "Path": "SFX_SB.bnk",
     "Media": [
+     {
+      "Id": "57706824",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "SFX_BlackSand_Glitchy_2s_Stereo_06.wav",
+      "CachePath": "SFX/SFX_BlackSand_Glitchy_2s_Stereo_06_818F3B66.wem"
+     },
+     {
+      "Id": "418805659",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "SFX_BlackSand_Glitchy_2s_Stereo_04.wav",
+      "CachePath": "SFX/SFX_BlackSand_Glitchy_2s_Stereo_04_818F3B66.wem"
+     },
+     {
+      "Id": "460314317",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "SFX_BlackSand_Glitchy_2s_Stereo_02.wav",
+      "CachePath": "SFX/SFX_BlackSand_Glitchy_2s_Stereo_02_818F3B66.wem"
+     },
      {
       "Id": "482790053",
       "Language": "SFX",
@@ -22,6 +46,22 @@
       "Location": "Memory",
       "ShortName": "MC\\SFX_Door_Pyramid_Open.wav",
       "CachePath": "SFX/MC/SFX_Door_Pyramid_Open_818F3B66.wem"
+     },
+     {
+      "Id": "498448547",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "SFX_BlackSand_Glitchy_2s_Stereo_01.wav",
+      "CachePath": "SFX/SFX_BlackSand_Glitchy_2s_Stereo_01_818F3B66.wem"
+     },
+     {
+      "Id": "640927559",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "SFX_Button_Backstage.wav",
+      "CachePath": "SFX/SFX_Button_Backstage_818F3B66.wem"
      },
      {
       "Id": "794556847",
@@ -32,12 +72,36 @@
       "CachePath": "SFX/MC/SFX_HourGlass_Idle_LP_FBC78EF0.wem"
      },
      {
+      "Id": "846163179",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "MC\\SFX_EndCinematic.wav",
+      "CachePath": "SFX/MC/SFX_EndCinematic_818F3B66.wem"
+     },
+     {
       "Id": "862611700",
       "Language": "SFX",
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "MC\\SFX_Door_Pyramid.wav",
-      "CachePath": "SFX/MC/SFX_Door_Pyramid_B3EF6B4D.wem"
+      "CachePath": "SFX/MC/SFX_Door_Pyramid_AA228216.wem"
+     },
+     {
+      "Id": "1013981530",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "SFX_BlackSand_Glitchy_2s_Stereo_05.wav",
+      "CachePath": "SFX/SFX_BlackSand_Glitchy_2s_Stereo_05_818F3B66.wem"
+     },
+     {
+      "Id": "1028643509",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "SFX_BlackSand_Glitchy_2s_Stereo_03.wav",
+      "CachePath": "SFX/SFX_BlackSand_Glitchy_2s_Stereo_03_818F3B66.wem"
      },
      {
       "Id": "1049815799",
@@ -49,6 +113,21 @@
      }
     ],
     "Events": [
+     {
+      "Id": "1623238786",
+      "Name": "Play_SFX_Button_Backstage",
+      "ObjectPath": "\\Events\\SFX_WU\\Play_SFX_Button_Backstage",
+      "GUID": "{F8593F23-32CE-4C34-A551-35034A61FD79}",
+      "MaxAttenuation": "2000",
+      "DurationType": "OneShot",
+      "DurationMin": "0.9392083",
+      "DurationMax": "0.9392083",
+      "MediaRefs": [
+       {
+        "Id": "640927559"
+       }
+      ]
+     },
      {
       "Id": "1447435678",
       "Name": "Play_SFX_Door_Pyramid_Close",
@@ -80,6 +159,20 @@
       ]
      },
      {
+      "Id": "3780890544",
+      "Name": "Play_SFX_EndCinematic",
+      "ObjectPath": "\\Events\\SFX_WU\\Play_SFX_EndCinematic",
+      "GUID": "{6045A319-19E1-40D4-AEC6-4D6054A6BBE3}",
+      "DurationType": "OneShot",
+      "DurationMin": "33.23227",
+      "DurationMax": "33.23227",
+      "MediaRefs": [
+       {
+        "Id": "846163179"
+       }
+      ]
+     },
+     {
       "Id": "2496075354",
       "Name": "Play_SFX_HourGlass_Destruction_2D",
       "ObjectPath": "\\Events\\SFX_WU\\Play_SFX_HourGlass_Destruction_2D",
@@ -88,6 +181,24 @@
       "DurationMin": "18.631792",
       "DurationMax": "18.631792",
       "MediaRefs": [
+       {
+        "Id": "57706824"
+       },
+       {
+        "Id": "418805659"
+       },
+       {
+        "Id": "460314317"
+       },
+       {
+        "Id": "498448547"
+       },
+       {
+        "Id": "1013981530"
+       },
+       {
+        "Id": "1028643509"
+       },
        {
         "Id": "1049815799"
        }
@@ -109,6 +220,6 @@
     ]
    }
   ],
-  "FileHash": "{985F630B-8B8D-7AA2-E1B0-E7D3C674CB6A}"
+  "FileHash": "{94542312-875B-8206-9610-6B5630D80DF9}"
  }
 }
