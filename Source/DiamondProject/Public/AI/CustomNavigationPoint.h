@@ -93,5 +93,8 @@ public:
 	UFUNCTION(BlueprintImplementableEvent)
 	void OnArrivingOnPoint();
 
+	UFUNCTION(BlueprintImplementableEvent)
+	void OnQuittingPoint();
+
 	
 };

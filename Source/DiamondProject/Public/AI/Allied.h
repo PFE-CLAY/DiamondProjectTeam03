@@ -58,6 +58,9 @@ public:
 	UPROPERTY(EditAnywhere, Category = "Movements")
 	bool bShouldPlayOnStart = false;
 
+	UPROPERTY()
+	ACustomNavigationPoint* LastNavigationPoint;
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
