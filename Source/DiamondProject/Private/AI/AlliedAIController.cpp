@@ -33,20 +33,20 @@ void AAlliedAIController::OnMoveCompleted(FAIRequestID RequestID, EPathFollowing
 		FString EnumName = EnumPtr->GetNameStringByValue(static_cast<int64>(Result));
 		//GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Red, EnumName);
 	}
-	ACustomNavigationPoint* CurrentNavigationPoint = AlliedControlled->GetCurrentNavigationPoint();
-	CurrentNavigationPoint->OnArrivingOnPoint();
-	if(CurrentNavigationPoint == nullptr) return;
+	AlliedControlled->LastNavigationPoint = AlliedControlled->GetCurrentNavigationPoint();
+	AlliedControlled->LastNavigationPoint->OnArrivingOnPoint();
+	if(AlliedControlled->LastNavigationPoint == nullptr) return;
 	AlliedControlled->PositionID++;
-	CurrentNavigationPoint->PlayVoiceline();
+	AlliedControlled->LastNavigationPoint->PlayVoiceline();
 	//GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Magenta, FString::Printf(TEXT("AAAAAA = %d"), AlliedControlled->PositionID));
 
-	if(CurrentNavigationPoint->bShouldWait){
-		CurrentNavigationPoint->StartTimer();
+	if(AlliedControlled->LastNavigationPoint->bShouldWait){
+		AlliedControlled->LastNavigationPoint->StartTimer();
 		return;
 	}
 	
-	CurrentNavigationPoint->PointEffect();
-	if(CurrentNavigationPoint->PointType == EPointType::Crouch) return;
+	AlliedControlled->LastNavigationPoint->PointEffect();
+	if(AlliedControlled->LastNavigationPoint->PointType == EPointType::Crouch) return;
 	if(AlliedControlled->PositionID >= AlliedControlled->Path->PatrolPoints.Num())
 	{
 		if(AlliedControlled->bShouldLoop){

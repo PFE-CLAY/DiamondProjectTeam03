@@ -57,7 +57,7 @@ void AAllied::Patrol()
 		AnimInstance->bIsMoving = true;
 		FAIMoveRequest MoveRequest;
 		ACustomNavigationPoint* NavPoint = Path->PatrolPoints[PositionID];
-		
+		if(LastNavigationPoint != nullptr) LastNavigationPoint->OnQuittingPoint();
 		MoveRequest.SetGoalLocation(NavPoint->GetActorLocation());
 		AIController->MoveTo(MoveRequest, nullptr);
 	}
