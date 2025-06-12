@@ -39,4 +39,7 @@ public:
 
 	UPROPERTY(BlueprintReadOnly)
 	bool bIsStepVisible = false;
+	
+	UPROPERTY(BlueprintReadWrite)
+	bool bIsAlreadySeen = false;
 };
