@@ -23,7 +23,7 @@ public:
 	TObjectPtr<AActor> CommentaryActor;
 	
 	UPROPERTY()
-	UAkAudioEvent* InterruptEvent = nullptr;
+	TArray<UAkAudioEvent*> InterruptEvents = {};
 
 	UPROPERTY()
 	int32 PlayingID = AK_INVALID_PLAYING_ID;
@@ -41,7 +41,9 @@ public:
 
 	void PlayCommentaryEvent(UAkAudioEvent* Event, AActor* TargetActor, int priority);
 
-	void RegisterActor(AActor* TargetActor, UAkAudioEvent* CommentaryInterruptEvent);
+	UAkAudioEvent* GetInterruptEvent() const;
+	
+	void RegisterActor(AActor* TargetActor, const TArray<UAkAudioEvent*>& CommentaryInterruptEvents);
 	
 	DECLARE_DELEGATE(FOnCommentaryEventInterrupt);
 

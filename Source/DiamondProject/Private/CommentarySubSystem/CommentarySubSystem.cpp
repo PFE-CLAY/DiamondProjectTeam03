@@ -42,6 +42,7 @@ void UCommentarySubSystem::PlayCommentaryEvent(class UAkAudioEvent* Event, AActo
 						this->PlayingID = GetGameInstance()->GetSubsystem<UWwiseManagerSubsystem>()->PostEvent(Event, TargetActor);
 						OnCommentaryEventInterruptDelegate.Unbind();
 					});
+					UAkAudioEvent* InterruptEvent = GetInterruptEvent();
 					PlayingID = GetGameInstance()->GetSubsystem<UWwiseManagerSubsystem>()->PostEvent(InterruptEvent, TargetActor);
 				} else {
 					WwiseHandler->EndOfEventCallbackDelegate.AddDynamic(this, &UCommentarySubSystem::OnEndEvent);
@@ -60,10 +61,22 @@ void UCommentarySubSystem::PlayCommentaryEvent(class UAkAudioEvent* Event, AActo
 	}
 }
 
-void UCommentarySubSystem::RegisterActor(AActor* TargetActor, UAkAudioEvent* CommentaryInterruptEvent)
+UAkAudioEvent* UCommentarySubSystem::GetInterruptEvent() const
+{
+	UAkAudioEvent* InterruptEvent = nullptr;
+
+	int index = FMath::RandRange(0, InterruptEvents.Num() - 1);
+	InterruptEvent = InterruptEvents.IsValidIndex(index) ? InterruptEvents[index] : InterruptEvents.IsValidIndex(0) ? InterruptEvents[0] : nullptr;
+	if (InterruptEvent == nullptr) {
+		UE_LOG(LogTemp, Error, TEXT("[UCommentarySubSystem::GetInterruptEvent] No valid interrupt event found!"));
+	}
+	return InterruptEvent;
+}
+
+void UCommentarySubSystem::RegisterActor(AActor* TargetActor, const TArray<UAkAudioEvent*>& CommentaryInterruptEvents)
 {
 	CommentaryActor = TargetActor;
-	InterruptEvent = CommentaryInterruptEvent;
+	InterruptEvents = CommentaryInterruptEvents;
 }
 
 

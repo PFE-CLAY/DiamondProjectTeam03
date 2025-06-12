@@ -17,7 +17,7 @@ ACommentator::ACommentator()
 void ACommentator::BeginPlay()
 {
 	Super::BeginPlay();
-	GetGameInstance()->GetSubsystem<UCommentarySubSystem>()->RegisterActor(this, InterruptEvent);
+	GetGameInstance()->GetSubsystem<UCommentarySubSystem>()->RegisterActor(this, InterruptEvents);
 }
 
 // Called every frame

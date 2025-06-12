@@ -15,7 +15,7 @@ class DIAMONDPROJECT_API ACommentator : public AActor
 
 public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	UAkAudioEvent* InterruptEvent;
+	TArray<UAkAudioEvent*> InterruptEvents;
 	
 protected:
 	// Called when the game starts or when spawned
