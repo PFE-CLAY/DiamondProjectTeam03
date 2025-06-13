@@ -73,6 +73,9 @@ protected:
 
 	UPROPERTY()
 	TArray<AActor*> AllActorsInRange;
+
+	UPROPERTY()
+	FTimerHandle TimerHandle;
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
