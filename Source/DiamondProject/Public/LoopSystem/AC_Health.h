@@ -38,6 +38,9 @@ protected:
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly)
 	bool bIsInvincible = false;
+	
+    UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="Damage")
+    TArray<TSubclassOf<AActor>> DamageIgnoreClasses;
 
 public:
 	// Sets default values for this component's properties
