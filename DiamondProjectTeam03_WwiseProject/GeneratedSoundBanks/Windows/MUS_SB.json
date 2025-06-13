@@ -10,18 +10,18 @@
     "Type": "User",
     "GUID": "{4B32F9EE-D939-4AEA-A633-697781A78CE3}",
     "Language": "SFX",
-    "Hash": "{99C2F85F-6C85-D61A-56B8-9D9722D7AD07}",
+    "Hash": "{2ECA7E35-640E-8DCD-28CE-45572CCBCFD3}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\MUS_SB",
     "ShortName": "MUS_SB",
     "Path": "MUS_SB.bnk",
     "Media": [
      {
-      "Id": "185337180",
+      "Id": "721910099",
       "Language": "SFX",
       "Streaming": "false",
       "Location": "Memory",
-      "ShortName": "JV BLACK SAND V1.wav",
-      "CachePath": "SFX/JV BLACK SAND V1_818F3B66.wem"
+      "ShortName": "JV BLACK SAND MIX V2.wav",
+      "CachePath": "SFX/JV BLACK SAND MIX V2_818F3B66.wem"
      },
      {
       "Id": "1072494655",
@@ -29,7 +29,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "MUS_Blacksands_Hub.wav",
-      "CachePath": "SFX/MUS_Blacksands_Hub_414085DB.wem"
+      "CachePath": "SFX/MUS_Blacksands_Hub_67AD3CF9.wem"
      }
     ],
     "Events": [
@@ -39,11 +39,11 @@
       "ObjectPath": "\\Events\\MUS_WU\\Play_MUS_ARENA",
       "GUID": "{FCFD5ACC-2CA9-4324-8CC4-F10D48548642}",
       "DurationType": "OneShot",
-      "DurationMin": "281.6",
-      "DurationMax": "281.6",
+      "DurationMin": "259.2",
+      "DurationMax": "259.2",
       "MediaRefs": [
        {
-        "Id": "185337180"
+        "Id": "721910099"
        }
       ]
      },
@@ -77,6 +77,6 @@
     ]
    }
   ],
-  "FileHash": "{CC9D6C87-14CA-F5AB-9374-043CC11E57AE}"
+  "FileHash": "{0837C538-5F21-418E-687F-106954424F24}"
  }
 }

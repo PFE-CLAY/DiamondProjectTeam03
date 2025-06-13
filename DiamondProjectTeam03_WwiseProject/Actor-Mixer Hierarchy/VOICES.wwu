@@ -881,6 +881,11 @@
 										<Property Name="LoopBegin" Type="Real64" Value="1.15074133175729"/>
 										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
 										<Property Name="TrimBegin" Type="Real64" Value="1.15074133175729"/>
+										<Property Name="VolumeOffset" Type="Real64">
+											<ValueList>
+												<Value>8.5</Value>
+											</ValueList>
+										</Property>
 									</PropertyList>
 									<Language>SFX</Language>
 									<AudioFile>DUB_ALLY_1_4_0.wav</AudioFile>
