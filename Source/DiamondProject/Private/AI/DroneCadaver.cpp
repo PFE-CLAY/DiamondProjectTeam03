@@ -4,6 +4,7 @@
 #include "AI/DroneCadaver.h"
 
 #include "AI/Allied.h"
+#include "Components/CapsuleComponent.h"
 #include "Kismet/GameplayStatics.h"
 
 
@@ -71,14 +72,18 @@ void ADroneCadaver::CarryBody()
 	FVector Location = TargetBody->AlliedMesh->GetBoneLocation(TargetBody->GrabBoneName);
 	TargetBody->PhysicsHandle->GrabComponentAtLocation(TargetBody->AlliedMesh, TargetBody->GrabBoneName,
 		Location);
-	//TODO: ne collisione plus 
+	TargetBody->AlliedMesh->SetCollisionResponseToChannel(ECollisionChannel::ECC_WorldStatic, ECollisionResponse::ECR_Ignore);
+	TargetBody->AlliedMesh->SetCollisionResponseToChannel(ECollisionChannel::ECC_WorldDynamic, ECollisionResponse::ECR_Ignore);
+	TargetBody->CapsuleAllied->SetCollisionEnabled(ECollisionEnabled::NoCollision);
 	bShouldGrab = true;
 }
 
 void ADroneCadaver::ThrowBody()
 {
 	TargetBody->PhysicsHandle->ReleaseComponent();
-	
+	TargetBody->AlliedMesh->SetCollisionResponseToChannel(ECollisionChannel::ECC_WorldStatic, ECollisionResponse::ECR_Block);
+	TargetBody->AlliedMesh->SetCollisionResponseToChannel(ECollisionChannel::ECC_WorldDynamic, ECollisionResponse::ECR_Block);
+	TargetBody->CapsuleAllied->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
 	bShouldGrab = false;
 	if(CadaverArray.IsEmpty())
 	{
