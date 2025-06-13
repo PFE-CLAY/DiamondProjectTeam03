@@ -450,18 +450,18 @@
     "Type": "User",
     "GUID": "{4B32F9EE-D939-4AEA-A633-697781A78CE3}",
     "Language": "SFX",
-    "Hash": "{99C2F85F-6C85-D61A-56B8-9D9722D7AD07}",
+    "Hash": "{2ECA7E35-640E-8DCD-28CE-45572CCBCFD3}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\MUS_SB",
     "ShortName": "MUS_SB",
     "Path": "MUS_SB.bnk",
     "Media": [
      {
-      "Id": "185337180",
+      "Id": "721910099",
       "Language": "SFX",
       "Streaming": "false",
       "Location": "Memory",
-      "ShortName": "JV BLACK SAND V1.wav",
-      "CachePath": "SFX/JV BLACK SAND V1_818F3B66.wem"
+      "ShortName": "JV BLACK SAND MIX V2.wav",
+      "CachePath": "SFX/JV BLACK SAND MIX V2_818F3B66.wem"
      },
      {
       "Id": "1072494655",
@@ -469,7 +469,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "MUS_Blacksands_Hub.wav",
-      "CachePath": "SFX/MUS_Blacksands_Hub_414085DB.wem"
+      "CachePath": "SFX/MUS_Blacksands_Hub_67AD3CF9.wem"
      }
     ],
     "Events": [
@@ -479,11 +479,11 @@
       "ObjectPath": "\\Events\\MUS_WU\\Play_MUS_ARENA",
       "GUID": "{FCFD5ACC-2CA9-4324-8CC4-F10D48548642}",
       "DurationType": "OneShot",
-      "DurationMin": "281.6",
-      "DurationMax": "281.6",
+      "DurationMin": "259.2",
+      "DurationMax": "259.2",
       "MediaRefs": [
        {
-        "Id": "185337180"
+        "Id": "721910099"
        }
       ]
      },
@@ -3226,7 +3226,7 @@
     "Type": "User",
     "GUID": "{9B915276-16F3-4721-B819-126344F97366}",
     "Language": "SFX",
-    "Hash": "{26473094-3AEA-C48B-D9AC-AD3EBACFBA3B}",
+    "Hash": "{38DF6B0C-5DA6-0E1F-211B-A583FE863BA9}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\VOICES_SB",
     "ShortName": "VOICES_SB",
     "Path": "VOICES_SB.bnk",
@@ -3253,7 +3253,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "DUB_ALLY_1_4_0.wav",
-      "CachePath": "SFX/DUB_ALLY_1_4_0_818F3B66.wem"
+      "CachePath": "SFX/DUB_ALLY_1_4_0_B42FC9A2.wem"
      },
      {
       "Id": "73406871",
@@ -3358,6 +3358,14 @@
       "Location": "Memory",
       "ShortName": "DUB_ARENA_1_3_0.wav",
       "CachePath": "SFX/DUB_ARENA_1_3_0_818F3B66.wem"
+     },
+     {
+      "Id": "305437427",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "DUB_ALLY_1_4_0.wav",
+      "CachePath": "SFX/DUB_ALLY_1_4_0_E0C25F29.wem"
      },
      {
       "Id": "315927435",
@@ -3601,10 +3609,24 @@
       "Id": "3446471352",
       "Name": "Play_DUB_ALLY_1_4_0",
       "ObjectPath": "\\Events\\VOICES_WU\\ALLY\\Play_DUB_ALLY_1_4_0",
-      "GUID": "{E2A38D49-55D6-459A-820D-2728166A2E38}",
+      "GUID": "{E1F85B8A-4F18-4DB3-8AE4-F7660419F33F}",
       "DurationType": "OneShot",
-      "DurationMin": "3.050712",
-      "DurationMax": "3.050712",
+      "DurationMin": "1.269327",
+      "DurationMax": "1.269327",
+      "MediaRefs": [
+       {
+        "Id": "305437427"
+       }
+      ]
+     },
+     {
+      "Id": "3446471353",
+      "Name": "Play_DUB_ALLY_1_4_1",
+      "ObjectPath": "\\Events\\VOICES_WU\\ALLY\\Play_DUB_ALLY_1_4_1",
+      "GUID": "{C3297B53-25D6-4948-8D75-CBAAD1EC4D31}",
+      "DurationType": "OneShot",
+      "DurationMin": "1.8102334",
+      "DurationMax": "1.8102334",
       "MediaRefs": [
        {
         "Id": "45960235"
@@ -6276,6 +6298,6 @@
     ]
    }
   ],
-  "FileHash": "{D309AD02-C54B-D1BE-C9DD-45B2A0701C32}"
+  "FileHash": "{3AB152F7-8D1E-37C1-C493-D31423B53F74}"
  }
 }
