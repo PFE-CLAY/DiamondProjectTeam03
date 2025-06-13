@@ -99,15 +99,15 @@ void ULoopSubsystem::InitializePreplanSteps()
 	} else {
 		for (int i = 0; i < FoundPreplanDataWidgets.Num(); i++)
 		{
-			UPreplanDataWidget* PreplanDataActor = Cast<UPreplanDataWidget>(FoundPreplanDataWidgets[i]);
-			if (PreplanDataActor == nullptr){
+			UPreplanDataWidget* PreplanDataWidget = Cast<UPreplanDataWidget>(FoundPreplanDataWidgets[i]);
+			if (PreplanDataWidget == nullptr){
 				continue;
 			}
 			
-			if (PreplanDataActor->PreplanID.IsEmpty()){
+			if (PreplanDataWidget->PreplanID.IsEmpty()){
 				UE_LOG(LogTemp, Warning, TEXT("Preplan has no ID. Step cannot be found."))				
 			} else{
-				TObjectPtr<UPreplanStep>* PreplanStepPtr = PreplanSteps.Find(PreplanDataActor->PreplanID);
+				TObjectPtr<UPreplanStep>* PreplanStepPtr = PreplanSteps.Find(PreplanDataWidget->PreplanID);
 				if (PreplanStepPtr == nullptr){
 					return;
 				}
@@ -115,12 +115,13 @@ void ULoopSubsystem::InitializePreplanSteps()
 				TObjectPtr<UPreplanStep> PreplanStep = PreplanStepPtr->Get();
 				if (PreplanStep != nullptr) {
 					PreplanStep->NbActivations = 0;
-					PreplanStep->PreplanData = PreplanDataActor;
+					PreplanStep->PreplanData = PreplanDataWidget;
 					PreplanStep->PreplanAdvices.Empty();
 					PreplanStep->InLinks.Empty();
 					PreplanStep->OutLinks.Empty();
 					PreplanStep->bIsStepVisible = PreplanStep->bIsStepActive;
-					SetPreplanVisibility(PreplanDataActor, PreplanStep->bIsStepVisible);
+					SetPreplanVisibility(PreplanDataWidget, PreplanStep->bIsStepVisible);
+					PreplanDataWidget->SetStep(PreplanStep);
 				}
 			}
 		}

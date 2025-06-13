@@ -36,7 +36,7 @@ public:
 
 	UPROPERTY(EditAnywhere, Category = "Grab")
 	FVector GrabLocation;
-
+	
 	UPROPERTY(EditAnywhere, Category = "Grab")
 	FName GrabBoneName = "Root";
 
@@ -57,6 +57,9 @@ public:
 
 	UPROPERTY(EditAnywhere, Category = "Movements")
 	bool bShouldPlayOnStart = false;
+
+	UPROPERTY()
+	UCapsuleComponent* CapsuleAllied;
 
 	UPROPERTY()
 	ACustomNavigationPoint* LastNavigationPoint;
