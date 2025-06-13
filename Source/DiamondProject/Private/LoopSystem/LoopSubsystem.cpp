@@ -246,6 +246,7 @@ void ULoopSubsystem::CreatePreplanStep(UPreplanDataWidget* PreplanDataWidget)
 		PreplanStep->PreplanData->SetVisibility(ESlateVisibility::Visible);
 		SetPreplanVisibility(PreplanStep->PreplanData,PreplanDataWidget->bIsActiveOnStart);
 		PreplanSteps.Add(PreplanDataWidget->PreplanID,PreplanStep);
+		PreplanDataWidget->SetStep(PreplanStep);
 	}
 }
 

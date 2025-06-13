@@ -86,7 +86,7 @@ void UAPlayerProtoWeapon::ProcessHit(const FHitResult& Hit, UWorld* World) const
 {
     if (Hit.GetActor() != nullptr){
         if (UAC_Health* healthComponent = Hit.GetActor()->FindComponentByClass<UAC_Health>()){
-            healthComponent->DecreaseHealth(Damage);
+            healthComponent->DecreaseHealth(Damage, Cast<AActor>(this->GetOwner()));
             return;
         }
     }

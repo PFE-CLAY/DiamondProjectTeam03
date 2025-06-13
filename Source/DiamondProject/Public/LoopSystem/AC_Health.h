@@ -14,10 +14,10 @@ class DIAMONDPROJECT_API UAC_Health : public UActorComponent
 
 private:
 	UDELEGATE(BlueprintCallable)
-	DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnHealthChangedEvent, int, CurrentHealth);
+	DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnHealthChangedEvent, int, CurrentHealth, const AActor*, DamageDealer);
 
 	UDELEGATE(BlueprintCallable)
-	DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnDeathEvent);
+	DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnDeathEvent, const AActor*, DamageDealer);
 
 public:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
@@ -47,13 +47,13 @@ public:
 	void DecreaseOneHealth();
 
 	UFUNCTION(BlueprintCallable)
-	void DecreaseHealth(int Damage);
+	void DecreaseHealth(int Damage, const AActor* DamageDealer = nullptr);
 
 protected:
 	// Called when the game starts
 	virtual void BeginPlay() override;
 	UFUNCTION()
-	void ChangeHealth(int NewHealth);
+	void ChangeHealth(int NewHealth, const AActor* DamageDealer = nullptr);
 
 	UFUNCTION(BlueprintCallable)
 	void FullHeal();

@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "PreplanStep.h"
 #include "Blueprint/UserWidget.h"
 #include "PreplanDataWidget.generated.h"
 
@@ -17,6 +18,12 @@ class DIAMONDPROJECT_API UPreplanDataWidget : public UUserWidget
 public:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="PreplanData")
 	FString PreplanID;
+
+	UPROPERTY(BlueprintReadOnly,Category="PreplanData")
+	TObjectPtr<UPreplanStep> PreplanStep;
+	
+	UFUNCTION()
+	void SetStep(UPreplanStep* Step);
 
 	UPROPERTY(EditAnywhere, Category="PreplanData")
 	int NbActivationsRequired = 1;
