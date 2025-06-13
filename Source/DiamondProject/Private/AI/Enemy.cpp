@@ -96,7 +96,7 @@ bool AEnemy::IsAnyTargetInRange()
 		LookAtRotation.Pitch = FMath::RadiansToDegrees(FMath::Atan2(Direction.Z, FVector2D(Direction.X, Direction.Y).Size()));
 		LookAtRotation.Roll = 0;
 		float Distance = FVector::Distance(Target->GetActorLocation(), GetActorLocation());
-		if(IsTargetOnSight(LookAtRotation, Target->GetActorLocation()) && Distance < DetectionRange){
+		if(IsTargetOnSight(LookAtRotation, GetActorLocation()) && Distance < DetectionRange){
 			TargetNumber += 1;
 		}
 	}
