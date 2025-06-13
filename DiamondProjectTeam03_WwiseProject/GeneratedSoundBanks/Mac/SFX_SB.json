@@ -10,7 +10,7 @@
     "Type": "User",
     "GUID": "{459D1F67-52BD-4FA1-B846-B8F3A50C2C5F}",
     "Language": "SFX",
-    "Hash": "{D7A00705-C95C-8875-6423-0805997B4F05}",
+    "Hash": "{5E8BE29B-3E92-B6EB-9A5F-D137D73BE309}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\SFX_SB",
     "ShortName": "SFX_SB",
     "Path": "SFX_SB.bnk",
@@ -70,6 +70,14 @@
       "Location": "Memory",
       "ShortName": "MC\\SFX_HourGlass_Idle_LP.wav",
       "CachePath": "SFX/MC/SFX_HourGlass_Idle_LP_FBC78EF0.wem"
+     },
+     {
+      "Id": "846163179",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "MC\\SFX_EndCinematic.wav",
+      "CachePath": "SFX/MC/SFX_EndCinematic_818F3B66.wem"
      },
      {
       "Id": "862611700",
@@ -151,6 +159,20 @@
       ]
      },
      {
+      "Id": "3780890544",
+      "Name": "Play_SFX_EndCinematic",
+      "ObjectPath": "\\Events\\SFX_WU\\Play_SFX_EndCinematic",
+      "GUID": "{6045A319-19E1-40D4-AEC6-4D6054A6BBE3}",
+      "DurationType": "OneShot",
+      "DurationMin": "33.23227",
+      "DurationMax": "33.23227",
+      "MediaRefs": [
+       {
+        "Id": "846163179"
+       }
+      ]
+     },
+     {
       "Id": "2496075354",
       "Name": "Play_SFX_HourGlass_Destruction_2D",
       "ObjectPath": "\\Events\\SFX_WU\\Play_SFX_HourGlass_Destruction_2D",
@@ -198,6 +220,6 @@
     ]
    }
   ],
-  "FileHash": "{4CD148D0-6E77-011A-6AD8-B3B93B0A9BC7}"
+  "FileHash": "{792E8877-84B0-1E01-3185-A1C8A9D25B56}"
  }
 }
