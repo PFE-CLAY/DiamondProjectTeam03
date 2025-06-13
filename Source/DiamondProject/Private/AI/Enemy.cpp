@@ -147,8 +147,10 @@ void AEnemy::RemoveShootPoint(USceneComponent* ShootPoint)
 
 void AEnemy::Shoot(AActor* Target)
 {
+	
 	if(bCanAttack)
 	{
+		
 		USceneComponent* ShootPoint = GetNextShootPoint();
 		if (ShootPoint != nullptr)
 		{
@@ -159,14 +161,18 @@ void AEnemy::Shoot(AActor* Target)
 			SpawnInfo.Name = "aze";
 			AActor* ProjectileSpawned = nullptr;
 			if (GetWorld()) {
+				//GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Cyan, "SKIBIDI");
 				ProjectileSpawned = GetWorld()->SpawnActor(Projectile, &Location, &Rotation);
 				OnEnemyShoot.Broadcast();
 			}
-		
+			
+
 			if(ProjectileSpawned == nullptr){
+				
+				bCanAttack = true;
 				return;
 			}
-		
+			
 			AProjectileEnemy* ProjectileInstance = Cast<AProjectileEnemy>(ProjectileSpawned);
 			ProjectileInstance->ProjectileDamage = AttackDamage;
 		
@@ -204,7 +210,6 @@ FRotator AEnemy::GetDirectionRotation(AActor* OriginActor, AActor* TargetActor)
 
 void AEnemy::SetNewAttackTimer()
 {
-	FTimerHandle TimerHandle;
 	GetWorldTimerManager().SetTimer(TimerHandle, this,  &AEnemy::SetShootReady, AttackCooldown, false);
 }
 
