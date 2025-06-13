@@ -36,7 +36,7 @@ void AProjectileEnemy::OnCollision(AActor* OverlappedActor, AActor* OtherActor)
 	if(Cast<AEnemy>(OtherActor) == nullptr){
 		
 		if (UAC_Health* HealthComponent = OtherActor->FindComponentByClass<UAC_Health>()) {
-			HealthComponent->DecreaseHealth(ProjectileDamage);
+			HealthComponent->DecreaseHealth(ProjectileDamage, this);
 		}
 		
 		OnProjectileDestroyed();
