@@ -7,6 +7,7 @@
 #include "CookOnTheFly.h"
 #include "AI/CustomNavigationPoint.h"
 #include "AI/Path.h"
+#include "Components/CapsuleComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "Navigation/PathFollowingComponent.h"
 #include "PhysicsEngine/PhysicalAnimationComponent.h"
@@ -28,7 +29,7 @@ void AAllied::BeginPlay()
 {
 	Super::BeginPlay();
 	AlliedMesh = Cast<USkeletalMeshComponent>(GetMesh());
-
+	CapsuleAllied = Cast<UCapsuleComponent>(GetComponentByClass(UCapsuleComponent::StaticClass()));
 	if(Path != nullptr) Path->SetAllied(this);
 	
 	if (AlliedMesh != nullptr){
