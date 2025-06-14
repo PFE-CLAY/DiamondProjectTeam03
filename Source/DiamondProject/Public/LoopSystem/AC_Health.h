@@ -31,13 +31,13 @@ public:
 
 	UPROPERTY(BlueprintAssignable)
 	FOnDeathEvent OnDeathEvent;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	bool bIsInvincible = false;
 
 protected:
-    UPROPERTY(BlueprintReadOnly)
+	UPROPERTY(BlueprintReadOnly)
     bool bIsDead;
-
-	UPROPERTY(EditAnywhere, BlueprintReadOnly)
-	bool bIsInvincible = false;
 	
     UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="Damage")
     TArray<TSubclassOf<AActor>> DamageIgnoreClasses;

@@ -22,6 +22,12 @@ DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnPause);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnPreplanMove, FVector2D, Value);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnPreplanZoom, float, ZoomValue);
 
+//Cheat delegates
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnCheatOpenHatch);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnCheatOpenPyramid);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnCheatTogglePlayerInvincibility);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnCheatToggleAllyInvincibility);
+
 UCLASS(Blueprintable,config=Game)
 class ADiamondProjectCharacter : public ACharacter
 {
@@ -58,6 +64,18 @@ class ADiamondProjectCharacter : public ACharacter
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Input, meta=(AllowPrivateAccess = "true"))
 	UInputAction* PreplanZoomAction;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Input, meta=(AllowPrivateAccess = "true"))
+	UInputAction* CheatOpenHatchAction;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Input, meta=(AllowPrivateAccess = "true"))
+	UInputAction* CheatOpenPyramidAction;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Input, meta=(AllowPrivateAccess = "true"))
+	UInputAction* CheatTogglePlayerInvincibilityAction;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Input, meta=(AllowPrivateAccess = "true"))
+	UInputAction* CheatToggleAllyInvincibilityAction;
 	
 public:
 	ADiamondProjectCharacter();
@@ -86,6 +104,18 @@ public:
 	
 	UPROPERTY(BlueprintAssignable, Category = "Preplan")
 	FOnPreplanZoom OnPreplanZoom;
+
+	UPROPERTY(BlueprintAssignable, Category = "Cheats")
+	FOnCheatOpenHatch OnCheatOpenHatch;
+
+	UPROPERTY(BlueprintAssignable, Category = "Cheats")
+	FOnCheatOpenHatch OnCheatPyramidOpen;
+
+	UPROPERTY(BlueprintAssignable, Category = "Cheats")
+	FOnCheatOpenHatch OnCheatTogglePlayerInvincibility;
+
+	UPROPERTY(BlueprintAssignable, Category = "Cheats")
+	FOnCheatOpenHatch OnCheatToggleAllyInvincibility;
 	
 	UPROPERTY()
 	TObjectPtr<UTP_WeaponComponent> CurrentWeapon;
@@ -107,6 +137,13 @@ protected:
 
 	void PreplanZoom(const FInputActionValue& Value);
 
+	void CheatOpenHatch(const FInputActionValue& Value);
+	
+	void CheatOpenPyramid(const FInputActionValue& Value);
+	
+	void CheatTogglePlayerInvincibility(const FInputActionValue& Value);
+	
+	void CheatToggleAllyInvincibility(const FInputActionValue& Value);
 
 protected:
 	// APawn interface
