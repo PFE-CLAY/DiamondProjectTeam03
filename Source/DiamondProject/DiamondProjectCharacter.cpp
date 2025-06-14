@@ -74,6 +74,15 @@ void ADiamondProjectCharacter::SetupPlayerInputComponent(UInputComponent* Player
 
 		//Preplan Zoom
 		EnhancedInputComponent->BindAction(PreplanZoomAction, ETriggerEvent::Triggered, this, &ADiamondProjectCharacter::PreplanZoom);
+
+		// Cheat actions
+		EnhancedInputComponent->BindAction(CheatOpenHatchAction, ETriggerEvent::Started, this, &ADiamondProjectCharacter::CheatOpenHatch);
+		
+		EnhancedInputComponent->BindAction(CheatOpenPyramidAction, ETriggerEvent::Started, this, &ADiamondProjectCharacter::CheatOpenPyramid);
+		
+		EnhancedInputComponent->BindAction(CheatTogglePlayerInvincibilityAction, ETriggerEvent::Started, this, &ADiamondProjectCharacter::CheatTogglePlayerInvincibility);
+		
+		EnhancedInputComponent->BindAction(CheatToggleAllyInvincibilityAction, ETriggerEvent::Started, this, &ADiamondProjectCharacter::CheatToggleAllyInvincibility);
 	}
 	else
 	{
@@ -133,4 +142,24 @@ void ADiamondProjectCharacter::PreplanZoom(const FInputActionValue& Value)
 {
 	float PreplanZoomValue = Value.Get<float>();
 	OnPreplanZoom.Broadcast(PreplanZoomValue);
+}
+
+void ADiamondProjectCharacter::CheatOpenHatch(const FInputActionValue& Value)
+{
+	OnCheatOpenHatch.Broadcast();
+}
+
+void ADiamondProjectCharacter::CheatOpenPyramid(const FInputActionValue& Value)
+{
+	OnCheatPyramidOpen.Broadcast();
+}
+
+void ADiamondProjectCharacter::CheatTogglePlayerInvincibility(const FInputActionValue& Value)
+{
+	OnCheatTogglePlayerInvincibility.Broadcast();
+}
+
+void ADiamondProjectCharacter::CheatToggleAllyInvincibility(const FInputActionValue& Value)
+{
+	OnCheatToggleAllyInvincibility.Broadcast();
 }
