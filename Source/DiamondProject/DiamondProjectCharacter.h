@@ -27,6 +27,7 @@ DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnCheatOpenHatch);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnCheatOpenPyramid);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnCheatTogglePlayerInvincibility);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnCheatToggleAllyInvincibility);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnCheatEndLoop);
 
 UCLASS(Blueprintable,config=Game)
 class ADiamondProjectCharacter : public ACharacter
@@ -77,6 +78,9 @@ class ADiamondProjectCharacter : public ACharacter
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Input, meta=(AllowPrivateAccess = "true"))
 	UInputAction* CheatToggleAllyInvincibilityAction;
 	
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Input, meta=(AllowPrivateAccess = "true"))
+    UInputAction* CheatEndLoopAction;
+	
 public:
 	ADiamondProjectCharacter();
 
@@ -117,6 +121,9 @@ public:
 	UPROPERTY(BlueprintAssignable, Category = "Cheats")
 	FOnCheatOpenHatch OnCheatToggleAllyInvincibility;
 	
+	UPROPERTY(BlueprintAssignable, Category = "Cheats")
+	FOnCheatEndLoop OnCheatEndLoop;
+	
 	UPROPERTY()
 	TObjectPtr<UTP_WeaponComponent> CurrentWeapon;
 
@@ -144,6 +151,8 @@ protected:
 	void CheatTogglePlayerInvincibility(const FInputActionValue& Value);
 	
 	void CheatToggleAllyInvincibility(const FInputActionValue& Value);
+
+	void CheatEndLoop(const FInputActionValue& Value);
 
 protected:
 	// APawn interface
