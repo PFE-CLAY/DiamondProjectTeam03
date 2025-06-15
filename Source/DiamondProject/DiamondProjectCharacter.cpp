@@ -83,6 +83,8 @@ void ADiamondProjectCharacter::SetupPlayerInputComponent(UInputComponent* Player
 		EnhancedInputComponent->BindAction(CheatTogglePlayerInvincibilityAction, ETriggerEvent::Started, this, &ADiamondProjectCharacter::CheatTogglePlayerInvincibility);
 		
 		EnhancedInputComponent->BindAction(CheatToggleAllyInvincibilityAction, ETriggerEvent::Started, this, &ADiamondProjectCharacter::CheatToggleAllyInvincibility);
+		
+		EnhancedInputComponent->BindAction(CheatEndLoopAction, ETriggerEvent::Started, this, &ADiamondProjectCharacter::CheatEndLoop);
 	}
 	else
 	{
@@ -162,4 +164,9 @@ void ADiamondProjectCharacter::CheatTogglePlayerInvincibility(const FInputAction
 void ADiamondProjectCharacter::CheatToggleAllyInvincibility(const FInputActionValue& Value)
 {
 	OnCheatToggleAllyInvincibility.Broadcast();
+}
+
+void ADiamondProjectCharacter::CheatEndLoop(const FInputActionValue& Value)
+{
+	OnCheatEndLoop.Broadcast();
 }
