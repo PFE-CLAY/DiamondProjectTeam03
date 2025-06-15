@@ -22,6 +22,10 @@ void UAC_Health::DecreaseOneHealth()
 
 void UAC_Health::DecreaseHealth(int Damage, const AActor* DamageDealer) 
 {
+	if (bIsInvincible){
+		return;
+	}
+	
 	if (!DamageDealer) {
 		UE_LOG(LogTemp, Error, TEXT("NO DAMAGE DEALER PROVIDED!"));
 		return;
@@ -38,10 +42,6 @@ void UAC_Health::DecreaseHealth(int Damage, const AActor* DamageDealer)
 
 void UAC_Health::ChangeHealth(int NewHealth, const AActor* DamageDealer)
 {
-	if (bIsInvincible && NewHealth > CurrentHealth) {
-		return;
-	}
-	
 	NewHealth = FMath::Clamp(NewHealth, 0, MaxHealth);
 	CurrentHealth = NewHealth;
 	
@@ -57,3 +57,4 @@ void UAC_Health::FullHeal()
 {
 	ChangeHealth(MaxHealth);
 }
+
