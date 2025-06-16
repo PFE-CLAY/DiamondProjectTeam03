@@ -10,7 +10,11 @@
     "Type": "User",
     "GUID": "{4B32F9EE-D939-4AEA-A633-697781A78CE3}",
     "Language": "SFX",
+<<<<<<< Updated upstream
     "Hash": "{2ECA7E35-640E-8DCD-28CE-45572CCBCFD3}",
+=======
+    "Hash": "{931A2CC9-B49D-F6C2-9E63-9D318C4783CE}",
+>>>>>>> Stashed changes
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\MUS_SB",
     "ShortName": "MUS_SB",
     "Path": "MUS_SB.bnk",
@@ -77,6 +81,10 @@
     ]
    }
   ],
+<<<<<<< Updated upstream
   "FileHash": "{0837C538-5F21-418E-687F-106954424F24}"
+=======
+  "FileHash": "{88CF98BC-5D9B-4A5D-E1CC-20039DD1EF10}"
+>>>>>>> Stashed changes
  }
 }
