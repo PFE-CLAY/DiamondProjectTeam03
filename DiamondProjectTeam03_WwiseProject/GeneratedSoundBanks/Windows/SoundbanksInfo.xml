@@ -161,11 +161,7 @@
 				</StateGroup>
 			</StateGroups>
 		</SoundBank>
-<<<<<<< Updated upstream
 		<SoundBank Id="1329476194" Type="User" GUID="{4B32F9EE-D939-4AEA-A633-697781A78CE3}" Language="SFX" Hash="{2ECA7E35-640E-8DCD-28CE-45572CCBCFD3}">
-=======
-		<SoundBank Id="1329476194" Type="User" GUID="{4B32F9EE-D939-4AEA-A633-697781A78CE3}" Language="SFX" Hash="{931A2CC9-B49D-F6C2-9E63-9D318C4783CE}">
->>>>>>> Stashed changes
 			<ObjectPath>\SoundBanks\SoundBanks_WU\MUS_SB</ObjectPath>
 			<ShortName>MUS_SB</ShortName>
 			<Path>MUS_SB.bnk</Path>
@@ -2468,9 +2464,5 @@
 			</Events>
 		</SoundBank>
 	</SoundBanks>
-<<<<<<< Updated upstream
-	<FileHash>{652D6B6B-4B93-45A7-C5BB-9A49558C931B}</FileHash>
-=======
-	<FileHash>{1233E58A-C0F4-1DB0-8721-0DB30B09886B}</FileHash>
->>>>>>> Stashed changes
+	<FileHash>{83344F0C-C38C-D095-5D96-7A9DF65BCE68}</FileHash>
 </SoundBanksInfo>
