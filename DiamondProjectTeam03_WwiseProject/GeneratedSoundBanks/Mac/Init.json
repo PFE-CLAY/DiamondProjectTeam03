@@ -10,7 +10,7 @@
     "Type": "User",
     "GUID": "{701ECBBD-9C7B-4030-8CDB-749EE5D1C7B9}",
     "Language": "SFX",
-    "Hash": "{EBA7DA66-7C0F-AF6C-7E10-6DC318BF023A}",
+    "Hash": "{6168FA43-005F-D8C6-DC4A-EEC2D23D4433}",
     "ObjectPath": "Init",
     "ShortName": "Init",
     "Path": "Init.bnk",
@@ -318,6 +318,12 @@
       "GUID": "{00C509F2-F7BB-46D5-A5C8-1D7FA60484C0}"
      },
      {
+      "Id": "3445598977",
+      "Name": "RTPC_Master",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\RTPC_Master",
+      "GUID": "{74E6261E-6493-44A8-BAE7-1E79ABF4DED1}"
+     },
+     {
       "Id": "3590742338",
       "Name": "RTPC_Speed_Flying",
       "ObjectPath": "\\Game Parameters\\Default Work Unit\\RTPC_Speed_Flying",
@@ -394,6 +400,6 @@
     ]
    }
   ],
-  "FileHash": "{5568809D-F78D-9237-CFEB-3A90367F897C}"
+  "FileHash": "{F59EFBD0-DEF3-8617-E803-A2A490267705}"
  }
 }

@@ -36,7 +36,7 @@ public:
 	float CrosshairSize = 0.1f;
 
 	UPROPERTY(BlueprintReadWrite)
-	float Volume
+	float Volume = 1.0f;
 	
 private:
 	UPROPERTY(EditAnywhere)
