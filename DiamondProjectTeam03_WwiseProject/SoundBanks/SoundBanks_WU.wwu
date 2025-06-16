@@ -23,12 +23,7 @@
 						<Property Name="OverrideColor" Type="bool" Value="True"/>
 					</PropertyList>
 					<ObjectInclusionList>
-						<ObjectRef Name="Play_UI_MainMenu_Button_Back_02" ID="{E13DD8C4-5BBD-4349-8967-DBC2AEC8CF83}" WorkUnitID="{33FB5FA3-EF92-4889-B391-45FA1B390E1B}" Origin="Manual" Filter="7"/>
-						<ObjectRef Name="Play_UI_MainMenu_Button_Validation_03" ID="{9D2FAC20-12C9-442E-B40F-E57A18D93AA4}" WorkUnitID="{33FB5FA3-EF92-4889-B391-45FA1B390E1B}" Origin="Manual" Filter="7"/>
-						<ObjectRef Name="Play_UI_MainMenu_Button_Back_03" ID="{BEED9BF3-D5D8-4536-BC27-BBBBED306872}" WorkUnitID="{33FB5FA3-EF92-4889-B391-45FA1B390E1B}" Origin="Manual" Filter="7"/>
-						<ObjectRef Name="Play_UI_MainMenu_Button_Validation_02" ID="{89A8B49D-A61E-47FA-8266-DA2F97115521}" WorkUnitID="{33FB5FA3-EF92-4889-B391-45FA1B390E1B}" Origin="Manual" Filter="7"/>
-						<ObjectRef Name="Play_UI_MainMenu_Button_Validation_01" ID="{B9A5BF93-6E33-4AC1-92A6-228E5E9B7956}" WorkUnitID="{33FB5FA3-EF92-4889-B391-45FA1B390E1B}" Origin="Manual" Filter="7"/>
-						<ObjectRef Name="Play_UI_MainMenu_Button_Back_01" ID="{01C0CAE4-081F-4B6C-B86A-6C2B06CE1B6E}" WorkUnitID="{33FB5FA3-EF92-4889-B391-45FA1B390E1B}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="UI_WU" ID="{33FB5FA3-EF92-4889-B391-45FA1B390E1B}" WorkUnitID="{33FB5FA3-EF92-4889-B391-45FA1B390E1B}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Master_WU" ID="{A9F2777E-FBA3-4BC0-B5B3-14E0777A7B23}" WorkUnitID="{A9F2777E-FBA3-4BC0-B5B3-14E0777A7B23}" Origin="Manual" Filter="7"/>
 					</ObjectInclusionList>
 					<ObjectExclusionList/>

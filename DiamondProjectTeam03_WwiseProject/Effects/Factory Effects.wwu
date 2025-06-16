@@ -1452,6 +1452,7 @@
 										<Property Name="DecayTime" Type="Real32" Value="6.2"/>
 										<Property Name="Density" Type="Real32" Value="94"/>
 										<Property Name="Diffusion" Type="Real32" Value="53"/>
+										<Property Name="DryLevel" Type="Real32" Value="-7.3"/>
 										<Property Name="ERLevel" Type="Real32" Value="-22"/>
 										<Property Name="ERPattern" Type="int32" Value="30"/>
 										<Property Name="Filter1Freq" Type="Real32" Value="590"/>
@@ -1464,6 +1465,7 @@
 										<Property Name="HFDamping" Type="Real32" Value="5.65"/>
 										<Property Name="PreDelay" Type="Real32" Value="125"/>
 										<Property Name="Quality" Type="int32" Value="12"/>
+										<Property Name="ReverbLevel" Type="Real32" Value="-29"/>
 										<Property Name="RoomShape" Type="Real32" Value="0"/>
 										<Property Name="RoomSize" Type="Real32" Value="71"/>
 										<Property Name="StereoWidth" Type="Real32" Value="140"/>
@@ -1664,7 +1666,7 @@
 								</Effect>
 								<Effect Name="Few_Even_Harm_Peaks" ID="{63235485-F861-422B-91D5-B5545F7FEE21}" PluginName="Wwise Flanger" CompanyID="0" PluginID="125" PluginType="3">
 									<PropertyList>
-										<Property Name="DelayTime" Type="Real32" Value="0.4"/>
+										<Property Name="DelayTime" Type="Real32" Value="32.4"/>
 										<Property Name="EnableLFO" Type="bool" Value="False"/>
 										<Property Name="FeedBackLevel" Type="Real32" Value="-0.95"/>
 									</PropertyList>
