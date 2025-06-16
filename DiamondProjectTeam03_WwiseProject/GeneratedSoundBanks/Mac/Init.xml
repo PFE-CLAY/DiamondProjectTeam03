@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SoundBanksInfo Platform="Mac" BasePlatform="Mac" SchemaVersion="16" SoundBankVersion="150">
 	<SoundBanks>
-		<SoundBank Id="1355168291" Type="User" GUID="{701ECBBD-9C7B-4030-8CDB-749EE5D1C7B9}" Language="SFX" Hash="{EBA7DA66-7C0F-AF6C-7E10-6DC318BF023A}">
+		<SoundBank Id="1355168291" Type="User" GUID="{701ECBBD-9C7B-4030-8CDB-749EE5D1C7B9}" Language="SFX" Hash="{6168FA43-005F-D8C6-DC4A-EEC2D23D4433}">
 			<ObjectPath>Init</ObjectPath>
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
@@ -102,6 +102,7 @@
 			<GameParameters>
 				<GameParameter Id="1190880401" Name="RTPC_DoorPyramid" ObjectPath="\Game Parameters\Default Work Unit\RTPC_DoorPyramid" GUID="{D2AEC1CE-EF9E-486E-AE8B-FB121AC42B53}"/>
 				<GameParameter Id="2176662110" Name="RTPC_Tourelle_Projectil" ObjectPath="\Game Parameters\Default Work Unit\RTPC_Tourelle_Projectil" GUID="{00C509F2-F7BB-46D5-A5C8-1D7FA60484C0}"/>
+				<GameParameter Id="3445598977" Name="RTPC_Master" ObjectPath="\Game Parameters\Default Work Unit\RTPC_Master" GUID="{74E6261E-6493-44A8-BAE7-1E79ABF4DED1}"/>
 				<GameParameter Id="3590742338" Name="RTPC_Speed_Flying" ObjectPath="\Game Parameters\Default Work Unit\RTPC_Speed_Flying" GUID="{4A0C67E7-2443-47A8-B5EB-86C8F65C73EB}"/>
 			</GameParameters>
 			<StateGroups>
@@ -126,5 +127,5 @@
 			</SwitchGroups>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{E9550C8F-CF15-434B-3CE1-12061BDEC5E7}</FileHash>
+	<FileHash>{906A9E65-E44C-B6BB-E960-18409A155546}</FileHash>
 </SoundBanksInfo>

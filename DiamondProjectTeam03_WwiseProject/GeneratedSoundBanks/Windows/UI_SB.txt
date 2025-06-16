@@ -17,6 +17,7 @@ State	ID	Name	State Group			Notes
 
 Game Parameter	ID	Name			Wwise Object Path	Notes
 	1190880401	RTPC_DoorPyramid			\Default Work Unit\RTPC_DoorPyramid	
+	3445598977	RTPC_Master			\Default Work Unit\RTPC_Master	
 
 Audio Bus	ID	Name			Wwise Object Path	Notes
 	109159411	Game_Global			\Master_WU\Master\Game_Global	
@@ -55,9 +56,9 @@ Effect plug-ins	ID	Name	Type				Notes
 	3900114836	Metal_Hangar	Wwise RoomVerb			
 
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
-	543213447	UI_NavigateButton	G:\Unreal\Unreal_Projects\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Windows\SFX\MC\UI_NavigateButton_818F3B66.wem		\Actor-Mixer Hierarchy\UI_WU\UI\UI_NavigateButton		100164
-	572308694	UI_StartButton	G:\Unreal\Unreal_Projects\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Windows\SFX\MC\UI_StartButton_818F3B66.wem		\Actor-Mixer Hierarchy\UI_WU\UI\UI_StartButton		213264
-	749059103	UI_LaunchGame	G:\Unreal\Unreal_Projects\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Windows\SFX\MC\UI_LaunchGame_818F3B66.wem		\Actor-Mixer Hierarchy\UI_WU\UI\UI_LaunchGame		647500
-	836416304	UI_ConfirmButton	G:\Unreal\Unreal_Projects\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Windows\SFX\MC\UI_ConfirmButton_818F3B66.wem		\Actor-Mixer Hierarchy\UI_WU\UI\UI_ConfirmButton		154152
-	1002772129	UI_CancelButton	G:\Unreal\Unreal_Projects\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\Windows\SFX\MC\UI_CancelButton_818F3B66.wem		\Actor-Mixer Hierarchy\UI_WU\UI\UI_CancelButton		161296
+	543213447	UI_NavigateButton	C:\Github Repos\BlackSands\DiamondProjectTeam03_WwiseProject\.cache\Windows\SFX\MC\UI_NavigateButton_818F3B66.wem		\Actor-Mixer Hierarchy\UI_WU\UI\UI_NavigateButton		100164
+	572308694	UI_StartButton	C:\Github Repos\BlackSands\DiamondProjectTeam03_WwiseProject\.cache\Windows\SFX\MC\UI_StartButton_818F3B66.wem		\Actor-Mixer Hierarchy\UI_WU\UI\UI_StartButton		213264
+	749059103	UI_LaunchGame	C:\Github Repos\BlackSands\DiamondProjectTeam03_WwiseProject\.cache\Windows\SFX\MC\UI_LaunchGame_818F3B66.wem		\Actor-Mixer Hierarchy\UI_WU\UI\UI_LaunchGame		647500
+	836416304	UI_ConfirmButton	C:\Github Repos\BlackSands\DiamondProjectTeam03_WwiseProject\.cache\Windows\SFX\MC\UI_ConfirmButton_818F3B66.wem		\Actor-Mixer Hierarchy\UI_WU\UI\UI_ConfirmButton		154152
+	1002772129	UI_CancelButton	C:\Github Repos\BlackSands\DiamondProjectTeam03_WwiseProject\.cache\Windows\SFX\MC\UI_CancelButton_818F3B66.wem		\Actor-Mixer Hierarchy\UI_WU\UI\UI_CancelButton		161296
 
