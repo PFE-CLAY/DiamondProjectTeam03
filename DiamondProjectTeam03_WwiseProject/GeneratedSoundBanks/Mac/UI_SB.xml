@@ -1,34 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SoundBanksInfo Platform="Mac" BasePlatform="Mac" SchemaVersion="16" SoundBankVersion="150">
 	<SoundBanks>
-		<SoundBank Id="1734647573" Type="User" GUID="{6B7E0BFB-A825-46AA-907A-12621FC4038F}" Language="SFX" Hash="{163EF847-B689-1918-3477-2FAA6EED8DE6}">
+		<SoundBank Id="1734647573" Type="User" GUID="{6B7E0BFB-A825-46AA-907A-12621FC4038F}" Language="SFX" Hash="{1986F92E-7E95-2DA7-C1B0-1A779C65B3B8}">
 			<ObjectPath>\SoundBanks\SoundBanks_WU\UI_SB</ObjectPath>
 			<ShortName>UI_SB</ShortName>
 			<Path>UI_SB.bnk</Path>
 			<Media>
-				<File Id="109319961" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>UI_MainMenu_Button_Back_01.wav</ShortName>
-					<CachePath>SFX/UI_MainMenu_Button_Back_01_818F3B66.wem</CachePath>
+				<File Id="543213447" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>MC\UI_NavigateButton.wav</ShortName>
+					<CachePath>SFX/MC/UI_NavigateButton_818F3B66.wem</CachePath>
 				</File>
-				<File Id="463196028" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>UI_MainMenu_Button_Back_02.wav</ShortName>
-					<CachePath>SFX/UI_MainMenu_Button_Back_02_818F3B66.wem</CachePath>
+				<File Id="572308694" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>MC\UI_StartButton.wav</ShortName>
+					<CachePath>SFX/MC/UI_StartButton_818F3B66.wem</CachePath>
 				</File>
-				<File Id="665852765" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>UI_MainMenu_Button_Back_03.wav</ShortName>
-					<CachePath>SFX/UI_MainMenu_Button_Back_03_818F3B66.wem</CachePath>
+				<File Id="749059103" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>MC\UI_LaunchGame.wav</ShortName>
+					<CachePath>SFX/MC/UI_LaunchGame_818F3B66.wem</CachePath>
 				</File>
-				<File Id="702949171" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>UI_MainMenu_Button_Validation_02.wav</ShortName>
-					<CachePath>SFX/UI_MainMenu_Button_Validation_02_818F3B66.wem</CachePath>
+				<File Id="836416304" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>MC\UI_ConfirmButton.wav</ShortName>
+					<CachePath>SFX/MC/UI_ConfirmButton_818F3B66.wem</CachePath>
 				</File>
-				<File Id="853115927" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>UI_MainMenu_Button_Validation_01.wav</ShortName>
-					<CachePath>SFX/UI_MainMenu_Button_Validation_01_818F3B66.wem</CachePath>
-				</File>
-				<File Id="1007928850" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>UI_MainMenu_Button_Validation_03.wav</ShortName>
-					<CachePath>SFX/UI_MainMenu_Button_Validation_03_818F3B66.wem</CachePath>
+				<File Id="1002772129" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>MC\UI_CancelButton.wav</ShortName>
+					<CachePath>SFX/MC/UI_CancelButton_818F3B66.wem</CachePath>
 				</File>
 			</Media>
 			<Plugins>
@@ -45,38 +41,59 @@
 					<Plugin Id="1008402193" Name="Low_Pass_20KHz" ObjectPath="\Effects\Factory Effects\Parametric EQ\Low Pass Filters\Low_Pass_20KHz" GUID="{830124FB-B9D5-4AE8-846E-E94A74652666}" LibName="Wwise Parametric EQ" LibId="6881283"/>
 					<Plugin Id="3442768367" Name="Hall_Large_Dark" ObjectPath="\Effects\Factory Effects\RoomVerb\Halls\Hall_Large_Dark" GUID="{0F6A7D6D-131C-4650-9561-FC05F5C7A37B}" LibName="Wwise RoomVerb" LibId="7733251"/>
 					<Plugin Id="3487820010" Name="One_Tap_Half_Second" ObjectPath="\Effects\Factory Effects\Delay\One_Tap_Half_Second" GUID="{B8FE0D3B-7AAB-4344-89FE-177602B7BF19}" LibName="Wwise Delay" LibId="6946819"/>
+					<Plugin Id="3900114836" Name="Metal_Hangar" ObjectPath="\Effects\Factory Effects\RoomVerb\Huge Spaces\Metal_Hangar" GUID="{C4A4605C-42EF-476A-B53C-E31C7A442C24}" LibName="Wwise RoomVerb" LibId="7733251"/>
 				</ShareSets>
 			</Plugins>
 			<Events>
-				<Event Id="242330496" Name="Play_UI_MainMenu_Button_Back_01" ObjectPath="\Events\UI_WU\Play_UI_MainMenu_Button_Back_01" GUID="{01C0CAE4-081F-4B6C-B86A-6C2B06CE1B6E}" DurationType="OneShot" DurationMin="1.1" DurationMax="1.1">
+				<Event Id="1314228025" Name="Play_UI_CancelButton" ObjectPath="\Events\UI_WU\Play_UI_CancelButton" GUID="{D3F2E63B-8A4E-4908-83E2-1CAC9AEFFC70}" DurationType="OneShot" DurationMin="0.83958334" DurationMax="0.83958334">
 					<MediaRefs>
-						<MediaRef Id="109319961"/>
+						<MediaRef Id="1002772129"/>
 					</MediaRefs>
+					<PluginRefs>
+						<ShareSets>
+							<PluginRef Id="3900114836"/>
+						</ShareSets>
+					</PluginRefs>
 				</Event>
-				<Event Id="242330499" Name="Play_UI_MainMenu_Button_Back_02" ObjectPath="\Events\UI_WU\Play_UI_MainMenu_Button_Back_02" GUID="{E13DD8C4-5BBD-4349-8967-DBC2AEC8CF83}" DurationType="OneShot" DurationMin="1.1" DurationMax="1.1">
+				<Event Id="3310756893" Name="Play_UI_ConfirmButton" ObjectPath="\Events\UI_WU\Play_UI_ConfirmButton" GUID="{FF65D858-C237-4982-9E71-BAE240C904D3}" DurationType="OneShot" DurationMin="0.802375" DurationMax="0.802375">
 					<MediaRefs>
-						<MediaRef Id="463196028"/>
+						<MediaRef Id="836416304"/>
 					</MediaRefs>
+					<PluginRefs>
+						<ShareSets>
+							<PluginRef Id="3900114836"/>
+						</ShareSets>
+					</PluginRefs>
 				</Event>
-				<Event Id="242330498" Name="Play_UI_MainMenu_Button_Back_03" ObjectPath="\Events\UI_WU\Play_UI_MainMenu_Button_Back_03" GUID="{BEED9BF3-D5D8-4536-BC27-BBBBED306872}" DurationType="OneShot" DurationMin="0.8" DurationMax="0.8">
+				<Event Id="87261644" Name="Play_UI_LaunchGame" ObjectPath="\Events\UI_WU\Play_UI_LaunchGame" GUID="{7C333A3F-D18B-4FCB-AD81-0E1F82672842}" DurationType="OneShot" DurationMin="3.3718958" DurationMax="3.3718958">
 					<MediaRefs>
-						<MediaRef Id="665852765"/>
+						<MediaRef Id="749059103"/>
 					</MediaRefs>
+					<PluginRefs>
+						<ShareSets>
+							<PluginRef Id="3900114836"/>
+						</ShareSets>
+					</PluginRefs>
 				</Event>
-				<Event Id="3540367000" Name="Play_UI_MainMenu_Button_Validation_01" ObjectPath="\Events\UI_WU\Play_UI_MainMenu_Button_Validation_01" GUID="{B9A5BF93-6E33-4AC1-92A6-228E5E9B7956}" DurationType="OneShot" DurationMin="1.1886168" DurationMax="1.1886168">
+				<Event Id="662283018" Name="Play_UI_NavigateButton" ObjectPath="\Events\UI_WU\Play_UI_NavigateButton" GUID="{F450A964-AC77-4535-A7D4-1F684DAD7C97}" DurationType="OneShot" DurationMin="0.5211875" DurationMax="0.5211875">
 					<MediaRefs>
-						<MediaRef Id="853115927"/>
+						<MediaRef Id="543213447"/>
 					</MediaRefs>
+					<PluginRefs>
+						<ShareSets>
+							<PluginRef Id="3900114836"/>
+						</ShareSets>
+					</PluginRefs>
 				</Event>
-				<Event Id="3540367003" Name="Play_UI_MainMenu_Button_Validation_02" ObjectPath="\Events\UI_WU\Play_UI_MainMenu_Button_Validation_02" GUID="{89A8B49D-A61E-47FA-8266-DA2F97115521}" DurationType="OneShot" DurationMin="1.1886168" DurationMax="1.1886168">
+				<Event Id="3581520589" Name="Play_UI_StartButton" ObjectPath="\Events\UI_WU\Play_UI_StartButton" GUID="{49273F4D-B4B5-42C9-92FB-9A7B3FBA1C98}" DurationType="OneShot" DurationMin="1.11025" DurationMax="1.11025">
 					<MediaRefs>
-						<MediaRef Id="702949171"/>
+						<MediaRef Id="572308694"/>
 					</MediaRefs>
-				</Event>
-				<Event Id="3540367002" Name="Play_UI_MainMenu_Button_Validation_03" ObjectPath="\Events\UI_WU\Play_UI_MainMenu_Button_Validation_03" GUID="{9D2FAC20-12C9-442E-B40F-E57A18D93AA4}" DurationType="OneShot" DurationMin="1.0853968" DurationMax="1.0853968">
-					<MediaRefs>
-						<MediaRef Id="1007928850"/>
-					</MediaRefs>
+					<PluginRefs>
+						<ShareSets>
+							<PluginRef Id="3900114836"/>
+						</ShareSets>
+					</PluginRefs>
 				</Event>
 			</Events>
 			<Busses>
@@ -168,5 +185,5 @@
 			</StateGroups>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{6ED2B8F7-3687-D1BF-8780-A505FFFD7C9E}</FileHash>
+	<FileHash>{971FDF41-6BD4-FC6E-E275-782216889F13}</FileHash>
 </SoundBanksInfo>

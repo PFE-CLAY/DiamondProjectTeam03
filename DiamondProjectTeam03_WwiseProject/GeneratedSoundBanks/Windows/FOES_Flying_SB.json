@@ -10,7 +10,7 @@
     "Type": "User",
     "GUID": "{46F08C13-7BDA-47D5-A653-BDFCDAD2487B}",
     "Language": "SFX",
-    "Hash": "{3620EAA2-30A7-80C3-B04F-0EEE64E6AD44}",
+    "Hash": "{51C1B214-EAF2-E870-CD30-27E6A2B76439}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\FOES_Flying_SB",
     "ShortName": "FOES_Flying_SB",
     "Path": "FOES_Flying_SB.bnk",
@@ -390,6 +390,12 @@
       "GUID": "{D2AEC1CE-EF9E-486E-AE8B-FB121AC42B53}"
      },
      {
+      "Id": "3445598977",
+      "Name": "RTPC_Master",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\RTPC_Master",
+      "GUID": "{74E6261E-6493-44A8-BAE7-1E79ABF4DED1}"
+     },
+     {
       "Id": "3590742338",
       "Name": "RTPC_Speed_Flying",
       "ObjectPath": "\\Game Parameters\\Default Work Unit\\RTPC_Speed_Flying",
@@ -438,6 +444,6 @@
     ]
    }
   ],
-  "FileHash": "{5A0EA2AB-DFBB-0478-42A0-7B3156478A34}"
+  "FileHash": "{D17601EB-8188-D399-7638-57C756C906D6}"
  }
 }

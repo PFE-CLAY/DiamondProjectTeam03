@@ -10,7 +10,7 @@
     "Type": "User",
     "GUID": "{ADC2D189-6608-4828-BC9C-6EF6F90834DB}",
     "Language": "SFX",
-    "Hash": "{658892D1-4D4A-BC0D-04AC-731B424514BB}",
+    "Hash": "{AAC2AA92-51DA-375B-5026-88E57DBB0E48}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\MC_SB",
     "ShortName": "MC_SB",
     "Path": "MC_SB.bnk",
@@ -1467,6 +1467,12 @@
       "Name": "RTPC_DoorPyramid",
       "ObjectPath": "\\Game Parameters\\Default Work Unit\\RTPC_DoorPyramid",
       "GUID": "{D2AEC1CE-EF9E-486E-AE8B-FB121AC42B53}"
+     },
+     {
+      "Id": "3445598977",
+      "Name": "RTPC_Master",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\RTPC_Master",
+      "GUID": "{74E6261E-6493-44A8-BAE7-1E79ABF4DED1}"
      }
     ],
     "StateGroups": [
@@ -1539,6 +1545,6 @@
     ]
    }
   ],
-  "FileHash": "{AE1C7A7B-B8DF-09C8-2E11-B7284BD1EAFE}"
+  "FileHash": "{7C2400C2-B999-894C-588C-7E9C70C3793A}"
  }
 }
