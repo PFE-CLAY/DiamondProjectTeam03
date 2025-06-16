@@ -10,7 +10,7 @@
     "Type": "User",
     "GUID": "{48187E94-2869-42A3-9E99-A12DF1DA86DF}",
     "Language": "SFX",
-    "Hash": "{928110CA-B920-F6C4-9FF1-5C5ED7ED8084}",
+    "Hash": "{1D449911-12FD-84AE-5A86-B9F2A2DB4EA0}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\FOES_Invisible_SB",
     "ShortName": "FOES_Invisible_SB",
     "Path": "FOES_Invisible_SB.bnk",
@@ -286,6 +286,12 @@
       "Name": "RTPC_DoorPyramid",
       "ObjectPath": "\\Game Parameters\\Default Work Unit\\RTPC_DoorPyramid",
       "GUID": "{D2AEC1CE-EF9E-486E-AE8B-FB121AC42B53}"
+     },
+     {
+      "Id": "3445598977",
+      "Name": "RTPC_Master",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\RTPC_Master",
+      "GUID": "{74E6261E-6493-44A8-BAE7-1E79ABF4DED1}"
      }
     ],
     "StateGroups": [
@@ -330,6 +336,6 @@
     ]
    }
   ],
-  "FileHash": "{36DE7118-DA58-9F60-A1F7-FA8F944BF7FC}"
+  "FileHash": "{B3A5176C-897F-361E-9284-C361ECFEC71D}"
  }
 }

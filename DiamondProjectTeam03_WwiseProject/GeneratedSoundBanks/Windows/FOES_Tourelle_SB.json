@@ -10,7 +10,7 @@
     "Type": "User",
     "GUID": "{8CC30184-23AF-4DB5-9844-9B04DF10A650}",
     "Language": "SFX",
-    "Hash": "{48FEA8E5-070B-5F95-5A70-42DAF98CE5C2}",
+    "Hash": "{4781F8D2-A997-B69A-0B68-ECA0AB238E31}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\FOES_Tourelle_SB",
     "ShortName": "FOES_Tourelle_SB",
     "Path": "FOES_Tourelle_SB.bnk",
@@ -450,6 +450,12 @@
       "Name": "RTPC_Tourelle_Projectil",
       "ObjectPath": "\\Game Parameters\\Default Work Unit\\RTPC_Tourelle_Projectil",
       "GUID": "{00C509F2-F7BB-46D5-A5C8-1D7FA60484C0}"
+     },
+     {
+      "Id": "3445598977",
+      "Name": "RTPC_Master",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\RTPC_Master",
+      "GUID": "{74E6261E-6493-44A8-BAE7-1E79ABF4DED1}"
      }
     ],
     "StateGroups": [
@@ -494,6 +500,6 @@
     ]
    }
   ],
-  "FileHash": "{6C8E6839-93A0-8826-5FDE-4838A5FEFAEF}"
+  "FileHash": "{6AF2487C-CCD0-BBB4-E799-A010DF0F8C77}"
  }
 }

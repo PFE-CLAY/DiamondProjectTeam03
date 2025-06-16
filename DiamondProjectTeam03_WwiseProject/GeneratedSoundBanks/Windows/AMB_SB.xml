@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="16" SoundBankVersion="150">
 	<SoundBanks>
-		<SoundBank Id="3256182613" Type="User" GUID="{9DC5CBA4-02D0-4677-A565-21ECA413E694}" Language="SFX" Hash="{4AB3D9EE-E4CC-6090-990E-EA844E969CEA}">
+		<SoundBank Id="3256182613" Type="User" GUID="{9DC5CBA4-02D0-4677-A565-21ECA413E694}" Language="SFX" Hash="{CCA16F48-A809-E9A0-E673-EB5BFA306420}">
 			<ObjectPath>\SoundBanks\SoundBanks_WU\AMB_SB</ObjectPath>
 			<ShortName>AMB_SB</ShortName>
 			<Path>AMB_SB.bnk</Path>
@@ -372,6 +372,7 @@
 			</AuxBusses>
 			<GameParameters>
 				<GameParameter Id="1190880401" Name="RTPC_DoorPyramid" ObjectPath="\Game Parameters\Default Work Unit\RTPC_DoorPyramid" GUID="{D2AEC1CE-EF9E-486E-AE8B-FB121AC42B53}"/>
+				<GameParameter Id="3445598977" Name="RTPC_Master" ObjectPath="\Game Parameters\Default Work Unit\RTPC_Master" GUID="{74E6261E-6493-44A8-BAE7-1E79ABF4DED1}"/>
 			</GameParameters>
 			<StateGroups>
 				<StateGroup Id="3929688590" Name="InsideOutside" ObjectPath="\States\Default Work Unit\InsideOutside" GUID="{2CE28D5C-F27B-42D7-9D91-1905B53C4C3C}">
@@ -386,5 +387,5 @@
 			</StateGroups>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{B5D9AF98-997D-7B38-11CB-F163BA2D44E6}</FileHash>
+	<FileHash>{032C6836-AFB0-D222-56EE-6821BD3C7EBD}</FileHash>
 </SoundBanksInfo>

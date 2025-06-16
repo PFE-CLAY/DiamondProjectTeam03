@@ -9,7 +9,7 @@
 	</RootPaths>
 	<DialogueEvents/>
 	<SoundBanks>
-		<SoundBank Id="459280130" Type="User" GUID="{46F08C13-7BDA-47D5-A653-BDFCDAD2487B}" Language="SFX" Hash="{3620EAA2-30A7-80C3-B04F-0EEE64E6AD44}">
+		<SoundBank Id="459280130" Type="User" GUID="{46F08C13-7BDA-47D5-A653-BDFCDAD2487B}" Language="SFX" Hash="{51C1B214-EAF2-E870-CD30-27E6A2B76439}">
 			<ObjectPath>\SoundBanks\SoundBanks_WU\FOES_Flying_SB</ObjectPath>
 			<ShortName>FOES_Flying_SB</ShortName>
 			<Path>FOES_Flying_SB.bnk</Path>
@@ -147,6 +147,7 @@
 			</AuxBusses>
 			<GameParameters>
 				<GameParameter Id="1190880401" Name="RTPC_DoorPyramid" ObjectPath="\Game Parameters\Default Work Unit\RTPC_DoorPyramid" GUID="{D2AEC1CE-EF9E-486E-AE8B-FB121AC42B53}"/>
+				<GameParameter Id="3445598977" Name="RTPC_Master" ObjectPath="\Game Parameters\Default Work Unit\RTPC_Master" GUID="{74E6261E-6493-44A8-BAE7-1E79ABF4DED1}"/>
 				<GameParameter Id="3590742338" Name="RTPC_Speed_Flying" ObjectPath="\Game Parameters\Default Work Unit\RTPC_Speed_Flying" GUID="{4A0C67E7-2443-47A8-B5EB-86C8F65C73EB}"/>
 			</GameParameters>
 			<StateGroups>
@@ -193,7 +194,7 @@
 				</Event>
 			</Events>
 		</SoundBank>
-		<SoundBank Id="1355168291" Type="User" GUID="{701ECBBD-9C7B-4030-8CDB-749EE5D1C7B9}" Language="SFX" Hash="{590B3C71-EBF8-CB23-E155-9B9336658ACE}">
+		<SoundBank Id="1355168291" Type="User" GUID="{701ECBBD-9C7B-4030-8CDB-749EE5D1C7B9}" Language="SFX" Hash="{5C0E54AE-A6D8-F9EB-1226-712EE133DA29}">
 			<ObjectPath>Init</ObjectPath>
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
@@ -294,6 +295,7 @@
 			<GameParameters>
 				<GameParameter Id="1190880401" Name="RTPC_DoorPyramid" ObjectPath="\Game Parameters\Default Work Unit\RTPC_DoorPyramid" GUID="{D2AEC1CE-EF9E-486E-AE8B-FB121AC42B53}"/>
 				<GameParameter Id="2176662110" Name="RTPC_Tourelle_Projectil" ObjectPath="\Game Parameters\Default Work Unit\RTPC_Tourelle_Projectil" GUID="{00C509F2-F7BB-46D5-A5C8-1D7FA60484C0}"/>
+				<GameParameter Id="3445598977" Name="RTPC_Master" ObjectPath="\Game Parameters\Default Work Unit\RTPC_Master" GUID="{74E6261E-6493-44A8-BAE7-1E79ABF4DED1}"/>
 				<GameParameter Id="3590742338" Name="RTPC_Speed_Flying" ObjectPath="\Game Parameters\Default Work Unit\RTPC_Speed_Flying" GUID="{4A0C67E7-2443-47A8-B5EB-86C8F65C73EB}"/>
 			</GameParameters>
 			<StateGroups>
@@ -317,7 +319,7 @@
 				</SwitchGroup>
 			</SwitchGroups>
 		</SoundBank>
-		<SoundBank Id="1734647573" Type="User" GUID="{6B7E0BFB-A825-46AA-907A-12621FC4038F}" Language="SFX" Hash="{1986F92E-7E95-2DA7-C1B0-1A779C65B3B8}">
+		<SoundBank Id="1734647573" Type="User" GUID="{6B7E0BFB-A825-46AA-907A-12621FC4038F}" Language="SFX" Hash="{A255D5B9-C6A6-2056-62B5-4CB83A543477}">
 			<ObjectPath>\SoundBanks\SoundBanks_WU\UI_SB</ObjectPath>
 			<ShortName>UI_SB</ShortName>
 			<Path>UI_SB.bnk</Path>
@@ -487,6 +489,7 @@
 			</AuxBusses>
 			<GameParameters>
 				<GameParameter Id="1190880401" Name="RTPC_DoorPyramid" ObjectPath="\Game Parameters\Default Work Unit\RTPC_DoorPyramid" GUID="{D2AEC1CE-EF9E-486E-AE8B-FB121AC42B53}"/>
+				<GameParameter Id="3445598977" Name="RTPC_Master" ObjectPath="\Game Parameters\Default Work Unit\RTPC_Master" GUID="{74E6261E-6493-44A8-BAE7-1E79ABF4DED1}"/>
 			</GameParameters>
 			<StateGroups>
 				<StateGroup Id="3929688590" Name="InsideOutside" ObjectPath="\States\Default Work Unit\InsideOutside" GUID="{2CE28D5C-F27B-42D7-9D91-1905B53C4C3C}">
@@ -500,7 +503,7 @@
 				</StateGroup>
 			</StateGroups>
 		</SoundBank>
-		<SoundBank Id="1956625499" Type="User" GUID="{ADC2D189-6608-4828-BC9C-6EF6F90834DB}" Language="SFX" Hash="{658892D1-4D4A-BC0D-04AC-731B424514BB}">
+		<SoundBank Id="1956625499" Type="User" GUID="{ADC2D189-6608-4828-BC9C-6EF6F90834DB}" Language="SFX" Hash="{AAC2AA92-51DA-375B-5026-88E57DBB0E48}">
 			<ObjectPath>\SoundBanks\SoundBanks_WU\MC_SB</ObjectPath>
 			<ShortName>MC_SB</ShortName>
 			<Path>MC_SB.bnk</Path>
@@ -1117,6 +1120,7 @@
 			</AuxBusses>
 			<GameParameters>
 				<GameParameter Id="1190880401" Name="RTPC_DoorPyramid" ObjectPath="\Game Parameters\Default Work Unit\RTPC_DoorPyramid" GUID="{D2AEC1CE-EF9E-486E-AE8B-FB121AC42B53}"/>
+				<GameParameter Id="3445598977" Name="RTPC_Master" ObjectPath="\Game Parameters\Default Work Unit\RTPC_Master" GUID="{74E6261E-6493-44A8-BAE7-1E79ABF4DED1}"/>
 			</GameParameters>
 			<StateGroups>
 				<StateGroup Id="3929688590" Name="InsideOutside" ObjectPath="\States\Default Work Unit\InsideOutside" GUID="{2CE28D5C-F27B-42D7-9D91-1905B53C4C3C}">
@@ -1139,7 +1143,7 @@
 				</SwitchGroup>
 			</SwitchGroups>
 		</SoundBank>
-		<SoundBank Id="2516814376" Type="User" GUID="{48187E94-2869-42A3-9E99-A12DF1DA86DF}" Language="SFX" Hash="{928110CA-B920-F6C4-9FF1-5C5ED7ED8084}">
+		<SoundBank Id="2516814376" Type="User" GUID="{48187E94-2869-42A3-9E99-A12DF1DA86DF}" Language="SFX" Hash="{1D449911-12FD-84AE-5A86-B9F2A2DB4EA0}">
 			<ObjectPath>\SoundBanks\SoundBanks_WU\FOES_Invisible_SB</ObjectPath>
 			<ShortName>FOES_Invisible_SB</ShortName>
 			<Path>FOES_Invisible_SB.bnk</Path>
@@ -1234,6 +1238,7 @@
 			</AuxBusses>
 			<GameParameters>
 				<GameParameter Id="1190880401" Name="RTPC_DoorPyramid" ObjectPath="\Game Parameters\Default Work Unit\RTPC_DoorPyramid" GUID="{D2AEC1CE-EF9E-486E-AE8B-FB121AC42B53}"/>
+				<GameParameter Id="3445598977" Name="RTPC_Master" ObjectPath="\Game Parameters\Default Work Unit\RTPC_Master" GUID="{74E6261E-6493-44A8-BAE7-1E79ABF4DED1}"/>
 			</GameParameters>
 			<StateGroups>
 				<StateGroup Id="3929688590" Name="InsideOutside" ObjectPath="\States\Default Work Unit\InsideOutside" GUID="{2CE28D5C-F27B-42D7-9D91-1905B53C4C3C}">
@@ -1672,7 +1677,7 @@
 				</Event>
 			</Events>
 		</SoundBank>
-		<SoundBank Id="3250948517" Type="User" GUID="{8CC30184-23AF-4DB5-9844-9B04DF10A650}" Language="SFX" Hash="{48FEA8E5-070B-5F95-5A70-42DAF98CE5C2}">
+		<SoundBank Id="3250948517" Type="User" GUID="{8CC30184-23AF-4DB5-9844-9B04DF10A650}" Language="SFX" Hash="{4781F8D2-A997-B69A-0B68-ECA0AB238E31}">
 			<ObjectPath>\SoundBanks\SoundBanks_WU\FOES_Tourelle_SB</ObjectPath>
 			<ShortName>FOES_Tourelle_SB</ShortName>
 			<Path>FOES_Tourelle_SB.bnk</Path>
@@ -1835,6 +1840,7 @@
 			<GameParameters>
 				<GameParameter Id="1190880401" Name="RTPC_DoorPyramid" ObjectPath="\Game Parameters\Default Work Unit\RTPC_DoorPyramid" GUID="{D2AEC1CE-EF9E-486E-AE8B-FB121AC42B53}"/>
 				<GameParameter Id="2176662110" Name="RTPC_Tourelle_Projectil" ObjectPath="\Game Parameters\Default Work Unit\RTPC_Tourelle_Projectil" GUID="{00C509F2-F7BB-46D5-A5C8-1D7FA60484C0}"/>
+				<GameParameter Id="3445598977" Name="RTPC_Master" ObjectPath="\Game Parameters\Default Work Unit\RTPC_Master" GUID="{74E6261E-6493-44A8-BAE7-1E79ABF4DED1}"/>
 			</GameParameters>
 			<StateGroups>
 				<StateGroup Id="3929688590" Name="InsideOutside" ObjectPath="\States\Default Work Unit\InsideOutside" GUID="{2CE28D5C-F27B-42D7-9D91-1905B53C4C3C}">
@@ -1848,7 +1854,7 @@
 				</StateGroup>
 			</StateGroups>
 		</SoundBank>
-		<SoundBank Id="3256182613" Type="User" GUID="{9DC5CBA4-02D0-4677-A565-21ECA413E694}" Language="SFX" Hash="{4AB3D9EE-E4CC-6090-990E-EA844E969CEA}">
+		<SoundBank Id="3256182613" Type="User" GUID="{9DC5CBA4-02D0-4677-A565-21ECA413E694}" Language="SFX" Hash="{CCA16F48-A809-E9A0-E673-EB5BFA306420}">
 			<ObjectPath>\SoundBanks\SoundBanks_WU\AMB_SB</ObjectPath>
 			<ShortName>AMB_SB</ShortName>
 			<Path>AMB_SB.bnk</Path>
@@ -2219,6 +2225,7 @@
 			</AuxBusses>
 			<GameParameters>
 				<GameParameter Id="1190880401" Name="RTPC_DoorPyramid" ObjectPath="\Game Parameters\Default Work Unit\RTPC_DoorPyramid" GUID="{D2AEC1CE-EF9E-486E-AE8B-FB121AC42B53}"/>
+				<GameParameter Id="3445598977" Name="RTPC_Master" ObjectPath="\Game Parameters\Default Work Unit\RTPC_Master" GUID="{74E6261E-6493-44A8-BAE7-1E79ABF4DED1}"/>
 			</GameParameters>
 			<StateGroups>
 				<StateGroup Id="3929688590" Name="InsideOutside" ObjectPath="\States\Default Work Unit\InsideOutside" GUID="{2CE28D5C-F27B-42D7-9D91-1905B53C4C3C}">
@@ -2464,5 +2471,5 @@
 			</Events>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{83344F0C-C38C-D095-5D96-7A9DF65BCE68}</FileHash>
+	<FileHash>{F50ECC46-E528-D439-0907-6F70ECAF6A20}</FileHash>
 </SoundBanksInfo>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="16" SoundBankVersion="150">
 	<SoundBanks>
-		<SoundBank Id="3250948517" Type="User" GUID="{8CC30184-23AF-4DB5-9844-9B04DF10A650}" Language="SFX" Hash="{48FEA8E5-070B-5F95-5A70-42DAF98CE5C2}">
+		<SoundBank Id="3250948517" Type="User" GUID="{8CC30184-23AF-4DB5-9844-9B04DF10A650}" Language="SFX" Hash="{4781F8D2-A997-B69A-0B68-ECA0AB238E31}">
 			<ObjectPath>\SoundBanks\SoundBanks_WU\FOES_Tourelle_SB</ObjectPath>
 			<ShortName>FOES_Tourelle_SB</ShortName>
 			<Path>FOES_Tourelle_SB.bnk</Path>
@@ -164,6 +164,7 @@
 			<GameParameters>
 				<GameParameter Id="1190880401" Name="RTPC_DoorPyramid" ObjectPath="\Game Parameters\Default Work Unit\RTPC_DoorPyramid" GUID="{D2AEC1CE-EF9E-486E-AE8B-FB121AC42B53}"/>
 				<GameParameter Id="2176662110" Name="RTPC_Tourelle_Projectil" ObjectPath="\Game Parameters\Default Work Unit\RTPC_Tourelle_Projectil" GUID="{00C509F2-F7BB-46D5-A5C8-1D7FA60484C0}"/>
+				<GameParameter Id="3445598977" Name="RTPC_Master" ObjectPath="\Game Parameters\Default Work Unit\RTPC_Master" GUID="{74E6261E-6493-44A8-BAE7-1E79ABF4DED1}"/>
 			</GameParameters>
 			<StateGroups>
 				<StateGroup Id="3929688590" Name="InsideOutside" ObjectPath="\States\Default Work Unit\InsideOutside" GUID="{2CE28D5C-F27B-42D7-9D91-1905B53C4C3C}">
@@ -178,5 +179,5 @@
 			</StateGroups>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{444AE5D6-F8A5-B699-CF70-FC37AB8F36A0}</FileHash>
+	<FileHash>{418C585F-BCCE-840F-8285-73E10895531F}</FileHash>
 </SoundBanksInfo>
