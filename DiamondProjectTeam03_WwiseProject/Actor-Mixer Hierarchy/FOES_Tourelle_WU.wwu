@@ -10,6 +10,11 @@
 				<ActorMixer Name="FOES_SFX_Tourelle" ID="{8F3C3C0E-9673-4949-A98F-D33F5B871AC9}" ShortID="722406924">
 					<PropertyList>
 						<Property Name="UseGameAuxSends" Type="bool" Value="True"/>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-1</Value>
+							</ValueList>
+						</Property>
 					</PropertyList>
 					<ReferenceList>
 						<Reference Name="Conversion">
