@@ -25,9 +25,35 @@
 				</GameParameter>
 				<GameParameter Name="RTPC_Master" ID="{74E6261E-6493-44A8-BAE7-1E79ABF4DED1}">
 					<PropertyList>
+						<Property Name="Color" Type="int16" Value="10"/>
 						<Property Name="InitialValue" Type="Real64" Value="1"/>
 						<Property Name="Max" Type="Real64" Value="1"/>
+						<Property Name="OverrideColor" Type="bool" Value="True"/>
 						<Property Name="RTPCRamping" Type="int16" Value="2"/>
+					</PropertyList>
+				</GameParameter>
+				<GameParameter Name="RTPC_Voices" ID="{F4B8FD9E-0723-43B2-923D-1563F7D70095}">
+					<PropertyList>
+						<Property Name="InitialValue" Type="Real64" Value="1"/>
+						<Property Name="Max" Type="Real64" Value="1"/>
+					</PropertyList>
+				</GameParameter>
+				<GameParameter Name="RTPC_Music" ID="{5DA4119B-967E-473A-9D3F-7F6BD36532D0}">
+					<PropertyList>
+						<Property Name="InitialValue" Type="Real64" Value="1"/>
+						<Property Name="Max" Type="Real64" Value="1"/>
+					</PropertyList>
+				</GameParameter>
+				<GameParameter Name="RTPC_SFX" ID="{DD8DB651-4F18-462F-97D3-0195BD02087F}">
+					<PropertyList>
+						<Property Name="InitialValue" Type="Real64" Value="1"/>
+						<Property Name="Max" Type="Real64" Value="1"/>
+					</PropertyList>
+				</GameParameter>
+				<GameParameter Name="RTPC_AMB" ID="{2EA08633-9826-4131-9D31-3F7F27FCA59E}">
+					<PropertyList>
+						<Property Name="InitialValue" Type="Real64" Value="1"/>
+						<Property Name="Max" Type="Real64" Value="1"/>
 					</PropertyList>
 				</GameParameter>
 			</ChildrenList>

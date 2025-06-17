@@ -10,7 +10,7 @@
     "Type": "User",
     "GUID": "{4B32F9EE-D939-4AEA-A633-697781A78CE3}",
     "Language": "SFX",
-    "Hash": "{2ECA7E35-640E-8DCD-28CE-45572CCBCFD3}",
+    "Hash": "{42888B95-2C94-0AC9-9D3B-09621A374442}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\MUS_SB",
     "ShortName": "MUS_SB",
     "Path": "MUS_SB.bnk",
@@ -77,6 +77,6 @@
     ]
    }
   ],
-  "FileHash": "{0837C538-5F21-418E-687F-106954424F24}"
+  "FileHash": "{2AA2346F-543D-B512-8FAB-CBAF992FD008}"
  }
 }

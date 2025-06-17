@@ -18,7 +18,7 @@
     "Type": "User",
     "GUID": "{46F08C13-7BDA-47D5-A653-BDFCDAD2487B}",
     "Language": "SFX",
-    "Hash": "{3620EAA2-30A7-80C3-B04F-0EEE64E6AD44}",
+    "Hash": "{C3C38ED6-974A-5336-CB49-2775D1C74BD4}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\FOES_Flying_SB",
     "ShortName": "FOES_Flying_SB",
     "Path": "FOES_Flying_SB.bnk",
@@ -398,10 +398,40 @@
       "GUID": "{D2AEC1CE-EF9E-486E-AE8B-FB121AC42B53}"
      },
      {
+      "Id": "3438452020",
+      "Name": "RTPC_SFX",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\RTPC_SFX",
+      "GUID": "{DD8DB651-4F18-462F-97D3-0195BD02087F}"
+     },
+     {
+      "Id": "3445598977",
+      "Name": "RTPC_Master",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\RTPC_Master",
+      "GUID": "{74E6261E-6493-44A8-BAE7-1E79ABF4DED1}"
+     },
+     {
+      "Id": "3553041361",
+      "Name": "RTPC_AMB",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\RTPC_AMB",
+      "GUID": "{2EA08633-9826-4131-9D31-3F7F27FCA59E}"
+     },
+     {
       "Id": "3590742338",
       "Name": "RTPC_Speed_Flying",
       "ObjectPath": "\\Game Parameters\\Default Work Unit\\RTPC_Speed_Flying",
       "GUID": "{4A0C67E7-2443-47A8-B5EB-86C8F65C73EB}"
+     },
+     {
+      "Id": "3709650428",
+      "Name": "RTPC_Music",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\RTPC_Music",
+      "GUID": "{5DA4119B-967E-473A-9D3F-7F6BD36532D0}"
+     },
+     {
+      "Id": "4031456682",
+      "Name": "RTPC_Voices",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\RTPC_Voices",
+      "GUID": "{F4B8FD9E-0723-43B2-923D-1563F7D70095}"
      }
     ],
     "StateGroups": [
@@ -450,7 +480,7 @@
     "Type": "User",
     "GUID": "{4B32F9EE-D939-4AEA-A633-697781A78CE3}",
     "Language": "SFX",
-    "Hash": "{2ECA7E35-640E-8DCD-28CE-45572CCBCFD3}",
+    "Hash": "{42888B95-2C94-0AC9-9D3B-09621A374442}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\MUS_SB",
     "ShortName": "MUS_SB",
     "Path": "MUS_SB.bnk",
@@ -521,7 +551,7 @@
     "Type": "User",
     "GUID": "{701ECBBD-9C7B-4030-8CDB-749EE5D1C7B9}",
     "Language": "SFX",
-    "Hash": "{6168FA43-005F-D8C6-DC4A-EEC2D23D4433}",
+    "Hash": "{81D003EE-1936-E1A1-EC63-6BF13E3CA3B6}",
     "ObjectPath": "Init",
     "ShortName": "Init",
     "Path": "Init.bnk",
@@ -829,16 +859,40 @@
       "GUID": "{00C509F2-F7BB-46D5-A5C8-1D7FA60484C0}"
      },
      {
+      "Id": "3438452020",
+      "Name": "RTPC_SFX",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\RTPC_SFX",
+      "GUID": "{DD8DB651-4F18-462F-97D3-0195BD02087F}"
+     },
+     {
       "Id": "3445598977",
       "Name": "RTPC_Master",
       "ObjectPath": "\\Game Parameters\\Default Work Unit\\RTPC_Master",
       "GUID": "{74E6261E-6493-44A8-BAE7-1E79ABF4DED1}"
      },
      {
+      "Id": "3553041361",
+      "Name": "RTPC_AMB",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\RTPC_AMB",
+      "GUID": "{2EA08633-9826-4131-9D31-3F7F27FCA59E}"
+     },
+     {
       "Id": "3590742338",
       "Name": "RTPC_Speed_Flying",
       "ObjectPath": "\\Game Parameters\\Default Work Unit\\RTPC_Speed_Flying",
       "GUID": "{4A0C67E7-2443-47A8-B5EB-86C8F65C73EB}"
+     },
+     {
+      "Id": "3709650428",
+      "Name": "RTPC_Music",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\RTPC_Music",
+      "GUID": "{5DA4119B-967E-473A-9D3F-7F6BD36532D0}"
+     },
+     {
+      "Id": "4031456682",
+      "Name": "RTPC_Voices",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\RTPC_Voices",
+      "GUID": "{F4B8FD9E-0723-43B2-923D-1563F7D70095}"
      }
     ],
     "StateGroups": [
@@ -915,7 +969,7 @@
     "Type": "User",
     "GUID": "{6B7E0BFB-A825-46AA-907A-12621FC4038F}",
     "Language": "SFX",
-    "Hash": "{1986F92E-7E95-2DA7-C1B0-1A779C65B3B8}",
+    "Hash": "{575A40A8-040C-80F0-F0A6-5C7FF6FADC02}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\UI_SB",
     "ShortName": "UI_SB",
     "Path": "UI_SB.bnk",
@@ -1348,6 +1402,36 @@
       "Name": "RTPC_DoorPyramid",
       "ObjectPath": "\\Game Parameters\\Default Work Unit\\RTPC_DoorPyramid",
       "GUID": "{D2AEC1CE-EF9E-486E-AE8B-FB121AC42B53}"
+     },
+     {
+      "Id": "3438452020",
+      "Name": "RTPC_SFX",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\RTPC_SFX",
+      "GUID": "{DD8DB651-4F18-462F-97D3-0195BD02087F}"
+     },
+     {
+      "Id": "3445598977",
+      "Name": "RTPC_Master",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\RTPC_Master",
+      "GUID": "{74E6261E-6493-44A8-BAE7-1E79ABF4DED1}"
+     },
+     {
+      "Id": "3553041361",
+      "Name": "RTPC_AMB",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\RTPC_AMB",
+      "GUID": "{2EA08633-9826-4131-9D31-3F7F27FCA59E}"
+     },
+     {
+      "Id": "3709650428",
+      "Name": "RTPC_Music",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\RTPC_Music",
+      "GUID": "{5DA4119B-967E-473A-9D3F-7F6BD36532D0}"
+     },
+     {
+      "Id": "4031456682",
+      "Name": "RTPC_Voices",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\RTPC_Voices",
+      "GUID": "{F4B8FD9E-0723-43B2-923D-1563F7D70095}"
      }
     ],
     "StateGroups": [
@@ -1396,7 +1480,7 @@
     "Type": "User",
     "GUID": "{ADC2D189-6608-4828-BC9C-6EF6F90834DB}",
     "Language": "SFX",
-    "Hash": "{658892D1-4D4A-BC0D-04AC-731B424514BB}",
+    "Hash": "{AAB30CC6-008F-7660-6C8D-DAA0D646E3AD}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\MC_SB",
     "ShortName": "MC_SB",
     "Path": "MC_SB.bnk",
@@ -2853,6 +2937,36 @@
       "Name": "RTPC_DoorPyramid",
       "ObjectPath": "\\Game Parameters\\Default Work Unit\\RTPC_DoorPyramid",
       "GUID": "{D2AEC1CE-EF9E-486E-AE8B-FB121AC42B53}"
+     },
+     {
+      "Id": "3438452020",
+      "Name": "RTPC_SFX",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\RTPC_SFX",
+      "GUID": "{DD8DB651-4F18-462F-97D3-0195BD02087F}"
+     },
+     {
+      "Id": "3445598977",
+      "Name": "RTPC_Master",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\RTPC_Master",
+      "GUID": "{74E6261E-6493-44A8-BAE7-1E79ABF4DED1}"
+     },
+     {
+      "Id": "3553041361",
+      "Name": "RTPC_AMB",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\RTPC_AMB",
+      "GUID": "{2EA08633-9826-4131-9D31-3F7F27FCA59E}"
+     },
+     {
+      "Id": "3709650428",
+      "Name": "RTPC_Music",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\RTPC_Music",
+      "GUID": "{5DA4119B-967E-473A-9D3F-7F6BD36532D0}"
+     },
+     {
+      "Id": "4031456682",
+      "Name": "RTPC_Voices",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\RTPC_Voices",
+      "GUID": "{F4B8FD9E-0723-43B2-923D-1563F7D70095}"
      }
     ],
     "StateGroups": [
@@ -2929,7 +3043,7 @@
     "Type": "User",
     "GUID": "{48187E94-2869-42A3-9E99-A12DF1DA86DF}",
     "Language": "SFX",
-    "Hash": "{928110CA-B920-F6C4-9FF1-5C5ED7ED8084}",
+    "Hash": "{407EE1F4-9610-BC64-0DCF-1F77B312816E}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\FOES_Invisible_SB",
     "ShortName": "FOES_Invisible_SB",
     "Path": "FOES_Invisible_SB.bnk",
@@ -3205,6 +3319,36 @@
       "Name": "RTPC_DoorPyramid",
       "ObjectPath": "\\Game Parameters\\Default Work Unit\\RTPC_DoorPyramid",
       "GUID": "{D2AEC1CE-EF9E-486E-AE8B-FB121AC42B53}"
+     },
+     {
+      "Id": "3438452020",
+      "Name": "RTPC_SFX",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\RTPC_SFX",
+      "GUID": "{DD8DB651-4F18-462F-97D3-0195BD02087F}"
+     },
+     {
+      "Id": "3445598977",
+      "Name": "RTPC_Master",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\RTPC_Master",
+      "GUID": "{74E6261E-6493-44A8-BAE7-1E79ABF4DED1}"
+     },
+     {
+      "Id": "3553041361",
+      "Name": "RTPC_AMB",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\RTPC_AMB",
+      "GUID": "{2EA08633-9826-4131-9D31-3F7F27FCA59E}"
+     },
+     {
+      "Id": "3709650428",
+      "Name": "RTPC_Music",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\RTPC_Music",
+      "GUID": "{5DA4119B-967E-473A-9D3F-7F6BD36532D0}"
+     },
+     {
+      "Id": "4031456682",
+      "Name": "RTPC_Voices",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\RTPC_Voices",
+      "GUID": "{F4B8FD9E-0723-43B2-923D-1563F7D70095}"
      }
     ],
     "StateGroups": [
@@ -3253,7 +3397,7 @@
     "Type": "User",
     "GUID": "{9B915276-16F3-4721-B819-126344F97366}",
     "Language": "SFX",
-    "Hash": "{38DF6B0C-5DA6-0E1F-211B-A583FE863BA9}",
+    "Hash": "{09656090-FA5D-B6BD-C9DD-96D87BCF6D3D}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\VOICES_SB",
     "ShortName": "VOICES_SB",
     "Path": "VOICES_SB.bnk",
@@ -4381,7 +4525,7 @@
     "Type": "User",
     "GUID": "{8CC30184-23AF-4DB5-9844-9B04DF10A650}",
     "Language": "SFX",
-    "Hash": "{48FEA8E5-070B-5F95-5A70-42DAF98CE5C2}",
+    "Hash": "{48FF8BF8-8354-C460-3500-59FF52C15CEE}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\FOES_Tourelle_SB",
     "ShortName": "FOES_Tourelle_SB",
     "Path": "FOES_Tourelle_SB.bnk",
@@ -4821,6 +4965,36 @@
       "Name": "RTPC_Tourelle_Projectil",
       "ObjectPath": "\\Game Parameters\\Default Work Unit\\RTPC_Tourelle_Projectil",
       "GUID": "{00C509F2-F7BB-46D5-A5C8-1D7FA60484C0}"
+     },
+     {
+      "Id": "3438452020",
+      "Name": "RTPC_SFX",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\RTPC_SFX",
+      "GUID": "{DD8DB651-4F18-462F-97D3-0195BD02087F}"
+     },
+     {
+      "Id": "3445598977",
+      "Name": "RTPC_Master",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\RTPC_Master",
+      "GUID": "{74E6261E-6493-44A8-BAE7-1E79ABF4DED1}"
+     },
+     {
+      "Id": "3553041361",
+      "Name": "RTPC_AMB",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\RTPC_AMB",
+      "GUID": "{2EA08633-9826-4131-9D31-3F7F27FCA59E}"
+     },
+     {
+      "Id": "3709650428",
+      "Name": "RTPC_Music",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\RTPC_Music",
+      "GUID": "{5DA4119B-967E-473A-9D3F-7F6BD36532D0}"
+     },
+     {
+      "Id": "4031456682",
+      "Name": "RTPC_Voices",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\RTPC_Voices",
+      "GUID": "{F4B8FD9E-0723-43B2-923D-1563F7D70095}"
      }
     ],
     "StateGroups": [
@@ -4869,7 +5043,7 @@
     "Type": "User",
     "GUID": "{9DC5CBA4-02D0-4677-A565-21ECA413E694}",
     "Language": "SFX",
-    "Hash": "{4AB3D9EE-E4CC-6090-990E-EA844E969CEA}",
+    "Hash": "{8D610FA8-9911-A741-8392-CAD947332A22}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\AMB_SB",
     "ShortName": "AMB_SB",
     "Path": "AMB_SB.bnk",
@@ -5756,6 +5930,36 @@
       "Name": "RTPC_DoorPyramid",
       "ObjectPath": "\\Game Parameters\\Default Work Unit\\RTPC_DoorPyramid",
       "GUID": "{D2AEC1CE-EF9E-486E-AE8B-FB121AC42B53}"
+     },
+     {
+      "Id": "3438452020",
+      "Name": "RTPC_SFX",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\RTPC_SFX",
+      "GUID": "{DD8DB651-4F18-462F-97D3-0195BD02087F}"
+     },
+     {
+      "Id": "3445598977",
+      "Name": "RTPC_Master",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\RTPC_Master",
+      "GUID": "{74E6261E-6493-44A8-BAE7-1E79ABF4DED1}"
+     },
+     {
+      "Id": "3553041361",
+      "Name": "RTPC_AMB",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\RTPC_AMB",
+      "GUID": "{2EA08633-9826-4131-9D31-3F7F27FCA59E}"
+     },
+     {
+      "Id": "3709650428",
+      "Name": "RTPC_Music",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\RTPC_Music",
+      "GUID": "{5DA4119B-967E-473A-9D3F-7F6BD36532D0}"
+     },
+     {
+      "Id": "4031456682",
+      "Name": "RTPC_Voices",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\RTPC_Voices",
+      "GUID": "{F4B8FD9E-0723-43B2-923D-1563F7D70095}"
      }
     ],
     "StateGroups": [
@@ -6325,6 +6529,6 @@
     ]
    }
   ],
-  "FileHash": "{4F96EB4C-321C-5288-6F7B-7AEA5C684119}"
+  "FileHash": "{51539863-BA35-9338-CAA4-ABFEC29A95A7}"
  }
 }

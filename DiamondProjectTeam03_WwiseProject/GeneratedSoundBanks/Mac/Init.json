@@ -10,7 +10,7 @@
     "Type": "User",
     "GUID": "{701ECBBD-9C7B-4030-8CDB-749EE5D1C7B9}",
     "Language": "SFX",
-    "Hash": "{6168FA43-005F-D8C6-DC4A-EEC2D23D4433}",
+    "Hash": "{81D003EE-1936-E1A1-EC63-6BF13E3CA3B6}",
     "ObjectPath": "Init",
     "ShortName": "Init",
     "Path": "Init.bnk",
@@ -318,16 +318,40 @@
       "GUID": "{00C509F2-F7BB-46D5-A5C8-1D7FA60484C0}"
      },
      {
+      "Id": "3438452020",
+      "Name": "RTPC_SFX",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\RTPC_SFX",
+      "GUID": "{DD8DB651-4F18-462F-97D3-0195BD02087F}"
+     },
+     {
       "Id": "3445598977",
       "Name": "RTPC_Master",
       "ObjectPath": "\\Game Parameters\\Default Work Unit\\RTPC_Master",
       "GUID": "{74E6261E-6493-44A8-BAE7-1E79ABF4DED1}"
      },
      {
+      "Id": "3553041361",
+      "Name": "RTPC_AMB",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\RTPC_AMB",
+      "GUID": "{2EA08633-9826-4131-9D31-3F7F27FCA59E}"
+     },
+     {
       "Id": "3590742338",
       "Name": "RTPC_Speed_Flying",
       "ObjectPath": "\\Game Parameters\\Default Work Unit\\RTPC_Speed_Flying",
       "GUID": "{4A0C67E7-2443-47A8-B5EB-86C8F65C73EB}"
+     },
+     {
+      "Id": "3709650428",
+      "Name": "RTPC_Music",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\RTPC_Music",
+      "GUID": "{5DA4119B-967E-473A-9D3F-7F6BD36532D0}"
+     },
+     {
+      "Id": "4031456682",
+      "Name": "RTPC_Voices",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\RTPC_Voices",
+      "GUID": "{F4B8FD9E-0723-43B2-923D-1563F7D70095}"
      }
     ],
     "StateGroups": [
@@ -400,6 +424,6 @@
     ]
    }
   ],
-  "FileHash": "{F59EFBD0-DEF3-8617-E803-A2A490267705}"
+  "FileHash": "{02CA31E1-9FEF-A7AB-8849-0E1688CE1874}"
  }
 }

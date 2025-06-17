@@ -36,7 +36,16 @@ public:
 	float CrosshairSize = 0.1f;
 
 	UPROPERTY(BlueprintReadWrite)
-	float Volume = 1.0f;
+	float MasterVolume = 1.0f;
+
+	UPROPERTY(BlueprintReadWrite)
+	float MusicVolume = 1.0f;
+
+	UPROPERTY(BlueprintReadWrite)
+	float SFXVolume = 1.0f;
+
+	UPROPERTY(BlueprintReadWrite)
+	float VoiceVolume = 1.0f;
 	
 private:
 	UPROPERTY(EditAnywhere)

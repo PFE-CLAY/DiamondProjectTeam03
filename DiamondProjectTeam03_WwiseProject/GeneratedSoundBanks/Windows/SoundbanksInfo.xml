@@ -9,7 +9,7 @@
 	</RootPaths>
 	<DialogueEvents/>
 	<SoundBanks>
-		<SoundBank Id="459280130" Type="User" GUID="{46F08C13-7BDA-47D5-A653-BDFCDAD2487B}" Language="SFX" Hash="{51C1B214-EAF2-E870-CD30-27E6A2B76439}">
+		<SoundBank Id="459280130" Type="User" GUID="{46F08C13-7BDA-47D5-A653-BDFCDAD2487B}" Language="SFX" Hash="{C3C38ED6-974A-5336-CB49-2775D1C74BD4}">
 			<ObjectPath>\SoundBanks\SoundBanks_WU\FOES_Flying_SB</ObjectPath>
 			<ShortName>FOES_Flying_SB</ShortName>
 			<Path>FOES_Flying_SB.bnk</Path>
@@ -147,8 +147,12 @@
 			</AuxBusses>
 			<GameParameters>
 				<GameParameter Id="1190880401" Name="RTPC_DoorPyramid" ObjectPath="\Game Parameters\Default Work Unit\RTPC_DoorPyramid" GUID="{D2AEC1CE-EF9E-486E-AE8B-FB121AC42B53}"/>
+				<GameParameter Id="3438452020" Name="RTPC_SFX" ObjectPath="\Game Parameters\Default Work Unit\RTPC_SFX" GUID="{DD8DB651-4F18-462F-97D3-0195BD02087F}"/>
 				<GameParameter Id="3445598977" Name="RTPC_Master" ObjectPath="\Game Parameters\Default Work Unit\RTPC_Master" GUID="{74E6261E-6493-44A8-BAE7-1E79ABF4DED1}"/>
+				<GameParameter Id="3553041361" Name="RTPC_AMB" ObjectPath="\Game Parameters\Default Work Unit\RTPC_AMB" GUID="{2EA08633-9826-4131-9D31-3F7F27FCA59E}"/>
 				<GameParameter Id="3590742338" Name="RTPC_Speed_Flying" ObjectPath="\Game Parameters\Default Work Unit\RTPC_Speed_Flying" GUID="{4A0C67E7-2443-47A8-B5EB-86C8F65C73EB}"/>
+				<GameParameter Id="3709650428" Name="RTPC_Music" ObjectPath="\Game Parameters\Default Work Unit\RTPC_Music" GUID="{5DA4119B-967E-473A-9D3F-7F6BD36532D0}"/>
+				<GameParameter Id="4031456682" Name="RTPC_Voices" ObjectPath="\Game Parameters\Default Work Unit\RTPC_Voices" GUID="{F4B8FD9E-0723-43B2-923D-1563F7D70095}"/>
 			</GameParameters>
 			<StateGroups>
 				<StateGroup Id="3929688590" Name="InsideOutside" ObjectPath="\States\Default Work Unit\InsideOutside" GUID="{2CE28D5C-F27B-42D7-9D91-1905B53C4C3C}">
@@ -162,7 +166,7 @@
 				</StateGroup>
 			</StateGroups>
 		</SoundBank>
-		<SoundBank Id="1329476194" Type="User" GUID="{4B32F9EE-D939-4AEA-A633-697781A78CE3}" Language="SFX" Hash="{2ECA7E35-640E-8DCD-28CE-45572CCBCFD3}">
+		<SoundBank Id="1329476194" Type="User" GUID="{4B32F9EE-D939-4AEA-A633-697781A78CE3}" Language="SFX" Hash="{42888B95-2C94-0AC9-9D3B-09621A374442}">
 			<ObjectPath>\SoundBanks\SoundBanks_WU\MUS_SB</ObjectPath>
 			<ShortName>MUS_SB</ShortName>
 			<Path>MUS_SB.bnk</Path>
@@ -194,7 +198,7 @@
 				</Event>
 			</Events>
 		</SoundBank>
-		<SoundBank Id="1355168291" Type="User" GUID="{701ECBBD-9C7B-4030-8CDB-749EE5D1C7B9}" Language="SFX" Hash="{5C0E54AE-A6D8-F9EB-1226-712EE133DA29}">
+		<SoundBank Id="1355168291" Type="User" GUID="{701ECBBD-9C7B-4030-8CDB-749EE5D1C7B9}" Language="SFX" Hash="{62ECDEEB-18BB-426A-5EC9-FD83315AC3F7}">
 			<ObjectPath>Init</ObjectPath>
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
@@ -295,8 +299,12 @@
 			<GameParameters>
 				<GameParameter Id="1190880401" Name="RTPC_DoorPyramid" ObjectPath="\Game Parameters\Default Work Unit\RTPC_DoorPyramid" GUID="{D2AEC1CE-EF9E-486E-AE8B-FB121AC42B53}"/>
 				<GameParameter Id="2176662110" Name="RTPC_Tourelle_Projectil" ObjectPath="\Game Parameters\Default Work Unit\RTPC_Tourelle_Projectil" GUID="{00C509F2-F7BB-46D5-A5C8-1D7FA60484C0}"/>
+				<GameParameter Id="3438452020" Name="RTPC_SFX" ObjectPath="\Game Parameters\Default Work Unit\RTPC_SFX" GUID="{DD8DB651-4F18-462F-97D3-0195BD02087F}"/>
 				<GameParameter Id="3445598977" Name="RTPC_Master" ObjectPath="\Game Parameters\Default Work Unit\RTPC_Master" GUID="{74E6261E-6493-44A8-BAE7-1E79ABF4DED1}"/>
+				<GameParameter Id="3553041361" Name="RTPC_AMB" ObjectPath="\Game Parameters\Default Work Unit\RTPC_AMB" GUID="{2EA08633-9826-4131-9D31-3F7F27FCA59E}"/>
 				<GameParameter Id="3590742338" Name="RTPC_Speed_Flying" ObjectPath="\Game Parameters\Default Work Unit\RTPC_Speed_Flying" GUID="{4A0C67E7-2443-47A8-B5EB-86C8F65C73EB}"/>
+				<GameParameter Id="3709650428" Name="RTPC_Music" ObjectPath="\Game Parameters\Default Work Unit\RTPC_Music" GUID="{5DA4119B-967E-473A-9D3F-7F6BD36532D0}"/>
+				<GameParameter Id="4031456682" Name="RTPC_Voices" ObjectPath="\Game Parameters\Default Work Unit\RTPC_Voices" GUID="{F4B8FD9E-0723-43B2-923D-1563F7D70095}"/>
 			</GameParameters>
 			<StateGroups>
 				<StateGroup Id="3929688590" Name="InsideOutside" ObjectPath="\States\Default Work Unit\InsideOutside" GUID="{2CE28D5C-F27B-42D7-9D91-1905B53C4C3C}">
@@ -319,7 +327,7 @@
 				</SwitchGroup>
 			</SwitchGroups>
 		</SoundBank>
-		<SoundBank Id="1734647573" Type="User" GUID="{6B7E0BFB-A825-46AA-907A-12621FC4038F}" Language="SFX" Hash="{A255D5B9-C6A6-2056-62B5-4CB83A543477}">
+		<SoundBank Id="1734647573" Type="User" GUID="{6B7E0BFB-A825-46AA-907A-12621FC4038F}" Language="SFX" Hash="{575A40A8-040C-80F0-F0A6-5C7FF6FADC02}">
 			<ObjectPath>\SoundBanks\SoundBanks_WU\UI_SB</ObjectPath>
 			<ShortName>UI_SB</ShortName>
 			<Path>UI_SB.bnk</Path>
@@ -489,7 +497,11 @@
 			</AuxBusses>
 			<GameParameters>
 				<GameParameter Id="1190880401" Name="RTPC_DoorPyramid" ObjectPath="\Game Parameters\Default Work Unit\RTPC_DoorPyramid" GUID="{D2AEC1CE-EF9E-486E-AE8B-FB121AC42B53}"/>
+				<GameParameter Id="3438452020" Name="RTPC_SFX" ObjectPath="\Game Parameters\Default Work Unit\RTPC_SFX" GUID="{DD8DB651-4F18-462F-97D3-0195BD02087F}"/>
 				<GameParameter Id="3445598977" Name="RTPC_Master" ObjectPath="\Game Parameters\Default Work Unit\RTPC_Master" GUID="{74E6261E-6493-44A8-BAE7-1E79ABF4DED1}"/>
+				<GameParameter Id="3553041361" Name="RTPC_AMB" ObjectPath="\Game Parameters\Default Work Unit\RTPC_AMB" GUID="{2EA08633-9826-4131-9D31-3F7F27FCA59E}"/>
+				<GameParameter Id="3709650428" Name="RTPC_Music" ObjectPath="\Game Parameters\Default Work Unit\RTPC_Music" GUID="{5DA4119B-967E-473A-9D3F-7F6BD36532D0}"/>
+				<GameParameter Id="4031456682" Name="RTPC_Voices" ObjectPath="\Game Parameters\Default Work Unit\RTPC_Voices" GUID="{F4B8FD9E-0723-43B2-923D-1563F7D70095}"/>
 			</GameParameters>
 			<StateGroups>
 				<StateGroup Id="3929688590" Name="InsideOutside" ObjectPath="\States\Default Work Unit\InsideOutside" GUID="{2CE28D5C-F27B-42D7-9D91-1905B53C4C3C}">
@@ -503,7 +515,7 @@
 				</StateGroup>
 			</StateGroups>
 		</SoundBank>
-		<SoundBank Id="1956625499" Type="User" GUID="{ADC2D189-6608-4828-BC9C-6EF6F90834DB}" Language="SFX" Hash="{AAC2AA92-51DA-375B-5026-88E57DBB0E48}">
+		<SoundBank Id="1956625499" Type="User" GUID="{ADC2D189-6608-4828-BC9C-6EF6F90834DB}" Language="SFX" Hash="{AAB30CC6-008F-7660-6C8D-DAA0D646E3AD}">
 			<ObjectPath>\SoundBanks\SoundBanks_WU\MC_SB</ObjectPath>
 			<ShortName>MC_SB</ShortName>
 			<Path>MC_SB.bnk</Path>
@@ -1120,7 +1132,11 @@
 			</AuxBusses>
 			<GameParameters>
 				<GameParameter Id="1190880401" Name="RTPC_DoorPyramid" ObjectPath="\Game Parameters\Default Work Unit\RTPC_DoorPyramid" GUID="{D2AEC1CE-EF9E-486E-AE8B-FB121AC42B53}"/>
+				<GameParameter Id="3438452020" Name="RTPC_SFX" ObjectPath="\Game Parameters\Default Work Unit\RTPC_SFX" GUID="{DD8DB651-4F18-462F-97D3-0195BD02087F}"/>
 				<GameParameter Id="3445598977" Name="RTPC_Master" ObjectPath="\Game Parameters\Default Work Unit\RTPC_Master" GUID="{74E6261E-6493-44A8-BAE7-1E79ABF4DED1}"/>
+				<GameParameter Id="3553041361" Name="RTPC_AMB" ObjectPath="\Game Parameters\Default Work Unit\RTPC_AMB" GUID="{2EA08633-9826-4131-9D31-3F7F27FCA59E}"/>
+				<GameParameter Id="3709650428" Name="RTPC_Music" ObjectPath="\Game Parameters\Default Work Unit\RTPC_Music" GUID="{5DA4119B-967E-473A-9D3F-7F6BD36532D0}"/>
+				<GameParameter Id="4031456682" Name="RTPC_Voices" ObjectPath="\Game Parameters\Default Work Unit\RTPC_Voices" GUID="{F4B8FD9E-0723-43B2-923D-1563F7D70095}"/>
 			</GameParameters>
 			<StateGroups>
 				<StateGroup Id="3929688590" Name="InsideOutside" ObjectPath="\States\Default Work Unit\InsideOutside" GUID="{2CE28D5C-F27B-42D7-9D91-1905B53C4C3C}">
@@ -1143,7 +1159,7 @@
 				</SwitchGroup>
 			</SwitchGroups>
 		</SoundBank>
-		<SoundBank Id="2516814376" Type="User" GUID="{48187E94-2869-42A3-9E99-A12DF1DA86DF}" Language="SFX" Hash="{1D449911-12FD-84AE-5A86-B9F2A2DB4EA0}">
+		<SoundBank Id="2516814376" Type="User" GUID="{48187E94-2869-42A3-9E99-A12DF1DA86DF}" Language="SFX" Hash="{407EE1F4-9610-BC64-0DCF-1F77B312816E}">
 			<ObjectPath>\SoundBanks\SoundBanks_WU\FOES_Invisible_SB</ObjectPath>
 			<ShortName>FOES_Invisible_SB</ShortName>
 			<Path>FOES_Invisible_SB.bnk</Path>
@@ -1238,7 +1254,11 @@
 			</AuxBusses>
 			<GameParameters>
 				<GameParameter Id="1190880401" Name="RTPC_DoorPyramid" ObjectPath="\Game Parameters\Default Work Unit\RTPC_DoorPyramid" GUID="{D2AEC1CE-EF9E-486E-AE8B-FB121AC42B53}"/>
+				<GameParameter Id="3438452020" Name="RTPC_SFX" ObjectPath="\Game Parameters\Default Work Unit\RTPC_SFX" GUID="{DD8DB651-4F18-462F-97D3-0195BD02087F}"/>
 				<GameParameter Id="3445598977" Name="RTPC_Master" ObjectPath="\Game Parameters\Default Work Unit\RTPC_Master" GUID="{74E6261E-6493-44A8-BAE7-1E79ABF4DED1}"/>
+				<GameParameter Id="3553041361" Name="RTPC_AMB" ObjectPath="\Game Parameters\Default Work Unit\RTPC_AMB" GUID="{2EA08633-9826-4131-9D31-3F7F27FCA59E}"/>
+				<GameParameter Id="3709650428" Name="RTPC_Music" ObjectPath="\Game Parameters\Default Work Unit\RTPC_Music" GUID="{5DA4119B-967E-473A-9D3F-7F6BD36532D0}"/>
+				<GameParameter Id="4031456682" Name="RTPC_Voices" ObjectPath="\Game Parameters\Default Work Unit\RTPC_Voices" GUID="{F4B8FD9E-0723-43B2-923D-1563F7D70095}"/>
 			</GameParameters>
 			<StateGroups>
 				<StateGroup Id="3929688590" Name="InsideOutside" ObjectPath="\States\Default Work Unit\InsideOutside" GUID="{2CE28D5C-F27B-42D7-9D91-1905B53C4C3C}">
@@ -1252,7 +1272,7 @@
 				</StateGroup>
 			</StateGroups>
 		</SoundBank>
-		<SoundBank Id="2765162312" Type="User" GUID="{9B915276-16F3-4721-B819-126344F97366}" Language="SFX" Hash="{38DF6B0C-5DA6-0E1F-211B-A583FE863BA9}">
+		<SoundBank Id="2765162312" Type="User" GUID="{9B915276-16F3-4721-B819-126344F97366}" Language="SFX" Hash="{09656090-FA5D-B6BD-C9DD-96D87BCF6D3D}">
 			<ObjectPath>\SoundBanks\SoundBanks_WU\VOICES_SB</ObjectPath>
 			<ShortName>VOICES_SB</ShortName>
 			<Path>VOICES_SB.bnk</Path>
@@ -1677,7 +1697,7 @@
 				</Event>
 			</Events>
 		</SoundBank>
-		<SoundBank Id="3250948517" Type="User" GUID="{8CC30184-23AF-4DB5-9844-9B04DF10A650}" Language="SFX" Hash="{4781F8D2-A997-B69A-0B68-ECA0AB238E31}">
+		<SoundBank Id="3250948517" Type="User" GUID="{8CC30184-23AF-4DB5-9844-9B04DF10A650}" Language="SFX" Hash="{48FF8BF8-8354-C460-3500-59FF52C15CEE}">
 			<ObjectPath>\SoundBanks\SoundBanks_WU\FOES_Tourelle_SB</ObjectPath>
 			<ShortName>FOES_Tourelle_SB</ShortName>
 			<Path>FOES_Tourelle_SB.bnk</Path>
@@ -1840,7 +1860,11 @@
 			<GameParameters>
 				<GameParameter Id="1190880401" Name="RTPC_DoorPyramid" ObjectPath="\Game Parameters\Default Work Unit\RTPC_DoorPyramid" GUID="{D2AEC1CE-EF9E-486E-AE8B-FB121AC42B53}"/>
 				<GameParameter Id="2176662110" Name="RTPC_Tourelle_Projectil" ObjectPath="\Game Parameters\Default Work Unit\RTPC_Tourelle_Projectil" GUID="{00C509F2-F7BB-46D5-A5C8-1D7FA60484C0}"/>
+				<GameParameter Id="3438452020" Name="RTPC_SFX" ObjectPath="\Game Parameters\Default Work Unit\RTPC_SFX" GUID="{DD8DB651-4F18-462F-97D3-0195BD02087F}"/>
 				<GameParameter Id="3445598977" Name="RTPC_Master" ObjectPath="\Game Parameters\Default Work Unit\RTPC_Master" GUID="{74E6261E-6493-44A8-BAE7-1E79ABF4DED1}"/>
+				<GameParameter Id="3553041361" Name="RTPC_AMB" ObjectPath="\Game Parameters\Default Work Unit\RTPC_AMB" GUID="{2EA08633-9826-4131-9D31-3F7F27FCA59E}"/>
+				<GameParameter Id="3709650428" Name="RTPC_Music" ObjectPath="\Game Parameters\Default Work Unit\RTPC_Music" GUID="{5DA4119B-967E-473A-9D3F-7F6BD36532D0}"/>
+				<GameParameter Id="4031456682" Name="RTPC_Voices" ObjectPath="\Game Parameters\Default Work Unit\RTPC_Voices" GUID="{F4B8FD9E-0723-43B2-923D-1563F7D70095}"/>
 			</GameParameters>
 			<StateGroups>
 				<StateGroup Id="3929688590" Name="InsideOutside" ObjectPath="\States\Default Work Unit\InsideOutside" GUID="{2CE28D5C-F27B-42D7-9D91-1905B53C4C3C}">
@@ -1854,7 +1878,7 @@
 				</StateGroup>
 			</StateGroups>
 		</SoundBank>
-		<SoundBank Id="3256182613" Type="User" GUID="{9DC5CBA4-02D0-4677-A565-21ECA413E694}" Language="SFX" Hash="{CCA16F48-A809-E9A0-E673-EB5BFA306420}">
+		<SoundBank Id="3256182613" Type="User" GUID="{9DC5CBA4-02D0-4677-A565-21ECA413E694}" Language="SFX" Hash="{8D610FA8-9911-A741-8392-CAD947332A22}">
 			<ObjectPath>\SoundBanks\SoundBanks_WU\AMB_SB</ObjectPath>
 			<ShortName>AMB_SB</ShortName>
 			<Path>AMB_SB.bnk</Path>
@@ -2225,7 +2249,11 @@
 			</AuxBusses>
 			<GameParameters>
 				<GameParameter Id="1190880401" Name="RTPC_DoorPyramid" ObjectPath="\Game Parameters\Default Work Unit\RTPC_DoorPyramid" GUID="{D2AEC1CE-EF9E-486E-AE8B-FB121AC42B53}"/>
+				<GameParameter Id="3438452020" Name="RTPC_SFX" ObjectPath="\Game Parameters\Default Work Unit\RTPC_SFX" GUID="{DD8DB651-4F18-462F-97D3-0195BD02087F}"/>
 				<GameParameter Id="3445598977" Name="RTPC_Master" ObjectPath="\Game Parameters\Default Work Unit\RTPC_Master" GUID="{74E6261E-6493-44A8-BAE7-1E79ABF4DED1}"/>
+				<GameParameter Id="3553041361" Name="RTPC_AMB" ObjectPath="\Game Parameters\Default Work Unit\RTPC_AMB" GUID="{2EA08633-9826-4131-9D31-3F7F27FCA59E}"/>
+				<GameParameter Id="3709650428" Name="RTPC_Music" ObjectPath="\Game Parameters\Default Work Unit\RTPC_Music" GUID="{5DA4119B-967E-473A-9D3F-7F6BD36532D0}"/>
+				<GameParameter Id="4031456682" Name="RTPC_Voices" ObjectPath="\Game Parameters\Default Work Unit\RTPC_Voices" GUID="{F4B8FD9E-0723-43B2-923D-1563F7D70095}"/>
 			</GameParameters>
 			<StateGroups>
 				<StateGroup Id="3929688590" Name="InsideOutside" ObjectPath="\States\Default Work Unit\InsideOutside" GUID="{2CE28D5C-F27B-42D7-9D91-1905B53C4C3C}">
@@ -2471,5 +2499,5 @@
 			</Events>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{F50ECC46-E528-D439-0907-6F70ECAF6A20}</FileHash>
+	<FileHash>{8987E15A-D38D-499C-0F98-AD9914785EF6}</FileHash>
 </SoundBanksInfo>

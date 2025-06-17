@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="16" SoundBankVersion="150">
 	<SoundBanks>
-		<SoundBank Id="2516814376" Type="User" GUID="{48187E94-2869-42A3-9E99-A12DF1DA86DF}" Language="SFX" Hash="{1D449911-12FD-84AE-5A86-B9F2A2DB4EA0}">
+		<SoundBank Id="2516814376" Type="User" GUID="{48187E94-2869-42A3-9E99-A12DF1DA86DF}" Language="SFX" Hash="{407EE1F4-9610-BC64-0DCF-1F77B312816E}">
 			<ObjectPath>\SoundBanks\SoundBanks_WU\FOES_Invisible_SB</ObjectPath>
 			<ShortName>FOES_Invisible_SB</ShortName>
 			<Path>FOES_Invisible_SB.bnk</Path>
@@ -96,7 +96,11 @@
 			</AuxBusses>
 			<GameParameters>
 				<GameParameter Id="1190880401" Name="RTPC_DoorPyramid" ObjectPath="\Game Parameters\Default Work Unit\RTPC_DoorPyramid" GUID="{D2AEC1CE-EF9E-486E-AE8B-FB121AC42B53}"/>
+				<GameParameter Id="3438452020" Name="RTPC_SFX" ObjectPath="\Game Parameters\Default Work Unit\RTPC_SFX" GUID="{DD8DB651-4F18-462F-97D3-0195BD02087F}"/>
 				<GameParameter Id="3445598977" Name="RTPC_Master" ObjectPath="\Game Parameters\Default Work Unit\RTPC_Master" GUID="{74E6261E-6493-44A8-BAE7-1E79ABF4DED1}"/>
+				<GameParameter Id="3553041361" Name="RTPC_AMB" ObjectPath="\Game Parameters\Default Work Unit\RTPC_AMB" GUID="{2EA08633-9826-4131-9D31-3F7F27FCA59E}"/>
+				<GameParameter Id="3709650428" Name="RTPC_Music" ObjectPath="\Game Parameters\Default Work Unit\RTPC_Music" GUID="{5DA4119B-967E-473A-9D3F-7F6BD36532D0}"/>
+				<GameParameter Id="4031456682" Name="RTPC_Voices" ObjectPath="\Game Parameters\Default Work Unit\RTPC_Voices" GUID="{F4B8FD9E-0723-43B2-923D-1563F7D70095}"/>
 			</GameParameters>
 			<StateGroups>
 				<StateGroup Id="3929688590" Name="InsideOutside" ObjectPath="\States\Default Work Unit\InsideOutside" GUID="{2CE28D5C-F27B-42D7-9D91-1905B53C4C3C}">
@@ -111,5 +115,5 @@
 			</StateGroups>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{40401957-579C-5A43-9EE6-A9EC4CDAAE4B}</FileHash>
+	<FileHash>{742B9A54-A428-3BBE-74EA-DE6D7AE16F91}</FileHash>
 </SoundBanksInfo>
