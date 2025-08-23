@@ -25,197 +25,197 @@ jobs:
           
           # Write the build script
           cat > ~/UnrealBuilding/build_and_notify.sh << 'EOL'
-#!/bin/bash
-DISCORD_WEBHOOK="https://discord.com/api/webhooks/1408866463900499978/XeUlSiZPAwKzybHOm5GH9EY27syRoDLkc8nCXENYYZhgvK58Ib5ShCeXISpLXxHGt1rs"
-BUILD_PLATFORM="Linux"
-BUILD_CONFIGURATION="Development"
-BUILD_TARGET="DiamondProjectTeam03Editor"
-PROJECT_NAME="DiamondProjectTeam03"
-BUILDER_NAME="DisturbedBanana"
-BUILD_START_TIME="2025-08-23 18:08:07"
-GIT_TAG="${GIT_TAG:-build}"
-BUILD_ID="${BUILD_ID:-$(date +%s)}"
-cd /home/unreal/DiamondProject
-GIT_HASH=$(git rev-parse --short HEAD 2>/dev/null || echo "unknown")
-GIT_BRANCH=$(git rev-parse --abbrev-ref HEAD 2>/dev/null || echo "unknown")
-GIT_AUTHOR=$(git log -1 --pretty=format:'%an' 2>/dev/null || echo "unknown")
-GIT_COMMIT_MSG=$(git log -1 --pretty=format:'%s' 2>/dev/null || echo "unknown")
-GIT_COMMIT_DATE=$(git log -1 --pretty=format:'%ad' --date=short 2>/dev/null || echo "unknown")
-SEMANTIC_BUILD_NAME="${PROJECT_NAME}_${BUILD_PLATFORM}_${BUILD_CONFIGURATION}_${GIT_COMMIT_DATE}_${GIT_HASH}_${BUILD_ID}"
-BUILD_DIR="/tmp/build_output"
-BUILD_ZIP="${BUILD_DIR}/${SEMANTIC_BUILD_NAME}.zip"
-mkdir -p ${BUILD_DIR}
-echo "======================= BUILD INFO ======================="
-echo "Project:        $PROJECT_NAME"
-echo "Builder:        $BUILDER_NAME"
-echo "Start Time:     $BUILD_START_TIME"
-echo "Git Tag:        $GIT_TAG"
-echo "Git Hash:       $GIT_HASH"
-echo "Build Name:     $SEMANTIC_BUILD_NAME"
-echo "Platform:       $BUILD_PLATFORM"
-echo "Configuration:  $BUILD_CONFIGURATION"
-echo "Target:         $BUILD_TARGET"
-echo "Build ID:       $BUILD_ID"
-echo "========================================================"
-echo "Generating project files..."
-/home/unreal/UnrealEngine/Engine/Build/BatchFiles/Linux/GenerateProjectFiles.sh -project="/home/unreal/DiamondProject/DiamondProjectTeam03.uproject" -game -engine
-GEN_RESULT=$?
-echo "Building project..."
-BUILD_OUTPUT=$(/home/unreal/UnrealEngine/Engine/Build/BatchFiles/Linux/Build.sh $BUILD_TARGET $BUILD_PLATFORM $BUILD_CONFIGURATION -project="/home/unreal/DiamondProject/DiamondProjectTeam03.uproject" 2>&1)
-BUILD_RESULT=$?
-BUILD_END_TIME=$(date -u +"%Y-%m-%d %H:%M:%S UTC")
-BUILD_DURATION=$(($(date -d "$BUILD_END_TIME" +%s) - $(date -d "$BUILD_START_TIME" +%s)))
-if [ $BUILD_DURATION -gt 3600 ]; then
-    DURATION_FORMATTED=$(printf '%dh %dm %ds' $((BUILD_DURATION/3600)) $((BUILD_DURATION%3600/60)) $((BUILD_DURATION%60)))
-else
-    DURATION_FORMATTED=$(printf '%dm %ds' $((BUILD_DURATION/60)) $((BUILD_DURATION%60)))
-fi
-if [ $BUILD_RESULT -eq 0 ] && [ $GEN_RESULT -eq 0 ]; then
-    BUILD_STATUS="✅ Success"
-    COLOR=5763719
-    cd /home/unreal/DiamondProject
-    echo "Build Information" > BuildInfo.txt
-    echo "=================" >> BuildInfo.txt
-    echo "Project:        $PROJECT_NAME" >> BuildInfo.txt
-    echo "Build Name:     $SEMANTIC_BUILD_NAME" >> BuildInfo.txt
-    echo "Build ID:       $BUILD_ID" >> BuildInfo.txt
-    echo "Platform:       $BUILD_PLATFORM" >> BuildInfo.txt
-    echo "Configuration:  $BUILD_CONFIGURATION" >> BuildInfo.txt
-    echo "Target:         $BUILD_TARGET" >> BuildInfo.txt
-    echo "Date:           $BUILD_START_TIME" >> BuildInfo.txt
-    echo "Duration:       $DURATION_FORMATTED" >> BuildInfo.txt
-    echo "Builder:        $BUILDER_NAME" >> BuildInfo.txt
-    echo "" >> BuildInfo.txt
-    echo "Git Information" >> BuildInfo.txt
-    echo "==============" >> BuildInfo.txt
-    echo "Tag:            $GIT_TAG" >> BuildInfo.txt
-    echo "Branch:         $GIT_BRANCH" >> BuildInfo.txt
-    echo "Commit:         $GIT_HASH" >> BuildInfo.txt
-    echo "Author:         $GIT_AUTHOR" >> BuildInfo.txt
-    echo "Date:           $GIT_COMMIT_DATE" >> BuildInfo.txt
-    echo "Message:        $GIT_COMMIT_MSG" >> BuildInfo.txt
-    zip -9r $BUILD_ZIP Binaries Intermediate Build BuildInfo.txt
-    rm BuildInfo.txt
-    echo "Uploading build to transfer.sh..."
-    TRANSFER_URL=$(curl --upload-file $BUILD_ZIP https://transfer.sh/${SEMANTIC_BUILD_NAME}.zip)
-    TRANSFER_STATUS=$?
-    DOWNLOAD_LINKS=""
-    if [ $TRANSFER_STATUS -eq 0 ]; then
-        DOWNLOAD_LINKS="[Download from Transfer.sh]($TRANSFER_URL) (Available for 14 days)"
-    else
-        DOWNLOAD_LINKS="File upload failed. Check build logs."
-    fi
-    MESSAGE_JSON=$(cat <<EOF
-{
-  "embeds": [{
-    "title": "🎮 Unreal Engine Build: $PROJECT_NAME",
-    "description": "Build completed successfully\n\n**Download Link:**\n$DOWNLOAD_LINKS",
-    "color": $COLOR,
-    "fields": [
-      {
-        "name": "Status",
-        "value": "$BUILD_STATUS",
-        "inline": true
-      },
-      {
-        "name": "Builder",
-        "value": "$BUILDER_NAME",
-        "inline": true
-      },
-      {
-        "name": "Duration",
-        "value": "$DURATION_FORMATTED",
-        "inline": true
-      },
-      {
-        "name": "Platform",
-        "value": "$BUILD_PLATFORM",
-        "inline": true
-      },
-      {
-        "name": "Configuration",
-        "value": "$BUILD_CONFIGURATION",
-        "inline": true
-      },
-      {
-        "name": "Build ID",
-        "value": "$BUILD_ID",
-        "inline": true
-      },
-      {
-        "name": "Git Info",
-        "value": "Branch: \`$GIT_BRANCH\`\nCommit: \`$GIT_HASH\`\nAuthor: $GIT_AUTHOR\nMessage: \`$GIT_COMMIT_MSG\`"
-      }
-    ],
-    "footer": {
-      "text": "Build completed at $BUILD_END_TIME"
-    }
-  }]
-}
-EOF
-)
-    curl -H "Content-Type: application/json" -X POST -d "$MESSAGE_JSON" $DISCORD_WEBHOOK
-    echo "Upload complete! Cleaning up build files..."
-else
-    BUILD_STATUS="❌ Failed"
-    COLOR=15548997
-    FORMATTED_OUTPUT=$(echo "$BUILD_OUTPUT" | tail -n 15 | sed 's/"/\\"/g')
-    FAILURE_JSON=$(cat <<EOF
-{
-  "embeds": [{
-    "title": "🛑 Unreal Engine Build Failed: $PROJECT_NAME",
-    "description": "Build failed!",
-    "color": $COLOR,
-    "fields": [
-      {
-        "name": "Status",
-        "value": "$BUILD_STATUS",
-        "inline": true
-      },
-      {
-        "name": "Builder",
-        "value": "$BUILDER_NAME",
-        "inline": true
-      },
-      {
-        "name": "Duration",
-        "value": "$DURATION_FORMATTED",
-        "inline": true
-      },
-      {
-        "name": "Platform",
-        "value": "$BUILD_PLATFORM",
-        "inline": true
-      },
-      {
-        "name": "Configuration",
-        "value": "$BUILD_CONFIGURATION",
-        "inline": true
-      },
-      {
-        "name": "Git Info",
-        "value": "Branch: \`$GIT_BRANCH\`\nCommit: \`$GIT_HASH\`",
-        "inline": true
-      },
-      {
-        "name": "Error Output",
-        "value": "\`\`\`$FORMATTED_OUTPUT\`\`\`"
-      }
-    ],
-    "footer": {
-      "text": "Build failed at $BUILD_END_TIME"
-    }
-  }]
-}
-EOF
-)
-    curl -H "Content-Type: application/json" -X POST -d "$FAILURE_JSON" $DISCORD_WEBHOOK
-fi
-rm -rf $BUILD_DIR
-echo "Cleanup complete."
-echo "Build process completed with status: $BUILD_STATUS"
-exit $BUILD_RESULT
-EOL
+          #!/bin/bash
+          DISCORD_WEBHOOK="https://discord.com/api/webhooks/1408866463900499978/XeUlSiZPAwKzybHOm5GH9EY27syRoDLkc8nCXENYYZhgvK58Ib5ShCeXISpLXxHGt1rs"
+          BUILD_PLATFORM="Linux"
+          BUILD_CONFIGURATION="Development"
+          BUILD_TARGET="DiamondProjectTeam03Editor"
+          PROJECT_NAME="DiamondProjectTeam03"
+          BUILDER_NAME="DisturbedBanana"
+          BUILD_START_TIME="2025-08-23 18:08:07"
+          GIT_TAG="${GIT_TAG:-build}"
+          BUILD_ID="${BUILD_ID:-$(date +%s)}"
+          cd /home/unreal/DiamondProject
+          GIT_HASH=$(git rev-parse --short HEAD 2>/dev/null || echo "unknown")
+          GIT_BRANCH=$(git rev-parse --abbrev-ref HEAD 2>/dev/null || echo "unknown")
+          GIT_AUTHOR=$(git log -1 --pretty=format:'%an' 2>/dev/null || echo "unknown")
+          GIT_COMMIT_MSG=$(git log -1 --pretty=format:'%s' 2>/dev/null || echo "unknown")
+          GIT_COMMIT_DATE=$(git log -1 --pretty=format:'%ad' --date=short 2>/dev/null || echo "unknown")
+          SEMANTIC_BUILD_NAME="${PROJECT_NAME}_${BUILD_PLATFORM}_${BUILD_CONFIGURATION}_${GIT_COMMIT_DATE}_${GIT_HASH}_${BUILD_ID}"
+          BUILD_DIR="/tmp/build_output"
+          BUILD_ZIP="${BUILD_DIR}/${SEMANTIC_BUILD_NAME}.zip"
+          mkdir -p ${BUILD_DIR}
+          echo "======================= BUILD INFO ======================="
+          echo "Project:        $PROJECT_NAME"
+          echo "Builder:        $BUILDER_NAME"
+          echo "Start Time:     $BUILD_START_TIME"
+          echo "Git Tag:        $GIT_TAG"
+          echo "Git Hash:       $GIT_HASH"
+          echo "Build Name:     $SEMANTIC_BUILD_NAME"
+          echo "Platform:       $BUILD_PLATFORM"
+          echo "Configuration:  $BUILD_CONFIGURATION"
+          echo "Target:         $BUILD_TARGET"
+          echo "Build ID:       $BUILD_ID"
+          echo "========================================================"
+          echo "Generating project files..."
+          /home/unreal/UnrealEngine/Engine/Build/BatchFiles/Linux/GenerateProjectFiles.sh -project="/home/unreal/DiamondProject/DiamondProjectTeam03.uproject" -game -engine
+          GEN_RESULT=$?
+          echo "Building project..."
+          BUILD_OUTPUT=$(/home/unreal/UnrealEngine/Engine/Build/BatchFiles/Linux/Build.sh $BUILD_TARGET $BUILD_PLATFORM $BUILD_CONFIGURATION -project="/home/unreal/DiamondProject/DiamondProjectTeam03.uproject" 2>&1)
+          BUILD_RESULT=$?
+          BUILD_END_TIME=$(date -u +"%Y-%m-%d %H:%M:%S UTC")
+          BUILD_DURATION=$(($(date -d "$BUILD_END_TIME" +%s) - $(date -d "$BUILD_START_TIME" +%s)))
+          if [ $BUILD_DURATION -gt 3600 ]; then
+              DURATION_FORMATTED=$(printf '%dh %dm %ds' $((BUILD_DURATION/3600)) $((BUILD_DURATION%3600/60)) $((BUILD_DURATION%60)))
+          else
+              DURATION_FORMATTED=$(printf '%dm %ds' $((BUILD_DURATION/60)) $((BUILD_DURATION%60)))
+          fi
+          if [ $BUILD_RESULT -eq 0 ] && [ $GEN_RESULT -eq 0 ]; then
+              BUILD_STATUS="✅ Success"
+              COLOR=5763719
+              cd /home/unreal/DiamondProject
+              echo "Build Information" > BuildInfo.txt
+              echo "=================" >> BuildInfo.txt
+              echo "Project:        $PROJECT_NAME" >> BuildInfo.txt
+              echo "Build Name:     $SEMANTIC_BUILD_NAME" >> BuildInfo.txt
+              echo "Build ID:       $BUILD_ID" >> BuildInfo.txt
+              echo "Platform:       $BUILD_PLATFORM" >> BuildInfo.txt
+              echo "Configuration:  $BUILD_CONFIGURATION" >> BuildInfo.txt
+              echo "Target:         $BUILD_TARGET" >> BuildInfo.txt
+              echo "Date:           $BUILD_START_TIME" >> BuildInfo.txt
+              echo "Duration:       $DURATION_FORMATTED" >> BuildInfo.txt
+              echo "Builder:        $BUILDER_NAME" >> BuildInfo.txt
+              echo "" >> BuildInfo.txt
+              echo "Git Information" >> BuildInfo.txt
+              echo "==============" >> BuildInfo.txt
+              echo "Tag:            $GIT_TAG" >> BuildInfo.txt
+              echo "Branch:         $GIT_BRANCH" >> BuildInfo.txt
+              echo "Commit:         $GIT_HASH" >> BuildInfo.txt
+              echo "Author:         $GIT_AUTHOR" >> BuildInfo.txt
+              echo "Date:           $GIT_COMMIT_DATE" >> BuildInfo.txt
+              echo "Message:        $GIT_COMMIT_MSG" >> BuildInfo.txt
+              zip -9r $BUILD_ZIP Binaries Intermediate Build BuildInfo.txt
+              rm BuildInfo.txt
+              echo "Uploading build to transfer.sh..."
+              TRANSFER_URL=$(curl --upload-file $BUILD_ZIP https://transfer.sh/${SEMANTIC_BUILD_NAME}.zip)
+              TRANSFER_STATUS=$?
+              DOWNLOAD_LINKS=""
+              if [ $TRANSFER_STATUS -eq 0 ]; then
+                  DOWNLOAD_LINKS="[Download from Transfer.sh]($TRANSFER_URL) (Available for 14 days)"
+              else
+                  DOWNLOAD_LINKS="File upload failed. Check build logs."
+              fi
+              MESSAGE_JSON=$(cat <<EOF
+          {
+            "embeds": [{
+              "title": "🎮 Unreal Engine Build: $PROJECT_NAME",
+              "description": "Build completed successfully\n\n**Download Link:**\n$DOWNLOAD_LINKS",
+              "color": $COLOR,
+              "fields": [
+                {
+                  "name": "Status",
+                  "value": "$BUILD_STATUS",
+                  "inline": true
+                },
+                {
+                  "name": "Builder",
+                  "value": "$BUILDER_NAME",
+                  "inline": true
+                },
+                {
+                  "name": "Duration",
+                  "value": "$DURATION_FORMATTED",
+                  "inline": true
+                },
+                {
+                  "name": "Platform",
+                  "value": "$BUILD_PLATFORM",
+                  "inline": true
+                },
+                {
+                  "name": "Configuration",
+                  "value": "$BUILD_CONFIGURATION",
+                  "inline": true
+                },
+                {
+                  "name": "Build ID",
+                  "value": "$BUILD_ID",
+                  "inline": true
+                },
+                {
+                  "name": "Git Info",
+                  "value": "Branch: \`$GIT_BRANCH\`\nCommit: \`$GIT_HASH\`\nAuthor: $GIT_AUTHOR\nMessage: \`$GIT_COMMIT_MSG\`"
+                }
+              ],
+              "footer": {
+                "text": "Build completed at $BUILD_END_TIME"
+              }
+            }]
+          }
+          EOF
+          )
+              curl -H "Content-Type: application/json" -X POST -d "$MESSAGE_JSON" $DISCORD_WEBHOOK
+              echo "Upload complete! Cleaning up build files..."
+          else
+              BUILD_STATUS="❌ Failed"
+              COLOR=15548997
+              FORMATTED_OUTPUT=$(echo "$BUILD_OUTPUT" | tail -n 15 | sed 's/"/\\"/g')
+              FAILURE_JSON=$(cat <<EOF
+          {
+            "embeds": [{
+              "title": "🛑 Unreal Engine Build Failed: $PROJECT_NAME",
+              "description": "Build failed!",
+              "color": $COLOR,
+              "fields": [
+                {
+                  "name": "Status",
+                  "value": "$BUILD_STATUS",
+                  "inline": true
+                },
+                {
+                  "name": "Builder",
+                  "value": "$BUILDER_NAME",
+                  "inline": true
+                },
+                {
+                  "name": "Duration",
+                  "value": "$DURATION_FORMATTED",
+                  "inline": true
+                },
+                {
+                  "name": "Platform",
+                  "value": "$BUILD_PLATFORM",
+                  "inline": true
+                },
+                {
+                  "name": "Configuration",
+                  "value": "$BUILD_CONFIGURATION",
+                  "inline": true
+                },
+                {
+                  "name": "Git Info",
+                  "value": "Branch: \`$GIT_BRANCH\`\nCommit: \`$GIT_HASH\`",
+                  "inline": true
+                },
+                {
+                  "name": "Error Output",
+                  "value": "\`\`\`$FORMATTED_OUTPUT\`\`\`"
+                }
+              ],
+              "footer": {
+                "text": "Build failed at $BUILD_END_TIME"
+              }
+            }]
+          }
+          EOF
+          )
+              curl -H "Content-Type: application/json" -X POST -d "$FAILURE_JSON" $DISCORD_WEBHOOK
+          fi
+          rm -rf $BUILD_DIR
+          echo "Cleanup complete."
+          echo "Build process completed with status: $BUILD_STATUS"
+          exit $BUILD_RESULT
+          EOL
 
           chmod +x ~/UnrealBuilding/build_and_notify.sh
 
