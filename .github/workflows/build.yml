@@ -19,23 +19,30 @@ jobs:
         run: echo "BUILD_ID=$(date +%Y%m%d%H%M%S)" >> $GITHUB_OUTPUT
       
       - name: Build Unreal Project
+        env:
+          UE_ENGINE_PATH: /home/unreal/UE_5.4_Source/UnrealEngine-5.4   # <-- Your built engine path
+          PROJECT_PATH: /home/unreal/DiamondProject
+          PROJECT_NAME: DiamondProject
         run: |
           mkdir -p ~/UnrealBuilding
-          cp -r . ~/UnrealBuilding/DiamondProjectTeam03
-          
+          cd $GITHUB_WORKSPACE
+          rsync -a --exclude='.git' ./ ~/UnrealBuilding/${PROJECT_NAME}/
+
           # Write the build script
           cat > ~/UnrealBuilding/build_and_notify.sh << 'EOL'
           #!/bin/bash
           DISCORD_WEBHOOK="https://discord.com/api/webhooks/1408866463900499978/XeUlSiZPAwKzybHOm5GH9EY27syRoDLkc8nCXENYYZhgvK58Ib5ShCeXISpLXxHGt1rs"
           BUILD_PLATFORM="Linux"
           BUILD_CONFIGURATION="Development"
-          BUILD_TARGET="DiamondProjectTeam03Editor"
-          PROJECT_NAME="DiamondProjectTeam03"
+          BUILD_TARGET="DiamondProjectEditor"
+          PROJECT_NAME="DiamondProject"
           BUILDER_NAME="DisturbedBanana"
-          BUILD_START_TIME="2025-08-23 18:08:07"
+          BUILD_START_TIME=$(date -u +"%Y-%m-%d %H:%M:%S UTC")
           GIT_TAG="${GIT_TAG:-build}"
           BUILD_ID="${BUILD_ID:-$(date +%s)}"
-          cd /home/unreal/DiamondProject
+          UE_ENGINE_PATH="${UE_ENGINE_PATH:-/home/unreal/UE_5.4_Source/UnrealEngine-5.4}"
+          PROJECT_PATH="${PROJECT_PATH:-/home/unreal/DiamondProject}"
+          cd $PROJECT_PATH
           GIT_HASH=$(git rev-parse --short HEAD 2>/dev/null || echo "unknown")
           GIT_BRANCH=$(git rev-parse --abbrev-ref HEAD 2>/dev/null || echo "unknown")
           GIT_AUTHOR=$(git log -1 --pretty=format:'%an' 2>/dev/null || echo "unknown")
@@ -58,10 +65,10 @@ jobs:
           echo "Build ID:       $BUILD_ID"
           echo "========================================================"
           echo "Generating project files..."
-          /home/unreal/UnrealEngine/Engine/Build/BatchFiles/Linux/GenerateProjectFiles.sh -project="/home/unreal/DiamondProject/DiamondProjectTeam03.uproject" -game -engine
+          $UE_ENGINE_PATH/Engine/Build/BatchFiles/Linux/GenerateProjectFiles.sh -project="$PROJECT_PATH/${PROJECT_NAME}.uproject" -game -engine
           GEN_RESULT=$?
           echo "Building project..."
-          BUILD_OUTPUT=$(/home/unreal/UnrealEngine/Engine/Build/BatchFiles/Linux/Build.sh $BUILD_TARGET $BUILD_PLATFORM $BUILD_CONFIGURATION -project="/home/unreal/DiamondProject/DiamondProjectTeam03.uproject" 2>&1)
+          BUILD_OUTPUT=$($UE_ENGINE_PATH/Engine/Build/BatchFiles/Linux/Build.sh $BUILD_TARGET $BUILD_PLATFORM $BUILD_CONFIGURATION -project="$PROJECT_PATH/${PROJECT_NAME}.uproject" 2>&1)
           BUILD_RESULT=$?
           BUILD_END_TIME=$(date -u +"%Y-%m-%d %H:%M:%S UTC")
           BUILD_DURATION=$(($(date -d "$BUILD_END_TIME" +%s) - $(date -d "$BUILD_START_TIME" +%s)))
@@ -73,7 +80,7 @@ jobs:
           if [ $BUILD_RESULT -eq 0 ] && [ $GEN_RESULT -eq 0 ]; then
               BUILD_STATUS="✅ Success"
               COLOR=5763719
-              cd /home/unreal/DiamondProject
+              cd $PROJECT_PATH
               echo "Build Information" > BuildInfo.txt
               echo "=================" >> BuildInfo.txt
               echo "Project:        $PROJECT_NAME" >> BuildInfo.txt
@@ -219,11 +226,13 @@ jobs:
 
           chmod +x ~/UnrealBuilding/build_and_notify.sh
 
-          # If using Docker from WSL, use the /mnt/c/ path
+          # Run build in Docker, mounting your built engine and project
           docker run --name unreal-build-${{ steps.build_id.outputs.BUILD_ID }} \
             -e BUILD_ID="${{ steps.build_id.outputs.BUILD_ID }}" \
-            -v "/mnt/c/Program Files/Epic Games/UE_5.4":/home/unreal/UnrealEngine \
-            -v ~/UnrealBuilding/DiamondProjectTeam03:/home/unreal/DiamondProject \
+            -e UE_ENGINE_PATH="/home/unreal/UE_5.4_Source/UnrealEngine-5.4" \
+            -e PROJECT_PATH="/home/unreal/DiamondProject" \
+            -v ~/UE_5.4_Source/UnrealEngine-5.4:/home/unreal/UE_5.4_Source/UnrealEngine-5.4 \
+            -v ~/UnrealBuilding/DiamondProject:/home/unreal/DiamondProject \
             -v ~/UnrealBuilding/build_and_notify.sh:/home/unreal/build_and_notify.sh \
             unreal-engine-build /home/unreal/build_and_notify.sh
 
