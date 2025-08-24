@@ -13,14 +13,14 @@ jobs:
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
-      
+
       - name: Generate Build ID
         id: build_id
         run: echo "BUILD_ID=$(date +%Y%m%d%H%M%S)" >> $GITHUB_OUTPUT
-      
+
       - name: Build Unreal Project
         env:
-          UE_ENGINE_PATH: /home/unreal/UE_5.4_Source/UnrealEngine-5.4   # <-- Your built engine path
+          UE_ENGINE_PATH: /home/unreal/UE_5.4_Source/UnrealEngine-5.4
           PROJECT_PATH: /home/unreal/DiamondProject
           PROJECT_NAME: DiamondProject
         run: |
@@ -28,7 +28,7 @@ jobs:
           cd $GITHUB_WORKSPACE
           rsync -a --exclude='.git' ./ ~/UnrealBuilding/${PROJECT_NAME}/
 
-          # Write the build script
+          # Write the build script with jq for Discord JSON
           cat > ~/UnrealBuilding/build_and_notify.sh << 'EOL'
           #!/bin/bash
           DISCORD_WEBHOOK="https://discord.com/api/webhooks/1408866463900499978/XeUlSiZPAwKzybHOm5GH9EY27syRoDLkc8nCXENYYZhgvK58Ib5ShCeXISpLXxHGt1rs"
@@ -112,110 +112,73 @@ jobs:
               else
                   DOWNLOAD_LINKS="File upload failed. Check build logs."
               fi
-              MESSAGE_JSON=$(cat <<EOF
-          {
-            "embeds": [{
-              "title": "🎮 Unreal Engine Build: $PROJECT_NAME",
-              "description": "Build completed successfully\n\n**Download Link:**\n$DOWNLOAD_LINKS",
-              "color": $COLOR,
-              "fields": [
-                {
-                  "name": "Status",
-                  "value": "$BUILD_STATUS",
-                  "inline": true
-                },
-                {
-                  "name": "Builder",
-                  "value": "$BUILDER_NAME",
-                  "inline": true
-                },
-                {
-                  "name": "Duration",
-                  "value": "$DURATION_FORMATTED",
-                  "inline": true
-                },
-                {
-                  "name": "Platform",
-                  "value": "$BUILD_PLATFORM",
-                  "inline": true
-                },
-                {
-                  "name": "Configuration",
-                  "value": "$BUILD_CONFIGURATION",
-                  "inline": true
-                },
-                {
-                  "name": "Build ID",
-                  "value": "$BUILD_ID",
-                  "inline": true
-                },
-                {
-                  "name": "Git Info",
-                  "value": "Branch: \`$GIT_BRANCH\`\nCommit: \`$GIT_HASH\`\nAuthor: $GIT_AUTHOR\nMessage: \`$GIT_COMMIT_MSG\`"
-                }
-              ],
-              "footer": {
-                "text": "Build completed at $BUILD_END_TIME"
-              }
-            }]
-          }
-          EOF
-          )
+              MESSAGE_JSON=$(jq -n \
+                --arg project "$PROJECT_NAME" \
+                --arg build_status "$BUILD_STATUS" \
+                --arg builder "$BUILDER_NAME" \
+                --arg duration "$DURATION_FORMATTED" \
+                --arg platform "$BUILD_PLATFORM" \
+                --arg configuration "$BUILD_CONFIGURATION" \
+                --arg build_id "$BUILD_ID" \
+                --arg branch "$GIT_BRANCH" \
+                --arg commit "$GIT_HASH" \
+                --arg author "$GIT_AUTHOR" \
+                --arg commit_msg "$GIT_COMMIT_MSG" \
+                --arg download_links "$DOWNLOAD_LINKS" \
+                --arg end_time "$BUILD_END_TIME" \
+                '{
+                  embeds: [{
+                    title: ("🎮 Unreal Engine Build: " + $project),
+                    description: ("Build completed successfully\n\n**Download Link:**\n" + $download_links),
+                    color: 5763719,
+                    fields: [
+                      { name: "Status", value: $build_status, inline: true },
+                      { name: "Builder", value: $builder, inline: true },
+                      { name: "Duration", value: $duration, inline: true },
+                      { name: "Platform", value: $platform, inline: true },
+                      { name: "Configuration", value: $configuration, inline: true },
+                      { name: "Build ID", value: $build_id, inline: true },
+                      { name: "Git Info", value: ("Branch: `" + $branch + "`\nCommit: `" + $commit + "`\nAuthor: " + $author + "\nMessage: `" + $commit_msg + "`") }
+                    ],
+                    footer: { text: ("Build completed at " + $end_time) }
+                  }]
+                }')
+              echo "$MESSAGE_JSON" | jq .
               curl -H "Content-Type: application/json" -X POST -d "$MESSAGE_JSON" $DISCORD_WEBHOOK
               echo "Upload complete! Cleaning up build files..."
           else
               BUILD_STATUS="❌ Failed"
               COLOR=15548997
-              FORMATTED_OUTPUT=$(echo "$BUILD_OUTPUT" | tail -n 15 | sed 's/"/\\"/g')
-              FAILURE_JSON=$(cat <<EOF
-          {
-            "embeds": [{
-              "title": "🛑 Unreal Engine Build Failed: $PROJECT_NAME",
-              "description": "Build failed!",
-              "color": $COLOR,
-              "fields": [
-                {
-                  "name": "Status",
-                  "value": "$BUILD_STATUS",
-                  "inline": true
-                },
-                {
-                  "name": "Builder",
-                  "value": "$BUILDER_NAME",
-                  "inline": true
-                },
-                {
-                  "name": "Duration",
-                  "value": "$DURATION_FORMATTED",
-                  "inline": true
-                },
-                {
-                  "name": "Platform",
-                  "value": "$BUILD_PLATFORM",
-                  "inline": true
-                },
-                {
-                  "name": "Configuration",
-                  "value": "$BUILD_CONFIGURATION",
-                  "inline": true
-                },
-                {
-                  "name": "Git Info",
-                  "value": "Branch: \`$GIT_BRANCH\`\nCommit: \`$GIT_HASH\`",
-                  "inline": true
-                },
-                {
-                  "name": "Error Output",
-                  "value": "\`\`\`$FORMATTED_OUTPUT\`\`\`"
-                }
-              ],
-              "footer": {
-                "text": "Build failed at $BUILD_END_TIME"
-              }
-            }]
-          }
-          EOF
-          )
+              FORMATTED_OUTPUT=$(echo "$BUILD_OUTPUT" | tail -n 15)
+              FAILURE_JSON=$(jq -n \
+                --arg project "$PROJECT_NAME" \
+                --arg build_status "$BUILD_STATUS" \
+                --arg builder "$BUILDER_NAME" \
+                --arg duration "$DURATION_FORMATTED" \
+                --arg platform "$BUILD_PLATFORM" \
+                --arg configuration "$BUILD_CONFIGURATION" \
+                --arg branch "$GIT_BRANCH" \
+                --arg commit "$GIT_HASH" \
+                --arg error_output "$FORMATTED_OUTPUT" \
+                --arg end_time "$BUILD_END_TIME" \
+                '{
+                  embeds: [{
+                    title: ("🛑 Unreal Engine Build Failed: " + $project),
+                    description: "Build failed!",
+                    color: 15548997,
+                    fields: [
+                      { name: "Status", value: $build_status, inline: true },
+                      { name: "Builder", value: $builder, inline: true },
+                      { name: "Duration", value: $duration, inline: true },
+                      { name: "Platform", value: $platform, inline: true },
+                      { name: "Configuration", value: $configuration, inline: true },
+                      { name: "Git Info", value: ("Branch: `" + $branch + "`\nCommit: `" + $commit + "`"), inline: true },
+                      { name: "Error Output", value: ("```" + $error_output + "```") }
+                    ],
+                    footer: { text: ("Build failed at " + $end_time) }
+                  }]
+                }')
+              echo "$FAILURE_JSON" | jq .
               curl -H "Content-Type: application/json" -X POST -d "$FAILURE_JSON" $DISCORD_WEBHOOK
           fi
           rm -rf $BUILD_DIR
