@@ -1,7 +1,7 @@
 // Copyright Epic Games, Inc. All Rights Reserved.
 
 
-#include "TP_WeaponComponent.h"
+#include "UWeaponComponent.h"
 #include "DiamondProjectCharacter.h"
 #include "DiamondProjectProjectile.h"
 #include "GameFramework/PlayerController.h"
@@ -17,14 +17,14 @@
 
 class UTP_PickUpComponent;
 // Sets default values for this component's properties
-UTP_WeaponComponent::UTP_WeaponComponent()
+UWeaponComponent::UWeaponComponent()
 {
 	// Default offset from the character location for projectiles to spawn
 	MuzzleOffset = FVector(100.0f, 0.0f, 10.0f);
 }
 
 
-void UTP_WeaponComponent::Fire()
+void UWeaponComponent::Fire()
 {
 	if (Character == nullptr || Character->GetController() == nullptr)
 	{
@@ -69,12 +69,12 @@ void UTP_WeaponComponent::Fire()
 	}
 }
 
-bool UTP_WeaponComponent::AttachWeapon(ADiamondProjectCharacter* TargetCharacter)
+bool UWeaponComponent::AttachWeapon(ADiamondProjectCharacter* TargetCharacter)
 {
 	Character = TargetCharacter;
 
 	// Check that the character is valid, and has no weapon component yet
-	if (Character == nullptr || Character->GetInstanceComponents().FindItemByClass<UTP_WeaponComponent>()) {
+	if (Character == nullptr || Character->GetInstanceComponents().FindItemByClass<UWeaponComponent>()) {
 		UE_LOG(LogTemp, Warning, TEXT("Character %s already has a weapon"), *Character->GetName());
 		return false;
 	}
@@ -112,7 +112,7 @@ bool UTP_WeaponComponent::AttachWeapon(ADiamondProjectCharacter* TargetCharacter
 		if (TObjectPtr<UEnhancedInputComponent> EnhancedInputComponent = Cast<UEnhancedInputComponent>(PlayerController->InputComponent))
 		{
 			// Fire
-			EnhancedInputComponent->BindAction(FireAction, ETriggerEvent::Triggered, this, &UTP_WeaponComponent::Fire);
+			EnhancedInputComponent->BindAction(FireAction, ETriggerEvent::Triggered, this, &UWeaponComponent::Fire);
 			BindingIndex = EnhancedInputComponent->GetActionEventBindings().Num() - 1;
 		}
 	}
@@ -120,7 +120,7 @@ bool UTP_WeaponComponent::AttachWeapon(ADiamondProjectCharacter* TargetCharacter
 	return true;
 }
 
-void UTP_WeaponComponent::EndPlay(const EEndPlayReason::Type EndPlayReason)
+void UWeaponComponent::EndPlay(const EEndPlayReason::Type EndPlayReason)
 	{
 	//Log this item name in console
 	if (Character == nullptr)

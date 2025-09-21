@@ -3,8 +3,8 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "DiamondProject/TP_WeaponComponent.h"
-#include "APlayerProtoWeapon.generated.h"
+#include "DiamondProject/UWeaponComponent.h"
+#include "UPlayerWeaponComponent.generated.h"
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnDropped, ADiamondProjectCharacter*, PickUpCharacter);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnFire, int, CurrentAmmo, FVector, HitLocation);
@@ -13,7 +13,7 @@ DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnHit, FHitResult, HitInfo);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnPickedUp);
 
 UCLASS(Blueprintable, BlueprintType, ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
-class DIAMONDPROJECT_API UAPlayerProtoWeapon : public UTP_WeaponComponent
+class DIAMONDPROJECT_API UPlayerWeaponComponent : public UWeaponComponent
 {
  GENERATED_BODY()
 

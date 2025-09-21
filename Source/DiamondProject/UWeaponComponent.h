@@ -4,12 +4,12 @@
 
 #include "CoreMinimal.h"
 #include "Components/SkeletalMeshComponent.h"
-#include "TP_WeaponComponent.generated.h"
+#include "UWeaponComponent.generated.h"
 
 class ADiamondProjectCharacter;
 
 UCLASS(Blueprintable, BlueprintType, ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
-class DIAMONDPROJECT_API UTP_WeaponComponent : public USkeletalMeshComponent
+class DIAMONDPROJECT_API UWeaponComponent : public USkeletalMeshComponent
 {
 	GENERATED_BODY()
 
@@ -42,7 +42,7 @@ public:
 	class UInputAction* FireAction;
 
 	/** Sets default values for this component's properties */
-	UTP_WeaponComponent();
+	UWeaponComponent();
 
 	/** Attaches the actor to a FirstPersonCharacter */
 	UFUNCTION(BlueprintCallable, Category="Weapon")

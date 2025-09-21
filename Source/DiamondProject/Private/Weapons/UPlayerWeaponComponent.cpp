@@ -1,10 +1,10 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-#include "DiamondProject/Public/Weapons/APlayerProtoWeapon.h"
+#include "DiamondProject/Public/Weapons/UPlayerWeaponComponent.h"
 
 #include "EnhancedInputComponent.h"
 #include "EnhancedInputSubsystems.h"
-#include "DiamondProject/TP_WeaponComponent.h"
+#include "DiamondProject/UWeaponComponent.h"
 #include "DiamondProject/DiamondProjectCharacter.h"
 #include "GameFramework/PlayerController.h"
 #include "Camera/PlayerCameraManager.h"
@@ -14,13 +14,13 @@
 #include "Engine/World.h"
 #include "LoopSystem/AC_Health.h"
 
-void UAPlayerProtoWeapon::BeginPlay()
+void UPlayerWeaponComponent::BeginPlay()
 {
     Super::BeginPlay();
     CurrentAmmo = AmmoOnSpawn;
 }
 
-void UAPlayerProtoWeapon::Fire()
+void UPlayerWeaponComponent::Fire()
 {
     if (!IsFirePossible())
         return;
@@ -34,7 +34,7 @@ void UAPlayerProtoWeapon::Fire()
     }
 }
 
-bool UAPlayerProtoWeapon::IsFirePossible() const
+bool UPlayerWeaponComponent::IsFirePossible() const
 {
     if (!Character || !Character->GetController() || CurrentAmmo <= 0)
         return false;
@@ -43,13 +43,13 @@ bool UAPlayerProtoWeapon::IsFirePossible() const
     return (currentTime - LastFireTime >= 1.0f / FireRatePerSecond);
 }
 
-void UAPlayerProtoWeapon::DecreaseAmmo()
+void UPlayerWeaponComponent::DecreaseAmmo()
 {
     CurrentAmmo--;
     LastFireTime = GetWorld()->GetTimeSeconds();
 }
 
-void UAPlayerProtoWeapon::PerformShot() const
+void UPlayerWeaponComponent::PerformShot() const
 {
     UWorld* const World = GetWorld();
     if (!World)
@@ -82,7 +82,7 @@ void UAPlayerProtoWeapon::PerformShot() const
     OnFire.Broadcast(CurrentAmmo, SpawnLocation + (SpawnRotation.Vector() * 1000));
 }
 
-void UAPlayerProtoWeapon::ProcessHit(const FHitResult& Hit, UWorld* World) const
+void UPlayerWeaponComponent::ProcessHit(const FHitResult& Hit, UWorld* World) const
 {
     if (Hit.GetActor() != nullptr){
         if (UAC_Health* healthComponent = Hit.GetActor()->FindComponentByClass<UAC_Health>()){
@@ -103,7 +103,7 @@ void UAPlayerProtoWeapon::ProcessHit(const FHitResult& Hit, UWorld* World) const
     }
 }
 
-void UAPlayerProtoWeapon::PlayFireEffects() const
+void UPlayerWeaponComponent::PlayFireEffects() const
 {
     if (FireSound){
         UGameplayStatics::PlaySoundAtLocation(this, FireSound, Character->GetActorLocation());
@@ -116,13 +116,13 @@ void UAPlayerProtoWeapon::PlayFireEffects() const
     }
 }
 
-bool UAPlayerProtoWeapon::AttachWeapon(ADiamondProjectCharacter* TargetCharacter)
+bool UPlayerWeaponComponent::AttachWeapon(ADiamondProjectCharacter* TargetCharacter)
 {
     if (!TargetCharacter)
         return false;
     
     if (TargetCharacter->CurrentWeapon){
-        if (UAPlayerProtoWeapon* ExistingWeapon = Cast<UAPlayerProtoWeapon>(TargetCharacter->CurrentWeapon)){
+        if (UPlayerWeaponComponent* ExistingWeapon = Cast<UPlayerWeaponComponent>(TargetCharacter->CurrentWeapon)){
             const int NewAmmo = FMath::Clamp(ExistingWeapon->CurrentAmmo + AmmoOnSpawn, 0, ExistingWeapon->MagazineSize);
             ExistingWeapon->CurrentAmmo = NewAmmo;
             
@@ -146,7 +146,7 @@ bool UAPlayerProtoWeapon::AttachWeapon(ADiamondProjectCharacter* TargetCharacter
         }
 
         if (UEnhancedInputComponent* EnhancedInputComponent = Cast<UEnhancedInputComponent>(PlayerController->InputComponent)){
-            BindingIndex = EnhancedInputComponent->BindAction(FireAction, ETriggerEvent::Triggered, this, &UAPlayerProtoWeapon::Fire).GetHandle();
+            BindingIndex = EnhancedInputComponent->BindAction(FireAction, ETriggerEvent::Triggered, this, &UPlayerWeaponComponent::Fire).GetHandle();
         }
     }
 
@@ -155,7 +155,7 @@ bool UAPlayerProtoWeapon::AttachWeapon(ADiamondProjectCharacter* TargetCharacter
     return true;
 }
 
-void UAPlayerProtoWeapon::DetachWeapon()
+void UPlayerWeaponComponent::DetachWeapon()
 {
     FDetachmentTransformRules DetachmentRules(EDetachmentRule::KeepWorld, false);
     DetachFromComponent(DetachmentRules);
@@ -177,18 +177,18 @@ void UAPlayerProtoWeapon::DetachWeapon()
     Character = nullptr;
 }
 
-int UAPlayerProtoWeapon::GetCurrentAmmo() const
+int UPlayerWeaponComponent::GetCurrentAmmo() const
 {
     return CurrentAmmo;
 }
 
-ADiamondProjectCharacter* UAPlayerProtoWeapon::GetCharacter() const
+ADiamondProjectCharacter* UPlayerWeaponComponent::GetCharacter() const
 {
     if (!Character) return nullptr;
     return Character;
 }
 
-USoundBase* UAPlayerProtoWeapon::GetFireSound() const
+USoundBase* UPlayerWeaponComponent::GetFireSound() const
 {
     if (!FireSound) return nullptr;
     return FireSound;
