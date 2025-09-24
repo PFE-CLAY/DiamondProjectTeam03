@@ -1,6 +1,6 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-#include "DiamondProject/Public/Weapons/UPlayerWeaponComponent.h"
+#include "DiamondProject/Public/Weapons/PlayerHitscanWeaponComponent.h"
 
 #include "EnhancedInputComponent.h"
 #include "EnhancedInputSubsystems.h"
@@ -14,13 +14,13 @@
 #include "Engine/World.h"
 #include "LoopSystem/AC_Health.h"
 
-void UPlayerWeaponComponent::BeginPlay()
+void UPlayerHitscanWeaponComponent::BeginPlay()
 {
     Super::BeginPlay();
     CurrentAmmo = AmmoOnSpawn;
 }
 
-void UPlayerWeaponComponent::Fire()
+void UPlayerHitscanWeaponComponent::Fire()
 {
     if (!IsFirePossible())
         return;
@@ -34,7 +34,7 @@ void UPlayerWeaponComponent::Fire()
     }
 }
 
-bool UPlayerWeaponComponent::IsFirePossible() const
+bool UPlayerHitscanWeaponComponent::IsFirePossible() const
 {
     if (!Character || !Character->GetController() || CurrentAmmo <= 0)
         return false;
@@ -43,13 +43,13 @@ bool UPlayerWeaponComponent::IsFirePossible() const
     return (currentTime - LastFireTime >= 1.0f / FireRatePerSecond);
 }
 
-void UPlayerWeaponComponent::DecreaseAmmo()
+void UPlayerHitscanWeaponComponent::DecreaseAmmo()
 {
     CurrentAmmo--;
     LastFireTime = GetWorld()->GetTimeSeconds();
 }
 
-void UPlayerWeaponComponent::PerformShot() const
+void UPlayerHitscanWeaponComponent::PerformShot() const
 {
     UWorld* const World = GetWorld();
     if (!World)
@@ -82,7 +82,7 @@ void UPlayerWeaponComponent::PerformShot() const
     OnFire.Broadcast(CurrentAmmo, SpawnLocation + (SpawnRotation.Vector() * 1000));
 }
 
-void UPlayerWeaponComponent::ProcessHit(const FHitResult& Hit, UWorld* World) const
+void UPlayerHitscanWeaponComponent::ProcessHit(const FHitResult& Hit, UWorld* World) const
 {
     if (Hit.GetActor() != nullptr){
         if (UAC_Health* healthComponent = Hit.GetActor()->FindComponentByClass<UAC_Health>()){
@@ -103,7 +103,7 @@ void UPlayerWeaponComponent::ProcessHit(const FHitResult& Hit, UWorld* World) co
     }
 }
 
-void UPlayerWeaponComponent::PlayFireEffects() const
+void UPlayerHitscanWeaponComponent::PlayFireEffects() const
 {
     if (FireSound){
         UGameplayStatics::PlaySoundAtLocation(this, FireSound, Character->GetActorLocation());
@@ -116,13 +116,13 @@ void UPlayerWeaponComponent::PlayFireEffects() const
     }
 }
 
-bool UPlayerWeaponComponent::AttachWeapon(ADiamondProjectCharacter* TargetCharacter)
+bool UPlayerHitscanWeaponComponent::AttachWeapon(ADiamondProjectCharacter* TargetCharacter)
 {
     if (!TargetCharacter)
         return false;
     
     if (TargetCharacter->CurrentWeapon){
-        if (UPlayerWeaponComponent* ExistingWeapon = Cast<UPlayerWeaponComponent>(TargetCharacter->CurrentWeapon)){
+        if (UPlayerHitscanWeaponComponent* ExistingWeapon = Cast<UPlayerHitscanWeaponComponent>(TargetCharacter->CurrentWeapon)){
             const int NewAmmo = FMath::Clamp(ExistingWeapon->CurrentAmmo + AmmoOnSpawn, 0, ExistingWeapon->MagazineSize);
             ExistingWeapon->CurrentAmmo = NewAmmo;
             
@@ -146,50 +146,11 @@ bool UPlayerWeaponComponent::AttachWeapon(ADiamondProjectCharacter* TargetCharac
         }
 
         if (UEnhancedInputComponent* EnhancedInputComponent = Cast<UEnhancedInputComponent>(PlayerController->InputComponent)){
-            BindingIndex = EnhancedInputComponent->BindAction(FireAction, ETriggerEvent::Triggered, this, &UPlayerWeaponComponent::Fire).GetHandle();
+            BindingIndex = EnhancedInputComponent->BindAction(FireAction, ETriggerEvent::Triggered, this, &UPlayerHitscanWeaponComponent::Fire).GetHandle();
         }
     }
 
     Character->CurrentWeapon = this;
     OnPickedUpWeapon.Broadcast();
     return true;
-}
-
-void UPlayerWeaponComponent::DetachWeapon()
-{
-    FDetachmentTransformRules DetachmentRules(EDetachmentRule::KeepWorld, false);
-    DetachFromComponent(DetachmentRules);
-
-    Character->RemoveInstanceComponent(this);
-
-    if (APlayerController* PlayerController = Cast<APlayerController>(Character->GetController())){
-
-        if (UEnhancedInputLocalPlayerSubsystem* InputSubsystem = ULocalPlayer::GetSubsystem<UEnhancedInputLocalPlayerSubsystem>(PlayerController->GetLocalPlayer())){
-            InputSubsystem->RemoveMappingContext(FireMappingContext);
-        }
-
-        if (UEnhancedInputComponent* EnhancedInputComponent = Cast<UEnhancedInputComponent>(PlayerController->InputComponent)){
-            EnhancedInputComponent->RemoveActionEventBinding(BindingIndex);
-        }
-    }
-
-    Character->CurrentWeapon = nullptr;
-    Character = nullptr;
-}
-
-int UPlayerWeaponComponent::GetCurrentAmmo() const
-{
-    return CurrentAmmo;
-}
-
-ADiamondProjectCharacter* UPlayerWeaponComponent::GetCharacter() const
-{
-    if (!Character) return nullptr;
-    return Character;
-}
-
-USoundBase* UPlayerWeaponComponent::GetFireSound() const
-{
-    if (!FireSound) return nullptr;
-    return FireSound;
 }

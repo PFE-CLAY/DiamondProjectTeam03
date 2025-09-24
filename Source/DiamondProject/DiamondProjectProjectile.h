@@ -6,7 +6,7 @@
 #include "GameFramework/Actor.h"
 #include "DiamondProjectProjectile.generated.h"
 
-class USphereComponent;
+class UCapsuleComponent;
 class UProjectileMovementComponent;
 
 UCLASS(config=Game)
@@ -16,11 +16,14 @@ class ADiamondProjectProjectile : public AActor
 
 	/** Sphere collision component */
 	UPROPERTY(VisibleDefaultsOnly, Category=Projectile)
-	USphereComponent* CollisionComp;
+	UCapsuleComponent* CollisionComp;
 
 	/** Projectile movement component */
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Movement, meta = (AllowPrivateAccess = "true"))
 	UProjectileMovementComponent* ProjectileMovement;
+
+	UPROPERTY(VisibleDefaultsOnly, Category=Projectile)
+	float Damage;
 
 public:
 	ADiamondProjectProjectile();
@@ -29,8 +32,11 @@ public:
 	UFUNCTION()
 	void OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit);
 
+	UFUNCTION()
+	void Initialize(const float WeaponDamage);
+	
 	/** Returns CollisionComp subobject **/
-	USphereComponent* GetCollisionComp() const { return CollisionComp; }
+	UCapsuleComponent* GetCollisionComp() const { return CollisionComp; }
 	/** Returns ProjectileMovement subobject **/
 	UProjectileMovementComponent* GetProjectileMovement() const { return ProjectileMovement; }
 };

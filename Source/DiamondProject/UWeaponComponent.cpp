@@ -15,7 +15,6 @@
 #include "Engine/LocalPlayer.h"
 #include "Engine/World.h"
 
-class UTP_PickUpComponent;
 // Sets default values for this component's properties
 UWeaponComponent::UWeaponComponent()
 {
@@ -29,43 +28,6 @@ void UWeaponComponent::Fire()
 	if (Character == nullptr || Character->GetController() == nullptr)
 	{
 		return;
-	}
-
-	// Try and fire a projectile
-	if (ProjectileClass != nullptr)
-	{
-		UWorld* const World = GetWorld();
-		if (World != nullptr)
-		{
-			APlayerController* PlayerController = Cast<APlayerController>(Character->GetController());
-			const FRotator SpawnRotation = PlayerController->PlayerCameraManager->GetCameraRotation();
-			// MuzzleOffset is in camera space, so transform it to world space before offsetting from the character location to find the final muzzle position
-			const FVector SpawnLocation = GetOwner()->GetActorLocation() + SpawnRotation.RotateVector(MuzzleOffset);
-	
-			//Set Spawn Collision Handling Override
-			FActorSpawnParameters ActorSpawnParams;
-			ActorSpawnParams.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AdjustIfPossibleButDontSpawnIfColliding;
-	
-			// Spawn the projectile at the muzzle
-			World->SpawnActor<ADiamondProjectProjectile>(ProjectileClass, SpawnLocation, SpawnRotation, ActorSpawnParams);
-		}
-	}
-	
-	// Try and play the sound if specified
-	if (FireSound != nullptr)
-	{
-		UGameplayStatics::PlaySoundAtLocation(this, FireSound, Character->GetActorLocation());
-	}
-	
-	// Try and play a firing animation if specified
-	if (FireAnimation != nullptr)
-	{
-		// Get the animation object for the arms mesh
-		UAnimInstance* AnimInstance = Character->GetMesh1P()->GetAnimInstance();
-		if (AnimInstance != nullptr)
-		{
-			AnimInstance->Montage_Play(FireAnimation, 1.f);
-		}
 	}
 }
 
@@ -86,12 +48,9 @@ bool UWeaponComponent::AttachWeapon(ADiamondProjectCharacter* TargetCharacter)
 	AttachToComponent(Character->GetMesh1P(), AttachmentRules, FName(TEXT("GripPoint")));
 	
 	// Get current rotation and adjust roll by -15 degrees
-	FRotator CurrentRotation = GetRelativeRotation();
 	FRotator AdjustedRotation = GetRelativeRotation() + FRotator(0, -15, -7);
 	SetRelativeRotation(AdjustedRotation);
 	
-	
-
 	// add the weapon as an instance component to the character
 	Character->AddInstanceComponent(this);
 
@@ -120,6 +79,34 @@ bool UWeaponComponent::AttachWeapon(ADiamondProjectCharacter* TargetCharacter)
 	return true;
 }
 
+ADiamondProjectCharacter* UWeaponComponent::GetCharacter() const
+{
+	if (!Character) return nullptr;
+	return Character;
+}
+
+void UWeaponComponent::DetachWeapon()
+{
+	FDetachmentTransformRules DetachmentRules(EDetachmentRule::KeepWorld, false);
+	DetachFromComponent(DetachmentRules);
+
+	Character->RemoveInstanceComponent(this);
+
+	if (APlayerController* PlayerController = Cast<APlayerController>(Character->GetController())){
+
+		if (UEnhancedInputLocalPlayerSubsystem* InputSubsystem = ULocalPlayer::GetSubsystem<UEnhancedInputLocalPlayerSubsystem>(PlayerController->GetLocalPlayer())){
+			InputSubsystem->RemoveMappingContext(FireMappingContext);
+		}
+
+		if (UEnhancedInputComponent* EnhancedInputComponent = Cast<UEnhancedInputComponent>(PlayerController->InputComponent)){
+			EnhancedInputComponent->RemoveActionEventBinding(BindingIndex);
+		}
+	}
+
+	Character->CurrentWeapon = nullptr;
+	Character = nullptr;
+}
+
 void UWeaponComponent::EndPlay(const EEndPlayReason::Type EndPlayReason)
 	{
 	//Log this item name in console
@@ -127,4 +114,15 @@ void UWeaponComponent::EndPlay(const EEndPlayReason::Type EndPlayReason)
 	{
 		return;
 	}
+}
+
+int UWeaponComponent::GetCurrentAmmo() const
+{
+	return CurrentAmmo;
+}
+
+USoundBase* UWeaponComponent::GetFireSound() const
+{
+	if (!FireSound) return nullptr;
+	return FireSound;
 }

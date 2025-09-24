@@ -8,19 +8,65 @@
 
 class ADiamondProjectCharacter;
 
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnDropped, ADiamondProjectCharacter*, PickUpCharacter);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnFire, int, CurrentAmmo, FVector, HitLocation);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnUpdateAmmo, int, newAmmoCount);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnHit, FHitResult, HitInfo);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnPickedUp);
+
 UCLASS(Blueprintable, BlueprintType, ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
 class DIAMONDPROJECT_API UWeaponComponent : public USkeletalMeshComponent
 {
 	GENERATED_BODY()
 
 protected:
+	int CurrentAmmo;
 	int32 BindingIndex;
 	
 public:
-	/** Projectile class to spawn */
-	UPROPERTY(EditDefaultsOnly, Category=Projectile)
-	TSubclassOf<class ADiamondProjectProjectile> ProjectileClass;
+	UPROPERTY(BlueprintAssignable, Category = "Events")
+	FOnDropped OnDropped;
 
+	UPROPERTY(BlueprintAssignable, Category = "Events")
+	FOnFire OnFire;
+
+	UPROPERTY(BlueprintAssignable, Category = "Events")
+	FOnUpdateAmmo OnUpdateAmmo;
+
+	UPROPERTY(BlueprintAssignable, Category = "Events")
+	FOnHit OnHit;
+
+	UPROPERTY(BlueprintAssignable, Category = "Events")
+	FOnPickedUp OnPickedUpWeapon;
+
+#pragma region GameplayVariables
+	UPROPERTY()
+	float LastFireTime = 0.f;
+
+	UPROPERTY(EditAnywhere, Category = GameplayVariables)
+	float Damage;
+
+	UPROPERTY(EditAnywhere, Category = GameplayVariables)
+	float FireRatePerSecond;
+
+	UPROPERTY(EditAnywhere, Category = GameplayVariables)
+	int AmmoOnSpawn;
+
+	UPROPERTY(EditAnywhere, Category = GameplayVariables)
+	int MagazineSize;
+#pragma endregion
+
+#pragma region WeaponDecalVariables
+	UPROPERTY(EditDefaultsOnly, Category = WeaponDecal)
+	UMaterialInterface* DecalMaterial;
+
+	UPROPERTY(EditDefaultsOnly, Category = WeaponDecal)
+	float DecalSize;
+
+	UPROPERTY(EditDefaultsOnly, Category = WeaponDecal)
+	float DecalLifeSpan;
+#pragma endregion
+	
 	/** Sound to play each time we fire */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category=Gameplay)
 	USoundBase* FireSound;
@@ -52,6 +98,23 @@ public:
 	UFUNCTION(BlueprintCallable, Category="Weapon")
 	virtual void Fire();
 
+	UFUNCTION(BlueprintPure, Category = Weapon)
+	virtual ADiamondProjectCharacter* GetCharacter() const;
+
+	UFUNCTION(BlueprintPure, Category = Weapon)
+	int GetCurrentAmmo() const;
+
+	UFUNCTION(BlueprintPure, Category = Weapon)
+	USoundBase* GetFireSound() const;
+
+	UFUNCTION(BlueprintPure, Category = Weapon)
+	int GetAmmoOnSpawn() const { return AmmoOnSpawn; }
+
+	UFUNCTION(BlueprintPure, Category = Weapon)
+	int GetMagazineSize() const { return MagazineSize; }
+
+	UFUNCTION(BlueprintCallable, Category = Weapon)
+	void DetachWeapon();
 protected:
 	/** Ends gameplay for this component. */
 	UFUNCTION()
