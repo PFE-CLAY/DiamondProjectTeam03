@@ -9,6 +9,8 @@
 class UCapsuleComponent;
 class UProjectileMovementComponent;
 
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnHitEvent, FHitResult, HitInfo);
+
 UCLASS(config=Game)
 class ADiamondProjectProjectile : public AActor
 {
@@ -26,6 +28,9 @@ class ADiamondProjectProjectile : public AActor
 	float Damage;
 
 public:
+	UPROPERTY(BlueprintAssignable, Category = "Events")
+	FOnHitEvent OnHitEvent;
+	
 	ADiamondProjectProjectile();
 
 	/** called when projectile hits something */

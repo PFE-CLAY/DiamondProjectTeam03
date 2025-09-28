@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "DiamondProject/UWeaponComponent.h"
 #include "PlayerHitscanWeaponComponent.generated.h"
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnHit, FHitResult, HitInfo);
 
 UCLASS(Blueprintable, BlueprintType, ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
 class DIAMONDPROJECT_API UPlayerHitscanWeaponComponent : public UWeaponComponent
@@ -12,15 +13,14 @@ class DIAMONDPROJECT_API UPlayerHitscanWeaponComponent : public UWeaponComponent
  GENERATED_BODY()
 
 public:
+
+ UPROPERTY(BlueprintAssignable, Category = "Events")
+ FOnHit OnHit;
+ 
  virtual void BeginPlay() override;
- virtual void Fire() override;
 
  virtual bool AttachWeapon(ADiamondProjectCharacter* TargetCharacter) override;
 
 private:
- bool IsFirePossible() const;
- void DecreaseAmmo();
- void PerformShot() const;
- void ProcessHit(const FHitResult& Hit, UWorld* World) const;
- void PlayFireEffects() const;
+ virtual void PerformShot() const override;
 };

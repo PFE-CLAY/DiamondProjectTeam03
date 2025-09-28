@@ -8,46 +8,9 @@
 #include "DiamondProject/DiamondProjectCharacter.h"
 #include "GameFramework/PlayerController.h"
 #include "Camera/PlayerCameraManager.h"
-#include "Kismet/GameplayStatics.h"
 #include "Animation/AnimInstance.h"
 #include "Engine/LocalPlayer.h"
 #include "Engine/World.h"
-#include "LoopSystem/AC_Health.h"
-
-void UPlayerHitscanWeaponComponent::BeginPlay()
-{
-    Super::BeginPlay();
-    CurrentAmmo = AmmoOnSpawn;
-}
-
-void UPlayerHitscanWeaponComponent::Fire()
-{
-    if (!IsFirePossible())
-        return;
-
-    DecreaseAmmo();
-    PerformShot();
-    PlayFireEffects();
-
-    if (CurrentAmmo == 0){
-        OnDropped.Broadcast(Character);
-    }
-}
-
-bool UPlayerHitscanWeaponComponent::IsFirePossible() const
-{
-    if (!Character || !Character->GetController() || CurrentAmmo <= 0)
-        return false;
-
-    float currentTime = GetWorld()->GetTimeSeconds();
-    return (currentTime - LastFireTime >= 1.0f / FireRatePerSecond);
-}
-
-void UPlayerHitscanWeaponComponent::DecreaseAmmo()
-{
-    CurrentAmmo--;
-    LastFireTime = GetWorld()->GetTimeSeconds();
-}
 
 void UPlayerHitscanWeaponComponent::PerformShot() const
 {
@@ -82,38 +45,11 @@ void UPlayerHitscanWeaponComponent::PerformShot() const
     OnFire.Broadcast(CurrentAmmo, SpawnLocation + (SpawnRotation.Vector() * 1000));
 }
 
-void UPlayerHitscanWeaponComponent::ProcessHit(const FHitResult& Hit, UWorld* World) const
+void UPlayerHitscanWeaponComponent::BeginPlay()
 {
-    if (Hit.GetActor() != nullptr){
-        if (UAC_Health* healthComponent = Hit.GetActor()->FindComponentByClass<UAC_Health>()){
-            healthComponent->DecreaseHealth(Damage, Cast<AActor>(this->GetOwner()));
-            return;
-        }
-    }
-    
-    if (DecalMaterial){
-        UGameplayStatics::SpawnDecalAtLocation(
-            World,
-            DecalMaterial,
-            FVector(DecalSize, DecalSize, DecalSize),
-            Hit.ImpactPoint,
-            Hit.ImpactNormal.Rotation(),
-            DecalLifeSpan
-        );
-    }
-}
+    Super::BeginPlay();
 
-void UPlayerHitscanWeaponComponent::PlayFireEffects() const
-{
-    if (FireSound){
-        UGameplayStatics::PlaySoundAtLocation(this, FireSound, Character->GetActorLocation());
-    }
-
-    if (FireAnimation && Character){
-        if (UAnimInstance* AnimInstance = Character->GetMesh1P()->GetAnimInstance()){
-            AnimInstance->Montage_Play(FireAnimation, 1.f);
-        }
-    }
+    CurrentAmmo = AmmoOnSpawn;
 }
 
 bool UPlayerHitscanWeaponComponent::AttachWeapon(ADiamondProjectCharacter* TargetCharacter)

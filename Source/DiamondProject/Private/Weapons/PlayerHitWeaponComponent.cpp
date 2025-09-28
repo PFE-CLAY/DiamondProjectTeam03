@@ -9,10 +9,14 @@
 #include "DiamondProject/DiamondProjectProjectile.h"
 #include "Kismet/GameplayStatics.h"
 
-void UPlayerHitWeaponComponent::Fire()
+void UPlayerHitWeaponComponent::BeginPlay()
 {
-	Super::Fire();
+	Super::BeginPlay();
+	CurrentAmmo = AmmoOnSpawn;
+}
 
+void UPlayerHitWeaponComponent::PerformShot() const
+{
 	// Try and fire a projectile
 	if (ProjectileClass != nullptr)
 	{
@@ -31,23 +35,8 @@ void UPlayerHitWeaponComponent::Fire()
 			// Spawn the projectile at the muzzle
 			ADiamondProjectProjectile* Projectile = World->SpawnActor<ADiamondProjectProjectile>(ProjectileClass, SpawnLocation, SpawnRotation, ActorSpawnParams);
 			Projectile->Initialize(Damage);
-		}
-	}
-	
-	// Try and play the sound if specified
-	if (FireSound != nullptr)
-	{
-		UGameplayStatics::PlaySoundAtLocation(this, FireSound, Character->GetActorLocation());
-	}
-	
-	// Try and play a firing animation if specified
-	if (FireAnimation != nullptr)
-	{
-		// Get the animation object for the arms mesh
-		UAnimInstance* AnimInstance = Character->GetMesh1P()->GetAnimInstance();
-		if (AnimInstance != nullptr)
-		{
-			AnimInstance->Montage_Play(FireAnimation, 1.f);
+
+			OnFire.Broadcast(CurrentAmmo, SpawnLocation + (SpawnRotation.Vector() * 1000));
 		}
 	}
 }

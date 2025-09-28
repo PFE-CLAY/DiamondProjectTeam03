@@ -16,11 +16,12 @@ class DIAMONDPROJECT_API UPlayerHitWeaponComponent : public UWeaponComponent
 	GENERATED_BODY()
 
 public:
+	virtual void BeginPlay() override;
 	/** Projectile class to spawn */
 	UPROPERTY(EditDefaultsOnly, Category=Projectile)
 	TSubclassOf<class ADiamondProjectProjectile> ProjectileClass;
-
-	virtual void Fire() override;
+	
+	virtual void PerformShot() const override;
 
 	virtual bool AttachWeapon(ADiamondProjectCharacter* TargetCharacter) override;
 };

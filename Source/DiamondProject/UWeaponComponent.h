@@ -11,7 +11,6 @@ class ADiamondProjectCharacter;
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnDropped, ADiamondProjectCharacter*, PickUpCharacter);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnFire, int, CurrentAmmo, FVector, HitLocation);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnUpdateAmmo, int, newAmmoCount);
-DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnHit, FHitResult, HitInfo);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnPickedUp);
 
 UCLASS(Blueprintable, BlueprintType, ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
@@ -32,9 +31,6 @@ public:
 
 	UPROPERTY(BlueprintAssignable, Category = "Events")
 	FOnUpdateAmmo OnUpdateAmmo;
-
-	UPROPERTY(BlueprintAssignable, Category = "Events")
-	FOnHit OnHit;
 
 	UPROPERTY(BlueprintAssignable, Category = "Events")
 	FOnPickedUp OnPickedUpWeapon;
@@ -96,7 +92,7 @@ public:
 
 	/** Make the weapon Fire a Projectile */
 	UFUNCTION(BlueprintCallable, Category="Weapon")
-	virtual void Fire();
+	void Fire();
 
 	UFUNCTION(BlueprintPure, Category = Weapon)
 	virtual ADiamondProjectCharacter* GetCharacter() const;
@@ -116,11 +112,20 @@ public:
 	UFUNCTION(BlueprintCallable, Category = Weapon)
 	void DetachWeapon();
 protected:
-	/** Ends gameplay for this component. */
-	UFUNCTION()
-	virtual void EndPlay(const EEndPlayReason::Type EndPlayReason) override;
-
 	/** The Character holding this weapon*/
 	UPROPERTY()
 	TObjectPtr<ADiamondProjectCharacter> Character;
+	
+	UFUNCTION()
+	bool IsFirePossible() const;
+	
+	UFUNCTION()
+	void DecreaseAmmo();
+
+	virtual void PerformShot() const;
+	void ProcessHit(const FHitResult& Hit, UWorld* World) const;
+	void PlayFireEffects() const;
+	/** Ends gameplay for this component. */
+	UFUNCTION()
+	virtual void EndPlay(const EEndPlayReason::Type EndPlayReason) override;
 };

@@ -41,23 +41,13 @@ void ADiamondProjectProjectile::OnHit(UPrimitiveComponent* HitComp, AActor* Othe
 	{
 		if (Hit.GetActor() != nullptr){
 			if (UAC_Health* healthComponent = Hit.GetActor()->FindComponentByClass<UAC_Health>()){
-				healthComponent->DecreaseHealth(Damage, Cast<AActor>(this->GetOwner()));
+
+				//On peut pas cast en actor
+				healthComponent->DecreaseHealth(Damage, this);
 			}
 		}
-
-		//TODO move to BP
 		
-		// if (DecalMaterial){
-		// 	UGameplayStatics::SpawnDecalAtLocation(
-		// 		World,
-		// 		DecalMaterial,
-		// 		FVector(DecalSize, DecalSize, DecalSize),
-		// 		Hit.ImpactPoint,
-		// 		Hit.ImpactNormal.Rotation(),
-		// 		DecalLifeSpan
-		// 	);
-		// }
-		
+		OnHitEvent.Broadcast(Hit);
 		if (OtherComp->IsSimulatingPhysics())
 		{
 			OtherComp->AddImpulseAtLocation(GetVelocity() * 100.0f, GetActorLocation());
