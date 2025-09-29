@@ -12,21 +12,19 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #include "Wwise/Ref/WwiseRefMedia.h"
-#include "Wwise/WwiseProjectDatabaseModule.h"
-#include "Wwise/Stats/ProjectDatabase.h"
 #include "Wwise/Metadata/WwiseMetadataMedia.h"
 #include "Wwise/Metadata/WwiseMetadataSoundBank.h"
 
-const TCHAR* const FWwiseRefMedia::NAME = TEXT("Media");
+const WwiseDBString WwiseRefMedia::NAME = "Media"_wwise_db;
 
-const FWwiseMetadataMedia* FWwiseRefMedia::GetMedia() const
+const WwiseMetadataMedia* WwiseRefMedia::GetMedia() const
 {
 	const auto* SoundBank = GetSoundBank();
-	if (UNLIKELY(!SoundBank))
+	if (!SoundBank) [[unlikely]]
 	{
 		return nullptr;
 	}
@@ -38,44 +36,44 @@ const FWwiseMetadataMedia* FWwiseRefMedia::GetMedia() const
 	}
 	else
 	{
-		UE_LOG(LogWwiseProjectDatabase, Error, TEXT("Could not get Media index #%zu"), MediaIndex);
+		WWISE_DB_LOG(Error, "Could not get Media index #%zu", MediaIndex);
 		return nullptr;
 	}
 }
 
-uint32 FWwiseRefMedia::MediaId() const
+WwiseDBShortId WwiseRefMedia::MediaId() const
 {
 	const auto* Media = GetMedia();
-	if (UNLIKELY(!Media))
+	if (!Media) [[unlikely]]
 	{
 		return 0;
 	}
 	return Media->Id;
 }
 
-FName FWwiseRefMedia::MediaShortName() const
+const WwiseDBString* WwiseRefMedia::MediaShortName() const
 {
 	const auto* Media = GetMedia();
-	if (UNLIKELY(!Media))
+	if (!Media) [[unlikely]]
 	{
 		return {};
 	}
-	return Media->ShortName;
+	return &Media->ShortName;
 }
 
-FName FWwiseRefMedia::MediaPath() const
+const WwiseDBString* WwiseRefMedia::MediaPath() const
 {
 	const auto* Media = GetMedia();
-	if (UNLIKELY(!Media))
+	if (!Media) [[unlikely]]
 	{
 		return {};
 	}
-	return Media->Path;
+	return &Media->Path;
 }
 
-uint32 FWwiseRefMedia::Hash() const
+WwiseDBShortId WwiseRefMedia::Hash() const
 {
-	auto Result = FWwiseRefSoundBank::Hash();
-	Result = HashCombine(Result, GetTypeHash(MediaIndex));
+	auto Result = WwiseRefSoundBank::Hash();
+	Result = WwiseDBHashCombine(Result, GetTypeHash(MediaIndex));
 	return Result;
 }

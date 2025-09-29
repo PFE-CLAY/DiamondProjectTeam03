@@ -12,24 +12,21 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #include "Wwise/WwiseSoundBankFileState.h"
+#include "Wwise/WwiseSoundEngineUtils.h"
 #include "Wwise/API/WwiseSoundEngineAPI.h"
 #include "Wwise/Stats/FileHandler.h"
 #include "Wwise/Stats/FileHandlerMemory.h"
-#include "WwiseUnrealHelper.h"
 #include "Async/MappedFileHandle.h"
 #include "Async/Async.h"
 
 #include <inttypes.h>
 
-#include "Wwise/WwiseSoundEngineUtils.h"
-
-FWwiseSoundBankFileState::FWwiseSoundBankFileState(const FWwiseSoundBankCookedData& InCookedData, const FString& InRootPath):
-	FWwiseSoundBankCookedData(InCookedData),
-	RootPath(InRootPath)
+FWwiseSoundBankFileState::FWwiseSoundBankFileState(const FWwiseSoundBankCookedData& InCookedData):
+	FWwiseSoundBankCookedData(InCookedData)
 {
 	INC_DWORD_STAT(STAT_WwiseFileHandlerKnownSoundBanks);
 }
@@ -39,8 +36,8 @@ FWwiseSoundBankFileState::~FWwiseSoundBankFileState()
 	DEC_DWORD_STAT(STAT_WwiseFileHandlerKnownSoundBanks);
 }
 
-FWwiseInMemorySoundBankFileState::FWwiseInMemorySoundBankFileState(const FWwiseSoundBankCookedData& InCookedData, const FString& InRootPath) :
-	FWwiseSoundBankFileState(InCookedData, InRootPath),
+FWwiseInMemorySoundBankFileState::FWwiseInMemorySoundBankFileState(const FWwiseSoundBankCookedData& InCookedData) :
+	FWwiseSoundBankFileState(InCookedData),
 	Ptr(nullptr),
 	FileSize(0)
 {
@@ -61,9 +58,7 @@ void FWwiseInMemorySoundBankFileState::OpenFile(FOpenFileCallback&& InCallback)
 		return;
 	}
 
-	const auto FullPathName = RootPath / SoundBankPathName.ToString();
-
-	GetFileToPtr([this, FullPathName, InCallback = MoveTemp(InCallback)](bool bInResult, const uint8* InPtr, int64 InSize) mutable
+	PackagedFile.GetFullFileToPtr([this, InCallback = MoveTemp(InCallback)](bool bInResult, const uint8* InPtr, int64 InSize) mutable
 	{
 		SCOPED_WWISEFILEHANDLER_EVENT_3(TEXT("FWwiseInMemorySoundBankFileState::OpenFile Callback"));
 		if (LIKELY(bInResult))
@@ -75,14 +70,14 @@ void FWwiseInMemorySoundBankFileState::OpenFile(FOpenFileCallback&& InCallback)
 		}
 		else
 		{
-			UE_LOG(LogWwiseFileHandler, Error, TEXT("FWwiseInMemorySoundBankFileState::OpenFile %" PRIu32 " (%s): Failed to load SoundBank (%s)."), SoundBankId, *DebugName.ToString(), *FullPathName);
+			UE_LOG(LogWwiseFileHandler, Error, TEXT("FWwiseInMemorySoundBankFileState::OpenFile %" PRIu32 " (%s): Failed to load SoundBank (%s)."), SoundBankId, *DebugName.ToString(), *PackagedFile.PathName.ToString());
 			Ptr = nullptr;
 			FileSize = 0;
 			OpenFileFailed(MoveTemp(InCallback));
 		}
 	},
-		FullPathName, bDeviceMemory, MemoryAlignment, bContainsMedia,
-		STAT_WwiseMemorySoundBank_FName, STAT_WwiseMemorySoundBankDevice_FName, WWISE_LLM_GET_NAME(Audio_Wwise_FileHandler_SoundBanks));
+	bContainsMedia,
+	STAT_WwiseMemorySoundBank_FName, STAT_WwiseMemorySoundBankDevice_FName, WWISE_LLM_GET_NAME(Audio_Wwise_FileHandler_SoundBanks));
 }
 
 void FWwiseInMemorySoundBankFileState::LoadInSoundEngine(FLoadInSoundEngineCallback&& InCallback)
@@ -103,7 +98,7 @@ void FWwiseInMemorySoundBankFileState::LoadInSoundEngine(FLoadInSoundEngineCallb
 		return;
 	}
 
-	BankExecutionQueue->Async(TEXT("FWwiseInMemorySoundBankFileState::LoadInSoundEngine LoadBankMemory"), [this, InCallback = MoveTemp(InCallback)]() mutable
+	BankExecutionQueue->Async(WWISEFILEHANDLER_ASYNC_NAME("FWwiseInMemorySoundBankFileState::LoadInSoundEngine LoadBankMemory"), [this, InCallback = MoveTemp(InCallback)]() mutable
 	{
 		auto* SoundEngine = IWwiseSoundEngineAPI::Get();
 		if (UNLIKELY(!SoundEngine))
@@ -128,6 +123,7 @@ void FWwiseInMemorySoundBankFileState::LoadInSoundEngine(FLoadInSoundEngineCallb
 		Cookie->Callback = MoveTemp(InCallback);
 		AKRESULT LoadResult;
 
+#if AK_ENABLE_BANK_MGR_THREAD
 		if (FPlatformProcess::SupportsMultithreading())
 		{
 			if (LoadAsMemoryView())
@@ -138,8 +134,21 @@ void FWwiseInMemorySoundBankFileState::LoadInSoundEngine(FLoadInSoundEngineCallb
 			{
 				LoadResult = SoundEngine->LoadBankMemoryCopy(Ptr, FileSize, &FWwiseInMemorySoundBankFileState::BankLoadCallback, Cookie, LoadedSoundBankId, LoadedSoundBankType);
 			}
+			
+			UE_CLOG(UNLIKELY(LoadedSoundBankType != static_cast<uint8>(SoundBankType)), LogWwiseFileHandler, Error, TEXT("FWwiseInMemorySoundBankFileState::LoadInSoundEngine %" PRIu32 " (%s): Incorrect SoundBank type: %" PRIu8 " expected %" PRIu8), SoundBankId, *DebugName.ToString(), (uint8)LoadedSoundBankType, (uint8)SoundBankType);
+			
+			if(LoadResult != AK_Success)
+			{
+				UE_LOG(LogWwiseFileHandler, Error, TEXT("FWwiseInMemorySoundBankFileState::LoadInSoundEngine %" PRIu32 " (%s): Failed to load SoundBank: %d (%s)."), SoundBankId, *DebugName.ToString(), LoadResult, WwiseUnrealHelper::GetResultString(LoadResult));
+				FreeMemoryIfNeeded();
+				auto Callback = MoveTemp(Cookie->Callback);
+				delete Cookie;
+				LoadInSoundEngineFailed(MoveTemp(Callback));
+				return;
+			}
 		}
 		else
+#endif
 		{
 			if (LoadAsMemoryView())
 			{
@@ -149,17 +158,10 @@ void FWwiseInMemorySoundBankFileState::LoadInSoundEngine(FLoadInSoundEngineCallb
 			{
 				LoadResult = SoundEngine->LoadBankMemoryCopy(Ptr, FileSize, LoadedSoundBankId, LoadedSoundBankType);
 			}
-			BankLoadCallback(LoadedSoundBankId, Ptr, LoadResult, Cookie);
-		}
 
-		UE_CLOG(UNLIKELY(LoadedSoundBankType != static_cast<uint8>(SoundBankType)), LogWwiseFileHandler, Error, TEXT("FWwiseInMemorySoundBankFileState::LoadInSoundEngine %" PRIu32 " (%s): Incorrect SoundBank type: %" PRIu8 " expected %" PRIu8), SoundBankId, *DebugName.ToString(), (uint8)LoadedSoundBankType, (uint8)SoundBankType);
-		if(LoadResult != AK_Success)
-		{
-			UE_LOG(LogWwiseFileHandler, Error, TEXT("FWwiseInMemorySoundBankFileState::LoadInSoundEngine %" PRIu32 " (%s): Failed to load SoundBank: %d (%s)."), SoundBankId, *DebugName.ToString(), LoadResult, WwiseUnrealHelper::GetResultString(LoadResult));
-			auto Callback = MoveTemp(Cookie->Callback);
-			delete Cookie;
-			LoadInSoundEngineFailed(MoveTemp(Callback));
-			return;
+			UE_CLOG(UNLIKELY(LoadedSoundBankType != static_cast<uint8>(SoundBankType)), LogWwiseFileHandler, Error, TEXT("FWwiseInMemorySoundBankFileState::LoadInSoundEngine %" PRIu32 " (%s): Incorrect SoundBank type: %" PRIu8 " expected %" PRIu8), SoundBankId, *DebugName.ToString(), (uint8)LoadedSoundBankType, (uint8)SoundBankType);
+			
+			BankLoadCallback(LoadedSoundBankId, Ptr, LoadResult, Cookie);
 		}
 	});
 }
@@ -175,12 +177,18 @@ void FWwiseInMemorySoundBankFileState::UnloadFromSoundEngine(FUnloadFromSoundEng
 		return UnloadFromSoundEngineToClosedFile(MoveTemp(InCallback));
 	}
 
-	BankExecutionQueue->Async(TEXT("FWwiseInMemorySoundBankFileState::UnloadFromSoundEngine UnloadBank"), [this, InCallback = MoveTemp(InCallback)]() mutable
+	BankExecutionQueue->Async(WWISEFILEHANDLER_ASYNC_NAME("FWwiseInMemorySoundBankFileState::UnloadFromSoundEngine UnloadBank"), [this, InCallback = MoveTemp(InCallback)]() mutable
 	{
 		auto* SoundEngine = IWwiseSoundEngineAPI::Get();
 		if (UNLIKELY(!SoundEngine))
 		{
 			UE_LOG(LogWwiseFileHandler, Log, TEXT("FWwiseInMemorySoundBankFileState::UnloadFromSoundEngine %" PRIu32 " (%s): Failed unloading without a SoundEngine."), SoundBankId, *DebugName.ToString());
+			return UnloadFromSoundEngineToClosedFile(MoveTemp(InCallback));
+		}
+
+		if (UNLIKELY(IsEngineExitRequested() && !SoundEngine->IsInitialized()))
+		{
+			UE_LOG(LogWwiseFileHandler, Log, TEXT("FWwiseInMemorySoundBankFileState::UnloadFromSoundEngine: Cannot unload %" PRIu32 " (%s) SoundBank with an uninitialized SoundEngine."), SoundBankId, *DebugName.ToString());
 			return UnloadFromSoundEngineToClosedFile(MoveTemp(InCallback));
 		}
 
@@ -194,11 +202,14 @@ void FWwiseInMemorySoundBankFileState::UnloadFromSoundEngine(FUnloadFromSoundEng
 
 		Cookie->Callback = MoveTemp(InCallback);
 		AKRESULT Result;
+
+#if AK_ENABLE_BANK_MGR_THREAD
 		if (FPlatformProcess::SupportsMultithreading())
 		{
 			Result = SoundEngine->UnloadBank(SoundBankId, Ptr, &FWwiseInMemorySoundBankFileState::BankUnloadCallback, Cookie, static_cast<AkBankType>(SoundBankType));
 		}
 		else
+#endif
 		{
 			Result = SoundEngine->UnloadBank(SoundBankId, Ptr, static_cast<AkBankType>(SoundBankType));
 			BankUnloadCallback(SoundBankId, Ptr, Result, Cookie); 
@@ -224,10 +235,7 @@ void FWwiseInMemorySoundBankFileState::CloseFile(FCloseFileCallback&& InCallback
 {
 	SCOPED_WWISEFILEHANDLER_EVENT_3(TEXT("FWwiseInMemorySoundBankFileState::CloseFile"));
 	UE_LOG(LogWwiseFileHandler, Verbose, TEXT("FWwiseInMemorySoundBankFileState::CloseFile %" PRIu32 " (%s): Closing Memory Mapped SoundBank. Deallocating @ %p %" PRIi64 " bytes."), SoundBankId, *DebugName.ToString(), Ptr, FileSize);
-	if (Ptr)
-	{
-		DeallocateMemory(Ptr, FileSize, bDeviceMemory, MemoryAlignment, bContainsMedia, STAT_WwiseMemorySoundBank_FName, STAT_WwiseMemorySoundBankDevice_FName);
-	}
+	PackagedFile.DeallocateMemory(Ptr, FileSize, bContainsMedia,  STAT_WwiseMemorySoundBank_FName, STAT_WwiseMemorySoundBankDevice_FName);
 	Ptr = nullptr;
 	FileSize = 0;
 	CloseFileDone(MoveTemp(InCallback));
@@ -238,11 +246,8 @@ void FWwiseInMemorySoundBankFileState::FreeMemoryIfNeeded()
 	// We don't need the memory anymore if we copied it, whether the load succeeded or not.
 	if (!LoadAsMemoryView())
 	{
-		if (Ptr)
-		{
-			UE_LOG(LogWwiseFileHandler, VeryVerbose, TEXT("FWwiseInMemorySoundBankFileState::FreeMemoryIfNeeded %" PRIu32 " (%s): Freeing Pointer"), SoundBankId, *DebugName.ToString());
-			DeallocateMemory(Ptr, FileSize, bDeviceMemory, MemoryAlignment, bContainsMedia, STAT_WwiseMemorySoundBank_FName, STAT_WwiseMemorySoundBankDevice_FName);
-		}
+		UE_LOG(LogWwiseFileHandler, VeryVerbose, TEXT("FWwiseInMemorySoundBankFileState::FreeMemoryIfNeeded %" PRIu32 " (%s): Freeing Pointer"), SoundBankId, *DebugName.ToString());
+		PackagedFile.DeallocateMemory(Ptr, FileSize, bContainsMedia, STAT_WwiseMemorySoundBank_FName, STAT_WwiseMemorySoundBankDevice_FName);
 		Ptr = nullptr;
 		FileSize = 0;
 	}

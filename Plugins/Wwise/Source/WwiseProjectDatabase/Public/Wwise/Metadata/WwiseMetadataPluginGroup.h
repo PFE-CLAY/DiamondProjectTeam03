@@ -12,7 +12,7 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #pragma once
@@ -20,20 +20,20 @@ Copyright (c) 2024 Audiokinetic Inc.
 #include "Wwise/Metadata/WwiseMetadataLoadable.h"
 #include "Wwise/Metadata/WwiseMetadataPlugin.h"
 
-struct WWISEPROJECTDATABASE_API FWwiseMetadataPluginReferenceGroup : public FWwiseMetadataLoadable
+struct WwiseMetadataPluginReferenceGroup : public WwiseMetadataLoadable
 {
-	TArray<FWwiseMetadataPluginReference> Custom;
-	TArray<FWwiseMetadataPluginReference> ShareSets;
-	TArray<FWwiseMetadataPluginReference> AudioDevices;
+	WwiseDBArray<WwiseMetadataPluginReference> Custom;
+	WwiseDBArray<WwiseMetadataPluginReference> ShareSets;
+	WwiseDBArray<WwiseMetadataPluginReference> AudioDevices;
 
-	FWwiseMetadataPluginReferenceGroup(FWwiseMetadataLoader& Loader);
+	WwiseMetadataPluginReferenceGroup(WwiseMetadataLoader& Loader);
 };
 
-struct WWISEPROJECTDATABASE_API FWwiseMetadataPluginGroup : public FWwiseMetadataLoadable
+struct WwiseMetadataPluginGroup : public WwiseMetadataLoadable
 {
-	TArray<FWwiseMetadataPlugin> Custom;
-	TArray<FWwiseMetadataPlugin> ShareSets;
-	TArray<FWwiseMetadataPlugin> AudioDevices;
+	WwiseDBArray<WwiseMetadataPlugin> Custom;
+	WwiseDBArray<WwiseMetadataPlugin> ShareSets;
+	WwiseDBArray<WwiseMetadataPlugin> AudioDevices;
 
-	FWwiseMetadataPluginGroup(FWwiseMetadataLoader& Loader);
+	WwiseMetadataPluginGroup(WwiseMetadataLoader& Loader);
 };

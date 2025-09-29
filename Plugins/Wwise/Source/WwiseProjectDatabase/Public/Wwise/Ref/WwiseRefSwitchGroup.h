@@ -12,48 +12,48 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #pragma once
 
 #include "Wwise/Ref/WwiseRefSoundBank.h"
 
-class WWISEPROJECTDATABASE_API FWwiseRefSwitchGroup : public FWwiseRefSoundBank
+class WwiseRefSwitchGroup : public WwiseRefSoundBank
 {
 public:
-	static const TCHAR* const NAME;
-	static constexpr EWwiseRefType TYPE = EWwiseRefType::SwitchGroup;
+	static const WwiseDBString NAME;
+	static constexpr WwiseRefType TYPE = WwiseRefType::SwitchGroup;
 	struct FGlobalIdsMap;
 
 	WwiseRefIndexType SwitchGroupIndex;
 
-	FWwiseRefSwitchGroup() {}
-	FWwiseRefSwitchGroup(const WwiseMetadataSharedRootFileConstPtr& InRootMediaRef, const FName& InJsonFilePath,
-		WwiseRefIndexType InSoundBankIndex, uint32 InLanguageId,
+	WwiseRefSwitchGroup() {}
+	WwiseRefSwitchGroup(const WwiseMetadataSharedRootFileConstPtr& InRootMediaRef, const WwiseDBString& InJsonFilePath,
+		WwiseRefIndexType InSoundBankIndex, WwiseDBShortId InLanguageId,
 		WwiseRefIndexType InSwitchGroupIndex) :
-		FWwiseRefSoundBank(InRootMediaRef, InJsonFilePath, InSoundBankIndex, InLanguageId),
+		WwiseRefSoundBank(InRootMediaRef, InJsonFilePath, InSoundBankIndex, InLanguageId),
 		SwitchGroupIndex(InSwitchGroupIndex)
 	{}
-	const FWwiseMetadataSwitchGroup* GetSwitchGroup() const;
+	const WwiseMetadataSwitchGroup* GetSwitchGroup() const;
 	bool IsControlledByGameParameter() const;
 
-	uint32 SwitchGroupId() const;
-	FGuid SwitchGroupGuid() const;
-	FName SwitchGroupName() const;
-	FName SwitchGroupObjectPath() const;
+	WwiseDBShortId SwitchGroupId() const;
+	WwiseDBGuid SwitchGroupGuid() const;
+	const WwiseDBString* SwitchGroupName() const;
+	const WwiseDBString* SwitchGroupObjectPath() const;
 
-	uint32 Hash() const override;
-	EWwiseRefType Type() const override { return TYPE; }
-	bool operator==(const FWwiseRefSwitchGroup& Rhs) const
+	WwiseDBShortId Hash() const override;
+	WwiseRefType Type() const override { return TYPE; }
+	bool operator==(const WwiseRefSwitchGroup& Rhs) const
 	{
-		return FWwiseRefSoundBank::operator ==(Rhs)
+		return WwiseRefSoundBank::operator ==(Rhs)
 			&& SwitchGroupIndex == Rhs.SwitchGroupIndex;
 	}
-	bool operator!=(const FWwiseRefSwitchGroup& Rhs) const { return !operator==(Rhs); }
+	bool operator!=(const WwiseRefSwitchGroup& Rhs) const { return !operator==(Rhs); }
 };
 
-struct WWISEPROJECTDATABASE_API FWwiseRefSwitchGroup::FGlobalIdsMap
+struct WwiseRefSwitchGroup::FGlobalIdsMap
 {
 	WwiseSwitchGroupGlobalIdsMap GlobalIdsMap;
 };

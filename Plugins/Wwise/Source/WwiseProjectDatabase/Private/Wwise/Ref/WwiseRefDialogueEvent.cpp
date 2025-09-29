@@ -12,27 +12,25 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #include "Wwise/Ref/WwiseRefDialogueEvent.h"
 
 #include "Wwise/Ref/WwiseRefCollections.h"
 #include "Wwise/Ref/WwiseRefDialogueArgument.h"
-#include "Wwise/WwiseProjectDatabaseModule.h"
 #include "Wwise/Metadata/WwiseMetadataDialogue.h"
 #include "Wwise/Metadata/WwiseMetadataSoundBank.h"
-#include "Wwise/Stats/ProjectDatabase.h"
 
 #include <inttypes.h>
 
 
-const TCHAR* const FWwiseRefDialogueEvent::NAME = TEXT("DialogueEvent");
+const WwiseDBString WwiseRefDialogueEvent::NAME = "DialogueEvent"_wwise_db;
 
-const FWwiseMetadataDialogueEvent* FWwiseRefDialogueEvent::GetDialogueEvent() const
+const WwiseMetadataDialogueEvent* WwiseRefDialogueEvent::GetDialogueEvent() const
 {
 	const auto* SoundBank = GetSoundBank();
-	if (UNLIKELY(!SoundBank))
+	if (!SoundBank) [[unlikely]]
 	{
 		return nullptr;
 	}
@@ -43,80 +41,80 @@ const FWwiseMetadataDialogueEvent* FWwiseRefDialogueEvent::GetDialogueEvent() co
 	}
 	else
 	{
-		UE_LOG(LogWwiseProjectDatabase, Error, TEXT("Could not get Dialogue Event index #%zu"), DialogueEventIndex);
+		WWISE_DB_LOG(Error, "Could not get Dialogue Event index #%zu", DialogueEventIndex);
 		return nullptr;
 	}
 }
 
-WwiseDialogueArgumentIdsMap FWwiseRefDialogueEvent::GetDialogueArguments(const WwiseDialogueArgumentGlobalIdsMap& GlobalMap) const
+WwiseDialogueArgumentIdsMap WwiseRefDialogueEvent::GetDialogueArguments(const WwiseDialogueArgumentGlobalIdsMap& GlobalMap) const
 {
 	const auto* DialogueEvent = GetDialogueEvent();
-	if (!DialogueEvent)
+	if (!DialogueEvent) [[unlikely]]
 	{
 		return {};
 	}
-	const auto Arguments = DialogueEvent->Arguments;
+	const auto& Arguments = DialogueEvent->Arguments;
 	WwiseDialogueArgumentIdsMap Result;
-	Result.Empty(Arguments.Num());
+	Result.Empty(Arguments.Size());
 	for (const auto& Elem : Arguments)
 	{
-		const auto* GlobalRef = GlobalMap.Find(FWwiseDatabaseLocalizableIdKey(Elem.Id, LanguageId));
+		const auto* GlobalRef = GlobalMap.Find(WwiseDatabaseLocalizableIdKey(Elem.Id, LanguageId));
 		if (GlobalRef)
 		{
 			Result.Add(Elem.Id, *GlobalRef);
 		}
 		else
 		{
-			UE_LOG(LogWwiseProjectDatabase, Error, TEXT("Could not get Dialogue Argument ID %" PRIu32), Elem.Id);
+			WWISE_DB_LOG(Error, "Could not get Dialogue Argument ID %" PRIu32, Elem.Id);
 		}
 	}
 
 	return Result;
 }
 
-uint32 FWwiseRefDialogueEvent::DialogueEventId() const
+WwiseDBShortId WwiseRefDialogueEvent::DialogueEventId() const
 {
 	const auto* DialogueEvent = GetDialogueEvent();
-	if (UNLIKELY(!DialogueEvent))
+	if (!DialogueEvent) [[unlikely]]
 	{
 		return 0;
 	}
 	return DialogueEvent->Id;
 }
 
-FGuid FWwiseRefDialogueEvent::DialogueEventGuid() const
+WwiseDBGuid WwiseRefDialogueEvent::DialogueEventGuid() const
 {
 	const auto* DialogueEvent = GetDialogueEvent();
-	if (UNLIKELY(!DialogueEvent))
+	if (!DialogueEvent) [[unlikely]]
 	{
 		return {};
 	}
 	return DialogueEvent->GUID;
 }
 
-FName FWwiseRefDialogueEvent::DialogueEventName() const
+const WwiseDBString* WwiseRefDialogueEvent::DialogueEventName() const
 {
 	const auto* DialogueEvent = GetDialogueEvent();
-	if (UNLIKELY(!DialogueEvent))
+	if (!DialogueEvent) [[unlikely]]
 	{
-		return {};
+		return &emptyString;
 	}
-	return DialogueEvent->Name;
+	return &DialogueEvent->Name;
 }
 
-FName FWwiseRefDialogueEvent::DialogueEventObjectPath() const
+const WwiseDBString* WwiseRefDialogueEvent::DialogueEventObjectPath() const
 {
 	const auto* DialogueEvent = GetDialogueEvent();
-	if (UNLIKELY(!DialogueEvent))
+	if (!DialogueEvent) [[unlikely]]
 	{
-		return {};
+		return &emptyString;
 	}
-	return DialogueEvent->ObjectPath;
+	return &DialogueEvent->ObjectPath;
 }
 
-uint32 FWwiseRefDialogueEvent::Hash() const
+WwiseDBShortId WwiseRefDialogueEvent::Hash() const
 {
-	auto Result = FWwiseRefSoundBank::Hash();
-	Result = HashCombine(Result, GetTypeHash(DialogueEventIndex));
+	auto Result = WwiseRefSoundBank::Hash();
+	Result = WwiseDBHashCombine(Result, GetTypeHash(DialogueEventIndex));
 	return Result;
 }

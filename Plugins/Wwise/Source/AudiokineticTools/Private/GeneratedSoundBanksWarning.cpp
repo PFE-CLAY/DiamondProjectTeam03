@@ -12,7 +12,7 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 /*------------------------------------------------------------------------------------
@@ -35,6 +35,7 @@ Copyright (c) 2024 Audiokinetic Inc.
 #include "Framework/Notifications/NotificationManager.h"
 #include "Misc/App.h"
 #include "Widgets/Notifications/SNotificationList.h"
+#include "Wwise/WwisePluginStyle.h"
 
 #define LOCTEXT_NAMESPACE "AkAudio"
 
@@ -65,7 +66,7 @@ void FGeneratedSoundBanksWarning::DisplayGeneratedSoundBanksWarning()
 		Info.WidthOverride = 400;
 		Info.ButtonDetails.Add(SetGeneratedSoundBanksPathButton);
 		Info.ButtonDetails.Add(DismissButton);
-		Info.Image = FAkAudioStyle::GetBrush(TEXT("AudiokineticTools.AkBrowserTabIcon"));
+		Info.Image = FWwisePluginStyle::Get()->GetBrush(FWwisePluginStyle::WwiseIconName);
 		Info.bUseSuccessFailIcons = false;
 		Info.FadeOutDuration = 0.5f;
 		Info.ExpireDuration = 10.0f;

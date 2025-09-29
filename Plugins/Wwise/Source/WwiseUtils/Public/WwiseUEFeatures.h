@@ -12,7 +12,7 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 // Defines which features of the Wwise-Unreal integration are supported in which version of UE.
@@ -20,38 +20,18 @@ Copyright (c) 2024 Audiokinetic Inc.
 #pragma once
 
 #include "WwiseUnrealDefines.h"
-#include "WwiseWeakObjectPtrSetKeyFuncs.h"
-#include "Containers/Set.h"
 #include "Containers/Ticker.h"
-#include "UObject/WeakObjectPtrTemplates.h"
 
 // Styling naming changed between UE4 and UE5.
 #if WITH_EDITOR && defined(COREUOBJECT_API)
-#if UE_5_0_OR_LATER
 #include "Styling/AppStyle.h"
 using FAkAppStyle = FAppStyle;
-#else
-#include "EditorStyleSet.h"
-using FAkAppStyle = FEditorStyle;
-#endif
 #endif
 
 // UE 5.0 typedefs
-#if UE_5_0_OR_LATER
 using FUnrealFloatVector = FVector3f;
 using FUnrealFloatVector2D = FVector2f;
 using FUnrealFloatPlane = FPlane4f;
 using FTickerDelegateHandle = FTSTicker::FDelegateHandle;
 using FCoreTickerType = FTSTicker;
-#else
-using FUnrealFloatVector = FVector;
-using FUnrealFloatVector2D = FVector2D;
-using FCoreTickerType = FTicker;
-using FUnrealFloatPlane = FPlane;
-using FTickerDelegateHandle = FDelegateHandle;
-#endif
 
-class UAkComponent;
-// Set for holding UAkComponents
-// Use TWeakObjectPtrMapKeyFuncs since different stale items will be indistinguishable using the default key func
-typedef TSet<TWeakObjectPtr<UAkComponent>, TWwiseWeakObjectPtrSetKeyFuncs<TWeakObjectPtr<UAkComponent>>> UAkComponentSet;

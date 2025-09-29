@@ -12,7 +12,7 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #include "WwiseUnrealHelper.h"
@@ -22,35 +22,33 @@ Copyright (c) 2024 Audiokinetic Inc.
 #include "Misc/Paths.h"
 #include "Wwise/Stats/Global.h"
 
+
 namespace WwiseUnrealHelper
 {
 	const TCHAR* MediaFolderName = TEXT("Media");
-	const TCHAR* ExternalSourceFolderName = TEXT("ExternalSources");
 	constexpr auto SoundBankNamePrefix = TEXT("SB_");
 	const FGuid InitBankID(0x701ECBBD, 0x9C7B4030, 0x8CDB749E, 0xE5D1C7B9);
 
-	FString(*GetWwisePluginDirectoryPtr)();
+	FString(*GetWwiseSoundEnginePluginDirectoryPtr)();
 	FString(*GetWwiseProjectPathPtr)();
 	FString(*GetSoundBankDirectoryPtr)();
-	FString(*GetStagePathPtr)();
 	
-	void SetHelperFunctions(FString(* GetWwisePluginDirectoryImpl)(), FString(* GetWwiseProjectPathImpl)(),
-		FString(* GetSoundBankDirectoryImpl)(), FString(* GetStagePathImpl)())
+	void SetHelperFunctions(FString(* GetWwiseSoundEnginePluginDirectoryImpl)(), FString(* GetWwiseProjectPathImpl)(),
+		FString(* GetSoundBankDirectoryImpl)())
 	{
-		GetWwisePluginDirectoryPtr = GetWwisePluginDirectoryImpl;
+		GetWwiseSoundEnginePluginDirectoryPtr = GetWwiseSoundEnginePluginDirectoryImpl;
 		GetWwiseProjectPathPtr = GetWwiseProjectPathImpl;
 		GetSoundBankDirectoryPtr = GetSoundBankDirectoryImpl;
-		GetStagePathPtr = GetStagePathImpl;
 	}
 
-	FString GetWwisePluginDirectory()
+	FString GetWwiseSoundEnginePluginDirectory()
 	{
-		if (!GetWwisePluginDirectoryPtr)
+		if (!GetWwiseSoundEnginePluginDirectoryPtr)
 		{
-			UE_LOG(LogWwiseUtils, Error, TEXT("WwiseUnrealHelper::GetWwisePluginDirectory implementation not set."));
+			UE_LOG(LogWwiseUtils, Error, TEXT("WwiseUnrealHelper::GetWwiseSoundEnginePluginDirectory implementation not set."));
 			return {};
 		}	
-		return GetWwisePluginDirectoryPtr();
+		return GetWwiseSoundEnginePluginDirectoryPtr();
 	}
 
 	FString GetWwiseProjectPath()
@@ -78,16 +76,6 @@ namespace WwiseUnrealHelper
 		return GetSoundBankDirectoryPtr() / TEXT("ProjectInfo.json");
 	}
 
-	FString GetStagePath()
-	{
-		if (!GetStagePathPtr)
-		{
-			UE_LOG(LogWwiseUtils, Error, TEXT("WwiseUnrealHelper::GetStagePath implementation not set."));
-			return {};
-		}	
-		return GetStagePathPtr();
-	}
-
 	void TrimPath(FString& Path)
 	{
 		Path.TrimStartAndEndInline();
@@ -105,34 +93,9 @@ namespace WwiseUnrealHelper
 
 	FString GetThirdPartyDirectory()
 	{
-		return FPaths::Combine(GetWwisePluginDirectory(), TEXT("ThirdParty"));
+		return FPaths::Combine(GetWwiseSoundEnginePluginDirectory(), TEXT("ThirdParty"));
 	}
-
-	FString GetExternalSourceDirectory()
-	{
-		return FPaths::Combine(GetSoundBankDirectory(), ExternalSourceFolderName);
-	}
-
-	FString GetWwiseProjectDirectoryPath()
-	{
-		return FPaths::GetPath(GetWwiseProjectPath()) + TEXT("/");
-	}
-
-	bool MakePathRelativeToWwiseProject(FString& AbsolutePath)
-	{
-
-		auto wwiseProjectRoot = WwiseUnrealHelper::GetWwiseProjectDirectoryPath();
-#if PLATFORM_WINDOWS
-		AbsolutePath.ReplaceInline(TEXT("/"), TEXT("\\"));
-		wwiseProjectRoot.ReplaceInline(TEXT("/"), TEXT("\\"));
-#endif
-		bool success = FPaths::MakePathRelativeTo(AbsolutePath, *wwiseProjectRoot);
-#if PLATFORM_WINDOWS
-		AbsolutePath.ReplaceInline(TEXT("/"), TEXT("\\"));
-#endif
-		return success;
-	}
-
+	
 	void RunTaskInGameThread(TFunction<void()> Function)
 	{
 		if (!IsInGameThread())
@@ -146,11 +109,6 @@ namespace WwiseUnrealHelper
 		{
 			Function();
 		}
-	}
-
-	FString GetWwiseSoundBankInfoCachePath()
-	{
-		return FPaths::Combine(FPaths::GetPath(GetWwiseProjectPath()), TEXT(".cache"), TEXT("SoundBankInfoCache.dat"));
 	}
 
 #if WITH_EDITOR

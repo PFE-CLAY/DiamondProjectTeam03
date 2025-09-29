@@ -3,6 +3,7 @@
 #include "WwiseManagerSubsystem/WwiseManagerSubsystem.h"
 
 #include "AkRtpc.h"
+#include "AkStateValue.h"
 #include "../Plugins/Wwise/Source/AkAudio/Classes/AkAudioEvent.h"
 #include "WwiseManagerSubsystem/WwiseHandlerComponent.h"
 
@@ -58,7 +59,7 @@ int32 UWwiseManagerSubsystem::PostEventWithoutActor(UAkAudioEvent* Event)
 void UWwiseManagerSubsystem::SetRTPCValue(const UAkRtpc* RTPCValue, float Value, int32 InterpolationTimeMs, AActor* Actor)
 {
 	if (RTPCValue && Actor) {
-		UAkGameplayStatics::SetRTPCValue(RTPCValue, Value, InterpolationTimeMs, Actor, FName());
+		UAkGameplayStatics::SetRTPCValue(RTPCValue, Value, InterpolationTimeMs, Actor);
 		UE_LOG(LogTemp, Log, TEXT("[UWwiseManagerSubsystem::SetRTPC] Set RTPC Value: %s to %f"), *RTPCValue->GetName(), Value);
 	} else {
 		UE_LOG(LogTemp, Warning, TEXT("[UWwiseManagerSubsystem::SetRTPC] RTPCValue or Actor is null!"));
@@ -77,19 +78,27 @@ void UWwiseManagerSubsystem::SetCategoryVolume(ESoundCategory Category, float Vo
 	}  
 	
 	if (!RTPCName.IsEmpty()) {
-		UAkGameplayStatics::SetRTPCValue(nullptr, Volume, InterpolateTimeMs, TargetActor, FName(RTPCName));
+		UAkGameplayStatics::SetRTPCValue(nullptr, Volume, InterpolateTimeMs, TargetActor);
 		UE_LOG(LogTemp, Log, TEXT("[UWwiseManagerSubsystem::SetCategoryVolume] Set volume for %s to %f"), *RTPCName, Volume);
 	}
 }
 
-void UWwiseManagerSubsystem::SetSwitch(const UAkSwitchValue* SwitchValue, AActor* Actor, FName SwitchGroup, FName SwitchState)
+void UWwiseManagerSubsystem::SetSwitch(const UAkSwitchValue* SwitchValue, AActor* Actor)
 {
-	UE_LOG(LogTemp, Log, TEXT("[UWwiseManagerSubsystem::SetSwitch] Setting Switch State: %s to %s from actor: %s"), *SwitchGroup.ToString(), *SwitchState.ToString(), *Actor->GetName());
-	UAkGameplayStatics::SetSwitch(SwitchValue, Actor, SwitchGroup, SwitchState);
+	if (!SwitchValue) {
+		UE_LOG(LogTemp, Warning, TEXT("[UWwiseManagerSubsystem::SetSwitch] SwitchValue is null!"));
+		return;
+	}
+	UE_LOG(LogTemp, Log, TEXT("[UWwiseManagerSubsystem::SetSwitch] Setting Switch State from actor: %s"), *Actor->GetName());
+	UAkGameplayStatics::SetSwitch(SwitchValue, Actor);
 }
 
-void UWwiseManagerSubsystem::SetState(const UAkStateValue* StateValue, FName stateGroup, FName state)
+void UWwiseManagerSubsystem::SetState(const UAkStateValue* StateValue)
 {
-	UE_LOG(LogTemp, Log, TEXT("[UWwiseManagerSubsystem::SetState] Setting State: %s to %s"), *stateGroup.ToString(), *state.ToString());
-	UAkGameplayStatics::SetState(StateValue, stateGroup, state);
+	if (!StateValue) {
+		UE_LOG(LogTemp, Warning, TEXT("[UWwiseManagerSubsystem::SetState] StateValue is null!"));
+		return;
+	}
+	UE_LOG(LogTemp, Log, TEXT("[UWwiseManagerSubsystem::SetState] Setting State: %s"), *StateValue->GroupValueInfo.WwiseName.ToString());
+	UAkGameplayStatics::SetState(StateValue);
 }

@@ -12,7 +12,7 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #include "InitializationSettings/AkAudioSession.h"
@@ -24,6 +24,10 @@ void FAkAudioSession::FillInitializationStructure(FAkInitializationStructure& In
     InitializationStructure.PlatformInitSettings.audioSession.eCategory = (AkAudioSessionCategory)AudioSessionCategory;
     InitializationStructure.PlatformInitSettings.audioSession.eCategoryOptions = (AkAudioSessionCategoryOptions)AudioSessionCategoryOptions;
     InitializationStructure.PlatformInitSettings.audioSession.eMode = (AkAudioSessionMode)AudioSessionMode;
+
+#if WWISE_2024_1_OR_LATER
+    InitializationStructure.PlatformInitSettings.audioSession.eRouteSharingPolicy = (AkAudioSessionRouteSharingPolicy)AudioSessionRouteSharingPolicy;
+#endif
 #endif
 }
 

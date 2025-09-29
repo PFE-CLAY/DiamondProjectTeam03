@@ -12,48 +12,48 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #pragma once
 
 #include "Wwise/Ref/WwiseRefSoundBank.h"
 
-class WWISEPROJECTDATABASE_API FWwiseRefCustomPlugin : public FWwiseRefSoundBank
+class WwiseRefCustomPlugin : public WwiseRefSoundBank
 {
 public:
-	static const TCHAR* const NAME;
-	static constexpr EWwiseRefType TYPE = EWwiseRefType::CustomPlugin;
+	static const WwiseDBString NAME;
+	static constexpr WwiseRefType TYPE = WwiseRefType::CustomPlugin;
 	struct FGlobalIdsMap;
 
 	WwiseRefIndexType CustomPluginIndex;
 
-	FWwiseRefCustomPlugin() {}
-	FWwiseRefCustomPlugin(const WwiseMetadataSharedRootFileConstPtr& InRootMediaRef, const FName& InJsonFilePath,
-		WwiseRefIndexType InSoundBankIndex, uint32 InLanguageId,
+	WwiseRefCustomPlugin() {}
+	WwiseRefCustomPlugin(const WwiseMetadataSharedRootFileConstPtr& InRootMediaRef, const WwiseDBString& InJsonFilePath,
+		WwiseRefIndexType InSoundBankIndex, WwiseDBShortId InLanguageId,
 		WwiseRefIndexType InCustomPluginIndex) :
-		FWwiseRefSoundBank(InRootMediaRef, InJsonFilePath, InSoundBankIndex, InLanguageId),
+		WwiseRefSoundBank(InRootMediaRef, InJsonFilePath, InSoundBankIndex, InLanguageId),
 		CustomPluginIndex(InCustomPluginIndex)
 	{}
-	const FWwiseMetadataPlugin* GetPlugin() const;
+	const WwiseMetadataPlugin* GetPlugin() const;
 	WwiseMediaIdsMap GetPluginMedia(const WwiseMediaGlobalIdsMap& GlobalMap) const;
 
-	uint32 CustomPluginId() const;
-	FGuid CustomPluginGuid() const;
-	FName CustomPluginName() const;
-	FName CustomPluginObjectPath() const;
+	WwiseDBShortId CustomPluginId() const;
+	WwiseDBGuid CustomPluginGuid() const;
+	const WwiseDBString* CustomPluginName() const;
+	const WwiseDBString* CustomPluginObjectPath() const;
 
-	uint32 Hash() const override;
-	EWwiseRefType Type() const override { return TYPE; }
-	bool operator==(const FWwiseRefCustomPlugin& Rhs) const
+	WwiseDBShortId Hash() const override;
+	WwiseRefType Type() const override { return TYPE; }
+	bool operator==(const WwiseRefCustomPlugin& Rhs) const
 	{
-		return FWwiseRefSoundBank::operator==(Rhs)
+		return WwiseRefSoundBank::operator==(Rhs)
 			&& CustomPluginIndex == Rhs.CustomPluginIndex;
 	}
-	bool operator!=(const FWwiseRefCustomPlugin& Rhs) const { return !operator==(Rhs); }
+	bool operator!=(const WwiseRefCustomPlugin& Rhs) const { return !operator==(Rhs); }
 };
 
-struct WWISEPROJECTDATABASE_API FWwiseRefCustomPlugin::FGlobalIdsMap
+struct WwiseRefCustomPlugin::FGlobalIdsMap
 {
 	WwiseCustomPluginGlobalIdsMap GlobalIdsMap;
 };

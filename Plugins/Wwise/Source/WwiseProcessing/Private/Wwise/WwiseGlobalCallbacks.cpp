@@ -12,7 +12,7 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #include "Wwise/WwiseGlobalCallbacks.h"
@@ -38,6 +38,10 @@ FWwiseGlobalCallbacks::FWwiseGlobalCallbacks() :
 	InitQueue(WWISE_EQ_NAME("InitQueue Global Callback")),
 	SuspendQueue(WWISE_EQ_NAME("SuspendQueue Global Callback")),
 	WakeupFromSuspendQueue(WWISE_EQ_NAME("WakeupFromSuspendQueue Global Callback"))
+#if WWISE_2024_1_OR_LATER
+	, ProfilerConnectQueue(WWISE_EQ_NAME("ProfilerConnect Global Callback"))
+	, ProfilerDisconnectQueue(WWISE_EQ_NAME("ProfilerDisconnect Global Callback"))
+#endif
 {
 }
 
@@ -119,6 +123,15 @@ bool FWwiseGlobalCallbacks::Initialize()
 	UE_CLOG(Result != AK_Success, LogWwiseProcessing, Error, TEXT("Cannot Register `WakeupFromSuspend` Callback: %d (%s)"), Result, WwiseUnrealHelper::GetResultString(Result));
 	bResult = bResult && (Result == AK_Success);
 
+#if WWISE_2024_1_OR_LATER
+	Result = SoundEngine->RegisterGlobalCallback(&FWwiseGlobalCallbacks::OnProfilerConnectCallbackStatic, AkGlobalCallbackLocation_ProfilerConnect, (void*)this);
+	UE_CLOG(Result != AK_Success, LogWwiseProcessing, Error, TEXT("Cannot Register `ProfilerConnect` Callback: %d (%s)"), Result, WwiseUnrealHelper::GetResultString(Result));
+	bResult = bResult && (Result == AK_Success);
+
+	Result = SoundEngine->RegisterGlobalCallback(&FWwiseGlobalCallbacks::OnProfilerDisconnectCallbackStatic, AkGlobalCallbackLocation_ProfilerDisconnect, (void*)this);
+	UE_CLOG(Result != AK_Success, LogWwiseProcessing, Error, TEXT("Cannot Register `ProfilerDisconnect` Callback: %d (%s)"), Result, WwiseUnrealHelper::GetResultString(Result));
+	bResult = bResult && (Result == AK_Success);
+#endif
 	return bResult;
 }
 
@@ -175,6 +188,14 @@ void FWwiseGlobalCallbacks::Terminate()
 
 	Result = SoundEngine->UnregisterGlobalCallback(&FWwiseGlobalCallbacks::OnWakeupFromSuspendCallbackStatic, AkGlobalCallbackLocation_WakeupFromSuspend);
 	UE_CLOG(Result != AK_Success && Result != AK_InvalidParameter, LogWwiseProcessing, Verbose, TEXT("Cannot Unregister `WakeupFromSuspend` Callback: %d (%s)"), Result, WwiseUnrealHelper::GetResultString(Result));
+
+#if WWISE_2024_1_OR_LATER
+	Result = SoundEngine->UnregisterGlobalCallback(&FWwiseGlobalCallbacks::OnProfilerConnectCallbackStatic, AkGlobalCallbackLocation_ProfilerConnect);
+	UE_CLOG(Result != AK_Success && Result != AK_InvalidParameter, LogWwiseProcessing, Verbose, TEXT("Cannot Unregister `ProfilerConnect` Callback: %d (%s)"), Result, WwiseUnrealHelper::GetResultString(Result));
+
+	Result = SoundEngine->UnregisterGlobalCallback(&FWwiseGlobalCallbacks::OnProfilerDisconnectCallbackStatic, AkGlobalCallbackLocation_ProfilerDisconnect);
+	UE_CLOG(Result != AK_Success && Result != AK_InvalidParameter, LogWwiseProcessing, Verbose, TEXT("Cannot Unregister `ProfilerDisconnect` Callback: %d (%s)"), Result, WwiseUnrealHelper::GetResultString(Result));
+#endif
 }
 
 void FWwiseGlobalCallbacks::RegisterSync(FSyncFunction&& InFunction)
@@ -482,6 +503,54 @@ void FWwiseGlobalCallbacks::WaitForWakeupFromSuspend()
 	Event->Reset();
 }
 
+#if WWISE_2024_1_OR_LATER
+void FWwiseGlobalCallbacks::ProfilerConnectSync(FSyncFunction&& InFunction)
+{
+	ProfilerConnectQueue.SyncDefer(MoveTemp(InFunction));
+}
+
+void FWwiseGlobalCallbacks::ProfilerConnectCompletion(FCompletionPromise&& Promise)
+{
+	ProfilerConnectAsync([Promise = MoveTemp(Promise)]() mutable
+	{
+		Promise.EmplaceValue();
+		return EWwiseDeferredAsyncResult::Done;
+	});
+}
+
+void FWwiseGlobalCallbacks::WaitForProfilerConnect()
+{
+	SCOPED_WWISEPROCESSING_EVENT_4(TEXT("FWwiseGlobalCallbacks::WaitForProfilerConnect"));
+	FEventRef Event;
+	ProfilerConnectAsync([&Event]() {Event->Trigger(); return EWwiseDeferredAsyncResult::Done; });
+	Event->Wait();
+	Event->Reset();
+}
+
+void FWwiseGlobalCallbacks::ProfilerDisconnectSync(FSyncFunction&& InFunction)
+{
+	ProfilerDisconnectQueue.SyncDefer(MoveTemp(InFunction));
+}
+
+void FWwiseGlobalCallbacks::ProfilerDisconnectCompletion(FCompletionPromise&& Promise)
+{
+	ProfilerDisconnectAsync([Promise = MoveTemp(Promise)]() mutable
+	{
+		Promise.EmplaceValue();
+		return EWwiseDeferredAsyncResult::Done;
+	});
+}
+
+void FWwiseGlobalCallbacks::WaitForProfilerDisconnect()
+{
+	SCOPED_WWISEPROCESSING_EVENT_4(TEXT("FWwiseGlobalCallbacks::WaitForProfilerConnect"));
+	FEventRef Event;
+	ProfilerDisconnectAsync([&Event]() {Event->Trigger(); return EWwiseDeferredAsyncResult::Done; });
+	Event->Wait();
+	Event->Reset();
+}
+#endif // WWISE_2024_1_OR_LATER
+
 void FWwiseGlobalCallbacks::OnRegisterCallback(AK::IAkGlobalPluginContext* in_pContext)
 {
 	RegisterQueue.Run(in_pContext);
@@ -546,6 +615,18 @@ void FWwiseGlobalCallbacks::OnWakeupFromSuspendCallback(AK::IAkGlobalPluginConte
 {
 	WakeupFromSuspendQueue.Run(in_pContext);
 }
+
+#if WWISE_2024_1_OR_LATER
+void FWwiseGlobalCallbacks::OnProfilerConnectCallback(AK::IAkGlobalPluginContext* in_pContext)
+{
+	ProfilerConnectQueue.Run(in_pContext);
+}
+
+void FWwiseGlobalCallbacks::OnProfilerDisconnectCallback(AK::IAkGlobalPluginContext* in_pContext)
+{
+	ProfilerDisconnectQueue.Run(in_pContext);
+}
+#endif
 
 void FWwiseGlobalCallbacks::OnRegisterCallbackStatic(AK::IAkGlobalPluginContext* in_pContext,
 	AkGlobalCallbackLocation in_eLocation, void* in_pCookie)
@@ -624,3 +705,17 @@ void FWwiseGlobalCallbacks::OnWakeupFromSuspendCallbackStatic(AK::IAkGlobalPlugi
 {
 	static_cast<FWwiseGlobalCallbacks*>(in_pCookie)->OnWakeupFromSuspendCallback(in_pContext);
 }
+
+#if WWISE_2024_1_OR_LATER
+void FWwiseGlobalCallbacks::OnProfilerConnectCallbackStatic(AK::IAkGlobalPluginContext* in_pContext,
+	AkGlobalCallbackLocation in_eLocation, void* in_pCookie)
+{
+	static_cast<FWwiseGlobalCallbacks*>(in_pCookie)->OnProfilerConnectCallback(in_pContext);
+}
+
+void FWwiseGlobalCallbacks::OnProfilerDisconnectCallbackStatic(AK::IAkGlobalPluginContext* in_pContext,
+	AkGlobalCallbackLocation in_eLocation, void* in_pCookie)
+{
+	static_cast<FWwiseGlobalCallbacks*>(in_pCookie)->OnProfilerDisconnectCallback(in_pContext);
+}
+#endif

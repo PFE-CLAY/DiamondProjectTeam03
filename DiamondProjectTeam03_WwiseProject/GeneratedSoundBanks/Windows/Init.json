@@ -3,14 +3,14 @@
   "Platform": "Windows",
   "BasePlatform": "Windows",
   "SchemaVersion": "16",
-  "SoundBankVersion": "150",
+  "SoundBankVersion": "154",
   "SoundBanks": [
    {
     "Id": "1355168291",
     "Type": "User",
     "GUID": "{701ECBBD-9C7B-4030-8CDB-749EE5D1C7B9}",
     "Language": "SFX",
-    "Hash": "{62ECDEEB-18BB-426A-5EC9-FD83315AC3F7}",
+    "Hash": "{2BDAD747-3243-1EB7-4A00-659634932239}",
     "ObjectPath": "Init",
     "ShortName": "Init",
     "Path": "Init.bnk",
@@ -123,49 +123,57 @@
       "Id": "109159411",
       "Name": "Game_Global",
       "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\Game_Global",
-      "GUID": "{FAD5C029-0A02-4BD2-97F7-F8C20B7A95BD}"
+      "GUID": "{FAD5C029-0A02-4BD2-97F7-F8C20B7A95BD}",
+      "Color": "16"
      },
      {
       "Id": "393239870",
       "Name": "SFX",
       "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\Game_Global\\SFX",
-      "GUID": "{EB4CE24D-8196-408E-9775-5E8EEFE98495}"
+      "GUID": "{EB4CE24D-8196-408E-9775-5E8EEFE98495}",
+      "Color": "17"
      },
      {
       "Id": "1117531639",
       "Name": "AMB",
       "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\Game_Global\\AMB",
-      "GUID": "{C1595F21-FBBF-4B04-AC1A-78D86879A937}"
+      "GUID": "{C1595F21-FBBF-4B04-AC1A-78D86879A937}",
+      "Color": "4"
      },
      {
       "Id": "1551306167",
       "Name": "UI",
       "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\UI",
-      "GUID": "{B5E7816E-C3FC-4992-B763-4078089CE674}"
+      "GUID": "{B5E7816E-C3FC-4992-B763-4078089CE674}",
+      "Color": "1"
      },
      {
       "Id": "1685527061",
       "Name": "MC",
       "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\Game_Global\\MC",
-      "GUID": "{B3079877-B26F-4239-A3AB-9C7AFFCBC797}"
+      "GUID": "{B3079877-B26F-4239-A3AB-9C7AFFCBC797}",
+      "Color": "19"
      },
      {
       "Id": "2290178407",
       "Name": "FOES_Tourelle",
       "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\Game_Global\\FOES_Tourelle",
-      "GUID": "{D783D57E-4B6F-4101-8F5F-FD96F0409170}"
+      "GUID": "{D783D57E-4B6F-4101-8F5F-FD96F0409170}",
+      "Color": "10"
      },
      {
       "Id": "3313685232",
       "Name": "Voices",
       "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\Voices",
-      "GUID": "{00AA482D-3F12-46A5-8177-E8A172D08E63}"
+      "GUID": "{00AA482D-3F12-46A5-8177-E8A172D08E63}",
+      "Color": "23"
      },
      {
       "Id": "3623095082",
       "Name": "FOES_Flying",
       "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\Game_Global\\FOES_Flying",
-      "GUID": "{439831F9-AA50-4CD2-98C3-ACD8B187380E}"
+      "GUID": "{439831F9-AA50-4CD2-98C3-ACD8B187380E}",
+      "Color": "11"
      },
      {
       "Id": "3803692087",
@@ -177,19 +185,22 @@
       "Id": "3991942870",
       "Name": "Music",
       "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\Music",
-      "GUID": "{08156595-7637-4348-AC3C-2EDE3FCCB08F}"
+      "GUID": "{08156595-7637-4348-AC3C-2EDE3FCCB08F}",
+      "Color": "24"
      },
      {
       "Id": "4056684167",
       "Name": "Master",
       "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master",
-      "GUID": "{F3A976BC-47E9-46E5-9EEC-F566BB39DBEE}"
+      "GUID": "{F3A976BC-47E9-46E5-9EEC-F566BB39DBEE}",
+      "Color": "9"
      },
      {
       "Id": "4219618961",
       "Name": "AMB_Crowd",
       "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\Game_Global\\AMB_Crowd",
-      "GUID": "{985719AF-3534-41FC-A751-99E11C3F7784}"
+      "GUID": "{985719AF-3534-41FC-A751-99E11C3F7784}",
+      "Color": "4"
      }
     ],
     "AuxBusses": [
@@ -198,6 +209,7 @@
       "Name": "RVB_Voices",
       "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Voices",
       "GUID": "{483EAB60-BC92-484F-9830-D1776233B15C}",
+      "Color": "9",
       "PluginRefs": {
        "ShareSets": [
         {
@@ -214,6 +226,7 @@
       "Name": "RVB_BlackHouses",
       "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_BlackHouses",
       "GUID": "{17B5E8F9-026F-4941-A027-1C0641AB0C14}",
+      "Color": "26",
       "PluginRefs": {
        "Custom": [
         {
@@ -227,6 +240,7 @@
       "Name": "RVB_Arena",
       "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Arena",
       "GUID": "{54C7EBDA-4885-4850-8969-FB63BDACC807}",
+      "Color": "26",
       "PluginRefs": {
        "Custom": [
         {
@@ -243,6 +257,7 @@
       "Name": "RVB_RFX_Arena",
       "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_RFX_Arena",
       "GUID": "{CC7A2F05-EE75-4E8E-B097-98A1938CB5E4}",
+      "Color": "27",
       "PluginRefs": {
        "Custom": [
         {
@@ -256,6 +271,7 @@
       "Name": "RVB_Basement",
       "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Basement",
       "GUID": "{BF09F5DA-71E8-4CAC-B0EB-19A1C29389BA}",
+      "Color": "26",
       "PluginRefs": {
        "Custom": [
         {
@@ -269,6 +285,7 @@
       "Name": "AUX_LPF",
       "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\AUX_LPF",
       "GUID": "{5D5AAEA6-57CB-46FD-9802-C041695A5809}",
+      "Color": "9",
       "PluginRefs": {
        "ShareSets": [
         {
@@ -282,6 +299,7 @@
       "Name": "RVB_Hub",
       "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Hub",
       "GUID": "{D499EBE4-F26A-48E5-B89D-1F7C43D829E3}",
+      "Color": "26",
       "PluginRefs": {
        "Custom": [
         {
@@ -295,6 +313,7 @@
       "Name": "RVB_Pyramid",
       "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Pyramid",
       "GUID": "{668EA0D2-771E-452F-B241-11793F9755B0}",
+      "Color": "26",
       "PluginRefs": {
        "Custom": [
         {
@@ -327,7 +346,8 @@
       "Id": "3445598977",
       "Name": "RTPC_Master",
       "ObjectPath": "\\Game Parameters\\Default Work Unit\\RTPC_Master",
-      "GUID": "{74E6261E-6493-44A8-BAE7-1E79ABF4DED1}"
+      "GUID": "{74E6261E-6493-44A8-BAE7-1E79ABF4DED1}",
+      "Color": "10"
      },
      {
       "Id": "3553041361",
@@ -424,6 +444,6 @@
     ]
    }
   ],
-  "FileHash": "{045932D7-E441-1D21-5687-E3DD4F7B47F5}"
+  "FileHash": "{B6EB2196-36CB-993A-44BC-8C862936DAFF}"
  }
 }

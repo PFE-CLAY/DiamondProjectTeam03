@@ -12,7 +12,7 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #pragma once
@@ -21,6 +21,7 @@ Copyright (c) 2024 Audiokinetic Inc.
 #include "Misc/ConfigCacheIni.h"
 
 class FQueuedThreadPool;
+struct FWwiseExecutionQueue;
 
 class IWwiseConcurrencyModule : public IModuleInterface
 {
@@ -67,7 +68,9 @@ public:
 		{
 			if (UNLIKELY(IsEngineExitRequested()))
 			{
-				UE_LOG(LogLoad, Log, TEXT("Skipping reloading missing WwiseConcurrency module: Exiting."));
+				static bool bShown{ false };
+				UE_CLOG(!bShown, LogLoad, Log, TEXT("Skipping reloading missing WwiseConcurrency module: Exiting."));
+				bShown = true;
 			}
 			else if (UNLIKELY(!IsInGameThread()))
 			{

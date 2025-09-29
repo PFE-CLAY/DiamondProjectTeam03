@@ -12,47 +12,47 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #pragma once
 
 #include "Wwise/Ref/WwiseRefSoundBank.h"
 
-class WWISEPROJECTDATABASE_API FWwiseRefStateGroup : public FWwiseRefSoundBank
+class WwiseRefStateGroup : public WwiseRefSoundBank
 {
 public:
-	static const TCHAR* const NAME;
-	static constexpr EWwiseRefType TYPE = EWwiseRefType::StateGroup;
+	static const WwiseDBString NAME;
+	static constexpr WwiseRefType TYPE = WwiseRefType::StateGroup;
 	struct FGlobalIdsMap;
 
 	WwiseRefIndexType StateGroupIndex;
 
-	FWwiseRefStateGroup() {}
-	FWwiseRefStateGroup(const WwiseMetadataSharedRootFileConstPtr& InRootMediaRef, const FName& InJsonFilePath,
-		WwiseRefIndexType InSoundBankIndex, uint32 InLanguageId,
+	WwiseRefStateGroup() {}
+	WwiseRefStateGroup(const WwiseMetadataSharedRootFileConstPtr& InRootMediaRef, const WwiseDBString& InJsonFilePath,
+		WwiseRefIndexType InSoundBankIndex, WwiseDBShortId InLanguageId,
 		WwiseRefIndexType InStateGroupIndex) :
-		FWwiseRefSoundBank(InRootMediaRef, InJsonFilePath, InSoundBankIndex, InLanguageId),
+		WwiseRefSoundBank(InRootMediaRef, InJsonFilePath, InSoundBankIndex, InLanguageId),
 		StateGroupIndex(InStateGroupIndex)
 	{}
-	const FWwiseMetadataStateGroup* GetStateGroup() const;
+	const WwiseMetadataStateGroup* GetStateGroup() const;
 
-	uint32 StateGroupId() const;
-	FGuid StateGroupGuid() const;
-	FName StateGroupName() const;
-	FName StateGroupObjectPath() const;
+	WwiseDBShortId StateGroupId() const;
+	WwiseDBGuid StateGroupGuid() const;
+	const WwiseDBString* StateGroupName() const;
+	const WwiseDBString* StateGroupObjectPath() const;
 
-	uint32 Hash() const override;
-	EWwiseRefType Type() const override { return TYPE; }
-	bool operator==(const FWwiseRefStateGroup& Rhs) const
+	WwiseDBShortId Hash() const override;
+	WwiseRefType Type() const override { return TYPE; }
+	bool operator==(const WwiseRefStateGroup& Rhs) const
 	{
-		return FWwiseRefSoundBank::operator ==(Rhs)
+		return WwiseRefSoundBank::operator ==(Rhs)
 			&& StateGroupIndex == Rhs.StateGroupIndex;
 	}
-	bool operator!=(const FWwiseRefStateGroup& Rhs) const { return !operator==(Rhs); }
+	bool operator!=(const WwiseRefStateGroup& Rhs) const { return !operator==(Rhs); }
 };
 
-struct WWISEPROJECTDATABASE_API FWwiseRefStateGroup::FGlobalIdsMap
+struct WwiseRefStateGroup::FGlobalIdsMap
 {
 	WwiseStateGroupGlobalIdsMap GlobalIdsMap;
 };

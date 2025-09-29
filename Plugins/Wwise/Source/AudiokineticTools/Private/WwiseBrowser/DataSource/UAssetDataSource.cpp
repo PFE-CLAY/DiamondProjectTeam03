@@ -12,7 +12,7 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #include "UAssetDataSource.h"
@@ -39,17 +39,24 @@ bool FUAssetDataSource::GuidExistsInProjectDatabase(const FGuid ItemId)
 	auto* ProjectDatabase = FWwiseProjectDatabase::Get();
 	if (ProjectDatabase)
 	{
-		const FWwiseDataStructureScopeLock DataStructure(*ProjectDatabase);
-		const FWwiseRefPlatform Platform = DataStructure.GetPlatform(ProjectDatabase->GetCurrentPlatform());
+		const WwiseDataStructureScopeLock DataStructure(*ProjectDatabase);
+		const WwiseRefPlatform Platform = DataStructure.GetPlatform(ProjectDatabase->GetCurrentPlatform());
 		const auto* PlatformData = DataStructure.GetCurrentPlatformData();
 
 		if (UNLIKELY(!PlatformData))
 		{
 			return false;
 		}
+		auto Guid = WwiseDBGuid(ItemId.A, ItemId.B, ItemId.C, ItemId.D);
+		WwiseDatabaseLocalizableGuidKey Key = WwiseDatabaseLocalizableGuidKey(Guid, WwiseDatabaseLocalizableIdKey::GENERIC_LANGUAGE);
 
-		FWwiseDatabaseLocalizableGuidKey Key = FWwiseDatabaseLocalizableGuidKey(ItemId, FWwiseDatabaseLocalizableIdKey::GENERIC_LANGUAGE);
-		return PlatformData->Guids.Find(Key) != nullptr;
+		//The key was not found. It may be linked to a Language. Try with the current one.
+		if(!PlatformData->Guids.Contains(Key))
+		{
+			Key.LanguageId = DataStructure.GetCurrentLanguage().GetLanguageId();
+			return PlatformData->Guids.Contains(Key);
+		}
+		return true;
 	}
 	return false;
 }
@@ -153,7 +160,7 @@ void FUAssetDataSource::GetAssetsInfo(FGuid ItemId, uint32 ShortId, FString Name
 	Id.GroupId = GroupId;
 	Id.Name = FName(*Name);
 
-	if (auto Item = UsedItems.Find(Id.ItemId))
+	if (auto* Item = UsedItems.Find(Id.ItemId))
 	{
 		Assets = Item->AssetsData;
 		ItemType = Item->Type;
@@ -161,10 +168,10 @@ void FUAssetDataSource::GetAssetsInfo(FGuid ItemId, uint32 ShortId, FString Name
 	}
 
 	auto Pair = TPair<uint32, uint32>(Id.ShortId, Id.GroupId);
-	if (auto Item = UAssetWithoutGuid.Find(Pair))
+	if (auto* Item = UAssetWithoutGuid.Find(Pair))
 	{
 		auto GuidItem = UsedItems.Find(Id.ItemId);
-		for(auto Asset : Item->AssetsData)
+		for(auto& Asset : Item->AssetsData)
 		{
 			if (!AkUnrealAssetDataHelper::IsSameType(Asset, Item->Type))
 			{
@@ -184,10 +191,10 @@ void FUAssetDataSource::GetAssetsInfo(FGuid ItemId, uint32 ShortId, FString Name
 		UAssetWithoutGuid.Remove(Pair);
 	}
 
-	if (auto Item = UAssetWithoutShortId.Find(FName(*Name)))
+	if (auto* Item = UAssetWithoutShortId.Find(FName(*Name)))
 	{
 		auto GuidItem = UsedItems.Find(Id.ItemId);
-		for(auto Asset : Item->AssetsData)
+		for(auto& Asset : Item->AssetsData)
 		{
 			if(!AkUnrealAssetDataHelper::IsSameType(Asset, Item->Type))
 			{

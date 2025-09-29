@@ -12,7 +12,7 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #pragma once
@@ -23,11 +23,8 @@ Copyright (c) 2024 Audiokinetic Inc.
 
 class WWISEFILEHANDLER_API FWwiseMediaFileState : public FWwiseFileState, public FWwiseMediaCookedData
 {
-public:
-	const FString RootPath;
-
 protected:
-	FWwiseMediaFileState(const FWwiseMediaCookedData& InCookedData, const FString& InRootPath);
+	FWwiseMediaFileState(const FWwiseMediaCookedData& InCookedData);
 
 public:
 	~FWwiseMediaFileState() override;
@@ -38,7 +35,7 @@ public:
 class WWISEFILEHANDLER_API FWwiseInMemoryMediaFileState : public FWwiseMediaFileState, public AkSourceSettings
 {
 public:
-	FWwiseInMemoryMediaFileState(const FWwiseMediaCookedData& InCookedData, const FString& InRootPath);
+	FWwiseInMemoryMediaFileState(const FWwiseMediaCookedData& InCookedData);
 	~FWwiseInMemoryMediaFileState() override { Term(); }
 
 	void OpenFile(FOpenFileCallback&& InCallback) override;
@@ -52,9 +49,9 @@ class WWISEFILEHANDLER_API FWwiseStreamedMediaFileState : public FWwiseMediaFile
 public:
 	const uint32 StreamingGranularity;
 
-	FWwiseFileCacheHandle* StreamedFile;
+	IWwiseFileCacheHandle* StreamedFile;
 
-	FWwiseStreamedMediaFileState(const FWwiseMediaCookedData& InCookedData, const FString& InRootPath, uint32 InStreamingGranularity);
+	FWwiseStreamedMediaFileState(const FWwiseMediaCookedData& InCookedData, uint32 InStreamingGranularity);
 	~FWwiseStreamedMediaFileState() override { Term(); }
 
 	void CloseStreaming() override;

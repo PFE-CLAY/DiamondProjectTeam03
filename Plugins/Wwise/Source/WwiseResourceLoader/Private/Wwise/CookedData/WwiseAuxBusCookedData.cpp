@@ -12,12 +12,16 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #include "Wwise/CookedData/WwiseAuxBusCookedData.h"
 
 #include "Wwise/Stats/ResourceLoader.h"
+
+#if WITH_EDITORONLY_DATA && UE_5_5_OR_LATER
+#include "Serialization/CompactBinaryWriter.h"
+#endif
 
 #include <inttypes.h>
 
@@ -42,6 +46,44 @@ void FWwiseAuxBusCookedData::Serialize(FArchive& Ar)
 		Struct->SerializeTaggedProperties(Ar, (uint8*)this, Struct, nullptr);
 	}
 }
+
+void FWwiseAuxBusCookedData::SerializeBulkData(FArchive& Ar, const FWwisePackagedFileSerializationOptions& Options)
+{
+	for (auto& SoundBank : SoundBanks)
+	{
+		SoundBank.SerializeBulkData(Ar, Options);
+	}
+	for (auto& MediaItem : Media)
+	{
+		MediaItem.SerializeBulkData(Ar, Options);
+	}
+}
+
+#if WITH_EDITORONLY_DATA && UE_5_5_OR_LATER
+void FWwiseAuxBusCookedData::GetPlatformCookDependencies(FWwiseCookEventContext& Context, FCbWriter& Writer) const
+{
+	Writer << "AuxBus";
+	Writer.BeginObject();
+	Writer << "Id" << AuxBusId;
+	
+	Writer << "SBs";
+	Writer.BeginArray();
+	for (auto& SoundBank : SoundBanks)
+	{
+		SoundBank.GetPlatformCookDependencies(Context, Writer);
+	}
+	Writer.EndArray();
+
+	Writer << "Ms";
+	Writer.BeginArray();
+	for (auto& MediaItem : Media)
+	{
+		MediaItem.GetPlatformCookDependencies(Context, Writer);
+	}
+	Writer.EndArray();
+	Writer.EndObject();
+}
+#endif
 
 FString FWwiseAuxBusCookedData::GetDebugString() const
 {

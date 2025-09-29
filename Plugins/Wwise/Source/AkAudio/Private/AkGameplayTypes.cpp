@@ -12,7 +12,7 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 /*=============================================================================
@@ -83,7 +83,7 @@ AkCallbackInfo* AkCallbackTypeHelpers::CopyWwiseCallbackInfo(AkCallbackType Call
 		if (SourceLabel)
 		{
 			CbInfoCopy->strLabel = reinterpret_cast<const char*>(CbInfoCopy) + sizeof(AkMarkerCallbackInfo);
-			FPlatformString::Strcpy(const_cast<char*>(CbInfoCopy->strLabel), LabelSize - 1, SourceLabel);
+			FPlatformString::Strncpy(const_cast<char*>(CbInfoCopy->strLabel), SourceLabel, LabelSize - 1);
 		}
 		return CbInfoCopy;
 	}
@@ -110,7 +110,7 @@ AkCallbackInfo* AkCallbackTypeHelpers::CopyWwiseCallbackInfo(AkCallbackType Call
 		if (SourceUserCue)
 		{
 			CbInfoCopy->pszUserCueName = reinterpret_cast<char*>(CbInfoCopy) + sizeof(AkMusicSyncCallbackInfo);
-			FPlatformString::Strcpy(const_cast<char*>(CbInfoCopy->pszUserCueName), UserCueSize, SourceUserCue);
+			FPlatformString::Strncpy(const_cast<char*>(CbInfoCopy->pszUserCueName), SourceUserCue, UserCueSize);
 		}
 		return CbInfoCopy;
 	}
@@ -367,7 +367,7 @@ FAkSDKExternalSourceArray::FAkSDKExternalSourceArray(const TArray<FAkExternalSou
 				ExternalFileName += TEXT(".wem");
 			}
 			OsCharArray = (AkOSChar*)FMemory::Malloc((ExternalFileName.Len() + 1) * sizeof(AkOSChar));
-			FPlatformString::Strcpy(OsCharArray, ExternalFileName.Len(), TCHAR_TO_AK(*(ExternalFileName)));
+			FPlatformString::Strncpy(OsCharArray, TCHAR_TO_AK(*(ExternalFileName)), ExternalFileName.Len());
 
 			ExternalSourceArray.Emplace(OsCharArray, FAkAudioDevice::GetShortIDFromString(ExternalSourceInfo.ExternalSrcName), (AkCodecID)ExternalSourceInfo.CodecID);
 		}

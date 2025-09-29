@@ -12,7 +12,7 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #include "AkAssetMigrationHelper.h"
@@ -32,14 +32,10 @@ Copyright (c) 2024 Audiokinetic Inc.
 #include "IAudiokineticTools.h"
 #include "AssetRegistry/AssetRegistryModule.h"
 #include "AssetToolsModule.h"
-#include "WwiseUnrealDefines.h"
+#include "Wwise/WwiseAllowShrinking.h"
 
 #include "GenericPlatform/GenericPlatformFile.h"
-#if UE_5_0_OR_LATER
 #include "HAL/PlatformFileManager.h"
-#else
-#include "HAL/PlatformFilemanager.h"
-#endif
 #include "ObjectTools.h"
 #include "FileHelpers.h"
 #include "Misc/FileHelper.h"
@@ -164,19 +160,11 @@ namespace AkAssetMigration
 	{
 		OutDeprecatedAssets.Empty();
 		FARFilter Filter;
-#if UE_5_1_OR_LATER
 		Filter.ClassPaths.Add(UAkMediaAsset::StaticClass()->GetClassPathName());
 		Filter.ClassPaths.Add(UAkLocalizedMediaAsset::StaticClass()->GetClassPathName());
 		Filter.ClassPaths.Add(UAkExternalMediaAsset::StaticClass()->GetClassPathName());
 		Filter.ClassPaths.Add(UAkFolder::StaticClass()->GetClassPathName());
 		Filter.ClassPaths.Add(UAkAssetPlatformData::StaticClass()->GetClassPathName());
-#else
-		Filter.ClassNames.Add(UAkMediaAsset::StaticClass()->GetFName());
-		Filter.ClassNames.Add(UAkLocalizedMediaAsset::StaticClass()->GetFName());
-		Filter.ClassNames.Add(UAkExternalMediaAsset::StaticClass()->GetFName());
-		Filter.ClassNames.Add(UAkFolder::StaticClass()->GetFName());
-		Filter.ClassNames.Add(UAkAssetPlatformData::StaticClass()->GetFName());
-#endif
 		auto& AssetRegistryModule = FModuleManager::LoadModuleChecked<FAssetRegistryModule>("AssetRegistry");
 		AssetRegistryModule.Get().GetAssets(Filter, OutDeprecatedAssets);
 	}
@@ -224,16 +212,10 @@ namespace AkAssetMigration
 	{
 		FARFilter Filter;
 		Filter.bRecursiveClasses = true;
-#if UE_5_1_OR_LATER
 		Filter.ClassPaths.Add(UAkAudioType::StaticClass()->GetClassPathName());
 		//We want to delete these asset types during cleanup so no need to dirty them
 		Filter.RecursiveClassPathsExclusionSet.Add(UAkAudioBank::StaticClass()->GetClassPathName());
 		Filter.RecursiveClassPathsExclusionSet.Add(UAkFolder::StaticClass()->GetClassPathName());
-#else
-		Filter.ClassNames.Add(UAkAudioType::StaticClass()->GetFName());
-		Filter.RecursiveClassesExclusionSet.Add(UAkAudioBank::StaticClass()->GetFName());
-		Filter.RecursiveClassesExclusionSet.Add(UAkFolder::StaticClass()->GetFName());
-#endif
 		FAssetRegistryModule& AssetRegistryModule = FModuleManager::LoadModuleChecked<FAssetRegistryModule>("AssetRegistry");
 		AssetRegistryModule.Get().GetAssets(Filter, OutWwiseAssets);
 	}
@@ -354,13 +336,8 @@ namespace AkAssetMigration
 				UAkAudioBank* BankAsset = Cast<UAkAudioBank>(Bank.Value.BankAssetData.GetAsset());
 				if (!BankAsset)
 				{
-#if UE_5_1_OR_LATER
 					UE_LOG(LogAudiokineticTools, Warning, TEXT("MigrateAudioBanks: Could not load UAkAudioBank Asset '%s'. AutoLoad property will not be transferred. "),
 						*Bank.Value.BankAssetData.GetObjectPathString());
-#else
-					UE_LOG(LogAudiokineticTools, Warning, TEXT("MigrateAudioBanks: Could not load UAkAudioBank Asset '%s'. AutoLoad property will not be transferred. "),
-						*Bank.Value.BankAssetData.ObjectPath.ToString());
-#endif
 					continue;
 				}
 				if (!BankAsset->AutoLoad_DEPRECATED)
@@ -426,11 +403,7 @@ namespace AkAssetMigration
 		auto& AssetRegistry = AssetRegistryModule.Get();
 
 		TArray<FAssetData> Banks;
-#if UE_5_1_OR_LATER
 		AssetRegistry.GetAssetsByClass(UAkAudioBank::StaticClass()->GetClassPathName(), Banks);
-#else
-		AssetRegistry.GetAssetsByClass(UAkAudioBank::StaticClass()->GetFName(), Banks);
-#endif
 		for (FAssetData& BankData : Banks)
 		{
 			FString BankName = BankData.AssetName.ToString();
@@ -438,11 +411,7 @@ namespace AkAssetMigration
 		}
 
 		TArray< FAssetData> Events;
-#if UE_5_1_OR_LATER
 		AssetRegistry.GetAssetsByClass(UAkAudioEvent::StaticClass()->GetClassPathName(), Events);
-#else
-		AssetRegistry.GetAssetsByClass(UAkAudioEvent::StaticClass()->GetFName(), Events);
-#endif
 		for (FAssetData EventData : Events)
 		{
 			if (UAkAudioEvent* Event = Cast<UAkAudioEvent>(EventData.GetAsset()))
@@ -466,11 +435,7 @@ namespace AkAssetMigration
 		}
 
 		TArray< FAssetData> AuxBusses;
-#if UE_5_1_OR_LATER
 		AssetRegistry.GetAssetsByClass(UAkAuxBus::StaticClass()->GetClassPathName(), AuxBusses);
-#else
-		AssetRegistry.GetAssetsByClass(UAkAuxBus::StaticClass()->GetFName(), AuxBusses);
-#endif
 		for (FAssetData AuxBusData : AuxBusses)
 		{
 			if (UAkAuxBus* AuxBus = Cast<UAkAuxBus>(AuxBusData.GetAsset()))
@@ -857,7 +822,7 @@ namespace AkAssetMigration
 							FString value = ProjectContent.Mid(ValueIdx, ValueEndIdx - ValueIdx);
 							if (value != ItemToAdd.Value)
 							{
-								ProjectContent.RemoveAt(ValueIdx, ValueEndIdx - ValueIdx, false);
+								ProjectContent.RemoveAt(ValueIdx, ValueEndIdx - ValueIdx, EWwiseAllowShrinking::No);
 								ProjectContent.InsertAt(ValueIdx, ItemToAdd.Value);
 								bModified = true;
 							}

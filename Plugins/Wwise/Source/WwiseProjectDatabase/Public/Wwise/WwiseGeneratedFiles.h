@@ -12,30 +12,27 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #pragma once
 
+#include "Wwise/AdapterTypes/WwiseWrapperTypes.h"
 #include "Wwise/Metadata/WwiseMetadataCollections.h"
-#include "Wwise/WwiseSharedPlatformId.h"
+#include "Wwise/WwiseSharedDBPlatformId.h"
 
-#include "Containers/Array.h"
-#include "Containers/UnrealString.h"
-#include "Containers/Map.h"
-
-struct WWISEPROJECTDATABASE_API FWwiseGeneratedFiles
+struct WwiseGeneratedFiles
 {
-	using FileTuple = TTuple<FString, FDateTime>;
-	using FileDateTimeMap = TMap<FString, FDateTime>;
+	using FileTuple = WwiseDBTuple<WwiseDBString, WwiseDateTime>;
+	using FileDateTimeMap = WwiseDBMap<WwiseDBString, WwiseDateTime>;
 
-	struct WWISEPROJECTDATABASE_API FGeneratedRootFiles
+	struct FGeneratedRootFiles
 	{
 		FileTuple ProjectInfoFile;
 		FileTuple WwiseIDsFile;
 	};
 
-	struct WWISEPROJECTDATABASE_API FPlatformFiles
+	struct FPlatformFiles
 	{
 		FileTuple PlatformInfoFile;
 		FileTuple PluginInfoFile;
@@ -46,10 +43,10 @@ struct WWISEPROJECTDATABASE_API FWwiseGeneratedFiles
 		FileDateTimeMap MetadataFiles;
 		FileDateTimeMap ExtraFiles;
 
-		TArray<FString> DirectoriesToWatch;
-		TArray<FString> LanguageDirectories;
-		TArray<FString> AutoSoundBankDirectories;
-		FString MediaDirectory;
+		WwiseDBArray<WwiseDBString> DirectoriesToWatch;
+		WwiseDBArray<WwiseDBString> LanguageDirectories;
+		WwiseDBArray<WwiseDBString> AutoSoundBankDirectories;
+		WwiseDBString MediaDirectory;
 
 		bool IsValid() const;
 
@@ -57,7 +54,7 @@ struct WWISEPROJECTDATABASE_API FWwiseGeneratedFiles
 	};
 
 	FGeneratedRootFiles GeneratedRootFiles;
-	TMap<FWwiseSharedPlatformId, FPlatformFiles> Platforms;
+	WwiseDBMap<WwiseDBSharedPlatformId, FPlatformFiles> Platforms;
 	WwiseMetadataSharedRootFileConstPtr ProjectInfo;
 
 	bool IsValid() const;

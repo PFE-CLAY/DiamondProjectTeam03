@@ -1,154 +1,154 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SoundBanksInfo Platform="Mac" BasePlatform="Mac" SchemaVersion="16" SoundBankVersion="150">
+<SoundBanksInfo Platform="Mac" BasePlatform="Mac" SchemaVersion="16" SoundBankVersion="154">
 	<SoundBanks>
-		<SoundBank Id="2765162312" Type="User" GUID="{9B915276-16F3-4721-B819-126344F97366}" Language="SFX" Hash="{09656090-FA5D-B6BD-C9DD-96D87BCF6D3D}">
+		<SoundBank Id="2765162312" Type="User" GUID="{9B915276-16F3-4721-B819-126344F97366}" Language="SFX" Hash="{1D2B3B5A-F531-57BE-C00F-99DC7F59746B}">
 			<ObjectPath>\SoundBanks\SoundBanks_WU\VOICES_SB</ObjectPath>
 			<ShortName>VOICES_SB</ShortName>
 			<Path>VOICES_SB.bnk</Path>
 			<Media>
 				<File Id="7231555" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>DUB_ARENA_1_2_2.wav</ShortName>
-					<CachePath>SFX/DUB_ARENA_1_2_2_818F3B66.wem</CachePath>
+					<CachePath>8E/{8E217C91-05C9-6D25-9FC5-E1ABC71AE6E7}.wem</CachePath>
 				</File>
 				<File Id="12434701" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>DUB_ALLY_1_3_0.wav</ShortName>
-					<CachePath>SFX/DUB_ALLY_1_3_0_818F3B66.wem</CachePath>
+					<CachePath>DF/{DF042FAB-C038-EC21-58EF-4012A74E0012}.wem</CachePath>
 				</File>
 				<File Id="45960235" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>DUB_ALLY_1_4_0.wav</ShortName>
-					<CachePath>SFX/DUB_ALLY_1_4_0_B42FC9A2.wem</CachePath>
+					<CachePath>C8/{C8F13A6E-6FFE-DA71-BDDB-B9696E55CB34}.wem</CachePath>
 				</File>
 				<File Id="73406871" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>DUB_ARENA_1_7_0.wav</ShortName>
-					<CachePath>SFX/DUB_ARENA_1_7_0_818F3B66.wem</CachePath>
+					<CachePath>31/{31217CD0-4A85-AB69-19F0-A5C7E3C160E8}.wem</CachePath>
 				</File>
 				<File Id="83922193" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>DUB_ARENA_1_2_3.wav</ShortName>
-					<CachePath>SFX/DUB_ARENA_1_2_3_818F3B66.wem</CachePath>
+					<CachePath>8B/{8BA4B464-F190-9D6F-6CD3-12E04209AC0B}.wem</CachePath>
 				</File>
 				<File Id="84247758" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>DUB_ALLY_1_8_0.wav</ShortName>
-					<CachePath>SFX/DUB_ALLY_1_8_0_818F3B66.wem</CachePath>
+					<CachePath>78/{787BE243-97F7-8F18-F8F2-C9137263F111}.wem</CachePath>
 				</File>
 				<File Id="93564485" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>DUB_ARENA_1_0_0.wav</ShortName>
-					<CachePath>SFX/DUB_ARENA_1_0_0_818F3B66.wem</CachePath>
+					<CachePath>38/{3802189E-7AEE-4C59-6B61-6C15CC7465B1}.wem</CachePath>
 				</File>
 				<File Id="115645254" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>DUB_ARENA_1_9_4.wav</ShortName>
-					<CachePath>SFX/DUB_ARENA_1_9_4_818F3B66.wem</CachePath>
+					<CachePath>DC/{DCC34616-4D38-1A17-2403-5858166A92F8}.wem</CachePath>
 				</File>
 				<File Id="140616404" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>DUB_ARENA_1_8_0.wav</ShortName>
-					<CachePath>SFX/DUB_ARENA_1_8_0_818F3B66.wem</CachePath>
+					<CachePath>D4/{D4D0517E-478A-0B55-C1B9-0D504DF985D1}.wem</CachePath>
 				</File>
 				<File Id="157392684" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>DUB_ARENA_1_9_2.wav</ShortName>
-					<CachePath>SFX/DUB_ARENA_1_9_2_818F3B66.wem</CachePath>
+					<CachePath>3B/{3B93FD09-E5F4-0493-48F4-9609DB78757E}.wem</CachePath>
 				</File>
 				<File Id="166584951" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>DUB_ARENA_1_9_1.wav</ShortName>
-					<CachePath>SFX/DUB_ARENA_1_9_1_818F3B66.wem</CachePath>
+					<CachePath>72/{72AD6E02-5701-E887-D5AD-CF76F210866A}.wem</CachePath>
 				</File>
 				<File Id="199901849" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>DUB_ALLY_1_2_0.wav</ShortName>
-					<CachePath>SFX/DUB_ALLY_1_2_0_818F3B66.wem</CachePath>
+					<CachePath>0A/{0A3D82B3-B445-0D1A-59D6-67E5174BE8E3}.wem</CachePath>
 				</File>
 				<File Id="276376101" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>DUB_ALLY_1_0_2.wav</ShortName>
-					<CachePath>SFX/DUB_ALLY_1_0_2_818F3B66.wem</CachePath>
+					<CachePath>E1/{E182045D-3DC8-F5B4-5AED-1F257318FDA0}.wem</CachePath>
 				</File>
 				<File Id="278418833" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>DUB_ARENA_1_9_3.wav</ShortName>
-					<CachePath>SFX/DUB_ARENA_1_9_3_818F3B66.wem</CachePath>
+					<CachePath>2A/{2A56BA60-F908-0310-7776-AAD09F716D21}.wem</CachePath>
 				</File>
 				<File Id="279456589" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>DUB_ARENA_1_9_5.wav</ShortName>
-					<CachePath>SFX/DUB_ARENA_1_9_5_818F3B66.wem</CachePath>
+					<CachePath>7F/{7F57E39D-CC05-1DFF-BE03-1271DD51180F}.wem</CachePath>
 				</File>
 				<File Id="289625457" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>DUB_ARENA_1_3_0.wav</ShortName>
-					<CachePath>SFX/DUB_ARENA_1_3_0_818F3B66.wem</CachePath>
+					<CachePath>D1/{D1AABFE6-25E4-CA90-2E83-5BB0BCF531E4}.wem</CachePath>
 				</File>
 				<File Id="305437427" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>DUB_ALLY_1_4_0.wav</ShortName>
-					<CachePath>SFX/DUB_ALLY_1_4_0_E0C25F29.wem</CachePath>
+					<CachePath>03/{03B7213D-31EC-A6AB-7763-7E0B00E5D1DF}.wem</CachePath>
 				</File>
 				<File Id="315927435" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>DUB_ALLY_1_6_1.wav</ShortName>
-					<CachePath>SFX/DUB_ALLY_1_6_1_818F3B66.wem</CachePath>
+					<CachePath>26/{26C0B2D1-1B68-D881-A009-D526C922DF39}.wem</CachePath>
 				</File>
 				<File Id="338368799" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>DUB_ARENA_1_1_2.wav</ShortName>
-					<CachePath>SFX/DUB_ARENA_1_1_2_818F3B66.wem</CachePath>
+					<CachePath>5D/{5DE03B1E-37AA-2369-8F9B-84B396A8B36B}.wem</CachePath>
 				</File>
 				<File Id="338492853" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>DUB_ALLY_1_6_0.wav</ShortName>
-					<CachePath>SFX/DUB_ALLY_1_6_0_818F3B66.wem</CachePath>
+					<CachePath>A0/{A051E24E-4DE2-0BEE-201C-F7509C23E99A}.wem</CachePath>
 				</File>
 				<File Id="381597154" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>DUB_ALLY_1_1_0.wav</ShortName>
-					<CachePath>SFX/DUB_ALLY_1_1_0_818F3B66.wem</CachePath>
+					<CachePath>FD/{FDFD349B-DF83-C298-37FA-F67623021F0D}.wem</CachePath>
 				</File>
 				<File Id="411650085" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>DUB_ARENA_1_9_6.wav</ShortName>
-					<CachePath>SFX/DUB_ARENA_1_9_6_818F3B66.wem</CachePath>
+					<CachePath>D9/{D9E07449-DEFC-B8DC-D3BE-0DDA7B150202}.wem</CachePath>
 				</File>
 				<File Id="435995496" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>DUB_ARENA_1_6_0.wav</ShortName>
-					<CachePath>SFX/DUB_ARENA_1_6_0_818F3B66.wem</CachePath>
+					<CachePath>F5/{F5F0436D-31A1-5198-7C9E-72ACBE407141}.wem</CachePath>
 				</File>
 				<File Id="500906151" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>DUB_ARENA_1_1_1.wav</ShortName>
-					<CachePath>SFX/DUB_ARENA_1_1_1_818F3B66.wem</CachePath>
+					<CachePath>06/{061FAB3A-EEBF-9541-9536-5D7C843AF6B4}.wem</CachePath>
 				</File>
 				<File Id="675447814" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>DUB_ALLY_1_0_0.wav</ShortName>
-					<CachePath>SFX/DUB_ALLY_1_0_0_818F3B66.wem</CachePath>
+					<CachePath>0A/{0AD8E2B4-C8BD-525C-56BC-95E88633CDF6}.wem</CachePath>
 				</File>
 				<File Id="687283735" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>DUB_ARENA_1_2_0.wav</ShortName>
-					<CachePath>SFX/DUB_ARENA_1_2_0_818F3B66.wem</CachePath>
+					<CachePath>78/{78EFCF27-896C-815F-875E-1562F2478105}.wem</CachePath>
 				</File>
 				<File Id="700914992" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>DUB_ALLY_1_0_1.wav</ShortName>
-					<CachePath>SFX/DUB_ALLY_1_0_1_818F3B66.wem</CachePath>
+					<CachePath>BD/{BD9249CB-B968-E4EB-A453-EE7633D1526F}.wem</CachePath>
 				</File>
 				<File Id="753350392" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>DUB_ALLY_1_5_0.wav</ShortName>
-					<CachePath>SFX/DUB_ALLY_1_5_0_818F3B66.wem</CachePath>
+					<CachePath>58/{58BF3E23-ABDC-1413-46AF-8B6D0E09D446}.wem</CachePath>
 				</File>
 				<File Id="767088532" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>DUB_ARENA_1_9_0.wav</ShortName>
-					<CachePath>SFX/DUB_ARENA_1_9_0_818F3B66.wem</CachePath>
+					<CachePath>8F/{8F36CFD7-DEE3-9F31-852E-AEB489EDA886}.wem</CachePath>
 				</File>
 				<File Id="881110537" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>DUB_ARENA_1_3_2.wav</ShortName>
-					<CachePath>SFX/DUB_ARENA_1_3_2_818F3B66.wem</CachePath>
+					<CachePath>59/{5910D296-C4F6-5C5B-1E2C-2E4EB849D3E5}.wem</CachePath>
 				</File>
 				<File Id="898148885" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>DUB_ARENA_1_1_0.wav</ShortName>
-					<CachePath>SFX/DUB_ARENA_1_1_0_818F3B66.wem</CachePath>
+					<CachePath>E5/{E5792D3E-BA65-59B7-9AC6-75BEE0ED6977}.wem</CachePath>
 				</File>
 				<File Id="899907561" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>DUB_ARENA_1_5_0.wav</ShortName>
-					<CachePath>SFX/DUB_ARENA_1_5_0_818F3B66.wem</CachePath>
+					<CachePath>B7/{B76129DE-2911-66E0-B4AF-EBB1C2208482}.wem</CachePath>
 				</File>
 				<File Id="952186329" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>DUB_ARENA_1_4_0.wav</ShortName>
-					<CachePath>SFX/DUB_ARENA_1_4_0_818F3B66.wem</CachePath>
+					<CachePath>FF/{FFB7B35D-5192-EFF3-B17A-E5E852E55664}.wem</CachePath>
 				</File>
 				<File Id="981954510" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>DUB_ALLY_1_7_0.wav</ShortName>
-					<CachePath>SFX/DUB_ALLY_1_7_0_818F3B66.wem</CachePath>
+					<CachePath>7D/{7D2E1978-4608-9549-0B4D-670622F3A279}.wem</CachePath>
 				</File>
 				<File Id="1008445025" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>DUB_ARENA_1_2_1.wav</ShortName>
-					<CachePath>SFX/DUB_ARENA_1_2_1_818F3B66.wem</CachePath>
+					<CachePath>C0/{C059B990-EB5B-6ECA-898C-30D988AF678A}.wem</CachePath>
 				</File>
 				<File Id="1031568460" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>DUB_ARENA_1_3_1.wav</ShortName>
-					<CachePath>SFX/DUB_ARENA_1_3_1_818F3B66.wem</CachePath>
+					<CachePath>C6/{C66C08B2-DF11-C266-5146-8A13081FE63D}.wem</CachePath>
 				</File>
 			</Media>
 			<Events>
@@ -222,8 +222,8 @@
 						<MediaRef Id="93564485"/>
 					</MediaRefs>
 					<AuxBusRefs>
-						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}"/>
-						<AuxBusRef Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}"/>
+						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}" Color="9"/>
+						<AuxBusRef Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}" Color="9"/>
 					</AuxBusRefs>
 				</Event>
 				<Event Id="432124422" Name="Play_DUB_ARENA_1_1_0" ObjectPath="\Events\VOICES_WU\ARENA\Play_DUB_ARENA_1_1_0" GUID="{4D51FF6E-B699-4F64-9342-EA27E6FB1544}" DurationType="OneShot" DurationMin="5.3754582" DurationMax="5.3754582">
@@ -231,8 +231,8 @@
 						<MediaRef Id="898148885"/>
 					</MediaRefs>
 					<AuxBusRefs>
-						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}"/>
-						<AuxBusRef Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}"/>
+						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}" Color="9"/>
+						<AuxBusRef Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}" Color="9"/>
 					</AuxBusRefs>
 				</Event>
 				<Event Id="432124423" Name="Play_DUB_ARENA_1_1_1" ObjectPath="\Events\VOICES_WU\ARENA\Play_DUB_ARENA_1_1_1" GUID="{27536445-6BFB-41C6-BC9E-54347C22D514}" DurationType="OneShot" DurationMin="2.5813334" DurationMax="2.5813334">
@@ -240,8 +240,8 @@
 						<MediaRef Id="500906151"/>
 					</MediaRefs>
 					<AuxBusRefs>
-						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}"/>
-						<AuxBusRef Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}"/>
+						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}" Color="9"/>
+						<AuxBusRef Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}" Color="9"/>
 					</AuxBusRefs>
 				</Event>
 				<Event Id="432124420" Name="Play_DUB_ARENA_1_1_2" ObjectPath="\Events\VOICES_WU\ARENA\Play_DUB_ARENA_1_1_2" GUID="{DE0F7AE6-9779-495E-AA81-79548E94F86D}" DurationType="OneShot" DurationMin="2.7846458" DurationMax="2.7846458">
@@ -249,8 +249,8 @@
 						<MediaRef Id="338368799"/>
 					</MediaRefs>
 					<AuxBusRefs>
-						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}"/>
-						<AuxBusRef Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}"/>
+						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}" Color="9"/>
+						<AuxBusRef Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}" Color="9"/>
 					</AuxBusRefs>
 				</Event>
 				<Event Id="431683137" Name="Play_DUB_ARENA_1_2_0" ObjectPath="\Events\VOICES_WU\ARENA\Play_DUB_ARENA_1_2_0" GUID="{C445715B-3FA8-4FBC-AB70-822C92FBB16B}" DurationType="OneShot" DurationMin="3.629021" DurationMax="3.629021">
@@ -258,8 +258,8 @@
 						<MediaRef Id="687283735"/>
 					</MediaRefs>
 					<AuxBusRefs>
-						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}"/>
-						<AuxBusRef Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}"/>
+						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}" Color="9"/>
+						<AuxBusRef Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}" Color="9"/>
 					</AuxBusRefs>
 				</Event>
 				<Event Id="431683136" Name="Play_DUB_ARENA_1_2_1" ObjectPath="\Events\VOICES_WU\ARENA\Play_DUB_ARENA_1_2_1" GUID="{91178517-FD31-404C-BD96-C93C088E3CC4}" DurationType="OneShot" DurationMin="3.111125" DurationMax="3.111125">
@@ -267,8 +267,8 @@
 						<MediaRef Id="1008445025"/>
 					</MediaRefs>
 					<AuxBusRefs>
-						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}"/>
-						<AuxBusRef Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}"/>
+						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}" Color="9"/>
+						<AuxBusRef Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}" Color="9"/>
 					</AuxBusRefs>
 				</Event>
 				<Event Id="431683139" Name="Play_DUB_ARENA_1_2_2" ObjectPath="\Events\VOICES_WU\ARENA\Play_DUB_ARENA_1_2_2" GUID="{746849AC-4863-4498-9421-326BA34079B6}" DurationType="OneShot" DurationMin="5.2867084" DurationMax="5.2867084">
@@ -276,8 +276,8 @@
 						<MediaRef Id="7231555"/>
 					</MediaRefs>
 					<AuxBusRefs>
-						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}"/>
-						<AuxBusRef Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}"/>
+						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}" Color="9"/>
+						<AuxBusRef Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}" Color="9"/>
 					</AuxBusRefs>
 				</Event>
 				<Event Id="431683138" Name="Play_DUB_ARENA_1_2_3" ObjectPath="\Events\VOICES_WU\ARENA\Play_DUB_ARENA_1_2_3" GUID="{2CE4857B-BB5A-42DF-B161-ABAB474C8636}" DurationType="OneShot" DurationMin="5.847521" DurationMax="5.847521">
@@ -285,8 +285,8 @@
 						<MediaRef Id="83922193"/>
 					</MediaRefs>
 					<AuxBusRefs>
-						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}"/>
-						<AuxBusRef Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}"/>
+						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}" Color="9"/>
+						<AuxBusRef Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}" Color="9"/>
 					</AuxBusRefs>
 				</Event>
 				<Event Id="3653030008" Name="Play_DUB_ARENA_1_3_0" ObjectPath="\Events\VOICES_WU\ARENA\Play_DUB_ARENA_1_3_0" GUID="{D4B8EC1E-8BCC-47F8-BDCC-CE8B7FC3ED1C}" DurationType="OneShot" DurationMin="6.983125" DurationMax="6.983125">
@@ -294,8 +294,8 @@
 						<MediaRef Id="289625457"/>
 					</MediaRefs>
 					<AuxBusRefs>
-						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}"/>
-						<AuxBusRef Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}"/>
+						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}" Color="9"/>
+						<AuxBusRef Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}" Color="9"/>
 					</AuxBusRefs>
 				</Event>
 				<Event Id="3653030009" Name="Play_DUB_ARENA_1_3_1" ObjectPath="\Events\VOICES_WU\ARENA\Play_DUB_ARENA_1_3_1" GUID="{D97FF8EC-ED87-4915-9E9E-1C708E08A828}" DurationType="OneShot" DurationMin="3.3593957" DurationMax="3.3593957">
@@ -303,8 +303,8 @@
 						<MediaRef Id="1031568460"/>
 					</MediaRefs>
 					<AuxBusRefs>
-						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}"/>
-						<AuxBusRef Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}"/>
+						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}" Color="9"/>
+						<AuxBusRef Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}" Color="9"/>
 					</AuxBusRefs>
 				</Event>
 				<Event Id="3653030010" Name="Play_DUB_ARENA_1_3_2" ObjectPath="\Events\VOICES_WU\ARENA\Play_DUB_ARENA_1_3_2" GUID="{0746558A-9F04-4B0B-B346-9BA6CF66D24C}" DurationType="OneShot" DurationMin="7.75375" DurationMax="7.75375">
@@ -312,8 +312,8 @@
 						<MediaRef Id="881110537"/>
 					</MediaRefs>
 					<AuxBusRefs>
-						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}"/>
-						<AuxBusRef Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}"/>
+						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}" Color="9"/>
+						<AuxBusRef Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}" Color="9"/>
 					</AuxBusRefs>
 				</Event>
 				<Event Id="3652588723" Name="Play_DUB_ARENA_1_4_0" ObjectPath="\Events\VOICES_WU\ARENA\Play_DUB_ARENA_1_4_0" GUID="{809EBE6E-E883-4D44-87C4-923BF4435E0D}" DurationType="OneShot" DurationMin="8.455104" DurationMax="8.455104">
@@ -321,8 +321,8 @@
 						<MediaRef Id="952186329"/>
 					</MediaRefs>
 					<AuxBusRefs>
-						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}"/>
-						<AuxBusRef Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}"/>
+						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}" Color="9"/>
+						<AuxBusRef Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}" Color="9"/>
 					</AuxBusRefs>
 				</Event>
 				<Event Id="431536106" Name="Play_DUB_ARENA_1_5_0" ObjectPath="\Events\VOICES_WU\ARENA\Play_DUB_ARENA_1_5_0" GUID="{2945E4E8-A2EB-4D65-B4D4-F7738BA67018}" DurationType="OneShot" DurationMin="4.879229" DurationMax="4.879229">
@@ -330,8 +330,8 @@
 						<MediaRef Id="899907561"/>
 					</MediaRefs>
 					<AuxBusRefs>
-						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}"/>
-						<AuxBusRef Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}"/>
+						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}" Color="9"/>
+						<AuxBusRef Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}" Color="9"/>
 					</AuxBusRefs>
 				</Event>
 				<Event Id="430991653" Name="Play_DUB_ARENA_1_6_0" ObjectPath="\Events\VOICES_WU\ARENA\Play_DUB_ARENA_1_6_0" GUID="{5A59BF8D-9B94-480D-A8BE-25466AFDDDAF}" DurationType="OneShot" DurationMin="10.083875" DurationMax="10.083875">
@@ -339,8 +339,8 @@
 						<MediaRef Id="435995496"/>
 					</MediaRefs>
 					<AuxBusRefs>
-						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}"/>
-						<AuxBusRef Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}"/>
+						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}" Color="9"/>
+						<AuxBusRef Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}" Color="9"/>
 					</AuxBusRefs>
 				</Event>
 				<Event Id="431138716" Name="Play_DUB_ARENA_1_7_0" ObjectPath="\Events\VOICES_WU\ARENA\Play_DUB_ARENA_1_7_0" GUID="{F6358FF6-964A-43B2-B731-095E10582A7A}" DurationType="OneShot" DurationMin="4.7953334" DurationMax="4.7953334">
@@ -348,8 +348,8 @@
 						<MediaRef Id="73406871"/>
 					</MediaRefs>
 					<AuxBusRefs>
-						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}"/>
-						<AuxBusRef Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}"/>
+						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}" Color="9"/>
+						<AuxBusRef Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}" Color="9"/>
 					</AuxBusRefs>
 				</Event>
 				<Event Id="3651897111" Name="Play_DUB_ARENA_1_8_0" ObjectPath="\Events\VOICES_WU\ARENA\Play_DUB_ARENA_1_8_0" GUID="{6C548FEA-C807-4A6A-B0D6-C9C265D28446}" DurationType="OneShot" DurationMin="5.6705" DurationMax="5.6705">
@@ -357,8 +357,8 @@
 						<MediaRef Id="140616404"/>
 					</MediaRefs>
 					<AuxBusRefs>
-						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}"/>
-						<AuxBusRef Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}"/>
+						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}" Color="9"/>
+						<AuxBusRef Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}" Color="9"/>
 					</AuxBusRefs>
 				</Event>
 				<Event Id="3652044174" Name="Play_DUB_ARENA_1_9_0" ObjectPath="\Events\VOICES_WU\ARENA\Play_DUB_ARENA_1_9_0" GUID="{EFF04B34-33D4-45A1-B15C-C75DF1C2FE84}" DurationType="OneShot" DurationMin="2.0564792" DurationMax="2.0564792">
@@ -366,8 +366,8 @@
 						<MediaRef Id="767088532"/>
 					</MediaRefs>
 					<AuxBusRefs>
-						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}"/>
-						<AuxBusRef Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}"/>
+						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}" Color="9"/>
+						<AuxBusRef Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}" Color="9"/>
 					</AuxBusRefs>
 				</Event>
 				<Event Id="3652044175" Name="Play_DUB_ARENA_1_9_1" ObjectPath="\Events\VOICES_WU\ARENA\Play_DUB_ARENA_1_9_1" GUID="{80641E23-366E-4E92-9C60-75DC0F6F4B16}" DurationType="OneShot" DurationMin="3.72625" DurationMax="3.72625">
@@ -375,8 +375,8 @@
 						<MediaRef Id="166584951"/>
 					</MediaRefs>
 					<AuxBusRefs>
-						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}"/>
-						<AuxBusRef Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}"/>
+						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}" Color="9"/>
+						<AuxBusRef Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}" Color="9"/>
 					</AuxBusRefs>
 				</Event>
 				<Event Id="3652044172" Name="Play_DUB_ARENA_1_9_2" ObjectPath="\Events\VOICES_WU\ARENA\Play_DUB_ARENA_1_9_2" GUID="{EADA4396-85FC-46B2-90D0-883FFB9406F7}" DurationType="OneShot" DurationMin="0.73702085" DurationMax="0.73702085">
@@ -384,8 +384,8 @@
 						<MediaRef Id="157392684"/>
 					</MediaRefs>
 					<AuxBusRefs>
-						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}"/>
-						<AuxBusRef Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}"/>
+						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}" Color="9"/>
+						<AuxBusRef Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}" Color="9"/>
 					</AuxBusRefs>
 				</Event>
 				<Event Id="3652044173" Name="Play_DUB_ARENA_1_9_3" ObjectPath="\Events\VOICES_WU\ARENA\Play_DUB_ARENA_1_9_3" GUID="{1D57409D-4D8B-4606-B981-BDD320FD64EB}" DurationType="OneShot" DurationMin="0.8344167" DurationMax="0.8344167">
@@ -393,8 +393,8 @@
 						<MediaRef Id="278418833"/>
 					</MediaRefs>
 					<AuxBusRefs>
-						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}"/>
-						<AuxBusRef Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}"/>
+						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}" Color="9"/>
+						<AuxBusRef Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}" Color="9"/>
 					</AuxBusRefs>
 				</Event>
 				<Event Id="3652044170" Name="Play_DUB_ARENA_1_9_4" ObjectPath="\Events\VOICES_WU\ARENA\Play_DUB_ARENA_1_9_4" GUID="{56D08A81-9E18-4348-AB5F-9AD1B9C7E045}" DurationType="OneShot" DurationMin="1.1080834" DurationMax="1.1080834">
@@ -402,8 +402,8 @@
 						<MediaRef Id="115645254"/>
 					</MediaRefs>
 					<AuxBusRefs>
-						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}"/>
-						<AuxBusRef Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}"/>
+						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}" Color="9"/>
+						<AuxBusRef Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}" Color="9"/>
 					</AuxBusRefs>
 				</Event>
 				<Event Id="3652044171" Name="Play_DUB_ARENA_1_9_5" ObjectPath="\Events\VOICES_WU\ARENA\Play_DUB_ARENA_1_9_5" GUID="{6C020C9C-BAF0-41AB-9564-CAFCF453F546}" DurationType="OneShot" DurationMin="2.2469792" DurationMax="2.2469792">
@@ -411,8 +411,8 @@
 						<MediaRef Id="279456589"/>
 					</MediaRefs>
 					<AuxBusRefs>
-						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}"/>
-						<AuxBusRef Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}"/>
+						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}" Color="9"/>
+						<AuxBusRef Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}" Color="9"/>
 					</AuxBusRefs>
 				</Event>
 				<Event Id="3652044168" Name="Play_DUB_ARENA_1_9_6" ObjectPath="\Events\VOICES_WU\ARENA\Play_DUB_ARENA_1_9_6" GUID="{1EBCCAD9-8483-4BE3-AFBC-EA3F1550B975}" DurationType="OneShot" DurationMin="4.590271" DurationMax="4.590271">
@@ -420,12 +420,12 @@
 						<MediaRef Id="411650085"/>
 					</MediaRefs>
 					<AuxBusRefs>
-						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}"/>
-						<AuxBusRef Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}"/>
+						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}" Color="9"/>
+						<AuxBusRef Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}" Color="9"/>
 					</AuxBusRefs>
 				</Event>
 			</Events>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{D8CDC527-3C9B-55C4-2B8F-1BBFD1681EB4}</FileHash>
+	<FileHash>{A81A8892-696F-FF62-5933-2E5F6914857F}</FileHash>
 </SoundBanksInfo>

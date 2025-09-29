@@ -12,7 +12,7 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #include "AkEnvironmentIndex.h"
@@ -20,6 +20,7 @@ Copyright (c) 2024 Audiokinetic Inc.
 
 void FAkEnvironmentOctreeSemantics::SetElementId(AK_OCTREE_TYPE<FAkEnvironmentOctreeElement, FAkEnvironmentOctreeSemantics>& OctreeOwner, const FAkEnvironmentOctreeElement& Element, AK_OCTREE_ELEMENT_ID Id)
 {
+	if (!Element.Component.IsValid()) return;
 	static_cast<UAkEnvironmentOctree&>(OctreeOwner).ObjectToOctreeId.Add(Element.Component->GetUniqueID(), Id);
 }
 

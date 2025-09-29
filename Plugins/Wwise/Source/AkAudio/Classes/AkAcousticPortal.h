@@ -12,7 +12,7 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #pragma once
@@ -133,12 +133,6 @@ public:
 	AkRoomID GetBackRoomID() const;
 	AkPortalID GetPortalID() const { return AkPortalID(this); }
 
-	/** Update the room connections for the portal, given the portals current transform. 
-		Return true if the room connections have changed.
-	*/
-	bool UpdateConnectedRooms(bool in_bForceUpdate = false);
-	void RemovePortalConnections();
-
 	const TWeakObjectPtr<UAkRoomComponent> GetFrontRoomComponent() const { return FrontRoom; }
 	const TWeakObjectPtr<UAkRoomComponent> GetBackRoomComponent() const { return BackRoom; }
 	const TWeakObjectPtr<UAkRoomComponent> GetOppositeRoomComponent(const UAkRoomComponent* pRoomComponent) const;
@@ -175,6 +169,8 @@ private:
 
 	void InitializeParent();
 	void SetSpatialAudioPortal();
+	void UpdateConnectedRooms();
+	void UpdatePortalConnections();
 
 	void FindConnectedComponents(FAkEnvironmentIndex& RoomQuery, TWeakObjectPtr<UAkRoomComponent>& out_pFront, TWeakObjectPtr<UAkRoomComponent>& out_pBack);
 
@@ -192,8 +188,11 @@ private:
 	bool bPortalNeedsUpdate = false;
 	bool PortalOcclusionChanged = false;
 	bool bPortalRoomsNeedUpdate = false;
+	bool bPortalConnectionsNeedUpdate = false;
 	TWeakObjectPtr<UAkRoomComponent> FrontRoom;
 	TWeakObjectPtr<UAkRoomComponent> BackRoom;
+	TWeakObjectPtr<UAkRoomComponent> PreviousFrontRoom;
+	TWeakObjectPtr<UAkRoomComponent> PreviousBackRoom;
 
 	AkPortalObstructionAndOcclusionService ObstructionServiceFrontRoom;
 	AkPortalObstructionAndOcclusionService ObstructionServiceBackRoom;
@@ -218,10 +217,10 @@ private:
 
 #if WITH_EDITORONLY_DATA
 	UPROPERTY(SkipSerialization, NonTransactional)
-	mutable UTextRenderComponent* FrontRoomText = nullptr;
+	mutable TObjectPtr<UTextRenderComponent> FrontRoomText = nullptr;
 
 	UPROPERTY(SkipSerialization, NonTransactional)
-	mutable UTextRenderComponent* BackRoomText = nullptr;
+	mutable TObjectPtr<UTextRenderComponent> BackRoomText = nullptr;
 #endif
 };
 
@@ -243,7 +242,7 @@ public:
 	AkAcousticPortalState GetCurrentState() const;
 
 	UPROPERTY(VisibleAnywhere, Category = "AcousticPortal", BlueprintReadOnly, meta = (ShowOnlyInnerProperties))
-	UAkPortalComponent* Portal = nullptr;
+	TObjectPtr<UAkPortalComponent> Portal = nullptr;
 
 	virtual void PostRegisterAllComponents() override;
 	virtual void PostLoad() override;

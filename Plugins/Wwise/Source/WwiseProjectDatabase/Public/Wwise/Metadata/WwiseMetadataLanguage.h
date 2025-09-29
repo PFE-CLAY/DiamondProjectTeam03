@@ -12,25 +12,25 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #pragma once
 
 #include "Wwise/Metadata/WwiseMetadataLoadable.h"
 
-struct WWISEPROJECTDATABASE_API FWwiseMetadataLanguageAttributes : public FWwiseMetadataLoadable
+struct WwiseMetadataLanguageAttributes : public WwiseMetadataLoadable
 {
-	FName Name;
-	uint32 Id;
-	FGuid GUID;
+	WwiseDBString Name;
+	WwiseDBShortId Id;
+	WwiseDBGuid GUID;
 	bool bDefault;
 	bool bUseAsStandIn;
 
-	FWwiseMetadataLanguageAttributes(FWwiseMetadataLoader& Loader);
+	WwiseMetadataLanguageAttributes(WwiseMetadataLoader& Loader);
 };
 
-struct WWISEPROJECTDATABASE_API FWwiseMetadataLanguage : public FWwiseMetadataLanguageAttributes
+struct WwiseMetadataLanguage : public WwiseMetadataLanguageAttributes
 {
-	FWwiseMetadataLanguage(FWwiseMetadataLoader& Loader);
+	WwiseMetadataLanguage(WwiseMetadataLoader& Loader);
 };

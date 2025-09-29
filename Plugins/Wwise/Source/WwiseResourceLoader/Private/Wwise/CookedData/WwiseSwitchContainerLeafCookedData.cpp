@@ -12,7 +12,7 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #include "Wwise/CookedData/WwiseSwitchContainerLeafCookedData.h"
@@ -20,6 +20,10 @@ Copyright (c) 2024 Audiokinetic Inc.
 #include "Wwise/Stats/ResourceLoader.h"
 
 #include <inttypes.h>
+
+#if WITH_EDITORONLY_DATA && UE_5_5_OR_LATER
+#include "Serialization/CompactBinaryWriter.h"
+#endif
 
 FWwiseSwitchContainerLeafCookedData::FWwiseSwitchContainerLeafCookedData():
 	GroupValueSet(),
@@ -42,6 +46,69 @@ void FWwiseSwitchContainerLeafCookedData::Serialize(FArchive& Ar)
 		Struct->SerializeTaggedProperties(Ar, (uint8*)this, Struct, nullptr);
 	}
 }
+
+void FWwiseSwitchContainerLeafCookedData::SerializeBulkData(FArchive& Ar, const FWwisePackagedFileSerializationOptions& InOptions)
+{
+	// Switch Container Leaves are optional
+	auto Options(InOptions);
+	Options.bOptional = true;
+	Options.ExtraLog += ", Switch Container";
+	
+	for (auto& SoundBank : SoundBanks)
+	{
+		SoundBank.SerializeBulkData(Ar, Options);
+	}
+	for (auto& MediaItem : Media)
+	{
+		MediaItem.SerializeBulkData(Ar, Options);
+	}
+}
+
+#if WITH_EDITORONLY_DATA && UE_5_5_OR_LATER
+void FWwiseSwitchContainerLeafCookedData::GetPlatformCookDependencies(FWwiseCookEventContext& SaveContext, FCbWriter& Writer) const
+{
+	Writer << "L";
+	Writer.BeginObject();
+
+	{
+		Writer << "GVs";
+		Writer.BeginArray();
+		auto GroupValueArray{ GroupValueSet.Array() };
+		GroupValueArray.Sort();
+	
+		for (const auto& GroupValue : GroupValueArray)
+		{
+			GroupValue.GetPlatformCookDependencies(SaveContext, Writer);
+		}
+		Writer.EndArray();
+	}
+
+	Writer << "SBs";
+	Writer.BeginArray();
+	for (const auto& SoundBank : SoundBanks)
+	{
+		SoundBank.GetPlatformCookDependencies(SaveContext, Writer);
+	}
+	Writer.EndArray();
+
+	Writer << "Ms";
+	Writer.BeginArray();
+	for (const auto& MediaItem : Media)
+	{
+		MediaItem.GetPlatformCookDependencies(SaveContext, Writer);
+	}
+	Writer.EndArray();
+
+	Writer << "ESs";
+	Writer.BeginArray();
+	for (const auto& ExternalSource : ExternalSources)
+	{
+		ExternalSource.GetPlatformCookDependencies(SaveContext, Writer);
+	}
+	Writer.EndArray();
+	Writer.EndObject();
+}
+#endif
 
 bool FWwiseSwitchContainerLeafCookedData::operator==(const FWwiseSwitchContainerLeafCookedData& Rhs) const
 {

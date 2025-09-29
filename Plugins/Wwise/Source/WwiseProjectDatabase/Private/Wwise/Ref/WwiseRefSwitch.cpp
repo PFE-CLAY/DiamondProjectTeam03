@@ -12,22 +12,20 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #include "Wwise/Ref/WwiseRefSwitch.h"
-#include "Wwise/Stats/ProjectDatabase.h"
 #include "Wwise/Metadata/WwiseMetadataSwitchGroup.h"
-#include "Wwise/WwiseProjectDatabaseModule.h"
 
 #include "Wwise/Metadata/WwiseMetadataSwitch.h"
 
-const TCHAR* const FWwiseRefSwitch::NAME = TEXT("Switch");
+const WwiseDBString WwiseRefSwitch::NAME = "Switch"_wwise_db;
 
-const FWwiseMetadataSwitch* FWwiseRefSwitch::GetSwitch() const
+const WwiseMetadataSwitch* WwiseRefSwitch::GetSwitch() const
 {
 	const auto* SwitchGroup = GetSwitchGroup();
-	if (UNLIKELY(!SwitchGroup))
+	if (!SwitchGroup) [[unlikely]]
 	{
 		return nullptr;
 	}
@@ -38,54 +36,54 @@ const FWwiseMetadataSwitch* FWwiseRefSwitch::GetSwitch() const
 	}
 	else
 	{
-		UE_LOG(LogWwiseProjectDatabase, Error, TEXT("Could not get Switch index #%zu"), SwitchIndex);
+		WWISE_DB_LOG(Error, "Could not get Switch index #%zu", SwitchIndex);
 		return nullptr;
 	}
 }
 
-uint32 FWwiseRefSwitch::SwitchId() const
+WwiseDBShortId WwiseRefSwitch::SwitchId() const
 {
 	const auto* Switch = GetSwitch();
-	if (UNLIKELY(!Switch))
+	if (!Switch) [[unlikely]]
 	{
 		return 0;
 	}
 	return Switch->Id;
 }
 
-FGuid FWwiseRefSwitch::SwitchGuid() const
+WwiseDBGuid WwiseRefSwitch::SwitchGuid() const
 {
 	const auto* Switch = GetSwitch();
-	if (UNLIKELY(!Switch))
+	if (!Switch) [[unlikely]]
 	{
 		return {};
 	}
 	return Switch->GUID;
 }
 
-FName FWwiseRefSwitch::SwitchName() const
+WwiseDBString WwiseRefSwitch::SwitchName() const
 {
 	const auto* Switch = GetSwitch();
-	if (UNLIKELY(!Switch))
+	if (!Switch) [[unlikely]]
 	{
 		return {};
 	}
 	return Switch->Name;
 }
 
-FName FWwiseRefSwitch::SwitchObjectPath() const
+WwiseDBString WwiseRefSwitch::SwitchObjectPath() const
 {
 	const auto* Switch = GetSwitch();
-	if (UNLIKELY(!Switch))
+	if (!Switch) [[unlikely]]
 	{
 		return {};
 	}
 	return Switch->ObjectPath;
 }
 
-uint32 FWwiseRefSwitch::Hash() const
+WwiseDBShortId WwiseRefSwitch::Hash() const
 {
-	auto Result = FWwiseRefSwitchGroup::Hash();
-	Result = HashCombine(Result, GetTypeHash(SwitchIndex));
+	auto Result = WwiseRefSwitchGroup::Hash();
+	Result = WwiseDBHashCombine(Result, GetTypeHash(SwitchIndex));
 	return Result;
 }

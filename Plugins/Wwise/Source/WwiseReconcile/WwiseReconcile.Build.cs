@@ -12,7 +12,7 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 using UnrealBuildTool;
@@ -23,17 +23,19 @@ public class WwiseReconcile : ModuleRules
 	{
 		PrivateDependencyModuleNames.AddRange(new[]
 		{
-			"AkAudio",
-			"WwiseSoundEngine",
-			"WwiseResourceLoader",
-			"WwiseProjectDatabase",
-			"WwiseUtils",
 			"AssetTools",
 			"EditorStyle",
 			"InputCore",
 			"MainFrame",
 			"Slate",
-			"SlateCore"
+			"SlateCore",
+
+			"AkAudio",
+			"WwiseEditorUtils",
+			"WwiseLowLevelUtils",
+			"WwiseProjectDatabase",
+			"WwiseResourceLoader",
+			"WwiseSoundEngine",
 		});
 		PublicDependencyModuleNames.AddRange(new[]
 		{

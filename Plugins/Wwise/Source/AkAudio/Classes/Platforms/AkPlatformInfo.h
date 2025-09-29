@@ -12,7 +12,7 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #pragma once
@@ -45,7 +45,7 @@ public:
 		}
 		return {};
 	}
-
+	
 	static FWwiseSharedPlatformId GetSharedPlatformInfo(const FString& PlatformName);
 #endif
 
@@ -59,11 +59,7 @@ public:
 		if (!RetVal)
 		{
 			const FString PlatformInfoClassName = FString::Format(TEXT("Ak{0}PlatformInfo"), { *PlatformName });
-#if UE_5_1_OR_LATER
 			auto* PlatformInfoClass = UClass::TryFindTypeSlow<UClass>(*PlatformInfoClassName);
-#else
-			auto* PlatformInfoClass = FindObject<UClass>(ANY_PACKAGE, *PlatformInfoClassName);
-#endif
 			if (PlatformInfoClass)
 			{
 				RetVal = PlatformInfoClass->GetDefaultObject<UAkPlatformInfo>();

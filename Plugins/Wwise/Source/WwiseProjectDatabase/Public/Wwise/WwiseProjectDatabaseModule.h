@@ -12,7 +12,7 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #pragma once
@@ -21,9 +21,7 @@ Copyright (c) 2024 Audiokinetic Inc.
 #include "Misc/CommandLine.h"
 #include "Misc/ConfigCacheIni.h"
 #include "WwiseUnrealDefines.h"
-#if !UE_5_0_OR_LATER
-#include "Misc/CommandLine.h"
-#endif
+#include "Wwise/AdapterTypes/WwiseProjectDatabaseLogging.h"
 
 class FWwiseProjectDatabase;
 class FWwiseProjectDatabaseDelegates;
@@ -95,26 +93,7 @@ public:
 
 	static bool ShouldInitializeProjectDatabase()
 	{
-#if UE_5_0_OR_LATER
 		return !IsRunningCookCommandlet();
-#else
-		if(IsRunningCommandlet())
-		{
-			TArray<FString> Switches;
-			TArray<FString> Tokens;
-			FCommandLine::Parse(FCommandLine::Get(), Tokens, Switches);
-			for(auto& Token : Tokens)
-			{
-				//Only in the WwiseReconcile commandlet that the Project Database should be initialized
-				if(Token.Contains(TEXT("run=WwiseReconcile")))
-				{
-					return true;
-				}
-			}
-			return false;
-		}
-		return true;
-#endif
 	}
 
 	virtual FWwiseProjectDatabase* GetProjectDatabase() { return nullptr; }

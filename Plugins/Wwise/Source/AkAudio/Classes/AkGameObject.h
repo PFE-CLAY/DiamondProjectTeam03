@@ -12,7 +12,7 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 /*=============================================================================
@@ -35,27 +35,20 @@ class AKAUDIO_API UAkGameObject: public USceneComponent
 public:
 	UAkGameObject(const class FObjectInitializer& ObjectInitializer);
 
-	virtual void PostLoad() override;
+	UFUNCTION(BlueprintGetter, Category = "Audiokinetic|AkEvent")
+	float GetAttenuationScalingFactor() const;
 
-	/** Allows the modification of the attenuation computations on this game object. Uses the default AttenuationScalingFactor otherwise. */
-	UPROPERTY(EditAnywhere, BlueprintSetter = SetOverrideAttenuationScalingFactor, Category = "AkEvent")
-	bool bOverrideAttenuationScalingFactor = false;
-
-	/** Allows overriding the attenuation scaling factor. */
-	UFUNCTION(BlueprintSetter, Category = "Audiokinetic|AkEvent")
-	void SetOverrideAttenuationScalingFactor(bool bInOverrideAttenuationScalingFactor);
-
-	/** Modifies the attenuation computations on this game object to simulate sounds with a larger or smaller area of effect. */
-	UPROPERTY(EditAnywhere, BlueprintSetter = SetAttenuationScalingFactor, Category = "AkEvent", meta = (ClampMin = 0.f, EditCondition="bOverrideAttenuationScalingFactor"))
+	/** Modifies the attenuation computations of the emitter on this game object to simulate sounds with a larger or smaller area of effect. */
+	UPROPERTY(EditAnywhere, BlueprintSetter = SetAttenuationScalingFactor, BlueprintGetter = GetAttenuationScalingFactor, Category = "AkEvent", meta = (ClampMin = 0.f))
 	float AttenuationScalingFactor = 1.0f;
 
-	/** Sets the attenuation scaling factor, which modifies the attenuation computations on this game object to simulate sounds with a a larger or smaller area of effect. */
+	/** Sets the attenuation scaling factor, which modifies the attenuation computations of the emitter on this game object to simulate sounds with a larger or smaller area of effect. */
 	UFUNCTION(BlueprintSetter, Category = "Audiokinetic|AkEvent")
 	void SetAttenuationScalingFactor(float InAttenuationScalingFactor);
 
 	/** Associated Wwise Event to be posted on this game object */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="AkEvent")
-	UAkAudioEvent* AkAudioEvent = nullptr;
+	TObjectPtr<UAkAudioEvent> AkAudioEvent = nullptr;
 
 	/**
 	 * Posts this game object's AkAudioEvent to Wwise, using this as the game object source

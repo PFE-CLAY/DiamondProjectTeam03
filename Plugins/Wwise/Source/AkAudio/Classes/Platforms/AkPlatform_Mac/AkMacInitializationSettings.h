@@ -12,14 +12,14 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #pragma once
 
 #include "AkInclude.h"
 #include "InitializationSettings/AkInitializationSettings.h"
-#include "InitializationSettings/AkPlatformInitialisationSettingsBase.h"
+#include "InitializationSettings/AkPlatformInitializationSettingsBase.h"
 
 #include "AkMacInitializationSettings.generated.h"
 
@@ -28,17 +28,17 @@ struct FAkMacAdvancedInitializationSettings : public FAkAdvancedInitializationSe
 {
 	GENERATED_BODY()
 
-	UPROPERTY(EditAnywhere, Category = "Ak Initialization Settings", meta = (ToolTip = "Number of Apple Spatial Audio point sources to allocate for 3D audio use (each point source is a system audio object)."))
+	UPROPERTY(EditAnywhere, Category = "Ak Initialization Settings", meta = (ToolTip = "Number of Apple Spatial Audio point sources to allocate for 3D audio use (each point source is a system audio object).", MinWwiseVersion="2023.1"))
 	uint32 uNumSpatialAudioPointSources = 128;
 
-	UPROPERTY(EditAnywhere, Category = "Ak Initialization Settings", meta = (ToolTip = "Print detailed system output information to the system log."))
+	UPROPERTY(EditAnywhere, Category = "Ak Initialization Settings", meta = (ToolTip = "Print detailed system output information to the system log.", MinWwiseVersion="2023.1"))
 	bool bVerboseSystemOutput = false;
 
 	void FillInitializationStructure(FAkInitializationStructure& InitializationStructure) const;
 };
 
 UCLASS(config = Game, defaultconfig)
-class AKAUDIO_API UAkMacInitializationSettings : public UObject, public IAkPlatformInitialisationSettingsBase
+class AKAUDIO_API UAkMacInitializationSettings : public UAkPlatformInitializationSettingsBase
 {
 	GENERATED_BODY()
 

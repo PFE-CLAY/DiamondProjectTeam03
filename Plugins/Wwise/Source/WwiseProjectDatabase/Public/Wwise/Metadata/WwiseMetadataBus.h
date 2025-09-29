@@ -12,23 +12,23 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #pragma once
 
 #include "Wwise/Metadata/WwiseMetadataBasicReference.h"
 
-struct WWISEPROJECTDATABASE_API FWwiseMetadataBusReference : public FWwiseMetadataBasicReference
+struct WwiseMetadataBusReference : public WwiseMetadataBasicReference
 {
-	FWwiseMetadataBusReference(FWwiseMetadataLoader& Loader);
+	WwiseMetadataBusReference(WwiseMetadataLoader& Loader);
 };
 
-struct WWISEPROJECTDATABASE_API FWwiseMetadataBus : public FWwiseMetadataBusReference
+struct WwiseMetadataBus : public WwiseMetadataBusReference
 {
-	FWwiseMetadataPluginReferenceGroup* PluginRefs;
-	TArray<FWwiseMetadataBusReference> AuxBusRefs;
+	WwiseMetadataPluginReferenceGroup* PluginRefs;
+	WwiseDBArray<WwiseMetadataBusReference> AuxBusRefs;
 	float MaxAttenuation;
 
-	FWwiseMetadataBus(FWwiseMetadataLoader& Loader);
+	WwiseMetadataBus(WwiseMetadataLoader& Loader);
 };

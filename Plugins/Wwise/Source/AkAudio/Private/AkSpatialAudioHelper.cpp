@@ -12,7 +12,7 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #include "AkSpatialAudioHelper.h"
@@ -33,20 +33,9 @@ namespace AkSpatialAudioHelper
 	}
 
 #if WITH_EDITOR
-#if UE_5_0_OR_LATER 
 	FCoreUObjectDelegates::FOnObjectsReplaced* GetObjectReplacedEvent()
 	{
 		return &FCoreUObjectDelegates::OnObjectsReplaced;
-#else
-	UEditorEngine::FObjectsReplacedEvent* GetObjectReplacedEvent()
-	{
-		if (GEditor)
-		{
-			return &GEditor->OnObjectsReplaced();
-		}
-
-		return nullptr;
-#endif
 	}
 #endif
 }

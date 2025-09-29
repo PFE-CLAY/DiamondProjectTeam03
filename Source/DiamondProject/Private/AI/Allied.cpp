@@ -4,7 +4,6 @@
 #include "AI/Allied.h"
 #include "AIController.h"
 
-#include "CookOnTheFly.h"
 #include "AI/CustomNavigationPoint.h"
 #include "AI/Path.h"
 #include "Components/CapsuleComponent.h"

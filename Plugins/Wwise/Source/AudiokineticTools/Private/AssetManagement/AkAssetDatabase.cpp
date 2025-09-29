@@ -12,7 +12,7 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #include "AssetManagement/AkAssetDatabase.h"
@@ -51,11 +51,7 @@ AkAssetDatabase::AkAssetDatabase()
 
 bool AkAssetDatabase::FindAllAssets(TArray<FAssetData>& OutData)
 {
-#if UE_5_1_OR_LATER
 	AssetRegistryModule->Get().GetAssetsByClass(UAkAudioType::StaticClass()->GetClassPathName(), OutData, true);
-#else
-	AssetRegistryModule->Get().GetAssetsByClass(UAkAudioType::StaticClass()->GetFName(), OutData, true);
-#endif
 	return OutData.Num() > 0;
 }
 
@@ -80,11 +76,7 @@ bool AkAssetDatabase::FindAssets(const FString& AssetName, TArray<FAssetData>& O
 
 FAssetData AkAssetDatabase::FindAssetByObjectPath(const FSoftObjectPath& AssetPath)
 {
-#if UE_5_1_OR_LATER
 	return AssetRegistryModule->Get().GetAssetByObjectPath(AssetPath);
-#else
-	return AssetRegistryModule->Get().GetAssetByObjectPath(AssetPath.GetAssetPathName());
-#endif
 }
 
 bool AkAssetDatabase::FindFirstAsset(const FGuid& AkGuid, FAssetData& OutAsset)
@@ -113,11 +105,7 @@ bool AkAssetDatabase::FindAssetsByGuidAndClass(const FGuid& AkGuid, const UClass
 {
 	TMultiMap<FName, FString> Search;
 	FARFilter Filter;
-#if UE_5_1_OR_LATER
 	Filter.ClassPaths.Add(StaticClass->GetClassPathName());
-#else
-	Filter.ClassNames.Add(StaticClass->GetFName());
-#endif
 	Filter.bRecursiveClasses = true;
 	Filter.TagsAndValues.AddUnique(GET_MEMBER_NAME_CHECKED(FWwiseObjectInfo, WwiseGuid), AkGuid.ToString(EGuidFormats::Digits));
 	AssetRegistryModule->Get().GetAssets(Filter, OutWwiseAssets);
@@ -192,11 +180,7 @@ void AkAssetDatabase::FixUpRedirectors(const FString& AssetPackagePath)
 	TArray<UObjectRedirector*> redirectorsToFix;
 
 	TArray<FAssetData> foundRedirectorsData;
-#if UE_5_1_OR_LATER
 	AssetRegistryModule->Get().GetAssetsByClass(UObjectRedirector::StaticClass()->GetClassPathName(), foundRedirectorsData);
-#else
-	AssetRegistryModule->Get().GetAssetsByClass(UObjectRedirector::StaticClass()->GetFName(), foundRedirectorsData);
-#endif
 
 	if (foundRedirectorsData.Num() > 0)
 	{
@@ -224,7 +208,6 @@ void AkAssetDatabase::FixUpRedirectors(const FString& AssetPackagePath)
 
 bool AkAssetDatabase::IsAkAudioType(const FAssetData& AssetData)
 {
-#if UE_5_1_OR_LATER
 	static const TArray<FTopLevelAssetPath> AkAudioClassPaths = {
 		UAkAcousticTexture::StaticClass()->GetClassPathName(),
 		UAkAudioEvent::StaticClass()->GetClassPathName(),
@@ -237,20 +220,6 @@ bool AkAssetDatabase::IsAkAudioType(const FAssetData& AssetData)
 
 	if (AkAudioClassPaths.Contains(AssetData.AssetClassPath))
 		return true;
-#else
-	static const TArray<FName> AkAudioClassNames = {
-		UAkAcousticTexture::StaticClass()->GetFName(),
-		UAkAudioEvent::StaticClass()->GetFName(),
-		UAkAuxBus::StaticClass()->GetFName(),
-		UAkRtpc::StaticClass()->GetFName(),
-		UAkStateValue::StaticClass()->GetFName(),
-		UAkSwitchValue::StaticClass()->GetFName(),
-		UAkTrigger::StaticClass()->GetFName()
-	};
-
-	if (AkAudioClassNames.Contains(AssetData.AssetClass))
-		return true;
-#endif
 	return false;
 }
 

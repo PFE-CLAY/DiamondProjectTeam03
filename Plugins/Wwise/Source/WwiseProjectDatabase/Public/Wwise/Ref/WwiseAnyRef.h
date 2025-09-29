@@ -12,7 +12,7 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #pragma once
@@ -20,129 +20,127 @@ Copyright (c) 2024 Audiokinetic Inc.
 #include "Wwise/Metadata/WwiseMetadataForwardDeclarations.h"
 #include "Wwise/Ref/WwiseRefRootFile.h"
 #include "Wwise/Ref/WwiseRefType.h"
+#include "Wwise/AdapterTypes/WwiseDataTypesAdapter.h"
+#include "Wwise/AdapterTypes/WwiseSharedPtr.h"
 
-class WWISEPROJECTDATABASE_API FWwiseAnyRef
+class WWISEPROJECTDATABASE_API WwiseAnyRef
 {
 public:
-	TSharedPtr<FWwiseRefRootFile> Ref;
+	WwiseDBSharedPtr<WwiseRefRootFile> Ref;
 
-	template<typename EWwiseRefType>
-	static FWwiseAnyRef Create(const EWwiseRefType& inRef)
+	template<typename WwiseRefType>
+	static WwiseAnyRef Create(const WwiseRefType& inRef)
 	{
-		return FWwiseAnyRef(new EWwiseRefType(inRef));
+		return WwiseAnyRef(new WwiseRefType(inRef));
 	}
 
-	FWwiseAnyRef() :
+	WwiseAnyRef() :
 		Ref()
 	{}
 
-	FWwiseAnyRef(FWwiseAnyRef&& InRef) :
-		Ref(MoveTemp(InRef.Ref))
-	{}
-
-	FWwiseAnyRef(const FWwiseAnyRef& InRef) :
+	WwiseAnyRef(const WwiseAnyRef& InRef) :
 		Ref(InRef.Ref)
 	{}
 
 private:
-	FWwiseAnyRef(FWwiseRefRootFile*&& InRef) :
+	WwiseAnyRef(WwiseRefRootFile*&& InRef) :
 		Ref(InRef)
 	{
 	}
 
 public:
-	~FWwiseAnyRef()
+	~WwiseAnyRef()
 	{
 	}
 
-	EWwiseRefType GetType() const
+	WwiseRefType GetType() const
 	{
 		if (!Ref)
 		{
-			return EWwiseRefType::None;
+			return WwiseRefType::None;
 		}
-		return (EWwiseRefType)Ref->Type();
+		return (WwiseRefType)Ref->Type();
 	}
 	operator bool() const { return Ref != nullptr; }
 	bool IsValid() const { return Ref != nullptr; }
 
-	const FWwiseRefLanguage* GetLanguageRef() const;
-	const FWwiseRefPlatform* GetPlatformRef() const;
-	const FWwiseRefPluginLib* GetPluginLibRef() const;
-	const FWwiseRefSoundBank* GetSoundBankRef() const;
-	const FWwiseRefMedia* GetMediaRef() const;
-	const FWwiseRefCustomPlugin* GetCustomPluginRef() const;
-	const FWwiseRefPluginShareSet* GetPluginShareSetRef() const;
-	const FWwiseRefAudioDevice* GetAudioDeviceRef() const;
-	const FWwiseRefEvent* GetEventRef() const;
-	const FWwiseRefSwitchContainer* GetSwitchContainerRef() const;
-	const FWwiseRefDialogueEvent* GetDialogueEventRef() const;
-	const FWwiseRefDialogueArgument* GetDialogueArgumentRef() const;
-	const FWwiseRefBus* GetBusRef() const;
-	const FWwiseRefAuxBus* GetAuxBusRef() const;
-	const FWwiseRefGameParameter* GetGameParameterRef() const;
-	const FWwiseRefStateGroup* GetStateGroupRef() const;
-	const FWwiseRefState* GetStateRef() const;
-	const FWwiseRefSwitchGroup* GetSwitchGroupRef() const;
-	const FWwiseRefSwitch* GetSwitchRef() const;
-	const FWwiseRefTrigger* GetTriggerRef() const;
-	const FWwiseRefExternalSource* GetExternalSourceRef() const;
-	const FWwiseRefAcousticTexture* GetAcousticTextureRef() const;
+	const WwiseRefLanguage* GetLanguageRef() const;
+	const WwiseRefPlatform* GetPlatformRef() const;
+	const WwiseRefPluginLib* GetPluginLibRef() const;
+	const WwiseRefSoundBank* GetSoundBankRef() const;
+	const WwiseRefMedia* GetMediaRef() const;
+	const WwiseRefCustomPlugin* GetCustomPluginRef() const;
+	const WwiseRefPluginShareSet* GetPluginShareSetRef() const;
+	const WwiseRefAudioDevice* GetAudioDeviceRef() const;
+	const WwiseRefEvent* GetEventRef() const;
+	const WwiseRefSwitchContainer* GetSwitchContainerRef() const;
+	const WwiseRefDialogueEvent* GetDialogueEventRef() const;
+	const WwiseRefDialogueArgument* GetDialogueArgumentRef() const;
+	const WwiseRefBus* GetBusRef() const;
+	const WwiseRefAuxBus* GetAuxBusRef() const;
+	const WwiseRefGameParameter* GetGameParameterRef() const;
+	const WwiseRefStateGroup* GetStateGroupRef() const;
+	const WwiseRefState* GetStateRef() const;
+	const WwiseRefSwitchGroup* GetSwitchGroupRef() const;
+	const WwiseRefSwitch* GetSwitchRef() const;
+	const WwiseRefTrigger* GetTriggerRef() const;
+	const WwiseRefExternalSource* GetExternalSourceRef() const;
+	const WwiseRefAcousticTexture* GetAcousticTextureRef() const;
 
-	const FWwiseMetadataLanguage* GetLanguage() const;
-	const FWwiseMetadataPlatform* GetPlatform() const;
-	const FWwiseMetadataPlatformReference* GetPlatformReference() const;
-	const FWwiseMetadataPluginLib* GetPluginLib() const;
-	const FWwiseMetadataSoundBank* GetSoundBank() const;
-	const FWwiseMetadataMedia* GetMedia() const;
-	const FWwiseMetadataPlugin* GetCustomPlugin() const;
-	const FWwiseMetadataPlugin* GetPluginShareSet() const;
-	const FWwiseMetadataPlugin* GetAudioDevice() const;
-	const FWwiseMetadataEvent* GetEvent() const;
-	const FWwiseMetadataSwitchContainer* GetSwitchContainer() const;
-	const FWwiseMetadataDialogueEvent* GetDialogueEvent() const;
-	const FWwiseMetadataDialogueArgument* GetDialogueArgument() const;
-	const FWwiseMetadataBus* GetBus() const;
-	const FWwiseMetadataBus* GetAuxBus() const;
-	const FWwiseMetadataGameParameter* GetGameParameter() const;
-	const FWwiseMetadataStateGroup* GetStateGroup() const;
-	const FWwiseMetadataState* GetState() const;
-	const FWwiseMetadataSwitchGroup* GetSwitchGroup() const;
-	const FWwiseMetadataSwitch* GetSwitch() const;
-	const FWwiseMetadataTrigger* GetTrigger() const;
-	const FWwiseMetadataExternalSource* GetExternalSource() const;
-	const FWwiseMetadataAcousticTexture* GetAcousticTexture() const;
+	const WwiseMetadataLanguage* GetLanguage() const;
+	const WwiseMetadataPlatform* GetPlatform() const;
+	const WwiseMetadataPlatformReference* GetPlatformReference() const;
+	const WwiseMetadataPluginLib* GetPluginLib() const;
+	const WwiseMetadataSoundBank* GetSoundBank() const;
+	const WwiseMetadataMedia* GetMedia() const;
+	const WwiseMetadataPlugin* GetCustomPlugin() const;
+	const WwiseMetadataPlugin* GetPluginShareSet() const;
+	const WwiseMetadataPlugin* GetAudioDevice() const;
+	const WwiseMetadataEvent* GetEvent() const;
+	const WwiseMetadataSwitchContainer* GetSwitchContainer() const;
+	const WwiseMetadataDialogueEvent* GetDialogueEvent() const;
+	const WwiseMetadataDialogueArgument* GetDialogueArgument() const;
+	const WwiseMetadataBus* GetBus() const;
+	const WwiseMetadataBus* GetAuxBus() const;
+	const WwiseMetadataGameParameter* GetGameParameter() const;
+	const WwiseMetadataStateGroup* GetStateGroup() const;
+	const WwiseMetadataState* GetState() const;
+	const WwiseMetadataSwitchGroup* GetSwitchGroup() const;
+	const WwiseMetadataSwitch* GetSwitch() const;
+	const WwiseMetadataTrigger* GetTrigger() const;
+	const WwiseMetadataExternalSource* GetExternalSource() const;
+	const WwiseMetadataAcousticTexture* GetAcousticTexture() const;
 
-	bool GetRef(FWwiseRefLanguage& OutRef) const;
-	bool GetRef(FWwiseRefPlatform& OutRef) const;
-	bool GetRef(FWwiseRefPluginLib& OutRef) const;
-	bool GetRef(FWwiseRefSoundBank& OutRef) const;
-	bool GetRef(FWwiseRefMedia& OutRef) const;
-	bool GetRef(FWwiseRefCustomPlugin& OutRef) const;
-	bool GetRef(FWwiseRefPluginShareSet& OutRef) const;
-	bool GetRef(FWwiseRefAudioDevice& OutRef) const;
-	bool GetRef(FWwiseRefEvent& OutRef) const;
-	bool GetRef(FWwiseRefSwitchContainer& OutRef) const;
-	bool GetRef(FWwiseRefDialogueEvent& OutRef) const;
-	bool GetRef(FWwiseRefDialogueArgument& OutRef) const;
-	bool GetRef(FWwiseRefBus& OutRef) const;
-	bool GetRef(FWwiseRefAuxBus& OutRef) const;
-	bool GetRef(FWwiseRefGameParameter& OutRef) const;
-	bool GetRef(FWwiseRefStateGroup& OutRef) const;
-	bool GetRef(FWwiseRefState& OutRef) const;
-	bool GetRef(FWwiseRefSwitchGroup& OutRef) const;
-	bool GetRef(FWwiseRefSwitch& OutRef) const;
-	bool GetRef(FWwiseRefTrigger& OutRef) const;
-	bool GetRef(FWwiseRefExternalSource& OutRef) const;
-	bool GetRef(FWwiseRefAcousticTexture& OutRef) const;
+	bool GetRef(WwiseRefLanguage& OutRef) const;
+	bool GetRef(WwiseRefPlatform& OutRef) const;
+	bool GetRef(WwiseRefPluginLib& OutRef) const;
+	bool GetRef(WwiseRefSoundBank& OutRef) const;
+	bool GetRef(WwiseRefMedia& OutRef) const;
+	bool GetRef(WwiseRefCustomPlugin& OutRef) const;
+	bool GetRef(WwiseRefPluginShareSet& OutRef) const;
+	bool GetRef(WwiseRefAudioDevice& OutRef) const;
+	bool GetRef(WwiseRefEvent& OutRef) const;
+	bool GetRef(WwiseRefSwitchContainer& OutRef) const;
+	bool GetRef(WwiseRefDialogueEvent& OutRef) const;
+	bool GetRef(WwiseRefDialogueArgument& OutRef) const;
+	bool GetRef(WwiseRefBus& OutRef) const;
+	bool GetRef(WwiseRefAuxBus& OutRef) const;
+	bool GetRef(WwiseRefGameParameter& OutRef) const;
+	bool GetRef(WwiseRefStateGroup& OutRef) const;
+	bool GetRef(WwiseRefState& OutRef) const;
+	bool GetRef(WwiseRefSwitchGroup& OutRef) const;
+	bool GetRef(WwiseRefSwitch& OutRef) const;
+	bool GetRef(WwiseRefTrigger& OutRef) const;
+	bool GetRef(WwiseRefExternalSource& OutRef) const;
+	bool GetRef(WwiseRefAcousticTexture& OutRef) const;
 
-	FGuid GetGuid(const EWwiseRefType* TypeOverride = nullptr) const;
-	uint32 GetGroupId(const EWwiseRefType* TypeOverride = nullptr) const;
-	uint32 GetId(const EWwiseRefType* TypeOverride = nullptr) const;
-	FName GetName(const EWwiseRefType* TypeOverride = nullptr) const;
-	FName GetObjectPath(const EWwiseRefType* TypeOverride = nullptr) const;
+	WwiseDBGuid GetGuid(const WwiseRefType* TypeOverride = nullptr) const;
+	WwiseDBShortId GetGroupId(const WwiseRefType* TypeOverride = nullptr) const;
+	WwiseDBShortId GetId(const WwiseRefType* TypeOverride = nullptr) const;
+	WwiseDBString GetName(const WwiseRefType* TypeOverride = nullptr) const;
+	WwiseDBString GetObjectPath(const WwiseRefType* TypeOverride = nullptr) const;
 
-	bool operator ==(const FWwiseAnyRef& Rhs) const
+	bool operator ==(const WwiseAnyRef& Rhs) const
 	{
 		return GetType() == Rhs.GetType()
 			&& operator bool() == Rhs.operator bool()
@@ -150,14 +148,14 @@ public:
 				|| Ref->Hash() == Rhs.Ref->Hash());
 	}
 
-	bool operator !=(const FWwiseAnyRef& Rhs) const
+	bool operator !=(const WwiseAnyRef& Rhs) const
 	{
 		return !(operator == (Rhs));
 	}
 
 };
 
-inline uint32 GetTypeHash(const FWwiseAnyRef& InValue)
+inline WwiseDBShortId GetTypeHash(const WwiseAnyRef& InValue)
 {
 	if ((bool)InValue)
 	{
