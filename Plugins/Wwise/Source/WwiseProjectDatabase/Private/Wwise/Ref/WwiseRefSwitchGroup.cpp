@@ -12,22 +12,20 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #include "Wwise/Ref/WwiseRefSwitchGroup.h"
 
 #include "Wwise/Metadata/WwiseMetadataSoundBank.h"
-#include "Wwise/WwiseProjectDatabaseModule.h"
-#include "Wwise/Stats/ProjectDatabase.h"
 #include "Wwise/Metadata/WwiseMetadataSwitchGroup.h"
 
-const TCHAR* const FWwiseRefSwitchGroup::NAME = TEXT("SwitchGroup");
+const WwiseDBString WwiseRefSwitchGroup::NAME = "SwitchGroup"_wwise_db;
 
-const FWwiseMetadataSwitchGroup* FWwiseRefSwitchGroup::GetSwitchGroup() const
+const WwiseMetadataSwitchGroup* WwiseRefSwitchGroup::GetSwitchGroup() const
 {
 	const auto* SoundBank = GetSoundBank();
-	if (UNLIKELY(!SoundBank))
+	if (!SoundBank) [[unlikely]]
 	{
 		return nullptr;
 	}
@@ -38,15 +36,15 @@ const FWwiseMetadataSwitchGroup* FWwiseRefSwitchGroup::GetSwitchGroup() const
 	}
 	else
 	{
-		UE_LOG(LogWwiseProjectDatabase, Error, TEXT("Could not get Switch Group index #%zu"), SwitchGroupIndex);
+		WWISE_DB_LOG(Error, "Could not get Switch Group index #%zu", SwitchGroupIndex);
 		return nullptr;
 	}
 }
 
-bool FWwiseRefSwitchGroup::IsControlledByGameParameter() const
+bool WwiseRefSwitchGroup::IsControlledByGameParameter() const
 {
 	const auto* SwitchGroup = GetSwitchGroup();
-	if (!SwitchGroup)
+	if (!SwitchGroup) [[unlikely]]
 	{
 		return false;
 	}
@@ -54,49 +52,49 @@ bool FWwiseRefSwitchGroup::IsControlledByGameParameter() const
 	return SwitchGroup->GameParameterRef != nullptr;
 }
 
-uint32 FWwiseRefSwitchGroup::SwitchGroupId() const
+WwiseDBShortId WwiseRefSwitchGroup::SwitchGroupId() const
 {
 	const auto* SwitchGroup = GetSwitchGroup();
-	if (UNLIKELY(!SwitchGroup))
+	if (!SwitchGroup) [[unlikely]]
 	{
 		return 0;
 	}
 	return SwitchGroup->Id;
 }
 
-FGuid FWwiseRefSwitchGroup::SwitchGroupGuid() const
+WwiseDBGuid WwiseRefSwitchGroup::SwitchGroupGuid() const
 {
 	const auto* SwitchGroup = GetSwitchGroup();
-	if (UNLIKELY(!SwitchGroup))
+	if (!SwitchGroup) [[unlikely]]
 	{
 		return {};
 	}
 	return SwitchGroup->GUID;
 }
 
-FName FWwiseRefSwitchGroup::SwitchGroupName() const
+const WwiseDBString* WwiseRefSwitchGroup::SwitchGroupName() const
 {
 	const auto* SwitchGroup = GetSwitchGroup();
-	if (UNLIKELY(!SwitchGroup))
+	if (!SwitchGroup) [[unlikely]]
 	{
-		return {};
+		return &emptyString;
 	}
-	return SwitchGroup->Name;
+	return &SwitchGroup->Name;
 }
 
-FName FWwiseRefSwitchGroup::SwitchGroupObjectPath() const
+const WwiseDBString* WwiseRefSwitchGroup::SwitchGroupObjectPath() const
 {
 	const auto* SwitchGroup = GetSwitchGroup();
-	if (UNLIKELY(!SwitchGroup))
+	if (!SwitchGroup) [[unlikely]]
 	{
-		return {};
+		return &emptyString;
 	}
-	return SwitchGroup->ObjectPath;
+	return &SwitchGroup->ObjectPath;
 }
 
-uint32 FWwiseRefSwitchGroup::Hash() const
+WwiseDBShortId WwiseRefSwitchGroup::Hash() const
 {
-	auto Result = FWwiseRefSoundBank::Hash();
-	Result = HashCombine(Result, GetTypeHash(SwitchGroupIndex));
+	auto Result = WwiseRefSoundBank::Hash();
+	Result = WwiseDBHashCombine(Result, GetTypeHash(SwitchGroupIndex));
 	return Result;
 }

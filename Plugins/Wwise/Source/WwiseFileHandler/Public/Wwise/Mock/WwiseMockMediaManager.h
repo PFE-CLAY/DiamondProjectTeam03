@@ -12,7 +12,7 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #pragma once
@@ -31,18 +31,25 @@ public:
 
 	const TCHAR* GetManagingTypeName() const override { return TEXT("MockMedia"); }
 
-	void LoadMedia(const FWwiseMediaCookedData& InMediaCookedData, const FString& InRootPath, FLoadMediaCallback&& InCallback) override
+	void LoadMedia(const FWwiseMediaCookedData& InMediaCookedData, FLoadMediaCallback&& InCallback) override
 	{
 		SCOPED_WWISEFILEHANDLER_EVENT_4(TEXT("FWwiseMockMediaManager::LoadMedia"));
-		IncrementFileStateUseAsync(InMediaCookedData.MediaId, EWwiseFileStateOperationOrigin::Loading, [this, InMediaCookedData, InRootPath]() mutable
+		IncrementFileStateUseAsync(InMediaCookedData.MediaId, EWwiseFileStateOperationOrigin::Loading, [WeakThis=AsWeak(), InMediaCookedData]() mutable
 		{
-			return CreateOp(InMediaCookedData, InRootPath);
+			auto SharedMockMediaManager = StaticCastSharedPtr<FWwiseMockMediaManager>(WeakThis.Pin());
+			if (!SharedMockMediaManager.IsValid())
+			{
+				UE_LOG(LogWwiseFileHandler, Error,
+				       TEXT("FWwiseMockSoundBankManager::LoadSoundBank: Failed to get Mock MediaManager"))
+				return FWwiseFileStateSharedPtr(nullptr);
+			}
+			return SharedMockMediaManager->CreateOp(InMediaCookedData);
 		}, [InCallback = MoveTemp(InCallback)](const FWwiseFileStateSharedPtr, bool bInResult)
 		{
 			InCallback(bInResult);
 		});
 	}
-	void UnloadMedia(const FWwiseMediaCookedData& InMediaCookedData, const FString& InRootPath, FUnloadMediaCallback&& InCallback) override
+	void UnloadMedia(const FWwiseMediaCookedData& InMediaCookedData, FUnloadMediaCallback&& InCallback) override
 	{
 		SCOPED_WWISEFILEHANDLER_EVENT_4(TEXT("FWwiseMockMediaManager::UnloadMedia"));
 		DecrementFileStateUseAsync(InMediaCookedData.MediaId, nullptr, EWwiseFileStateOperationOrigin::Loading, MoveTemp(InCallback));
@@ -69,10 +76,10 @@ public:
 	}
 
 protected:
-	virtual FWwiseFileStateSharedPtr CreateOp(const FWwiseMediaCookedData& InMediaCookedData, const FString& InRootPath)
+	virtual FWwiseFileStateSharedPtr CreateOp(const FWwiseMediaCookedData& InMediaCookedData)
 	{
 		auto* FileState = new FWwiseMockFileState(InMediaCookedData.MediaId);
-		if (InMediaCookedData.bStreaming)
+		if (InMediaCookedData.PackagedFile.bStreaming)
 		{
 			FileState->bIsStreamedState = FWwiseMockFileState::OptionalBool::True;
 		}

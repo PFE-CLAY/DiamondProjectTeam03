@@ -12,7 +12,7 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #pragma once
@@ -64,10 +64,12 @@ public:
 	virtual void StartupModule() override;
 	virtual void ShutdownModule() override;
 
+	void OnPreExit();
 	FAkAudioDevice* GetAkAudioDevice() const;
 	void ReloadWwiseAssetData() const;
-	static void UpdateWwiseResourceLoaderSettings();
+	static void UpdateWwiseResourceCookerSettings();
 #if WITH_EDITORONLY_DATA
+	static void CreateResourceCookerForPlatform(const ITargetPlatform* TargetPlatform);
 	static void ParseGeneratedSoundBankData();
 #endif
 	FAkAudioDevice* AkAudioDevice;
@@ -77,5 +79,8 @@ public:
 
 	/** Handle for OnTick. */
 	FTickerDelegateHandle TickDelegateHandle;
+
+	/** Handle for OnPreExit. */
+	FDelegateHandle OnPreExitHandle;
 };
 

@@ -12,49 +12,43 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #include "Wwise/Metadata/WwiseMetadataLoadable.h"
-#include "Wwise/Stats/ProjectDatabase.h"
 
-#include "Dom/JsonObject.h"
-
-void FWwiseMetadataLoadable::AddRequestedValue(const FString& Type, const FString& Value)
+void WwiseMetadataLoadable::AddRequestedValue(const WwiseDBString& Type, const WwiseDBString& Value)
 {
 	bool IsAlreadySet = false;
 	RequestedValues.Add(Value, &IsAlreadySet);
-	if (UNLIKELY(IsAlreadySet))
+	if (IsAlreadySet) [[unlikely]]
 	{
-		UE_LOG(LogWwiseProjectDatabase, Fatal, TEXT("Trying to load the same %s field twice: %s"), *Type, *Value);
+		WWISE_DB_LOG(Fatal, "Trying to load the same %s field twice: %s", *Type, *Value);
 	}
 }
 
-void FWwiseMetadataLoadable::CheckRequestedValues(TSharedRef<FJsonObject>& JsonObject)
+void WwiseMetadataLoadable::CheckRequestedValues(WwiseDBJsonObject& JsonObject) const
 {
-	TArray<FString> Keys;
-	JsonObject->Values.GetKeys(Keys);
-	auto Diff = TSet<FString>(Keys).Difference(RequestedValues);
+	WwiseDBArray<WwiseDBString> Keys;
+	JsonObject.GetKeys(Keys);
+	auto Diff = WwiseDBSet<WwiseDBString>(Keys.Array).Difference(RequestedValues);
 	for (const auto& Key : Diff)
 	{
-		UE_LOG(LogWwiseProjectDatabase, Warning, TEXT("Unknown Json field: %s"), *Key);
+		WWISE_DB_LOG(Warning, "Unknown Json field: %s", *Key);
 	}
 }
 
-void FWwiseMetadataLoadable::IncLoadedSize(size_t Size)
+void WwiseMetadataLoadable::IncLoadedSize(size_t Size)
 {
-	INC_DWORD_STAT_BY(STAT_WwiseProjectDatabaseMemory, Size);
 	LoadedSize += Size;
 }
 
-void FWwiseMetadataLoadable::DecLoadedSize(size_t Size)
+void WwiseMetadataLoadable::DecLoadedSize(size_t Size)
 {
-	DEC_DWORD_STAT_BY(STAT_WwiseProjectDatabaseMemory, Size);
 	LoadedSize -= Size;
 }
 
-void FWwiseMetadataLoadable::UnloadLoadedSize()
+void WwiseMetadataLoadable::UnloadLoadedSize()
 {
-	DEC_DWORD_STAT_BY(STAT_WwiseProjectDatabaseMemory, LoadedSize);
 	LoadedSize = 0;
 }

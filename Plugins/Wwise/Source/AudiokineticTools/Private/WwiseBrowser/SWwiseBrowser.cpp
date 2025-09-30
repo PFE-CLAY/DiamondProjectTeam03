@@ -12,7 +12,7 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 /*------------------------------------------------------------------------------------
@@ -47,10 +47,6 @@ Copyright (c) 2024 Audiokinetic Inc.
 #include "AkSettingsPerUser.h"
 #include "WwiseUnrealHelper.h"
 
-#if !UE_5_0_OR_LATER
-#include "EditorFontGlyphs.h"
-#endif
-
 #include "AudiokineticToolsModule.h"
 #include "FSoundPlayingColumn.h"
 #include "IAudiokineticTools.h"
@@ -66,7 +62,6 @@ Copyright (c) 2024 Audiokinetic Inc.
 #include "WwiseStatusColumn.h"
 #include "WwiseUEAssetStatusColumn.h"
 #include "DataSource/WwiseBrowserDataSource.h"
-#include "AkWaapiUMG/Components/AkBoolPropertyToControlCustomization.h"
 #include "Wwise/WwiseReconcile.h"
 #include "Widgets/SWwiseReconcile.h"
 
@@ -199,7 +194,7 @@ namespace FilterMenuTitles
 		case AcousticTexture:
 			return LOCTEXT("AcousticTexture_Tooltip", "Filter Wwise Acoustic Texture Types.");
 		case AudioDeviceShareSet:
-			return LOCTEXT("AudioDevice_Tooltip", "Fileter Wwise Audio Device Types.");
+			return LOCTEXT("AudioDevice_Tooltip", "Filter Wwise Audio Device Types.");
 		case Effects:
 			return LOCTEXT("Effects_Tooltip", "Filter Wwise Effect Types.");
 		case Events:
@@ -490,15 +485,11 @@ void SWwiseBrowser::Construct(const FArguments& InArgs)
 		SNew(SHeaderRow)
 		.CanSelectGeneratedColumn(true);
 
-#if UE_5_0_OR_LATER
 	TSharedPtr<SLayeredImage> FilterImage = SNew(SLayeredImage)
 		.Image(FAkAppStyle::Get().GetBrush("Icons.Filter"))
 		.ColorAndOpacity(FSlateColor::UseForeground());
-#if UE_5_1_OR_LATER
 	// Badge the filter icon if there are filters active
 	FilterImage->AddLayer(TAttribute<const FSlateBrush*>(this, &SWwiseBrowser::GetFilterBadgeIcon));
-#endif
-#endif
 
 	SetupColumns(*HeaderRowWidget);
 
@@ -535,12 +526,7 @@ void SWwiseBrowser::Construct(const FArguments& InArgs)
 		.HAlign(HAlign_Left)
 		[
 			SNew(SComboButton)
-#if UE_5_0_OR_LATER
 			.ComboButtonStyle(FAkAppStyle::Get(), "SimpleComboButton")
-#else
-			.ComboButtonStyle(FEditorStyle::Get(), "GenericFilters.ComboButtonStyle")
-		.ForegroundColor(FLinearColor::White)
-#endif
 		.ToolTipText(LOCTEXT("Browser_AddFilterToolTip", "Add filters to the Wwise Browser."))
 		.OnGetMenuContent(this, &SWwiseBrowser::MakeAddFilterMenu)
 		.ButtonContent()
@@ -549,14 +535,7 @@ void SWwiseBrowser::Construct(const FArguments& InArgs)
 			+ SHorizontalBox::Slot()
 		.AutoWidth()
 		[
-#if UE_5_0_OR_LATER
 			FilterImage.ToSharedRef()
-#else
-			SNew(STextBlock)
-			.TextStyle(FEditorStyle::Get(), "GenericFilters.TextStyle")
-			.Font(FEditorStyle::Get().GetFontStyle("FontAwesome.9"))
-			.Text(FText::FromString(FString(TEXT("\xf0b0"))) /*fa-filter*/)
-#endif
 		]
 		]
 		]
@@ -584,15 +563,8 @@ void SWwiseBrowser::Construct(const FArguments& InArgs)
 				.VAlign(VAlign_Center)
 				[
 
-#if UE_5_0_OR_LATER
 					SNew(SImage)
 					.Image(FAkAppStyle::Get().GetBrush("Icons.Refresh"))
-#else
-					SNew(STextBlock)
-					.Font(FEditorStyle::Get().GetFontStyle("FontAwesome.11"))
-					.Text(FEditorFontGlyphs::Repeat)
-					.ColorAndOpacity(FLinearColor::White)
-#endif
 				]
 			]
 		]
@@ -628,7 +600,6 @@ void SWwiseBrowser::Construct(const FArguments& InArgs)
 		SAssignNew(TreeViewPtr, SWwiseBrowserTreeView, StaticCastSharedRef<SWwiseBrowser>(AsShared()))
 		.TreeItemsSource(&RootItems).Visibility(this, &SWwiseBrowser::IsWarningNotVisible)
 		.OnGenerateRow(this, &SWwiseBrowser::GenerateRow)
-		.ItemHeight(18)
 		.SelectionMode(InArgs._SelectionMode)
 		.OnSelectionChanged(this, &SWwiseBrowser::TreeSelectionChanged)
 		.OnExpansionChanged(this, &SWwiseBrowser::TreeExpansionChanged)

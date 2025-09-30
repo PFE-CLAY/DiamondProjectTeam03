@@ -12,7 +12,7 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 /*=============================================================================
@@ -31,7 +31,6 @@ Copyright (c) 2024 Audiokinetic Inc.
 #include "AkInclude.h"
 #include "WwiseUnrealDefines.h"
 #include "AkJobWorkerScheduler.h"
-#include "WwiseUEFeatures.h"
 #include "Wwise/WwiseSharedLanguageId.h"
 #include "Engine/EngineTypes.h"
 
@@ -73,6 +72,10 @@ class UAkEffectShareSet;
 class AkXMLErrorMessageTranslator;
 class AkWAAPIErrorMessageTranslator;
 class AkUnrealErrorTranslator;
+
+// Set for holding UAkComponents
+// Use TWeakObjectPtrSetKeyFuncs since different stale items will be indistinguishable using the default key func
+typedef TSet<TWeakObjectPtr<UAkComponent>,TWeakObjectPtrSetKeyFuncs<TWeakObjectPtr<UAkComponent>>> UAkComponentSet;
 
 #define DUMMY_GAMEOBJ ((AkGameObjectID)0x2)
 #define SOUNDATLOCATION_GAMEOBJ ((AkGameObjectID)0x3)
@@ -318,14 +321,6 @@ public:
 	 AKRESULT TryUnsetMedia(AkSourceSettings* in_pSourceSettings, uint32 in_uNumSourceSettings, AKRESULT* out_pUnsetResults = nullptr);
 	 
 	/**
-	* Removes the specified source from the list of loaded media.
-	*
-  	* @param in_pSourceSettings Array of Source Settings
-  	* @param un_uNumSourceSettings Number of Source Settings in the array
-  	*/
-	 AKRESULT UnsetMedia(AkSourceSettings* in_pSourceSettings, uint32 in_uNumSourceSettings);
-
-	/**
 	 * Get the currently selected audio culture
 	 */
 	FString GetCurrentAudioCulture() const;
@@ -346,19 +341,30 @@ public:
 	FWwiseLanguageCookedData GetLanguageCookedDataFromString(const FString& WwiseLanguage);
 
 	/**
+	 * Get a FWwiseSharedLanguageId from the name as set in Wwise
+	 */
+	bool GetLanguageCookedDataFromString(const FString& WwiseLanguage, FWwiseLanguageCookedData& OutCookedData);
+
+	enum class EAudioCultureType
+	{
+		Unreal,
+		Wwise
+	};
+	
+	/**
 	 * Change the audio culture
 	 */
-	void SetCurrentAudioCulture(const FString& AudioCulture);
+	bool SetCurrentAudioCulture(const FString& AudioCulture, EAudioCultureType InAudioCultureType = EAudioCultureType::Unreal);
 
 	/**
 	 * Change the audio culture asynchronously and signal the latent action when done
 	 */
-	void SetCurrentAudioCultureAsync(const FString& AudioCulture, FSetCurrentAudioCultureAction* LatentAction);
+	void SetCurrentAudioCultureAsync(const FString& AudioCulture, FSetCurrentAudioCultureAction* LatentAction, EAudioCultureType InAudioCultureType = EAudioCultureType::Unreal);
 	
 	/**
 	 * Change the audio culture asynchronous and call the callback when done
 	 */
-	void SetCurrentAudioCultureAsync(const FString& AudioCulture, const FOnSetCurrentAudioCultureCompleted& CompletedCallback);
+	void SetCurrentAudioCultureAsync(const FString& AudioCulture, const FOnSetCurrentAudioCultureCompleted& CompletedCallback, EAudioCultureType InAudioCultureType = EAudioCultureType::Unreal);
 
 	/** Spawn an AkComponent at a location. Allows, for example, to set a switch on a fire and forget sound.
 	 * @param AkEvent - Wwise Event to post.
@@ -368,7 +374,7 @@ public:
 	 * @param EarlyReflectionsBusName - Use the provided auxiliary bus to process early reflections.  If empty, no early reflections will be processed.
 	 * @param AutoDestroy - Automatically destroy the AkComponent once the event is finished.
 	 */
-	class UAkComponent* SpawnAkComponentAtLocation( class UAkAudioEvent* AkEvent, FVector Location, FRotator Orientation, bool AutoPost, const FString& EventName, bool AutoDestroy, class UWorld* in_World );
+	class UAkComponent* SpawnAkComponentAtLocation( class UAkAudioEvent* AkEvent, FVector Location, FRotator Orientation, bool AutoPost, bool AutoDestroy, class UWorld* in_World );
 
     /** Seek on an event in the ak soundengine.
     * @param EventShortID         ID of the event on which to seek.
@@ -999,6 +1005,30 @@ public:
 	void StopGameObject(UAkComponent * in_pComponent);
 
 	/**
+	 * Pause all audio associated with a playing ID
+	 *
+	 * @param in_playingID		AkPlayingID which should be paused
+	 */
+	void PausePlayingID(AkPlayingID in_playingID, AkTimeMs in_uTransitionDuration = 0,
+	                    AkCurveInterpolation in_eFadeCurve = AkCurveInterpolation_Linear);
+
+	/**
+	 * Resume all audio associated with a playing ID
+	 *
+	 * @param in_playingID		AkPlayingID which should be resumed
+	* @param in_uTransitionDuration		Fade duration
+	 * @param in_eFadeCurve		Curve type to be used for the transition
+	 */
+	void ResumePlayingID(AkPlayingID in_playingID, AkTimeMs in_uTransitionDuration = 0,
+	                     AkCurveInterpolation in_eFadeCurve = AkCurveInterpolation_Linear);
+	/**
+	 * Stop all audio associated with a game object ID
+	 *
+	 * @param in_gameObjectID		Game object ID which should be stopped
+	 */
+	void StopGameObjectID(AkGameObjectID in_gameObjectID);
+
+	/**
 	 * Stop all audio associated with a playing ID
 	 *
 	 * @param in_playingID		AkPlayingID which should be stopped
@@ -1262,9 +1292,7 @@ public:
 
 	static inline void FVectorToAKVector( const FVector & in_vect, AkVector & out_vect )
 	{
-#if UE_5_0_OR_LATER
 		checkf(in_vect.X <= FLT_MAX && in_vect.Y <= FLT_MAX && in_vect.Z <= FLT_MAX, TEXT("FVectorToAKVector: Data truncation when converting from FVector to AkVector."));
-#endif
 		out_vect.X = in_vect.X;
 		out_vect.Y = in_vect.Y;
 		out_vect.Z = in_vect.Z;
@@ -1272,9 +1300,7 @@ public:
 
 	static inline AkVector FVectorToAKVector(const FVector& in_vect)
 	{
-#if UE_5_0_OR_LATER
 		checkf(in_vect.X <= FLT_MAX && in_vect.Y <= FLT_MAX && in_vect.Z <= FLT_MAX, TEXT("FVectorToAKVector: Data truncation when converting from FVector to AkVector."));
-#endif
 		return AkVector{ (float)in_vect.X, (float)in_vect.Y, (float)in_vect.Z };
 	}
 
@@ -1292,9 +1318,7 @@ public:
 
 	static inline AkExtent FVectorToAkExtent(const FVector& in_vect)
 	{
-#if UE_5_0_OR_LATER
 		checkf(in_vect.X <= FLT_MAX && in_vect.Y <= FLT_MAX && in_vect.Z <= FLT_MAX, TEXT("FVectorToAkExtent: Data truncation when converting from FVector to AkExtent."));
-#endif
 		/* Unreal: right=y, up=z, front=x */
 		return AkExtent{ (float)in_vect.Y, (float)in_vect.Z, (float)in_vect.X };
 	}
@@ -1460,6 +1484,10 @@ public:
 	bool IsEventIDActive(uint32 EventID);
 	void RemovePlayingID(uint32 EventID, uint32 PlayingID);
 	void StopEventID(uint32 EventID);
+	void ExecuteActionOnPlayingID(AK::SoundEngine::AkActionOnEventType in_ActionType,
+	                              uint32 PlayingID,
+	                              AkTimeMs in_uTransitionDuration = 0,
+	                              AkCurveInterpolation in_eFadeCurve = AkCurveInterpolation_Linear);
 
 	FOnSwitchValueLoaded& GetOnSwitchValueLoaded(uint32 SwitchID);
 	void BroadcastOnSwitchValueLoaded(UAkGroupValue* GroupValue);
@@ -1473,6 +1501,10 @@ public:
 
 	static void LoadAudioObjectsAfterInitialization(TWeakObjectPtr<UAkAudioType>&& InAudioType);
 	void LoadDelayedObjects();
+
+	bool IsWwiseProfilerConnected() const { return bWwiseProfilerConnected;}
+	void CleanupUnfinishedResourceUnload();
+	void AddUnfinishedResourceUnload(FWwiseResourceUnloadFuture&& ResourceUnload);
 
 private:
 	bool EnsureInitialized();
@@ -1599,9 +1631,10 @@ private:
 #if WITH_EDITORONLY_DATA
 #ifndef AK_OPTIMIZED
 	static AkErrorMessageTranslator* m_UnrealErrorTranslator;
-#if AK_SUPPORT_WAAPI
-	static AkWAAPIErrorMessageTranslator m_waapiErrorMessageTranslator;
-#endif //AK_SUPPORT_WAAPI
 #endif //AK_OPTIMIZED
 #endif //WITH_EDITORONLY_DATA
+
+	FThreadSafeBool bWwiseProfilerConnected {false};
+	FCriticalSection ResourceUnloadFuturesCriticalSection;
+	TArray<FWwiseResourceUnloadFuture> ResourceUnloadFutures;
 };

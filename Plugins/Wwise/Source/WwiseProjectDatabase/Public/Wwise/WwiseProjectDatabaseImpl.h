@@ -12,7 +12,7 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #pragma once
@@ -21,7 +21,7 @@ Copyright (c) 2024 Audiokinetic Inc.
 
 class FWwiseResourceLoader;
 class FWwiseProjectDatabase;
-using FSharedWwiseDataStructure = TSharedRef<FWwiseDataStructure, ESPMode::ThreadSafe>;
+using FSharedWwiseDataStructure = TSharedRef<WwiseDataStructure, ESPMode::ThreadSafe>;
 
 class WWISEPROJECTDATABASE_API FWwiseProjectDatabaseImpl : public FWwiseProjectDatabase
 {
@@ -29,19 +29,24 @@ public:
 	FWwiseProjectDatabaseImpl();
 	~FWwiseProjectDatabaseImpl() override;
 
-	TUniquePtr<FWwiseResourceLoader> ResourceLoaderOverride;
+	FWwiseResourceLoaderPtr ResourceLoaderOverride;
 
 	void UpdateDataStructure(
-		const FDirectoryPath* InUpdateGeneratedSoundBanksPath = nullptr,
-		const FGuid* InBasePlatformGuid = &BasePlatformGuid) override;
+		const WwiseDBGuid* InBasePlatformGuid = &BasePlatformGuid) override;
 
-	void PrepareProjectDatabaseForPlatform(FWwiseResourceLoader*&& InResourceLoader);
-	FWwiseResourceLoader* GetResourceLoader() override;
-	const FWwiseResourceLoader* GetResourceLoader() const override;
+	void PrepareProjectDatabaseForPlatform(FWwiseResourceLoaderPtr&& InResourceLoader) override;
+	FWwiseResourceLoaderPtr GetResourceLoader() override;
+	const FWwiseResourceLoaderPtr GetResourceLoader() const override;
 
 protected:
 	bool bShouldBroadcast = true;
 	FSharedWwiseDataStructure LockedDataStructure;
+
+	/**
+	 * @brief Location where the Wwise Generated SoundBanks is found on disk relative to the project
+	 */
+	const WwiseDBString* GeneratedSoundBanksPath;
+
 
 	FSharedWwiseDataStructure& GetLockedDataStructure() override { return LockedDataStructure; }
 	const FSharedWwiseDataStructure& GetLockedDataStructure() const override { return LockedDataStructure; }

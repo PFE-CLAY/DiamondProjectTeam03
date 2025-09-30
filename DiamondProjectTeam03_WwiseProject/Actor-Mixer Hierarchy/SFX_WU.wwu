@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<WwiseDocument Type="WorkUnit" ID="{5DFA8BAE-0AEA-4A3F-92EC-FBABE50597A1}" SchemaVersion="119">
+<WwiseDocument Type="WorkUnit" ID="{5DFA8BAE-0AEA-4A3F-92EC-FBABE50597A1}" SchemaVersion="123">
 	<AudioObjects>
 		<WorkUnit Name="SFX_WU" ID="{5DFA8BAE-0AEA-4A3F-92EC-FBABE50597A1}" PersistMode="Standalone">
 			<PropertyList>

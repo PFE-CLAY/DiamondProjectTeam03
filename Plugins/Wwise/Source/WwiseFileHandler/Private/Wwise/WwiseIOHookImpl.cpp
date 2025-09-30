@@ -12,7 +12,7 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #include "Wwise/WwiseIOHookImpl.h"
@@ -26,15 +26,10 @@ Copyright (c) 2024 Audiokinetic Inc.
 
 #include "Wwise/Stats/AsyncStats.h"
 
-#include "WwiseDefines.h"
 #include "WwiseUnrealDefines.h"
 
 #include "Async/Async.h"
-#if UE_5_0_OR_LATER
 #include "HAL/PlatformFileManager.h"
-#else
-#include "HAL/PlatformFilemanager.h"
-#endif
 
 #include <inttypes.h>
 
@@ -51,17 +46,17 @@ FWwiseIOHookImpl::FWwiseIOHookImpl() :
 bool FWwiseIOHookImpl::Init(const AkDeviceSettings& InDeviceSettings)
 {
 	SCOPED_WWISEFILEHANDLER_EVENT_2(TEXT("FWwiseIOHookImpl::Init"));
-	auto* ExternalSourceManager = IWwiseExternalSourceManager::Get();
+	auto ExternalSourceManager = IWwiseExternalSourceManager::Get();
 	if (LIKELY(ExternalSourceManager))
 	{
 		ExternalSourceManager->SetGranularity(InDeviceSettings.uGranularity);
 	}
-	auto* MediaManager = IWwiseMediaManager::Get();
+	auto MediaManager = IWwiseMediaManager::Get();
 	if (LIKELY(MediaManager))
 	{
 		MediaManager->SetGranularity(InDeviceSettings.uGranularity);
 	}
-	auto* SoundBankManager = IWwiseSoundBankManager::Get();
+	auto SoundBankManager = IWwiseSoundBankManager::Get();
 	if (LIKELY(SoundBankManager))
 	{
 		SoundBankManager->SetGranularity(InDeviceSettings.uGranularity);
@@ -334,6 +329,7 @@ void FWwiseIOHookImpl::BatchWrite(
 	});
 }
 
+#if !WWISE_2024_1_OR_LATER
 void FWwiseIOHookImpl::BatchCancel(
 	AkUInt32 in_uNumTransfers,
 	BatchIoTransferItem* in_pTransferItems,
@@ -352,6 +348,7 @@ void FWwiseIOHookImpl::BatchCancel(
 			LogWwiseFileHandler, VeryVerbose, TEXT("FWwiseIOHookImpl::BatchCancel [%" PRIu64 "]: Cancelling transfer unsupported"), AK_FILEHANDLE_TO_UINTPTR(TransferItem.pFileDesc->hFile));
 	}
 }
+#endif
 
 AKRESULT FWwiseIOHookImpl::Close(AkFileDesc* in_pFileDesc)
 {
@@ -416,7 +413,7 @@ AkUInt32 FWwiseIOHookImpl::GetDeviceData()
 
 IWwiseStreamingManagerHooks* FWwiseIOHookImpl::GetStreamingHooks(const AkFileSystemFlags& InFileSystemFlag)
 {
-	IWwiseStreamableFileHandler* WwiseStreamableFileHandler = nullptr;
+	TSharedPtr<IWwiseStreamableFileHandler> WwiseStreamableFileHandler = nullptr;
 	if (InFileSystemFlag.uCompanyID == AKCOMPANYID_AUDIOKINETIC_EXTERNAL)
 	{
 		WwiseStreamableFileHandler = IWwiseExternalSourceManager::Get();

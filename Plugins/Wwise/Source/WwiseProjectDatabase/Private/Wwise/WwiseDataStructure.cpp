@@ -12,11 +12,12 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #include "Wwise/WwiseDataStructure.h"
 #include "Wwise/WwiseDirectoryVisitor.h"
+#include "Wwise/AdapterTypes/WwiseWrapperTypes.h"
 
 #include "Wwise/Metadata/WwiseMetadataAcousticTexture.h"
 #include "Wwise/Metadata/WwiseMetadataBus.h"
@@ -42,37 +43,23 @@ Copyright (c) 2024 Audiokinetic Inc.
 #include "Wwise/Metadata/WwiseMetadataSwitchGroup.h"
 #include "Wwise/Metadata/WwiseMetadataTrigger.h"
 
-#include "WwiseDefines.h"
-#include "WwiseUnrealDefines.h"
-
-#include "Async/Async.h"
-#if UE_5_0_OR_LATER
-#include "HAL/PlatformFileManager.h"
-#else
-#include "HAL/PlatformFilemanager.h"
-#endif
-#include "Misc/LocalTimestampDirectoryVisitor.h"
-#include "Misc/Paths.h"
-
-FWwiseDataStructure::FWwiseDataStructure(const FDirectoryPath& InDirectoryPath, const FName* InPlatform, const FGuid* InBasePlatformGuid)
+WwiseDataStructure::WwiseDataStructure(const WwiseDBString& InDirectoryPath, const WwiseDBString* InPlatform)
 {
-    if (InDirectoryPath.Path.IsEmpty())
+    if (InDirectoryPath.IsEmpty())
     {
         return;
     }
 
-    IPlatformFile& PlatformFile = FPlatformFileManager::Get().GetPlatformFile();
-    FWwiseDirectoryVisitor Visitor(PlatformFile, InPlatform, InBasePlatformGuid);
-    PlatformFile.IterateDirectory(*InDirectoryPath.Path, Visitor);
-    auto Directory = Visitor.Get();
-
+    IWwiseDirectoryVisitor<WwiseDirectoryVisitor> DirectoryVisitor(new WwiseDirectoryVisitor(InPlatform));
+    DirectoryVisitor.IterateDirectory(WwiseDBString(*InDirectoryPath));
+    auto Directory = DirectoryVisitor.Get();
     if (!Directory.IsValid())
     {
-        UE_LOG(LogWwiseProjectDatabase, Error, TEXT("Invalid Generated Directory %s"), *InDirectoryPath.Path);
+        WWISE_DB_LOG(Error, "Invalid Generated Directory %s", *InDirectoryPath);
         return;
     }
 
-    FString RequestedPlatformPath;
+    WwiseDBString RequestedPlatformPath;
     if (InPlatform)
     {
         const auto& ProjectInfoPlatforms = Directory.ProjectInfo->ProjectInfo->Platforms;
@@ -80,13 +67,14 @@ FWwiseDataStructure::FWwiseDataStructure(const FDirectoryPath& InDirectoryPath, 
         {
             if (Platform.Name == *InPlatform)
             {
-                FString PlatformPath = Platform.Path.ToString();
-
+                WwiseDBString PlatformPath = Platform.Path;
+                
+                RequestedPlatformPath = InDirectoryPath / Platform.Path;
+                RequestedPlatformPath.CollapseRelativeDirectories();
                 //If the platfrom path contains a drive, it means that the directory path and platform path are on different drives
-                if (FPaths::IsRelative(PlatformPath))
+                if (RequestedPlatformPath.IsRelative())
                 {
-                    RequestedPlatformPath = InDirectoryPath.Path / PlatformPath;
-                    FPaths::CollapseRelativeDirectories(RequestedPlatformPath);
+                    RequestedPlatformPath = InDirectoryPath / PlatformPath;
                 }
                 else
                 {
@@ -98,406 +86,446 @@ FWwiseDataStructure::FWwiseDataStructure(const FDirectoryPath& InDirectoryPath, 
 
     if (InPlatform)
     {
-	    if (Directory.Platforms.Num() == 0)
+	    if (Directory.Platforms.Size() == 0)
 	    {
-	        UE_LOG(LogWwiseProjectDatabase, Error, TEXT("Could not find platform %s in Generated Directory %s"), *InPlatform->ToString(), *RequestedPlatformPath);
+	        WWISE_DB_LOG(Error, "Could not find platform %s in Generated Directory %s", **InPlatform, *RequestedPlatformPath);
 	        return;
 	    }
 
-        UE_LOG(LogWwiseProjectDatabase, Verbose, TEXT("Parsing Wwise data structure for platform %s at: %s..."), *InPlatform->ToString(), *RequestedPlatformPath);
+        WWISE_DB_LOG(Verbose, "Parsing Wwise data structure for platform %s at: %s...", **InPlatform, *RequestedPlatformPath);
     }
     else
     {
-        UE_LOG(LogWwiseProjectDatabase, Verbose, TEXT("Parsing Wwise data structure at: %s..."), *InDirectoryPath.Path);
+        WWISE_DB_LOG(Verbose, "Parsing Wwise data structure at: %s...", *InDirectoryPath);
     }
 
 
-    LoadDataStructure(MoveTemp(Directory));
+    LoadDataStructure(std::move(Directory));
 }
 
-FWwiseDataStructure::~FWwiseDataStructure()
+WwiseDataStructure::~WwiseDataStructure()
 {
-    FWriteScopeLock ScopeLock(Lock);
 }
 
-void FWwiseDataStructure::LoadDataStructure(FWwiseGeneratedFiles&& Directory)
+void WwiseDataStructure::LoadDataStructure(WwiseGeneratedFiles&& Directory)
 {
-	SCOPED_WWISEPROJECTDATABASE_EVENT_2(TEXT("FWwiseDataStructure::LoadDataStructure"));
-	UE_LOG(LogWwiseProjectDatabase, VeryVerbose, TEXT("Starting load task"));
+	WWISE_DB_LOG(VeryVerbose, "Starting load task");
 
     // Create the file lists to be used in loading root files
-    TArray<FString> FileListForRoot;
+    WwiseDBArray<WwiseDBString> FileListForRoot;
     {
-        const FString ProjectInfoPath = Directory.GeneratedRootFiles.ProjectInfoFile.Get<0>();
+        const WwiseDBString ProjectInfoPath = Directory.GeneratedRootFiles.ProjectInfoFile.Get<0>();
         if (ProjectInfoPath.IsEmpty())
         {
-            UE_LOG(LogWwiseProjectDatabase, Error, TEXT("- Could not find project info"));
+            WWISE_DB_LOG(Error, "- Could not find project info");
         }
         else
         {
-            UE_LOG(LogWwiseProjectDatabase, VeryVerbose, TEXT("- Adding project info: %s"), *ProjectInfoPath);
+            WWISE_DB_LOG(VeryVerbose, "- Adding project info: %s", *ProjectInfoPath);
             FileListForRoot.Add(ProjectInfoPath);
         }
     }
 
-    TSharedFuture<FWwiseRootDataStructure*> RootFuture = Async(EAsyncExecution::TaskGraph, [this, &FileListForRoot, &Directory] {
-        UE_LOG(LogWwiseProjectDatabase, Verbose, TEXT("Loading Generated file contents for root"));
-        auto JsonFiles = FWwiseMetadataRootFile::LoadFiles(FileListForRoot);
+    WwiseDBSharedFuture<WwiseRootDataStructure*> RootFuture = WwiseAsyncShared([this, &FileListForRoot, &Directory] {
+        WWISE_DB_LOG(Verbose, "Loading Generated file contents for root");
+        auto JsonFiles = WwiseMetadataRootFile::LoadFiles(FileListForRoot);
 
-        UE_LOG(LogWwiseProjectDatabase, Verbose, TEXT("Parsing Generated file contents for root"));
-        auto RootDataStructure = new FWwiseRootDataStructure(MoveTemp(JsonFiles));
-        RootDataStructure->GeneratedRootFiles = MoveTemp(Directory.GeneratedRootFiles);
+        WWISE_DB_LOG(Verbose, "Parsing Generated file contents for root");
+        auto RootDataStructure = new WwiseRootDataStructure(std::move(JsonFiles));
+        RootDataStructure->GeneratedRootFiles = std::move(Directory.GeneratedRootFiles);
         return RootDataStructure;
-        }).Share();
+        });
 
-        // Create the file lists to be used in loading files per platform
-        TMap<FWwiseSharedPlatformId, TFuture<FWwisePlatformDataStructure*>> Futures;
-        for (const auto& Platform : Directory.Platforms)
+    for(auto& Platform : Directory.Platforms)
+    {
+        WwiseDBPair<const WwiseDBSharedPlatformId, WwiseGeneratedFiles::FPlatformFiles> Pair(Platform);
+        Platforms.Add(Pair.GetFirst(), WwisePlatformDataStructure());
+    }
+    // Create the file lists to be used in loading files per platform
+    WwiseParallelFor(Directory.Platforms, [this, &RootFuture, &Directory](const auto& Platform)
+    {
+        WwiseDBPair<const WwiseDBSharedPlatformId, WwiseGeneratedFiles::FPlatformFiles> Pair(Directory.Platforms(Platform));
+        WWISE_DB_LOG(VeryVerbose, "Loading platform files: %s", *Pair.GetFirst().GetPlatformName());
+        WwiseDBArray<WwiseDBString> FileList;
+        const WwiseDBSharedPlatformId& PlatformRef = Pair.GetFirst();
+        const WwiseGeneratedFiles::FPlatformFiles& Files = Pair.GetSecond();
+
+        // Add Platform and Plug-in files
+        const WwiseDBString PlatformInfoPath = Files.PlatformInfoFile.Get<0>();
         {
-            UE_LOG(LogWwiseProjectDatabase, VeryVerbose, TEXT("Loading platform files: %s"), *Platform.Key.GetPlatformName().ToString());
-            TArray<FString> FileList;
-            const FWwiseSharedPlatformId& PlatformRef = Platform.Key;
-            const FWwiseGeneratedFiles::FPlatformFiles& Files = Platform.Value;
-
-            // Add Platform and Plug-in files
-            const FString PlatformInfoPath = Files.PlatformInfoFile.Get<0>();
+            if (PlatformInfoPath.IsEmpty())
             {
-                if (UNLIKELY(PlatformInfoPath.IsEmpty()))
-                {
-                    UE_LOG(LogWwiseProjectDatabase, Error, TEXT("No PlatformInfo file for platform %s"), *PlatformRef.GetPlatformName().ToString());
-                    continue;
-                }
-                UE_LOG(LogWwiseProjectDatabase, VeryVerbose, TEXT("- Adding platform info: %s"), *PlatformInfoPath);
-                FileList.Add(PlatformInfoPath);
+                WWISE_DB_LOG(Error, "No PlatformInfo file for platform %s", *PlatformRef.GetPlatformName());
+                return;
             }
+            WWISE_DB_LOG(VeryVerbose, "- Adding platform info: %s", *PlatformInfoPath);
+            FileList.Add(PlatformInfoPath);
+        }
+        {
+            const WwiseDBString PluginInfoPath = Files.PluginInfoFile.Get<0>();
+            if (PluginInfoPath.IsEmpty())
             {
-                const FString PluginInfoPath = Files.PluginInfoFile.Get<0>();
-                if (UNLIKELY(PluginInfoPath.IsEmpty()))
-                {
-                    UE_LOG(LogWwiseProjectDatabase, Error, TEXT("No PluginInfo file for platform %s"), *PlatformRef.GetPlatformName().ToString());
-                    continue;
-                }
-                UE_LOG(LogWwiseProjectDatabase, VeryVerbose, TEXT("- Adding plugin info: %s"), *PluginInfoPath);
-                FileList.Add(PluginInfoPath);
+                WWISE_DB_LOG(Error, "No PluginInfo file for platform %s", *PlatformRef.GetPlatformName());
+                return;
             }
-
-            // Parse PlatformInfo file to detect settings
-            // (will be parsed twice. Now once, and officially later - since the file is small, it's not a big worry)
-            UE_LOG(LogWwiseProjectDatabase, VeryVerbose, TEXT("Pre-parsing platform info file for settings"));
-            auto PlatformInfoFile = FWwiseMetadataRootFile::LoadFile(PlatformInfoPath);
-            if (!PlatformInfoFile || !PlatformInfoFile->PlatformInfo)
-            {
-                UE_LOG(LogWwiseProjectDatabase, Error, TEXT("Could not read PlatformInfo for platform %s."), *PlatformRef.GetPlatformName().ToString());
-                continue;
-            }
-            const auto& Settings = PlatformInfoFile->PlatformInfo->Settings;
-            bool bIsValid = true;
-            if (!Settings.bCopyLooseStreamedMediaFiles)
-            {
-                bIsValid = false;
-                UE_LOG(LogWwiseProjectDatabase, Error, TEXT("Platform %s: Requires \"Copy Loose/Streamed Media\"."), *PlatformRef.GetPlatformName().ToString());
-            }
-            if (!Settings.bGenerateMetadataJSON)
-            {
-                bIsValid = false;
-                UE_LOG(LogWwiseProjectDatabase, Error, TEXT("Platform %s: Requires \"Generate JSON Metadata\"."), *PlatformRef.GetPlatformName().ToString());
-            }
-            if (Settings.bGenerateAllBanksMetadata && Settings.bGeneratePerBankMetadata)
-            {
-                UE_LOG(LogWwiseProjectDatabase, Log, TEXT("Platform %s: Having both \"Generate All Banks Metadata file\" and \"Generate Per Bank Metadata file\" will use the latter."), *PlatformRef.GetPlatformName().ToString());
-            }
-            else if (Settings.bGenerateAllBanksMetadata)
-            {
-                UE_LOG(LogWwiseProjectDatabase, Log, TEXT("Platform %s: Using \"Generate All Banks Metadata file\" is less efficient than Per Bank."), *PlatformRef.GetPlatformName().ToString());
-            }
-            else if (!Settings.bGeneratePerBankMetadata)
-            {
-                bIsValid = false;
-                UE_LOG(LogWwiseProjectDatabase, Error, TEXT("Platform %s: No metadata generated. Requires one of the \"Generate Metadata file\" option set."), *PlatformRef.GetPlatformName().ToString());
-            }
-            if (!Settings.bPrintObjectGuid)
-            {
-                bIsValid = false;
-                UE_LOG(LogWwiseProjectDatabase, Error, TEXT("Platform %s: Requires \"Object GUID\" Metadata."), *PlatformRef.GetPlatformName().ToString());
-            }
-            if (!Settings.bPrintObjectPath)
-            {
-                bIsValid = false;
-                UE_LOG(LogWwiseProjectDatabase, Error, TEXT("Platform %s: Requires \"Object Path\" Metadata."), *PlatformRef.GetPlatformName().ToString());
-            }
-            if (!Settings.bMaxAttenuationInfo)
-            {
-                bIsValid = false;
-                UE_LOG(LogWwiseProjectDatabase, Error, TEXT("Platform %s: Requires \"Max Attenuation\" Metadata."), *PlatformRef.GetPlatformName().ToString());
-            }
-            if (!Settings.bEstimatedDurationInfo)
-            {
-                bIsValid = false;
-                UE_LOG(LogWwiseProjectDatabase, Error, TEXT("Platform %s: Requires \"Estimated Duration\" Metadata."), *PlatformRef.GetPlatformName().ToString());
-            }
-            if (!bIsValid)
-            {
-                UE_LOG(LogWwiseProjectDatabase, Verbose, TEXT("Skipping platform"));
-                continue;
-            }
-
-            // Monolithic SoundBanksInfo or split files
-            if (Settings.bGeneratePerBankMetadata)
-            {
-                if (UNLIKELY(Files.MetadataFiles.Num() == 0))
-                {
-                    UE_LOG(LogWwiseProjectDatabase, Error, TEXT("Platform %s: Generated Per Bank metadata, but no metadata file found."), *PlatformRef.GetPlatformName().ToString());
-                    continue;
-                }
-
-                FileList.Reserve(FileList.Num() + Files.MetadataFiles.Num());
-                for (const auto& MetadataFile : Files.MetadataFiles)
-                {
-                    UE_LOG(LogWwiseProjectDatabase, VeryVerbose, TEXT("- Adding metadata file: %s"), *MetadataFile.Key);
-                    FileList.Add(MetadataFile.Key);
-                }
-            }
-            else if (!Files.SoundbanksInfoFile.Get<0>().IsEmpty())
-            {
-                UE_LOG(LogWwiseProjectDatabase, VeryVerbose, TEXT("- Adding monolithic SoundBanks info file: %s"), *Files.SoundbanksInfoFile.Get<0>());
-                FileList.Add(Files.SoundbanksInfoFile.Get<0>());
-            }
-            else
-            {
-                UE_LOG(LogWwiseProjectDatabase, Error, TEXT("Platform %s: Generated All Banks metadata, but SoundBanksInfo.json file not found."), *PlatformRef.GetPlatformName().ToString());
-                continue;
-            }
-
-            Futures.Add(Platform.Key, Async(EAsyncExecution::TaskGraph, [this, PlatformRef, RootFuture, FileList, &Directory] {
-                UE_LOG(LogWwiseProjectDatabase, Verbose, TEXT("Loading Generated file contents for platform %s"), *PlatformRef.GetPlatformName().ToString());
-                auto JsonFiles = FWwiseMetadataRootFile::LoadFiles(FileList);
-
-                auto PlatformData = new FWwisePlatformDataStructure(PlatformRef, *RootFuture.Get(), MoveTemp(JsonFiles));
-                PlatformData->GeneratedPlatformFiles = MoveTemp(Directory.Platforms[PlatformRef]);
-                return PlatformData;
-                }));
+            WWISE_DB_LOG(VeryVerbose, "- Adding plugin info: %s", *PluginInfoPath);
+            FileList.Add(PluginInfoPath);
         }
 
-        UE_LOG(LogWwiseProjectDatabase, VeryVerbose, TEXT("Finalizing parsing %d files"), Futures.Num());
-        for (const auto& Future : Futures)
+        // Parse PlatformInfo file to detect settings
+        // (will be parsed twice. Now once, and officially later - since the file is small, it's not a big worry)
+        WWISE_DB_LOG(VeryVerbose, "Pre-parsing platform info file for settings");
+        auto PlatformInfoFile = WwiseMetadataRootFile::LoadFile(WwiseDBString(PlatformInfoPath));
+        if (!PlatformInfoFile || !PlatformInfoFile->PlatformInfo)
         {
-            auto* Result = Future.Value.Get();
-            if (UNLIKELY(!Result))
-            {
-                UE_LOG(LogWwiseProjectDatabase, Error, TEXT("File parsing failed"));
-            }
-            else
-            {
-                Platforms.Add(Future.Key, MoveTemp(*Result));
-                delete Result;
-            }
+           WWISE_DB_LOG(Error, "Could not read PlatformInfo for platform %s.", *PlatformRef.GetPlatformName());
+           return;
         }
-        Futures.Empty();
+        const auto& Settings = PlatformInfoFile->PlatformInfo->Settings;
+        bool bIsValid = true;
+        if (!Settings.bCopyLooseStreamedMediaFiles)
+        {
+            bIsValid = false;
+            WWISE_DB_LOG(Error, "Platform %s: Requires \"Copy Loose/Streamed Media\".", *PlatformRef.GetPlatformName());
+        }
+        if (!Settings.bGenerateMetadataJSON)
+        {
+            bIsValid = false;
+            WWISE_DB_LOG(Error, "Platform %s: Requires \"Generate JSON Metadata\".", *PlatformRef.GetPlatformName());
+        }
+        if (Settings.bGenerateAllBanksMetadata && Settings.bGeneratePerBankMetadata)
+        {
+            WWISE_DB_LOG(Log, "Platform %s: Having both \"Generate All Banks Metadata file\" and \"Generate Per Bank Metadata file\" will use the latter.", *PlatformRef.GetPlatformName());
+        }
+        else if (Settings.bGenerateAllBanksMetadata)
+        {
+            WWISE_DB_LOG(Log, "Platform %s: Using \"Generate All Banks Metadata file\" is less efficient than Per Bank.", *PlatformRef.GetPlatformName());
+        }
+        else if (!Settings.bGeneratePerBankMetadata)
+        {
+            bIsValid = false;
+            WWISE_DB_LOG(Error, "Platform %s: No metadata generated. Requires one of the \"Generate Metadata file\" option set.", *PlatformRef.GetPlatformName());
+        }
+        if (!Settings.bPrintObjectGuid)
+        {
+            bIsValid = false;
+            WWISE_DB_LOG(Error, "Platform %s: Requires \"Object GUID\" Metadata.", *PlatformRef.GetPlatformName());
+        }
+        if (!Settings.bPrintObjectPath)
+        {
+            bIsValid = false;
+            WWISE_DB_LOG(Error, "Platform %s: Requires \"Object Path\" Metadata.", *PlatformRef.GetPlatformName());
+        }
+        if (!Settings.bMaxAttenuationInfo)
+        {
+            bIsValid = false;
+            WWISE_DB_LOG(Error, "Platform %s: Requires \"Max Attenuation\" Metadata.", *PlatformRef.GetPlatformName());
+        }
+        if (!Settings.bEstimatedDurationInfo)
+        {
+            bIsValid = false;
+            WWISE_DB_LOG(Error, "Platform %s: Requires \"Estimated Duration\" Metadata.", *PlatformRef.GetPlatformName());
+        }
+        if (!bIsValid)
+        {
+            WWISE_DB_LOG(Verbose, "Skipping platform");
+            return;
+        }
 
-        UE_LOG(LogWwiseProjectDatabase, VeryVerbose, TEXT("Finalizing parsing root"));
-        if (auto* Result = RootFuture.Get())
+        // Monolithic SoundBanksInfo or split files
+        if (Settings.bGeneratePerBankMetadata)
         {
-            // Will move result. Must have all other Futures done
-            RootData = MoveTemp(*Result);
-            delete Result;
+            if ((Files.MetadataFiles.Size() == 0))
+            {
+                WWISE_DB_LOG(Error, "Platform %s: Generated Per Bank metadata, but no metadata file found.", *PlatformRef.GetPlatformName());
+                return;
+            }
+
+            FileList.Reserve(FileList.Size() + Files.MetadataFiles.Size());
+            for (const auto& MetadataFile : Files.MetadataFiles)
+            {
+                WwiseDBPair<WwiseDBString, WwiseDateTime> MetadataPair(MetadataFile);
+                const auto Path = MetadataFile.Key.GetPath();
+                if (Path.Contains("/Bus/"_wwise_db) || Path.Contains("\\Bus\\"_wwise_db))
+                {
+                    WWISE_DB_LOG(VeryVerbose, "- Skipping bus metadata file: %s", *MetadataPair.GetFirst());
+                    continue;
+                }
+                WWISE_DB_LOG(VeryVerbose, "- Adding metadata file: %s", *MetadataPair.GetFirst());
+                FileList.Add(MetadataPair.GetFirst());
+            }
         }
+        else if (!Files.SoundbanksInfoFile.Get<0>().IsEmpty())
+        {
+            WWISE_DB_LOG(VeryVerbose, "- Adding monolithic SoundBanks info file: %s", *Files.SoundbanksInfoFile.Get<0>());
+            FileList.Add(Files.SoundbanksInfoFile.Get<0>());
+        }
+        else
+        {
+            WWISE_DB_LOG(Error, "Platform %s: Generated All Banks metadata, but SoundBanksInfo.json file not found.", *PlatformRef.GetPlatformName());
+            return;
+        }
+
+        WWISE_DB_LOG(Verbose, "Loading Generated file contents for platform %s", *PlatformRef.GetPlatformName());
+        auto JsonFiles = WwiseMetadataRootFile::LoadFiles(FileList);
+
+        auto PlatformData = WwisePlatformDataStructure(PlatformRef, *RootFuture.Get(), std::move(JsonFiles));
+        PlatformData.GeneratedPlatformFiles = Directory.Platforms[PlatformRef];
+        auto& PlatformDataRef = Platforms.FindChecked(PlatformRef);
+        PlatformDataRef += std::move(PlatformData);
+        PlatformDataRef.Platform = Pair.GetFirst();
+        PlatformDataRef.PlatformRef = PlatformData.PlatformRef;
+        PlatformDataRef.Guids = PlatformData.Guids;
+        PlatformDataRef.Names = PlatformData.Names;
+        PlatformDataRef.MediaUsageCount = PlatformData.MediaUsageCount;
+        PlatformDataRef.SoundBankUsageCount = PlatformData.SoundBankUsageCount;
+    });
+
+    WWISE_DB_LOG(VeryVerbose, "Finalizing parsing root");
+    if (auto* Result = RootFuture.Get())
+    {
+        // Will move result. Must have all other Futures done
+        RootData = std::move(*Result);
+        delete Result;
+    }
 }
 
 
-FWwiseRootDataStructure::FWwiseRootDataStructure(WwiseMetadataFileMap&& InJsonFiles) :
-    JsonFiles(MoveTemp(InJsonFiles))
+WwiseRootDataStructure::WwiseRootDataStructure(WwiseMetadataFileMap&& InJsonFiles) :
+    JsonFiles(std::move(InJsonFiles))
 {
-	SCOPED_WWISEPROJECTDATABASE_EVENT_2(TEXT("FWwiseRootDataStructure::FWwiseRootDataStructure"));
 	for (const auto& JsonFileKV : JsonFiles)
     {
-        const auto JsonFilePath = FName(JsonFileKV.Key);
-        if (JsonFileKV.Value)
+	    WwiseDBPair<WwiseDBString, WwiseMetadataSharedRootFilePtr> Pair(JsonFileKV);
+        const auto JsonFilePath = WwiseDBString(Pair.GetFirst());
+        if (Pair.GetSecond())
         {
-            const WwiseMetadataSharedRootFileConstPtr SharedRootFile = JsonFileKV.Value;
-            const FWwiseMetadataRootFile& RootFile = *SharedRootFile;
+            const WwiseMetadataSharedRootFilePtr& SharedRootFile = Pair.GetSecond();
 
-            if (RootFile.ProjectInfo)
+            if (SharedRootFile->ProjectInfo)
             {
-                const FWwiseMetadataProjectInfo& ProjectInfo = *RootFile.ProjectInfo;
+                const WwiseMetadataProjectInfo& ProjectInfo = *SharedRootFile->ProjectInfo;
 
                 // PlatformReferenceNames + PlatformReferenceGuids;
-                for (WwiseRefIndexType PlatformIndex = 0; PlatformIndex < ProjectInfo.Platforms.Num(); ++PlatformIndex)
+                for (WwiseRefIndexType PlatformIndex = 0; PlatformIndex < ProjectInfo.Platforms.Size(); ++PlatformIndex)
                 {
-                    const FWwiseMetadataPlatformReference& PlatformReference = ProjectInfo.Platforms[PlatformIndex];
-                    PlatformNames.Add(PlatformReference.Name, FWwiseRefPlatform(SharedRootFile, JsonFilePath, PlatformIndex));
-                    PlatformGuids.Add(PlatformReference.GUID, FWwiseRefPlatform(SharedRootFile, JsonFilePath, PlatformIndex));
-                    Platforms.Emplace(FWwiseSharedPlatformId(PlatformReference.GUID, PlatformReference.Name, PlatformReference.Path), nullptr);
+                    const WwiseMetadataPlatformReference& PlatformReference = ProjectInfo.Platforms[PlatformIndex];
+                    PlatformNames.Add(PlatformReference.Name, WwiseRefPlatform(SharedRootFile, JsonFilePath, PlatformIndex));
+                    PlatformGuids.Add(PlatformReference.GUID, WwiseRefPlatform(SharedRootFile, JsonFilePath, PlatformIndex));
+                    Platforms.Emplace(WwiseDBSharedPlatformId(PlatformReference.GUID, *PlatformReference.Name, *PlatformReference.Path));
                 }
 
                 // LanguageNames, LanguageIds, LanguageRefs
-                for (WwiseRefIndexType LanguageIndex = 0; LanguageIndex < ProjectInfo.Languages.Num(); ++LanguageIndex)
+                for (WwiseRefIndexType LanguageIndex = 0; LanguageIndex < ProjectInfo.Languages.Size(); ++LanguageIndex)
                 {
-                    const FWwiseMetadataLanguage& Language = ProjectInfo.Languages[LanguageIndex];
-                    LanguageNames.Add(Language.Name, FWwiseRefLanguage(SharedRootFile, JsonFilePath, LanguageIndex));
-                    LanguageIds.Add(Language.Id, FWwiseRefLanguage(SharedRootFile, JsonFilePath, LanguageIndex));
-                    Languages.Emplace(FWwiseSharedLanguageId(Language.Id, Language.Name, Language.bDefault ? EWwiseLanguageRequirement::IsDefault : EWwiseLanguageRequirement::IsOptional), nullptr);
+                    const WwiseMetadataLanguage& Language = ProjectInfo.Languages[LanguageIndex];
+                    LanguageNames.Add(Language.Name, WwiseRefLanguage(SharedRootFile, JsonFilePath, LanguageIndex));
+                    LanguageIds.Add(Language.Id, WwiseRefLanguage(SharedRootFile, JsonFilePath, LanguageIndex));
+                    Languages.Emplace(WwiseDBSharedLanguageId(Language.Id, *Language.Name, Language.bDefault ? WwiseDBLanguageRequirement::IsDefault : WwiseDBLanguageRequirement::IsOptional), nullptr);
                 }
             }
         }
     }
 }
 
-FWwisePlatformDataStructure::FWwisePlatformDataStructure() :
-    AcousticTextures(FWwiseRefAcousticTexture::FGlobalIdsMap::GlobalIdsMap),
-    AudioDevices(FWwiseRefAudioDevice::FGlobalIdsMap::GlobalIdsMap),
-    AuxBusses(FWwiseRefAuxBus::FGlobalIdsMap::GlobalIdsMap),
-    Busses(FWwiseRefBus::FGlobalIdsMap::GlobalIdsMap),
-    CustomPlugins(FWwiseRefCustomPlugin::FGlobalIdsMap::GlobalIdsMap),
-    DialogueArguments(FWwiseRefDialogueArgument::FGlobalIdsMap::GlobalIdsMap),
-    DialogueEvents(FWwiseRefDialogueEvent::FGlobalIdsMap::GlobalIdsMap),
-    Events(FWwiseRefEvent::FGlobalIdsMap::GlobalIdsMap),
-    ExternalSources(FWwiseRefExternalSource::FGlobalIdsMap::GlobalIdsMap),
-    GameParameters(FWwiseRefGameParameter::FGlobalIdsMap::GlobalIdsMap),
-    MediaFiles(FWwiseRefMedia::FGlobalIdsMap::GlobalIdsMap),
-    PluginLibs(FWwiseRefPluginLib::FGlobalIdsMap::GlobalIdsMap),
-    PluginShareSets(FWwiseRefPluginShareSet::FGlobalIdsMap::GlobalIdsMap),
-    SoundBanks(FWwiseRefSoundBank::FGlobalIdsMap::GlobalIdsMap),
-    States(FWwiseRefState::FGlobalIdsMap::GlobalIdsMap),
-    StateGroups(FWwiseRefStateGroup::FGlobalIdsMap::GlobalIdsMap),
-    Switches(FWwiseRefSwitch::FGlobalIdsMap::GlobalIdsMap),
-    SwitchGroups(FWwiseRefSwitchGroup::FGlobalIdsMap::GlobalIdsMap),
-    Triggers(FWwiseRefTrigger::FGlobalIdsMap::GlobalIdsMap)
+WwisePlatformDataStructure::WwisePlatformDataStructure() :
+    AcousticTextures(WwiseRefAcousticTexture::FGlobalIdsMap::GlobalIdsMap),
+    AudioDevices(WwiseRefAudioDevice::FGlobalIdsMap::GlobalIdsMap),
+    AuxBusses(WwiseRefAuxBus::FGlobalIdsMap::GlobalIdsMap),
+    Busses(WwiseRefBus::FGlobalIdsMap::GlobalIdsMap),
+    CustomPlugins(WwiseRefCustomPlugin::FGlobalIdsMap::GlobalIdsMap),
+    DialogueArguments(WwiseRefDialogueArgument::FGlobalIdsMap::GlobalIdsMap),
+    DialogueEvents(WwiseRefDialogueEvent::FGlobalIdsMap::GlobalIdsMap),
+    Events(WwiseRefEvent::FGlobalIdsMap::GlobalIdsMap),
+    ExternalSources(WwiseRefExternalSource::FGlobalIdsMap::GlobalIdsMap),
+    GameParameters(WwiseRefGameParameter::FGlobalIdsMap::GlobalIdsMap),
+    MediaFiles(WwiseRefMedia::FGlobalIdsMap::GlobalIdsMap),
+    PluginLibs(WwiseRefPluginLib::FGlobalIdsMap::GlobalIdsMap),
+    PluginShareSets(WwiseRefPluginShareSet::FGlobalIdsMap::GlobalIdsMap),
+    SoundBanks(WwiseRefSoundBank::FGlobalIdsMap::GlobalIdsMap),
+    States(WwiseRefState::FGlobalIdsMap::GlobalIdsMap),
+    StateGroups(WwiseRefStateGroup::FGlobalIdsMap::GlobalIdsMap),
+    Switches(WwiseRefSwitch::FGlobalIdsMap::GlobalIdsMap),
+    SwitchGroups(WwiseRefSwitchGroup::FGlobalIdsMap::GlobalIdsMap),
+    Triggers(WwiseRefTrigger::FGlobalIdsMap::GlobalIdsMap)
 {}
 
-FWwisePlatformDataStructure::FWwisePlatformDataStructure(const FWwiseSharedPlatformId& InPlatform, FWwiseRootDataStructure& InRootData, WwiseMetadataFileMap&& InJsonFiles) :
+WwisePlatformDataStructure::WwisePlatformDataStructure(const WwiseDBSharedPlatformId& InPlatform, WwiseRootDataStructure& InRootData, WwiseMetadataFileMap&& InJsonFiles) :
     Platform(InPlatform),
-    JsonFiles(MoveTemp(InJsonFiles)),
-    AcousticTextures(FWwiseRefAcousticTexture::FGlobalIdsMap::GlobalIdsMap),
-    AudioDevices(FWwiseRefAudioDevice::FGlobalIdsMap::GlobalIdsMap),
-    AuxBusses(FWwiseRefAuxBus::FGlobalIdsMap::GlobalIdsMap),
-    Busses(FWwiseRefBus::FGlobalIdsMap::GlobalIdsMap),
-    CustomPlugins(FWwiseRefCustomPlugin::FGlobalIdsMap::GlobalIdsMap),
-    DialogueArguments(FWwiseRefDialogueArgument::FGlobalIdsMap::GlobalIdsMap),
-    DialogueEvents(FWwiseRefDialogueEvent::FGlobalIdsMap::GlobalIdsMap),
-    Events(FWwiseRefEvent::FGlobalIdsMap::GlobalIdsMap),
-    ExternalSources(FWwiseRefExternalSource::FGlobalIdsMap::GlobalIdsMap),
-    GameParameters(FWwiseRefGameParameter::FGlobalIdsMap::GlobalIdsMap),
-    MediaFiles(FWwiseRefMedia::FGlobalIdsMap::GlobalIdsMap),
-    PluginLibs(FWwiseRefPluginLib::FGlobalIdsMap::GlobalIdsMap),
-    PluginShareSets(FWwiseRefPluginShareSet::FGlobalIdsMap::GlobalIdsMap),
-    SoundBanks(FWwiseRefSoundBank::FGlobalIdsMap::GlobalIdsMap),
-    States(FWwiseRefState::FGlobalIdsMap::GlobalIdsMap),
-    StateGroups(FWwiseRefStateGroup::FGlobalIdsMap::GlobalIdsMap),
-    Switches(FWwiseRefSwitch::FGlobalIdsMap::GlobalIdsMap),
-    SwitchGroups(FWwiseRefSwitchGroup::FGlobalIdsMap::GlobalIdsMap),
-    Triggers(FWwiseRefTrigger::FGlobalIdsMap::GlobalIdsMap)
+    JsonFiles(std::move(InJsonFiles)),
+    AcousticTextures(WwiseRefAcousticTexture::FGlobalIdsMap::GlobalIdsMap),
+    AudioDevices(WwiseRefAudioDevice::FGlobalIdsMap::GlobalIdsMap),
+    AuxBusses(WwiseRefAuxBus::FGlobalIdsMap::GlobalIdsMap),
+    Busses(WwiseRefBus::FGlobalIdsMap::GlobalIdsMap),
+    CustomPlugins(WwiseRefCustomPlugin::FGlobalIdsMap::GlobalIdsMap),
+    DialogueArguments(WwiseRefDialogueArgument::FGlobalIdsMap::GlobalIdsMap),
+    DialogueEvents(WwiseRefDialogueEvent::FGlobalIdsMap::GlobalIdsMap),
+    Events(WwiseRefEvent::FGlobalIdsMap::GlobalIdsMap),
+    ExternalSources(WwiseRefExternalSource::FGlobalIdsMap::GlobalIdsMap),
+    GameParameters(WwiseRefGameParameter::FGlobalIdsMap::GlobalIdsMap),
+    MediaFiles(WwiseRefMedia::FGlobalIdsMap::GlobalIdsMap),
+    PluginLibs(WwiseRefPluginLib::FGlobalIdsMap::GlobalIdsMap),
+    PluginShareSets(WwiseRefPluginShareSet::FGlobalIdsMap::GlobalIdsMap),
+    SoundBanks(WwiseRefSoundBank::FGlobalIdsMap::GlobalIdsMap),
+    States(WwiseRefState::FGlobalIdsMap::GlobalIdsMap),
+    StateGroups(WwiseRefStateGroup::FGlobalIdsMap::GlobalIdsMap),
+    Switches(WwiseRefSwitch::FGlobalIdsMap::GlobalIdsMap),
+    SwitchGroups(WwiseRefSwitchGroup::FGlobalIdsMap::GlobalIdsMap),
+    Triggers(WwiseRefTrigger::FGlobalIdsMap::GlobalIdsMap)
 {
-	SCOPED_WWISEPROJECTDATABASE_EVENT_2(TEXT("FWwisePlatformDataStructure::FWwisePlatformDataStructure"));
+    WwiseDBMap<MediaLanguageKey, WwiseOutsourcedRefMedia> OutsourcedRefMedias;
+
 	for (const auto& JsonFileKV : JsonFiles)
     {
-        const auto JsonFilePath = FName(JsonFileKV.Key);
-        if (JsonFileKV.Value)
+	    WwiseDBPair<WwiseDBString, WwiseMetadataSharedRootFilePtr> Pair(JsonFileKV);
+        const auto JsonFilePath = WwiseDBString(Pair.GetFirst());
+        if (Pair.GetSecond())
         {
-            const WwiseMetadataSharedRootFileConstPtr SharedRootFile = JsonFileKV.Value;
-            const FWwiseMetadataRootFile& RootFile = *SharedRootFile;
-
-            if (RootFile.PlatformInfo)
+            WwiseMetadataSharedRootFilePtr SharedRootFile = Pair.GetSecond();
+            if (SharedRootFile->PlatformInfo)
             {
                 // Platform have different information depending on its location.
                 // Project's Platform contains the Path, generator version, and Guid.
                 // PlatformInfo contains all the other information, including generation data.
                 // So we must merge one into the other.
-                const FWwiseMetadataPlatformInfo& PlatformInfo = *RootFile.PlatformInfo;
-                FWwiseRefPlatform NewPlatformRef(SharedRootFile, JsonFilePath);
+                const WwiseMetadataPlatformInfo& PlatformInfo = *SharedRootFile->PlatformInfo;
+                WwiseRefPlatform NewPlatformRef(SharedRootFile, JsonFilePath);
 
                 const auto& PlatformName = PlatformInfo.Platform.Name;
 
                 // Update PlatformNames
-                FWwiseRefPlatform* RootPlatformByName = InRootData.PlatformNames.Find(PlatformName);
-                if (UNLIKELY(!RootPlatformByName))
+                WwiseRefPlatform* RootPlatformByName = InRootData.PlatformNames.Find(PlatformName);
+                if ((!RootPlatformByName))
                 {
-                    UE_LOG(LogWwiseProjectDatabase, Error, TEXT("Could not find platform %s in ProjectInfo"), *PlatformName.ToString());
+                    WWISE_DB_LOG(Error, "Could not find platform %s in ProjectInfo", *PlatformName);
                     continue;
                 }
-                RootPlatformByName->Merge(MoveTemp(NewPlatformRef));
+                RootPlatformByName->Merge(std::move(NewPlatformRef));
 
                 // Update PlatformGUID
                 const auto* PlatformReference = RootPlatformByName->GetPlatformReference();
-                check(PlatformReference);
-                const auto& Guid = PlatformReference->GUID;
-                FWwiseRefPlatform* RootPlatformByGuid = InRootData.PlatformGuids.Find(Guid);
-                if (UNLIKELY(!RootPlatformByGuid))
+                if(PlatformReference == nullptr)
                 {
-                    UE_LOG(LogWwiseProjectDatabase, Error, TEXT("Could not find platform %s guid %s in ProjectInfo"), *PlatformName.ToString(), *Guid.ToString());
+                    continue;
+                }
+                const auto& Guid = PlatformReference->GUID;
+                WwiseRefPlatform* RootPlatformByGuid = InRootData.PlatformGuids.Find(Guid);
+                if ((!RootPlatformByGuid))
+                {
+                    WWISE_DB_LOG(Error, "Could not find platform %s guid %s in ProjectInfo", *PlatformName, *Guid.ToString());
                     continue;
                 }
                 *RootPlatformByGuid = *RootPlatformByName;
                 PlatformRef = *RootPlatformByName;
             }
 
-            if (RootFile.PluginInfo)
+            if (SharedRootFile->PluginInfo)
             {
-                const FWwiseMetadataPluginInfo& PluginInfo = *RootFile.PluginInfo;
+                const WwiseMetadataPluginInfo& PluginInfo = *SharedRootFile->PluginInfo;
 
                 // PluginLibNames + PluginLibIDs
-                for (WwiseRefIndexType PluginLibIndex = 0; PluginLibIndex < PluginInfo.PluginLibs.Num(); ++PluginLibIndex)
+                for (WwiseRefIndexType PluginLibIndex = 0; PluginLibIndex < PluginInfo.PluginLibs.Size(); ++PluginLibIndex)
                 {
-                    const FWwiseMetadataPluginLib& PluginLib = PluginInfo.PluginLibs[PluginLibIndex];
-                    const auto& PluginRef = FWwiseRefPluginLib(SharedRootFile, JsonFilePath, PluginLibIndex);
+                    const WwiseMetadataPluginLib& PluginLib = PluginInfo.PluginLibs[PluginLibIndex];
+                    const auto& PluginRef = WwiseRefPluginLib(SharedRootFile, JsonFilePath, PluginLibIndex);
                     AddRefToMap(PluginLibs, PluginRef, PluginLib.LibId, &PluginLib.LibName, nullptr, nullptr);
                     PluginLibNames.Add(PluginLib.LibName, PluginRef);
                 }
             }
 
-            if (RootFile.ProjectInfo)
+            if (SharedRootFile->ProjectInfo)
             {
-                const FWwiseMetadataProjectInfo& ProjectInfo = *RootFile.ProjectInfo;
-                // Should be loaded in FWwiseRootDataStructure
+                const WwiseMetadataProjectInfo& ProjectInfo = *SharedRootFile->ProjectInfo;
+                // Should be loaded in WwiseRootDataStructure
             }
 
-            if (RootFile.SoundBanksInfo)
+            if (SharedRootFile->SoundBanksInfo)
             {
-                const FWwiseMetadataSoundBanksInfo& SoundBanksInfo = *RootFile.SoundBanksInfo;
+                const WwiseMetadataSoundBanksInfo& SoundBanksInfo = *SharedRootFile->SoundBanksInfo;
 
                 // SoundBanks
-                for (WwiseRefIndexType SoundBankIndex = 0; SoundBankIndex < SoundBanksInfo.SoundBanks.Num(); ++SoundBankIndex)
+                for (WwiseRefIndexType SoundBankIndex = 0; SoundBankIndex < SoundBanksInfo.SoundBanks.Size(); ++SoundBankIndex)
                 {
-                    const FWwiseMetadataSoundBank& SoundBank = SoundBanksInfo.SoundBanks[SoundBankIndex];
-                    const uint32 LanguageId = InRootData.GetLanguageId(SoundBank.Language);
-                    AddRefToMap(SoundBanks, FWwiseRefSoundBank(SharedRootFile, JsonFilePath, SoundBankIndex, LanguageId), SoundBank.Id, &SoundBank.ShortName, &SoundBank.ObjectPath, &SoundBank.GUID);
-
+                    const WwiseMetadataSoundBank& SoundBank = SoundBanksInfo.SoundBanks[SoundBankIndex];
+                    const WwiseDBShortId LanguageId = InRootData.GetLanguageId(SoundBank.Language);
+                    AddRefToMap(SoundBanks, WwiseRefSoundBank(SharedRootFile, JsonFilePath, SoundBankIndex, LanguageId), SoundBank.Id, &SoundBank.ShortName, &SoundBank.ObjectPath, &SoundBank.GUID);
+                    
                     // Media
-                    for (WwiseRefIndexType MediaIndex = 0; MediaIndex < SoundBank.Media.Num(); ++MediaIndex)
+                    for (WwiseRefIndexType MediaIndex = 0; MediaIndex < SoundBank.Media.Size(); ++MediaIndex)
                     {
-                        const FWwiseMetadataMedia& File = SoundBank.Media[MediaIndex];
-                        MediaFiles.Add(FWwiseDatabaseMediaIdKey(File.Id, SoundBank.Id),
-                            FWwiseRefMedia(SharedRootFile, JsonFilePath, SoundBankIndex, LanguageId, MediaIndex));
+                        const WwiseMetadataMedia& File = SoundBank.Media[MediaIndex];
+                        MediaFiles.Add(WwiseDatabaseLocalizableIdKey(File.Id, LanguageId, SoundBank.Id),
+                            WwiseRefMedia(SharedRootFile, JsonFilePath, SoundBankIndex, LanguageId, MediaIndex));
+
+                        // Keep track of who own the media in order to be able to add a ref count when necessary due to the OtherBank Location
+                        WwiseOutsourcedRefMedia outsourcedRefMedia;
+                        MediaLanguageKey mediaLanguageKey = MediaLanguageKey(File.Id, LanguageId);
+                        if (OutsourcedRefMedias.Find(mediaLanguageKey))
+                        {
+                            outsourcedRefMedia = *OutsourcedRefMedias.Find(mediaLanguageKey);
+                        }
+                        else
+                        {
+                            outsourcedRefMedia = WwiseOutsourcedRefMedia();
+                        }
+                        
+                        if (File.Location == WwiseMetadataMediaLocation::OtherBank)
+                        {
+                            outsourcedRefMedia.ReferenceCount += 1;
+                        }
+                        else
+                        {
+                            outsourcedRefMedia.SoundBankLocalizableIdKeys.Add(WwiseDatabaseLocalizableIdKey(SoundBank.Id,LanguageId));
+                        }
+                        OutsourcedRefMedias.AddOrReplace(mediaLanguageKey, outsourcedRefMedia);
+                        
+
+                        if (File.Location != WwiseMetadataMediaLocation::OtherBank)
+                        {
+                            if (auto* LanguagesPtr = MediaLanguageList.Find(File.Id))
+                            {
+                                LanguagesPtr->Add(LanguageId);
+                            }
+                            else
+                            {
+                                MediaLanguageSet LanguageSet;
+                                LanguageSet.Add(LanguageId);
+                                MediaLanguageList.Add(File.Id, std::move(LanguageSet));
+                            }
+                        }
                     }
 
                     // DialogueEvents
-                    for (WwiseRefIndexType DialogueEventIndex = 0; DialogueEventIndex < SoundBank.DialogueEvents.Num(); ++DialogueEventIndex)
+                    for (WwiseRefIndexType DialogueEventIndex = 0; DialogueEventIndex < SoundBank.DialogueEvents.Size(); ++DialogueEventIndex)
                     {
-                        const FWwiseMetadataDialogueEvent& DialogueEvent = SoundBank.DialogueEvents[DialogueEventIndex];
-                        AddBasicRefToMap(DialogueEvents, FWwiseRefDialogueEvent(SharedRootFile, JsonFilePath, SoundBankIndex, LanguageId, DialogueEventIndex), DialogueEvent);
+                        const WwiseMetadataDialogueEvent& DialogueEvent = SoundBank.DialogueEvents[DialogueEventIndex];
+                        AddBasicRefToMap(DialogueEvents, WwiseRefDialogueEvent(SharedRootFile, JsonFilePath, SoundBankIndex, LanguageId, DialogueEventIndex), DialogueEvent);
 
                         // DialogueArguments
-                        for (WwiseRefIndexType DialogueArgumentIndex = 0; DialogueArgumentIndex < DialogueEvent.Arguments.Num(); ++DialogueArgumentIndex)
+                        for (WwiseRefIndexType DialogueArgumentIndex = 0; DialogueArgumentIndex < DialogueEvent.Arguments.Size(); ++DialogueArgumentIndex)
                         {
-                            const FWwiseMetadataDialogueArgument& DialogueArgument = DialogueEvent.Arguments[DialogueArgumentIndex];
-                            AddBasicRefToMap(DialogueArguments, FWwiseRefDialogueArgument(SharedRootFile, JsonFilePath, SoundBankIndex, LanguageId, DialogueEventIndex, DialogueArgumentIndex), DialogueArgument);
+                            const WwiseMetadataDialogueArgument& DialogueArgument = DialogueEvent.Arguments[DialogueArgumentIndex];
+                            AddBasicRefToMap(DialogueArguments, WwiseRefDialogueArgument(SharedRootFile, JsonFilePath, SoundBankIndex, LanguageId, DialogueEventIndex, DialogueArgumentIndex), DialogueArgument);
                         }
                     }
 
                     // We have multiple copies of the Busses. We currently want the Init Bank version.
                     if (SoundBank.IsInitBank())
                     {
-	                    // Busses
-	                    for (WwiseRefIndexType BusIndex = 0; BusIndex < SoundBank.Busses.Num(); ++BusIndex)
+                        AddSoundBankCount(SoundBank.Id, LanguageId);
+
+                        // Busses
+	                    for (WwiseRefIndexType BusIndex = 0; BusIndex < SoundBank.Busses.Size(); ++BusIndex)
 	                    {
-	                        const FWwiseMetadataBus& Bus = SoundBank.Busses[BusIndex];
-	                        AddBasicRefToMap(Busses, FWwiseRefBus(SharedRootFile, JsonFilePath, SoundBankIndex, LanguageId, BusIndex), Bus);
+	                        const WwiseMetadataBus& Bus = SoundBank.Busses[BusIndex];
+	                        AddBasicRefToMap(Busses, WwiseRefBus(SharedRootFile, JsonFilePath, SoundBankIndex, LanguageId, BusIndex), Bus);
 	                    }
 
 	                    // AuxBusses
-	                    for (WwiseRefIndexType AuxBusIndex = 0; AuxBusIndex < SoundBank.AuxBusses.Num(); ++AuxBusIndex)
+	                    for (WwiseRefIndexType AuxBusIndex = 0; AuxBusIndex < SoundBank.AuxBusses.Size(); ++AuxBusIndex)
 	                    {
-	                        const FWwiseMetadataBus& AuxBus = SoundBank.AuxBusses[AuxBusIndex];
-	                        AddBasicRefToMap(AuxBusses, FWwiseRefAuxBus(SharedRootFile, JsonFilePath, SoundBankIndex, LanguageId, AuxBusIndex), AuxBus);
+	                        const WwiseMetadataBus& AuxBus = SoundBank.AuxBusses[AuxBusIndex];
+	                        AddBasicRefToMap(AuxBusses, WwiseRefAuxBus(SharedRootFile, JsonFilePath, SoundBankIndex, LanguageId, AuxBusIndex), AuxBus);
 	                    }
                     }
 
@@ -507,48 +535,53 @@ FWwisePlatformDataStructure::FWwisePlatformDataStructure(const FWwiseSharedPlatf
                         const auto& Plugins = *SoundBank.Plugins;
 
                         // CustomPlugins
-                        for (WwiseRefIndexType CustomPluginIndex = 0; CustomPluginIndex < Plugins.Custom.Num(); ++CustomPluginIndex)
+                        for (WwiseRefIndexType CustomPluginIndex = 0; CustomPluginIndex < Plugins.Custom.Size(); ++CustomPluginIndex)
                         {
-                            const FWwiseMetadataPlugin& CustomPlugin = Plugins.Custom[CustomPluginIndex];
-                            AddBasicRefToMap(CustomPlugins, FWwiseRefCustomPlugin(SharedRootFile, JsonFilePath, SoundBankIndex, LanguageId, CustomPluginIndex), CustomPlugin);
+                            const WwiseMetadataPlugin& CustomPlugin = Plugins.Custom[CustomPluginIndex];
+                            AddBasicRefToMap(CustomPlugins, WwiseRefCustomPlugin(SharedRootFile, JsonFilePath, SoundBankIndex, LanguageId, CustomPluginIndex), CustomPlugin);
+	                        AddMediaRefsCount(CustomPlugin.MediaRefs);
                         }
 
                         // PluginShareSets
-                        for (WwiseRefIndexType PluginShareSetIndex = 0; PluginShareSetIndex < Plugins.ShareSets.Num(); ++PluginShareSetIndex)
+                        for (WwiseRefIndexType PluginShareSetIndex = 0; PluginShareSetIndex < Plugins.ShareSets.Size(); ++PluginShareSetIndex)
                         {
-                            const FWwiseMetadataPlugin& PluginShareSet = Plugins.ShareSets[PluginShareSetIndex];
-                            AddBasicRefToMap(PluginShareSets, FWwiseRefPluginShareSet(SharedRootFile, JsonFilePath, SoundBankIndex, LanguageId, PluginShareSetIndex), PluginShareSet);
+                            const WwiseMetadataPlugin& PluginShareSet = Plugins.ShareSets[PluginShareSetIndex];
+                            AddBasicRefToMap(PluginShareSets, WwiseRefPluginShareSet(SharedRootFile, JsonFilePath, SoundBankIndex, LanguageId, PluginShareSetIndex), PluginShareSet);
+	                        AddMediaRefsCount(PluginShareSet.MediaRefs);
                         }
 
                         // AudioDevices
-                        for (WwiseRefIndexType AudioDeviceIndex = 0; AudioDeviceIndex < Plugins.AudioDevices.Num(); ++AudioDeviceIndex)
+                        for (WwiseRefIndexType AudioDeviceIndex = 0; AudioDeviceIndex < Plugins.AudioDevices.Size(); ++AudioDeviceIndex)
                         {
-                            const FWwiseMetadataPlugin& AudioDevice = Plugins.AudioDevices[AudioDeviceIndex];
-                            AddBasicRefToMap(AudioDevices, FWwiseRefAudioDevice(SharedRootFile, JsonFilePath, SoundBankIndex, LanguageId, AudioDeviceIndex), AudioDevice);
+                            const WwiseMetadataPlugin& AudioDevice = Plugins.AudioDevices[AudioDeviceIndex];
+                            AddBasicRefToMap(AudioDevices, WwiseRefAudioDevice(SharedRootFile, JsonFilePath, SoundBankIndex, LanguageId, AudioDeviceIndex), AudioDevice);
+	                        AddMediaRefsCount(AudioDevice.MediaRefs);
                         }
                     }
 
                     // Events
-                    for (WwiseRefIndexType EventIndex = 0; EventIndex < SoundBank.Events.Num(); ++EventIndex)
+                    for (WwiseRefIndexType EventIndex = 0; EventIndex < SoundBank.Events.Size(); ++EventIndex)
                     {
-                        const FWwiseMetadataEvent& Event = SoundBank.Events[EventIndex];
-                        AddEventRefToMap(Events, FWwiseRefEvent(SharedRootFile, JsonFilePath, SoundBankIndex, LanguageId, EventIndex), Event);
+                        const WwiseMetadataEvent& Event = SoundBank.Events[EventIndex];
+                        AddEventRefToMap(Events, WwiseRefEvent(SharedRootFile, JsonFilePath, SoundBankIndex, LanguageId, EventIndex), Event);
+                        AddMediaRefsCount(Event.MediaRefs);
+                        AddSoundBankCount(SoundBank.Id, LanguageId);
 
                         // Switch Containers
-                        TArray<WwiseRefIndexType> ContainerIndex;
+                        WwiseDBArray<WwiseRefIndexType> ContainerIndex;
                         ContainerIndex.Add(0);
                         while (true)
                         {
-                            if (ContainerIndex.Num() == 0)
+                            if (ContainerIndex.Size() == 0)
                             {
                                 // Fully done
                                 break;
                             }
 
                             // Retrieve Container
-                            const FWwiseMetadataSwitchContainer* Container = nullptr;
+                            const WwiseMetadataSwitchContainer* Container = nullptr;
                             const auto* ContainerArray = &Event.SwitchContainers;
-                            for (WwiseRefIndexType ContainerLevel = 0; ContainerLevel < ContainerIndex.Num() && ContainerArray; ++ContainerLevel)
+                            for (WwiseRefIndexType ContainerLevel = 0; ContainerLevel < ContainerIndex.Size() && ContainerArray; ++ContainerLevel)
                             {
                                 WwiseRefIndexType CurrentIndex = ContainerIndex[ContainerLevel];
                                 if (!ContainerArray->IsValidIndex(CurrentIndex))
@@ -560,6 +593,8 @@ FWwisePlatformDataStructure::FWwisePlatformDataStructure(const FWwiseSharedPlatf
                                 }
                                 Container = &(*ContainerArray)[CurrentIndex];
                                 ContainerArray = &Container->Children;
+
+                                AddMediaRefsCount(Container->MediaRefs);
                             }
 
                             if (Container == nullptr)
@@ -567,20 +602,20 @@ FWwisePlatformDataStructure::FWwisePlatformDataStructure(const FWwiseSharedPlatf
                                 // Done this level
                                 ContainerIndex.Pop();
 
-                                if (ContainerIndex.Num() > 0)
+                                if (ContainerIndex.Size() > 0)
                                 {
-                                    ++ContainerIndex[ContainerIndex.Num() - 1];
+                                    ++ContainerIndex[ContainerIndex.Size() - 1];
                                 }
                                 continue;
                             }
 
-                            if (Container->MediaRefs.Num() > 0 || Container->ExternalSourceRefs.Num() >0 || Container->PluginRefs != nullptr)
+                            if (Container->MediaRefs.Size() > 0 || Container->ExternalSourceRefs.Size() >0 || Container->PluginRefs != nullptr)
                             {
-                                const auto& Ref = FWwiseRefSwitchContainer(SharedRootFile, JsonFilePath, SoundBankIndex, LanguageId, EventIndex, ContainerIndex);
-                                SwitchContainersByEvent.Add(FWwiseDatabaseLocalizableIdKey(Event.Id, LanguageId), Ref);
+                                const auto& Ref = WwiseRefSwitchContainer(SharedRootFile, JsonFilePath, SoundBankIndex, LanguageId, EventIndex, ContainerIndex);
+                                SwitchContainersByEvent.Add(WwiseDatabaseLocalizableIdKey(Event.Id, LanguageId), Ref);
                             }
 
-                            if (ContainerArray->Num() > 0)
+                            if (ContainerArray->Size() > 0)
                             {
                                 // There are children. Add one sublevel
                                 ContainerIndex.Add(0);
@@ -588,254 +623,311 @@ FWwisePlatformDataStructure::FWwisePlatformDataStructure(const FWwiseSharedPlatf
                             else
                             {
                                 // No children. Next.
-                                ++ContainerIndex[ContainerIndex.Num() - 1];
+                                ++ContainerIndex[ContainerIndex.Size() - 1];
                             }
                         }
                     }
 
                     // ExternalSources
-                    for (WwiseRefIndexType ExternalSourceIndex = 0; ExternalSourceIndex < SoundBank.ExternalSources.Num(); ++ExternalSourceIndex)
+                    for (WwiseRefIndexType ExternalSourceIndex = 0; ExternalSourceIndex < SoundBank.ExternalSources.Size(); ++ExternalSourceIndex)
                     {
-                        const FWwiseMetadataExternalSource& ExternalSource = SoundBank.ExternalSources[ExternalSourceIndex];
-                        AddRefToMap(ExternalSources, FWwiseRefExternalSource(SharedRootFile, JsonFilePath, SoundBankIndex, LanguageId, ExternalSourceIndex), ExternalSource.Cookie, &ExternalSource.Name, &ExternalSource.ObjectPath, &ExternalSource.GUID);
+                        const WwiseMetadataExternalSource& ExternalSource = SoundBank.ExternalSources[ExternalSourceIndex];
+                        AddRefToMap(ExternalSources, WwiseRefExternalSource(SharedRootFile, JsonFilePath, SoundBankIndex, LanguageId, ExternalSourceIndex), ExternalSource.Cookie, &ExternalSource.Name, &ExternalSource.ObjectPath, &ExternalSource.GUID);
                     }
 
                     // AcousticTextures
-                    for (WwiseRefIndexType AcousticTextureIndex = 0; AcousticTextureIndex < SoundBank.AcousticTextures.Num(); ++AcousticTextureIndex)
+                    for (WwiseRefIndexType AcousticTextureIndex = 0; AcousticTextureIndex < SoundBank.AcousticTextures.Size(); ++AcousticTextureIndex)
                     {
-                        const FWwiseMetadataAcousticTexture& AcousticTexture = SoundBank.AcousticTextures[AcousticTextureIndex];
-                        AddBasicRefToMap(AcousticTextures, FWwiseRefAcousticTexture(SharedRootFile, JsonFilePath, SoundBankIndex, LanguageId, AcousticTextureIndex), AcousticTexture);
+                        const WwiseMetadataAcousticTexture& AcousticTexture = SoundBank.AcousticTextures[AcousticTextureIndex];
+                        AddBasicRefToMap(AcousticTextures, WwiseRefAcousticTexture(SharedRootFile, JsonFilePath, SoundBankIndex, LanguageId, AcousticTextureIndex), AcousticTexture);
                     }
 
                     // GameParameters
-                    for (WwiseRefIndexType GameParameterIndex = 0; GameParameterIndex < SoundBank.GameParameters.Num(); ++GameParameterIndex)
+                    for (WwiseRefIndexType GameParameterIndex = 0; GameParameterIndex < SoundBank.GameParameters.Size(); ++GameParameterIndex)
                     {
-                        const FWwiseMetadataGameParameter& GameParameter = SoundBank.GameParameters[GameParameterIndex];
-                        AddBasicRefToMap(GameParameters, FWwiseRefGameParameter(SharedRootFile, JsonFilePath, SoundBankIndex, LanguageId, GameParameterIndex), GameParameter);
+                        const WwiseMetadataGameParameter& GameParameter = SoundBank.GameParameters[GameParameterIndex];
+                        AddBasicRefToMap(GameParameters, WwiseRefGameParameter(SharedRootFile, JsonFilePath, SoundBankIndex, LanguageId, GameParameterIndex), GameParameter);
                     }
 
                     // StateGroups
-                    for (WwiseRefIndexType StateGroupIndex = 0; StateGroupIndex < SoundBank.StateGroups.Num(); ++StateGroupIndex)
+                    for (WwiseRefIndexType StateGroupIndex = 0; StateGroupIndex < SoundBank.StateGroups.Size(); ++StateGroupIndex)
                     {
-                        const FWwiseMetadataStateGroup& StateGroup = SoundBank.StateGroups[StateGroupIndex];
-                        AddBasicRefToMap(StateGroups, FWwiseRefStateGroup(SharedRootFile, JsonFilePath, SoundBankIndex, LanguageId, StateGroupIndex), StateGroup);
+                        const WwiseMetadataStateGroup& StateGroup = SoundBank.StateGroups[StateGroupIndex];
+                        AddBasicRefToMap(StateGroups, WwiseRefStateGroup(SharedRootFile, JsonFilePath, SoundBankIndex, LanguageId, StateGroupIndex), StateGroup);
                         
                         // States
-                        for (WwiseRefIndexType StateIndex = 0; StateIndex < StateGroup.States.Num(); ++StateIndex)
+                        for (WwiseRefIndexType StateIndex = 0; StateIndex < StateGroup.States.Size(); ++StateIndex)
                         {
-                            const FWwiseMetadataState& State = StateGroup.States[StateIndex];
-                            const FWwiseRefState StateRef(SharedRootFile, JsonFilePath, SoundBankIndex, LanguageId, StateGroupIndex, StateIndex);
-                            const FWwiseAnyRef AnyRef = FWwiseAnyRef::Create(StateRef);
-                            States.Add(FWwiseDatabaseLocalizableGroupValueKey(StateGroup.Id, State.Id, LanguageId), StateRef);
-                            if (State.GUID != FGuid()) Guids.Add(FWwiseDatabaseLocalizableGuidKey(State.GUID, LanguageId), AnyRef);
-                            if (!State.Name.IsNone()) Names.Add(FWwiseDatabaseLocalizableNameKey(State.Name, LanguageId), AnyRef);
-                            if (!State.ObjectPath.IsNone()) Names.Add(FWwiseDatabaseLocalizableNameKey(State.ObjectPath, LanguageId), AnyRef);
+                            const WwiseMetadataState& State = StateGroup.States[StateIndex];
+                            const WwiseRefState StateRef(SharedRootFile, JsonFilePath, SoundBankIndex, LanguageId, StateGroupIndex, StateIndex);
+                            const WwiseAnyRef AnyRef = WwiseAnyRef::Create(StateRef);
+                            States.Add(WwiseDatabaseLocalizableGroupValueKey(StateGroup.Id, State.Id, LanguageId), StateRef);
+                            if (State.GUID != WwiseDBGuid()) Guids.Add(WwiseDatabaseLocalizableGuidKey(State.GUID, LanguageId), AnyRef);
+                            if (!State.Name.IsEmpty()) Names.Add(WwiseDatabaseLocalizableNameKey(State.Name, LanguageId), AnyRef);
+                            if (!State.ObjectPath.IsEmpty()) Names.Add(WwiseDatabaseLocalizableNameKey(State.ObjectPath, LanguageId), AnyRef);
                         }
                     }
 
                     // SwitchGroups
-                    for (WwiseRefIndexType SwitchGroupIndex = 0; SwitchGroupIndex < SoundBank.SwitchGroups.Num(); ++SwitchGroupIndex)
+                    for (WwiseRefIndexType SwitchGroupIndex = 0; SwitchGroupIndex < SoundBank.SwitchGroups.Size(); ++SwitchGroupIndex)
                     {
-                        const FWwiseMetadataSwitchGroup& SwitchGroup = SoundBank.SwitchGroups[SwitchGroupIndex];
-                        AddBasicRefToMap(SwitchGroups, FWwiseRefSwitchGroup(SharedRootFile, JsonFilePath, SoundBankIndex, LanguageId, SwitchGroupIndex), SwitchGroup);
+                        const WwiseMetadataSwitchGroup& SwitchGroup = SoundBank.SwitchGroups[SwitchGroupIndex];
+                        AddBasicRefToMap(SwitchGroups, WwiseRefSwitchGroup(SharedRootFile, JsonFilePath, SoundBankIndex, LanguageId, SwitchGroupIndex), SwitchGroup);
 
                         // Switches
-                        for (WwiseRefIndexType SwitchIndex = 0; SwitchIndex < SwitchGroup.Switches.Num(); ++SwitchIndex)
+                        for (WwiseRefIndexType SwitchIndex = 0; SwitchIndex < SwitchGroup.Switches.Size(); ++SwitchIndex)
                         {
-                            const FWwiseMetadataSwitch& Switch = SwitchGroup.Switches[SwitchIndex];
-                            const FWwiseRefSwitch SwitchRef(SharedRootFile, JsonFilePath, SoundBankIndex, LanguageId, SwitchGroupIndex, SwitchIndex);
-                            const FWwiseAnyRef AnyRef = FWwiseAnyRef::Create(SwitchRef);
-                            Switches.Add(FWwiseDatabaseLocalizableGroupValueKey(SwitchGroup.Id, Switch.Id, LanguageId), SwitchRef);
-                            if (Switch.GUID != FGuid()) Guids.Add(FWwiseDatabaseLocalizableGuidKey(Switch.GUID, LanguageId), AnyRef);
-                            if (!Switch.Name.IsNone()) Names.Add(FWwiseDatabaseLocalizableNameKey(Switch.Name, LanguageId), AnyRef);
-                            if (!Switch.ObjectPath.IsNone()) Names.Add(FWwiseDatabaseLocalizableNameKey(Switch.ObjectPath, LanguageId), AnyRef);
+                            const WwiseMetadataSwitch& Switch = SwitchGroup.Switches[SwitchIndex];
+                            const WwiseRefSwitch SwitchRef(SharedRootFile, JsonFilePath, SoundBankIndex, LanguageId, SwitchGroupIndex, SwitchIndex);
+                            const WwiseAnyRef AnyRef = WwiseAnyRef::Create(SwitchRef);
+                            Switches.Add(WwiseDatabaseLocalizableGroupValueKey(SwitchGroup.Id, Switch.Id, LanguageId), SwitchRef);
+                            if (Switch.GUID != WwiseDBGuid()) Guids.Add(WwiseDatabaseLocalizableGuidKey(Switch.GUID, LanguageId), AnyRef);
+                            if (!Switch.Name.IsEmpty()) Names.Add(WwiseDatabaseLocalizableNameKey(Switch.Name, LanguageId), AnyRef);
+                            if (!Switch.ObjectPath.IsEmpty()) Names.Add(WwiseDatabaseLocalizableNameKey(Switch.ObjectPath, LanguageId), AnyRef);
                         }
                     }
 
                     // Triggers
-                    for (WwiseRefIndexType TriggerIndex = 0; TriggerIndex < SoundBank.Triggers.Num(); ++TriggerIndex)
+                    for (WwiseRefIndexType TriggerIndex = 0; TriggerIndex < SoundBank.Triggers.Size(); ++TriggerIndex)
                     {
-                        const FWwiseMetadataTrigger& Trigger = SoundBank.Triggers[TriggerIndex];
-                        AddBasicRefToMap(Triggers, FWwiseRefTrigger(SharedRootFile, JsonFilePath, SoundBankIndex, LanguageId, TriggerIndex), Trigger);
+                        const WwiseMetadataTrigger& Trigger = SoundBank.Triggers[TriggerIndex];
+                        AddBasicRefToMap(Triggers, WwiseRefTrigger(SharedRootFile, JsonFilePath, SoundBankIndex, LanguageId, TriggerIndex), Trigger);
                     }
                 }
             }
         }
     }
+
+    // Add the necessary ref counts for the banks that are used by other banks who are outsourcing their media.
+    for (auto OutsourcedRefMedia : OutsourcedRefMedias)
+    {
+        WwiseOutsourcedRefMedia outsourcedRef = OutsourcedRefMedia.Value;
+        if (outsourcedRef.ReferenceCount > 0)
+        {
+            for (WwiseDatabaseLocalizableIdKey bankKey : outsourcedRef.SoundBankLocalizableIdKeys)
+            {
+                AddSoundBankCount(bankKey.Id, bankKey.LanguageId, outsourcedRef.ReferenceCount);
+            }
+        }
+    }
+ 
 }
 
-FWwisePlatformDataStructure::FWwisePlatformDataStructure(const FWwisePlatformDataStructure& Rhs) :
-    FWwiseRefAcousticTexture::FGlobalIdsMap(Rhs),
-    FWwiseRefAudioDevice::FGlobalIdsMap(Rhs),
-    FWwiseRefAuxBus::FGlobalIdsMap(Rhs),
-    FWwiseRefBus::FGlobalIdsMap(Rhs),
-    FWwiseRefCustomPlugin::FGlobalIdsMap(Rhs),
-    FWwiseRefDialogueArgument::FGlobalIdsMap(Rhs),
-    FWwiseRefDialogueEvent::FGlobalIdsMap(Rhs),
-    FWwiseRefEvent::FGlobalIdsMap(Rhs),
-    FWwiseRefExternalSource::FGlobalIdsMap(Rhs),
-    FWwiseRefGameParameter::FGlobalIdsMap(Rhs),
-    FWwiseRefMedia::FGlobalIdsMap(Rhs),
-    FWwiseRefPluginLib::FGlobalIdsMap(Rhs),
-    FWwiseRefPluginShareSet::FGlobalIdsMap(Rhs),
-    FWwiseRefSoundBank::FGlobalIdsMap(Rhs),
-    FWwiseRefState::FGlobalIdsMap(Rhs),
-    FWwiseRefStateGroup::FGlobalIdsMap(Rhs),
-    FWwiseRefSwitch::FGlobalIdsMap(Rhs),
-    FWwiseRefSwitchGroup::FGlobalIdsMap(Rhs),
-    FWwiseRefTrigger::FGlobalIdsMap(Rhs),
+WwisePlatformDataStructure::WwisePlatformDataStructure(const WwisePlatformDataStructure& Rhs) :
+    WwiseRefAcousticTexture::FGlobalIdsMap(Rhs),
+    WwiseRefAudioDevice::FGlobalIdsMap(Rhs),
+    WwiseRefAuxBus::FGlobalIdsMap(Rhs),
+    WwiseRefBus::FGlobalIdsMap(Rhs),
+    WwiseRefCustomPlugin::FGlobalIdsMap(Rhs),
+    WwiseRefDialogueArgument::FGlobalIdsMap(Rhs),
+    WwiseRefDialogueEvent::FGlobalIdsMap(Rhs),
+    WwiseRefEvent::FGlobalIdsMap(Rhs),
+    WwiseRefExternalSource::FGlobalIdsMap(Rhs),
+    WwiseRefGameParameter::FGlobalIdsMap(Rhs),
+    WwiseRefMedia::FGlobalIdsMap(Rhs),
+    WwiseRefPluginLib::FGlobalIdsMap(Rhs),
+    WwiseRefPluginShareSet::FGlobalIdsMap(Rhs),
+    WwiseRefSoundBank::FGlobalIdsMap(Rhs),
+    WwiseRefState::FGlobalIdsMap(Rhs),
+    WwiseRefStateGroup::FGlobalIdsMap(Rhs),
+    WwiseRefSwitch::FGlobalIdsMap(Rhs),
+    WwiseRefSwitchGroup::FGlobalIdsMap(Rhs),
+    WwiseRefTrigger::FGlobalIdsMap(Rhs),
     Platform(Rhs.Platform),
     PlatformRef(Rhs.PlatformRef),
     GeneratedPlatformFiles(Rhs.GeneratedPlatformFiles),
     JsonFiles(Rhs.JsonFiles),
-    AcousticTextures(FWwiseRefAcousticTexture::FGlobalIdsMap::GlobalIdsMap),
-    AudioDevices(FWwiseRefAudioDevice::FGlobalIdsMap::GlobalIdsMap),
-    AuxBusses(FWwiseRefAuxBus::FGlobalIdsMap::GlobalIdsMap),
-    Busses(FWwiseRefBus::FGlobalIdsMap::GlobalIdsMap),
-    CustomPlugins(FWwiseRefCustomPlugin::FGlobalIdsMap::GlobalIdsMap),
-    DialogueArguments(FWwiseRefDialogueArgument::FGlobalIdsMap::GlobalIdsMap),
-    DialogueEvents(FWwiseRefDialogueEvent::FGlobalIdsMap::GlobalIdsMap),
-    Events(FWwiseRefEvent::FGlobalIdsMap::GlobalIdsMap),
-    ExternalSources(FWwiseRefExternalSource::FGlobalIdsMap::GlobalIdsMap),
-    GameParameters(FWwiseRefGameParameter::FGlobalIdsMap::GlobalIdsMap),
-    MediaFiles(FWwiseRefMedia::FGlobalIdsMap::GlobalIdsMap),
-    PluginLibs(FWwiseRefPluginLib::FGlobalIdsMap::GlobalIdsMap),
-    PluginShareSets(FWwiseRefPluginShareSet::FGlobalIdsMap::GlobalIdsMap),
-    SoundBanks(FWwiseRefSoundBank::FGlobalIdsMap::GlobalIdsMap),
-    States(FWwiseRefState::FGlobalIdsMap::GlobalIdsMap),
-    StateGroups(FWwiseRefStateGroup::FGlobalIdsMap::GlobalIdsMap),
-    Switches(FWwiseRefSwitch::FGlobalIdsMap::GlobalIdsMap),
-    SwitchGroups(FWwiseRefSwitchGroup::FGlobalIdsMap::GlobalIdsMap),
-    Triggers(FWwiseRefTrigger::FGlobalIdsMap::GlobalIdsMap),
+    AcousticTextures(WwiseRefAcousticTexture::FGlobalIdsMap::GlobalIdsMap),
+    AudioDevices(WwiseRefAudioDevice::FGlobalIdsMap::GlobalIdsMap),
+    AuxBusses(WwiseRefAuxBus::FGlobalIdsMap::GlobalIdsMap),
+    Busses(WwiseRefBus::FGlobalIdsMap::GlobalIdsMap),
+    CustomPlugins(WwiseRefCustomPlugin::FGlobalIdsMap::GlobalIdsMap),
+    DialogueArguments(WwiseRefDialogueArgument::FGlobalIdsMap::GlobalIdsMap),
+    DialogueEvents(WwiseRefDialogueEvent::FGlobalIdsMap::GlobalIdsMap),
+    Events(WwiseRefEvent::FGlobalIdsMap::GlobalIdsMap),
+    ExternalSources(WwiseRefExternalSource::FGlobalIdsMap::GlobalIdsMap),
+    GameParameters(WwiseRefGameParameter::FGlobalIdsMap::GlobalIdsMap),
+    MediaFiles(WwiseRefMedia::FGlobalIdsMap::GlobalIdsMap),
+    PluginLibs(WwiseRefPluginLib::FGlobalIdsMap::GlobalIdsMap),
+    PluginShareSets(WwiseRefPluginShareSet::FGlobalIdsMap::GlobalIdsMap),
+    SoundBanks(WwiseRefSoundBank::FGlobalIdsMap::GlobalIdsMap),
+    States(WwiseRefState::FGlobalIdsMap::GlobalIdsMap),
+    StateGroups(WwiseRefStateGroup::FGlobalIdsMap::GlobalIdsMap),
+    Switches(WwiseRefSwitch::FGlobalIdsMap::GlobalIdsMap),
+    SwitchGroups(WwiseRefSwitchGroup::FGlobalIdsMap::GlobalIdsMap),
+    Triggers(WwiseRefTrigger::FGlobalIdsMap::GlobalIdsMap),
     PluginLibNames(Rhs.PluginLibNames),
     SwitchContainersByEvent(Rhs.SwitchContainersByEvent),
     Guids(Rhs.Guids),
-    Names(Rhs.Names)
+    Names(Rhs.Names),
+    MediaUsageCount(Rhs.MediaUsageCount),
+    SoundBankUsageCount(Rhs.SoundBankUsageCount),
+    MediaLanguageList(Rhs.MediaLanguageList)
 {}
 
-FWwisePlatformDataStructure::FWwisePlatformDataStructure(FWwisePlatformDataStructure&& Rhs) :
-    FWwiseRefAcousticTexture::FGlobalIdsMap(MoveTemp(Rhs)),
-    FWwiseRefAudioDevice::FGlobalIdsMap(MoveTemp(Rhs)),
-    FWwiseRefAuxBus::FGlobalIdsMap(MoveTemp(Rhs)),
-    FWwiseRefBus::FGlobalIdsMap(MoveTemp(Rhs)),
-    FWwiseRefCustomPlugin::FGlobalIdsMap(MoveTemp(Rhs)),
-    FWwiseRefDialogueArgument::FGlobalIdsMap(MoveTemp(Rhs)),
-    FWwiseRefDialogueEvent::FGlobalIdsMap(MoveTemp(Rhs)),
-    FWwiseRefEvent::FGlobalIdsMap(MoveTemp(Rhs)),
-    FWwiseRefExternalSource::FGlobalIdsMap(MoveTemp(Rhs)),
-    FWwiseRefGameParameter::FGlobalIdsMap(MoveTemp(Rhs)),
-    FWwiseRefMedia::FGlobalIdsMap(MoveTemp(Rhs)),
-    FWwiseRefPluginLib::FGlobalIdsMap(MoveTemp(Rhs)),
-    FWwiseRefPluginShareSet::FGlobalIdsMap(MoveTemp(Rhs)),
-    FWwiseRefSoundBank::FGlobalIdsMap(MoveTemp(Rhs)),
-    FWwiseRefState::FGlobalIdsMap(MoveTemp(Rhs)),
-    FWwiseRefStateGroup::FGlobalIdsMap(MoveTemp(Rhs)),
-    FWwiseRefSwitch::FGlobalIdsMap(MoveTemp(Rhs)),
-    FWwiseRefSwitchGroup::FGlobalIdsMap(MoveTemp(Rhs)),
-    FWwiseRefTrigger::FGlobalIdsMap(MoveTemp(Rhs)),
-    Platform(MoveTemp(Rhs.Platform)),
-    PlatformRef(MoveTemp(Rhs.PlatformRef)),
-    GeneratedPlatformFiles(MoveTemp(Rhs.GeneratedPlatformFiles)),
-    JsonFiles(MoveTemp(Rhs.JsonFiles)),
-    AcousticTextures(FWwiseRefAcousticTexture::FGlobalIdsMap::GlobalIdsMap),
-    AudioDevices(FWwiseRefAudioDevice::FGlobalIdsMap::GlobalIdsMap),
-    AuxBusses(FWwiseRefAuxBus::FGlobalIdsMap::GlobalIdsMap),
-    Busses(FWwiseRefBus::FGlobalIdsMap::GlobalIdsMap),
-    CustomPlugins(FWwiseRefCustomPlugin::FGlobalIdsMap::GlobalIdsMap),
-    DialogueArguments(FWwiseRefDialogueArgument::FGlobalIdsMap::GlobalIdsMap),
-    DialogueEvents(FWwiseRefDialogueEvent::FGlobalIdsMap::GlobalIdsMap),
-    Events(FWwiseRefEvent::FGlobalIdsMap::GlobalIdsMap),
-    ExternalSources(FWwiseRefExternalSource::FGlobalIdsMap::GlobalIdsMap),
-    GameParameters(FWwiseRefGameParameter::FGlobalIdsMap::GlobalIdsMap),
-    MediaFiles(FWwiseRefMedia::FGlobalIdsMap::GlobalIdsMap),
-    PluginLibs(FWwiseRefPluginLib::FGlobalIdsMap::GlobalIdsMap),
-    PluginShareSets(FWwiseRefPluginShareSet::FGlobalIdsMap::GlobalIdsMap),
-    SoundBanks(FWwiseRefSoundBank::FGlobalIdsMap::GlobalIdsMap),
-    States(FWwiseRefState::FGlobalIdsMap::GlobalIdsMap),
-    StateGroups(FWwiseRefStateGroup::FGlobalIdsMap::GlobalIdsMap),
-    Switches(FWwiseRefSwitch::FGlobalIdsMap::GlobalIdsMap),
-    SwitchGroups(FWwiseRefSwitchGroup::FGlobalIdsMap::GlobalIdsMap),
-    Triggers(FWwiseRefTrigger::FGlobalIdsMap::GlobalIdsMap),
-    PluginLibNames(MoveTemp(Rhs.PluginLibNames)),
-    SwitchContainersByEvent(MoveTemp(Rhs.SwitchContainersByEvent)),
-    Guids(MoveTemp(Rhs.Guids)),
-    Names(MoveTemp(Rhs.Names))
+WwisePlatformDataStructure::WwisePlatformDataStructure(WwisePlatformDataStructure&& Rhs) :
+    WwiseRefAcousticTexture::FGlobalIdsMap(std::move(Rhs)),
+    WwiseRefAudioDevice::FGlobalIdsMap(std::move(Rhs)),
+    WwiseRefAuxBus::FGlobalIdsMap(std::move(Rhs)),
+    WwiseRefBus::FGlobalIdsMap(std::move(Rhs)),
+    WwiseRefCustomPlugin::FGlobalIdsMap(std::move(Rhs)),
+    WwiseRefDialogueArgument::FGlobalIdsMap(std::move(Rhs)),
+    WwiseRefDialogueEvent::FGlobalIdsMap(std::move(Rhs)),
+    WwiseRefEvent::FGlobalIdsMap(std::move(Rhs)),
+    WwiseRefExternalSource::FGlobalIdsMap(std::move(Rhs)),
+    WwiseRefGameParameter::FGlobalIdsMap(std::move(Rhs)),
+    WwiseRefMedia::FGlobalIdsMap(std::move(Rhs)),
+    WwiseRefPluginLib::FGlobalIdsMap(std::move(Rhs)),
+    WwiseRefPluginShareSet::FGlobalIdsMap(std::move(Rhs)),
+    WwiseRefSoundBank::FGlobalIdsMap(std::move(Rhs)),
+    WwiseRefState::FGlobalIdsMap(std::move(Rhs)),
+    WwiseRefStateGroup::FGlobalIdsMap(std::move(Rhs)),
+    WwiseRefSwitch::FGlobalIdsMap(std::move(Rhs)),
+    WwiseRefSwitchGroup::FGlobalIdsMap(std::move(Rhs)),
+    WwiseRefTrigger::FGlobalIdsMap(std::move(Rhs)),
+    Platform(std::move(Rhs.Platform)),
+    PlatformRef(std::move(Rhs.PlatformRef)),
+    GeneratedPlatformFiles(std::move(Rhs.GeneratedPlatformFiles)),
+    JsonFiles(std::move(Rhs.JsonFiles)),
+    AcousticTextures(WwiseRefAcousticTexture::FGlobalIdsMap::GlobalIdsMap),
+    AudioDevices(WwiseRefAudioDevice::FGlobalIdsMap::GlobalIdsMap),
+    AuxBusses(WwiseRefAuxBus::FGlobalIdsMap::GlobalIdsMap),
+    Busses(WwiseRefBus::FGlobalIdsMap::GlobalIdsMap),
+    CustomPlugins(WwiseRefCustomPlugin::FGlobalIdsMap::GlobalIdsMap),
+    DialogueArguments(WwiseRefDialogueArgument::FGlobalIdsMap::GlobalIdsMap),
+    DialogueEvents(WwiseRefDialogueEvent::FGlobalIdsMap::GlobalIdsMap),
+    Events(WwiseRefEvent::FGlobalIdsMap::GlobalIdsMap),
+    ExternalSources(WwiseRefExternalSource::FGlobalIdsMap::GlobalIdsMap),
+    GameParameters(WwiseRefGameParameter::FGlobalIdsMap::GlobalIdsMap),
+    MediaFiles(WwiseRefMedia::FGlobalIdsMap::GlobalIdsMap),
+    PluginLibs(WwiseRefPluginLib::FGlobalIdsMap::GlobalIdsMap),
+    PluginShareSets(WwiseRefPluginShareSet::FGlobalIdsMap::GlobalIdsMap),
+    SoundBanks(WwiseRefSoundBank::FGlobalIdsMap::GlobalIdsMap),
+    States(WwiseRefState::FGlobalIdsMap::GlobalIdsMap),
+    StateGroups(WwiseRefStateGroup::FGlobalIdsMap::GlobalIdsMap),
+    Switches(WwiseRefSwitch::FGlobalIdsMap::GlobalIdsMap),
+    SwitchGroups(WwiseRefSwitchGroup::FGlobalIdsMap::GlobalIdsMap),
+    Triggers(WwiseRefTrigger::FGlobalIdsMap::GlobalIdsMap),
+    PluginLibNames(std::move(Rhs.PluginLibNames)),
+    SwitchContainersByEvent(std::move(Rhs.SwitchContainersByEvent)),
+    Guids(std::move(Rhs.Guids)),
+    Names(std::move(Rhs.Names)),
+    MediaUsageCount(std::move(Rhs.MediaUsageCount)),
+    SoundBankUsageCount(std::move(Rhs.SoundBankUsageCount)),
+    MediaLanguageList(std::move(Rhs.MediaLanguageList))
 {}
 
-FWwiseRootDataStructure& FWwiseRootDataStructure::operator+=(FWwiseRootDataStructure&& Rhs)
+WwiseRootDataStructure& WwiseRootDataStructure::operator+=(WwiseRootDataStructure&& Rhs)
 {
-    // GeneratedRootFiles += MoveTemp(Rhs.GeneratedRootFiles);
-    JsonFiles.Append(MoveTemp(Rhs.JsonFiles));
-    LanguageNames.Append(MoveTemp(Rhs.LanguageNames));
-    LanguageIds.Append(MoveTemp(Rhs.LanguageIds));
-    PlatformNames.Append(MoveTemp(Rhs.PlatformNames));
-    PlatformGuids.Append(MoveTemp(Rhs.PlatformGuids));
+    //GeneratedRootFiles += std::move(Rhs.GeneratedRootFiles);
+    JsonFiles.Append(std::move(Rhs.JsonFiles));
+    LanguageNames.Append(std::move(Rhs.LanguageNames));
+    LanguageIds.Append(std::move(Rhs.LanguageIds));
+    PlatformNames.Append(std::move(Rhs.PlatformNames));
+    PlatformGuids.Append(std::move(Rhs.PlatformGuids));
     return *this;
 }
 
-FWwisePlatformDataStructure& FWwisePlatformDataStructure::operator+=(FWwisePlatformDataStructure&& Rhs)
+WwisePlatformDataStructure& WwisePlatformDataStructure::operator+=(WwisePlatformDataStructure&& Rhs)
 {
-    // GeneratedPlatformFiles += MoveTemp(Rhs.GeneratedPlatformFiles);
-    JsonFiles.Append(MoveTemp(Rhs.JsonFiles));
-    MediaFiles.Append(MoveTemp(Rhs.MediaFiles));
-    PluginLibNames.Append(MoveTemp(Rhs.PluginLibNames));
-    PluginLibs.Append(MoveTemp(Rhs.PluginLibs));
-    SoundBanks.Append(MoveTemp(Rhs.SoundBanks));
-    DialogueEvents.Append(MoveTemp(Rhs.DialogueEvents));
-    DialogueArguments.Append(MoveTemp(Rhs.DialogueArguments));
-    Busses.Append(MoveTemp(Rhs.Busses));
-    AuxBusses.Append(MoveTemp(Rhs.AuxBusses));
-    Events.Append(MoveTemp(Rhs.Events));
-    ExternalSources.Append(MoveTemp(Rhs.ExternalSources));
-    AcousticTextures.Append(MoveTemp(Rhs.AcousticTextures));
-    GameParameters.Append(MoveTemp(Rhs.GameParameters));
-    StateGroups.Append(MoveTemp(Rhs.StateGroups));
-    SwitchGroups.Append(MoveTemp(Rhs.SwitchGroups));
-    Triggers.Append(MoveTemp(Rhs.Triggers));
-    States.Append(MoveTemp(Rhs.States));
-    Switches.Append(MoveTemp(Rhs.Switches));
-    SwitchContainersByEvent.Append(MoveTemp(Rhs.SwitchContainersByEvent));
+    GeneratedPlatformFiles.Append(std::move(Rhs.GeneratedPlatformFiles));
+    JsonFiles.Append(std::move(Rhs.JsonFiles));
+    MediaFiles.Append(std::move(Rhs.MediaFiles));
+    PluginLibNames.Append(std::move(Rhs.PluginLibNames));
+    PluginLibs.Append(std::move(Rhs.PluginLibs));
+    PluginShareSets.Append(std::move(Rhs.PluginShareSets));
+    CustomPlugins.Append(std::move(Rhs.CustomPlugins));
+    SoundBanks.Append(std::move(Rhs.SoundBanks));
+    DialogueEvents.Append(std::move(Rhs.DialogueEvents));
+    DialogueArguments.Append(std::move(Rhs.DialogueArguments));
+    Busses.Append(std::move(Rhs.Busses));
+    AuxBusses.Append(std::move(Rhs.AuxBusses));
+    Events.Append(std::move(Rhs.Events));
+    ExternalSources.Append(std::move(Rhs.ExternalSources));
+    AcousticTextures.Append(std::move(Rhs.AcousticTextures));
+    GameParameters.Append(std::move(Rhs.GameParameters));
+    StateGroups.Append(std::move(Rhs.StateGroups));
+    SwitchGroups.Append(std::move(Rhs.SwitchGroups));
+    Triggers.Append(std::move(Rhs.Triggers));
+    States.Append(std::move(Rhs.States));
+    Switches.Append(std::move(Rhs.Switches));
+    SwitchContainersByEvent.Append(std::move(Rhs.SwitchContainersByEvent));
+    AudioDevices.Append(std::move(Rhs.AudioDevices));
+    MediaUsageCount.Append(std::move(Rhs.MediaUsageCount));
+    SoundBankUsageCount.Append(std::move(Rhs.SoundBankUsageCount));
+    MediaLanguageList.Append(std::move(Rhs.MediaLanguageList));
     return *this;
 }
 
-bool FWwisePlatformDataStructure::GetFromId(FWwiseRefMedia& OutRef, uint32 InShortId, uint32 InLanguageId, uint32 InSoundBankId) const
+bool WwisePlatformDataStructure::GetFromId(WwiseRefMedia& OutRef, WwiseDBShortId InShortId, WwiseDBShortId InLanguageId, WwiseDBShortId InSoundBankId) const
 {
-    const FWwiseRefMedia* Result = nullptr;
-    if (LIKELY(InSoundBankId != 0))
+    if (InSoundBankId != 0)
     {
-        FWwiseDatabaseMediaIdKey MediaId(InShortId, InSoundBankId);
-        Result = MediaFiles.Find(MediaId);
+        WwiseDatabaseLocalizableIdKey MediaId(InShortId, InLanguageId, InSoundBankId);
+        if (MediaFiles.Contains(MediaId))
+        {
+            OutRef = MediaFiles.FindChecked(MediaId);   
+        }
     }
-    else
+
+    if (!OutRef.IsValid())
     {
         for (const auto& MediaFile : MediaFiles)
         {
-            if (MediaFile.Key.MediaId == InShortId
-                && MediaFile.Value.GetMedia()->Location != EWwiseMetadataMediaLocation::OtherBank)
+            WwiseDBPair<LocalizableMediaIdKey, WwiseRefMedia> Pair(MediaFile);
+            if (Pair.GetFirst().Id == InShortId &&
+                (Pair.GetFirst().LanguageId == InLanguageId || Pair.GetFirst().LanguageId == 0 || InLanguageId == 0) &&
+                Pair.GetSecond().GetMedia()->Location != WwiseMetadataMediaLocation::OtherBank)
             {
-                Result = &MediaFile.Value;
+                OutRef = Pair.GetSecond();
                 break;
             }
         }
     }
 
-    if (UNLIKELY(!Result))
+    if (!OutRef.IsValid())
     {
-        UE_LOG(LogWwiseProjectDatabase, Warning, TEXT("Could not find Media %" PRIu32 " (Lang=%" PRIu32 "; SB=%" PRIu32 ")"), InShortId, InLanguageId, InSoundBankId);
+        WWISE_DB_LOG(Warning, "Could not find Media %" PRIu32 " (Lang=%" PRIu32 "; SB=%" PRIu32 ")", InShortId, InLanguageId, InSoundBankId);
         return false;
     }
-    
-    OutRef = *Result;
+
     return true;
 }
 
-
-FWwiseDataStructure& FWwiseDataStructure::operator+=(FWwiseDataStructure&& Rhs)
+void WwisePlatformDataStructure::AddMediaRefsCount(const WwiseDBArray<WwiseMetadataMediaReference>& InMediaRefs)
 {
-    FWriteScopeLock ScopeLockLhs(Lock);
-    FWriteScopeLock ScopeLockRhs(Rhs.Lock);
+    for (const auto& MediaRef : InMediaRefs)
+    {
+        if (auto CountPtr = MediaUsageCount.Find(MediaRef.Id))
+        {
+            ++(*CountPtr);
+        }
+        else
+        {
+            MediaUsageCount.Add(MediaRef.Id, 1);
+        }
+    }
+}
 
-    Platforms.Append(MoveTemp(Rhs.Platforms));
+void WwisePlatformDataStructure::AddSoundBankCount(const uint32 InId, const uint32 InLanguageId, const uint32 InIncrement)
+{
+    const WwiseDatabaseLocalizableIdKey SoundBankId{ InId, InLanguageId };
+    if (auto CountPtr = SoundBankUsageCount.Find(SoundBankId))
+    {
+        (*CountPtr) += InIncrement;
+    }
+    else
+    {
+        SoundBankUsageCount.Add(SoundBankId, InIncrement);
+    }
+}
+
+WwiseDataStructure& WwiseDataStructure::operator+=(WwiseDataStructure&& Rhs)
+{
+    std::scoped_lock ScopeLockLhs(Lock);
+    std::scoped_lock ScopeLockRhs(Rhs.Lock);
+
+    Platforms.Append(std::move(Rhs.Platforms));
 
     return *this;
 }

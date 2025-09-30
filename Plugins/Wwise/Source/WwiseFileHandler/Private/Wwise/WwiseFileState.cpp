@@ -12,7 +12,7 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #include "Wwise/WwiseFileState.h"
@@ -20,6 +20,7 @@ Copyright (c) 2024 Audiokinetic Inc.
 
 #include <inttypes.h>
 
+#include "Wwise/WwiseConcurrencyModule.h"
 #include "Wwise/WwiseFileHandlerModule.h"
 #include "Wwise/WwiseGlobalCallbacks.h"
 #include "Wwise/WwiseStreamableFileStateInfo.h"
@@ -151,7 +152,7 @@ void FWwiseFileState::DecrementCountAsyncDone(FWwiseAsyncCycleCounter&& InOpCycl
 
 bool FWwiseFileState::CanDelete() const
 {
-	return OpenedInstances.load() == 0 && State == EState::Closed && LoadCount == 0;
+	return OpenedInstances.load() == 0 && State == EState::Closed && LoadCount == 0 && LaterOpQueue.IsEmpty();
 }
 
 FWwiseFileState::FWwiseFileState():
@@ -875,6 +876,13 @@ void FWwiseFileState::ProcessLaterOpQueue()
 {
 	check(!FileStateExecutionQueue || FileStateExecutionQueue->IsRunningInThisThread());
 
+	if (UNLIKELY(bIsUnwindingLaterOpQueue))
+	{
+		UE_LOG(LogWwiseFileHandler, Verbose, TEXT("FWwiseFileState::ProcessLaterOpQueue: Skipping %s %" PRIu32 ": Already executing. Skipping."),
+			GetManagingTypeName(), GetShortId())
+		return;
+	}
+	bIsUnwindingLaterOpQueue = true;
 	int Count = 0;
 	for (FOpQueueItem* Op; (Op = LaterOpQueue.Peek()) != nullptr; LaterOpQueue.Pop())
 	{
@@ -886,6 +894,7 @@ void FWwiseFileState::ProcessLaterOpQueue()
 #endif
 	}
 	UE_CLOG(Count > 0, LogWwiseFileHandler, VeryVerbose, TEXT("FWwiseFileState::ProcessLaterOpQueue %s %" PRIu32 ": Added back %d operations to be executed."),  GetManagingTypeName(), GetShortId(), Count);
+	bIsUnwindingLaterOpQueue = false;
 }
 
 void FWwiseFileState::RegisterRecurringCallback()

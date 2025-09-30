@@ -12,7 +12,7 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #include "Wwise/WwiseProjectDatabaseModuleImpl.h"
@@ -38,7 +38,7 @@ FWwiseProjectDatabase* FWwiseProjectDatabaseModule::GetProjectDatabase()
 		Lock.WriteLock();
 		if (LIKELY(!ProjectDatabase))
 		{
-			UE_LOG(LogWwiseProjectDatabase, Display, TEXT("Initializing default Project Database."));
+			WWISE_DB_LOG(Log, "Initializing default Project Database.");
 			ProjectDatabase.Reset(InstantiateProjectDatabase());
 		}
 		Lock.WriteUnlock();
@@ -86,7 +86,7 @@ void FWwiseProjectDatabaseModule::ShutdownModule()
 	Lock.WriteLock();
 	if (ProjectDatabase.IsValid())
 	{
-		UE_LOG(LogWwiseProjectDatabase, Display, TEXT("Shutting down default Project Database."));
+		WWISE_DB_LOG(Log, "Shutting down default Project Database.");
 		ProjectDatabase.Reset();
 	}
 	Lock.WriteUnlock();

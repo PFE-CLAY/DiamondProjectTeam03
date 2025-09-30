@@ -12,7 +12,7 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 using UnrealBuildTool;
@@ -23,37 +23,30 @@ public class WwiseResourceCooker : ModuleRules
 	{
 		PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
 
-		PrivateDependencyModuleNames.AddRange(
+		PublicDependencyModuleNames.AddRange(
 			new string[]
 			{
 				"Core",
 				"CoreUObject",
 				"Engine",
-				"WwiseResourceLoader"
+				"WwiseResourceLoader",
 			}
 		);
-
-		if (Target.bBuildEditor)
-		{
-			PrivateDependencyModuleNames.AddRange(
-				new string[]
-				{
-					"EditorSubsystem",
-					"UnrealEd",
-
-					"WwiseFileHandler"
-				}
-			);
-		}
+		
+		PrivateDependencyModuleNames.AddRange(
+			new string[]
+			{
+				"Projects"
+			});
 
 		if (Target.bBuildWithEditorOnlyData)
 		{
-			PrivateDependencyModuleNames.AddRange(
-				new string[]
-				{
-					"WwiseProjectDatabase"
-				}
-			);
+			PublicDependencyModuleNames.AddRange(new string[] {
+				"WwisePackagingRuntime",
+				"WwiseFileHandler",
+				"WwiseProjectDatabase",
+				"WwiseSoundEngine",
+			});
 		}
 
 #if UE_5_3_OR_LATER

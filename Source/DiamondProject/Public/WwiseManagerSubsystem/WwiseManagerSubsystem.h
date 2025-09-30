@@ -46,8 +46,8 @@ public:
 	void SetCategoryVolume(const ESoundCategory Category, float Volume, AActor* TargetActor, int32 InterpolateTimeMs = 0);
 
 	UFUNCTION(BlueprintCallable, Category = "Wwise SubSystem")
-	void SetSwitch(const UAkSwitchValue* SwitchValue, AActor* Actor, FName SwitchGroup, FName SwitchState);
+	void SetSwitch(const UAkSwitchValue* SwitchValue, AActor* Actor);
 
 	UFUNCTION(BlueprintCallable, Category = "Wwise SubSystem")
-	void SetState(const UAkStateValue* StateValue, FName stateGroup, FName state);
+	void SetState(const UAkStateValue* StateValue);
 };

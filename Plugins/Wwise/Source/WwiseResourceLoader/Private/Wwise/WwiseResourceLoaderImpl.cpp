@@ -12,7 +12,7 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #include "Wwise/WwiseResourceLoaderImpl.h"
@@ -32,142 +32,39 @@ Copyright (c) 2024 Audiokinetic Inc.
 #include "Wwise/WwiseResourceLoader.h"
 #include "Wwise/WwiseSoundBankManager.h"
 
-#include "Async/Async.h"
+#include "Wwise/WwiseTask.h"
 
 #include <inttypes.h>
 
-#include "Wwise/WwiseTask.h"
-
-FWwiseSwitchContainerLeafGroupValueUsageCount::FLoadedData::FLoadedData()
-{
-}
-
-bool FWwiseSwitchContainerLeafGroupValueUsageCount::FLoadedData::IsLoaded() const
-{
-	return LoadedSoundBanks.Num() > 0 || LoadedExternalSources.Num() > 0 || LoadedMedia.Num() > 0;
-}
-
-FWwiseSwitchContainerLeafGroupValueUsageCount::FWwiseSwitchContainerLeafGroupValueUsageCount(
-	const FWwiseSwitchContainerLeafCookedData& InKey):
-	Key(InKey)
-{}
-
-bool FWwiseSwitchContainerLeafGroupValueUsageCount::HaveAllKeys() const
-{
-	if (UNLIKELY(Key.GroupValueSet.Num() < LoadedGroupValues.Num()))
-	{
-		UE_LOG(LogWwiseResourceLoader, Error, TEXT("Have more keys loaded (%d) than existing in key (%d) @ %p for key %s"),
-			LoadedGroupValues.Num(), Key.GroupValueSet.Num(), &LoadedData, *Key.GetDebugString());
-		return true;
-	}
-
-	return Key.GroupValueSet.Num() == LoadedGroupValues.Num();
-}
-
 WWISE_RESOURCELOADERIMPL_TEST_CONST bool FWwiseResourceLoaderImpl::Test::bMockSleepOnMediaLoad{ false };
 
-FWwiseResourceLoaderImpl::FWwiseResourceLoaderImpl() :
-	ExecutionQueue(WWISE_EQ_NAME("FWwiseResourceLoaderImpl::ExecutionQueue"))
+FWwiseResourceLoaderImpl::FWwiseResourceLoaderImpl()
 {
+	ExecutionQueue = new FWwiseExecutionQueue(WWISE_EQ_NAME("FWwiseResourceLoaderImpl::ExecutionQueue"));
 }
 
-FWwiseResourceLoaderImpl::FWwiseResourceLoaderImpl(
-	IWwiseExternalSourceManager& ExternalSourceManager,
-	IWwiseMediaManager& MediaManager,
-	IWwiseSoundBankManager& SoundBankManager) :
-	ExecutionQueue(WWISE_EQ_NAME("FWwiseResourceLoaderImpl::ExecutionQueue")),
-	ExternalSourceManager(&ExternalSourceManager),
-	MediaManager(&MediaManager),
-	SoundBankManager(&SoundBankManager)
+FWwiseResourceLoaderImpl::FWwiseResourceLoaderImpl(const TSharedRef<IWwiseExternalSourceManager>& ExternalSourceManager, const TSharedRef<IWwiseMediaManager>& MediaManager, const TSharedRef<IWwiseSoundBankManager>& SoundBankManager) :
+	ExternalSourceManager(ExternalSourceManager),
+	MediaManager(MediaManager),
+	SoundBankManager(SoundBankManager)
 {
-#if WITH_EDITORONLY_DATA
-	GeneratedSoundBanksPath.Path = TEXT("/");
-#endif
+	ExecutionQueue = new FWwiseExecutionQueue(WWISE_EQ_NAME("FWwiseResourceLoaderImpl::ExecutionQueue"));
 }
 
-FName FWwiseResourceLoaderImpl::GetUnrealExternalSourcePath() const
+FWwiseResourceLoaderImpl::~FWwiseResourceLoaderImpl()
 {
-#if WITH_EDITORONLY_DATA
-	if(FPaths::IsRelative( CurrentPlatform.Platform->PathRelativeToGeneratedSoundBanks.ToString()))
+	UE_LOG(LogWwiseResourceLoader, Verbose, TEXT("Deconstructing Resource Loader"));
+	// If we are inside an operation that is currently running and we call delete on the Execution Queue, it will wait forever to close.
+	// So use CloseAndDelete instead
+	if (ExecutionQueue->IsRunningInThisThread())
 	{
-		return FName(GeneratedSoundBanksPath.Path / CurrentPlatform.Platform->PathRelativeToGeneratedSoundBanks.ToString() / CurrentPlatform.Platform->ExternalSourceRootPath.ToString());
+		ExecutionQueue->CloseAndDelete();
 	}
 	else
 	{
-		return FName(CurrentPlatform.Platform->PathRelativeToGeneratedSoundBanks.ToString() / CurrentPlatform.Platform->ExternalSourceRootPath.ToString());
+		delete ExecutionQueue;
 	}
-#else
-	if (UNLIKELY(!ExternalSourceManager))
-	{
-		ExternalSourceManager = IWwiseExternalSourceManager::Get();
-		if (UNLIKELY(!ExternalSourceManager))
-		{
-			UE_LOG(LogWwiseResourceLoader, Error, TEXT("Failed to retrieve External Source Manager"));
-			return {};
-		}
-	}
-	return FName(FPaths::ProjectContentDir() / ExternalSourceManager->GetStagingDirectory());
-#endif
 }
-
-FString FWwiseResourceLoaderImpl::GetUnrealPath() const
-{
-#if WITH_EDITOR
-	if(FPaths::IsRelative( CurrentPlatform.Platform->PathRelativeToGeneratedSoundBanks.ToString()))
-	{
-		return GeneratedSoundBanksPath.Path / CurrentPlatform.Platform->PathRelativeToGeneratedSoundBanks.ToString();
-	}
-	else
-	{
-		return CurrentPlatform.Platform->PathRelativeToGeneratedSoundBanks.ToString();
-	}
-#elif WITH_EDITORONLY_DATA
-	UE_LOG(LogWwiseResourceLoader, Error, TEXT("GetUnrealPath should not be used in WITH_EDITORONLY_DATA (Getting path for %s)"), *InPath);
-	if(FPaths::IsRelative( CurrentPlatform.Platform->PathRelativeToGeneratedSoundBanks.ToString()))
-	{
-		return GeneratedSoundBanksPath.Path / CurrentPlatform.Platform->PathRelativeToGeneratedSoundBanks.ToString();
-	}
-	else
-	{
-		return CurrentPlatform.Platform->PathRelativeToGeneratedSoundBanks.ToString();
-	}
-#else
-	return StagePath;
-#endif
-}
-
-FString FWwiseResourceLoaderImpl::GetUnrealPath(const FString& InPath) const
-{
-#if WITH_EDITOR
-	return GetUnrealGeneratedSoundBanksPath(InPath);
-#elif WITH_EDITORONLY_DATA
-	UE_LOG(LogWwiseResourceLoader, Error, TEXT("GetUnrealPath should not be used in WITH_EDITORONLY_DATA (Getting path for %s)"), *InPath);
-	return GetUnrealGeneratedSoundBanksPath(InPath);
-#else
-	return GetUnrealStagePath(InPath);
-#endif
-}
-
-FString FWwiseResourceLoaderImpl::GetUnrealStagePath(const FString& InPath) const
-{
-	if (UNLIKELY(StagePath.IsEmpty()))
-	{
-		UE_LOG(LogWwiseResourceLoader, Error, TEXT("StagePath not set up (GetUnrealStagePath for %s)"), *InPath);
-	}
-	return StagePath / InPath;
-}
-
-#if WITH_EDITORONLY_DATA
-FString FWwiseResourceLoaderImpl::GetUnrealGeneratedSoundBanksPath(const FString& InPath) const
-{
-	if (UNLIKELY(GeneratedSoundBanksPath.Path.IsEmpty()))
-	{
-		UE_LOG(LogWwiseResourceLoader, Error, TEXT("GeneratedSoundBanksPath not set up (GetUnrealGeneratedSoundBanksPath for %s)"), *InPath);
-	}
-
-	return GeneratedSoundBanksPath.Path / CurrentPlatform.Platform->PathRelativeToGeneratedSoundBanks.ToString() / InPath;
-}
-#endif
 
 
 EWwiseResourceLoaderState FWwiseResourceLoaderImpl::GetResourceLoaderState()
@@ -180,7 +77,7 @@ void FWwiseResourceLoaderImpl::SetResourceLoaderState(EWwiseResourceLoaderState 
 	WwiseResourceLoaderState = State;
 }
 
-bool FWwiseResourceLoaderImpl::IsEnabled()
+bool FWwiseResourceLoaderImpl::IsEnabled() const
 {
 	return WwiseResourceLoaderState == EWwiseResourceLoaderState::Enabled;
 }
@@ -195,7 +92,7 @@ void FWwiseResourceLoaderImpl::Enable()
 	SetResourceLoaderState(EWwiseResourceLoaderState::Enabled);
 }
 
-void FWwiseResourceLoaderImpl::SetLanguageAsync(FWwiseSetLanguagePromise&& Promise, const FWwiseLanguageCookedData& InLanguage, EWwiseReloadLanguage InReloadLanguage)
+void FWwiseResourceLoaderImpl::UpdateLanguage(FWwiseSetLanguagePromise&& Promise, const FWwiseLanguageCookedData& InLanguage, EWwiseReloadLanguage InReloadLanguage)
 {
 	SCOPED_WWISERESOURCELOADER_EVENT(TEXT("FWwiseResourceLoaderImpl::SetLanguageAsync"));
 	SCOPE_CYCLE_COUNTER(STAT_WwiseResourceLoaderTiming);
@@ -208,8 +105,8 @@ void FWwiseResourceLoaderImpl::SetLanguageAsync(FWwiseSetLanguagePromise&& Promi
 		return Promise.EmplaceValue();
 	}
 
-	UE_CLOG(!OldLanguage.GetLanguageName().IsValid(), LogWwiseResourceLoader, Log, TEXT("[SetLanguage] To %s"), *NewLanguage.GetLanguageName().ToString());
-	UE_CLOG(OldLanguage.GetLanguageName().IsValid(), LogWwiseResourceLoader, Log, TEXT("[SetLanguage] from %s to %s"), *OldLanguage.GetLanguageName().ToString(), *NewLanguage.GetLanguageName().ToString());
+	UE_CLOG(OldLanguage.GetLanguageName().IsNone(), LogWwiseResourceLoader, Log, TEXT("[SetLanguage] To %s"), *NewLanguage.GetLanguageName().ToString());
+	UE_CLOG(!OldLanguage.GetLanguageName().IsNone(), LogWwiseResourceLoader, Log, TEXT("[SetLanguage] from %s to %s"), *OldLanguage.GetLanguageName().ToString(), *NewLanguage.GetLanguageName().ToString());
 
 	FCompletionFuture Future = MakeFulfilledWwisePromise<void>().GetFuture();
 
@@ -235,7 +132,11 @@ void FWwiseResourceLoaderImpl::SetLanguageAsync(FWwiseSetLanguagePromise&& Promi
 					FWwiseGlobalCallbacks::FCompletionPromise WaitPromise;
 					auto WaitFuture = WaitPromise.GetFuture();
 					WwiseGlobalCallbacks->EndCompletion(MoveTemp(WaitPromise), 2);
+#if UE_5_6_OR_LATER
+					WaitFuture.Next([Promise = MoveTemp(Promise)]() mutable
+#else
 					WaitFuture.Next([Promise = MoveTemp(Promise)](int) mutable
+#endif
 					{
 						Promise.EmplaceValue();
 					});
@@ -261,9 +162,16 @@ void FWwiseResourceLoaderImpl::SetLanguageAsync(FWwiseSetLanguagePromise&& Promi
 		return;
 	}
 
-	Future.Next([this, OldLanguage = MoveTemp(OldLanguage), NewLanguage = MoveTemp(NewLanguage), Promise = MoveTemp(Promise)](int) mutable
+	Future.Next([WeakThis=AsWeak(), OldLanguage = MoveTemp(OldLanguage), NewLanguage = MoveTemp(NewLanguage), Promise = MoveTemp(Promise)](int) mutable
 	{
-		ExecutionQueue.Async(WWISERESOURCELOADER_ASYNC_NAME("FWwiseResourceLoaderImpl::SetLanguageAsync Unloading"), [this, OldLanguage = MoveTemp(OldLanguage), NewLanguage = MoveTemp(NewLanguage), Promise = MoveTemp(Promise)]() mutable
+		auto SharedResourceLoader = StaticCastSharedPtr<FWwiseResourceLoaderImpl>(WeakThis.Pin());
+		if (!SharedResourceLoader.IsValid())
+		{
+			UE_LOG(LogWwiseResourceLoader, Error,
+			       TEXT("FWwiseResourceLoaderImpl::SetLanguage: Failed. ResourceLoader is not valid"))
+			return Promise.EmplaceValue();
+		}
+		SharedResourceLoader->ExecutionQueue->Async(WWISERESOURCELOADER_ASYNC_NAME("FWwiseResourceLoaderImpl::SetLanguageAsync Unloading"), [WeakThis=MoveTemp(WeakThis), OldLanguage = MoveTemp(OldLanguage), NewLanguage = MoveTemp(NewLanguage), Promise = MoveTemp(Promise)]() mutable
 		{
 			// Note: these are written as "Log" since it's more dangerous to do loading and unloading operations while the
 			//		 asynchronous SetLanguage is executed. This allows for better debugging.
@@ -279,7 +187,14 @@ void FWwiseResourceLoaderImpl::SetLanguageAsync(FWwiseSetLanguagePromise&& Promi
 			// Unload all objects with a language equal to the old language
 			FCompletionFutureArray UnloadFutureArray;
 
-			for (auto& LoadedSoundBank : LoadedSoundBankList)
+			auto SharedResourceLoader = StaticCastSharedPtr<FWwiseResourceLoaderImpl>(WeakThis.Pin());
+			if (!SharedResourceLoader.IsValid())
+			{
+				UE_LOG(LogWwiseResourceLoader, Error,
+				       TEXT("FWwiseResourceLoaderImpl::SetLanguage: Failed. ResourceLoader is not valid"))
+				return Promise.EmplaceValue();
+			}
+			for (auto& LoadedSoundBank : SharedResourceLoader->LoadedSoundBankList)
 			{
 				if (LoadedSoundBank.LanguageRef != OldLanguage)
 				{
@@ -295,7 +210,7 @@ void FWwiseResourceLoaderImpl::SetLanguageAsync(FWwiseSetLanguagePromise&& Promi
 
 					FCompletionPromise UnloadPromise;
 					UnloadFutureArray.Add(UnloadPromise.GetFuture());
-					UnloadSoundBankResources(MoveTemp(UnloadPromise), LoadedSoundBank.LoadedData, *SoundBank);
+					SharedResourceLoader->UnloadSoundBankResources(MoveTemp(UnloadPromise), LoadedSoundBank.LoadedData, *SoundBank);
 				}
 				else
 				{
@@ -304,7 +219,7 @@ void FWwiseResourceLoaderImpl::SetLanguageAsync(FWwiseSetLanguagePromise&& Promi
 				}
 			}
 
-			for (auto& LoadedAuxBus : LoadedAuxBusList)
+			for (auto& LoadedAuxBus : SharedResourceLoader->LoadedAuxBusList)
 			{
 				if (LoadedAuxBus.LanguageRef != OldLanguage)
 				{
@@ -320,7 +235,7 @@ void FWwiseResourceLoaderImpl::SetLanguageAsync(FWwiseSetLanguagePromise&& Promi
 
 					FCompletionPromise UnloadPromise;
 					UnloadFutureArray.Add(UnloadPromise.GetFuture());
-					UnloadAuxBusResources(MoveTemp(UnloadPromise), LoadedAuxBus.LoadedData, *AuxBus);
+					SharedResourceLoader->UnloadAuxBusResources(MoveTemp(UnloadPromise), LoadedAuxBus.LoadedData, *AuxBus);
 				}
 				else
 				{
@@ -329,7 +244,7 @@ void FWwiseResourceLoaderImpl::SetLanguageAsync(FWwiseSetLanguagePromise&& Promi
 				}
 			}
 
-			for (auto& LoadedShareSet : LoadedShareSetList)
+			for (auto& LoadedShareSet : SharedResourceLoader->LoadedShareSetList)
 			{
 				if (LoadedShareSet.LanguageRef != OldLanguage)
 				{
@@ -345,7 +260,7 @@ void FWwiseResourceLoaderImpl::SetLanguageAsync(FWwiseSetLanguagePromise&& Promi
 
 					FCompletionPromise UnloadPromise;
 					UnloadFutureArray.Add(UnloadPromise.GetFuture());
-					UnloadShareSetResources(MoveTemp(UnloadPromise), LoadedShareSet.LoadedData, *ShareSet);
+					SharedResourceLoader->UnloadShareSetResources(MoveTemp(UnloadPromise), LoadedShareSet.LoadedData, *ShareSet);
 				}
 				else
 				{
@@ -353,7 +268,7 @@ void FWwiseResourceLoaderImpl::SetLanguageAsync(FWwiseSetLanguagePromise&& Promi
 						*LoadedShareSet.LocalizedShareSetCookedData.DebugName.ToString(), *LoadedShareSet.LanguageRef.GetLanguageName().ToString());
 				}
 			}
-			for (auto& LoadedEvent : LoadedEventList)
+			for (auto& LoadedEvent : SharedResourceLoader->LoadedEventList)
 			{
 				if (LoadedEvent.LanguageRef != OldLanguage)
 				{
@@ -369,7 +284,7 @@ void FWwiseResourceLoaderImpl::SetLanguageAsync(FWwiseSetLanguagePromise&& Promi
 
 					FCompletionPromise UnloadPromise;
 					UnloadFutureArray.Add(UnloadPromise.GetFuture());
-					UnloadEventResources(MoveTemp(UnloadPromise), LoadedEvent.LoadedData, *Event);
+					SharedResourceLoader->UnloadEventResources(MoveTemp(UnloadPromise), LoadedEvent.LoadedData, *Event);
 				}
 				else
 				{
@@ -378,7 +293,7 @@ void FWwiseResourceLoaderImpl::SetLanguageAsync(FWwiseSetLanguagePromise&& Promi
 				}
 			}
 
-			WaitForFutures(MoveTemp(UnloadFutureArray), [this,
+			SharedResourceLoader->WaitForFutures(MoveTemp(UnloadFutureArray), [WeakThis=MoveTemp(WeakThis),
 				OldLanguage = MoveTemp(OldLanguage),
 				NewLanguage = MoveTemp(NewLanguage),
 				Promise = MoveTemp(Promise),
@@ -396,6 +311,14 @@ void FWwiseResourceLoaderImpl::SetLanguageAsync(FWwiseSetLanguagePromise&& Promi
 				// Note: The results are ignored. Reloading Wwise objects can individually fail for any given reasons, and it's Out Of Scope
 				//       for the end product to know SetLanguage wasn't totally successful, since there's no real recourse at that point.
 
+				auto SharedResourceLoader = StaticCastSharedPtr<FWwiseResourceLoaderImpl>(WeakThis.Pin());
+				if (!SharedResourceLoader.IsValid())
+				{
+					UE_LOG(LogWwiseResourceLoader, Error,
+					       TEXT("FWwiseResourceLoaderImpl::SetLanguage: Failed. ResourceLoader is not valid"))
+					return Promise.EmplaceValue();
+				}
+
 				for (auto* LoadedSoundBank : AffectedSoundBanks)
 				{
 					LoadedSoundBank->LanguageRef = NewLanguage;
@@ -409,7 +332,7 @@ void FWwiseResourceLoaderImpl::SetLanguageAsync(FWwiseSetLanguagePromise&& Promi
 						{
 							LoadPromise.EmplaceValue();
 						});
-						LoadSoundBankResources(MoveTemp(ResourceLoadPromise), LoadedSoundBank->LoadedData, *SoundBank);
+						SharedResourceLoader->LoadSoundBankResources(MoveTemp(ResourceLoadPromise), LoadedSoundBank->LoadedData, *SoundBank);
 					}
 					else
 					{
@@ -431,7 +354,7 @@ void FWwiseResourceLoaderImpl::SetLanguageAsync(FWwiseSetLanguagePromise&& Promi
 						{
 							LoadPromise.EmplaceValue();
 						});
-						LoadAuxBusResources(MoveTemp(ResourceLoadPromise), LoadedAuxBus->LoadedData, *AuxBus);
+						SharedResourceLoader->LoadAuxBusResources(MoveTemp(ResourceLoadPromise), LoadedAuxBus->LoadedData, *AuxBus);
 					}
 					else
 					{
@@ -453,7 +376,7 @@ void FWwiseResourceLoaderImpl::SetLanguageAsync(FWwiseSetLanguagePromise&& Promi
 						{
 							LoadPromise.EmplaceValue();
 						});
-						LoadShareSetResources(MoveTemp(ResourceLoadPromise), LoadedShareSet->LoadedData, *ShareSet);
+						SharedResourceLoader->LoadShareSetResources(MoveTemp(ResourceLoadPromise), LoadedShareSet->LoadedData, *ShareSet);
 					}
 					else
 					{
@@ -475,7 +398,7 @@ void FWwiseResourceLoaderImpl::SetLanguageAsync(FWwiseSetLanguagePromise&& Promi
 						{
 							LoadPromise.EmplaceValue();
 						});
-						LoadEventResources(MoveTemp(ResourceLoadPromise), LoadedEvent->LoadedData, *Event);
+						SharedResourceLoader->LoadEventResources(MoveTemp(ResourceLoadPromise), LoadedEvent->LoadedData, *Event);
 					}
 					else
 					{
@@ -484,7 +407,7 @@ void FWwiseResourceLoaderImpl::SetLanguageAsync(FWwiseSetLanguagePromise&& Promi
 					}
 				}
 
-				WaitForFutures(MoveTemp(LoadFutureArray), [
+				SharedResourceLoader->WaitForFutures(MoveTemp(LoadFutureArray), [
 					OldLanguage = MoveTemp(OldLanguage),
 					NewLanguage = MoveTemp(NewLanguage),
 					Promise = MoveTemp(Promise)]() mutable
@@ -507,6 +430,42 @@ void FWwiseResourceLoaderImpl::SetPlatform(const FWwiseSharedPlatformId& InPlatf
 	CurrentPlatform = InPlatform;
 }
 
+FWwiseLoadedAssetLibraryPtr FWwiseResourceLoaderImpl::CreateAssetLibraryNode(const FWwiseAssetLibraryCookedData& InAssetLibraryCookedData)
+{
+	return new FWwiseLoadedAssetLibraryListNode(FWwiseLoadedAssetLibraryInfo(InAssetLibraryCookedData));
+}
+
+void FWwiseResourceLoaderImpl::LoadAssetLibraryNode(FWwiseLoadedAssetLibraryPromise&& Promise, FWwiseLoadedAssetLibraryPtr&& InAssetLibraryListNode)
+{
+	SCOPED_WWISERESOURCELOADER_EVENT_2(TEXT("FWwiseResourceLoaderImpl::LoadAssetLibraryNode"));
+	FWwiseAsyncCycleCounter Timing(GET_STATID(STAT_WwiseResourceLoaderTiming));
+
+	auto& LoadedAssetLibrary = InAssetLibraryListNode->GetValue();
+	LogLoad(LoadedAssetLibrary);
+
+	AttachAssetLibraryNode(InAssetLibraryListNode);
+
+	Timing.Stop();
+	Promise.EmplaceValue(InAssetLibraryListNode);
+}
+
+void FWwiseResourceLoaderImpl::UnloadAssetLibraryNode(FWwiseResourceUnloadPromise&& Promise, FWwiseLoadedAssetLibraryPtr&& InAssetLibraryListNode)
+{
+	SCOPED_WWISERESOURCELOADER_EVENT_2(TEXT("FWwiseResourceLoaderImpl::UnloadAssetLibraryNode"));
+	FWwiseAsyncCycleCounter Timing(GET_STATID(STAT_WwiseResourceLoaderTiming));
+
+	auto& LoadedAssetLibrary = InAssetLibraryListNode->GetValue();
+
+	LogUnload(LoadedAssetLibrary);
+
+	DetachAssetLibraryNode(InAssetLibraryListNode);
+
+	delete InAssetLibraryListNode;
+
+	Timing.Stop();
+	Promise.EmplaceValue();
+}
+
 
 FWwiseLoadedAuxBusPtr FWwiseResourceLoaderImpl::CreateAuxBusNode(
 	const FWwiseLocalizedAuxBusCookedData& InAuxBusCookedData, const FWwiseLanguageCookedData* InLanguageOverride)
@@ -514,14 +473,15 @@ FWwiseLoadedAuxBusPtr FWwiseResourceLoaderImpl::CreateAuxBusNode(
 	const auto* LanguageKey = GetLanguageMapKey(InAuxBusCookedData.AuxBusLanguageMap, InLanguageOverride, InAuxBusCookedData.DebugName);
 	if (UNLIKELY(!LanguageKey))
 	{
-		UE_LOG(LogWwiseResourceLoader, Error, TEXT("CreateAuxBusNode: Could not find language for Aux Bus %s"), *InAuxBusCookedData.DebugName.ToString());
+		UE_LOG(LogWwiseResourceLoader, Error, TEXT("CreateAuxBusNode: Could not find language for Aux Bus %s (%" PRIu32 ")"),
+			*InAuxBusCookedData.DebugName.ToString(), InAuxBusCookedData.AuxBusId);
 		return nullptr;
 	}
 
 	return new FWwiseLoadedAuxBusListNode(FWwiseLoadedAuxBusInfo(InAuxBusCookedData, *LanguageKey));
 }
 
-void FWwiseResourceLoaderImpl::LoadAuxBusAsync(FWwiseLoadedAuxBusPromise&& Promise, FWwiseLoadedAuxBusPtr&& InAuxBusListNode)
+void FWwiseResourceLoaderImpl::LoadAuxBusNode(FWwiseLoadedAuxBusPromise&& Promise, FWwiseLoadedAuxBusPtr&& InAuxBusListNode)
 {
 	SCOPED_WWISERESOURCELOADER_EVENT_2(TEXT("FWwiseResourceLoaderImpl::LoadAuxBusAsync"));
 	FWwiseAsyncCycleCounter Timing(GET_STATID(STAT_WwiseResourceLoaderTiming));
@@ -562,7 +522,7 @@ void FWwiseResourceLoaderImpl::LoadAuxBusAsync(FWwiseLoadedAuxBusPromise&& Promi
 	});
 }
 
-void FWwiseResourceLoaderImpl::UnloadAuxBusAsync(FWwiseResourceUnloadPromise&& Promise, FWwiseLoadedAuxBusPtr&& InAuxBusListNode)
+void FWwiseResourceLoaderImpl::UnloadAuxBusNode(FWwiseResourceUnloadPromise&& Promise, FWwiseLoadedAuxBusPtr&& InAuxBusListNode)
 {
 	SCOPED_WWISERESOURCELOADER_EVENT_2(TEXT("FWwiseResourceLoaderImpl::UnloadAuxBusAsync"));
 	FWwiseAsyncCycleCounter Timing(GET_STATID(STAT_WwiseResourceLoaderTiming));
@@ -603,14 +563,15 @@ FWwiseLoadedEventPtr FWwiseResourceLoaderImpl::CreateEventNode(
 	const auto* LanguageKey = GetLanguageMapKey(InEventCookedData.EventLanguageMap, InLanguageOverride, InEventCookedData.DebugName);
 	if (UNLIKELY(!LanguageKey))
 	{
-		UE_LOG(LogWwiseResourceLoader, Error, TEXT("CreateEventNode: Could not find language for Event %s"), *InEventCookedData.DebugName.ToString());
+		UE_LOG(LogWwiseResourceLoader, Error, TEXT("CreateEventNode: Could not find language for Event %s (%" PRIu32 ")"),
+			*InEventCookedData.DebugName.ToString(), InEventCookedData.EventId);
 		return nullptr;
 	}
 
 	return new FWwiseLoadedEventListNode(FWwiseLoadedEventInfo(InEventCookedData, *LanguageKey));
 }
 
-void FWwiseResourceLoaderImpl::LoadEventAsync(FWwiseLoadedEventPromise&& Promise, FWwiseLoadedEventPtr&& InEventListNode)
+void FWwiseResourceLoaderImpl::LoadEventNode(FWwiseLoadedEventPromise&& Promise, FWwiseLoadedEventPtr&& InEventListNode)
 {
 	SCOPED_WWISERESOURCELOADER_EVENT_2(TEXT("FWwiseResourceLoaderImpl::LoadEventAsync"));
 	FWwiseAsyncCycleCounter Timing(GET_STATID(STAT_WwiseResourceLoaderTiming));
@@ -652,7 +613,7 @@ void FWwiseResourceLoaderImpl::LoadEventAsync(FWwiseLoadedEventPromise&& Promise
 	});
 }
 
-void FWwiseResourceLoaderImpl::UnloadEventAsync(FWwiseResourceUnloadPromise&& Promise, FWwiseLoadedEventPtr&& InEventListNode)
+void FWwiseResourceLoaderImpl::UnloadEventNode(FWwiseResourceUnloadPromise&& Promise, FWwiseLoadedEventPtr&& InEventListNode)
 {
 	SCOPED_WWISERESOURCELOADER_EVENT_2(TEXT("FWwiseResourceLoaderImpl::UnloadEventAsync"));
 	FWwiseAsyncCycleCounter Timing(GET_STATID(STAT_WwiseResourceLoaderTiming));
@@ -693,7 +654,7 @@ FWwiseLoadedExternalSourcePtr FWwiseResourceLoaderImpl::CreateExternalSourceNode
 	return new FWwiseLoadedExternalSourceListNode(FWwiseLoadedExternalSourceInfo(InExternalSourceCookedData));
 }
 
-void FWwiseResourceLoaderImpl::LoadExternalSourceAsync(FWwiseLoadedExternalSourcePromise&& Promise, FWwiseLoadedExternalSourcePtr&& InExternalSourceListNode)
+void FWwiseResourceLoaderImpl::LoadExternalSourceNode(FWwiseLoadedExternalSourcePromise&& Promise, FWwiseLoadedExternalSourcePtr&& InExternalSourceListNode)
 {
 	SCOPED_WWISERESOURCELOADER_EVENT_2(TEXT("FWwiseResourceLoaderImpl::LoadExternalSourceAsync"));
 	FWwiseAsyncCycleCounter Timing(GET_STATID(STAT_WwiseResourceLoaderTiming));
@@ -726,7 +687,7 @@ void FWwiseResourceLoaderImpl::LoadExternalSourceAsync(FWwiseLoadedExternalSourc
 	});
 }
 
-void FWwiseResourceLoaderImpl::UnloadExternalSourceAsync(FWwiseResourceUnloadPromise&& Promise, FWwiseLoadedExternalSourcePtr&& InExternalSourceListNode)
+void FWwiseResourceLoaderImpl::UnloadExternalSourceNode(FWwiseResourceUnloadPromise&& Promise, FWwiseLoadedExternalSourcePtr&& InExternalSourceListNode)
 {
 	SCOPED_WWISERESOURCELOADER_EVENT_2(TEXT("FWwiseResourceLoaderImpl::UnloadExternalSourceAsync"));
 	FWwiseAsyncCycleCounter Timing(GET_STATID(STAT_WwiseResourceLoaderTiming));
@@ -759,7 +720,7 @@ FWwiseLoadedGroupValuePtr FWwiseResourceLoaderImpl::CreateGroupValueNode(
 	return new FWwiseLoadedGroupValueListNode(FWwiseLoadedGroupValueInfo(InGroupValueCookedData));
 }
 
-void FWwiseResourceLoaderImpl::LoadGroupValueAsync(FWwiseLoadedGroupValuePromise&& Promise, FWwiseLoadedGroupValuePtr&& InGroupValueListNode)
+void FWwiseResourceLoaderImpl::LoadGroupValueNode(FWwiseLoadedGroupValuePromise&& Promise, FWwiseLoadedGroupValuePtr&& InGroupValueListNode)
 {
 	SCOPED_WWISERESOURCELOADER_EVENT_2(TEXT("FWwiseResourceLoaderImpl::LoadGroupValueAsync"));
 	FWwiseAsyncCycleCounter Timing(GET_STATID(STAT_WwiseResourceLoaderTiming));
@@ -792,7 +753,7 @@ void FWwiseResourceLoaderImpl::LoadGroupValueAsync(FWwiseLoadedGroupValuePromise
 	});
 }
 
-void FWwiseResourceLoaderImpl::UnloadGroupValueAsync(FWwiseResourceUnloadPromise&& Promise, FWwiseLoadedGroupValuePtr&& InGroupValueListNode)
+void FWwiseResourceLoaderImpl::UnloadGroupValueNode(FWwiseResourceUnloadPromise&& Promise, FWwiseLoadedGroupValuePtr&& InGroupValueListNode)
 {
 	SCOPED_WWISERESOURCELOADER_EVENT_2(TEXT("FWwiseResourceLoaderImpl::UnloadGroupValueAsync"));
 	FWwiseAsyncCycleCounter Timing(GET_STATID(STAT_WwiseResourceLoaderTiming));
@@ -825,7 +786,7 @@ FWwiseLoadedInitBankPtr FWwiseResourceLoaderImpl::CreateInitBankNode(
 	return new FWwiseLoadedInitBankListNode(FWwiseLoadedInitBankInfo(InInitBankCookedData));
 }
 
-void FWwiseResourceLoaderImpl::LoadInitBankAsync(FWwiseLoadedInitBankPromise&& Promise, FWwiseLoadedInitBankPtr&& InInitBankListNode)
+void FWwiseResourceLoaderImpl::LoadInitBankNode(FWwiseLoadedInitBankPromise&& Promise, FWwiseLoadedInitBankPtr&& InInitBankListNode)
 {
 	SCOPED_WWISERESOURCELOADER_EVENT_2(TEXT("FWwiseResourceLoaderImpl::LoadInitBankAsync"));
 	FWwiseAsyncCycleCounter Timing(GET_STATID(STAT_WwiseResourceLoaderTiming));
@@ -858,7 +819,7 @@ void FWwiseResourceLoaderImpl::LoadInitBankAsync(FWwiseLoadedInitBankPromise&& P
 	});
 }
 
-void FWwiseResourceLoaderImpl::UnloadInitBankAsync(FWwiseResourceUnloadPromise&& Promise, FWwiseLoadedInitBankPtr&& InInitBankListNode)
+void FWwiseResourceLoaderImpl::UnloadInitBankNode(FWwiseResourceUnloadPromise&& Promise, FWwiseLoadedInitBankPtr&& InInitBankListNode)
 {
 	SCOPED_WWISERESOURCELOADER_EVENT_2(TEXT("FWwiseResourceLoaderImpl::UnloadInitBankAsync"));
 	FWwiseAsyncCycleCounter Timing(GET_STATID(STAT_WwiseResourceLoaderTiming));
@@ -890,7 +851,7 @@ FWwiseLoadedMediaPtr FWwiseResourceLoaderImpl::CreateMediaNode(const FWwiseMedia
 	return new FWwiseLoadedMediaListNode(FWwiseLoadedMediaInfo(InMediaCookedData));
 }
 
-void FWwiseResourceLoaderImpl::LoadMediaAsync(FWwiseLoadedMediaPromise&& Promise, FWwiseLoadedMediaPtr&& InMediaListNode)
+void FWwiseResourceLoaderImpl::LoadMediaNode(FWwiseLoadedMediaPromise&& Promise, FWwiseLoadedMediaPtr&& InMediaListNode)
 {
 	SCOPED_WWISERESOURCELOADER_EVENT_2(TEXT("FWwiseResourceLoaderImpl::LoadMediaAsync"));
 	FWwiseAsyncCycleCounter Timing(GET_STATID(STAT_WwiseResourceLoaderTiming));
@@ -923,7 +884,7 @@ void FWwiseResourceLoaderImpl::LoadMediaAsync(FWwiseLoadedMediaPromise&& Promise
 	});
 }
 
-void FWwiseResourceLoaderImpl::UnloadMediaAsync(FWwiseResourceUnloadPromise&& Promise, FWwiseLoadedMediaPtr&& InMediaListNode)
+void FWwiseResourceLoaderImpl::UnloadMediaNode(FWwiseResourceUnloadPromise&& Promise, FWwiseLoadedMediaPtr&& InMediaListNode)
 {
 	SCOPED_WWISERESOURCELOADER_EVENT_2(TEXT("FWwiseResourceLoaderImpl::UnloadMediaAsync"));
 	FWwiseAsyncCycleCounter Timing(GET_STATID(STAT_WwiseResourceLoaderTiming));
@@ -956,14 +917,15 @@ FWwiseLoadedShareSetPtr FWwiseResourceLoaderImpl::CreateShareSetNode(
 	const auto* LanguageKey = GetLanguageMapKey(InShareSetCookedData.ShareSetLanguageMap, InLanguageOverride, InShareSetCookedData.DebugName);
 	if (UNLIKELY(!LanguageKey))
 	{
-		UE_LOG(LogWwiseResourceLoader, Error, TEXT("CreateShareSetNode: Could not find language for ShareSet %s"), *InShareSetCookedData.DebugName.ToString());
+		UE_LOG(LogWwiseResourceLoader, Error, TEXT("CreateShareSetNode: Could not find language for ShareSet %s (%" PRIu32 ")"),
+			*InShareSetCookedData.DebugName.ToString(), InShareSetCookedData.ShareSetId);
 		return nullptr;
 	}
 
 	return new FWwiseLoadedShareSetListNode(FWwiseLoadedShareSetInfo(InShareSetCookedData, *LanguageKey));
 }
 
-void FWwiseResourceLoaderImpl::LoadShareSetAsync(FWwiseLoadedShareSetPromise&& Promise, FWwiseLoadedShareSetPtr&& InShareSetListNode)
+void FWwiseResourceLoaderImpl::LoadShareSetNode(FWwiseLoadedShareSetPromise&& Promise, FWwiseLoadedShareSetPtr&& InShareSetListNode)
 {
 	SCOPED_WWISERESOURCELOADER_EVENT_2(TEXT("FWwiseResourceLoaderImpl::LoadShareSetAsync"));
 	FWwiseAsyncCycleCounter Timing(GET_STATID(STAT_WwiseResourceLoaderTiming));
@@ -1005,7 +967,7 @@ void FWwiseResourceLoaderImpl::LoadShareSetAsync(FWwiseLoadedShareSetPromise&& P
 	});
 }
 
-void FWwiseResourceLoaderImpl::UnloadShareSetAsync(FWwiseResourceUnloadPromise&& Promise, FWwiseLoadedShareSetPtr&& InShareSetListNode)
+void FWwiseResourceLoaderImpl::UnloadShareSetNode(FWwiseResourceUnloadPromise&& Promise, FWwiseLoadedShareSetPtr&& InShareSetListNode)
 {
 	SCOPED_WWISERESOURCELOADER_EVENT_2(TEXT("FWwiseResourceLoaderImpl::UnloadShareSetAsync"));
 	FWwiseAsyncCycleCounter Timing(GET_STATID(STAT_WwiseResourceLoaderTiming));
@@ -1045,14 +1007,15 @@ FWwiseLoadedSoundBankPtr FWwiseResourceLoaderImpl::CreateSoundBankNode(
 	const auto* LanguageKey = GetLanguageMapKey(InSoundBankCookedData.SoundBankLanguageMap, InLanguageOverride, InSoundBankCookedData.DebugName);
 	if (UNLIKELY(!LanguageKey))
 	{
-		UE_LOG(LogWwiseResourceLoader, Error, TEXT("CreateSoundBankNode: Could not find language for SoundBank %s"), *InSoundBankCookedData.DebugName.ToString());
+		UE_LOG(LogWwiseResourceLoader, Error, TEXT("CreateSoundBankNode: Could not find language for SoundBank %s (%" PRIu32 ")"),
+			*InSoundBankCookedData.DebugName.ToString(), InSoundBankCookedData.SoundBankId);
 		return nullptr;
 	}
 
 	return new FWwiseLoadedSoundBankListNode(FWwiseLoadedSoundBankInfo(InSoundBankCookedData, *LanguageKey));
 }
 
-void FWwiseResourceLoaderImpl::LoadSoundBankAsync(FWwiseLoadedSoundBankPromise&& Promise, FWwiseLoadedSoundBankPtr&& InSoundBankListNode)
+void FWwiseResourceLoaderImpl::LoadSoundBankNode(FWwiseLoadedSoundBankPromise&& Promise, FWwiseLoadedSoundBankPtr&& InSoundBankListNode)
 {
 	SCOPED_WWISERESOURCELOADER_EVENT_2(TEXT("FWwiseResourceLoaderImpl::LoadSoundBankAsync"));
 	FWwiseAsyncCycleCounter Timing(GET_STATID(STAT_WwiseResourceLoaderTiming));
@@ -1094,7 +1057,7 @@ void FWwiseResourceLoaderImpl::LoadSoundBankAsync(FWwiseLoadedSoundBankPromise&&
 	});
 }
 
-void FWwiseResourceLoaderImpl::UnloadSoundBankAsync(FWwiseResourceUnloadPromise&& Promise, FWwiseLoadedSoundBankPtr&& InSoundBankListNode)
+void FWwiseResourceLoaderImpl::UnloadSoundBankNode(FWwiseResourceUnloadPromise&& Promise, FWwiseLoadedSoundBankPtr&& InSoundBankListNode)
 {
 	SCOPED_WWISERESOURCELOADER_EVENT_2(TEXT("FWwiseResourceLoaderImpl::UnloadSoundBankAsync"));
 	FWwiseAsyncCycleCounter Timing(GET_STATID(STAT_WwiseResourceLoaderTiming));
@@ -1131,12 +1094,18 @@ void FWwiseResourceLoaderImpl::UnloadSoundBankAsync(FWwiseResourceUnloadPromise&
 void FWwiseResourceLoaderImpl::LoadAuxBusResources(FWwiseResourceLoadPromise&& Promise, FWwiseLoadedAuxBusInfo::FLoadedData& LoadedData, const FWwiseAuxBusCookedData& InCookedData)
 {
 	SCOPED_WWISERESOURCELOADER_EVENT_2(TEXT("FWwiseResourceLoaderImpl::LoadAuxBusResources"));
-	
+
 	if (LoadedData.IsProcessing)
 	{
-		ExecutionQueue.Async(WWISERESOURCELOADER_ASYNC_NAME("FWwiseResourceLoaderImpl::LoadAuxBusResources IsProcessing"), [this, Promise = MoveTemp(Promise), &LoadedData, &InCookedData]() mutable
+		ExecutionQueue->Async(WWISERESOURCELOADER_ASYNC_NAME("FWwiseResourceLoaderImpl::LoadAuxBusResources IsProcessing"), [WeakThis=AsWeak(), Promise = MoveTemp(Promise), &LoadedData, &InCookedData]() mutable
 		{
-			LoadAuxBusResources(MoveTemp(Promise), LoadedData, InCookedData);
+			auto SharedResourceLoader = StaticCastSharedPtr<FWwiseResourceLoaderImpl>(WeakThis.Pin());
+			if (!SharedResourceLoader.IsValid())
+			{
+				UE_LOG(LogWwiseResourceLoader, Error, TEXT("FWwiseResourceLoaderImpl::LoadAuxBusResources: Failed. ResourceLoader is not valid"))
+				return Promise.EmplaceValue(false);
+			}
+			SharedResourceLoader->LoadAuxBusResources(MoveTemp(Promise), LoadedData, InCookedData);
 		});
 		return;
 	}
@@ -1158,7 +1127,7 @@ void FWwiseResourceLoaderImpl::LoadAuxBusResources(FWwiseResourceLoadPromise&& P
 
 	AddLoadMediaFutures(FutureArray, LoadedMedia, InCookedData.Media, TEXT("AuxBus"), InCookedData.DebugName.ToString(), InCookedData.AuxBusId);
 	AddLoadSoundBankFutures(FutureArray, LoadedSoundBanks, InCookedData.SoundBanks, TEXT("AuxBus"), InCookedData.DebugName.ToString(), InCookedData.AuxBusId);
-	WaitForFutures(MoveTemp(FutureArray), [this, Promise = MoveTemp(Promise), &LoadedData, &LoadedSoundBanks, &InCookedData]() mutable
+	WaitForFutures(MoveTemp(FutureArray), [WeakThis=AsWeak(), Promise = MoveTemp(Promise), &LoadedData, &LoadedSoundBanks, &InCookedData]() mutable
 	{
 		--LoadedData.IsProcessing;
 		if (UNLIKELY(LoadedSoundBanks.Num() != InCookedData.SoundBanks.Num()))
@@ -1168,9 +1137,23 @@ void FWwiseResourceLoaderImpl::LoadAuxBusResources(FWwiseResourceLoadPromise&& P
 			FWwiseResourceUnloadPromise UnloadPromise;
 			auto UnloadFuture = UnloadPromise.GetFuture();
 			
-			ExecutionQueue.Async(WWISERESOURCELOADER_ASYNC_NAME("FWwiseResourceLoaderImpl::LoadAuxBusResources Error"), [this, UnloadPromise = MoveTemp(UnloadPromise), &LoadedData, &InCookedData]() mutable
+			auto SharedResourceLoader = StaticCastSharedPtr<FWwiseResourceLoaderImpl>(WeakThis.Pin());
+			if (!SharedResourceLoader.IsValid())
 			{
-				UnloadAuxBusResources(MoveTemp(UnloadPromise), LoadedData, InCookedData);
+				UE_LOG(LogWwiseResourceLoader, Error,
+				       TEXT("FWwiseResourceLoaderImpl::LoadAuxBusResources: Failed. ResourceLoader is not valid"))
+				return Promise.EmplaceValue();
+			}
+			SharedResourceLoader->ExecutionQueue->Async(WWISERESOURCELOADER_ASYNC_NAME("FWwiseResourceLoaderImpl::LoadAuxBusResources Error"), [WeakThis=MoveTemp(WeakThis), UnloadPromise = MoveTemp(UnloadPromise), &LoadedData, &InCookedData]() mutable
+			{
+				auto SharedResourceLoader = StaticCastSharedPtr<FWwiseResourceLoaderImpl>(WeakThis.Pin());
+				if (!SharedResourceLoader.IsValid())
+				{
+					UE_LOG(LogWwiseResourceLoader, Error,
+					       TEXT("FWwiseResourceLoaderImpl::LoadAuxBusResources: Failed. ResourceLoader is not valid"))
+					return UnloadPromise.EmplaceValue();
+				}
+				SharedResourceLoader->UnloadAuxBusResources(MoveTemp(UnloadPromise), LoadedData, InCookedData);
 			});
 			
 			UnloadFuture.Next([Promise = MoveTemp(Promise)](int) mutable
@@ -1189,12 +1172,19 @@ void FWwiseResourceLoaderImpl::LoadAuxBusResources(FWwiseResourceLoadPromise&& P
 void FWwiseResourceLoaderImpl::LoadEventResources(FWwiseResourceLoadPromise&& Promise, FWwiseLoadedEventInfo::FLoadedData& LoadedData, const FWwiseEventCookedData& InCookedData)
 {
 	SCOPED_WWISERESOURCELOADER_EVENT_2(TEXT("FWwiseResourceLoaderImpl::LoadEventResources"));
-	
+
 	if (LoadedData.IsProcessing)
 	{
-		ExecutionQueue.Async(WWISERESOURCELOADER_ASYNC_NAME("FWwiseResourceLoaderImpl::LoadEventResources IsProcessing"), [this, Promise = MoveTemp(Promise), &LoadedData, &InCookedData]() mutable
+		ExecutionQueue->Async(WWISERESOURCELOADER_ASYNC_NAME("FWwiseResourceLoaderImpl::LoadEventResources IsProcessing"), [WeakThis=AsWeak(), Promise = MoveTemp(Promise), &LoadedData, &InCookedData]() mutable
 		{
-			LoadEventResources(MoveTemp(Promise), LoadedData, InCookedData);
+			auto SharedResourceLoader = StaticCastSharedPtr<FWwiseResourceLoaderImpl>(WeakThis.Pin());
+			if (!SharedResourceLoader.IsValid())
+			{
+				UE_LOG(LogWwiseResourceLoader, Error,
+				       TEXT("FWwiseResourceLoaderImpl::LoadEventResources: Failed. ResourceLoader is not valid"))
+				return Promise.EmplaceValue();
+			}
+			SharedResourceLoader->LoadEventResources(MoveTemp(Promise), LoadedData, InCookedData);
 		});
 		return;
 	}
@@ -1234,7 +1224,7 @@ void FWwiseResourceLoaderImpl::LoadEventResources(FWwiseResourceLoadPromise&& Pr
 	AddLoadMediaFutures(FutureArray, LoadedMedia, InCookedData.Media, TEXT("Event"), InCookedData.DebugName.ToString(), InCookedData.EventId);
 	AddLoadSoundBankFutures(FutureArray, LoadedSoundBanks, InCookedData.SoundBanks, TEXT("Event"), InCookedData.DebugName.ToString(), InCookedData.EventId);
 
-	WaitForFutures(MoveTemp(FutureArray), [this, Promise = MoveTemp(Promise), &LoadedData, &LoadedSoundBanks, &InCookedData]() mutable
+	WaitForFutures(MoveTemp(FutureArray), [WeakThis=AsWeak(), Promise = MoveTemp(Promise), &LoadedData, &LoadedSoundBanks, &InCookedData]() mutable
 	{
 		SCOPED_WWISERESOURCELOADER_EVENT_3(TEXT("FWwiseResourceLoaderImpl::LoadEventResources WaitForFutures"));
 		--LoadedData.IsProcessing;
@@ -1244,10 +1234,24 @@ void FWwiseResourceLoaderImpl::LoadEventResources(FWwiseResourceLoadPromise&& Pr
 				InCookedData.SoundBanks.Num() - LoadedSoundBanks.Num(), *InCookedData.DebugName.ToString(), (uint32)InCookedData.EventId);
 			FWwiseResourceUnloadPromise UnloadPromise;
 			auto UnloadFuture = UnloadPromise.GetFuture();
-			
-			ExecutionQueue.Async(WWISERESOURCELOADER_ASYNC_NAME("FWwiseResourceLoaderImpl::LoadEventResources Error UnloadEventResource"), [this, UnloadPromise = MoveTemp(UnloadPromise), &LoadedData, &InCookedData]() mutable
+
+			auto SharedResourceLoader = StaticCastSharedPtr<FWwiseResourceLoaderImpl>(WeakThis.Pin());
+			if (!SharedResourceLoader.IsValid())
 			{
-				UnloadEventResources(MoveTemp(UnloadPromise), LoadedData, InCookedData);
+				UE_LOG(LogWwiseResourceLoader, Error,
+				       TEXT("FWwiseResourceLoaderImpl::LoadEventResources: Failed. ResourceLoader is not valid"))
+				return Promise.EmplaceValue();
+			}
+			SharedResourceLoader->ExecutionQueue->Async(WWISERESOURCELOADER_ASYNC_NAME("FWwiseResourceLoaderImpl::LoadEventResources Error UnloadEventResource"), [WeakThis=MoveTemp(WeakThis), UnloadPromise = MoveTemp(UnloadPromise), &LoadedData, &InCookedData]() mutable
+			{
+				auto SharedResourceLoader = StaticCastSharedPtr<FWwiseResourceLoaderImpl>(WeakThis.Pin());
+				if (!SharedResourceLoader.IsValid())
+				{
+					UE_LOG(LogWwiseResourceLoader, Error,
+					       TEXT("FWwiseResourceLoaderImpl::LoadEventResources: Failed. ResourceLoader is not valid"))
+					return UnloadPromise.EmplaceValue();
+				}
+				SharedResourceLoader->UnloadEventResources(MoveTemp(UnloadPromise), LoadedData, InCookedData);
 			});
 			
 			UnloadFuture.Next([Promise = MoveTemp(Promise)](int) mutable
@@ -1281,7 +1285,7 @@ void FWwiseResourceLoaderImpl::LoadEventSwitchContainerResources(FWwiseResourceL
 		FCompletionPromise GroupValuePromise;
 		FutureArray.Add(GroupValuePromise.GetFuture());
 
-		ExecutionQueue.Async(WWISERESOURCELOADER_ASYNC_NAME("FWwiseResourceLoaderImpl::LoadEventSwitchContainerResources GroupValue"), [this, &LoadedRequiredGroupValues, &InCookedData, &GroupValue, GroupValuePromise = MoveTemp(GroupValuePromise)]() mutable
+		ExecutionQueue->Async(WWISERESOURCELOADER_ASYNC_NAME("FWwiseResourceLoaderImpl::LoadEventSwitchContainerResources GroupValue"), [WeakThis=AsWeak(), &LoadedRequiredGroupValues, &InCookedData, &GroupValue, GroupValuePromise = MoveTemp(GroupValuePromise)]() mutable
 		{
 			UE_LOG(LogWwiseResourceLoader, VeryVerbose, TEXT("Loading GroupValue %s for Event %s (%" PRIu32 ")"),
 				*GroupValue.GetDebugString(), *InCookedData.DebugName.ToString(), (uint32)InCookedData.EventId);
@@ -1291,8 +1295,15 @@ void FWwiseResourceLoaderImpl::LoadEventSwitchContainerResources(FWwiseResourceL
 
 			FWwiseResourceLoadPromise GroupValueResourcePromise;
 			auto GroupValueResourceFuture = GroupValueResourcePromise.GetFuture();
-			LoadGroupValueResources(MoveTemp(GroupValueResourcePromise), GroupValueLoadedData, GroupValue);
-			GroupValueResourceFuture.Next([this, &LoadedRequiredGroupValues, &InCookedData, &GroupValue, GroupValuePromise = MoveTemp(GroupValuePromise), LoadedNode](bool bResult) mutable
+			auto SharedResourceLoader = StaticCastSharedPtr<FWwiseResourceLoaderImpl>(WeakThis.Pin());
+			if (!SharedResourceLoader.IsValid())
+			{
+				UE_LOG(LogWwiseResourceLoader, Error,
+				       TEXT("FWwiseResourceLoaderImpl::LoadEventSwitchCOntainerResources: Failed. ResourceLoader is not valid"))
+				return GroupValuePromise.EmplaceValue();
+			}
+			SharedResourceLoader->LoadGroupValueResources(MoveTemp(GroupValueResourcePromise), GroupValueLoadedData, GroupValue);
+			GroupValueResourceFuture.Next([WeakThis=MoveTemp(WeakThis), &LoadedRequiredGroupValues, &InCookedData, &GroupValue, GroupValuePromise = MoveTemp(GroupValuePromise), LoadedNode](bool bResult) mutable
 			{
 				SCOPED_WWISERESOURCELOADER_EVENT_3(TEXT("FWwiseResourceLoaderImpl::LoadEventSwitchContainerResources GroupValue.SwitchContainer ResourceFuture.Next"));
 				const auto& GroupValueLoadedData = LoadedNode->GetValue().LoadedData;
@@ -1305,7 +1316,15 @@ void FWwiseResourceLoaderImpl::LoadEventSwitchContainerResources(FWwiseResourceL
 				}
 				else
 				{
-					ExecutionQueue.Async(WWISERESOURCELOADER_ASYNC_NAME("FWwiseResourceLoaderImpl::LoadEventSwitchContainerResources GroupValue Emplace"), [this, &LoadedRequiredGroupValues, LoadedNode, GroupValuePromise = MoveTemp(GroupValuePromise)]() mutable
+					auto SharedResourceLoader = StaticCastSharedPtr<FWwiseResourceLoaderImpl>(WeakThis.Pin());
+					if (!SharedResourceLoader.IsValid())
+					{
+						UE_LOG(LogWwiseResourceLoader, Error,
+						       TEXT("FWwiseResourceLoaderImpl::LoadEventSwitchContainerResources: Failed. ResourceLoader is not valid"
+						       ))
+						return GroupValuePromise.EmplaceValue();
+					}
+					SharedResourceLoader->ExecutionQueue->Async(WWISERESOURCELOADER_ASYNC_NAME("FWwiseResourceLoaderImpl::LoadEventSwitchContainerResources GroupValue Emplace"), [&LoadedRequiredGroupValues, LoadedNode, GroupValuePromise = MoveTemp(GroupValuePromise)]() mutable
 					{
 						LoadedRequiredGroupValues.AddTail(LoadedNode);
 						GroupValuePromise.EmplaceValue();
@@ -1331,14 +1350,21 @@ void FWwiseResourceLoaderImpl::LoadEventSwitchContainerResources(FWwiseResourceL
 			FCompletionPromise SwitchContainerLeafPromise;
 			FutureArray.Add(SwitchContainerLeafPromise.GetFuture());
 
-			ExecutionQueue.Async(WWISERESOURCELOADER_ASYNC_NAME("FWwiseResourceLoaderImpl::LoadEventSwitchContainerResources SwitchContainerLeaf"), [this, &bLoadedSwitchContainerLeaves, &InCookedData, &GroupValue, UsageCount, SwitchContainerLeafPromise = MoveTemp(SwitchContainerLeafPromise)]() mutable
+			ExecutionQueue->Async(WWISERESOURCELOADER_ASYNC_NAME("FWwiseResourceLoaderImpl::LoadEventSwitchContainerResources SwitchContainerLeaf"), [WeakThis=AsWeak(), &bLoadedSwitchContainerLeaves, &InCookedData, &GroupValue, UsageCount, SwitchContainerLeafPromise = MoveTemp(SwitchContainerLeafPromise)]() mutable
 			{
 				UE_LOG(LogWwiseResourceLoader, VeryVerbose, TEXT("Adding optional %s for %s in Event %s (%" PRIu32 ")"),
 					*GroupValue.GetDebugString(), *UsageCount->Key.GetDebugString(), *InCookedData.DebugName.ToString(), (uint32)InCookedData.EventId);
 
-				auto FoundInfoId = LoadedGroupValueInfo.FindId(FWwiseSwitchContainerLoadedGroupValueInfo(GroupValue));
-				auto InfoId = FoundInfoId.IsValidId() ? FoundInfoId : LoadedGroupValueInfo.Add(FWwiseSwitchContainerLoadedGroupValueInfo(GroupValue), nullptr);
-				FWwiseSwitchContainerLoadedGroupValueInfo& Info = LoadedGroupValueInfo[InfoId];
+				auto SharedResourceLoader = StaticCastSharedPtr<FWwiseResourceLoaderImpl>(WeakThis.Pin());
+				if (!SharedResourceLoader.IsValid())
+				{
+					UE_LOG(LogWwiseResourceLoader, Error,
+					       TEXT("FWwiseResourceLoaderImpl::LoadEventSwitchContainerResources: Failed. ResourceLoader is not valid"))
+					return SwitchContainerLeafPromise.EmplaceValue();
+				}
+				auto FoundInfoId = SharedResourceLoader->LoadedGroupValueInfo.FindId(FWwiseSwitchContainerLoadedGroupValueInfo(GroupValue));
+				auto InfoId = FoundInfoId.IsValidId() ? FoundInfoId : SharedResourceLoader->LoadedGroupValueInfo.Add(FWwiseSwitchContainerLoadedGroupValueInfo(GroupValue), nullptr);
+				FWwiseSwitchContainerLoadedGroupValueInfo& Info = SharedResourceLoader->LoadedGroupValueInfo[InfoId];
 				bool bIsAlreadyCreated = false;
 				auto UsageCountId = Info.Leaves.Add(UsageCount, &bIsAlreadyCreated);
 				if (UNLIKELY(bIsAlreadyCreated))
@@ -1365,7 +1391,7 @@ void FWwiseResourceLoaderImpl::LoadEventSwitchContainerResources(FWwiseResourceL
 						return SwitchContainerLeafPromise.EmplaceValue();
 					}
 
-					LoadSwitchContainerLeafResources(MoveTemp(SwitchContainerLeafPromise), UsageCount);
+					SharedResourceLoader->LoadSwitchContainerLeafResources(MoveTemp(SwitchContainerLeafPromise), UsageCount);
 				}
 				else
 				{
@@ -1389,9 +1415,16 @@ void FWwiseResourceLoaderImpl::LoadExternalSourceResources(FWwiseResourceLoadPro
 
 	if (LoadedData.IsProcessing)
 	{
-		ExecutionQueue.Async(WWISERESOURCELOADER_ASYNC_NAME("FWwiseResourceLoaderImpl::LoadExternalSourceResources IsProcessing"), [this, Promise = MoveTemp(Promise), &LoadedData, &InCookedData]() mutable
+		ExecutionQueue->Async(WWISERESOURCELOADER_ASYNC_NAME("FWwiseResourceLoaderImpl::LoadExternalSourceResources IsProcessing"), [WeakThis=AsWeak(), Promise = MoveTemp(Promise), &LoadedData, &InCookedData]() mutable
 		{
-			LoadExternalSourceResources(MoveTemp(Promise), LoadedData, InCookedData);
+			auto SharedResourceLoader = StaticCastSharedPtr<FWwiseResourceLoaderImpl>(WeakThis.Pin());
+			if (!SharedResourceLoader.IsValid())
+			{
+				UE_LOG(LogWwiseResourceLoader, Error,
+				       TEXT("FWwiseResourceLoaderImpl::LoadExternalSourceResources: Failed. ResourceLoader is not valid"))
+				return Promise.EmplaceValue();
+			}
+			SharedResourceLoader->LoadExternalSourceResources(MoveTemp(Promise), LoadedData, InCookedData);
 		});
 		return;
 	}
@@ -1425,9 +1458,16 @@ void FWwiseResourceLoaderImpl::LoadGroupValueResources(FWwiseResourceLoadPromise
 
 	if (LoadedData.IsProcessing)
 	{
-		ExecutionQueue.Async(WWISERESOURCELOADER_ASYNC_NAME("FWwiseResourceLoaderImpl::LoadGroupValueResources IsProcessing"), [this, Promise = MoveTemp(Promise), &LoadedData, &InCookedData]() mutable
+		ExecutionQueue->Async(WWISERESOURCELOADER_ASYNC_NAME("FWwiseResourceLoaderImpl::LoadGroupValueResources IsProcessing"), [WeakThis=AsWeak(), Promise = MoveTemp(Promise), &LoadedData, &InCookedData]() mutable
 		{
-			LoadGroupValueResources(MoveTemp(Promise), LoadedData, InCookedData);
+			auto SharedResourceLoader = StaticCastSharedPtr<FWwiseResourceLoaderImpl>(WeakThis.Pin());
+			if (!SharedResourceLoader.IsValid())
+			{
+				UE_LOG(LogWwiseResourceLoader, Error,
+				       TEXT("FWwiseResourceLoaderImpl::LoadGroupValueResources: Failed. ResourceLoader is not valid"))
+				return Promise.EmplaceValue();
+			}
+			SharedResourceLoader->LoadGroupValueResources(MoveTemp(Promise), LoadedData, InCookedData);
 		});
 		return;
 	}
@@ -1435,11 +1475,18 @@ void FWwiseResourceLoaderImpl::LoadGroupValueResources(FWwiseResourceLoadPromise
 	LogLoadResources(InCookedData);
 	++LoadedData.IsProcessing;
 	
-	ExecutionQueue.Async(WWISERESOURCELOADER_ASYNC_NAME("WwiseResourceLoaderImpl::LoadGroupValueResources GroupValue.SwitchContainer"), [this, &LoadedData, &InCookedData, Promise = MoveTemp(Promise)]() mutable
+	ExecutionQueue->Async(WWISERESOURCELOADER_ASYNC_NAME("WwiseResourceLoaderImpl::LoadGroupValueResources GroupValue.SwitchContainer"), [WeakThis=AsWeak(), &LoadedData, &InCookedData, Promise = MoveTemp(Promise)]() mutable
 	{
-		auto FoundInfoId = LoadedGroupValueInfo.FindId(FWwiseSwitchContainerLoadedGroupValueInfo(InCookedData));
-		auto InfoId = FoundInfoId.IsValidId() ? FoundInfoId : LoadedGroupValueInfo.Add(FWwiseSwitchContainerLoadedGroupValueInfo(InCookedData), nullptr);
-		FWwiseSwitchContainerLoadedGroupValueInfo& Info = LoadedGroupValueInfo[InfoId];
+		auto SharedResourceLoader = StaticCastSharedPtr<FWwiseResourceLoaderImpl>(WeakThis.Pin());
+		if (!SharedResourceLoader.IsValid())
+		{
+			UE_LOG(LogWwiseResourceLoader, Error,
+			       TEXT("FWwiseResourceLoaderImpl::LoadGroupValueResources: Failed. ResourceLoader is not valid"))
+			return Promise.EmplaceValue();
+		}
+		auto FoundInfoId = SharedResourceLoader->LoadedGroupValueInfo.FindId(FWwiseSwitchContainerLoadedGroupValueInfo(InCookedData));
+		auto InfoId = FoundInfoId.IsValidId() ? FoundInfoId : SharedResourceLoader->LoadedGroupValueInfo.Add(FWwiseSwitchContainerLoadedGroupValueInfo(InCookedData), nullptr);
+		FWwiseSwitchContainerLoadedGroupValueInfo& Info = SharedResourceLoader->LoadedGroupValueInfo[InfoId];
 		const bool bWasLoaded = Info.ResourcesAreLoaded();
 		++Info.GroupValueCount;
 
@@ -1466,7 +1513,7 @@ void FWwiseResourceLoaderImpl::LoadGroupValueResources(FWwiseResourceLoadPromise
 				FCompletionPromise CompletionPromise;
 				FutureArray.Add(CompletionPromise.GetFuture());
 
-				LoadSwitchContainerLeafResources(MoveTemp(CompletionPromise), UsageCount);
+				SharedResourceLoader->LoadSwitchContainerLeafResources(MoveTemp(CompletionPromise), UsageCount);
 			}
 		}
 		else
@@ -1474,7 +1521,7 @@ void FWwiseResourceLoaderImpl::LoadGroupValueResources(FWwiseResourceLoadPromise
 			UE_LOG(LogWwiseResourceLoader, VeryVerbose, TEXT("GroupValue %s (%s %" PRIu32 ":%" PRIu32 ") already loaded (Count: %d times)."),
 				*InCookedData.DebugName.ToString(), *InCookedData.GetTypeName(), (uint32)InCookedData.GroupId, (uint32)InCookedData.Id, (int)Info.GroupValueCount);
 		}
-		WaitForFutures(MoveTemp(FutureArray), [&LoadedData, Promise = MoveTemp(Promise)]() mutable
+		SharedResourceLoader->WaitForFutures(MoveTemp(FutureArray), [&LoadedData, Promise = MoveTemp(Promise)]() mutable
 		{
 			SCOPED_WWISERESOURCELOADER_EVENT_3(TEXT("FWwiseResourceLoaderImpl::LoadGroupValueResources GroupValue.SwitchContainer WaitForFutures.Done"));
 			LoadedData.bLoaded = true;
@@ -1491,9 +1538,16 @@ void FWwiseResourceLoaderImpl::LoadInitBankResources(FWwiseResourceLoadPromise&&
 
 	if (LoadedData.IsProcessing)
 	{
-		ExecutionQueue.Async(WWISERESOURCELOADER_ASYNC_NAME("FWwiseResourceLoaderImpl::LoadInitBankResources IsProcessing"), [this, Promise = MoveTemp(Promise), &LoadedData, &InCookedData]() mutable
+		ExecutionQueue->Async(WWISERESOURCELOADER_ASYNC_NAME("FWwiseResourceLoaderImpl::LoadInitBankResources IsProcessing"), [WeakThis=AsWeak(), Promise = MoveTemp(Promise), &LoadedData, &InCookedData]() mutable
 		{
-			LoadInitBankResources(MoveTemp(Promise), LoadedData, InCookedData);
+			auto SharedResourceLoader = StaticCastSharedPtr<FWwiseResourceLoaderImpl>(WeakThis.Pin());
+			if (!SharedResourceLoader.IsValid())
+			{
+				UE_LOG(LogWwiseResourceLoader, Error,
+				       TEXT("FWwiseResourceLoaderImpl::LoadInitBankResources: Failed. ResourceLoader is not valid"))
+				return Promise.EmplaceValue();
+			}
+			SharedResourceLoader->LoadInitBankResources(MoveTemp(Promise), LoadedData, InCookedData);
 		});
 		return;
 	}
@@ -1516,12 +1570,12 @@ void FWwiseResourceLoaderImpl::LoadInitBankResources(FWwiseResourceLoadPromise&&
 
 	FCompletionPromise InitBankPromise;
 	auto InitBankFuture = InitBankPromise.GetFuture();
-	LoadSoundBankFile(InCookedData, [this, InitBankPromise = MoveTemp(InitBankPromise), &LoadedData, &InCookedData](bool bInResult) mutable
+	LoadSoundBankFile(InCookedData, [WeakThis=AsWeak(), InitBankPromise = MoveTemp(InitBankPromise), &LoadedData, &InCookedData] (bool bInResult) mutable
 	{
 		LoadedData.bLoaded = bInResult;
 		if (UNLIKELY(!LoadedData.bLoaded))
 		{
-			UE_LOG(LogWwiseResourceLoader, Error, TEXT("LoadInitBankResources: Could not load InitBank %s (%" PRIu32 ")"),
+			UE_LOG(LogWwiseResourceLoader, Warning, TEXT("LoadInitBankResources: Could not load InitBank %s (%" PRIu32 ")"),
 				*InCookedData.DebugName.ToString(), (uint32)InCookedData.SoundBankId);
 		}
 
@@ -1529,8 +1583,18 @@ void FWwiseResourceLoaderImpl::LoadInitBankResources(FWwiseResourceLoadPromise&&
 		auto& LoadedSoundBanks = LoadedData.LoadedSoundBanks;
 
 		FCompletionFutureArray SoundBanksFutureArray;
-		AddLoadSoundBankFutures(SoundBanksFutureArray, LoadedSoundBanks, InCookedData.SoundBanks, TEXT("InitBank"), InCookedData.DebugName.ToString(), InCookedData.SoundBankId);
-		WaitForFutures(MoveTemp(SoundBanksFutureArray), [InitBankPromise = MoveTemp(InitBankPromise), bInResult]() mutable
+		auto SharedResourceLoader = StaticCastSharedPtr<const FWwiseResourceLoaderImpl>(WeakThis.Pin());
+		if (!SharedResourceLoader.IsValid())
+		{
+			UE_LOG(LogWwiseResourceLoader, Error,
+			       TEXT(
+				       "FWwiseResourceLoaderImpl::LoadInitBankResources: Failed. ResourceLoader is not valid"
+			       ))
+			return InitBankPromise.EmplaceValue();
+		}
+		SharedResourceLoader->AddLoadSoundBankFutures(SoundBanksFutureArray, LoadedSoundBanks, InCookedData.SoundBanks, TEXT("InitBank"),
+		 InCookedData.DebugName.ToString(), InCookedData.SoundBankId);
+		SharedResourceLoader->WaitForFutures(MoveTemp(SoundBanksFutureArray), [InitBankPromise = MoveTemp(InitBankPromise), bInResult]() mutable
 		{
 			// Done loading both the Init Bank and the SoundBanks
 			InitBankPromise.EmplaceValue();
@@ -1555,9 +1619,16 @@ void FWwiseResourceLoaderImpl::LoadMediaResources(FWwiseResourceLoadPromise&& Pr
 
 	if (LoadedData.IsProcessing)
 	{
-		ExecutionQueue.Async(WWISERESOURCELOADER_ASYNC_NAME("FWwiseResourceLoaderImpl::LoadMediaResources IsProcessing"), [this, Promise = MoveTemp(Promise), &LoadedData, &InCookedData]() mutable
+		ExecutionQueue->Async(WWISERESOURCELOADER_ASYNC_NAME("FWwiseResourceLoaderImpl::LoadMediaResources IsProcessing"), [WeakThis=AsWeak(), Promise = MoveTemp(Promise), &LoadedData, &InCookedData]() mutable
 		{
-			LoadMediaResources(MoveTemp(Promise), LoadedData, InCookedData);
+			auto SharedResourceLoader = StaticCastSharedPtr<FWwiseResourceLoaderImpl>(WeakThis.Pin());
+			if (!SharedResourceLoader.IsValid())
+			{
+				UE_LOG(LogWwiseResourceLoader, Error,
+				       TEXT("FWwiseResourceLoaderImpl::LoadMediaResources: Failed. ResourceLoader is not valid"))
+				return Promise.EmplaceValue();
+			}
+			SharedResourceLoader->LoadMediaResources(MoveTemp(Promise), LoadedData, InCookedData);
 		});
 		return;
 	}
@@ -1593,9 +1664,16 @@ void FWwiseResourceLoaderImpl::LoadShareSetResources(FWwiseResourceLoadPromise&&
 
 	if (LoadedData.IsProcessing)
 	{
-		ExecutionQueue.Async(WWISERESOURCELOADER_ASYNC_NAME("FWwiseResourceLoaderImpl::LoadShareSetResources IsProcessing"), [this, Promise = MoveTemp(Promise), &LoadedData, &InCookedData]() mutable
+		ExecutionQueue->Async(WWISERESOURCELOADER_ASYNC_NAME("FWwiseResourceLoaderImpl::LoadShareSetResources IsProcessing"), [WeakThis=AsWeak(), Promise = MoveTemp(Promise), &LoadedData, &InCookedData]() mutable
 		{
-			LoadShareSetResources(MoveTemp(Promise), LoadedData, InCookedData);
+			auto SharedResourceLoader = StaticCastSharedPtr<FWwiseResourceLoaderImpl>(WeakThis.Pin());
+			if (!SharedResourceLoader.IsValid())
+			{
+				UE_LOG(LogWwiseResourceLoader, Error,
+				       TEXT("FWwiseResourceLoaderImpl::LoadShareSetResources: Failed. ResourceLoader is not valid"))
+				return Promise.EmplaceValue();
+			}
+			SharedResourceLoader->LoadShareSetResources(MoveTemp(Promise), LoadedData, InCookedData);
 		});
 		return;
 	}
@@ -1617,7 +1695,7 @@ void FWwiseResourceLoaderImpl::LoadShareSetResources(FWwiseResourceLoadPromise&&
 
 	AddLoadMediaFutures(FutureArray, LoadedMedia, InCookedData.Media, TEXT("ShareSet"), InCookedData.DebugName.ToString(), InCookedData.ShareSetId);
 	AddLoadSoundBankFutures(FutureArray, LoadedSoundBanks, InCookedData.SoundBanks, TEXT("ShareSet"), InCookedData.DebugName.ToString(), InCookedData.ShareSetId);
-	WaitForFutures(MoveTemp(FutureArray), [this, Promise = MoveTemp(Promise), &LoadedData, &LoadedSoundBanks, &InCookedData]() mutable
+	WaitForFutures(MoveTemp(FutureArray), [WeakThis=AsWeak(), Promise = MoveTemp(Promise), &LoadedData, &LoadedSoundBanks, &InCookedData]() mutable
 	{
 		--LoadedData.IsProcessing;
 		if (UNLIKELY(LoadedSoundBanks.Num() != InCookedData.SoundBanks.Num()))
@@ -1627,9 +1705,23 @@ void FWwiseResourceLoaderImpl::LoadShareSetResources(FWwiseResourceLoadPromise&&
 			FWwiseResourceUnloadPromise UnloadPromise;
 			auto UnloadFuture = UnloadPromise.GetFuture();
 			
-			ExecutionQueue.Async(WWISERESOURCELOADER_ASYNC_NAME("FWwiseResourceLoaderImpl::LoadShareSetResources Error"), [this, UnloadPromise = MoveTemp(UnloadPromise), &LoadedData, &InCookedData]() mutable
+			auto SharedResourceLoader = StaticCastSharedPtr<FWwiseResourceLoaderImpl>(WeakThis.Pin());
+			if (!SharedResourceLoader.IsValid())
 			{
-				UnloadShareSetResources(MoveTemp(UnloadPromise), LoadedData, InCookedData);
+				UE_LOG(LogWwiseResourceLoader, Error,
+				       TEXT("FWwiseResourceLoaderImpl::LoadShareSetResources: Failed. ResourceLoader is not valid"))
+				return Promise.EmplaceValue(false);
+			}
+			SharedResourceLoader->ExecutionQueue->Async(WWISERESOURCELOADER_ASYNC_NAME("FWwiseResourceLoaderImpl::LoadShareSetResources Error"), [WeakThis=MoveTemp(WeakThis), UnloadPromise = MoveTemp(UnloadPromise), &LoadedData, &InCookedData]() mutable
+			{
+				auto SharedResourceLoader = StaticCastSharedPtr<FWwiseResourceLoaderImpl>(WeakThis.Pin());
+				if (!SharedResourceLoader.IsValid())
+				{
+					UE_LOG(LogWwiseResourceLoader, Error,
+					       TEXT("FWwiseResourceLoaderImpl::LoadShareSetResources: Failed. ResourceLoader is not valid"))
+					return UnloadPromise.EmplaceValue();
+				}
+				SharedResourceLoader->UnloadShareSetResources(MoveTemp(UnloadPromise), LoadedData, InCookedData);
 			});
 			
 			UnloadFuture.Next([Promise = MoveTemp(Promise)](int) mutable
@@ -1651,9 +1743,16 @@ void FWwiseResourceLoaderImpl::LoadSoundBankResources(FWwiseResourceLoadPromise&
 
 	if (LoadedData.IsProcessing)
 	{
-		ExecutionQueue.Async(WWISERESOURCELOADER_ASYNC_NAME("FWwiseResourceLoaderImpl::LoadSoundBankResources IsProcessing"), [this, Promise = MoveTemp(Promise), &LoadedData, &InCookedData]() mutable
+		ExecutionQueue->Async(WWISERESOURCELOADER_ASYNC_NAME("FWwiseResourceLoaderImpl::LoadSoundBankResources IsProcessing"), [WeakThis=AsWeak(), Promise = MoveTemp(Promise), &LoadedData, &InCookedData]() mutable
 		{
-			LoadSoundBankResources(MoveTemp(Promise), LoadedData, InCookedData);
+			auto SharedResourceLoader = StaticCastSharedPtr<FWwiseResourceLoaderImpl>(WeakThis.Pin());
+			if (!SharedResourceLoader.IsValid())
+			{
+				UE_LOG(LogWwiseResourceLoader, Error,
+				       TEXT("FWwiseResourceLoaderImpl::LoadSoundBankResources: Failed. ResourceLoader is not valid"))
+				return Promise.EmplaceValue();
+			}
+			SharedResourceLoader->LoadSoundBankResources(MoveTemp(Promise), LoadedData, InCookedData);
 		});
 		return;
 	}
@@ -1686,15 +1785,22 @@ void FWwiseResourceLoaderImpl::LoadSoundBankResources(FWwiseResourceLoadPromise&
 void FWwiseResourceLoaderImpl::LoadSwitchContainerLeafResources(FCompletionPromise&& Promise, TSharedRef<FWwiseSwitchContainerLeafGroupValueUsageCount, ESPMode::ThreadSafe> UsageCount)
 {
 	SCOPED_WWISERESOURCELOADER_EVENT_2(TEXT("FWwiseResourceLoaderImpl::LoadSwitchContainerLeafResources"));
-	check(ExecutionQueue.IsRunningInThisThread());
+	check(ExecutionQueue->IsRunningInThisThread());
 
 	auto& LoadedData = UsageCount->LoadedData;
 	const auto& CookedData = UsageCount->Key;
 	if (LoadedData.IsProcessing)
 	{
-		ExecutionQueue.Async(WWISERESOURCELOADER_ASYNC_NAME("FWwiseResourceLoaderImpl::LoadSwitchContainerLeafResources IsProcessing"), [this, Promise = MoveTemp(Promise), UsageCount]() mutable
+		ExecutionQueue->Async(WWISERESOURCELOADER_ASYNC_NAME("FWwiseResourceLoaderImpl::LoadSwitchContainerLeafResources IsProcessing"), [WeakThis=AsWeak(), Promise = MoveTemp(Promise), UsageCount]() mutable
 		{
-			LoadSwitchContainerLeafResources(MoveTemp(Promise), UsageCount);
+			auto SharedResourceLoader = StaticCastSharedPtr<FWwiseResourceLoaderImpl>(WeakThis.Pin());
+			if (!SharedResourceLoader.IsValid())
+			{
+				UE_LOG(LogWwiseResourceLoader, Error,
+				       TEXT("FWwiseResourceLoaderImpl::LoadSwitchContainerLeafResources: Failed. ResourceLoader is not valid"))
+				return Promise.EmplaceValue();
+			}
+			SharedResourceLoader->LoadSwitchContainerLeafResources(MoveTemp(Promise), UsageCount);
 		});
 		return;
 	}
@@ -1742,9 +1848,16 @@ void FWwiseResourceLoaderImpl::UnloadAuxBusResources(FWwiseResourceUnloadPromise
 
 	if (LoadedData.IsProcessing)
 	{
-		ExecutionQueue.Async(WWISERESOURCELOADER_ASYNC_NAME("FWwiseResourceLoaderImpl::UnloadAuxBusResources IsProcessing"), [this, Promise = MoveTemp(Promise), &LoadedData, &InCookedData]() mutable
+		ExecutionQueue->Async(WWISERESOURCELOADER_ASYNC_NAME("FWwiseResourceLoaderImpl::UnloadAuxBusResources IsProcessing"), [WeakThis=AsWeak(), Promise = MoveTemp(Promise), &LoadedData, &InCookedData]() mutable
 		{
-			UnloadAuxBusResources(MoveTemp(Promise), LoadedData, InCookedData);
+			auto SharedResourceLoader = StaticCastSharedPtr<FWwiseResourceLoaderImpl>(WeakThis.Pin());
+			if (!SharedResourceLoader.IsValid())
+			{
+				UE_LOG(LogWwiseResourceLoader, Error,
+				       TEXT("FWwiseResourceLoaderImpl::UnloadAuxBusResources: Failed. ResourceLoader is not valid"))
+				return Promise.EmplaceValue();
+			}
+			SharedResourceLoader->UnloadAuxBusResources(MoveTemp(Promise), LoadedData, InCookedData);
 		});
 		return;
 	}
@@ -1771,9 +1884,16 @@ void FWwiseResourceLoaderImpl::UnloadEventResources(FWwiseResourceUnloadPromise&
 
 	if (LoadedData.IsProcessing)
 	{
-		ExecutionQueue.Async(WWISERESOURCELOADER_ASYNC_NAME("FWwiseResourceLoaderImpl::UnloadEventResources IsProcessing"), [this, Promise = MoveTemp(Promise), &LoadedData, &InCookedData]() mutable
+		ExecutionQueue->Async(WWISERESOURCELOADER_ASYNC_NAME("FWwiseResourceLoaderImpl::UnloadEventResources IsProcessing"), [WeakThis=AsWeak(), Promise = MoveTemp(Promise), &LoadedData, &InCookedData]() mutable
 		{
-			UnloadEventResources(MoveTemp(Promise), LoadedData, InCookedData);
+			auto SharedResourceLoader = StaticCastSharedPtr<FWwiseResourceLoaderImpl>(WeakThis.Pin());
+			if (!SharedResourceLoader.IsValid())
+			{
+				UE_LOG(LogWwiseResourceLoader, Error,
+				       TEXT("FWwiseResourceLoaderImpl::UnloadEventResources: Failed. ResourceLoader is not valid"))
+				return Promise.EmplaceValue();
+			}
+			SharedResourceLoader->UnloadEventResources(MoveTemp(Promise), LoadedData, InCookedData);
 		});
 		return;
 	}
@@ -1823,12 +1943,21 @@ void FWwiseResourceLoaderImpl::UnloadEventSwitchContainerResources(FWwiseResourc
 		FCompletionPromise GroupValuePromise;
 		FutureArray.Add(GroupValuePromise.GetFuture());
 
-		ExecutionQueue.Async(WWISERESOURCELOADER_ASYNC_NAME("FWwiseResourceLoaderImpl::UnloadEventSwitchContainerResources GroupValue"), [this, &InCookedData, &GroupValue, GroupValuePromise = MoveTemp(GroupValuePromise)]() mutable
+		ExecutionQueue->Async(WWISERESOURCELOADER_ASYNC_NAME("FWwiseResourceLoaderImpl::UnloadEventSwitchContainerResources GroupValue"), [WeakThis=AsWeak(), &InCookedData, &GroupValue, GroupValuePromise = MoveTemp(GroupValuePromise)]() mutable
 		{
 			UE_LOG(LogWwiseResourceLoader, VeryVerbose, TEXT("Unloading GroupValue %s for Event %s (%" PRIu32 ")"),
 				*GroupValue.GroupValueCookedData.DebugName.ToString(), *InCookedData.DebugName.ToString(), (uint32)InCookedData.EventId);
 
-			UnloadGroupValueResources(MoveTemp(GroupValuePromise), GroupValue.LoadedData, GroupValue.GroupValueCookedData);
+			auto SharedResourceLoader = StaticCastSharedPtr<FWwiseResourceLoaderImpl>(WeakThis.Pin());
+			if (!SharedResourceLoader.IsValid())
+			{
+				UE_LOG(LogWwiseResourceLoader, Error,
+				       TEXT(
+					       "FWwiseResourceLoaderImpl::UnloadEventSwitchContainerResources GroupValue: Failed. ResourceLoader is not valid"
+				       ))
+				return GroupValuePromise.EmplaceValue();
+			}
+			SharedResourceLoader->UnloadGroupValueResources(MoveTemp(GroupValuePromise), GroupValue.LoadedData, GroupValue.GroupValueCookedData);
 		});
 	}
 
@@ -1841,13 +1970,22 @@ void FWwiseResourceLoaderImpl::UnloadEventSwitchContainerResources(FWwiseResourc
 		FCompletionPromise SwitchContainerLeavesPromise;
 		FutureArray.Add(SwitchContainerLeavesPromise.GetFuture());
 
-		ExecutionQueue.Async(WWISERESOURCELOADER_ASYNC_NAME("FWwiseResourceLoaderImpl::UnloadEventSwitchContainerResources Leaf.SwitchContainer"), [this, &SwitchContainerLeaf, &InCookedData, SwitchContainerLeavesPromise = MoveTemp(SwitchContainerLeavesPromise)]() mutable
+		ExecutionQueue->Async(WWISERESOURCELOADER_ASYNC_NAME("FWwiseResourceLoaderImpl::UnloadEventSwitchContainerResources Leaf.SwitchContainer"), [WeakThis=AsWeak(), &SwitchContainerLeaf, &InCookedData, SwitchContainerLeavesPromise = MoveTemp(SwitchContainerLeavesPromise)]() mutable
 		{
 			TSharedPtr<FWwiseSwitchContainerLeafGroupValueUsageCount, ESPMode::ThreadSafe> UsageCountPtr;
 			for (const auto& GroupValue : SwitchContainerLeaf.GroupValueSet)
 			{
 				const auto InfoKey = FWwiseSwitchContainerLoadedGroupValueInfo(GroupValue);
-				FWwiseSwitchContainerLoadedGroupValueInfo* Info = LoadedGroupValueInfo.Find(InfoKey);
+				auto SharedResourceLoader = StaticCastSharedPtr<FWwiseResourceLoaderImpl>(WeakThis.Pin());
+				if (!SharedResourceLoader.IsValid())
+				{
+					UE_LOG(LogWwiseResourceLoader, Error,
+					       TEXT(
+						       "FWwiseResourceLoaderImpl::UnloadEventSwitchContainerResources: Failed. ResourceLoader is not valid"
+					       ))
+					return SwitchContainerLeavesPromise.EmplaceValue();
+				}
+				FWwiseSwitchContainerLoadedGroupValueInfo* Info = SharedResourceLoader->LoadedGroupValueInfo.Find(InfoKey);
 				if (UNLIKELY(!Info))
 				{
 					UE_LOG(LogWwiseResourceLoader, Error, TEXT("FWwiseResourceLoaderImpl::UnloadEventSwitchContainerResources Info[%p]: Could not find requested GroupValue %s for Leaf in Event %s (%" PRIu32 ")"),
@@ -1895,7 +2033,14 @@ void FWwiseResourceLoaderImpl::UnloadEventSwitchContainerResources(FWwiseResourc
 				if (!bResourcesAreLoaded && Info->Leaves.Num() == 0)
 				{
 					UE_LOG(LogWwiseResourceLoader, VeryVerbose, TEXT("FWwiseResourceLoaderImpl::UnloadEventSwitchContainerResources Info[%p]: No more users. Removing GroupValueInfo for key %s"), Info, *Info->Key.GroupValueCookedData->GetDebugString());
-					LoadedGroupValueInfo.Remove(InfoKey);
+					if (!SharedResourceLoader.IsValid())
+					{
+						UE_LOG(LogWwiseResourceLoader, Error,
+						       TEXT("FWwiseResourceLoaderImpl::UnloadEventSwitchContainerResources: Failed. ResourceLoader is not valid"
+						       ))
+						return SwitchContainerLeavesPromise.EmplaceValue();
+					}
+					SharedResourceLoader->LoadedGroupValueInfo.Remove(InfoKey);
 				}
 			}
 
@@ -1909,11 +2054,29 @@ void FWwiseResourceLoaderImpl::UnloadEventSwitchContainerResources(FWwiseResourc
 				
 				FCompletionPromise UnloadLeafResourcesPromise;
 				auto UnloadLeafResourcesFuture = UnloadLeafResourcesPromise.GetFuture();
-				UnloadSwitchContainerLeafResources(MoveTemp(UnloadLeafResourcesPromise), UsageCount);
-
-				UnloadLeafResourcesFuture.Next([this, SwitchContainerLeavesPromise = MoveTemp(SwitchContainerLeavesPromise), UsageCount](int) mutable
+				auto SharedResourceLoader = StaticCastSharedPtr<FWwiseResourceLoaderImpl>(WeakThis.Pin());
+				if (!SharedResourceLoader.IsValid())
 				{
-					DeleteSwitchContainerLeafGroupValueUsageCount(MoveTemp(SwitchContainerLeavesPromise), UsageCount);
+					UE_LOG(LogWwiseResourceLoader, Error,
+					       TEXT(
+						       "FWwiseResourceLoaderImpl::UnloadEventSwitchContainerResources: Failed. ResourceLoader is not valid"
+					       ))
+					return SwitchContainerLeavesPromise.EmplaceValue();
+				}
+				SharedResourceLoader->UnloadSwitchContainerLeafResources(MoveTemp(UnloadLeafResourcesPromise), UsageCount);
+
+				UnloadLeafResourcesFuture.Next([WeakThis=MoveTemp(WeakThis), SwitchContainerLeavesPromise = MoveTemp(SwitchContainerLeavesPromise), UsageCount](int) mutable
+				{
+					auto SharedResourceLoader = StaticCastSharedPtr<FWwiseResourceLoaderImpl>(WeakThis.Pin());
+					if (!SharedResourceLoader.IsValid())
+					{
+						UE_LOG(LogWwiseResourceLoader, Error,
+						       TEXT(
+							       "FWwiseResourceLoaderImpl::UnloadEventSwitchContainerResources: Failed. ResourceLoader is not valid"
+						       ))
+						return SwitchContainerLeavesPromise.EmplaceValue();
+					}
+					SharedResourceLoader->DeleteSwitchContainerLeafGroupValueUsageCount(MoveTemp(SwitchContainerLeavesPromise), UsageCount);
 				});
 			}
 			else
@@ -1939,9 +2102,18 @@ void FWwiseResourceLoaderImpl::UnloadExternalSourceResources(FWwiseResourceUnloa
 
 	if (LoadedData.IsProcessing)
 	{
-		ExecutionQueue.Async(WWISERESOURCELOADER_ASYNC_NAME("FWwiseResourceLoaderImpl::UnloadExternalSourceResources IsProcessing"), [this, Promise = MoveTemp(Promise), &LoadedData, &InCookedData]() mutable
+		ExecutionQueue->Async(WWISERESOURCELOADER_ASYNC_NAME("FWwiseResourceLoaderImpl::UnloadExternalSourceResources IsProcessing"), [WeakThis=AsWeak(), Promise = MoveTemp(Promise), &LoadedData, &InCookedData]() mutable
 		{
-			UnloadExternalSourceResources(MoveTemp(Promise), LoadedData, InCookedData);
+			auto SharedResourceLoader = StaticCastSharedPtr<FWwiseResourceLoaderImpl>(WeakThis.Pin());
+			if (!SharedResourceLoader.IsValid())
+			{
+				UE_LOG(LogWwiseResourceLoader, Error,
+				       TEXT(
+					       "FWwiseResourceLoaderImpl::UnloadExternalSourceResources: Failed. ResourceLoader is not valid"
+				       ))
+				return Promise.EmplaceValue();
+			}
+			SharedResourceLoader->UnloadExternalSourceResources(MoveTemp(Promise), LoadedData, InCookedData);
 		});
 		return;
 	}
@@ -1970,9 +2142,18 @@ void FWwiseResourceLoaderImpl::UnloadGroupValueResources(FWwiseResourceUnloadPro
 
 	if (LoadedData.IsProcessing)
 	{
-		ExecutionQueue.Async(WWISERESOURCELOADER_ASYNC_NAME("FWwiseResourceLoaderImpl::UnloadGroupValueResources IsProcessing"), [this, Promise = MoveTemp(Promise), &LoadedData, &InCookedData]() mutable
+		ExecutionQueue->Async(WWISERESOURCELOADER_ASYNC_NAME("FWwiseResourceLoaderImpl::UnloadGroupValueResources IsProcessing"), [WeakThis=AsWeak(), Promise = MoveTemp(Promise), &LoadedData, &InCookedData]() mutable
 		{
-			UnloadGroupValueResources(MoveTemp(Promise), LoadedData, InCookedData);
+			auto SharedResourceLoader = StaticCastSharedPtr<FWwiseResourceLoaderImpl>(WeakThis.Pin());
+			if (!SharedResourceLoader.IsValid())
+			{
+				UE_LOG(LogWwiseResourceLoader, Error,
+				       TEXT(
+					       "FWwiseResourceLoaderImpl::UnloadGroupValueResources: Failed. ResourceLoader is not valid"
+				       ))
+				return Promise.EmplaceValue();
+			}
+			SharedResourceLoader->UnloadGroupValueResources(MoveTemp(Promise), LoadedData, InCookedData);
 		});
 		return;
 	}
@@ -1980,10 +2161,19 @@ void FWwiseResourceLoaderImpl::UnloadGroupValueResources(FWwiseResourceUnloadPro
 	LogUnloadResources(InCookedData);
 	++LoadedData.IsProcessing;
 	
-	ExecutionQueue.Async(WWISERESOURCELOADER_ASYNC_NAME("FWwiseResourceLoaderImpl::UnloadGroupValueResources Async"), [this, &LoadedData, &InCookedData, Promise = MoveTemp(Promise)]() mutable
+	ExecutionQueue->Async(WWISERESOURCELOADER_ASYNC_NAME("FWwiseResourceLoaderImpl::UnloadGroupValueResources Async"), [WeakThis=AsWeak(), &LoadedData, &InCookedData, Promise = MoveTemp(Promise)]() mutable
 	{
 		const auto InfoKey = FWwiseSwitchContainerLoadedGroupValueInfo(InCookedData);
-		FWwiseSwitchContainerLoadedGroupValueInfo* Info = LoadedGroupValueInfo.Find(InfoKey);
+		auto SharedResourceLoader = StaticCastSharedPtr<FWwiseResourceLoaderImpl>(WeakThis.Pin());
+		if (!SharedResourceLoader.IsValid())
+		{
+			UE_LOG(LogWwiseResourceLoader, Error,
+			       TEXT(
+				       "FWwiseResourceLoaderImpl::UnloadGroupValueResources: Failed. ResourceLoader is not valid"
+			       ))
+			return Promise.EmplaceValue();
+		}
+		FWwiseSwitchContainerLoadedGroupValueInfo* Info = SharedResourceLoader->LoadedGroupValueInfo.Find(InfoKey);
 		if (UNLIKELY(!Info))
 		{
 			UE_LOG(LogWwiseResourceLoader, Error, TEXT("FWwiseResourceLoaderImpl::UnloadGroupValueResources: Could not find requested GroupValue %s (%s %" PRIu32 ":%" PRIu32 ")"),
@@ -2005,7 +2195,7 @@ void FWwiseResourceLoaderImpl::UnloadGroupValueResources(FWwiseResourceUnloadPro
 			if (Info->Leaves.Num() == 0)
 			{
 				UE_LOG(LogWwiseResourceLoader, VeryVerbose, TEXT("FWwiseResourceLoaderImpl::UnloadGroupValueResources Info[%p]: No more users. Removing GroupValueInfo for key %s"), Info, *Info->Key.GroupValueCookedData->GetDebugString());
-				LoadedGroupValueInfo.Remove(InfoKey);
+				SharedResourceLoader->LoadedGroupValueInfo.Remove(InfoKey);
 			}
 			else
 			{
@@ -2020,7 +2210,7 @@ void FWwiseResourceLoaderImpl::UnloadGroupValueResources(FWwiseResourceUnloadPro
 
 					FWwiseResourceUnloadPromise UnloadPromise;
 					FutureArray.Add(UnloadPromise.GetFuture());
-					UnloadSwitchContainerLeafResources(MoveTemp(UnloadPromise), UsageCount);
+					SharedResourceLoader->UnloadSwitchContainerLeafResources(MoveTemp(UnloadPromise), UsageCount);
 				}
 			}
 		}
@@ -2030,7 +2220,7 @@ void FWwiseResourceLoaderImpl::UnloadGroupValueResources(FWwiseResourceUnloadPro
 				Info, *InCookedData.DebugName.ToString(), *InCookedData.GetTypeName(), (uint32)InCookedData.GroupId, (uint32)InCookedData.Id, (int)Info->GroupValueCount);
 		}
 
-		WaitForFutures(MoveTemp(FutureArray), [&LoadedData, Promise = MoveTemp(Promise)]() mutable
+		SharedResourceLoader->WaitForFutures(MoveTemp(FutureArray), [&LoadedData, Promise = MoveTemp(Promise)]() mutable
 		{
 			SCOPED_WWISERESOURCELOADER_EVENT_3(TEXT("FWwiseResourceLoaderImpl::UnloadGroupValueResources SwitchContainer.Done"));
 			--LoadedData.IsProcessing;
@@ -2045,13 +2235,20 @@ void FWwiseResourceLoaderImpl::UnloadInitBankResources(FWwiseResourceUnloadPromi
 
 	if (LoadedData.IsProcessing)
 	{
-		ExecutionQueue.Async(WWISERESOURCELOADER_ASYNC_NAME("FWwiseResourceLoaderImpl::UnloadInitBankResources IsProcessing"), [this, Promise = MoveTemp(Promise), &LoadedData, &InCookedData]() mutable
+		ExecutionQueue->Async(WWISERESOURCELOADER_ASYNC_NAME("FWwiseResourceLoaderImpl::UnloadInitBankResources IsProcessing"), [WeakThis=AsWeak(), Promise = MoveTemp(Promise), &LoadedData, &InCookedData]() mutable
 		{
-			UnloadInitBankResources(MoveTemp(Promise), LoadedData, InCookedData);
+			auto SharedResourceLoader = StaticCastSharedPtr<FWwiseResourceLoaderImpl>(WeakThis.Pin());
+			if (!SharedResourceLoader.IsValid())
+			{
+				UE_LOG(LogWwiseResourceLoader, Error,
+				       TEXT("FWwiseResourceLoaderImpl::UnloadInitBankResources: Failed. ResourceLoader is not valid"))
+				return Promise.EmplaceValue();
+			}
+			SharedResourceLoader->UnloadInitBankResources(MoveTemp(Promise), LoadedData, InCookedData);
 		});
 		return;
 	}
-	
+
 	LogUnloadResources(InCookedData);
 
 	++LoadedData.IsProcessing;
@@ -2091,9 +2288,16 @@ void FWwiseResourceLoaderImpl::UnloadMediaResources(FWwiseResourceUnloadPromise&
 
 	if (LoadedData.IsProcessing)
 	{
-		ExecutionQueue.Async(WWISERESOURCELOADER_ASYNC_NAME("FWwiseResourceLoaderImpl::UnloadMediaResources IsProcessing"), [this, Promise = MoveTemp(Promise), &LoadedData, &InCookedData]() mutable
+		ExecutionQueue->Async(WWISERESOURCELOADER_ASYNC_NAME("FWwiseResourceLoaderImpl::UnloadMediaResources IsProcessing"), [WeakThis=AsWeak(), Promise = MoveTemp(Promise), &LoadedData, &InCookedData]() mutable
 		{
-			UnloadMediaResources(MoveTemp(Promise), LoadedData, InCookedData);
+			auto SharedResourceLoader = StaticCastSharedPtr<FWwiseResourceLoaderImpl>(WeakThis.Pin());
+			if (!SharedResourceLoader.IsValid())
+			{
+				UE_LOG(LogWwiseResourceLoader, Error,
+				       TEXT("FWwiseResourceLoaderImpl::UnloadMediaResources: Failed. ResourceLoader is not valid"))
+				return Promise.EmplaceValue();
+			}
+			SharedResourceLoader->UnloadMediaResources(MoveTemp(Promise), LoadedData, InCookedData);
 		});
 		return;
 	}
@@ -2122,9 +2326,16 @@ void FWwiseResourceLoaderImpl::UnloadShareSetResources(FWwiseResourceUnloadPromi
 
 	if (LoadedData.IsProcessing)
 	{
-		ExecutionQueue.Async(WWISERESOURCELOADER_ASYNC_NAME("FWwiseResourceLoaderImpl::UnloadShareSetResources IsProcessing"), [this, Promise = MoveTemp(Promise), &LoadedData, &InCookedData]() mutable
+		ExecutionQueue->Async(WWISERESOURCELOADER_ASYNC_NAME("FWwiseResourceLoaderImpl::UnloadShareSetResources IsProcessing"), [WeakThis=AsWeak(), Promise = MoveTemp(Promise), &LoadedData, &InCookedData]() mutable
 		{
-			UnloadShareSetResources(MoveTemp(Promise), LoadedData, InCookedData);
+			auto SharedResourceLoader = StaticCastSharedPtr<FWwiseResourceLoaderImpl>(WeakThis.Pin());
+			if (!SharedResourceLoader.IsValid())
+			{
+				UE_LOG(LogWwiseResourceLoader, Error,
+				       TEXT("FWwiseResourceLoaderImpl::UnloadShareSetResources: Failed. ResourceLoader is not valid"))
+				return Promise.EmplaceValue();
+			}
+			SharedResourceLoader->UnloadShareSetResources(MoveTemp(Promise), LoadedData, InCookedData);
 		});
 		return;
 	}
@@ -2151,9 +2362,16 @@ void FWwiseResourceLoaderImpl::UnloadSoundBankResources(FWwiseResourceUnloadProm
 
 	if (LoadedData.IsProcessing)
 	{
-		ExecutionQueue.Async(WWISERESOURCELOADER_ASYNC_NAME("FWwiseResourceLoaderImpl::UnloadSoundBankResources IsProcessing"), [this, Promise = MoveTemp(Promise), &LoadedData, &InCookedData]() mutable
+		ExecutionQueue->Async(WWISERESOURCELOADER_ASYNC_NAME("FWwiseResourceLoaderImpl::UnloadSoundBankResources IsProcessing"), [WeakThis=AsWeak(), Promise = MoveTemp(Promise), &LoadedData, &InCookedData]() mutable
 		{
-			UnloadSoundBankResources(MoveTemp(Promise), LoadedData, InCookedData);
+			auto SharedResourceLoader = StaticCastSharedPtr<FWwiseResourceLoaderImpl>(WeakThis.Pin());
+			if (!SharedResourceLoader.IsValid())
+			{
+				UE_LOG(LogWwiseResourceLoader, Error,
+				       TEXT("FWwiseResourceLoaderImpl::UnloadSoundBankResources: Failed. ResourceLoader is not valid"))
+				return Promise.EmplaceValue();
+			}
+			SharedResourceLoader->UnloadSoundBankResources(MoveTemp(Promise), LoadedData, InCookedData);
 		});
 		return;
 	}
@@ -2179,15 +2397,22 @@ void FWwiseResourceLoaderImpl::UnloadSoundBankResources(FWwiseResourceUnloadProm
 void FWwiseResourceLoaderImpl::UnloadSwitchContainerLeafResources(FWwiseResourceUnloadPromise&& Promise, TSharedRef<FWwiseSwitchContainerLeafGroupValueUsageCount, ESPMode::ThreadSafe> UsageCount)
 {
 	SCOPED_WWISERESOURCELOADER_EVENT_2(TEXT("FWwiseResourceLoaderImpl::UnloadSwitchContainerLeafResources"));
-	check(ExecutionQueue.IsRunningInThisThread());
+	check(ExecutionQueue->IsRunningInThisThread());
 
 	auto& LoadedData = UsageCount->LoadedData;
 	const auto& CookedData = UsageCount->Key;
 	if (LoadedData.IsProcessing)
 	{
-		ExecutionQueue.Async(WWISERESOURCELOADER_ASYNC_NAME("FWwiseResourceLoaderImpl::UnloadSwitchContainerLeafResources IsProcessing"), [this, Promise = MoveTemp(Promise), UsageCount]() mutable
+		ExecutionQueue->Async(WWISERESOURCELOADER_ASYNC_NAME("FWwiseResourceLoaderImpl::UnloadSwitchContainerLeafResources IsProcessing"), [WeakThis=AsWeak(), Promise = MoveTemp(Promise), UsageCount]() mutable
 		{
-			UnloadSwitchContainerLeafResources(MoveTemp(Promise), UsageCount);
+		auto SharedResourceLoader = StaticCastSharedPtr<FWwiseResourceLoaderImpl>(WeakThis.Pin());
+		if (!SharedResourceLoader.IsValid())
+		{
+			UE_LOG(LogWwiseResourceLoader, Error,
+			       TEXT("FWwiseResourceLoaderImpl::UnloadSwitchContainerLeafResources: Failed. ResourceLoader is not valid"))
+			return Promise.EmplaceValue();
+		}
+			SharedResourceLoader->UnloadSwitchContainerLeafResources(MoveTemp(Promise), UsageCount);
 		});
 		return;
 	}
@@ -2237,11 +2462,27 @@ void FWwiseResourceLoaderImpl::DeleteSwitchContainerLeafGroupValueUsageCount(FWw
 		// We need to wait for the user to stop using this. This can happen when a GroupValue is waiting to be unloaded while we want to destroy the SwitchContainerLeaf.
 		
 		// This makes an unique copy of UsageCount, that is passed as reference to the new instance
-		ExecutionQueue.Async(WWISERESOURCELOADER_ASYNC_NAME("FWwiseResourceLoaderImpl::DeleteSwitchContainerLeafGroupValueUsageCount !IsUnique"), [this, Promise = MoveTemp(Promise), UsageCount]() mutable
+		ExecutionQueue->Async(WWISERESOURCELOADER_ASYNC_NAME("FWwiseResourceLoaderImpl::DeleteSwitchContainerLeafGroupValueUsageCount !IsUnique"), [WeakThis=AsWeak(), Promise = MoveTemp(Promise), UsageCount]() mutable
 		{
-			DeleteSwitchContainerLeafGroupValueUsageCount(MoveTemp(Promise), UsageCount);
+			auto SharedResourceLoader = StaticCastSharedPtr<FWwiseResourceLoaderImpl>(WeakThis.Pin());
+			if (!SharedResourceLoader.IsValid())
+			{
+				UE_LOG(LogWwiseResourceLoader, Error,
+				       TEXT("FWwiseResourceLoaderImpl::DeleteSwitchContainerLeafGroupValueUsageCount: Failed. ResourceLoader is not valid"))
+				return Promise.EmplaceValue();
+			}
+			SharedResourceLoader->DeleteSwitchContainerLeafGroupValueUsageCount(MoveTemp(Promise), UsageCount);
 		});
 	}
+}
+
+void FWwiseResourceLoaderImpl::AttachAssetLibraryNode(FWwiseLoadedAssetLibraryListNode* AssetLibraryListNode)
+{
+	{
+		FScopeLock Lock(&ListUpdateCriticalSection);		
+		LoadedAssetLibraryList.AddTail(AssetLibraryListNode);
+	}
+	INC_DWORD_STAT(STAT_WwiseResourceLoaderAssetLibraries);
 }
 
 void FWwiseResourceLoaderImpl::AttachAuxBusNode(FWwiseLoadedAuxBusPtr AuxBusListNode)
@@ -2316,6 +2557,14 @@ void FWwiseResourceLoaderImpl::AttachSoundBankNode(FWwiseLoadedSoundBankPtr Soun
 	INC_DWORD_STAT(STAT_WwiseResourceLoaderSoundBanks);
 }
 
+void FWwiseResourceLoaderImpl::DetachAssetLibraryNode(FWwiseLoadedAssetLibraryListNode* AssetLibraryListNode)
+{
+	{
+		FScopeLock Lock(&ListUpdateCriticalSection);		
+		LoadedAssetLibraryList.RemoveNode(AssetLibraryListNode, false);
+	}
+	DEC_DWORD_STAT(STAT_WwiseResourceLoaderAssetLibraries);
+}
 
 void FWwiseResourceLoaderImpl::DetachAuxBusNode(FWwiseLoadedAuxBusPtr AuxBusListNode)
 {
@@ -2397,7 +2646,7 @@ void FWwiseResourceLoaderImpl::AddLoadExternalSourceFutures(FCompletionFutureArr
 	{
 		TWwisePromise<void> Promise;
 		FutureArray.Add(Promise.GetFuture());
-		LoadExternalSourceFile(ExternalSource, [this, &ExternalSource, &LoadedExternalSources, InType, InDebugName, InShortId, Promise = MoveTemp(Promise)](bool bInResult) mutable
+		LoadExternalSourceFile(ExternalSource, [WeakThis=AsWeak(), &ExternalSource, &LoadedExternalSources, InType, InDebugName, InShortId, Promise = MoveTemp(Promise)](bool bInResult) mutable
 		{
 			if (UNLIKELY(!bInResult))
 			{
@@ -2409,7 +2658,14 @@ void FWwiseResourceLoaderImpl::AddLoadExternalSourceFutures(FCompletionFutureArr
 			}
 			else
 			{
-				ExecutionQueue.Async(WWISERESOURCELOADER_ASYNC_NAME("FWwiseResourceLoaderImpl::AddLoadExternalSourceFutures EmplaceValue"), [&ExternalSource, &LoadedExternalSources, Promise = MoveTemp(Promise), InType, InDebugName, InShortId]() mutable
+				auto SharedResourceLoader = StaticCastSharedPtr<const FWwiseResourceLoaderImpl>(WeakThis.Pin());
+				if (!SharedResourceLoader.IsValid())
+				{
+					UE_LOG(LogWwiseResourceLoader, Error,
+					       TEXT("FWwiseResourceLoaderImpl::AddLoadExternalSourceFutures: Failed. ResourceLoader is not valid"))
+					return Promise.EmplaceValue();
+				}
+				SharedResourceLoader->ExecutionQueue->Async(WWISERESOURCELOADER_ASYNC_NAME("FWwiseResourceLoaderImpl::AddLoadExternalSourceFutures EmplaceValue"), [&ExternalSource, &LoadedExternalSources, Promise = MoveTemp(Promise), InType, InDebugName, InShortId]() mutable
 				{
 					UE_LOG(LogWwiseResourceLoader, VeryVerbose, TEXT("AddLoadExternalSourceFutures: Adding SoundBank %s (%" PRIu32 ") to %s %s (%" PRIu32 ")"),
 						*ExternalSource.DebugName.ToString(), (uint32)ExternalSource.Cookie,
@@ -2453,7 +2709,8 @@ void FWwiseResourceLoaderImpl::AddLoadMediaFutures(FCompletionFutureArray& Futur
 	{
 		TWwisePromise<void> Promise;
 		FutureArray.Add(Promise.GetFuture());
-		LoadMediaFile(Media, [this, &Media, &LoadedMedia, InType, InDebugName, InShortId, Promise = MoveTemp(Promise)](bool bInResult) mutable
+		LoadMediaFile(Media, [WeakThis=AsWeak(), &Media, &LoadedMedia, InType, InDebugName, InShortId, Promise = MoveTemp(Promise)]
+		(bool bInResult) mutable
 		{
 			if (UNLIKELY(!bInResult))
 			{
@@ -2469,7 +2726,14 @@ void FWwiseResourceLoaderImpl::AddLoadMediaFutures(FCompletionFutureArray& Futur
 				{
 					FPlatformProcess::Sleep(0.001f);
 				}
-				ExecutionQueue.Async(WWISERESOURCELOADER_ASYNC_NAME("FWwiseResourceLoaderImpl::AddLoadMediaFutures EmplaceValue"), [&Media, &LoadedMedia, Promise = MoveTemp(Promise), InType, InDebugName, InShortId]() mutable
+				auto SharedResourceLoader = StaticCastSharedPtr<const FWwiseResourceLoaderImpl>(WeakThis.Pin());
+				if (!SharedResourceLoader.IsValid())
+				{
+					UE_LOG(LogWwiseResourceLoader, Error,
+					       TEXT("FWwiseResourceLoaderImpl::AddLoadMediaFutures EmplaceValue: Failed. ResourceLoader is not valid"))
+					return Promise.EmplaceValue();
+				}
+				SharedResourceLoader->ExecutionQueue->Async(WWISERESOURCELOADER_ASYNC_NAME("FWwiseResourceLoaderImpl::AddLoadMediaFutures EmplaceValue"), [&Media, &LoadedMedia, Promise = MoveTemp(Promise), InType, InDebugName, InShortId]() mutable
 				{
 					UE_LOG(LogWwiseResourceLoader, VeryVerbose, TEXT("AddLoadMediaFutures: Adding Media %s (%" PRIu32 ") to %s %s (%" PRIu32 ")"),
 						*Media.DebugName.ToString(), (uint32)Media.MediaId,
@@ -2513,7 +2777,7 @@ void FWwiseResourceLoaderImpl::AddLoadSoundBankFutures(FCompletionFutureArray& F
 	{
 		TWwisePromise<void> Promise;
 		FutureArray.Add(Promise.GetFuture());
-		LoadSoundBankFile(SoundBank, [this, &SoundBank, &LoadedSoundBanks, InType, InDebugName, InShortId, Promise = MoveTemp(Promise)](bool bInResult) mutable
+		LoadSoundBankFile(SoundBank, [WeakThis=AsWeak(), &SoundBank, &LoadedSoundBanks, InType, InDebugName, InShortId, Promise = MoveTemp(Promise)](bool bInResult) mutable
 		{
 			if (UNLIKELY(!bInResult))
 			{
@@ -2525,7 +2789,14 @@ void FWwiseResourceLoaderImpl::AddLoadSoundBankFutures(FCompletionFutureArray& F
 			}
 			else
 			{
-				ExecutionQueue.Async(WWISERESOURCELOADER_ASYNC_NAME("FWwiseResourceLoaderImpl::AddLoadSoundBankFutures EmplaceValue"), [&SoundBank, &LoadedSoundBanks, Promise = MoveTemp(Promise), InType, InDebugName, InShortId]() mutable
+				auto SharedResourceLoader = StaticCastSharedPtr<const FWwiseResourceLoaderImpl>(WeakThis.Pin());
+				if (!SharedResourceLoader.IsValid())
+				{
+					UE_LOG(LogWwiseResourceLoader, Error,
+					       TEXT("FWwiseResourceLoaderImpl::AddLoadSoundBankFutures: Failed. ResourceLoader is not valid"))
+					return Promise.EmplaceValue();
+				}
+				SharedResourceLoader->ExecutionQueue->Async(WWISERESOURCELOADER_ASYNC_NAME("FWwiseResourceLoaderImpl::AddLoadSoundBankFutures EmplaceValue"), [&SoundBank, &LoadedSoundBanks, Promise = MoveTemp(Promise), InType, InDebugName, InShortId]() mutable
 				{
 					UE_LOG(LogWwiseResourceLoader, VeryVerbose, TEXT("AddLoadSoundBankFutures: Adding SoundBank %s (%" PRIu32 ") to %s %s (%" PRIu32 ")"),
 						*SoundBank.DebugName.ToString(), (uint32)SoundBank.SoundBankId,
@@ -2589,7 +2860,7 @@ void FWwiseResourceLoaderImpl::WaitForFutures(FCompletionFutureArray&& FutureArr
 void FWwiseResourceLoaderImpl::LoadSoundBankFile(const FWwiseSoundBankCookedData& InSoundBank, FLoadFileCallback&& InCallback) const
 {
 	UE_LOG(LogWwiseResourceLoader, VeryVerbose, TEXT("[LoadSoundBankAsync: %" PRIu32 "] %s at %s"),
-		(uint32)InSoundBank.SoundBankId, *InSoundBank.DebugName.ToString(), *InSoundBank.SoundBankPathName.ToString());
+		(uint32)InSoundBank.SoundBankId, *InSoundBank.DebugName.ToString(), *InSoundBank.PackagedFile.PathName.ToString());
 
 	if (UNLIKELY(!SoundBankManager))
 	{
@@ -2601,7 +2872,7 @@ void FWwiseResourceLoaderImpl::LoadSoundBankFile(const FWwiseSoundBankCookedData
 			return;
 		}
 	}
-	SoundBankManager->LoadSoundBank(InSoundBank, GetUnrealPath(), [&InSoundBank, InCallback = MoveTemp(InCallback)](bool bInResult)
+	SoundBankManager->LoadSoundBank(InSoundBank, [&InSoundBank, InCallback = MoveTemp(InCallback)](bool bInResult)
 	{
 		UE_LOG(LogWwiseResourceLoader, VeryVerbose, TEXT("[LoadSoundBankAsync: %" PRIu32 "] %s: Done."),
 			(uint32)InSoundBank.SoundBankId, *InSoundBank.DebugName.ToString());
@@ -2611,9 +2882,9 @@ void FWwiseResourceLoaderImpl::LoadSoundBankFile(const FWwiseSoundBankCookedData
 
 void FWwiseResourceLoaderImpl::UnloadSoundBankFile(const FWwiseSoundBankCookedData& InSoundBank, FUnloadFileCallback&& InCallback) const
 {
-	auto Path = GetUnrealPath(InSoundBank.SoundBankPathName);
+	auto Path = InSoundBank.PackagedFile.PathName;
 	UE_LOG(LogWwiseResourceLoader, VeryVerbose, TEXT("[UnloadSoundBankAsync: %" PRIu32 "] %s at %s"),
-		(uint32)InSoundBank.SoundBankId, *InSoundBank.DebugName.ToString(), *InSoundBank.SoundBankPathName.ToString());
+		(uint32)InSoundBank.SoundBankId, *InSoundBank.DebugName.ToString(), *InSoundBank.PackagedFile.PathName.ToString());
 
 	if (UNLIKELY(!SoundBankManager))
 	{
@@ -2621,7 +2892,7 @@ void FWwiseResourceLoaderImpl::UnloadSoundBankFile(const FWwiseSoundBankCookedDa
 		InCallback();
 		return;
 	}
-	SoundBankManager->UnloadSoundBank(InSoundBank, GetUnrealPath(), [&InSoundBank, InCallback = MoveTemp(InCallback)]()
+	SoundBankManager->UnloadSoundBank(InSoundBank, [&InSoundBank, InCallback = MoveTemp(InCallback)]()
 	{
 		UE_LOG(LogWwiseResourceLoader, VeryVerbose, TEXT("[UnloadSoundBankAsync: %" PRIu32 "] %s: Done."),
 			(uint32)InSoundBank.SoundBankId, *InSoundBank.DebugName.ToString());
@@ -2631,9 +2902,9 @@ void FWwiseResourceLoaderImpl::UnloadSoundBankFile(const FWwiseSoundBankCookedDa
 
 void FWwiseResourceLoaderImpl::LoadMediaFile(const FWwiseMediaCookedData& InMedia, FLoadFileCallback&& InCallback) const
 {
-	auto Path = GetUnrealPath(InMedia.MediaPathName);
+	auto Path = InMedia.PackagedFile.PathName;
 	UE_LOG(LogWwiseResourceLoader, VeryVerbose, TEXT("[LoadMediaAsync: %" PRIu32 "] %s at %s"),
-		(uint32)InMedia.MediaId, *InMedia.DebugName.ToString(), *InMedia.MediaPathName.ToString());
+		(uint32)InMedia.MediaId, *InMedia.DebugName.ToString(), *InMedia.PackagedFile.PathName.ToString());
 
 	if (UNLIKELY(!MediaManager))
 	{
@@ -2646,7 +2917,7 @@ void FWwiseResourceLoaderImpl::LoadMediaFile(const FWwiseMediaCookedData& InMedi
 		}
 	}
 
-	MediaManager->LoadMedia(InMedia, GetUnrealPath(), [&InMedia, InCallback = MoveTemp(InCallback)](bool bInResult)
+	MediaManager->LoadMedia(InMedia, [&InMedia, InCallback = MoveTemp(InCallback)](bool bInResult)
 	{
 		UE_LOG(LogWwiseResourceLoader, VeryVerbose, TEXT("[LoadMediaAsync: %" PRIu32 "] %s: Done."),
 			(uint32)InMedia.MediaId, *InMedia.DebugName.ToString());
@@ -2656,9 +2927,9 @@ void FWwiseResourceLoaderImpl::LoadMediaFile(const FWwiseMediaCookedData& InMedi
 
 void FWwiseResourceLoaderImpl::UnloadMediaFile(const FWwiseMediaCookedData& InMedia, FUnloadFileCallback&& InCallback) const
 {
-	auto Path = GetUnrealPath(InMedia.MediaPathName);
+	auto Path = InMedia.PackagedFile.PathName;
 	UE_LOG(LogWwiseResourceLoader, VeryVerbose, TEXT("[UnloadMediaAsync: %" PRIu32 "] %s at %s"),
-		(uint32)InMedia.MediaId, *InMedia.DebugName.ToString(), *InMedia.MediaPathName.ToString());
+		(uint32)InMedia.MediaId, *InMedia.DebugName.ToString(), *InMedia.PackagedFile.PathName.ToString());
 
 
 	if (UNLIKELY(!MediaManager))
@@ -2668,7 +2939,7 @@ void FWwiseResourceLoaderImpl::UnloadMediaFile(const FWwiseMediaCookedData& InMe
 		return;
 	}
 
-	MediaManager->UnloadMedia(InMedia, GetUnrealPath(), [&InMedia, InCallback = MoveTemp(InCallback)]()
+	MediaManager->UnloadMedia(InMedia, [&InMedia, InCallback = MoveTemp(InCallback)]()
 	{
 		UE_LOG(LogWwiseResourceLoader, VeryVerbose, TEXT("[UnloadMediaAsync: %" PRIu32 "] %s: Done."),
 			(uint32)InMedia.MediaId, *InMedia.DebugName.ToString());
@@ -2692,7 +2963,7 @@ void FWwiseResourceLoaderImpl::LoadExternalSourceFile(const FWwiseExternalSource
 		}
 	}
 
-	ExternalSourceManager->LoadExternalSource(InExternalSource, GetUnrealExternalSourcePath(), CurrentLanguage, [&InExternalSource, InCallback = MoveTemp(InCallback)](bool bInResult)
+	ExternalSourceManager->LoadExternalSource(InExternalSource, CurrentLanguage, [&InExternalSource, InCallback = MoveTemp(InCallback)](bool bInResult)
 	{
 		UE_LOG(LogWwiseResourceLoader, VeryVerbose, TEXT("[LoadExternalSourceAsync: %" PRIu32 "] %s: Done."),
 			(uint32)InExternalSource.Cookie, *InExternalSource.DebugName.ToString());
@@ -2712,7 +2983,7 @@ void FWwiseResourceLoaderImpl::UnloadExternalSourceFile(const FWwiseExternalSour
 		return;
 	}
 
-	ExternalSourceManager->UnloadExternalSource(InExternalSource, GetUnrealExternalSourcePath(), CurrentLanguage, [&InExternalSource, InCallback = MoveTemp(InCallback)]()
+	ExternalSourceManager->UnloadExternalSource(InExternalSource, CurrentLanguage, [&InExternalSource, InCallback = MoveTemp(InCallback)]()
 	{
 		UE_LOG(LogWwiseResourceLoader, VeryVerbose, TEXT("[UnloadExternalSourceAsync: %" PRIu32 "] %s: Done."),
 			(uint32)InExternalSource.Cookie, *InExternalSource.DebugName.ToString());

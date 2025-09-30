@@ -12,7 +12,7 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #pragma once
@@ -33,8 +33,9 @@ protected:
 #if WITH_EDITORONLY_DATA
 public:
 	virtual void FillInfo() override;
-	virtual void FillInfo(const FWwiseAnyRef& CurrentWwiseRef) override;
+	virtual void FillInfo(const WwiseAnyRef& CurrentWwiseRef) override;
 	virtual FName GetWwiseGroupName() override;
 	virtual bool ObjectIsInSoundBanks() override;
+	virtual EWwiseGroupType GetGroupType() const override { return EWwiseGroupType::State; }
 #endif
 };

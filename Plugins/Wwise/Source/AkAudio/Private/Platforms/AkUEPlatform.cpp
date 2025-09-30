@@ -12,7 +12,7 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #include "Platforms/AkUEPlatform.h"
@@ -30,18 +30,11 @@ TMap<FString, FWwiseSharedPlatformId> UAkPlatformInfo::UnrealTargetNameToSharedP
 TSet<FString> AkUnrealPlatformHelper::GetAllSupportedUnrealPlatforms()
 {
 	TSet<FString> SupportedPlatforms;
-#if UE_5_0_OR_LATER
 	for (const PlatformInfo::FTargetPlatformInfo* TargetPlatformInfo : PlatformInfo::GetPlatformInfoArray())
 	{
 		auto Info = *TargetPlatformInfo;
 		FName PlatformInfoName = Info.Name;
 		FString VanillaName = Info.VanillaInfo->Name.ToString();
-#else
-	for (const PlatformInfo::FPlatformInfo& Info : PlatformInfo::GetPlatformInfoArray())
-	{
-		FName PlatformInfoName = Info.PlatformInfoName;
-		FString VanillaName = Info.VanillaPlatformName.ToString();
-#endif
 		bool bIsGame = Info.PlatformType == EBuildTargetType::Game;
 		if (Info.IsVanilla() && bIsGame && (PlatformInfoName != TEXT("AllDesktop")))
 		{
@@ -89,12 +82,8 @@ TArray<TSharedPtr<FString>> AkUnrealPlatformHelper::GetAllSupportedWwisePlatform
 	for (const auto& AvailablePlatform : UnrealPlatforms)
 	{
 		FString SettingsClassName = FString::Format(TEXT("Ak{0}InitializationSettings"), { *AvailablePlatform });
-#if UE_5_1_OR_LATER
 		SettingsClassName = "/Script/AkAudio." + SettingsClassName;
 		if (UClass::TryFindTypeSlow<UClass>(*SettingsClassName))
-#else
-		if (FindObject<UClass>(ANY_PACKAGE, *SettingsClassName))
-#endif
 		{
 			TemporaryWwisePlatformNames.Add(AvailablePlatform);
 		}
@@ -118,12 +107,12 @@ TArray<FString> AkUnrealPlatformHelper::GetAllWwiseProjectPlatforms()
 		UE_LOG(LogAkAudio, Error, TEXT("GetAllWwiseProjectPlatforms: ProjectDatabase not loaded"));
 		return {};
 	}
-	const FWwiseDataStructureScopeLock DataStructure(*ProjectDatabase);
+	const WwiseDataStructureScopeLock DataStructure(*ProjectDatabase);
 	TArray<FString> Platforms;
 	auto PlatformIds = DataStructure.GetPlatforms();
 	for(auto& PlatformId : PlatformIds)
 	{
-		Platforms.Add(PlatformId.GetPlatformName().ToString());
+		Platforms.Add(*PlatformId.GetPlatformName());
 	}
 	return Platforms;
 }

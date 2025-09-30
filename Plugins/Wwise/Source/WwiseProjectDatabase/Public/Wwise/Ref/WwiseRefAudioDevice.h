@@ -12,48 +12,48 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #pragma once
 
 #include "Wwise/Ref/WwiseRefSoundBank.h"
 
-class WWISEPROJECTDATABASE_API FWwiseRefAudioDevice : public FWwiseRefSoundBank
+class WwiseRefAudioDevice : public WwiseRefSoundBank
 {
 public:
-	static const TCHAR* const NAME;
-	static constexpr EWwiseRefType TYPE = EWwiseRefType::AudioDevice;
+	static const WwiseDBString NAME;
+	static constexpr WwiseRefType TYPE = WwiseRefType::AudioDevice;
 	struct FGlobalIdsMap;
 
 	WwiseRefIndexType AudioDeviceIndex;
 
-	FWwiseRefAudioDevice() {}
-	FWwiseRefAudioDevice(const WwiseMetadataSharedRootFileConstPtr& InRootMediaRef, const FName& InJsonFilePath,
-		WwiseRefIndexType InSoundBankIndex, uint32 InLanguageId,
+	WwiseRefAudioDevice() {}
+	WwiseRefAudioDevice(const WwiseMetadataSharedRootFileConstPtr& InRootMediaRef, const WwiseDBString& InJsonFilePath,
+		WwiseRefIndexType InSoundBankIndex, WwiseDBShortId InLanguageId,
 		WwiseRefIndexType InAudioDeviceIndex) :
-		FWwiseRefSoundBank(InRootMediaRef, InJsonFilePath, InSoundBankIndex, InLanguageId),
+		WwiseRefSoundBank(InRootMediaRef, InJsonFilePath, InSoundBankIndex, InLanguageId),
 		AudioDeviceIndex(InAudioDeviceIndex)
 	{}
-	const FWwiseMetadataPlugin* GetPlugin() const;
+	const WwiseMetadataPlugin* GetPlugin() const;
 	WwiseMediaIdsMap GetPluginMedia(const WwiseMediaGlobalIdsMap& GlobalMap) const;
 
-	uint32 AudioDeviceId() const;
-	FGuid AudioDeviceGuid() const;
-	FName AudioDeviceName() const;
-	FName AudioDeviceObjectPath() const;
+	WwiseDBShortId AudioDeviceId() const;
+	WwiseDBGuid AudioDeviceGuid() const;
+	const WwiseDBString* AudioDeviceName() const;
+	const WwiseDBString* AudioDeviceObjectPath() const;
 
-	uint32 Hash() const override;
-	EWwiseRefType Type() const override { return TYPE; }
-	bool operator==(const FWwiseRefAudioDevice& Rhs) const
+	WwiseDBShortId Hash() const override;
+	WwiseRefType Type() const override { return TYPE; }
+	bool operator==(const WwiseRefAudioDevice& Rhs) const
 	{
-		return FWwiseRefSoundBank::operator==(Rhs)
+		return WwiseRefSoundBank::operator==(Rhs)
 			&& AudioDeviceIndex == Rhs.AudioDeviceIndex;
 	}
-	bool operator!=(const FWwiseRefAudioDevice& Rhs) const { return !operator==(Rhs); }
+	bool operator!=(const WwiseRefAudioDevice& Rhs) const { return !operator==(Rhs); }
 };
 
-struct WWISEPROJECTDATABASE_API FWwiseRefAudioDevice::FGlobalIdsMap
+struct WwiseRefAudioDevice::FGlobalIdsMap
 {
 	WwiseAudioDeviceGlobalIdsMap GlobalIdsMap;
 };

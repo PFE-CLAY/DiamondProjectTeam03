@@ -12,7 +12,7 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #include "Wwise/Ref/WwiseRefSoundBank.h"
@@ -30,7 +30,6 @@ Copyright (c) 2024 Audiokinetic Inc.
 #include "Wwise/Ref/WwiseRefPluginShareSet.h"
 #include "Wwise/Ref/WwiseRefState.h"
 #include "Wwise/Ref/WwiseRefStateGroup.h"
-#include "Wwise/WwiseProjectDatabaseModule.h"
 #include "Wwise/Ref/WwiseRefSwitch.h"
 #include "Wwise/Ref/WwiseRefSwitchGroup.h"
 #include "Wwise/Ref/WwiseRefTrigger.h"
@@ -39,15 +38,14 @@ Copyright (c) 2024 Audiokinetic Inc.
 #include "Wwise/Metadata/WwiseMetadataPluginGroup.h"
 #include "Wwise/Metadata/WwiseMetadataSoundBank.h"
 #include "Wwise/Metadata/WwiseMetadataSoundBanksInfo.h"
-#include "Wwise/Stats/ProjectDatabase.h"
 
 
-const TCHAR* const FWwiseRefSoundBank::NAME = TEXT("SoundBank");
+const WwiseDBString WwiseRefSoundBank::NAME = "SoundBank"_wwise_db;
 
-const FWwiseMetadataSoundBank* FWwiseRefSoundBank::GetSoundBank() const
+const WwiseMetadataSoundBank* WwiseRefSoundBank::GetSoundBank() const
 {
 	const auto* SoundBanksInfo = GetSoundBanksInfo();
-	if (UNLIKELY(!SoundBanksInfo))
+	if (!SoundBanksInfo) [[unlikely]]
 	{
 		return nullptr;
 	}
@@ -58,27 +56,27 @@ const FWwiseMetadataSoundBank* FWwiseRefSoundBank::GetSoundBank() const
 	}
 	else
 	{
-		UE_LOG(LogWwiseProjectDatabase, Error, TEXT("Could not get SoundBank index #%zu"), SoundBankIndex);
+		WWISE_DB_LOG(Error, "Could not get SoundBank index #%zu", SoundBankIndex);
 		return nullptr;
 	}
 }
 
-WwiseMediaIdsMap FWwiseRefSoundBank::GetSoundBankMedia(const WwiseMediaGlobalIdsMap& GlobalMap) const
+WwiseMediaIdsMap WwiseRefSoundBank::GetSoundBankMedia(const WwiseMediaGlobalIdsMap& GlobalMap) const
 {
 	const auto* SoundBank = GetSoundBank();
-	if (!SoundBank)
+	if (!SoundBank) [[unlikely]]
 	{
 		return {};
 	}
 	const auto& Media = SoundBank->Media;
 
 	WwiseMediaIdsMap Result;
-	Result.Empty(Media.Num());
+	Result.Empty(Media.Size());
 	for (const auto& Elem : Media)
 	{
-		FWwiseDatabaseMediaIdKey Id(Elem.Id, SoundBank->Id);
+		WwiseDatabaseLocalizableIdKey Id(Elem.Id, LanguageId, SoundBank->Id);
 
-		const auto* MediaInGlobalMap = GlobalMap.Find(Id);
+		const WwiseRefMedia* MediaInGlobalMap = GlobalMap.Find(Id);
 		if (MediaInGlobalMap)
 		{
 			Result.Add(Elem.Id, *MediaInGlobalMap);
@@ -87,22 +85,22 @@ WwiseMediaIdsMap FWwiseRefSoundBank::GetSoundBankMedia(const WwiseMediaGlobalIds
 	return Result;
 }
 
-WwiseCustomPluginIdsMap FWwiseRefSoundBank::GetSoundBankCustomPlugins(const WwiseCustomPluginGlobalIdsMap& GlobalMap) const
+WwiseCustomPluginIdsMap WwiseRefSoundBank::GetSoundBankCustomPlugins(const WwiseCustomPluginGlobalIdsMap& GlobalMap) const
 {
 	const auto* SoundBank = GetSoundBank();
-	if (!SoundBank || !SoundBank->Plugins)
+	if (!SoundBank || !SoundBank->Plugins) [[unlikely]]
 	{
 		return {};
 	}
 	const auto& CustomPlugins = SoundBank->Plugins->Custom;
 
 	WwiseCustomPluginIdsMap Result;
-	Result.Empty(CustomPlugins.Num());
+	Result.Empty(CustomPlugins.Size());
 	for (const auto& Elem : CustomPlugins)
 	{
-		FWwiseDatabaseLocalizableIdKey Id(Elem.Id, LanguageId);
+		WwiseDatabaseLocalizableIdKey Id(Elem.Id, LanguageId);
 
-		const auto* InGlobalMap = GlobalMap.Find(Id);
+		const WwiseRefCustomPlugin* InGlobalMap = GlobalMap.Find(Id);
 		if (InGlobalMap)
 		{
 			Result.Add(Elem.Id, *InGlobalMap);
@@ -111,22 +109,22 @@ WwiseCustomPluginIdsMap FWwiseRefSoundBank::GetSoundBankCustomPlugins(const Wwis
 	return Result;
 }
 
-WwisePluginShareSetIdsMap FWwiseRefSoundBank::GetSoundBankPluginShareSets(const WwisePluginShareSetGlobalIdsMap& GlobalMap) const
+WwisePluginShareSetIdsMap WwiseRefSoundBank::GetSoundBankPluginShareSets(const WwisePluginShareSetGlobalIdsMap& GlobalMap) const
 {
 	const auto* SoundBank = GetSoundBank();
-	if (!SoundBank || !SoundBank->Plugins)
+	if (!SoundBank || !SoundBank->Plugins) [[unlikely]]
 	{
 		return {};
 	}
 	const auto& PluginShareSets = SoundBank->Plugins->ShareSets;
 
 	WwisePluginShareSetIdsMap Result;
-	Result.Empty(PluginShareSets.Num());
+	Result.Empty(PluginShareSets.Size());
 	for (const auto& Elem : PluginShareSets)
 	{
-		FWwiseDatabaseLocalizableIdKey Id(Elem.Id, LanguageId);
+		WwiseDatabaseLocalizableIdKey Id(Elem.Id, LanguageId);
 
-		const auto* InGlobalMap = GlobalMap.Find(Id);
+		const WwiseRefPluginShareSet* InGlobalMap = GlobalMap.Find(Id);
 		if (InGlobalMap)
 		{
 			Result.Add(Elem.Id, *InGlobalMap);
@@ -135,22 +133,22 @@ WwisePluginShareSetIdsMap FWwiseRefSoundBank::GetSoundBankPluginShareSets(const 
 	return Result;
 }
 
-WwiseAudioDeviceIdsMap FWwiseRefSoundBank::GetSoundBankAudioDevices(const WwiseAudioDeviceGlobalIdsMap& GlobalMap) const
+WwiseAudioDeviceIdsMap WwiseRefSoundBank::GetSoundBankAudioDevices(const WwiseAudioDeviceGlobalIdsMap& GlobalMap) const
 {
 	const auto* SoundBank = GetSoundBank();
-	if (!SoundBank || !SoundBank->Plugins)
+	if (!SoundBank || !SoundBank->Plugins) [[unlikely]]
 	{
 		return {};
 	}
 	const auto& AudioDevices = SoundBank->Plugins->AudioDevices;
 
 	WwiseAudioDeviceIdsMap Result;
-	Result.Empty(AudioDevices.Num());
+	Result.Empty(AudioDevices.Size());
 	for (const auto& Elem : AudioDevices)
 	{
-		FWwiseDatabaseLocalizableIdKey Id(Elem.Id, LanguageId);
+		WwiseDatabaseLocalizableIdKey Id(Elem.Id, LanguageId);
 
-		const auto* InGlobalMap = GlobalMap.Find(Id);
+		const WwiseRefAudioDevice* InGlobalMap = GlobalMap.Find(Id);
 		if (InGlobalMap)
 		{
 			Result.Add(Elem.Id, *InGlobalMap);
@@ -159,22 +157,22 @@ WwiseAudioDeviceIdsMap FWwiseRefSoundBank::GetSoundBankAudioDevices(const WwiseA
 	return Result;
 }
 
-WwiseEventIdsMap FWwiseRefSoundBank::GetSoundBankEvents(const WwiseEventGlobalIdsMap& GlobalMap) const
+WwiseEventIdsMap WwiseRefSoundBank::GetSoundBankEvents(const WwiseEventGlobalIdsMap& GlobalMap) const
 {
 	const auto* SoundBank = GetSoundBank();
-	if (!SoundBank)
+	if (!SoundBank) [[unlikely]]
 	{
 		return {};
 	}
 	const auto& Events = SoundBank->Events;
 
 	WwiseEventIdsMap Result;
-	Result.Empty(Events.Num());
+	Result.Empty(Events.Size());
 	for (const auto& Elem : Events)
 	{
-		FWwiseDatabaseLocalizableIdKey Id(Elem.Id, LanguageId, SoundBankId());
+		WwiseDatabaseLocalizableIdKey Id(Elem.Id, LanguageId);
 
-		const auto* InGlobalMap = GlobalMap.Find(Id);
+		const WwiseRefEvent* InGlobalMap = GlobalMap.Find(Id);
 		if (InGlobalMap)
 		{
 			Result.Add(Elem.Id, *InGlobalMap);
@@ -183,19 +181,19 @@ WwiseEventIdsMap FWwiseRefSoundBank::GetSoundBankEvents(const WwiseEventGlobalId
 	return Result;
 }
 
-WwiseDialogueEventIdsMap FWwiseRefSoundBank::GetSoundBankDialogueEvents(const WwiseDialogueEventGlobalIdsMap& GlobalMap) const
+WwiseDialogueEventIdsMap WwiseRefSoundBank::GetSoundBankDialogueEvents(const WwiseDialogueEventGlobalIdsMap& GlobalMap) const
 {
 	const auto* SoundBank = GetSoundBank();
-	if (!SoundBank)
+	if (!SoundBank) [[unlikely]]
 	{
 		return {};
 	}
 	const auto& DialogueEvents = SoundBank->DialogueEvents;
 	WwiseDialogueEventIdsMap Result;
-	Result.Empty(DialogueEvents.Num());
+	Result.Empty(DialogueEvents.Size());
 	for (const auto& Elem : DialogueEvents)
 	{
-		const auto* GlobalRef = GlobalMap.Find(FWwiseDatabaseLocalizableIdKey(Elem.Id, LanguageId));
+		const WwiseRefDialogueEvent* GlobalRef = GlobalMap.Find(WwiseDatabaseLocalizableIdKey(Elem.Id, LanguageId));
 		if (GlobalRef)
 		{
 			Result.Add(Elem.Id, *GlobalRef);
@@ -205,41 +203,44 @@ WwiseDialogueEventIdsMap FWwiseRefSoundBank::GetSoundBankDialogueEvents(const Ww
 	return Result;
 }
 
-WwiseDialogueArgumentIdsMap FWwiseRefSoundBank::GetAllSoundBankDialogueArguments(const WwiseDialogueArgumentGlobalIdsMap& GlobalMap) const
+WwiseDialogueArgumentIdsMap WwiseRefSoundBank::GetAllSoundBankDialogueArguments(const WwiseDialogueArgumentGlobalIdsMap& GlobalMap) const
 {
 	const auto* SoundBank = GetSoundBank();
-	if (!SoundBank)
+	if (!SoundBank) [[unlikely]]
 	{
 		return {};
 	}
-	const auto DialogueArguments = SoundBank->GetAllDialogueArguments();
+
 	WwiseDialogueArgumentIdsMap Result;
-	Result.Empty(DialogueArguments.Num());
-	for (const auto& Elem : DialogueArguments)
+
+	for (const auto& DialogueEvent : SoundBank->DialogueEvents)
 	{
-		const auto* GlobalRef = GlobalMap.Find(FWwiseDatabaseLocalizableIdKey(Elem.Id, LanguageId));
-		if (GlobalRef)
+		for (const auto& Elem : DialogueEvent.Arguments)
 		{
-			Result.Add(Elem.Id, *GlobalRef);
+			const auto* GlobalRef = GlobalMap.Find(WwiseDatabaseLocalizableIdKey(Elem.Id, LanguageId));
+			if (GlobalRef)
+			{
+				Result.Add(Elem.Id, *GlobalRef);
+			}
 		}
 	}
 
 	return Result;
 }
 
-WwiseBusIdsMap FWwiseRefSoundBank::GetSoundBankBusses(const WwiseBusGlobalIdsMap& GlobalMap) const
+WwiseBusIdsMap WwiseRefSoundBank::GetSoundBankBusses(const WwiseBusGlobalIdsMap& GlobalMap) const
 {
 	const auto* SoundBank = GetSoundBank();
-	if (!SoundBank)
+	if (!SoundBank) [[unlikely]]
 	{
 		return {};
 	}
 	const auto& Busses = SoundBank->Busses;
 	WwiseBusIdsMap Result;
-	Result.Empty(Busses.Num());
+	Result.Empty(Busses.Size());
 	for (const auto& Elem : Busses)
 	{
-		const auto* GlobalRef = GlobalMap.Find(FWwiseDatabaseLocalizableIdKey(Elem.Id, LanguageId));
+		const WwiseRefBus* GlobalRef = GlobalMap.Find(WwiseDatabaseLocalizableIdKey(Elem.Id, LanguageId));
 		if (GlobalRef)
 		{
 			Result.Add(Elem.Id, *GlobalRef);
@@ -249,19 +250,19 @@ WwiseBusIdsMap FWwiseRefSoundBank::GetSoundBankBusses(const WwiseBusGlobalIdsMap
 	return Result;
 }
 
-WwiseAuxBusIdsMap FWwiseRefSoundBank::GetSoundBankAuxBusses(const WwiseAuxBusGlobalIdsMap& GlobalMap) const
+WwiseAuxBusIdsMap WwiseRefSoundBank::GetSoundBankAuxBusses(const WwiseAuxBusGlobalIdsMap& GlobalMap) const
 {
 	const auto* SoundBank = GetSoundBank();
-	if (!SoundBank)
+	if (!SoundBank) [[unlikely]]
 	{
 		return {};
 	}
 	const auto& AuxBusses = SoundBank->AuxBusses;
 	WwiseAuxBusIdsMap Result;
-	Result.Empty(AuxBusses.Num());
+	Result.Empty(AuxBusses.Size());
 	for (const auto& Elem : AuxBusses)
 	{
-		const auto* GlobalRef = GlobalMap.Find(FWwiseDatabaseLocalizableIdKey(Elem.Id, LanguageId));
+		const WwiseRefAuxBus* GlobalRef = GlobalMap.Find(WwiseDatabaseLocalizableIdKey(Elem.Id, LanguageId));
 		if (GlobalRef)
 		{
 			Result.Add(Elem.Id, *GlobalRef);
@@ -271,19 +272,19 @@ WwiseAuxBusIdsMap FWwiseRefSoundBank::GetSoundBankAuxBusses(const WwiseAuxBusGlo
 	return Result;
 }
 
-WwiseGameParameterIdsMap FWwiseRefSoundBank::GetSoundBankGameParameters(const WwiseGameParameterGlobalIdsMap& GlobalMap) const
+WwiseGameParameterIdsMap WwiseRefSoundBank::GetSoundBankGameParameters(const WwiseGameParameterGlobalIdsMap& GlobalMap) const
 {
 	const auto* SoundBank = GetSoundBank();
-	if (!SoundBank)
+	if (!SoundBank) [[unlikely]]
 	{
 		return {};
 	}
 	const auto& GameParameters = SoundBank->GameParameters;
 	WwiseGameParameterIdsMap Result;
-	Result.Empty(GameParameters.Num());
+	Result.Empty(GameParameters.Size());
 	for (const auto& Elem : GameParameters)
 	{
-		const auto* GlobalRef = GlobalMap.Find(FWwiseDatabaseLocalizableIdKey(Elem.Id, LanguageId));
+		const WwiseRefGameParameter* GlobalRef = GlobalMap.Find(WwiseDatabaseLocalizableIdKey(Elem.Id, LanguageId));
 		if (GlobalRef)
 		{
 			Result.Add(Elem.Id, *GlobalRef);
@@ -293,19 +294,19 @@ WwiseGameParameterIdsMap FWwiseRefSoundBank::GetSoundBankGameParameters(const Ww
 	return Result;
 }
 
-WwiseStateGroupIdsMap FWwiseRefSoundBank::GetSoundBankStateGroups(const WwiseStateGroupGlobalIdsMap& GlobalMap) const
+WwiseStateGroupIdsMap WwiseRefSoundBank::GetSoundBankStateGroups(const WwiseStateGroupGlobalIdsMap& GlobalMap) const
 {
 	const auto* SoundBank = GetSoundBank();
-	if (!SoundBank)
+	if (!SoundBank) [[unlikely]]
 	{
 		return {};
 	}
 	const auto& StateGroups = SoundBank->StateGroups;
 	WwiseStateGroupIdsMap Result;
-	Result.Empty(StateGroups.Num());
+	Result.Empty(StateGroups.Size());
 	for (const auto& Elem : StateGroups)
 	{
-		const auto* GlobalRef = GlobalMap.Find(FWwiseDatabaseLocalizableIdKey(Elem.Id, LanguageId));
+		const WwiseRefStateGroup* GlobalRef = GlobalMap.Find(WwiseDatabaseLocalizableIdKey(Elem.Id, LanguageId));
 		if (GlobalRef)
 		{
 			Result.Add(Elem.Id, *GlobalRef);
@@ -315,41 +316,43 @@ WwiseStateGroupIdsMap FWwiseRefSoundBank::GetSoundBankStateGroups(const WwiseSta
 	return Result;
 }
 
-WwiseStateIdsMap FWwiseRefSoundBank::GetAllSoundBankStates(const WwiseStateGlobalIdsMap& GlobalMap) const
+WwiseStateIdsMap WwiseRefSoundBank::GetAllSoundBankStates(const WwiseStateGlobalIdsMap& GlobalMap) const
 {
 	const auto* SoundBank = GetSoundBank();
-	if (!SoundBank)
+	if (!SoundBank) [[unlikely]]
 	{
 		return {};
 	}
-	const auto States = SoundBank->GetAllStates();
 	WwiseStateIdsMap Result;
-	Result.Empty(States.Num());
-	for (const auto& Elem : States)
+
+	for (const auto& StateGroup : SoundBank->StateGroups)
 	{
-		const auto* GlobalRef = GlobalMap.Find(FWwiseDatabaseLocalizableGroupValueKey(Elem.Get<0>().Id, Elem.Get<1>().Id, LanguageId));
-		if (GlobalRef)
+		for (const auto& State : StateGroup.States)
 		{
-			Result.Add(FWwiseDatabaseGroupValueKey(Elem.Get<0>().Id, Elem.Get<1>().Id), *GlobalRef);
+			const auto* GlobalRef = GlobalMap.Find(WwiseDatabaseLocalizableGroupValueKey(StateGroup.Id, State.Id, LanguageId));
+			if (GlobalRef)
+			{
+				Result.Add(WwiseDatabaseGroupValueKey(StateGroup.Id, State.Id), *GlobalRef);
+			}
 		}
 	}
 
 	return Result;
 }
 
-WwiseSwitchGroupIdsMap FWwiseRefSoundBank::GetSoundBankSwitchGroups(const WwiseSwitchGroupGlobalIdsMap& GlobalMap) const
+WwiseSwitchGroupIdsMap WwiseRefSoundBank::GetSoundBankSwitchGroups(const WwiseSwitchGroupGlobalIdsMap& GlobalMap) const
 {
 	const auto* SoundBank = GetSoundBank();
-	if (!SoundBank)
+	if (!SoundBank) [[unlikely]]
 	{
 		return {};
 	}
 	const auto& SwitchGroups = SoundBank->SwitchGroups;
 	WwiseSwitchGroupIdsMap Result;
-	Result.Empty(SwitchGroups.Num());
+	Result.Empty(SwitchGroups.Size());
 	for (const auto& Elem : SwitchGroups)
 	{
-		const auto* GlobalRef = GlobalMap.Find(FWwiseDatabaseLocalizableIdKey(Elem.Id, LanguageId));
+		const WwiseRefSwitchGroup* GlobalRef = GlobalMap.Find(WwiseDatabaseLocalizableIdKey(Elem.Id, LanguageId));
 		if (GlobalRef)
 		{
 			Result.Add(Elem.Id, *GlobalRef);
@@ -359,41 +362,44 @@ WwiseSwitchGroupIdsMap FWwiseRefSoundBank::GetSoundBankSwitchGroups(const WwiseS
 	return Result;
 }
 
-WwiseSwitchIdsMap FWwiseRefSoundBank::GetAllSoundBankSwitches(const WwiseSwitchGlobalIdsMap& GlobalMap) const
+WwiseSwitchIdsMap WwiseRefSoundBank::GetAllSoundBankSwitches(const WwiseSwitchGlobalIdsMap& GlobalMap) const
 {
 	const auto* SoundBank = GetSoundBank();
-	if (!SoundBank)
+	if (!SoundBank) [[unlikely]]
 	{
 		return {};
 	}
 	const auto Switches = SoundBank->GetAllSwitches();
+
 	WwiseSwitchIdsMap Result;
-	Result.Empty(Switches.Num());
-	for (const auto& Elem : Switches)
+	for (const auto& SwitchGroup : SoundBank->SwitchGroups)
 	{
-		const auto* GlobalRef = GlobalMap.Find(FWwiseDatabaseLocalizableGroupValueKey(Elem.Get<0>().Id, Elem.Get<1>().Id, LanguageId));
-		if (GlobalRef)
+		for (const auto& Switch : SwitchGroup.Switches)
 		{
-			Result.Add(FWwiseDatabaseGroupValueKey(Elem.Get<0>().Id, Elem.Get<1>().Id), *GlobalRef);
+			const auto* GlobalRef = GlobalMap.Find(WwiseDatabaseLocalizableGroupValueKey(SwitchGroup.Id, Switch.Id, LanguageId));
+			if (GlobalRef)
+			{
+				Result.Add(WwiseDatabaseGroupValueKey(SwitchGroup.Id, Switch.Id), *GlobalRef);
+			}
 		}
 	}
 
 	return Result;
 }
 
-WwiseTriggerIdsMap FWwiseRefSoundBank::GetSoundBankTriggers(const WwiseTriggerGlobalIdsMap& GlobalMap) const
+WwiseTriggerIdsMap WwiseRefSoundBank::GetSoundBankTriggers(const WwiseTriggerGlobalIdsMap& GlobalMap) const
 {
 	const auto* SoundBank = GetSoundBank();
-	if (!SoundBank)
+	if (!SoundBank) [[unlikely]]
 	{
 		return {};
 	}
 	const auto& Triggers = SoundBank->Triggers;
 	WwiseTriggerIdsMap Result;
-	Result.Empty(Triggers.Num());
+	Result.Empty(Triggers.Size());
 	for (const auto& Elem : Triggers)
 	{
-		const auto* GlobalRef = GlobalMap.Find(FWwiseDatabaseLocalizableIdKey(Elem.Id, LanguageId));
+		const WwiseRefTrigger* GlobalRef = GlobalMap.Find(WwiseDatabaseLocalizableIdKey(Elem.Id, LanguageId));
 		if (GlobalRef)
 		{
 			Result.Add(Elem.Id, *GlobalRef);
@@ -403,19 +409,19 @@ WwiseTriggerIdsMap FWwiseRefSoundBank::GetSoundBankTriggers(const WwiseTriggerGl
 	return Result;
 }
 
-WwiseExternalSourceIdsMap FWwiseRefSoundBank::GetSoundBankExternalSources(const WwiseExternalSourceGlobalIdsMap& GlobalMap) const
+WwiseExternalSourceIdsMap WwiseRefSoundBank::GetSoundBankExternalSources(const WwiseExternalSourceGlobalIdsMap& GlobalMap) const
 {
 	const auto* SoundBank = GetSoundBank();
-	if (!SoundBank)
+	if (!SoundBank) [[unlikely]]
 	{
 		return {};
 	}
 	const auto& ExternalSources = SoundBank->ExternalSources;
 	WwiseExternalSourceIdsMap Result;
-	Result.Empty(ExternalSources.Num());
+	Result.Empty(ExternalSources.Size());
 	for (const auto& Elem : ExternalSources)
 	{
-		const auto* GlobalRef = GlobalMap.Find(FWwiseDatabaseLocalizableIdKey(Elem.Cookie, LanguageId));
+		const WwiseRefExternalSource* GlobalRef = GlobalMap.Find(WwiseDatabaseLocalizableIdKey(Elem.Cookie, LanguageId));
 		if (GlobalRef)
 		{
 			Result.Add(Elem.Cookie, *GlobalRef);
@@ -425,19 +431,19 @@ WwiseExternalSourceIdsMap FWwiseRefSoundBank::GetSoundBankExternalSources(const 
 	return Result;
 }
 
-WwiseAcousticTextureIdsMap FWwiseRefSoundBank::GetSoundBankAcousticTextures(const WwiseAcousticTextureGlobalIdsMap& GlobalMap) const
+WwiseAcousticTextureIdsMap WwiseRefSoundBank::GetSoundBankAcousticTextures(const WwiseAcousticTextureGlobalIdsMap& GlobalMap) const
 {
 	const auto* SoundBank = GetSoundBank();
-	if (!SoundBank)
+	if (!SoundBank) [[unlikely]]
 	{
 		return {};
 	}
 	const auto& AcousticTextures = SoundBank->AcousticTextures;
 	WwiseAcousticTextureIdsMap Result;
-	Result.Empty(AcousticTextures.Num());
+	Result.Empty(AcousticTextures.Size());
 	for (const auto& Elem : AcousticTextures)
 	{
-		const auto* GlobalRef = GlobalMap.Find(FWwiseDatabaseLocalizableIdKey(Elem.Id, LanguageId));
+		const WwiseRefAcousticTexture* GlobalRef = GlobalMap.Find(WwiseDatabaseLocalizableIdKey(Elem.Id, LanguageId));
 		if (GlobalRef)
 		{
 			Result.Add(Elem.Id, *GlobalRef);
@@ -447,20 +453,20 @@ WwiseAcousticTextureIdsMap FWwiseRefSoundBank::GetSoundBankAcousticTextures(cons
 	return Result;
 }
 
-bool FWwiseRefSoundBank::IsUserBank() const
+bool WwiseRefSoundBank::IsUserBank() const
 {
 	const auto* SoundBank = GetSoundBank();
-	if (!SoundBank)
+	if (!SoundBank) [[unlikely]]
 	{
 		return false;
 	}
 	return SoundBank->Type == EMetadataSoundBankType::User;
 }
 
-bool FWwiseRefSoundBank::IsInitBank() const
+bool WwiseRefSoundBank::IsInitBank() const
 {
 	const auto* SoundBank = GetSoundBank();
-	if (!SoundBank)
+	if (!SoundBank) [[unlikely]]
 	{
 		return false;
 	}
@@ -468,49 +474,59 @@ bool FWwiseRefSoundBank::IsInitBank() const
 }
 
 
-uint32 FWwiseRefSoundBank::SoundBankId() const
+WwiseDBShortId WwiseRefSoundBank::SoundBankId() const
 {
 	const auto* SoundBank = GetSoundBank();
-	if (UNLIKELY(!SoundBank))
+	if (!SoundBank) [[unlikely]]
 	{
 		return 0;
 	}
 	return SoundBank->Id;
 }
 
-FGuid FWwiseRefSoundBank::SoundBankGuid() const
+const WwiseDBGuid* WwiseRefSoundBank::SoundBankGuid() const
 {
 	const auto* SoundBank = GetSoundBank();
-	if (UNLIKELY(!SoundBank))
+	if (!SoundBank) [[unlikely]]
 	{
 		return {};
 	}
-	return SoundBank->GUID;
+	return &SoundBank->GUID;
 }
 
-FName FWwiseRefSoundBank::SoundBankShortName() const
+const WwiseDBString* WwiseRefSoundBank::SoundBankLanguage() const
 {
 	const auto* SoundBank = GetSoundBank();
-	if (UNLIKELY(!SoundBank))
+	if (!SoundBank) [[unlikely]]
 	{
 		return {};
 	}
-	return SoundBank->ShortName;
+	return &SoundBank->Language;
 }
 
-FName FWwiseRefSoundBank::SoundBankObjectPath() const
+const WwiseDBString* WwiseRefSoundBank::SoundBankShortName() const
 {
 	const auto* SoundBank = GetSoundBank();
-	if (UNLIKELY(!SoundBank))
+	if (!SoundBank) [[unlikely]]
 	{
 		return {};
 	}
-	return SoundBank->ObjectPath;
+	return &SoundBank->ShortName;
 }
 
-uint32 FWwiseRefSoundBank::Hash() const
+const WwiseDBString* WwiseRefSoundBank::SoundBankObjectPath() const
 {
-	auto Result = FWwiseRefSoundBanksInfo::Hash();
-	Result = HashCombine(Result, GetTypeHash(SoundBankIndex));
+	const auto* SoundBank = GetSoundBank();
+	if (!SoundBank) [[unlikely]]
+	{
+		return {};
+	}
+	return &SoundBank->ObjectPath;
+}
+
+WwiseDBShortId WwiseRefSoundBank::Hash() const
+{
+	auto Result = WwiseRefSoundBanksInfo::Hash();
+	Result = WwiseDBHashCombine(Result, GetTypeHash(SoundBankIndex));
 	return Result;
 }

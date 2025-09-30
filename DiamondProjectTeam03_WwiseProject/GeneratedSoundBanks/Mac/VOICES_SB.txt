@@ -47,40 +47,40 @@ State	ID	Name	State Group			Notes
 	1752637612	In	InsideOutside			
 
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
-	7231555	DUB_ARENA_1_2_2	C:\Github Repos\BlackSands\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\DUB_ARENA_1_2_2_818F3B66.wem		\Actor-Mixer Hierarchy\VOICES\VOICES_ARENA\DUB_ARENA_1_2_2		507620
-	12434701	DUB_ALLY_1_3_0	C:\Github Repos\BlackSands\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\DUB_ALLY_1_3_0_818F3B66.wem		\Actor-Mixer Hierarchy\VOICES\VOICES_ALLY\DUB_ALLY_1_3_0		349048
-	45960235	DUB_ALLY_1_4_1	C:\Github Repos\BlackSands\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\DUB_ALLY_1_4_0_B42FC9A2.wem		\Actor-Mixer Hierarchy\VOICES\VOICES_ALLY\DUB_ALLY_1_4_1		161306
-	73406871	DUB_ARENA_1_7_0	C:\Github Repos\BlackSands\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\DUB_ARENA_1_7_0_818F3B66.wem		\Actor-Mixer Hierarchy\VOICES\VOICES_ARENA\DUB_ARENA_1_7_0		460448
-	83922193	DUB_ARENA_1_2_3	C:\Github Repos\BlackSands\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\DUB_ARENA_1_2_3_818F3B66.wem		\Actor-Mixer Hierarchy\VOICES\VOICES_ARENA\DUB_ARENA_1_2_3		561458
-	84247758	DUB_ALLY_1_8_0	C:\Github Repos\BlackSands\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\DUB_ALLY_1_8_0_818F3B66.wem		\Actor-Mixer Hierarchy\VOICES\VOICES_ALLY\DUB_ALLY_1_8_0		426736
-	93564485	DUB_ARENA_1_0_0	C:\Github Repos\BlackSands\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\DUB_ARENA_1_0_0_818F3B66.wem		\Actor-Mixer Hierarchy\VOICES\VOICES_ARENA\DUB_ARENA_1_0_0		1088018
-	115645254	DUB_ARENA_1_9_4	C:\Github Repos\BlackSands\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\DUB_ARENA_1_9_4_818F3B66.wem		\Actor-Mixer Hierarchy\VOICES\VOICES_ARENA\DUB_ARENA_1_9_4		106472
-	140616404	DUB_ARENA_1_8_0	C:\Github Repos\BlackSands\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\DUB_ARENA_1_8_0_818F3B66.wem		\Actor-Mixer Hierarchy\VOICES\VOICES_ARENA\DUB_ARENA_1_8_0		544464
-	157392684	DUB_ARENA_1_9_2	C:\Github Repos\BlackSands\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\DUB_ARENA_1_9_2_818F3B66.wem		\Actor-Mixer Hierarchy\VOICES\VOICES_ARENA\DUB_ARENA_1_9_2		70850
-	166584951	DUB_ARENA_1_9_1	C:\Github Repos\BlackSands\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\DUB_ARENA_1_9_1_818F3B66.wem		\Actor-Mixer Hierarchy\VOICES\VOICES_ARENA\DUB_ARENA_1_9_1		357816
-	199901849	DUB_ALLY_1_2_0	C:\Github Repos\BlackSands\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\DUB_ALLY_1_2_0_818F3B66.wem		\Actor-Mixer Hierarchy\VOICES\VOICES_ALLY\DUB_ALLY_1_2_0		231056
-	276376101	DUB_ALLY_1_0_2	C:\Github Repos\BlackSands\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\DUB_ALLY_1_0_2_818F3B66.wem		\Actor-Mixer Hierarchy\VOICES\VOICES_ALLY\DUB_ALLY_1_0_2		754294
-	278418833	DUB_ARENA_1_9_3	C:\Github Repos\BlackSands\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\DUB_ARENA_1_9_3_818F3B66.wem		\Actor-Mixer Hierarchy\VOICES\VOICES_ARENA\DUB_ARENA_1_9_3		80200
-	279456589	DUB_ARENA_1_9_5	C:\Github Repos\BlackSands\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\DUB_ARENA_1_9_5_818F3B66.wem		\Actor-Mixer Hierarchy\VOICES\VOICES_ARENA\DUB_ARENA_1_9_5		215806
-	289625457	DUB_ARENA_1_3_0	C:\Github Repos\BlackSands\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\DUB_ARENA_1_3_0_818F3B66.wem		\Actor-Mixer Hierarchy\VOICES\VOICES_ARENA\DUB_ARENA_1_3_0		670476
-	305437427	DUB_ALLY_1_4_0	C:\Github Repos\BlackSands\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\DUB_ALLY_1_4_0_E0C25F29.wem		\Actor-Mixer Hierarchy\VOICES\VOICES_ALLY\DUB_ALLY_1_4_0		113136
-	315927435	DUB_ALLY_1_6_1	C:\Github Repos\BlackSands\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\DUB_ALLY_1_6_1_818F3B66.wem		\Actor-Mixer Hierarchy\VOICES\VOICES_ALLY\DUB_ALLY_1_6_1		87824
-	338368799	DUB_ARENA_1_1_2	C:\Github Repos\BlackSands\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\DUB_ARENA_1_1_2_818F3B66.wem		\Actor-Mixer Hierarchy\VOICES\VOICES_ARENA\DUB_ARENA_1_1_2		267422
-	338492853	DUB_ALLY_1_6_0	C:\Github Repos\BlackSands\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\DUB_ALLY_1_6_0_818F3B66.wem		\Actor-Mixer Hierarchy\VOICES\VOICES_ALLY\DUB_ALLY_1_6_0		329238
-	381597154	DUB_ALLY_1_1_0	C:\Github Repos\BlackSands\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\DUB_ALLY_1_1_0_818F3B66.wem		\Actor-Mixer Hierarchy\VOICES\VOICES_ALLY\DUB_ALLY_1_1_0		406490
-	411650085	DUB_ARENA_1_9_6	C:\Github Repos\BlackSands\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\DUB_ARENA_1_9_6_818F3B66.wem		\Actor-Mixer Hierarchy\VOICES\VOICES_ARENA\DUB_ARENA_1_9_6		440762
-	435995496	DUB_ARENA_1_6_0	C:\Github Repos\BlackSands\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\DUB_ARENA_1_6_0_818F3B66.wem		\Actor-Mixer Hierarchy\VOICES\VOICES_ARENA\DUB_ARENA_1_6_0		968148
-	500906151	DUB_ARENA_1_1_1	C:\Github Repos\BlackSands\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\DUB_ARENA_1_1_1_818F3B66.wem		\Actor-Mixer Hierarchy\VOICES\VOICES_ARENA\DUB_ARENA_1_1_1		247904
-	675447814	DUB_ALLY_1_0_0	C:\Github Repos\BlackSands\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\DUB_ALLY_1_0_0_818F3B66.wem		\Actor-Mixer Hierarchy\VOICES\VOICES_ALLY\DUB_ALLY_1_0_0		598152
-	687283735	DUB_ARENA_1_2_0	C:\Github Repos\BlackSands\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\DUB_ARENA_1_2_0_818F3B66.wem		\Actor-Mixer Hierarchy\VOICES\VOICES_ARENA\DUB_ARENA_1_2_0		348482
-	700914992	DUB_ALLY_1_0_1	C:\Github Repos\BlackSands\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\DUB_ALLY_1_0_1_818F3B66.wem		\Actor-Mixer Hierarchy\VOICES\VOICES_ALLY\DUB_ALLY_1_0_1		435036
-	753350392	DUB_ALLY_1_5_0	C:\Github Repos\BlackSands\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\DUB_ALLY_1_5_0_818F3B66.wem		\Actor-Mixer Hierarchy\VOICES\VOICES_ALLY\DUB_ALLY_1_5_0		615220
-	767088532	DUB_ARENA_1_9_0	C:\Github Repos\BlackSands\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\DUB_ARENA_1_9_0_818F3B66.wem		\Actor-Mixer Hierarchy\VOICES\VOICES_ARENA\DUB_ARENA_1_9_0		197518
-	881110537	DUB_ARENA_1_3_2	C:\Github Repos\BlackSands\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\DUB_ARENA_1_3_2_818F3B66.wem		\Actor-Mixer Hierarchy\VOICES\VOICES_ARENA\DUB_ARENA_1_3_2		744456
-	898148885	DUB_ARENA_1_1_0	C:\Github Repos\BlackSands\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\DUB_ARENA_1_1_0_818F3B66.wem		\Actor-Mixer Hierarchy\VOICES\VOICES_ARENA\DUB_ARENA_1_1_0		516140
-	899907561	DUB_ARENA_1_5_0	C:\Github Repos\BlackSands\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\DUB_ARENA_1_5_0_818F3B66.wem		\Actor-Mixer Hierarchy\VOICES\VOICES_ARENA\DUB_ARENA_1_5_0		468502
-	952186329	DUB_ARENA_1_4_0	C:\Github Repos\BlackSands\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\DUB_ARENA_1_4_0_818F3B66.wem		\Actor-Mixer Hierarchy\VOICES\VOICES_ARENA\DUB_ARENA_1_4_0		811786
-	981954510	DUB_ALLY_1_7_0	C:\Github Repos\BlackSands\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\DUB_ALLY_1_7_0_818F3B66.wem		\Actor-Mixer Hierarchy\VOICES\VOICES_ALLY\DUB_ALLY_1_7_0		639304
-	1008445025	DUB_ARENA_1_2_1	C:\Github Repos\BlackSands\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\DUB_ARENA_1_2_1_818F3B66.wem		\Actor-Mixer Hierarchy\VOICES\VOICES_ARENA\DUB_ARENA_1_2_1		298764
-	1031568460	DUB_ARENA_1_3_1	C:\Github Repos\BlackSands\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\DUB_ARENA_1_3_1_818F3B66.wem		\Actor-Mixer Hierarchy\VOICES\VOICES_ARENA\DUB_ARENA_1_3_1		322598
+	7231555	DUB_ARENA_1_2_2	F:\Project\DiamondProjectTeam03_WwiseProject\.cache\8E\{8E217C91-05C9-6D25-9FC5-E1ABC71AE6E7}.wem		\Actor-Mixer Hierarchy\VOICES\VOICES_ARENA\DUB_ARENA_1_2_2		507620
+	12434701	DUB_ALLY_1_3_0	F:\Project\DiamondProjectTeam03_WwiseProject\.cache\DF\{DF042FAB-C038-EC21-58EF-4012A74E0012}.wem		\Actor-Mixer Hierarchy\VOICES\VOICES_ALLY\DUB_ALLY_1_3_0		349048
+	45960235	DUB_ALLY_1_4_1	F:\Project\DiamondProjectTeam03_WwiseProject\.cache\C8\{C8F13A6E-6FFE-DA71-BDDB-B9696E55CB34}.wem		\Actor-Mixer Hierarchy\VOICES\VOICES_ALLY\DUB_ALLY_1_4_1		161306
+	73406871	DUB_ARENA_1_7_0	F:\Project\DiamondProjectTeam03_WwiseProject\.cache\31\{31217CD0-4A85-AB69-19F0-A5C7E3C160E8}.wem		\Actor-Mixer Hierarchy\VOICES\VOICES_ARENA\DUB_ARENA_1_7_0		460448
+	83922193	DUB_ARENA_1_2_3	F:\Project\DiamondProjectTeam03_WwiseProject\.cache\8B\{8BA4B464-F190-9D6F-6CD3-12E04209AC0B}.wem		\Actor-Mixer Hierarchy\VOICES\VOICES_ARENA\DUB_ARENA_1_2_3		561458
+	84247758	DUB_ALLY_1_8_0	F:\Project\DiamondProjectTeam03_WwiseProject\.cache\78\{787BE243-97F7-8F18-F8F2-C9137263F111}.wem		\Actor-Mixer Hierarchy\VOICES\VOICES_ALLY\DUB_ALLY_1_8_0		426736
+	93564485	DUB_ARENA_1_0_0	F:\Project\DiamondProjectTeam03_WwiseProject\.cache\38\{3802189E-7AEE-4C59-6B61-6C15CC7465B1}.wem		\Actor-Mixer Hierarchy\VOICES\VOICES_ARENA\DUB_ARENA_1_0_0		1088018
+	115645254	DUB_ARENA_1_9_4	F:\Project\DiamondProjectTeam03_WwiseProject\.cache\DC\{DCC34616-4D38-1A17-2403-5858166A92F8}.wem		\Actor-Mixer Hierarchy\VOICES\VOICES_ARENA\DUB_ARENA_1_9_4		106472
+	140616404	DUB_ARENA_1_8_0	F:\Project\DiamondProjectTeam03_WwiseProject\.cache\D4\{D4D0517E-478A-0B55-C1B9-0D504DF985D1}.wem		\Actor-Mixer Hierarchy\VOICES\VOICES_ARENA\DUB_ARENA_1_8_0		544464
+	157392684	DUB_ARENA_1_9_2	F:\Project\DiamondProjectTeam03_WwiseProject\.cache\3B\{3B93FD09-E5F4-0493-48F4-9609DB78757E}.wem		\Actor-Mixer Hierarchy\VOICES\VOICES_ARENA\DUB_ARENA_1_9_2		70850
+	166584951	DUB_ARENA_1_9_1	F:\Project\DiamondProjectTeam03_WwiseProject\.cache\72\{72AD6E02-5701-E887-D5AD-CF76F210866A}.wem		\Actor-Mixer Hierarchy\VOICES\VOICES_ARENA\DUB_ARENA_1_9_1		357816
+	199901849	DUB_ALLY_1_2_0	F:\Project\DiamondProjectTeam03_WwiseProject\.cache\0A\{0A3D82B3-B445-0D1A-59D6-67E5174BE8E3}.wem		\Actor-Mixer Hierarchy\VOICES\VOICES_ALLY\DUB_ALLY_1_2_0		231056
+	276376101	DUB_ALLY_1_0_2	F:\Project\DiamondProjectTeam03_WwiseProject\.cache\E1\{E182045D-3DC8-F5B4-5AED-1F257318FDA0}.wem		\Actor-Mixer Hierarchy\VOICES\VOICES_ALLY\DUB_ALLY_1_0_2		754294
+	278418833	DUB_ARENA_1_9_3	F:\Project\DiamondProjectTeam03_WwiseProject\.cache\2A\{2A56BA60-F908-0310-7776-AAD09F716D21}.wem		\Actor-Mixer Hierarchy\VOICES\VOICES_ARENA\DUB_ARENA_1_9_3		80200
+	279456589	DUB_ARENA_1_9_5	F:\Project\DiamondProjectTeam03_WwiseProject\.cache\7F\{7F57E39D-CC05-1DFF-BE03-1271DD51180F}.wem		\Actor-Mixer Hierarchy\VOICES\VOICES_ARENA\DUB_ARENA_1_9_5		215806
+	289625457	DUB_ARENA_1_3_0	F:\Project\DiamondProjectTeam03_WwiseProject\.cache\D1\{D1AABFE6-25E4-CA90-2E83-5BB0BCF531E4}.wem		\Actor-Mixer Hierarchy\VOICES\VOICES_ARENA\DUB_ARENA_1_3_0		670476
+	305437427	DUB_ALLY_1_4_0	F:\Project\DiamondProjectTeam03_WwiseProject\.cache\03\{03B7213D-31EC-A6AB-7763-7E0B00E5D1DF}.wem		\Actor-Mixer Hierarchy\VOICES\VOICES_ALLY\DUB_ALLY_1_4_0		113136
+	315927435	DUB_ALLY_1_6_1	F:\Project\DiamondProjectTeam03_WwiseProject\.cache\26\{26C0B2D1-1B68-D881-A009-D526C922DF39}.wem		\Actor-Mixer Hierarchy\VOICES\VOICES_ALLY\DUB_ALLY_1_6_1		87824
+	338368799	DUB_ARENA_1_1_2	F:\Project\DiamondProjectTeam03_WwiseProject\.cache\5D\{5DE03B1E-37AA-2369-8F9B-84B396A8B36B}.wem		\Actor-Mixer Hierarchy\VOICES\VOICES_ARENA\DUB_ARENA_1_1_2		267422
+	338492853	DUB_ALLY_1_6_0	F:\Project\DiamondProjectTeam03_WwiseProject\.cache\A0\{A051E24E-4DE2-0BEE-201C-F7509C23E99A}.wem		\Actor-Mixer Hierarchy\VOICES\VOICES_ALLY\DUB_ALLY_1_6_0		329238
+	381597154	DUB_ALLY_1_1_0	F:\Project\DiamondProjectTeam03_WwiseProject\.cache\FD\{FDFD349B-DF83-C298-37FA-F67623021F0D}.wem		\Actor-Mixer Hierarchy\VOICES\VOICES_ALLY\DUB_ALLY_1_1_0		406490
+	411650085	DUB_ARENA_1_9_6	F:\Project\DiamondProjectTeam03_WwiseProject\.cache\D9\{D9E07449-DEFC-B8DC-D3BE-0DDA7B150202}.wem		\Actor-Mixer Hierarchy\VOICES\VOICES_ARENA\DUB_ARENA_1_9_6		440762
+	435995496	DUB_ARENA_1_6_0	F:\Project\DiamondProjectTeam03_WwiseProject\.cache\F5\{F5F0436D-31A1-5198-7C9E-72ACBE407141}.wem		\Actor-Mixer Hierarchy\VOICES\VOICES_ARENA\DUB_ARENA_1_6_0		968148
+	500906151	DUB_ARENA_1_1_1	F:\Project\DiamondProjectTeam03_WwiseProject\.cache\06\{061FAB3A-EEBF-9541-9536-5D7C843AF6B4}.wem		\Actor-Mixer Hierarchy\VOICES\VOICES_ARENA\DUB_ARENA_1_1_1		247904
+	675447814	DUB_ALLY_1_0_0	F:\Project\DiamondProjectTeam03_WwiseProject\.cache\0A\{0AD8E2B4-C8BD-525C-56BC-95E88633CDF6}.wem		\Actor-Mixer Hierarchy\VOICES\VOICES_ALLY\DUB_ALLY_1_0_0		598152
+	687283735	DUB_ARENA_1_2_0	F:\Project\DiamondProjectTeam03_WwiseProject\.cache\78\{78EFCF27-896C-815F-875E-1562F2478105}.wem		\Actor-Mixer Hierarchy\VOICES\VOICES_ARENA\DUB_ARENA_1_2_0		348482
+	700914992	DUB_ALLY_1_0_1	F:\Project\DiamondProjectTeam03_WwiseProject\.cache\BD\{BD9249CB-B968-E4EB-A453-EE7633D1526F}.wem		\Actor-Mixer Hierarchy\VOICES\VOICES_ALLY\DUB_ALLY_1_0_1		435036
+	753350392	DUB_ALLY_1_5_0	F:\Project\DiamondProjectTeam03_WwiseProject\.cache\58\{58BF3E23-ABDC-1413-46AF-8B6D0E09D446}.wem		\Actor-Mixer Hierarchy\VOICES\VOICES_ALLY\DUB_ALLY_1_5_0		615220
+	767088532	DUB_ARENA_1_9_0	F:\Project\DiamondProjectTeam03_WwiseProject\.cache\8F\{8F36CFD7-DEE3-9F31-852E-AEB489EDA886}.wem		\Actor-Mixer Hierarchy\VOICES\VOICES_ARENA\DUB_ARENA_1_9_0		197518
+	881110537	DUB_ARENA_1_3_2	F:\Project\DiamondProjectTeam03_WwiseProject\.cache\59\{5910D296-C4F6-5C5B-1E2C-2E4EB849D3E5}.wem		\Actor-Mixer Hierarchy\VOICES\VOICES_ARENA\DUB_ARENA_1_3_2		744456
+	898148885	DUB_ARENA_1_1_0	F:\Project\DiamondProjectTeam03_WwiseProject\.cache\E5\{E5792D3E-BA65-59B7-9AC6-75BEE0ED6977}.wem		\Actor-Mixer Hierarchy\VOICES\VOICES_ARENA\DUB_ARENA_1_1_0		516140
+	899907561	DUB_ARENA_1_5_0	F:\Project\DiamondProjectTeam03_WwiseProject\.cache\B7\{B76129DE-2911-66E0-B4AF-EBB1C2208482}.wem		\Actor-Mixer Hierarchy\VOICES\VOICES_ARENA\DUB_ARENA_1_5_0		468502
+	952186329	DUB_ARENA_1_4_0	F:\Project\DiamondProjectTeam03_WwiseProject\.cache\FF\{FFB7B35D-5192-EFF3-B17A-E5E852E55664}.wem		\Actor-Mixer Hierarchy\VOICES\VOICES_ARENA\DUB_ARENA_1_4_0		811786
+	981954510	DUB_ALLY_1_7_0	F:\Project\DiamondProjectTeam03_WwiseProject\.cache\7D\{7D2E1978-4608-9549-0B4D-670622F3A279}.wem		\Actor-Mixer Hierarchy\VOICES\VOICES_ALLY\DUB_ALLY_1_7_0		639304
+	1008445025	DUB_ARENA_1_2_1	F:\Project\DiamondProjectTeam03_WwiseProject\.cache\C0\{C059B990-EB5B-6ECA-898C-30D988AF678A}.wem		\Actor-Mixer Hierarchy\VOICES\VOICES_ARENA\DUB_ARENA_1_2_1		298764
+	1031568460	DUB_ARENA_1_3_1	F:\Project\DiamondProjectTeam03_WwiseProject\.cache\C6\{C66C08B2-DF11-C266-5146-8A13081FE63D}.wem		\Actor-Mixer Hierarchy\VOICES\VOICES_ARENA\DUB_ARENA_1_3_1		322598
 

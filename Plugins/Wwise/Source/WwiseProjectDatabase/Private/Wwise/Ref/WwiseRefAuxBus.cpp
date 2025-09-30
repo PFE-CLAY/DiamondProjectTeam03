@@ -12,72 +12,70 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #include "Wwise/Ref/WwiseRefAuxBus.h"
-#include "Wwise/WwiseProjectDatabaseModule.h"
 
 #include "Wwise/Metadata/WwiseMetadataBus.h"
 #include "Wwise/Metadata/WwiseMetadataSoundBank.h"
 #include "Wwise/Ref/WwiseRefAudioDevice.h"
 #include "Wwise/Ref/WwiseRefCustomPlugin.h"
 #include "Wwise/Ref/WwiseRefPluginShareSet.h"
-#include "Wwise/Stats/ProjectDatabase.h"
 #include <inttypes.h>
 
-const TCHAR* const FWwiseRefAuxBus::NAME = TEXT("AuxBus");
+const WwiseDBString WwiseRefAuxBus::NAME = "AuxBus"_wwise_db;
 
-const FWwiseMetadataBus* FWwiseRefAuxBus::GetAuxBus() const
+const WwiseMetadataBus* WwiseRefAuxBus::GetAuxBus() const
 {
 	const auto* SoundBank = GetSoundBank();
-	if (UNLIKELY(!SoundBank))
+	if (!SoundBank) [[unlikely]]
 	{
 		return nullptr;
 	}
 	const auto& AuxBusses = SoundBank->AuxBusses;
 	if (AuxBusses.IsValidIndex(AuxBusIndex))
 	{
-		return &AuxBusses[AuxBusIndex];
+		return &AuxBusses.Array[AuxBusIndex];
 	}
 	else
 	{
-		UE_LOG(LogWwiseProjectDatabase, Error, TEXT("Could not get AuxBus index #%zu"), AuxBusIndex);
+		WWISE_DB_LOG(Error, "Could not get AuxBus index #%zu", AuxBusIndex);
 		return nullptr;
 	}
 }
 
-void FWwiseRefAuxBus::GetAllAuxBusRefs(TSet<const FWwiseRefAuxBus*>& OutAuxBusRefs, const WwiseAuxBusGlobalIdsMap& InGlobalMap) const
+void WwiseRefAuxBus::GetAllAuxBusRefs(WwiseDBSet<const WwiseRefAuxBus*>& OutAuxBusRefs, const WwiseAuxBusGlobalIdsMap& InGlobalMap) const
 {
 	bool bIsAlreadyInSet = false;
 	OutAuxBusRefs.Add(this, &bIsAlreadyInSet);
-	if (UNLIKELY(bIsAlreadyInSet))		// Unlikely but can still be done (circular references are possible in Aux Busses)
+	if (bIsAlreadyInSet) [[unlikely]]	// Unlikely but can still be done (circular references are possible in Aux Busses)
 	{
 		return;
 	}
 
 	const auto* AuxBus = GetAuxBus();
-	if (UNLIKELY(!AuxBus))
+	if (!AuxBus) [[unlikely]]
 	{
 		return;
 	}
 	for (const auto& SubAuxBus : AuxBus->AuxBusRefs)
 	{
-		const auto* SubAuxBusRef = InGlobalMap.Find(FWwiseDatabaseLocalizableIdKey(SubAuxBus.Id, LanguageId));
-		if (UNLIKELY(!SubAuxBusRef))
+		const WwiseRefAuxBus* SubAuxBusRef = InGlobalMap.Find(WwiseDatabaseLocalizableIdKey(SubAuxBus.Id, LanguageId));
+		if (!SubAuxBusRef) [[unlikely]]
 		{
-			SubAuxBusRef = InGlobalMap.Find(FWwiseDatabaseLocalizableIdKey(SubAuxBus.Id, 0));
+			SubAuxBusRef = InGlobalMap.Find(WwiseDatabaseLocalizableIdKey(SubAuxBus.Id, 0));
 		}
-		if (UNLIKELY(!SubAuxBusRef))
+		if (!SubAuxBusRef) [[unlikely]]
 		{
-			UE_LOG(LogWwiseProjectDatabase, Error, TEXT("Could not get Aux Bus Id %" PRIu32), SubAuxBus.Id);
+			WWISE_DB_LOG(Error, "Could not get Aux Bus Id %" PRIu32, SubAuxBus.Id);
 			continue;
 		}
 		SubAuxBusRef->GetAllAuxBusRefs(OutAuxBusRefs, InGlobalMap);
 	}
 }
 
-WwiseCustomPluginIdsMap FWwiseRefAuxBus::GetAuxBusCustomPlugins(const WwiseCustomPluginGlobalIdsMap& GlobalMap) const
+WwiseCustomPluginIdsMap WwiseRefAuxBus::GetAuxBusCustomPlugins(const WwiseCustomPluginGlobalIdsMap& GlobalMap) const
 {
 	const auto* AuxBus = GetAuxBus();
 	if (!AuxBus || !AuxBus->PluginRefs)
@@ -86,11 +84,11 @@ WwiseCustomPluginIdsMap FWwiseRefAuxBus::GetAuxBusCustomPlugins(const WwiseCusto
 	}
 	const auto& Plugins = AuxBus->PluginRefs->Custom;
 	WwiseCustomPluginIdsMap Result;
-	Result.Empty(Plugins.Num());
+	Result.Empty(Plugins.Size());
 	for (const auto& Elem : Plugins)
 	{
-		FWwiseDatabaseLocalizableIdKey Id(Elem.Id, LanguageId);
-		const auto* GlobalRef = GlobalMap.Find(Id);
+		WwiseDatabaseLocalizableIdKey Id(Elem.Id, LanguageId);
+		const WwiseRefCustomPlugin* GlobalRef = GlobalMap.Find(Id);
 		if (GlobalRef)
 		{
 			Result.Add(Elem.Id, *GlobalRef);
@@ -99,7 +97,7 @@ WwiseCustomPluginIdsMap FWwiseRefAuxBus::GetAuxBusCustomPlugins(const WwiseCusto
 	return Result;
 }
 
-WwisePluginShareSetIdsMap FWwiseRefAuxBus::GetAuxBusPluginShareSets(const WwisePluginShareSetGlobalIdsMap& GlobalMap) const
+WwisePluginShareSetIdsMap WwiseRefAuxBus::GetAuxBusPluginShareSets(const WwisePluginShareSetGlobalIdsMap& GlobalMap) const
 {
 	const auto* AuxBus = GetAuxBus();
 	if (!AuxBus || !AuxBus->PluginRefs)
@@ -108,11 +106,11 @@ WwisePluginShareSetIdsMap FWwiseRefAuxBus::GetAuxBusPluginShareSets(const WwiseP
 	}
 	const auto& Plugins = AuxBus->PluginRefs->ShareSets;
 	WwisePluginShareSetIdsMap Result;
-	Result.Empty(Plugins.Num());
-	for (const auto& Elem : Plugins)
+	Result.Empty(Plugins.Size());
+	for (const auto& Elem : Plugins.Array)
 	{
-		FWwiseDatabaseLocalizableIdKey Id(Elem.Id, LanguageId);
-		const auto* GlobalRef = GlobalMap.Find(Id);
+		WwiseDatabaseLocalizableIdKey Id(Elem.Id, LanguageId);
+		const WwiseRefPluginShareSet* GlobalRef = GlobalMap.Find(Id);
 		if (GlobalRef)
 		{
 			Result.Add(Elem.Id, *GlobalRef);
@@ -121,7 +119,7 @@ WwisePluginShareSetIdsMap FWwiseRefAuxBus::GetAuxBusPluginShareSets(const WwiseP
 	return Result;
 }
 
-WwiseAudioDeviceIdsMap FWwiseRefAuxBus::GetAuxBusAudioDevices(const WwiseAudioDeviceGlobalIdsMap& GlobalMap) const
+WwiseAudioDeviceIdsMap WwiseRefAuxBus::GetAuxBusAudioDevices(const WwiseAudioDeviceGlobalIdsMap& GlobalMap) const
 {
 	const auto* AuxBus = GetAuxBus();
 	if (!AuxBus || !AuxBus->PluginRefs)
@@ -130,11 +128,11 @@ WwiseAudioDeviceIdsMap FWwiseRefAuxBus::GetAuxBusAudioDevices(const WwiseAudioDe
 	}
 	const auto& Plugins = AuxBus->PluginRefs->AudioDevices;
 	WwiseAudioDeviceIdsMap Result;
-	Result.Empty(Plugins.Num());
-	for (const auto& Elem : Plugins)
+	Result.Empty(Plugins.Size());
+	for (const auto& Elem : Plugins.Array)
 	{
-		FWwiseDatabaseLocalizableIdKey Id(Elem.Id, LanguageId);
-		const auto* GlobalRef = GlobalMap.Find(Id);
+		WwiseDatabaseLocalizableIdKey Id(Elem.Id, LanguageId);
+		const WwiseRefAudioDevice* GlobalRef = GlobalMap.Find(Id);
 		if (GlobalRef)
 		{
 			Result.Add(Elem.Id, *GlobalRef);
@@ -143,49 +141,49 @@ WwiseAudioDeviceIdsMap FWwiseRefAuxBus::GetAuxBusAudioDevices(const WwiseAudioDe
 	return Result;
 }
 
-uint32 FWwiseRefAuxBus::AuxBusId() const
+WwiseDBShortId WwiseRefAuxBus::AuxBusId() const
 {
 	const auto* AuxBus = GetAuxBus();
-	if (UNLIKELY(!AuxBus))
+	if (!AuxBus) [[unlikely]]
 	{
 		return 0;
 	}
 	return AuxBus->Id;
 }
 
-FGuid FWwiseRefAuxBus::AuxBusGuid() const
+WwiseDBGuid WwiseRefAuxBus::AuxBusGuid() const
 {
 	const auto* AuxBus = GetAuxBus();
-	if (UNLIKELY(!AuxBus))
+	if (!AuxBus) [[unlikely]]
 	{
 		return {};
 	}
 	return AuxBus->GUID;
 }
 
-FName FWwiseRefAuxBus::AuxBusName() const
+const WwiseDBString* WwiseRefAuxBus::AuxBusName() const
 {
 	const auto* AuxBus = GetAuxBus();
-	if (UNLIKELY(!AuxBus))
+	if (!AuxBus) [[unlikely]]
 	{
-		return {};
+		return &emptyString;
 	}
-	return AuxBus->Name;
+	return &AuxBus->Name;
 }
 
-FName FWwiseRefAuxBus::AuxBusObjectPath() const
+const WwiseDBString* WwiseRefAuxBus::AuxBusObjectPath() const
 {
 	const auto* AuxBus = GetAuxBus();
-	if (UNLIKELY(!AuxBus))
+	if (!AuxBus) [[unlikely]]
 	{
-		return {};
+		return &emptyString;
 	}
-	return AuxBus->ObjectPath;
+	return &AuxBus->ObjectPath;
 }
 
-uint32 FWwiseRefAuxBus::Hash() const
+WwiseDBShortId WwiseRefAuxBus::Hash() const
 {
-	auto Result = FWwiseRefSoundBank::Hash();
-	Result = HashCombine(Result, GetTypeHash(AuxBusIndex));
+	auto Result = WwiseRefSoundBank::Hash();
+	Result = WwiseDBHashCombine(Result, GetTypeHash(AuxBusIndex));
 	return Result;
 }

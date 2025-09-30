@@ -1,42 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="16" SoundBankVersion="150">
+<SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="16" SoundBankVersion="154">
 	<RootPaths>
 		<ProjectRoot>../..</ProjectRoot>
-		<SourceFilesRoot>../../.cache/Windows</SourceFilesRoot>
+		<SourceFilesRoot>../../.cache</SourceFilesRoot>
 		<SoundBanksRoot>.</SoundBanksRoot>
 		<ExternalSourcesInputFile></ExternalSourcesInputFile>
 		<ExternalSourcesOutputRoot>.</ExternalSourcesOutputRoot>
 	</RootPaths>
 	<DialogueEvents/>
 	<SoundBanks>
-		<SoundBank Id="459280130" Type="User" GUID="{46F08C13-7BDA-47D5-A653-BDFCDAD2487B}" Language="SFX" Hash="{C3C38ED6-974A-5336-CB49-2775D1C74BD4}">
+		<SoundBank Id="459280130" Type="User" GUID="{46F08C13-7BDA-47D5-A653-BDFCDAD2487B}" Color="11" Language="SFX" Hash="{275CE06C-3F10-8F8A-4955-AB1D11FB2F78}">
 			<ObjectPath>\SoundBanks\SoundBanks_WU\FOES_Flying_SB</ObjectPath>
 			<ShortName>FOES_Flying_SB</ShortName>
 			<Path>FOES_Flying_SB.bnk</Path>
 			<Media>
 				<File Id="45515045" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>FOES_SFX_Flying_Shoot_03.wav</ShortName>
-					<CachePath>SFX/FOES_SFX_Flying_Shoot_03_818F3B66.wem</CachePath>
+					<CachePath>EB/{EB74F4F9-4D75-BE53-0A93-0ED561D85D32}.wem</CachePath>
 				</File>
 				<File Id="195673243" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>FOES_SFX_Flying_Shoot_04.wav</ShortName>
-					<CachePath>SFX/FOES_SFX_Flying_Shoot_04_818F3B66.wem</CachePath>
+					<CachePath>F3/{F363D7B5-2C0B-B4E0-495E-5E2F9771B51A}.wem</CachePath>
 				</File>
 				<File Id="202392697" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>FOES_SFX_Flying_Idle_LP.wav</ShortName>
-					<CachePath>SFX/FOES_SFX_Flying_Idle_LP_FBC78EF0.wem</CachePath>
+					<CachePath>3A/{3A95373B-35CC-65E5-8800-BBAAD6E0DE88}.wem</CachePath>
 				</File>
 				<File Id="229626045" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>FOES_SFX_Flying_Shoot_05.wav</ShortName>
-					<CachePath>SFX/FOES_SFX_Flying_Shoot_05_818F3B66.wem</CachePath>
+					<CachePath>1A/{1A4C1648-E44F-7D56-67F8-8BBFE80EA31B}.wem</CachePath>
 				</File>
 				<File Id="732571760" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>FOES_SFX_Flying_Shoot_01.wav</ShortName>
-					<CachePath>SFX/FOES_SFX_Flying_Shoot_01_818F3B66.wem</CachePath>
+					<CachePath>E8/{E8BAD7D8-E416-1F0C-D554-78B409864094}.wem</CachePath>
 				</File>
 				<File Id="821998844" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>FOES_SFX_Flying_Shoot_02.wav</ShortName>
-					<CachePath>SFX/FOES_SFX_Flying_Shoot_02_818F3B66.wem</CachePath>
+					<CachePath>12/{12CDBC71-4DE8-3951-04D2-BB793A7BD3E3}.wem</CachePath>
 				</File>
 			</Media>
 			<Plugins>
@@ -56,12 +56,12 @@
 				</ShareSets>
 			</Plugins>
 			<Events>
-				<Event Id="3816121295" Name="Play_FOES_SFX_Flying_Idle_LP" ObjectPath="\Events\FOES_Flying_WU\Play_FOES_SFX_Flying_Idle_LP" GUID="{CF4E623B-F60A-4740-B500-0E5586E75310}" MaxAttenuation="2000" DurationType="Infinite">
+				<Event Id="3816121295" Name="Play_FOES_SFX_Flying_Idle_LP" ObjectPath="\Events\FOES_Flying_WU\Play_FOES_SFX_Flying_Idle_LP" GUID="{CF4E623B-F60A-4740-B500-0E5586E75310}" Color="11" MaxAttenuation="2000" DurationType="Infinite">
 					<MediaRefs>
 						<MediaRef Id="202392697"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="1810073987" Name="Play_FOES_SFX_Flying_Shoot_RC" ObjectPath="\Events\FOES_Flying_WU\Play_FOES_SFX_Flying_Shoot_RC" GUID="{615B6DF4-5110-477A-ADAD-83075E2A2CC2}" MaxAttenuation="2000" DurationType="OneShot" DurationMin="1.4621503" DurationMax="2.2117178">
+				<Event Id="1810073987" Name="Play_FOES_SFX_Flying_Shoot_RC" ObjectPath="\Events\FOES_Flying_WU\Play_FOES_SFX_Flying_Shoot_RC" GUID="{615B6DF4-5110-477A-ADAD-83075E2A2CC2}" Color="11" MaxAttenuation="2000" DurationType="OneShot" DurationMin="1.4621503" DurationMax="2.2117178">
 					<MediaRefs>
 						<MediaRef Id="45515045"/>
 						<MediaRef Id="195673243"/>
@@ -70,23 +70,23 @@
 						<MediaRef Id="821998844"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="3718813633" Name="Stop_FOES_SFX_Flying_Idle_LP" ObjectPath="\Events\FOES_Flying_WU\Stop_FOES_SFX_Flying_Idle_LP" GUID="{9C4A0482-8257-4724-B64F-85F88099C5B0}" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+				<Event Id="3718813633" Name="Stop_FOES_SFX_Flying_Idle_LP" ObjectPath="\Events\FOES_Flying_WU\Stop_FOES_SFX_Flying_Idle_LP" GUID="{9C4A0482-8257-4724-B64F-85F88099C5B0}" Color="11" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
 			</Events>
 			<Busses>
-				<Bus Id="109159411" Name="Game_Global" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global" GUID="{FAD5C029-0A02-4BD2-97F7-F8C20B7A95BD}"/>
-				<Bus Id="393239870" Name="SFX" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global\SFX" GUID="{EB4CE24D-8196-408E-9775-5E8EEFE98495}"/>
-				<Bus Id="1117531639" Name="AMB" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global\AMB" GUID="{C1595F21-FBBF-4B04-AC1A-78D86879A937}"/>
-				<Bus Id="1551306167" Name="UI" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\UI" GUID="{B5E7816E-C3FC-4992-B763-4078089CE674}"/>
-				<Bus Id="1685527061" Name="MC" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global\MC" GUID="{B3079877-B26F-4239-A3AB-9C7AFFCBC797}"/>
-				<Bus Id="2290178407" Name="FOES_Tourelle" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global\FOES_Tourelle" GUID="{D783D57E-4B6F-4101-8F5F-FD96F0409170}"/>
-				<Bus Id="3313685232" Name="Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Voices" GUID="{00AA482D-3F12-46A5-8177-E8A172D08E63}"/>
-				<Bus Id="3623095082" Name="FOES_Flying" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global\FOES_Flying" GUID="{439831F9-AA50-4CD2-98C3-ACD8B187380E}"/>
-				<Bus Id="3991942870" Name="Music" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Music" GUID="{08156595-7637-4348-AC3C-2EDE3FCCB08F}"/>
-				<Bus Id="4056684167" Name="Master" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master" GUID="{F3A976BC-47E9-46E5-9EEC-F566BB39DBEE}"/>
-				<Bus Id="4219618961" Name="AMB_Crowd" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global\AMB_Crowd" GUID="{985719AF-3534-41FC-A751-99E11C3F7784}"/>
+				<Bus Id="109159411" Name="Game_Global" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global" GUID="{FAD5C029-0A02-4BD2-97F7-F8C20B7A95BD}" Color="16"/>
+				<Bus Id="393239870" Name="SFX" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global\SFX" GUID="{EB4CE24D-8196-408E-9775-5E8EEFE98495}" Color="17"/>
+				<Bus Id="1117531639" Name="AMB" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global\AMB" GUID="{C1595F21-FBBF-4B04-AC1A-78D86879A937}" Color="4"/>
+				<Bus Id="1551306167" Name="UI" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\UI" GUID="{B5E7816E-C3FC-4992-B763-4078089CE674}" Color="1"/>
+				<Bus Id="1685527061" Name="MC" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global\MC" GUID="{B3079877-B26F-4239-A3AB-9C7AFFCBC797}" Color="19"/>
+				<Bus Id="2290178407" Name="FOES_Tourelle" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global\FOES_Tourelle" GUID="{D783D57E-4B6F-4101-8F5F-FD96F0409170}" Color="10"/>
+				<Bus Id="3313685232" Name="Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Voices" GUID="{00AA482D-3F12-46A5-8177-E8A172D08E63}" Color="23"/>
+				<Bus Id="3623095082" Name="FOES_Flying" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global\FOES_Flying" GUID="{439831F9-AA50-4CD2-98C3-ACD8B187380E}" Color="11"/>
+				<Bus Id="3991942870" Name="Music" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Music" GUID="{08156595-7637-4348-AC3C-2EDE3FCCB08F}" Color="24"/>
+				<Bus Id="4056684167" Name="Master" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master" GUID="{F3A976BC-47E9-46E5-9EEC-F566BB39DBEE}" Color="9"/>
+				<Bus Id="4219618961" Name="AMB_Crowd" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global\AMB_Crowd" GUID="{985719AF-3534-41FC-A751-99E11C3F7784}" Color="4"/>
 			</Busses>
 			<AuxBusses>
-				<AuxBus Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}">
+				<AuxBus Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}" Color="9">
 					<PluginRefs>
 						<ShareSets>
 							<PluginRef Id="3442768367"/>
@@ -94,14 +94,14 @@
 						</ShareSets>
 					</PluginRefs>
 				</AuxBus>
-				<AuxBus Id="395111090" Name="RVB_BlackHouses" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_BlackHouses" GUID="{17B5E8F9-026F-4941-A027-1C0641AB0C14}">
+				<AuxBus Id="395111090" Name="RVB_BlackHouses" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_BlackHouses" GUID="{17B5E8F9-026F-4941-A027-1C0641AB0C14}" Color="26">
 					<PluginRefs>
 						<Custom>
 							<PluginRef Id="688337969"/>
 						</Custom>
 					</PluginRefs>
 				</AuxBus>
-				<AuxBus Id="1215931641" Name="RVB_Arena" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Arena" GUID="{54C7EBDA-4885-4850-8969-FB63BDACC807}">
+				<AuxBus Id="1215931641" Name="RVB_Arena" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Arena" GUID="{54C7EBDA-4885-4850-8969-FB63BDACC807}" Color="26">
 					<PluginRefs>
 						<Custom>
 							<PluginRef Id="272452003"/>
@@ -109,35 +109,35 @@
 						</Custom>
 					</PluginRefs>
 				</AuxBus>
-				<AuxBus Id="1408817756" Name="RVB_RFX_Arena" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_RFX_Arena" GUID="{CC7A2F05-EE75-4E8E-B097-98A1938CB5E4}">
+				<AuxBus Id="1408817756" Name="RVB_RFX_Arena" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_RFX_Arena" GUID="{CC7A2F05-EE75-4E8E-B097-98A1938CB5E4}" Color="27">
 					<PluginRefs>
 						<Custom>
 							<PluginRef Id="169636257"/>
 						</Custom>
 					</PluginRefs>
 				</AuxBus>
-				<AuxBus Id="2344250611" Name="RVB_Basement" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Basement" GUID="{BF09F5DA-71E8-4CAC-B0EB-19A1C29389BA}">
+				<AuxBus Id="2344250611" Name="RVB_Basement" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Basement" GUID="{BF09F5DA-71E8-4CAC-B0EB-19A1C29389BA}" Color="26">
 					<PluginRefs>
 						<Custom>
 							<PluginRef Id="97605317"/>
 						</Custom>
 					</PluginRefs>
 				</AuxBus>
-				<AuxBus Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}">
+				<AuxBus Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}" Color="9">
 					<PluginRefs>
 						<ShareSets>
 							<PluginRef Id="1008402193"/>
 						</ShareSets>
 					</PluginRefs>
 				</AuxBus>
-				<AuxBus Id="3571340017" Name="RVB_Hub" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Hub" GUID="{D499EBE4-F26A-48E5-B89D-1F7C43D829E3}">
+				<AuxBus Id="3571340017" Name="RVB_Hub" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Hub" GUID="{D499EBE4-F26A-48E5-B89D-1F7C43D829E3}" Color="26">
 					<PluginRefs>
 						<Custom>
 							<PluginRef Id="16383166"/>
 						</Custom>
 					</PluginRefs>
 				</AuxBus>
-				<AuxBus Id="3670521640" Name="RVB_Pyramid" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Pyramid" GUID="{668EA0D2-771E-452F-B241-11793F9755B0}">
+				<AuxBus Id="3670521640" Name="RVB_Pyramid" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Pyramid" GUID="{668EA0D2-771E-452F-B241-11793F9755B0}" Color="26">
 					<PluginRefs>
 						<Custom>
 							<PluginRef Id="498081942"/>
@@ -148,7 +148,7 @@
 			<GameParameters>
 				<GameParameter Id="1190880401" Name="RTPC_DoorPyramid" ObjectPath="\Game Parameters\Default Work Unit\RTPC_DoorPyramid" GUID="{D2AEC1CE-EF9E-486E-AE8B-FB121AC42B53}"/>
 				<GameParameter Id="3438452020" Name="RTPC_SFX" ObjectPath="\Game Parameters\Default Work Unit\RTPC_SFX" GUID="{DD8DB651-4F18-462F-97D3-0195BD02087F}"/>
-				<GameParameter Id="3445598977" Name="RTPC_Master" ObjectPath="\Game Parameters\Default Work Unit\RTPC_Master" GUID="{74E6261E-6493-44A8-BAE7-1E79ABF4DED1}"/>
+				<GameParameter Id="3445598977" Name="RTPC_Master" ObjectPath="\Game Parameters\Default Work Unit\RTPC_Master" GUID="{74E6261E-6493-44A8-BAE7-1E79ABF4DED1}" Color="10"/>
 				<GameParameter Id="3553041361" Name="RTPC_AMB" ObjectPath="\Game Parameters\Default Work Unit\RTPC_AMB" GUID="{2EA08633-9826-4131-9D31-3F7F27FCA59E}"/>
 				<GameParameter Id="3590742338" Name="RTPC_Speed_Flying" ObjectPath="\Game Parameters\Default Work Unit\RTPC_Speed_Flying" GUID="{4A0C67E7-2443-47A8-B5EB-86C8F65C73EB}"/>
 				<GameParameter Id="3709650428" Name="RTPC_Music" ObjectPath="\Game Parameters\Default Work Unit\RTPC_Music" GUID="{5DA4119B-967E-473A-9D3F-7F6BD36532D0}"/>
@@ -166,39 +166,39 @@
 				</StateGroup>
 			</StateGroups>
 		</SoundBank>
-		<SoundBank Id="1329476194" Type="User" GUID="{4B32F9EE-D939-4AEA-A633-697781A78CE3}" Language="SFX" Hash="{42888B95-2C94-0AC9-9D3B-09621A374442}">
+		<SoundBank Id="1329476194" Type="User" GUID="{4B32F9EE-D939-4AEA-A633-697781A78CE3}" Color="21" Language="SFX" Hash="{B70BEF31-A9E0-0E2D-C6FD-5A666AE0C821}">
 			<ObjectPath>\SoundBanks\SoundBanks_WU\MUS_SB</ObjectPath>
 			<ShortName>MUS_SB</ShortName>
 			<Path>MUS_SB.bnk</Path>
 			<Media>
 				<File Id="721910099" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>JV BLACK SAND MIX V2.wav</ShortName>
-					<CachePath>SFX/JV BLACK SAND MIX V2_818F3B66.wem</CachePath>
+					<CachePath>37/{372DD273-A2FD-930E-05EE-1B952E993533}.wem</CachePath>
 				</File>
 				<File Id="1072494655" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>MUS_Blacksands_Hub.wav</ShortName>
-					<CachePath>SFX/MUS_Blacksands_Hub_67AD3CF9.wem</CachePath>
+					<CachePath>AC/{AC2739F6-97FA-041C-A61D-AFA4E26DFCE4}.wem</CachePath>
 				</File>
 			</Media>
 			<Events>
-				<Event Id="1117189211" Name="Play_MUS_ARENA" ObjectPath="\Events\MUS_WU\Play_MUS_ARENA" GUID="{FCFD5ACC-2CA9-4324-8CC4-F10D48548642}" DurationType="OneShot" DurationMin="259.2" DurationMax="259.2">
+				<Event Id="1117189211" Name="Play_MUS_ARENA" ObjectPath="\Events\MUS_WU\Play_MUS_ARENA" GUID="{FCFD5ACC-2CA9-4324-8CC4-F10D48548642}" Color="8" DurationType="OneShot" DurationMin="259.2" DurationMax="259.2">
 					<MediaRefs>
 						<MediaRef Id="721910099"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="2485576600" Name="Play_MUS_Blacksands_Hub" ObjectPath="\Events\MUS_WU\Play_MUS_Blacksands_Hub" GUID="{5EFDE9D3-947B-4379-BC68-9A8FC45B710A}" DurationType="Infinite">
+				<Event Id="2485576600" Name="Play_MUS_Blacksands_Hub" ObjectPath="\Events\MUS_WU\Play_MUS_Blacksands_Hub" GUID="{5EFDE9D3-947B-4379-BC68-9A8FC45B710A}" Color="8" DurationType="Infinite">
 					<MediaRefs>
 						<MediaRef Id="1072494655"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="888771158" Name="Stop_MUS_Blacksands_Hub" ObjectPath="\Events\MUS_WU\Stop_MUS_Blacksands_Hub" GUID="{60E90B0F-AFEA-4121-8616-69BB7F5853C0}" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0">
+				<Event Id="888771158" Name="Stop_MUS_Blacksands_Hub" ObjectPath="\Events\MUS_WU\Stop_MUS_Blacksands_Hub" GUID="{60E90B0F-AFEA-4121-8616-69BB7F5853C0}" Color="8" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0">
 					<MediaRefs>
 						<MediaRef Id="1072494655"/>
 					</MediaRefs>
 				</Event>
 			</Events>
 		</SoundBank>
-		<SoundBank Id="1355168291" Type="User" GUID="{701ECBBD-9C7B-4030-8CDB-749EE5D1C7B9}" Language="SFX" Hash="{62ECDEEB-18BB-426A-5EC9-FD83315AC3F7}">
+		<SoundBank Id="1355168291" Type="User" GUID="{701ECBBD-9C7B-4030-8CDB-749EE5D1C7B9}" Language="SFX" Hash="{2BDAD747-3243-1EB7-4A00-659634932239}">
 			<ObjectPath>Init</ObjectPath>
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
@@ -223,21 +223,21 @@
 				</AudioDevices>
 			</Plugins>
 			<Busses>
-				<Bus Id="109159411" Name="Game_Global" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global" GUID="{FAD5C029-0A02-4BD2-97F7-F8C20B7A95BD}"/>
-				<Bus Id="393239870" Name="SFX" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global\SFX" GUID="{EB4CE24D-8196-408E-9775-5E8EEFE98495}"/>
-				<Bus Id="1117531639" Name="AMB" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global\AMB" GUID="{C1595F21-FBBF-4B04-AC1A-78D86879A937}"/>
-				<Bus Id="1551306167" Name="UI" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\UI" GUID="{B5E7816E-C3FC-4992-B763-4078089CE674}"/>
-				<Bus Id="1685527061" Name="MC" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global\MC" GUID="{B3079877-B26F-4239-A3AB-9C7AFFCBC797}"/>
-				<Bus Id="2290178407" Name="FOES_Tourelle" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global\FOES_Tourelle" GUID="{D783D57E-4B6F-4101-8F5F-FD96F0409170}"/>
-				<Bus Id="3313685232" Name="Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Voices" GUID="{00AA482D-3F12-46A5-8177-E8A172D08E63}"/>
-				<Bus Id="3623095082" Name="FOES_Flying" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global\FOES_Flying" GUID="{439831F9-AA50-4CD2-98C3-ACD8B187380E}"/>
+				<Bus Id="109159411" Name="Game_Global" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global" GUID="{FAD5C029-0A02-4BD2-97F7-F8C20B7A95BD}" Color="16"/>
+				<Bus Id="393239870" Name="SFX" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global\SFX" GUID="{EB4CE24D-8196-408E-9775-5E8EEFE98495}" Color="17"/>
+				<Bus Id="1117531639" Name="AMB" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global\AMB" GUID="{C1595F21-FBBF-4B04-AC1A-78D86879A937}" Color="4"/>
+				<Bus Id="1551306167" Name="UI" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\UI" GUID="{B5E7816E-C3FC-4992-B763-4078089CE674}" Color="1"/>
+				<Bus Id="1685527061" Name="MC" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global\MC" GUID="{B3079877-B26F-4239-A3AB-9C7AFFCBC797}" Color="19"/>
+				<Bus Id="2290178407" Name="FOES_Tourelle" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global\FOES_Tourelle" GUID="{D783D57E-4B6F-4101-8F5F-FD96F0409170}" Color="10"/>
+				<Bus Id="3313685232" Name="Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Voices" GUID="{00AA482D-3F12-46A5-8177-E8A172D08E63}" Color="23"/>
+				<Bus Id="3623095082" Name="FOES_Flying" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global\FOES_Flying" GUID="{439831F9-AA50-4CD2-98C3-ACD8B187380E}" Color="11"/>
 				<Bus Id="3803692087" Name="Master Audio Bus" ObjectPath="\Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus" GUID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}"/>
-				<Bus Id="3991942870" Name="Music" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Music" GUID="{08156595-7637-4348-AC3C-2EDE3FCCB08F}"/>
-				<Bus Id="4056684167" Name="Master" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master" GUID="{F3A976BC-47E9-46E5-9EEC-F566BB39DBEE}"/>
-				<Bus Id="4219618961" Name="AMB_Crowd" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global\AMB_Crowd" GUID="{985719AF-3534-41FC-A751-99E11C3F7784}"/>
+				<Bus Id="3991942870" Name="Music" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Music" GUID="{08156595-7637-4348-AC3C-2EDE3FCCB08F}" Color="24"/>
+				<Bus Id="4056684167" Name="Master" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master" GUID="{F3A976BC-47E9-46E5-9EEC-F566BB39DBEE}" Color="9"/>
+				<Bus Id="4219618961" Name="AMB_Crowd" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global\AMB_Crowd" GUID="{985719AF-3534-41FC-A751-99E11C3F7784}" Color="4"/>
 			</Busses>
 			<AuxBusses>
-				<AuxBus Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}">
+				<AuxBus Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}" Color="9">
 					<PluginRefs>
 						<ShareSets>
 							<PluginRef Id="3442768367"/>
@@ -245,14 +245,14 @@
 						</ShareSets>
 					</PluginRefs>
 				</AuxBus>
-				<AuxBus Id="395111090" Name="RVB_BlackHouses" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_BlackHouses" GUID="{17B5E8F9-026F-4941-A027-1C0641AB0C14}">
+				<AuxBus Id="395111090" Name="RVB_BlackHouses" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_BlackHouses" GUID="{17B5E8F9-026F-4941-A027-1C0641AB0C14}" Color="26">
 					<PluginRefs>
 						<Custom>
 							<PluginRef Id="688337969"/>
 						</Custom>
 					</PluginRefs>
 				</AuxBus>
-				<AuxBus Id="1215931641" Name="RVB_Arena" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Arena" GUID="{54C7EBDA-4885-4850-8969-FB63BDACC807}">
+				<AuxBus Id="1215931641" Name="RVB_Arena" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Arena" GUID="{54C7EBDA-4885-4850-8969-FB63BDACC807}" Color="26">
 					<PluginRefs>
 						<Custom>
 							<PluginRef Id="272452003"/>
@@ -260,35 +260,35 @@
 						</Custom>
 					</PluginRefs>
 				</AuxBus>
-				<AuxBus Id="1408817756" Name="RVB_RFX_Arena" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_RFX_Arena" GUID="{CC7A2F05-EE75-4E8E-B097-98A1938CB5E4}">
+				<AuxBus Id="1408817756" Name="RVB_RFX_Arena" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_RFX_Arena" GUID="{CC7A2F05-EE75-4E8E-B097-98A1938CB5E4}" Color="27">
 					<PluginRefs>
 						<Custom>
 							<PluginRef Id="169636257"/>
 						</Custom>
 					</PluginRefs>
 				</AuxBus>
-				<AuxBus Id="2344250611" Name="RVB_Basement" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Basement" GUID="{BF09F5DA-71E8-4CAC-B0EB-19A1C29389BA}">
+				<AuxBus Id="2344250611" Name="RVB_Basement" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Basement" GUID="{BF09F5DA-71E8-4CAC-B0EB-19A1C29389BA}" Color="26">
 					<PluginRefs>
 						<Custom>
 							<PluginRef Id="97605317"/>
 						</Custom>
 					</PluginRefs>
 				</AuxBus>
-				<AuxBus Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}">
+				<AuxBus Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}" Color="9">
 					<PluginRefs>
 						<ShareSets>
 							<PluginRef Id="1008402193"/>
 						</ShareSets>
 					</PluginRefs>
 				</AuxBus>
-				<AuxBus Id="3571340017" Name="RVB_Hub" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Hub" GUID="{D499EBE4-F26A-48E5-B89D-1F7C43D829E3}">
+				<AuxBus Id="3571340017" Name="RVB_Hub" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Hub" GUID="{D499EBE4-F26A-48E5-B89D-1F7C43D829E3}" Color="26">
 					<PluginRefs>
 						<Custom>
 							<PluginRef Id="16383166"/>
 						</Custom>
 					</PluginRefs>
 				</AuxBus>
-				<AuxBus Id="3670521640" Name="RVB_Pyramid" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Pyramid" GUID="{668EA0D2-771E-452F-B241-11793F9755B0}">
+				<AuxBus Id="3670521640" Name="RVB_Pyramid" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Pyramid" GUID="{668EA0D2-771E-452F-B241-11793F9755B0}" Color="26">
 					<PluginRefs>
 						<Custom>
 							<PluginRef Id="498081942"/>
@@ -300,7 +300,7 @@
 				<GameParameter Id="1190880401" Name="RTPC_DoorPyramid" ObjectPath="\Game Parameters\Default Work Unit\RTPC_DoorPyramid" GUID="{D2AEC1CE-EF9E-486E-AE8B-FB121AC42B53}"/>
 				<GameParameter Id="2176662110" Name="RTPC_Tourelle_Projectil" ObjectPath="\Game Parameters\Default Work Unit\RTPC_Tourelle_Projectil" GUID="{00C509F2-F7BB-46D5-A5C8-1D7FA60484C0}"/>
 				<GameParameter Id="3438452020" Name="RTPC_SFX" ObjectPath="\Game Parameters\Default Work Unit\RTPC_SFX" GUID="{DD8DB651-4F18-462F-97D3-0195BD02087F}"/>
-				<GameParameter Id="3445598977" Name="RTPC_Master" ObjectPath="\Game Parameters\Default Work Unit\RTPC_Master" GUID="{74E6261E-6493-44A8-BAE7-1E79ABF4DED1}"/>
+				<GameParameter Id="3445598977" Name="RTPC_Master" ObjectPath="\Game Parameters\Default Work Unit\RTPC_Master" GUID="{74E6261E-6493-44A8-BAE7-1E79ABF4DED1}" Color="10"/>
 				<GameParameter Id="3553041361" Name="RTPC_AMB" ObjectPath="\Game Parameters\Default Work Unit\RTPC_AMB" GUID="{2EA08633-9826-4131-9D31-3F7F27FCA59E}"/>
 				<GameParameter Id="3590742338" Name="RTPC_Speed_Flying" ObjectPath="\Game Parameters\Default Work Unit\RTPC_Speed_Flying" GUID="{4A0C67E7-2443-47A8-B5EB-86C8F65C73EB}"/>
 				<GameParameter Id="3709650428" Name="RTPC_Music" ObjectPath="\Game Parameters\Default Work Unit\RTPC_Music" GUID="{5DA4119B-967E-473A-9D3F-7F6BD36532D0}"/>
@@ -327,30 +327,30 @@
 				</SwitchGroup>
 			</SwitchGroups>
 		</SoundBank>
-		<SoundBank Id="1734647573" Type="User" GUID="{6B7E0BFB-A825-46AA-907A-12621FC4038F}" Language="SFX" Hash="{575A40A8-040C-80F0-F0A6-5C7FF6FADC02}">
+		<SoundBank Id="1734647573" Type="User" GUID="{6B7E0BFB-A825-46AA-907A-12621FC4038F}" Color="1" Language="SFX" Hash="{6F545D7F-D915-E7AA-9B1B-ADAB4B7586ED}">
 			<ObjectPath>\SoundBanks\SoundBanks_WU\UI_SB</ObjectPath>
 			<ShortName>UI_SB</ShortName>
 			<Path>UI_SB.bnk</Path>
 			<Media>
 				<File Id="543213447" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>MC\UI_NavigateButton.wav</ShortName>
-					<CachePath>SFX/MC/UI_NavigateButton_818F3B66.wem</CachePath>
+					<CachePath>9C/{9C9B69EC-78F4-3A8E-7D3F-701F0E971102}.wem</CachePath>
 				</File>
 				<File Id="572308694" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>MC\UI_StartButton.wav</ShortName>
-					<CachePath>SFX/MC/UI_StartButton_818F3B66.wem</CachePath>
+					<CachePath>EE/{EEE4E70F-2608-B662-2B2B-A8211D85245F}.wem</CachePath>
 				</File>
 				<File Id="749059103" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>MC\UI_LaunchGame.wav</ShortName>
-					<CachePath>SFX/MC/UI_LaunchGame_818F3B66.wem</CachePath>
+					<CachePath>9C/{9CB45BD6-7ED2-BA30-D0FE-D901AB05383A}.wem</CachePath>
 				</File>
 				<File Id="836416304" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>MC\UI_ConfirmButton.wav</ShortName>
-					<CachePath>SFX/MC/UI_ConfirmButton_818F3B66.wem</CachePath>
+					<CachePath>AE/{AED1EDBA-4045-A904-9466-C8E06771E51A}.wem</CachePath>
 				</File>
 				<File Id="1002772129" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>MC\UI_CancelButton.wav</ShortName>
-					<CachePath>SFX/MC/UI_CancelButton_818F3B66.wem</CachePath>
+					<CachePath>3A/{3A6B13D4-9A22-43DC-BB04-9DF16113CA69}.wem</CachePath>
 				</File>
 			</Media>
 			<Plugins>
@@ -371,7 +371,7 @@
 				</ShareSets>
 			</Plugins>
 			<Events>
-				<Event Id="1314228025" Name="Play_UI_CancelButton" ObjectPath="\Events\UI_WU\Play_UI_CancelButton" GUID="{D3F2E63B-8A4E-4908-83E2-1CAC9AEFFC70}" DurationType="OneShot" DurationMin="0.83958334" DurationMax="0.83958334">
+				<Event Id="1314228025" Name="Play_UI_CancelButton" ObjectPath="\Events\UI_WU\Play_UI_CancelButton" GUID="{D3F2E63B-8A4E-4908-83E2-1CAC9AEFFC70}" Color="1" DurationType="OneShot" DurationMin="0.83958334" DurationMax="0.83958334">
 					<MediaRefs>
 						<MediaRef Id="1002772129"/>
 					</MediaRefs>
@@ -381,7 +381,7 @@
 						</ShareSets>
 					</PluginRefs>
 				</Event>
-				<Event Id="3310756893" Name="Play_UI_ConfirmButton" ObjectPath="\Events\UI_WU\Play_UI_ConfirmButton" GUID="{FF65D858-C237-4982-9E71-BAE240C904D3}" DurationType="OneShot" DurationMin="0.802375" DurationMax="0.802375">
+				<Event Id="3310756893" Name="Play_UI_ConfirmButton" ObjectPath="\Events\UI_WU\Play_UI_ConfirmButton" GUID="{FF65D858-C237-4982-9E71-BAE240C904D3}" Color="1" DurationType="OneShot" DurationMin="0.802375" DurationMax="0.802375">
 					<MediaRefs>
 						<MediaRef Id="836416304"/>
 					</MediaRefs>
@@ -391,7 +391,7 @@
 						</ShareSets>
 					</PluginRefs>
 				</Event>
-				<Event Id="87261644" Name="Play_UI_LaunchGame" ObjectPath="\Events\UI_WU\Play_UI_LaunchGame" GUID="{7C333A3F-D18B-4FCB-AD81-0E1F82672842}" DurationType="OneShot" DurationMin="3.3718958" DurationMax="3.3718958">
+				<Event Id="87261644" Name="Play_UI_LaunchGame" ObjectPath="\Events\UI_WU\Play_UI_LaunchGame" GUID="{7C333A3F-D18B-4FCB-AD81-0E1F82672842}" Color="1" DurationType="OneShot" DurationMin="3.3718958" DurationMax="3.3718958">
 					<MediaRefs>
 						<MediaRef Id="749059103"/>
 					</MediaRefs>
@@ -401,7 +401,7 @@
 						</ShareSets>
 					</PluginRefs>
 				</Event>
-				<Event Id="662283018" Name="Play_UI_NavigateButton" ObjectPath="\Events\UI_WU\Play_UI_NavigateButton" GUID="{F450A964-AC77-4535-A7D4-1F684DAD7C97}" DurationType="OneShot" DurationMin="0.5211875" DurationMax="0.5211875">
+				<Event Id="662283018" Name="Play_UI_NavigateButton" ObjectPath="\Events\UI_WU\Play_UI_NavigateButton" GUID="{F450A964-AC77-4535-A7D4-1F684DAD7C97}" Color="1" DurationType="OneShot" DurationMin="0.5211875" DurationMax="0.5211875">
 					<MediaRefs>
 						<MediaRef Id="543213447"/>
 					</MediaRefs>
@@ -411,7 +411,7 @@
 						</ShareSets>
 					</PluginRefs>
 				</Event>
-				<Event Id="3581520589" Name="Play_UI_StartButton" ObjectPath="\Events\UI_WU\Play_UI_StartButton" GUID="{49273F4D-B4B5-42C9-92FB-9A7B3FBA1C98}" DurationType="OneShot" DurationMin="1.11025" DurationMax="1.11025">
+				<Event Id="3581520589" Name="Play_UI_StartButton" ObjectPath="\Events\UI_WU\Play_UI_StartButton" GUID="{49273F4D-B4B5-42C9-92FB-9A7B3FBA1C98}" Color="1" DurationType="OneShot" DurationMin="1.11025" DurationMax="1.11025">
 					<MediaRefs>
 						<MediaRef Id="572308694"/>
 					</MediaRefs>
@@ -423,20 +423,20 @@
 				</Event>
 			</Events>
 			<Busses>
-				<Bus Id="109159411" Name="Game_Global" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global" GUID="{FAD5C029-0A02-4BD2-97F7-F8C20B7A95BD}"/>
-				<Bus Id="393239870" Name="SFX" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global\SFX" GUID="{EB4CE24D-8196-408E-9775-5E8EEFE98495}"/>
-				<Bus Id="1117531639" Name="AMB" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global\AMB" GUID="{C1595F21-FBBF-4B04-AC1A-78D86879A937}"/>
-				<Bus Id="1551306167" Name="UI" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\UI" GUID="{B5E7816E-C3FC-4992-B763-4078089CE674}"/>
-				<Bus Id="1685527061" Name="MC" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global\MC" GUID="{B3079877-B26F-4239-A3AB-9C7AFFCBC797}"/>
-				<Bus Id="2290178407" Name="FOES_Tourelle" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global\FOES_Tourelle" GUID="{D783D57E-4B6F-4101-8F5F-FD96F0409170}"/>
-				<Bus Id="3313685232" Name="Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Voices" GUID="{00AA482D-3F12-46A5-8177-E8A172D08E63}"/>
-				<Bus Id="3623095082" Name="FOES_Flying" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global\FOES_Flying" GUID="{439831F9-AA50-4CD2-98C3-ACD8B187380E}"/>
-				<Bus Id="3991942870" Name="Music" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Music" GUID="{08156595-7637-4348-AC3C-2EDE3FCCB08F}"/>
-				<Bus Id="4056684167" Name="Master" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master" GUID="{F3A976BC-47E9-46E5-9EEC-F566BB39DBEE}"/>
-				<Bus Id="4219618961" Name="AMB_Crowd" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global\AMB_Crowd" GUID="{985719AF-3534-41FC-A751-99E11C3F7784}"/>
+				<Bus Id="109159411" Name="Game_Global" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global" GUID="{FAD5C029-0A02-4BD2-97F7-F8C20B7A95BD}" Color="16"/>
+				<Bus Id="393239870" Name="SFX" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global\SFX" GUID="{EB4CE24D-8196-408E-9775-5E8EEFE98495}" Color="17"/>
+				<Bus Id="1117531639" Name="AMB" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global\AMB" GUID="{C1595F21-FBBF-4B04-AC1A-78D86879A937}" Color="4"/>
+				<Bus Id="1551306167" Name="UI" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\UI" GUID="{B5E7816E-C3FC-4992-B763-4078089CE674}" Color="1"/>
+				<Bus Id="1685527061" Name="MC" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global\MC" GUID="{B3079877-B26F-4239-A3AB-9C7AFFCBC797}" Color="19"/>
+				<Bus Id="2290178407" Name="FOES_Tourelle" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global\FOES_Tourelle" GUID="{D783D57E-4B6F-4101-8F5F-FD96F0409170}" Color="10"/>
+				<Bus Id="3313685232" Name="Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Voices" GUID="{00AA482D-3F12-46A5-8177-E8A172D08E63}" Color="23"/>
+				<Bus Id="3623095082" Name="FOES_Flying" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global\FOES_Flying" GUID="{439831F9-AA50-4CD2-98C3-ACD8B187380E}" Color="11"/>
+				<Bus Id="3991942870" Name="Music" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Music" GUID="{08156595-7637-4348-AC3C-2EDE3FCCB08F}" Color="24"/>
+				<Bus Id="4056684167" Name="Master" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master" GUID="{F3A976BC-47E9-46E5-9EEC-F566BB39DBEE}" Color="9"/>
+				<Bus Id="4219618961" Name="AMB_Crowd" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global\AMB_Crowd" GUID="{985719AF-3534-41FC-A751-99E11C3F7784}" Color="4"/>
 			</Busses>
 			<AuxBusses>
-				<AuxBus Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}">
+				<AuxBus Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}" Color="9">
 					<PluginRefs>
 						<ShareSets>
 							<PluginRef Id="3442768367"/>
@@ -444,14 +444,14 @@
 						</ShareSets>
 					</PluginRefs>
 				</AuxBus>
-				<AuxBus Id="395111090" Name="RVB_BlackHouses" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_BlackHouses" GUID="{17B5E8F9-026F-4941-A027-1C0641AB0C14}">
+				<AuxBus Id="395111090" Name="RVB_BlackHouses" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_BlackHouses" GUID="{17B5E8F9-026F-4941-A027-1C0641AB0C14}" Color="26">
 					<PluginRefs>
 						<Custom>
 							<PluginRef Id="688337969"/>
 						</Custom>
 					</PluginRefs>
 				</AuxBus>
-				<AuxBus Id="1215931641" Name="RVB_Arena" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Arena" GUID="{54C7EBDA-4885-4850-8969-FB63BDACC807}">
+				<AuxBus Id="1215931641" Name="RVB_Arena" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Arena" GUID="{54C7EBDA-4885-4850-8969-FB63BDACC807}" Color="26">
 					<PluginRefs>
 						<Custom>
 							<PluginRef Id="272452003"/>
@@ -459,35 +459,35 @@
 						</Custom>
 					</PluginRefs>
 				</AuxBus>
-				<AuxBus Id="1408817756" Name="RVB_RFX_Arena" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_RFX_Arena" GUID="{CC7A2F05-EE75-4E8E-B097-98A1938CB5E4}">
+				<AuxBus Id="1408817756" Name="RVB_RFX_Arena" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_RFX_Arena" GUID="{CC7A2F05-EE75-4E8E-B097-98A1938CB5E4}" Color="27">
 					<PluginRefs>
 						<Custom>
 							<PluginRef Id="169636257"/>
 						</Custom>
 					</PluginRefs>
 				</AuxBus>
-				<AuxBus Id="2344250611" Name="RVB_Basement" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Basement" GUID="{BF09F5DA-71E8-4CAC-B0EB-19A1C29389BA}">
+				<AuxBus Id="2344250611" Name="RVB_Basement" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Basement" GUID="{BF09F5DA-71E8-4CAC-B0EB-19A1C29389BA}" Color="26">
 					<PluginRefs>
 						<Custom>
 							<PluginRef Id="97605317"/>
 						</Custom>
 					</PluginRefs>
 				</AuxBus>
-				<AuxBus Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}">
+				<AuxBus Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}" Color="9">
 					<PluginRefs>
 						<ShareSets>
 							<PluginRef Id="1008402193"/>
 						</ShareSets>
 					</PluginRefs>
 				</AuxBus>
-				<AuxBus Id="3571340017" Name="RVB_Hub" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Hub" GUID="{D499EBE4-F26A-48E5-B89D-1F7C43D829E3}">
+				<AuxBus Id="3571340017" Name="RVB_Hub" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Hub" GUID="{D499EBE4-F26A-48E5-B89D-1F7C43D829E3}" Color="26">
 					<PluginRefs>
 						<Custom>
 							<PluginRef Id="16383166"/>
 						</Custom>
 					</PluginRefs>
 				</AuxBus>
-				<AuxBus Id="3670521640" Name="RVB_Pyramid" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Pyramid" GUID="{668EA0D2-771E-452F-B241-11793F9755B0}">
+				<AuxBus Id="3670521640" Name="RVB_Pyramid" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Pyramid" GUID="{668EA0D2-771E-452F-B241-11793F9755B0}" Color="26">
 					<PluginRefs>
 						<Custom>
 							<PluginRef Id="498081942"/>
@@ -498,7 +498,7 @@
 			<GameParameters>
 				<GameParameter Id="1190880401" Name="RTPC_DoorPyramid" ObjectPath="\Game Parameters\Default Work Unit\RTPC_DoorPyramid" GUID="{D2AEC1CE-EF9E-486E-AE8B-FB121AC42B53}"/>
 				<GameParameter Id="3438452020" Name="RTPC_SFX" ObjectPath="\Game Parameters\Default Work Unit\RTPC_SFX" GUID="{DD8DB651-4F18-462F-97D3-0195BD02087F}"/>
-				<GameParameter Id="3445598977" Name="RTPC_Master" ObjectPath="\Game Parameters\Default Work Unit\RTPC_Master" GUID="{74E6261E-6493-44A8-BAE7-1E79ABF4DED1}"/>
+				<GameParameter Id="3445598977" Name="RTPC_Master" ObjectPath="\Game Parameters\Default Work Unit\RTPC_Master" GUID="{74E6261E-6493-44A8-BAE7-1E79ABF4DED1}" Color="10"/>
 				<GameParameter Id="3553041361" Name="RTPC_AMB" ObjectPath="\Game Parameters\Default Work Unit\RTPC_AMB" GUID="{2EA08633-9826-4131-9D31-3F7F27FCA59E}"/>
 				<GameParameter Id="3709650428" Name="RTPC_Music" ObjectPath="\Game Parameters\Default Work Unit\RTPC_Music" GUID="{5DA4119B-967E-473A-9D3F-7F6BD36532D0}"/>
 				<GameParameter Id="4031456682" Name="RTPC_Voices" ObjectPath="\Game Parameters\Default Work Unit\RTPC_Voices" GUID="{F4B8FD9E-0723-43B2-923D-1563F7D70095}"/>
@@ -515,322 +515,322 @@
 				</StateGroup>
 			</StateGroups>
 		</SoundBank>
-		<SoundBank Id="1956625499" Type="User" GUID="{ADC2D189-6608-4828-BC9C-6EF6F90834DB}" Language="SFX" Hash="{AAB30CC6-008F-7660-6C8D-DAA0D646E3AD}">
+		<SoundBank Id="1956625499" Type="User" GUID="{ADC2D189-6608-4828-BC9C-6EF6F90834DB}" Color="19" Language="SFX" Hash="{BE089F69-CF7C-7132-EDCB-E092E802D9EF}">
 			<ObjectPath>\SoundBanks\SoundBanks_WU\MC_SB</ObjectPath>
 			<ShortName>MC_SB</ShortName>
 			<Path>MC_SB.bnk</Path>
 			<Media>
 				<File Id="16112564" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\SP\MC_FT_Concrete_Land_01.wav</ShortName>
-					<CachePath>SFX/AMB/SP/MC_FT_Concrete_Land_01_818F3B66.wem</CachePath>
+					<CachePath>02/{0253D852-A80A-8CE6-A0D4-85E5A0F584C7}.wem</CachePath>
 				</File>
 				<File Id="17784281" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>SFX\MC_GetHit.wav</ShortName>
-					<CachePath>SFX/SFX/MC_GetHit_FBC78EF0.wem</CachePath>
+					<CachePath>4D/{4DD73478-F7F7-6E17-7755-643B10EA1F56}.wem</CachePath>
 				</File>
 				<File Id="34141530" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\SP\MC_FT_Sand_Jump_01.wav</ShortName>
-					<CachePath>SFX/AMB/SP/MC_FT_Sand_Jump_01_818F3B66.wem</CachePath>
+					<CachePath>0C/{0C986EED-5AF2-7F69-9762-257FCD695EE0}.wem</CachePath>
 				</File>
 				<File Id="36917763" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>MC_SFX_Gun_Shoot_01.wav</ShortName>
-					<CachePath>SFX/MC_SFX_Gun_Shoot_01_818F3B66.wem</CachePath>
+					<CachePath>29/{29B362C9-0E9F-4F98-8D87-CEC87FE9F0E7}.wem</CachePath>
 				</File>
 				<File Id="44684202" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\SP\MC_FT_Sand_08.wav</ShortName>
-					<CachePath>SFX/AMB/SP/MC_FT_Sand_08_818F3B66.wem</CachePath>
+					<CachePath>AC/{AC10CC08-AD22-831B-1F96-D1FF4171E416}.wem</CachePath>
 				</File>
 				<File Id="47427430" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>SFX\MC_SFX_PickupWeapon_01.wav</ShortName>
-					<CachePath>SFX/SFX/MC_SFX_PickupWeapon_01_818F3B66.wem</CachePath>
+					<CachePath>80/{806A64A3-B19A-A733-68BB-601474FE7076}.wem</CachePath>
 				</File>
 				<File Id="57293249" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>MC\MC_FT_Metal_03.wav</ShortName>
-					<CachePath>SFX/MC/MC_FT_Metal_03_818F3B66.wem</CachePath>
+					<CachePath>7B/{7B80DB22-E4D3-B198-BD37-C135E6E623A4}.wem</CachePath>
 				</File>
 				<File Id="58062480" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\SP\MC_FT_Sand_Jump_02.wav</ShortName>
-					<CachePath>SFX/AMB/SP/MC_FT_Sand_Jump_02_818F3B66.wem</CachePath>
+					<CachePath>E4/{E40A7934-05E0-B500-93D6-C59DAAD989B6}.wem</CachePath>
 				</File>
 				<File Id="62282605" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>MC_SFX_Gun_Shoot_02.wav</ShortName>
-					<CachePath>SFX/MC_SFX_Gun_Shoot_02_818F3B66.wem</CachePath>
+					<CachePath>6F/{6F5F0C1F-DBA0-BF94-E54E-F394DC4AA072}.wem</CachePath>
 				</File>
 				<File Id="64776164" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>MC\MC_FT_Concrete_02.wav</ShortName>
-					<CachePath>SFX/MC/MC_FT_Concrete_02_818F3B66.wem</CachePath>
+					<CachePath>32/{324A9DFC-88A5-D474-01F3-E0D99CAEB188}.wem</CachePath>
 				</File>
 				<File Id="66925727" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>MC\MC_FT_Concrete_03.wav</ShortName>
-					<CachePath>SFX/MC/MC_FT_Concrete_03_818F3B66.wem</CachePath>
+					<CachePath>77/{773D71E3-F4E5-4D21-ABA1-2721D2B8D42D}.wem</CachePath>
 				</File>
 				<File Id="70109824" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>MC_SFX_Gun_Shoot_04.wav</ShortName>
-					<CachePath>SFX/MC_SFX_Gun_Shoot_04_818F3B66.wem</CachePath>
+					<CachePath>FC/{FCFCED4F-42DB-F871-49BD-508D61888A7C}.wem</CachePath>
 				</File>
 				<File Id="97955047" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\SP\MC_FT_Metal_Land_03.wav</ShortName>
-					<CachePath>SFX/AMB/SP/MC_FT_Metal_Land_03_818F3B66.wem</CachePath>
+					<CachePath>EE/{EE1047A8-496A-737A-F28E-9E32A5DE7C56}.wem</CachePath>
 				</File>
 				<File Id="101923972" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>SFX\MC_SFX_PickupWeapon_04.wav</ShortName>
-					<CachePath>SFX/SFX/MC_SFX_PickupWeapon_04_818F3B66.wem</CachePath>
+					<CachePath>0D/{0DAB03DE-2535-8076-66CE-EF2D57183BC3}.wem</CachePath>
 				</File>
 				<File Id="109232168" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\SP\MC_FT_Sand_10.wav</ShortName>
-					<CachePath>SFX/AMB/SP/MC_FT_Sand_10_818F3B66.wem</CachePath>
+					<CachePath>23/{232CC1EB-2886-7306-2F84-88FB776EA38A}.wem</CachePath>
 				</File>
 				<File Id="114517244" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\SP\MC_FT_Concrete_Jump_02.wav</ShortName>
-					<CachePath>SFX/AMB/SP/MC_FT_Concrete_Jump_02_818F3B66.wem</CachePath>
+					<CachePath>AF/{AF27FD3A-E5F2-945D-DC63-471942E9CB7F}.wem</CachePath>
 				</File>
 				<File Id="130136752" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>MC_SFX_Weapon_Armed.wav</ShortName>
-					<CachePath>SFX/MC_SFX_Weapon_Armed_818F3B66.wem</CachePath>
+					<CachePath>F6/{F6D6D4C3-0015-4B76-17A7-DBBECFCC2D43}.wem</CachePath>
 				</File>
 				<File Id="138501133" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\SP\MC_FT_Concrete_Land_05.wav</ShortName>
-					<CachePath>SFX/AMB/SP/MC_FT_Concrete_Land_05_818F3B66.wem</CachePath>
+					<CachePath>7B/{7B8B0B32-3BD3-C86C-2503-75D8701D9142}.wem</CachePath>
 				</File>
 				<File Id="146789455" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\SP\MC_FT_Metal_Land_05.wav</ShortName>
-					<CachePath>SFX/AMB/SP/MC_FT_Metal_Land_05_818F3B66.wem</CachePath>
+					<CachePath>E0/{E019203B-2A53-E4EB-04A2-A15E4A31F212}.wem</CachePath>
 				</File>
 				<File Id="148436568" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\SP\MC_FT_Concrete_Land_03.wav</ShortName>
-					<CachePath>SFX/AMB/SP/MC_FT_Concrete_Land_03_818F3B66.wem</CachePath>
+					<CachePath>6E/{6E0FB1C1-1509-9175-432B-F8C4A33B0CDB}.wem</CachePath>
 				</File>
 				<File Id="156842051" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\SP\MC_FT_Metal_Jump_04.wav</ShortName>
-					<CachePath>SFX/AMB/SP/MC_FT_Metal_Jump_04_818F3B66.wem</CachePath>
+					<CachePath>C4/{C457610E-5B3B-BB6E-5946-879B8D879212}.wem</CachePath>
 				</File>
 				<File Id="187397785" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\SP\MC_FT_Sand_Land_04.wav</ShortName>
-					<CachePath>SFX/AMB/SP/MC_FT_Sand_Land_04_818F3B66.wem</CachePath>
+					<CachePath>C5/{C55F1CD4-A153-48C0-639D-7EF067ACE247}.wem</CachePath>
 				</File>
 				<File Id="204180770" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>MC\MC_FT_Concrete_04.wav</ShortName>
-					<CachePath>SFX/MC/MC_FT_Concrete_04_818F3B66.wem</CachePath>
+					<CachePath>67/{67B0903D-4598-6612-1EB7-DBDDAD91FB3A}.wem</CachePath>
 				</File>
 				<File Id="211150638" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\SP\MC_FT_Sand_01.wav</ShortName>
-					<CachePath>SFX/AMB/SP/MC_FT_Sand_01_818F3B66.wem</CachePath>
+					<CachePath>BF/{BF9D374E-1539-0DA6-DEAC-ABDC5FB2A55C}.wem</CachePath>
 				</File>
 				<File Id="221302388" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>MC\MC_FT_Metal_09.wav</ShortName>
-					<CachePath>SFX/MC/MC_FT_Metal_09_818F3B66.wem</CachePath>
+					<CachePath>E5/{E59EE9DF-BF2C-344F-35AC-C4F9E867DD45}.wem</CachePath>
 				</File>
 				<File Id="282121010" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\SP\MC_FT_Sand_Land_05.wav</ShortName>
-					<CachePath>SFX/AMB/SP/MC_FT_Sand_Land_05_818F3B66.wem</CachePath>
+					<CachePath>5B/{5BC69A96-A34B-FC1D-CB4E-314D42B016D3}.wem</CachePath>
 				</File>
 				<File Id="305528684" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\SP\MC_FT_Sand_Jump_05.wav</ShortName>
-					<CachePath>SFX/AMB/SP/MC_FT_Sand_Jump_05_818F3B66.wem</CachePath>
+					<CachePath>DA/{DA2D8B2F-A44B-76D9-4948-449712F2707A}.wem</CachePath>
 				</File>
 				<File Id="318319530" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\SP\MC_FT_Concrete_Land_04.wav</ShortName>
-					<CachePath>SFX/AMB/SP/MC_FT_Concrete_Land_04_818F3B66.wem</CachePath>
+					<CachePath>0D/{0DF9B038-35E1-1F87-9942-F0BA7ECAFEF1}.wem</CachePath>
 				</File>
 				<File Id="330839300" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>MC\MC_FT_Concrete_10.wav</ShortName>
-					<CachePath>SFX/MC/MC_FT_Concrete_10_818F3B66.wem</CachePath>
+					<CachePath>91/{91BC933F-994A-6F4D-4D4B-549D614DB628}.wem</CachePath>
 				</File>
 				<File Id="339856009" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\SP\MC_FT_Metal_Jump_01.wav</ShortName>
-					<CachePath>SFX/AMB/SP/MC_FT_Metal_Jump_01_818F3B66.wem</CachePath>
+					<CachePath>D6/{D6EF0C6A-7FDE-7920-BC56-7B16FECB5587}.wem</CachePath>
 				</File>
 				<File Id="370717002" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>MC\MC_FT_Concrete_01.wav</ShortName>
-					<CachePath>SFX/MC/MC_FT_Concrete_01_818F3B66.wem</CachePath>
+					<CachePath>B0/{B07CA63B-2EC3-ED4C-313F-DA444D70C884}.wem</CachePath>
 				</File>
 				<File Id="387146543" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\SP\MC_FT_Sand_05.wav</ShortName>
-					<CachePath>SFX/AMB/SP/MC_FT_Sand_05_818F3B66.wem</CachePath>
+					<CachePath>5B/{5BD73E8F-F819-283E-59E4-E5BDBA985B28}.wem</CachePath>
 				</File>
 				<File Id="393881080" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>MC\MC_FT_Metal_11.wav</ShortName>
-					<CachePath>SFX/MC/MC_FT_Metal_11_818F3B66.wem</CachePath>
+					<CachePath>43/{4360F1C2-1FCE-FDB7-4B26-5212DC166F93}.wem</CachePath>
 				</File>
 				<File Id="394666974" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>MC\MC_FT_Metal_04.wav</ShortName>
-					<CachePath>SFX/MC/MC_FT_Metal_04_818F3B66.wem</CachePath>
+					<CachePath>5A/{5A1D40F0-5914-A78C-075C-BF03A67E6E71}.wem</CachePath>
 				</File>
 				<File Id="395573930" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\SP\MC_FT_Metal_Land_04.wav</ShortName>
-					<CachePath>SFX/AMB/SP/MC_FT_Metal_Land_04_818F3B66.wem</CachePath>
+					<CachePath>E3/{E33BCCA8-532D-DD54-1B4B-BA0E3D9C36A3}.wem</CachePath>
 				</File>
 				<File Id="407698228" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>MC\MC_FT_Metal_06.wav</ShortName>
-					<CachePath>SFX/MC/MC_FT_Metal_06_818F3B66.wem</CachePath>
+					<CachePath>28/{28BFBD5C-359A-326A-F9E1-F43F30B6AA00}.wem</CachePath>
 				</File>
 				<File Id="418331982" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>SFX\MC_SFX_Weapon_NoAmmo.wav</ShortName>
-					<CachePath>SFX/SFX/MC_SFX_Weapon_NoAmmo_818F3B66.wem</CachePath>
+					<CachePath>F3/{F379DCCA-C5DF-BC68-F8F8-F4EFCD01C65F}.wem</CachePath>
 				</File>
 				<File Id="430767489" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\SP\MC_FT_Sand_Land_03.wav</ShortName>
-					<CachePath>SFX/AMB/SP/MC_FT_Sand_Land_03_818F3B66.wem</CachePath>
+					<CachePath>75/{75A60252-2890-C3D9-2C9D-3DDFC89F6468}.wem</CachePath>
 				</File>
 				<File Id="442853450" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\SP\MC_FT_Concrete_Jump_04.wav</ShortName>
-					<CachePath>SFX/AMB/SP/MC_FT_Concrete_Jump_04_818F3B66.wem</CachePath>
+					<CachePath>93/{93FC02DD-9A82-052B-E535-C84B1F355EE7}.wem</CachePath>
 				</File>
 				<File Id="451049292" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\SP\MC_FT_Metal_Jump_05.wav</ShortName>
-					<CachePath>SFX/AMB/SP/MC_FT_Metal_Jump_05_818F3B66.wem</CachePath>
+					<CachePath>5A/{5A094BC8-7BD6-02A8-D732-3625B201554A}.wem</CachePath>
 				</File>
 				<File Id="454622091" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\SP\MC_FT_Metal_Land_02.wav</ShortName>
-					<CachePath>SFX/AMB/SP/MC_FT_Metal_Land_02_818F3B66.wem</CachePath>
+					<CachePath>FD/{FD2559DE-9390-7112-BD60-16788C291BA9}.wem</CachePath>
 				</File>
 				<File Id="472445877" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>MC\MC_FT_Concrete_12.wav</ShortName>
-					<CachePath>SFX/MC/MC_FT_Concrete_12_818F3B66.wem</CachePath>
+					<CachePath>63/{631F81F3-E83F-47A9-2C5E-9EFA929033E7}.wem</CachePath>
 				</File>
 				<File Id="483253408" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\SP\MC_FT_Sand_Land_02.wav</ShortName>
-					<CachePath>SFX/AMB/SP/MC_FT_Sand_Land_02_818F3B66.wem</CachePath>
+					<CachePath>57/{579C8D85-4AC4-348A-B821-4B711EC40395}.wem</CachePath>
 				</File>
 				<File Id="499540378" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\SP\MC_FT_Concrete_Jump_01.wav</ShortName>
-					<CachePath>SFX/AMB/SP/MC_FT_Concrete_Jump_01_818F3B66.wem</CachePath>
+					<CachePath>17/{17DF5E72-0851-EC4D-2C03-3844F1997743}.wem</CachePath>
 				</File>
 				<File Id="511633870" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>SFX\MC_SFX_PickupWeapon_03.wav</ShortName>
-					<CachePath>SFX/SFX/MC_SFX_PickupWeapon_03_818F3B66.wem</CachePath>
+					<CachePath>B7/{B7F926D6-55C7-C3BC-AC34-054E55BB5738}.wem</CachePath>
 				</File>
 				<File Id="541415762" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\SP\MC_FT_Metal_Jump_02.wav</ShortName>
-					<CachePath>SFX/AMB/SP/MC_FT_Metal_Jump_02_818F3B66.wem</CachePath>
+					<CachePath>5C/{5C72E2E7-050A-C5F9-CC3C-0360D38F61F6}.wem</CachePath>
 				</File>
 				<File Id="542236427" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\SP\MC_FT_Sand_12.wav</ShortName>
-					<CachePath>SFX/AMB/SP/MC_FT_Sand_12_818F3B66.wem</CachePath>
+					<CachePath>E6/{E6DEA5A7-659F-7793-0700-893203975F2D}.wem</CachePath>
 				</File>
 				<File Id="567050137" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>MC\MC_FT_Metal_07.wav</ShortName>
-					<CachePath>SFX/MC/MC_FT_Metal_07_818F3B66.wem</CachePath>
+					<CachePath>DD/{DD9B7D2F-94AF-2ED9-773E-5896B8AE74A1}.wem</CachePath>
 				</File>
 				<File Id="573783568" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>MC\MC_FT_Concrete_11.wav</ShortName>
-					<CachePath>SFX/MC/MC_FT_Concrete_11_818F3B66.wem</CachePath>
+					<CachePath>F0/{F00E889C-8DC7-1A04-460E-A528F3BFA183}.wem</CachePath>
 				</File>
 				<File Id="607185623" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>SFX\MC_SFX_PickupWeapon_02.wav</ShortName>
-					<CachePath>SFX/SFX/MC_SFX_PickupWeapon_02_818F3B66.wem</CachePath>
+					<CachePath>C7/{C7A814FB-E5CB-624A-29BD-894732FF3A7E}.wem</CachePath>
 				</File>
 				<File Id="608609148" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\SP\MC_FT_Sand_Jump_03.wav</ShortName>
-					<CachePath>SFX/AMB/SP/MC_FT_Sand_Jump_03_818F3B66.wem</CachePath>
+					<CachePath>80/{80773488-5727-E501-F66D-1AECC9A631FE}.wem</CachePath>
 				</File>
 				<File Id="610072169" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>SFX\MC_SFX_PickupWeapon_05.wav</ShortName>
-					<CachePath>SFX/SFX/MC_SFX_PickupWeapon_05_818F3B66.wem</CachePath>
+					<CachePath>C6/{C6A6C862-E60F-7923-DB6D-6F44E3D367EA}.wem</CachePath>
 				</File>
 				<File Id="610918733" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>MC_SFX_Gun_Shoot_03.wav</ShortName>
-					<CachePath>SFX/MC_SFX_Gun_Shoot_03_818F3B66.wem</CachePath>
+					<CachePath>AE/{AEA35F29-7903-40A5-8F82-F81A0242E86E}.wem</CachePath>
 				</File>
 				<File Id="620312545" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\SP\MC_FT_Sand_03.wav</ShortName>
-					<CachePath>SFX/AMB/SP/MC_FT_Sand_03_818F3B66.wem</CachePath>
+					<CachePath>EF/{EF4C78FF-7EA9-77C2-B410-A04034B32D83}.wem</CachePath>
 				</File>
 				<File Id="646411553" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>MC\MC_FT_Metal_10.wav</ShortName>
-					<CachePath>SFX/MC/MC_FT_Metal_10_818F3B66.wem</CachePath>
+					<CachePath>E4/{E4456BFF-6EAB-856C-9583-B70CBA9905F2}.wem</CachePath>
 				</File>
 				<File Id="653322693" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>MC\MC_FT_Concrete_07.wav</ShortName>
-					<CachePath>SFX/MC/MC_FT_Concrete_07_818F3B66.wem</CachePath>
+					<CachePath>F6/{F6C9306B-8C4A-1C10-36E0-577CF28D1E48}.wem</CachePath>
 				</File>
 				<File Id="655628158" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>MC\MC_FT_Metal_05.wav</ShortName>
-					<CachePath>SFX/MC/MC_FT_Metal_05_818F3B66.wem</CachePath>
+					<CachePath>BD/{BDFFF67E-AA59-F3BF-68E7-F97EC894CC3C}.wem</CachePath>
 				</File>
 				<File Id="673489173" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\SP\MC_FT_Sand_09.wav</ShortName>
-					<CachePath>SFX/AMB/SP/MC_FT_Sand_09_818F3B66.wem</CachePath>
+					<CachePath>5B/{5BCEAF20-3138-0653-F222-9B22ED499DC5}.wem</CachePath>
 				</File>
 				<File Id="683985857" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\SP\MC_FT_Concrete_Land_02.wav</ShortName>
-					<CachePath>SFX/AMB/SP/MC_FT_Concrete_Land_02_818F3B66.wem</CachePath>
+					<CachePath>3E/{3EA9A9EF-F6C2-D964-B359-5977333B102A}.wem</CachePath>
 				</File>
 				<File Id="721183356" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\SP\MC_FT_Sand_07.wav</ShortName>
-					<CachePath>SFX/AMB/SP/MC_FT_Sand_07_818F3B66.wem</CachePath>
+					<CachePath>14/{14B0FD31-B814-07E0-36AB-6506253DB5AD}.wem</CachePath>
 				</File>
 				<File Id="727417662" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>MC\MC_FT_Metal_02.wav</ShortName>
-					<CachePath>SFX/MC/MC_FT_Metal_02_818F3B66.wem</CachePath>
+					<CachePath>A4/{A4BFF4CA-138B-53D3-6583-927D961DC1E0}.wem</CachePath>
 				</File>
 				<File Id="728432909" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\SP\MC_FT_Metal_Land_01.wav</ShortName>
-					<CachePath>SFX/AMB/SP/MC_FT_Metal_Land_01_818F3B66.wem</CachePath>
+					<CachePath>E1/{E19132C0-E2C3-A4AD-4E71-35EBFCFD5B2B}.wem</CachePath>
 				</File>
 				<File Id="738022832" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\SP\MC_FT_Concrete_Jump_03.wav</ShortName>
-					<CachePath>SFX/AMB/SP/MC_FT_Concrete_Jump_03_818F3B66.wem</CachePath>
+					<CachePath>F6/{F6532AC5-A080-60CB-4353-4AF327D8B704}.wem</CachePath>
 				</File>
 				<File Id="779936328" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\SP\MC_FT_Sand_02.wav</ShortName>
-					<CachePath>SFX/AMB/SP/MC_FT_Sand_02_818F3B66.wem</CachePath>
+					<CachePath>34/{34E4058B-9F0F-CFF5-796B-FA1D906A1499}.wem</CachePath>
 				</File>
 				<File Id="793802699" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\SP\MC_FT_Concrete_Jump_05.wav</ShortName>
-					<CachePath>SFX/AMB/SP/MC_FT_Concrete_Jump_05_818F3B66.wem</CachePath>
+					<CachePath>87/{8708F7C4-AACA-A6A6-6393-CCABC8CB1CDC}.wem</CachePath>
 				</File>
 				<File Id="801578443" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>MC\MC_FT_Concrete_06.wav</ShortName>
-					<CachePath>SFX/MC/MC_FT_Concrete_06_818F3B66.wem</CachePath>
+					<CachePath>3E/{3E8FEA14-C520-74CE-8000-00480DF60354}.wem</CachePath>
 				</File>
 				<File Id="808130812" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>MC\MC_FT_Concrete_09.wav</ShortName>
-					<CachePath>SFX/MC/MC_FT_Concrete_09_818F3B66.wem</CachePath>
+					<CachePath>77/{77D4FBAD-F322-CE6A-EA61-DF6DE68E9282}.wem</CachePath>
 				</File>
 				<File Id="838939217" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\SP\MC_FT_Sand_04.wav</ShortName>
-					<CachePath>SFX/AMB/SP/MC_FT_Sand_04_818F3B66.wem</CachePath>
+					<CachePath>E3/{E3FB7249-4A09-0F66-2605-E948733A9C7A}.wem</CachePath>
 				</File>
 				<File Id="851952181" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\SP\MC_FT_Metal_Jump_03.wav</ShortName>
-					<CachePath>SFX/AMB/SP/MC_FT_Metal_Jump_03_818F3B66.wem</CachePath>
+					<CachePath>0E/{0E00B695-7A83-C3B0-3025-33130DAF0E36}.wem</CachePath>
 				</File>
 				<File Id="874237085" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>MC\MC_FT_Concrete_08.wav</ShortName>
-					<CachePath>SFX/MC/MC_FT_Concrete_08_818F3B66.wem</CachePath>
+					<CachePath>07/{0791E9D9-1CB3-63CB-7D88-0B1F9385AF05}.wem</CachePath>
 				</File>
 				<File Id="881721480" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>MC\MC_FT_Metal_08.wav</ShortName>
-					<CachePath>SFX/MC/MC_FT_Metal_08_818F3B66.wem</CachePath>
+					<CachePath>89/{89D78F83-4562-5586-7D9E-EBAF464BF2D4}.wem</CachePath>
 				</File>
 				<File Id="910413546" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\SP\MC_FT_Sand_06.wav</ShortName>
-					<CachePath>SFX/AMB/SP/MC_FT_Sand_06_818F3B66.wem</CachePath>
+					<CachePath>E0/{E04ED421-5DD9-00C9-7BD6-ABDA54AB5FF4}.wem</CachePath>
 				</File>
 				<File Id="967065821" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\SP\MC_FT_Sand_11.wav</ShortName>
-					<CachePath>SFX/AMB/SP/MC_FT_Sand_11_818F3B66.wem</CachePath>
+					<CachePath>AD/{AD57DE0A-A474-26BB-0471-48136B386916}.wem</CachePath>
 				</File>
 				<File Id="969386271" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>MC\MC_FT_Metal_12.wav</ShortName>
-					<CachePath>SFX/MC/MC_FT_Metal_12_818F3B66.wem</CachePath>
+					<CachePath>24/{24B7921F-FA7D-6BDE-8B9A-15F28BCCD8AC}.wem</CachePath>
 				</File>
 				<File Id="971911144" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\SP\MC_FT_Sand_Jump_04.wav</ShortName>
-					<CachePath>SFX/AMB/SP/MC_FT_Sand_Jump_04_818F3B66.wem</CachePath>
+					<CachePath>3E/{3ED6A82A-04B8-6717-4BFA-ABC79F1B8E83}.wem</CachePath>
 				</File>
 				<File Id="993891927" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>MC\MC_FT_Metal_01.wav</ShortName>
-					<CachePath>SFX/MC/MC_FT_Metal_01_818F3B66.wem</CachePath>
+					<CachePath>2F/{2FACB6E1-9176-B347-E678-21D408FBF239}.wem</CachePath>
 				</File>
 				<File Id="1003274806" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\SP\MC_FT_Sand_Land_01.wav</ShortName>
-					<CachePath>SFX/AMB/SP/MC_FT_Sand_Land_01_818F3B66.wem</CachePath>
+					<CachePath>22/{22A920E8-4E43-3A2E-9F29-CF4FAAE7C847}.wem</CachePath>
 				</File>
 				<File Id="1038551214" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>MC\MC_FT_Concrete_05.wav</ShortName>
-					<CachePath>SFX/MC/MC_FT_Concrete_05_818F3B66.wem</CachePath>
+					<CachePath>EE/{EE68524C-8BCD-0543-26CD-95FA36E31C2F}.wem</CachePath>
 				</File>
 			</Media>
 			<Plugins>
@@ -850,7 +850,7 @@
 				</ShareSets>
 			</Plugins>
 			<Events>
-				<Event Id="2749485653" Name="Play_MC_FOL_FT_Jump_SW" ObjectPath="\Events\MC_WU\Play_MC_FOL_FT_Jump_SW" GUID="{84F52436-C579-4C37-9804-C7D11AEDCC08}" DurationType="OneShot" DurationMin="0.42432198" DurationMax="0.92546445">
+				<Event Id="2749485653" Name="Play_MC_FOL_FT_Jump_SW" ObjectPath="\Events\MC_WU\Play_MC_FOL_FT_Jump_SW" GUID="{84F52436-C579-4C37-9804-C7D11AEDCC08}" Color="19" DurationType="OneShot" DurationMin="0.42432198" DurationMax="0.92546445">
 					<SwitchContainers>
 						<SwitchContainer>
 							<SwitchValue GroupType="Switch" GroupId="757195373" Id="841620460" GUID="{7D8D0D4C-3D1C-43A2-B357-3F03FF424DDB}" Default="true"/>
@@ -884,7 +884,7 @@
 						</SwitchContainer>
 					</SwitchContainers>
 				</Event>
-				<Event Id="2116962020" Name="Play_MC_FOL_FT_Land_SW" ObjectPath="\Events\MC_WU\Play_MC_FOL_FT_Land_SW" GUID="{3AABFDF5-D848-4A71-84AA-A7DEDC1F4177}" DurationType="OneShot" DurationMin="0.35762826" DurationMax="0.91374254">
+				<Event Id="2116962020" Name="Play_MC_FOL_FT_Land_SW" ObjectPath="\Events\MC_WU\Play_MC_FOL_FT_Land_SW" GUID="{3AABFDF5-D848-4A71-84AA-A7DEDC1F4177}" Color="19" DurationType="OneShot" DurationMin="0.35762826" DurationMax="0.91374254">
 					<SwitchContainers>
 						<SwitchContainer>
 							<SwitchValue GroupType="Switch" GroupId="757195373" Id="841620460" GUID="{7D8D0D4C-3D1C-43A2-B357-3F03FF424DDB}" Default="true"/>
@@ -918,7 +918,7 @@
 						</SwitchContainer>
 					</SwitchContainers>
 				</Event>
-				<Event Id="294373914" Name="Play_MC_FOL_FT_SW" ObjectPath="\Events\MC_WU\Play_MC_FOL_FT_SW" GUID="{770A8171-A3BF-4A55-9CA5-93ECE5CBF8BD}" DurationType="OneShot" DurationMin="0.20782226" DurationMax="0.8268297">
+				<Event Id="294373914" Name="Play_MC_FOL_FT_SW" ObjectPath="\Events\MC_WU\Play_MC_FOL_FT_SW" GUID="{770A8171-A3BF-4A55-9CA5-93ECE5CBF8BD}" Color="19" DurationType="OneShot" DurationMin="0.20782226" DurationMax="0.8268297">
 					<SwitchContainers>
 						<SwitchContainer>
 							<SwitchValue GroupType="Switch" GroupId="757195373" Id="841620460" GUID="{7D8D0D4C-3D1C-43A2-B357-3F03FF424DDB}" Default="true"/>
@@ -1024,12 +1024,12 @@
 						</SwitchContainer>
 					</SwitchContainers>
 				</Event>
-				<Event Id="950272542" Name="Play_MC_GetHit" ObjectPath="\Events\MC_WU\Play_MC_GetHit" GUID="{DFDAAAFE-1AD5-4D67-9145-D4089C5F1FA9}" MaxAttenuation="2000" DurationType="Infinite">
+				<Event Id="950272542" Name="Play_MC_GetHit" ObjectPath="\Events\MC_WU\Play_MC_GetHit" GUID="{DFDAAAFE-1AD5-4D67-9145-D4089C5F1FA9}" Color="19" MaxAttenuation="2000" DurationType="Infinite">
 					<MediaRefs>
 						<MediaRef Id="17784281"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="1177297501" Name="Play_MC_SFX_Gun_Shoot_RC" ObjectPath="\Events\MC_WU\Play_MC_SFX_Gun_Shoot_RC" GUID="{19EDAAA1-DF79-4328-9566-97F28CD19D08}" DurationType="OneShot" DurationMin="1.1600068" DurationMax="2.3467753">
+				<Event Id="1177297501" Name="Play_MC_SFX_Gun_Shoot_RC" ObjectPath="\Events\MC_WU\Play_MC_SFX_Gun_Shoot_RC" GUID="{19EDAAA1-DF79-4328-9566-97F28CD19D08}" Color="19" DurationType="OneShot" DurationMin="1.1600068" DurationMax="2.3467753">
 					<MediaRefs>
 						<MediaRef Id="36917763"/>
 						<MediaRef Id="62282605"/>
@@ -1037,7 +1037,7 @@
 						<MediaRef Id="610918733"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="4122495842" Name="Play_MC_SFX_UpdateAmmo_RC" ObjectPath="\Events\MC_WU\Play_MC_SFX_UpdateAmmo_RC" GUID="{4C30DC19-451C-449E-9B9A-AADEEAB14B44}" DurationType="OneShot" DurationMin="2.5657325" DurationMax="3.6410909">
+				<Event Id="4122495842" Name="Play_MC_SFX_UpdateAmmo_RC" ObjectPath="\Events\MC_WU\Play_MC_SFX_UpdateAmmo_RC" GUID="{4C30DC19-451C-449E-9B9A-AADEEAB14B44}" Color="19" DurationType="OneShot" DurationMin="2.5657325" DurationMax="3.6410909">
 					<MediaRefs>
 						<MediaRef Id="47427430"/>
 						<MediaRef Id="101923972"/>
@@ -1046,32 +1046,32 @@
 						<MediaRef Id="610072169"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="3961249933" Name="Play_MC_SFX_Weapon_Armed_RC" ObjectPath="\Events\MC_WU\Play_MC_SFX_Weapon_Armed_RC" GUID="{E22125BE-E0CB-4EC0-A4CB-7460BE42B80E}" DurationType="OneShot" DurationMin="3.3666666" DurationMax="3.3666666">
+				<Event Id="3961249933" Name="Play_MC_SFX_Weapon_Armed_RC" ObjectPath="\Events\MC_WU\Play_MC_SFX_Weapon_Armed_RC" GUID="{E22125BE-E0CB-4EC0-A4CB-7460BE42B80E}" Color="19" DurationType="OneShot" DurationMin="3.3666666" DurationMax="3.3666666">
 					<MediaRefs>
 						<MediaRef Id="130136752"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="3400800083" Name="Play_MC_SFX_Weapon_NoAmmo_RC" ObjectPath="\Events\MC_WU\Play_MC_SFX_Weapon_NoAmmo_RC" GUID="{708ACD16-F6BC-49F8-85D6-8076E283E48F}" DurationType="OneShot" DurationMin="1.7806667" DurationMax="1.7806667">
+				<Event Id="3400800083" Name="Play_MC_SFX_Weapon_NoAmmo_RC" ObjectPath="\Events\MC_WU\Play_MC_SFX_Weapon_NoAmmo_RC" GUID="{708ACD16-F6BC-49F8-85D6-8076E283E48F}" Color="19" DurationType="OneShot" DurationMin="1.7806667" DurationMax="1.7806667">
 					<MediaRefs>
 						<MediaRef Id="418331982"/>
 					</MediaRefs>
 				</Event>
 			</Events>
 			<Busses>
-				<Bus Id="109159411" Name="Game_Global" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global" GUID="{FAD5C029-0A02-4BD2-97F7-F8C20B7A95BD}"/>
-				<Bus Id="393239870" Name="SFX" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global\SFX" GUID="{EB4CE24D-8196-408E-9775-5E8EEFE98495}"/>
-				<Bus Id="1117531639" Name="AMB" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global\AMB" GUID="{C1595F21-FBBF-4B04-AC1A-78D86879A937}"/>
-				<Bus Id="1551306167" Name="UI" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\UI" GUID="{B5E7816E-C3FC-4992-B763-4078089CE674}"/>
-				<Bus Id="1685527061" Name="MC" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global\MC" GUID="{B3079877-B26F-4239-A3AB-9C7AFFCBC797}"/>
-				<Bus Id="2290178407" Name="FOES_Tourelle" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global\FOES_Tourelle" GUID="{D783D57E-4B6F-4101-8F5F-FD96F0409170}"/>
-				<Bus Id="3313685232" Name="Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Voices" GUID="{00AA482D-3F12-46A5-8177-E8A172D08E63}"/>
-				<Bus Id="3623095082" Name="FOES_Flying" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global\FOES_Flying" GUID="{439831F9-AA50-4CD2-98C3-ACD8B187380E}"/>
-				<Bus Id="3991942870" Name="Music" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Music" GUID="{08156595-7637-4348-AC3C-2EDE3FCCB08F}"/>
-				<Bus Id="4056684167" Name="Master" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master" GUID="{F3A976BC-47E9-46E5-9EEC-F566BB39DBEE}"/>
-				<Bus Id="4219618961" Name="AMB_Crowd" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global\AMB_Crowd" GUID="{985719AF-3534-41FC-A751-99E11C3F7784}"/>
+				<Bus Id="109159411" Name="Game_Global" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global" GUID="{FAD5C029-0A02-4BD2-97F7-F8C20B7A95BD}" Color="16"/>
+				<Bus Id="393239870" Name="SFX" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global\SFX" GUID="{EB4CE24D-8196-408E-9775-5E8EEFE98495}" Color="17"/>
+				<Bus Id="1117531639" Name="AMB" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global\AMB" GUID="{C1595F21-FBBF-4B04-AC1A-78D86879A937}" Color="4"/>
+				<Bus Id="1551306167" Name="UI" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\UI" GUID="{B5E7816E-C3FC-4992-B763-4078089CE674}" Color="1"/>
+				<Bus Id="1685527061" Name="MC" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global\MC" GUID="{B3079877-B26F-4239-A3AB-9C7AFFCBC797}" Color="19"/>
+				<Bus Id="2290178407" Name="FOES_Tourelle" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global\FOES_Tourelle" GUID="{D783D57E-4B6F-4101-8F5F-FD96F0409170}" Color="10"/>
+				<Bus Id="3313685232" Name="Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Voices" GUID="{00AA482D-3F12-46A5-8177-E8A172D08E63}" Color="23"/>
+				<Bus Id="3623095082" Name="FOES_Flying" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global\FOES_Flying" GUID="{439831F9-AA50-4CD2-98C3-ACD8B187380E}" Color="11"/>
+				<Bus Id="3991942870" Name="Music" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Music" GUID="{08156595-7637-4348-AC3C-2EDE3FCCB08F}" Color="24"/>
+				<Bus Id="4056684167" Name="Master" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master" GUID="{F3A976BC-47E9-46E5-9EEC-F566BB39DBEE}" Color="9"/>
+				<Bus Id="4219618961" Name="AMB_Crowd" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global\AMB_Crowd" GUID="{985719AF-3534-41FC-A751-99E11C3F7784}" Color="4"/>
 			</Busses>
 			<AuxBusses>
-				<AuxBus Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}">
+				<AuxBus Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}" Color="9">
 					<PluginRefs>
 						<ShareSets>
 							<PluginRef Id="3442768367"/>
@@ -1079,14 +1079,14 @@
 						</ShareSets>
 					</PluginRefs>
 				</AuxBus>
-				<AuxBus Id="395111090" Name="RVB_BlackHouses" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_BlackHouses" GUID="{17B5E8F9-026F-4941-A027-1C0641AB0C14}">
+				<AuxBus Id="395111090" Name="RVB_BlackHouses" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_BlackHouses" GUID="{17B5E8F9-026F-4941-A027-1C0641AB0C14}" Color="26">
 					<PluginRefs>
 						<Custom>
 							<PluginRef Id="688337969"/>
 						</Custom>
 					</PluginRefs>
 				</AuxBus>
-				<AuxBus Id="1215931641" Name="RVB_Arena" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Arena" GUID="{54C7EBDA-4885-4850-8969-FB63BDACC807}">
+				<AuxBus Id="1215931641" Name="RVB_Arena" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Arena" GUID="{54C7EBDA-4885-4850-8969-FB63BDACC807}" Color="26">
 					<PluginRefs>
 						<Custom>
 							<PluginRef Id="272452003"/>
@@ -1094,35 +1094,35 @@
 						</Custom>
 					</PluginRefs>
 				</AuxBus>
-				<AuxBus Id="1408817756" Name="RVB_RFX_Arena" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_RFX_Arena" GUID="{CC7A2F05-EE75-4E8E-B097-98A1938CB5E4}">
+				<AuxBus Id="1408817756" Name="RVB_RFX_Arena" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_RFX_Arena" GUID="{CC7A2F05-EE75-4E8E-B097-98A1938CB5E4}" Color="27">
 					<PluginRefs>
 						<Custom>
 							<PluginRef Id="169636257"/>
 						</Custom>
 					</PluginRefs>
 				</AuxBus>
-				<AuxBus Id="2344250611" Name="RVB_Basement" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Basement" GUID="{BF09F5DA-71E8-4CAC-B0EB-19A1C29389BA}">
+				<AuxBus Id="2344250611" Name="RVB_Basement" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Basement" GUID="{BF09F5DA-71E8-4CAC-B0EB-19A1C29389BA}" Color="26">
 					<PluginRefs>
 						<Custom>
 							<PluginRef Id="97605317"/>
 						</Custom>
 					</PluginRefs>
 				</AuxBus>
-				<AuxBus Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}">
+				<AuxBus Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}" Color="9">
 					<PluginRefs>
 						<ShareSets>
 							<PluginRef Id="1008402193"/>
 						</ShareSets>
 					</PluginRefs>
 				</AuxBus>
-				<AuxBus Id="3571340017" Name="RVB_Hub" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Hub" GUID="{D499EBE4-F26A-48E5-B89D-1F7C43D829E3}">
+				<AuxBus Id="3571340017" Name="RVB_Hub" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Hub" GUID="{D499EBE4-F26A-48E5-B89D-1F7C43D829E3}" Color="26">
 					<PluginRefs>
 						<Custom>
 							<PluginRef Id="16383166"/>
 						</Custom>
 					</PluginRefs>
 				</AuxBus>
-				<AuxBus Id="3670521640" Name="RVB_Pyramid" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Pyramid" GUID="{668EA0D2-771E-452F-B241-11793F9755B0}">
+				<AuxBus Id="3670521640" Name="RVB_Pyramid" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Pyramid" GUID="{668EA0D2-771E-452F-B241-11793F9755B0}" Color="26">
 					<PluginRefs>
 						<Custom>
 							<PluginRef Id="498081942"/>
@@ -1133,7 +1133,7 @@
 			<GameParameters>
 				<GameParameter Id="1190880401" Name="RTPC_DoorPyramid" ObjectPath="\Game Parameters\Default Work Unit\RTPC_DoorPyramid" GUID="{D2AEC1CE-EF9E-486E-AE8B-FB121AC42B53}"/>
 				<GameParameter Id="3438452020" Name="RTPC_SFX" ObjectPath="\Game Parameters\Default Work Unit\RTPC_SFX" GUID="{DD8DB651-4F18-462F-97D3-0195BD02087F}"/>
-				<GameParameter Id="3445598977" Name="RTPC_Master" ObjectPath="\Game Parameters\Default Work Unit\RTPC_Master" GUID="{74E6261E-6493-44A8-BAE7-1E79ABF4DED1}"/>
+				<GameParameter Id="3445598977" Name="RTPC_Master" ObjectPath="\Game Parameters\Default Work Unit\RTPC_Master" GUID="{74E6261E-6493-44A8-BAE7-1E79ABF4DED1}" Color="10"/>
 				<GameParameter Id="3553041361" Name="RTPC_AMB" ObjectPath="\Game Parameters\Default Work Unit\RTPC_AMB" GUID="{2EA08633-9826-4131-9D31-3F7F27FCA59E}"/>
 				<GameParameter Id="3709650428" Name="RTPC_Music" ObjectPath="\Game Parameters\Default Work Unit\RTPC_Music" GUID="{5DA4119B-967E-473A-9D3F-7F6BD36532D0}"/>
 				<GameParameter Id="4031456682" Name="RTPC_Voices" ObjectPath="\Game Parameters\Default Work Unit\RTPC_Voices" GUID="{F4B8FD9E-0723-43B2-923D-1563F7D70095}"/>
@@ -1159,7 +1159,7 @@
 				</SwitchGroup>
 			</SwitchGroups>
 		</SoundBank>
-		<SoundBank Id="2516814376" Type="User" GUID="{48187E94-2869-42A3-9E99-A12DF1DA86DF}" Language="SFX" Hash="{407EE1F4-9610-BC64-0DCF-1F77B312816E}">
+		<SoundBank Id="2516814376" Type="User" GUID="{48187E94-2869-42A3-9E99-A12DF1DA86DF}" Color="23" Language="SFX" Hash="{27C2B351-EF68-EC4D-0915-60E3E01CEC1F}">
 			<ObjectPath>\SoundBanks\SoundBanks_WU\FOES_Invisible_SB</ObjectPath>
 			<ShortName>FOES_Invisible_SB</ShortName>
 			<Path>FOES_Invisible_SB.bnk</Path>
@@ -1180,20 +1180,20 @@
 				</ShareSets>
 			</Plugins>
 			<Busses>
-				<Bus Id="109159411" Name="Game_Global" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global" GUID="{FAD5C029-0A02-4BD2-97F7-F8C20B7A95BD}"/>
-				<Bus Id="393239870" Name="SFX" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global\SFX" GUID="{EB4CE24D-8196-408E-9775-5E8EEFE98495}"/>
-				<Bus Id="1117531639" Name="AMB" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global\AMB" GUID="{C1595F21-FBBF-4B04-AC1A-78D86879A937}"/>
-				<Bus Id="1551306167" Name="UI" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\UI" GUID="{B5E7816E-C3FC-4992-B763-4078089CE674}"/>
-				<Bus Id="1685527061" Name="MC" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global\MC" GUID="{B3079877-B26F-4239-A3AB-9C7AFFCBC797}"/>
-				<Bus Id="2290178407" Name="FOES_Tourelle" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global\FOES_Tourelle" GUID="{D783D57E-4B6F-4101-8F5F-FD96F0409170}"/>
-				<Bus Id="3313685232" Name="Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Voices" GUID="{00AA482D-3F12-46A5-8177-E8A172D08E63}"/>
-				<Bus Id="3623095082" Name="FOES_Flying" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global\FOES_Flying" GUID="{439831F9-AA50-4CD2-98C3-ACD8B187380E}"/>
-				<Bus Id="3991942870" Name="Music" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Music" GUID="{08156595-7637-4348-AC3C-2EDE3FCCB08F}"/>
-				<Bus Id="4056684167" Name="Master" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master" GUID="{F3A976BC-47E9-46E5-9EEC-F566BB39DBEE}"/>
-				<Bus Id="4219618961" Name="AMB_Crowd" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global\AMB_Crowd" GUID="{985719AF-3534-41FC-A751-99E11C3F7784}"/>
+				<Bus Id="109159411" Name="Game_Global" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global" GUID="{FAD5C029-0A02-4BD2-97F7-F8C20B7A95BD}" Color="16"/>
+				<Bus Id="393239870" Name="SFX" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global\SFX" GUID="{EB4CE24D-8196-408E-9775-5E8EEFE98495}" Color="17"/>
+				<Bus Id="1117531639" Name="AMB" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global\AMB" GUID="{C1595F21-FBBF-4B04-AC1A-78D86879A937}" Color="4"/>
+				<Bus Id="1551306167" Name="UI" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\UI" GUID="{B5E7816E-C3FC-4992-B763-4078089CE674}" Color="1"/>
+				<Bus Id="1685527061" Name="MC" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global\MC" GUID="{B3079877-B26F-4239-A3AB-9C7AFFCBC797}" Color="19"/>
+				<Bus Id="2290178407" Name="FOES_Tourelle" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global\FOES_Tourelle" GUID="{D783D57E-4B6F-4101-8F5F-FD96F0409170}" Color="10"/>
+				<Bus Id="3313685232" Name="Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Voices" GUID="{00AA482D-3F12-46A5-8177-E8A172D08E63}" Color="23"/>
+				<Bus Id="3623095082" Name="FOES_Flying" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global\FOES_Flying" GUID="{439831F9-AA50-4CD2-98C3-ACD8B187380E}" Color="11"/>
+				<Bus Id="3991942870" Name="Music" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Music" GUID="{08156595-7637-4348-AC3C-2EDE3FCCB08F}" Color="24"/>
+				<Bus Id="4056684167" Name="Master" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master" GUID="{F3A976BC-47E9-46E5-9EEC-F566BB39DBEE}" Color="9"/>
+				<Bus Id="4219618961" Name="AMB_Crowd" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global\AMB_Crowd" GUID="{985719AF-3534-41FC-A751-99E11C3F7784}" Color="4"/>
 			</Busses>
 			<AuxBusses>
-				<AuxBus Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}">
+				<AuxBus Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}" Color="9">
 					<PluginRefs>
 						<ShareSets>
 							<PluginRef Id="3442768367"/>
@@ -1201,14 +1201,14 @@
 						</ShareSets>
 					</PluginRefs>
 				</AuxBus>
-				<AuxBus Id="395111090" Name="RVB_BlackHouses" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_BlackHouses" GUID="{17B5E8F9-026F-4941-A027-1C0641AB0C14}">
+				<AuxBus Id="395111090" Name="RVB_BlackHouses" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_BlackHouses" GUID="{17B5E8F9-026F-4941-A027-1C0641AB0C14}" Color="26">
 					<PluginRefs>
 						<Custom>
 							<PluginRef Id="688337969"/>
 						</Custom>
 					</PluginRefs>
 				</AuxBus>
-				<AuxBus Id="1215931641" Name="RVB_Arena" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Arena" GUID="{54C7EBDA-4885-4850-8969-FB63BDACC807}">
+				<AuxBus Id="1215931641" Name="RVB_Arena" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Arena" GUID="{54C7EBDA-4885-4850-8969-FB63BDACC807}" Color="26">
 					<PluginRefs>
 						<Custom>
 							<PluginRef Id="272452003"/>
@@ -1216,35 +1216,35 @@
 						</Custom>
 					</PluginRefs>
 				</AuxBus>
-				<AuxBus Id="1408817756" Name="RVB_RFX_Arena" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_RFX_Arena" GUID="{CC7A2F05-EE75-4E8E-B097-98A1938CB5E4}">
+				<AuxBus Id="1408817756" Name="RVB_RFX_Arena" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_RFX_Arena" GUID="{CC7A2F05-EE75-4E8E-B097-98A1938CB5E4}" Color="27">
 					<PluginRefs>
 						<Custom>
 							<PluginRef Id="169636257"/>
 						</Custom>
 					</PluginRefs>
 				</AuxBus>
-				<AuxBus Id="2344250611" Name="RVB_Basement" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Basement" GUID="{BF09F5DA-71E8-4CAC-B0EB-19A1C29389BA}">
+				<AuxBus Id="2344250611" Name="RVB_Basement" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Basement" GUID="{BF09F5DA-71E8-4CAC-B0EB-19A1C29389BA}" Color="26">
 					<PluginRefs>
 						<Custom>
 							<PluginRef Id="97605317"/>
 						</Custom>
 					</PluginRefs>
 				</AuxBus>
-				<AuxBus Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}">
+				<AuxBus Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}" Color="9">
 					<PluginRefs>
 						<ShareSets>
 							<PluginRef Id="1008402193"/>
 						</ShareSets>
 					</PluginRefs>
 				</AuxBus>
-				<AuxBus Id="3571340017" Name="RVB_Hub" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Hub" GUID="{D499EBE4-F26A-48E5-B89D-1F7C43D829E3}">
+				<AuxBus Id="3571340017" Name="RVB_Hub" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Hub" GUID="{D499EBE4-F26A-48E5-B89D-1F7C43D829E3}" Color="26">
 					<PluginRefs>
 						<Custom>
 							<PluginRef Id="16383166"/>
 						</Custom>
 					</PluginRefs>
 				</AuxBus>
-				<AuxBus Id="3670521640" Name="RVB_Pyramid" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Pyramid" GUID="{668EA0D2-771E-452F-B241-11793F9755B0}">
+				<AuxBus Id="3670521640" Name="RVB_Pyramid" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Pyramid" GUID="{668EA0D2-771E-452F-B241-11793F9755B0}" Color="26">
 					<PluginRefs>
 						<Custom>
 							<PluginRef Id="498081942"/>
@@ -1255,7 +1255,7 @@
 			<GameParameters>
 				<GameParameter Id="1190880401" Name="RTPC_DoorPyramid" ObjectPath="\Game Parameters\Default Work Unit\RTPC_DoorPyramid" GUID="{D2AEC1CE-EF9E-486E-AE8B-FB121AC42B53}"/>
 				<GameParameter Id="3438452020" Name="RTPC_SFX" ObjectPath="\Game Parameters\Default Work Unit\RTPC_SFX" GUID="{DD8DB651-4F18-462F-97D3-0195BD02087F}"/>
-				<GameParameter Id="3445598977" Name="RTPC_Master" ObjectPath="\Game Parameters\Default Work Unit\RTPC_Master" GUID="{74E6261E-6493-44A8-BAE7-1E79ABF4DED1}"/>
+				<GameParameter Id="3445598977" Name="RTPC_Master" ObjectPath="\Game Parameters\Default Work Unit\RTPC_Master" GUID="{74E6261E-6493-44A8-BAE7-1E79ABF4DED1}" Color="10"/>
 				<GameParameter Id="3553041361" Name="RTPC_AMB" ObjectPath="\Game Parameters\Default Work Unit\RTPC_AMB" GUID="{2EA08633-9826-4131-9D31-3F7F27FCA59E}"/>
 				<GameParameter Id="3709650428" Name="RTPC_Music" ObjectPath="\Game Parameters\Default Work Unit\RTPC_Music" GUID="{5DA4119B-967E-473A-9D3F-7F6BD36532D0}"/>
 				<GameParameter Id="4031456682" Name="RTPC_Voices" ObjectPath="\Game Parameters\Default Work Unit\RTPC_Voices" GUID="{F4B8FD9E-0723-43B2-923D-1563F7D70095}"/>
@@ -1272,154 +1272,154 @@
 				</StateGroup>
 			</StateGroups>
 		</SoundBank>
-		<SoundBank Id="2765162312" Type="User" GUID="{9B915276-16F3-4721-B819-126344F97366}" Language="SFX" Hash="{09656090-FA5D-B6BD-C9DD-96D87BCF6D3D}">
+		<SoundBank Id="2765162312" Type="User" GUID="{9B915276-16F3-4721-B819-126344F97366}" Language="SFX" Hash="{1D2B3B5A-F531-57BE-C00F-99DC7F59746B}">
 			<ObjectPath>\SoundBanks\SoundBanks_WU\VOICES_SB</ObjectPath>
 			<ShortName>VOICES_SB</ShortName>
 			<Path>VOICES_SB.bnk</Path>
 			<Media>
 				<File Id="7231555" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>DUB_ARENA_1_2_2.wav</ShortName>
-					<CachePath>SFX/DUB_ARENA_1_2_2_818F3B66.wem</CachePath>
+					<CachePath>8E/{8E217C91-05C9-6D25-9FC5-E1ABC71AE6E7}.wem</CachePath>
 				</File>
 				<File Id="12434701" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>DUB_ALLY_1_3_0.wav</ShortName>
-					<CachePath>SFX/DUB_ALLY_1_3_0_818F3B66.wem</CachePath>
+					<CachePath>DF/{DF042FAB-C038-EC21-58EF-4012A74E0012}.wem</CachePath>
 				</File>
 				<File Id="45960235" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>DUB_ALLY_1_4_0.wav</ShortName>
-					<CachePath>SFX/DUB_ALLY_1_4_0_B42FC9A2.wem</CachePath>
+					<CachePath>C8/{C8F13A6E-6FFE-DA71-BDDB-B9696E55CB34}.wem</CachePath>
 				</File>
 				<File Id="73406871" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>DUB_ARENA_1_7_0.wav</ShortName>
-					<CachePath>SFX/DUB_ARENA_1_7_0_818F3B66.wem</CachePath>
+					<CachePath>31/{31217CD0-4A85-AB69-19F0-A5C7E3C160E8}.wem</CachePath>
 				</File>
 				<File Id="83922193" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>DUB_ARENA_1_2_3.wav</ShortName>
-					<CachePath>SFX/DUB_ARENA_1_2_3_818F3B66.wem</CachePath>
+					<CachePath>8B/{8BA4B464-F190-9D6F-6CD3-12E04209AC0B}.wem</CachePath>
 				</File>
 				<File Id="84247758" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>DUB_ALLY_1_8_0.wav</ShortName>
-					<CachePath>SFX/DUB_ALLY_1_8_0_818F3B66.wem</CachePath>
+					<CachePath>78/{787BE243-97F7-8F18-F8F2-C9137263F111}.wem</CachePath>
 				</File>
 				<File Id="93564485" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>DUB_ARENA_1_0_0.wav</ShortName>
-					<CachePath>SFX/DUB_ARENA_1_0_0_818F3B66.wem</CachePath>
+					<CachePath>38/{3802189E-7AEE-4C59-6B61-6C15CC7465B1}.wem</CachePath>
 				</File>
 				<File Id="115645254" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>DUB_ARENA_1_9_4.wav</ShortName>
-					<CachePath>SFX/DUB_ARENA_1_9_4_818F3B66.wem</CachePath>
+					<CachePath>DC/{DCC34616-4D38-1A17-2403-5858166A92F8}.wem</CachePath>
 				</File>
 				<File Id="140616404" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>DUB_ARENA_1_8_0.wav</ShortName>
-					<CachePath>SFX/DUB_ARENA_1_8_0_818F3B66.wem</CachePath>
+					<CachePath>D4/{D4D0517E-478A-0B55-C1B9-0D504DF985D1}.wem</CachePath>
 				</File>
 				<File Id="157392684" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>DUB_ARENA_1_9_2.wav</ShortName>
-					<CachePath>SFX/DUB_ARENA_1_9_2_818F3B66.wem</CachePath>
+					<CachePath>3B/{3B93FD09-E5F4-0493-48F4-9609DB78757E}.wem</CachePath>
 				</File>
 				<File Id="166584951" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>DUB_ARENA_1_9_1.wav</ShortName>
-					<CachePath>SFX/DUB_ARENA_1_9_1_818F3B66.wem</CachePath>
+					<CachePath>72/{72AD6E02-5701-E887-D5AD-CF76F210866A}.wem</CachePath>
 				</File>
 				<File Id="199901849" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>DUB_ALLY_1_2_0.wav</ShortName>
-					<CachePath>SFX/DUB_ALLY_1_2_0_818F3B66.wem</CachePath>
+					<CachePath>0A/{0A3D82B3-B445-0D1A-59D6-67E5174BE8E3}.wem</CachePath>
 				</File>
 				<File Id="276376101" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>DUB_ALLY_1_0_2.wav</ShortName>
-					<CachePath>SFX/DUB_ALLY_1_0_2_818F3B66.wem</CachePath>
+					<CachePath>E1/{E182045D-3DC8-F5B4-5AED-1F257318FDA0}.wem</CachePath>
 				</File>
 				<File Id="278418833" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>DUB_ARENA_1_9_3.wav</ShortName>
-					<CachePath>SFX/DUB_ARENA_1_9_3_818F3B66.wem</CachePath>
+					<CachePath>2A/{2A56BA60-F908-0310-7776-AAD09F716D21}.wem</CachePath>
 				</File>
 				<File Id="279456589" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>DUB_ARENA_1_9_5.wav</ShortName>
-					<CachePath>SFX/DUB_ARENA_1_9_5_818F3B66.wem</CachePath>
+					<CachePath>7F/{7F57E39D-CC05-1DFF-BE03-1271DD51180F}.wem</CachePath>
 				</File>
 				<File Id="289625457" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>DUB_ARENA_1_3_0.wav</ShortName>
-					<CachePath>SFX/DUB_ARENA_1_3_0_818F3B66.wem</CachePath>
+					<CachePath>D1/{D1AABFE6-25E4-CA90-2E83-5BB0BCF531E4}.wem</CachePath>
 				</File>
 				<File Id="305437427" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>DUB_ALLY_1_4_0.wav</ShortName>
-					<CachePath>SFX/DUB_ALLY_1_4_0_E0C25F29.wem</CachePath>
+					<CachePath>03/{03B7213D-31EC-A6AB-7763-7E0B00E5D1DF}.wem</CachePath>
 				</File>
 				<File Id="315927435" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>DUB_ALLY_1_6_1.wav</ShortName>
-					<CachePath>SFX/DUB_ALLY_1_6_1_818F3B66.wem</CachePath>
+					<CachePath>26/{26C0B2D1-1B68-D881-A009-D526C922DF39}.wem</CachePath>
 				</File>
 				<File Id="338368799" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>DUB_ARENA_1_1_2.wav</ShortName>
-					<CachePath>SFX/DUB_ARENA_1_1_2_818F3B66.wem</CachePath>
+					<CachePath>5D/{5DE03B1E-37AA-2369-8F9B-84B396A8B36B}.wem</CachePath>
 				</File>
 				<File Id="338492853" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>DUB_ALLY_1_6_0.wav</ShortName>
-					<CachePath>SFX/DUB_ALLY_1_6_0_818F3B66.wem</CachePath>
+					<CachePath>A0/{A051E24E-4DE2-0BEE-201C-F7509C23E99A}.wem</CachePath>
 				</File>
 				<File Id="381597154" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>DUB_ALLY_1_1_0.wav</ShortName>
-					<CachePath>SFX/DUB_ALLY_1_1_0_818F3B66.wem</CachePath>
+					<CachePath>FD/{FDFD349B-DF83-C298-37FA-F67623021F0D}.wem</CachePath>
 				</File>
 				<File Id="411650085" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>DUB_ARENA_1_9_6.wav</ShortName>
-					<CachePath>SFX/DUB_ARENA_1_9_6_818F3B66.wem</CachePath>
+					<CachePath>D9/{D9E07449-DEFC-B8DC-D3BE-0DDA7B150202}.wem</CachePath>
 				</File>
 				<File Id="435995496" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>DUB_ARENA_1_6_0.wav</ShortName>
-					<CachePath>SFX/DUB_ARENA_1_6_0_818F3B66.wem</CachePath>
+					<CachePath>F5/{F5F0436D-31A1-5198-7C9E-72ACBE407141}.wem</CachePath>
 				</File>
 				<File Id="500906151" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>DUB_ARENA_1_1_1.wav</ShortName>
-					<CachePath>SFX/DUB_ARENA_1_1_1_818F3B66.wem</CachePath>
+					<CachePath>06/{061FAB3A-EEBF-9541-9536-5D7C843AF6B4}.wem</CachePath>
 				</File>
 				<File Id="675447814" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>DUB_ALLY_1_0_0.wav</ShortName>
-					<CachePath>SFX/DUB_ALLY_1_0_0_818F3B66.wem</CachePath>
+					<CachePath>0A/{0AD8E2B4-C8BD-525C-56BC-95E88633CDF6}.wem</CachePath>
 				</File>
 				<File Id="687283735" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>DUB_ARENA_1_2_0.wav</ShortName>
-					<CachePath>SFX/DUB_ARENA_1_2_0_818F3B66.wem</CachePath>
+					<CachePath>78/{78EFCF27-896C-815F-875E-1562F2478105}.wem</CachePath>
 				</File>
 				<File Id="700914992" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>DUB_ALLY_1_0_1.wav</ShortName>
-					<CachePath>SFX/DUB_ALLY_1_0_1_818F3B66.wem</CachePath>
+					<CachePath>BD/{BD9249CB-B968-E4EB-A453-EE7633D1526F}.wem</CachePath>
 				</File>
 				<File Id="753350392" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>DUB_ALLY_1_5_0.wav</ShortName>
-					<CachePath>SFX/DUB_ALLY_1_5_0_818F3B66.wem</CachePath>
+					<CachePath>58/{58BF3E23-ABDC-1413-46AF-8B6D0E09D446}.wem</CachePath>
 				</File>
 				<File Id="767088532" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>DUB_ARENA_1_9_0.wav</ShortName>
-					<CachePath>SFX/DUB_ARENA_1_9_0_818F3B66.wem</CachePath>
+					<CachePath>8F/{8F36CFD7-DEE3-9F31-852E-AEB489EDA886}.wem</CachePath>
 				</File>
 				<File Id="881110537" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>DUB_ARENA_1_3_2.wav</ShortName>
-					<CachePath>SFX/DUB_ARENA_1_3_2_818F3B66.wem</CachePath>
+					<CachePath>59/{5910D296-C4F6-5C5B-1E2C-2E4EB849D3E5}.wem</CachePath>
 				</File>
 				<File Id="898148885" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>DUB_ARENA_1_1_0.wav</ShortName>
-					<CachePath>SFX/DUB_ARENA_1_1_0_818F3B66.wem</CachePath>
+					<CachePath>E5/{E5792D3E-BA65-59B7-9AC6-75BEE0ED6977}.wem</CachePath>
 				</File>
 				<File Id="899907561" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>DUB_ARENA_1_5_0.wav</ShortName>
-					<CachePath>SFX/DUB_ARENA_1_5_0_818F3B66.wem</CachePath>
+					<CachePath>B7/{B76129DE-2911-66E0-B4AF-EBB1C2208482}.wem</CachePath>
 				</File>
 				<File Id="952186329" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>DUB_ARENA_1_4_0.wav</ShortName>
-					<CachePath>SFX/DUB_ARENA_1_4_0_818F3B66.wem</CachePath>
+					<CachePath>FF/{FFB7B35D-5192-EFF3-B17A-E5E852E55664}.wem</CachePath>
 				</File>
 				<File Id="981954510" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>DUB_ALLY_1_7_0.wav</ShortName>
-					<CachePath>SFX/DUB_ALLY_1_7_0_818F3B66.wem</CachePath>
+					<CachePath>7D/{7D2E1978-4608-9549-0B4D-670622F3A279}.wem</CachePath>
 				</File>
 				<File Id="1008445025" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>DUB_ARENA_1_2_1.wav</ShortName>
-					<CachePath>SFX/DUB_ARENA_1_2_1_818F3B66.wem</CachePath>
+					<CachePath>C0/{C059B990-EB5B-6ECA-898C-30D988AF678A}.wem</CachePath>
 				</File>
 				<File Id="1031568460" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>DUB_ARENA_1_3_1.wav</ShortName>
-					<CachePath>SFX/DUB_ARENA_1_3_1_818F3B66.wem</CachePath>
+					<CachePath>C6/{C66C08B2-DF11-C266-5146-8A13081FE63D}.wem</CachePath>
 				</File>
 			</Media>
 			<Events>
@@ -1493,8 +1493,8 @@
 						<MediaRef Id="93564485"/>
 					</MediaRefs>
 					<AuxBusRefs>
-						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}"/>
-						<AuxBusRef Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}"/>
+						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}" Color="9"/>
+						<AuxBusRef Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}" Color="9"/>
 					</AuxBusRefs>
 				</Event>
 				<Event Id="432124422" Name="Play_DUB_ARENA_1_1_0" ObjectPath="\Events\VOICES_WU\ARENA\Play_DUB_ARENA_1_1_0" GUID="{4D51FF6E-B699-4F64-9342-EA27E6FB1544}" DurationType="OneShot" DurationMin="5.3754582" DurationMax="5.3754582">
@@ -1502,8 +1502,8 @@
 						<MediaRef Id="898148885"/>
 					</MediaRefs>
 					<AuxBusRefs>
-						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}"/>
-						<AuxBusRef Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}"/>
+						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}" Color="9"/>
+						<AuxBusRef Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}" Color="9"/>
 					</AuxBusRefs>
 				</Event>
 				<Event Id="432124423" Name="Play_DUB_ARENA_1_1_1" ObjectPath="\Events\VOICES_WU\ARENA\Play_DUB_ARENA_1_1_1" GUID="{27536445-6BFB-41C6-BC9E-54347C22D514}" DurationType="OneShot" DurationMin="2.5813334" DurationMax="2.5813334">
@@ -1511,8 +1511,8 @@
 						<MediaRef Id="500906151"/>
 					</MediaRefs>
 					<AuxBusRefs>
-						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}"/>
-						<AuxBusRef Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}"/>
+						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}" Color="9"/>
+						<AuxBusRef Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}" Color="9"/>
 					</AuxBusRefs>
 				</Event>
 				<Event Id="432124420" Name="Play_DUB_ARENA_1_1_2" ObjectPath="\Events\VOICES_WU\ARENA\Play_DUB_ARENA_1_1_2" GUID="{DE0F7AE6-9779-495E-AA81-79548E94F86D}" DurationType="OneShot" DurationMin="2.7846458" DurationMax="2.7846458">
@@ -1520,8 +1520,8 @@
 						<MediaRef Id="338368799"/>
 					</MediaRefs>
 					<AuxBusRefs>
-						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}"/>
-						<AuxBusRef Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}"/>
+						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}" Color="9"/>
+						<AuxBusRef Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}" Color="9"/>
 					</AuxBusRefs>
 				</Event>
 				<Event Id="431683137" Name="Play_DUB_ARENA_1_2_0" ObjectPath="\Events\VOICES_WU\ARENA\Play_DUB_ARENA_1_2_0" GUID="{C445715B-3FA8-4FBC-AB70-822C92FBB16B}" DurationType="OneShot" DurationMin="3.629021" DurationMax="3.629021">
@@ -1529,8 +1529,8 @@
 						<MediaRef Id="687283735"/>
 					</MediaRefs>
 					<AuxBusRefs>
-						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}"/>
-						<AuxBusRef Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}"/>
+						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}" Color="9"/>
+						<AuxBusRef Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}" Color="9"/>
 					</AuxBusRefs>
 				</Event>
 				<Event Id="431683136" Name="Play_DUB_ARENA_1_2_1" ObjectPath="\Events\VOICES_WU\ARENA\Play_DUB_ARENA_1_2_1" GUID="{91178517-FD31-404C-BD96-C93C088E3CC4}" DurationType="OneShot" DurationMin="3.111125" DurationMax="3.111125">
@@ -1538,8 +1538,8 @@
 						<MediaRef Id="1008445025"/>
 					</MediaRefs>
 					<AuxBusRefs>
-						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}"/>
-						<AuxBusRef Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}"/>
+						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}" Color="9"/>
+						<AuxBusRef Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}" Color="9"/>
 					</AuxBusRefs>
 				</Event>
 				<Event Id="431683139" Name="Play_DUB_ARENA_1_2_2" ObjectPath="\Events\VOICES_WU\ARENA\Play_DUB_ARENA_1_2_2" GUID="{746849AC-4863-4498-9421-326BA34079B6}" DurationType="OneShot" DurationMin="5.2867084" DurationMax="5.2867084">
@@ -1547,8 +1547,8 @@
 						<MediaRef Id="7231555"/>
 					</MediaRefs>
 					<AuxBusRefs>
-						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}"/>
-						<AuxBusRef Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}"/>
+						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}" Color="9"/>
+						<AuxBusRef Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}" Color="9"/>
 					</AuxBusRefs>
 				</Event>
 				<Event Id="431683138" Name="Play_DUB_ARENA_1_2_3" ObjectPath="\Events\VOICES_WU\ARENA\Play_DUB_ARENA_1_2_3" GUID="{2CE4857B-BB5A-42DF-B161-ABAB474C8636}" DurationType="OneShot" DurationMin="5.847521" DurationMax="5.847521">
@@ -1556,8 +1556,8 @@
 						<MediaRef Id="83922193"/>
 					</MediaRefs>
 					<AuxBusRefs>
-						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}"/>
-						<AuxBusRef Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}"/>
+						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}" Color="9"/>
+						<AuxBusRef Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}" Color="9"/>
 					</AuxBusRefs>
 				</Event>
 				<Event Id="3653030008" Name="Play_DUB_ARENA_1_3_0" ObjectPath="\Events\VOICES_WU\ARENA\Play_DUB_ARENA_1_3_0" GUID="{D4B8EC1E-8BCC-47F8-BDCC-CE8B7FC3ED1C}" DurationType="OneShot" DurationMin="6.983125" DurationMax="6.983125">
@@ -1565,8 +1565,8 @@
 						<MediaRef Id="289625457"/>
 					</MediaRefs>
 					<AuxBusRefs>
-						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}"/>
-						<AuxBusRef Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}"/>
+						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}" Color="9"/>
+						<AuxBusRef Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}" Color="9"/>
 					</AuxBusRefs>
 				</Event>
 				<Event Id="3653030009" Name="Play_DUB_ARENA_1_3_1" ObjectPath="\Events\VOICES_WU\ARENA\Play_DUB_ARENA_1_3_1" GUID="{D97FF8EC-ED87-4915-9E9E-1C708E08A828}" DurationType="OneShot" DurationMin="3.3593957" DurationMax="3.3593957">
@@ -1574,8 +1574,8 @@
 						<MediaRef Id="1031568460"/>
 					</MediaRefs>
 					<AuxBusRefs>
-						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}"/>
-						<AuxBusRef Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}"/>
+						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}" Color="9"/>
+						<AuxBusRef Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}" Color="9"/>
 					</AuxBusRefs>
 				</Event>
 				<Event Id="3653030010" Name="Play_DUB_ARENA_1_3_2" ObjectPath="\Events\VOICES_WU\ARENA\Play_DUB_ARENA_1_3_2" GUID="{0746558A-9F04-4B0B-B346-9BA6CF66D24C}" DurationType="OneShot" DurationMin="7.75375" DurationMax="7.75375">
@@ -1583,8 +1583,8 @@
 						<MediaRef Id="881110537"/>
 					</MediaRefs>
 					<AuxBusRefs>
-						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}"/>
-						<AuxBusRef Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}"/>
+						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}" Color="9"/>
+						<AuxBusRef Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}" Color="9"/>
 					</AuxBusRefs>
 				</Event>
 				<Event Id="3652588723" Name="Play_DUB_ARENA_1_4_0" ObjectPath="\Events\VOICES_WU\ARENA\Play_DUB_ARENA_1_4_0" GUID="{809EBE6E-E883-4D44-87C4-923BF4435E0D}" DurationType="OneShot" DurationMin="8.455104" DurationMax="8.455104">
@@ -1592,8 +1592,8 @@
 						<MediaRef Id="952186329"/>
 					</MediaRefs>
 					<AuxBusRefs>
-						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}"/>
-						<AuxBusRef Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}"/>
+						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}" Color="9"/>
+						<AuxBusRef Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}" Color="9"/>
 					</AuxBusRefs>
 				</Event>
 				<Event Id="431536106" Name="Play_DUB_ARENA_1_5_0" ObjectPath="\Events\VOICES_WU\ARENA\Play_DUB_ARENA_1_5_0" GUID="{2945E4E8-A2EB-4D65-B4D4-F7738BA67018}" DurationType="OneShot" DurationMin="4.879229" DurationMax="4.879229">
@@ -1601,8 +1601,8 @@
 						<MediaRef Id="899907561"/>
 					</MediaRefs>
 					<AuxBusRefs>
-						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}"/>
-						<AuxBusRef Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}"/>
+						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}" Color="9"/>
+						<AuxBusRef Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}" Color="9"/>
 					</AuxBusRefs>
 				</Event>
 				<Event Id="430991653" Name="Play_DUB_ARENA_1_6_0" ObjectPath="\Events\VOICES_WU\ARENA\Play_DUB_ARENA_1_6_0" GUID="{5A59BF8D-9B94-480D-A8BE-25466AFDDDAF}" DurationType="OneShot" DurationMin="10.083875" DurationMax="10.083875">
@@ -1610,8 +1610,8 @@
 						<MediaRef Id="435995496"/>
 					</MediaRefs>
 					<AuxBusRefs>
-						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}"/>
-						<AuxBusRef Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}"/>
+						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}" Color="9"/>
+						<AuxBusRef Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}" Color="9"/>
 					</AuxBusRefs>
 				</Event>
 				<Event Id="431138716" Name="Play_DUB_ARENA_1_7_0" ObjectPath="\Events\VOICES_WU\ARENA\Play_DUB_ARENA_1_7_0" GUID="{F6358FF6-964A-43B2-B731-095E10582A7A}" DurationType="OneShot" DurationMin="4.7953334" DurationMax="4.7953334">
@@ -1619,8 +1619,8 @@
 						<MediaRef Id="73406871"/>
 					</MediaRefs>
 					<AuxBusRefs>
-						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}"/>
-						<AuxBusRef Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}"/>
+						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}" Color="9"/>
+						<AuxBusRef Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}" Color="9"/>
 					</AuxBusRefs>
 				</Event>
 				<Event Id="3651897111" Name="Play_DUB_ARENA_1_8_0" ObjectPath="\Events\VOICES_WU\ARENA\Play_DUB_ARENA_1_8_0" GUID="{6C548FEA-C807-4A6A-B0D6-C9C265D28446}" DurationType="OneShot" DurationMin="5.6705" DurationMax="5.6705">
@@ -1628,8 +1628,8 @@
 						<MediaRef Id="140616404"/>
 					</MediaRefs>
 					<AuxBusRefs>
-						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}"/>
-						<AuxBusRef Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}"/>
+						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}" Color="9"/>
+						<AuxBusRef Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}" Color="9"/>
 					</AuxBusRefs>
 				</Event>
 				<Event Id="3652044174" Name="Play_DUB_ARENA_1_9_0" ObjectPath="\Events\VOICES_WU\ARENA\Play_DUB_ARENA_1_9_0" GUID="{EFF04B34-33D4-45A1-B15C-C75DF1C2FE84}" DurationType="OneShot" DurationMin="2.0564792" DurationMax="2.0564792">
@@ -1637,8 +1637,8 @@
 						<MediaRef Id="767088532"/>
 					</MediaRefs>
 					<AuxBusRefs>
-						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}"/>
-						<AuxBusRef Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}"/>
+						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}" Color="9"/>
+						<AuxBusRef Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}" Color="9"/>
 					</AuxBusRefs>
 				</Event>
 				<Event Id="3652044175" Name="Play_DUB_ARENA_1_9_1" ObjectPath="\Events\VOICES_WU\ARENA\Play_DUB_ARENA_1_9_1" GUID="{80641E23-366E-4E92-9C60-75DC0F6F4B16}" DurationType="OneShot" DurationMin="3.72625" DurationMax="3.72625">
@@ -1646,8 +1646,8 @@
 						<MediaRef Id="166584951"/>
 					</MediaRefs>
 					<AuxBusRefs>
-						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}"/>
-						<AuxBusRef Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}"/>
+						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}" Color="9"/>
+						<AuxBusRef Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}" Color="9"/>
 					</AuxBusRefs>
 				</Event>
 				<Event Id="3652044172" Name="Play_DUB_ARENA_1_9_2" ObjectPath="\Events\VOICES_WU\ARENA\Play_DUB_ARENA_1_9_2" GUID="{EADA4396-85FC-46B2-90D0-883FFB9406F7}" DurationType="OneShot" DurationMin="0.73702085" DurationMax="0.73702085">
@@ -1655,8 +1655,8 @@
 						<MediaRef Id="157392684"/>
 					</MediaRefs>
 					<AuxBusRefs>
-						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}"/>
-						<AuxBusRef Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}"/>
+						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}" Color="9"/>
+						<AuxBusRef Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}" Color="9"/>
 					</AuxBusRefs>
 				</Event>
 				<Event Id="3652044173" Name="Play_DUB_ARENA_1_9_3" ObjectPath="\Events\VOICES_WU\ARENA\Play_DUB_ARENA_1_9_3" GUID="{1D57409D-4D8B-4606-B981-BDD320FD64EB}" DurationType="OneShot" DurationMin="0.8344167" DurationMax="0.8344167">
@@ -1664,8 +1664,8 @@
 						<MediaRef Id="278418833"/>
 					</MediaRefs>
 					<AuxBusRefs>
-						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}"/>
-						<AuxBusRef Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}"/>
+						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}" Color="9"/>
+						<AuxBusRef Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}" Color="9"/>
 					</AuxBusRefs>
 				</Event>
 				<Event Id="3652044170" Name="Play_DUB_ARENA_1_9_4" ObjectPath="\Events\VOICES_WU\ARENA\Play_DUB_ARENA_1_9_4" GUID="{56D08A81-9E18-4348-AB5F-9AD1B9C7E045}" DurationType="OneShot" DurationMin="1.1080834" DurationMax="1.1080834">
@@ -1673,8 +1673,8 @@
 						<MediaRef Id="115645254"/>
 					</MediaRefs>
 					<AuxBusRefs>
-						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}"/>
-						<AuxBusRef Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}"/>
+						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}" Color="9"/>
+						<AuxBusRef Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}" Color="9"/>
 					</AuxBusRefs>
 				</Event>
 				<Event Id="3652044171" Name="Play_DUB_ARENA_1_9_5" ObjectPath="\Events\VOICES_WU\ARENA\Play_DUB_ARENA_1_9_5" GUID="{6C020C9C-BAF0-41AB-9564-CAFCF453F546}" DurationType="OneShot" DurationMin="2.2469792" DurationMax="2.2469792">
@@ -1682,8 +1682,8 @@
 						<MediaRef Id="279456589"/>
 					</MediaRefs>
 					<AuxBusRefs>
-						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}"/>
-						<AuxBusRef Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}"/>
+						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}" Color="9"/>
+						<AuxBusRef Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}" Color="9"/>
 					</AuxBusRefs>
 				</Event>
 				<Event Id="3652044168" Name="Play_DUB_ARENA_1_9_6" ObjectPath="\Events\VOICES_WU\ARENA\Play_DUB_ARENA_1_9_6" GUID="{1EBCCAD9-8483-4BE3-AFBC-EA3F1550B975}" DurationType="OneShot" DurationMin="4.590271" DurationMax="4.590271">
@@ -1691,56 +1691,56 @@
 						<MediaRef Id="411650085"/>
 					</MediaRefs>
 					<AuxBusRefs>
-						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}"/>
-						<AuxBusRef Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}"/>
+						<AuxBusRef Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}" Color="9"/>
+						<AuxBusRef Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}" Color="9"/>
 					</AuxBusRefs>
 				</Event>
 			</Events>
 		</SoundBank>
-		<SoundBank Id="3250948517" Type="User" GUID="{8CC30184-23AF-4DB5-9844-9B04DF10A650}" Language="SFX" Hash="{48FF8BF8-8354-C460-3500-59FF52C15CEE}">
+		<SoundBank Id="3250948517" Type="User" GUID="{8CC30184-23AF-4DB5-9844-9B04DF10A650}" Color="10" Language="SFX" Hash="{3B991071-FA11-38EE-6363-B8BCA8C22EE3}">
 			<ObjectPath>\SoundBanks\SoundBanks_WU\FOES_Tourelle_SB</ObjectPath>
 			<ShortName>FOES_Tourelle_SB</ShortName>
 			<Path>FOES_Tourelle_SB.bnk</Path>
 			<Media>
 				<File Id="37180877" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>FOES_SFX_Tourelle_Shoot_02.wav</ShortName>
-					<CachePath>SFX/FOES_SFX_Tourelle_Shoot_02_818F3B66.wem</CachePath>
+					<CachePath>42/{4299AE49-FEB5-50AD-3AD7-4E5EAD9499CF}.wem</CachePath>
 				</File>
 				<File Id="119224371" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>FOES_SFX_Tourelle_Shoot_05.wav</ShortName>
-					<CachePath>SFX/FOES_SFX_Tourelle_Shoot_05_818F3B66.wem</CachePath>
+					<CachePath>F3/{F398FB23-2DD4-0AD3-ED63-52EAD3741B56}.wem</CachePath>
 				</File>
 				<File Id="363741101" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>FOES_SFX_Tourelle_Shoot_04.wav</ShortName>
-					<CachePath>SFX/FOES_SFX_Tourelle_Shoot_04_818F3B66.wem</CachePath>
+					<CachePath>FE/{FED8791A-63B4-B95F-C6DC-6BAA4A6F6103}.wem</CachePath>
 				</File>
 				<File Id="387455546" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>FOES_SFX_Tourelle_Shoot_01.wav</ShortName>
-					<CachePath>SFX/FOES_SFX_Tourelle_Shoot_01_818F3B66.wem</CachePath>
+					<CachePath>70/{70992BED-DE38-BA2D-95CE-15BBDC146BA1}.wem</CachePath>
 				</File>
 				<File Id="515409144" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>FOES_SFX_Tourelle_Shoot_03.wav</ShortName>
-					<CachePath>SFX/FOES_SFX_Tourelle_Shoot_03_818F3B66.wem</CachePath>
+					<CachePath>20/{20B67781-76DF-4682-1B08-CDA052D5A194}.wem</CachePath>
 				</File>
 				<File Id="546468767" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>SFX\FOES_SFX_Tourelle_Death_04.wav</ShortName>
-					<CachePath>SFX/SFX/FOES_SFX_Tourelle_Death_04_818F3B66.wem</CachePath>
+					<CachePath>69/{69F2C0ED-B60A-CD6E-D4FC-EC48B1832686}.wem</CachePath>
 				</File>
 				<File Id="726017957" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>SFX\FOES_SFX_Tourelle_Death_01.wav</ShortName>
-					<CachePath>SFX/SFX/FOES_SFX_Tourelle_Death_01_818F3B66.wem</CachePath>
+					<CachePath>EC/{EC029F1B-C079-2B3C-2062-46B52EB89F7B}.wem</CachePath>
 				</File>
 				<File Id="786312046" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>SFX\FOES_SFX_Tourelle_Death_02.wav</ShortName>
-					<CachePath>SFX/SFX/FOES_SFX_Tourelle_Death_02_818F3B66.wem</CachePath>
+					<CachePath>63/{63652D44-0761-9B07-C3DD-4513C20F3CD9}.wem</CachePath>
 				</File>
 				<File Id="885262966" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>SFX\FOES_SFX_Projectil.wav</ShortName>
-					<CachePath>SFX/SFX/FOES_SFX_Projectil_FBC78EF0.wem</CachePath>
+					<CachePath>D8/{D87718AD-8ACC-181C-0452-59C17E8B6FE3}.wem</CachePath>
 				</File>
 				<File Id="1052042829" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>SFX\FOES_SFX_Tourelle_Death_03.wav</ShortName>
-					<CachePath>SFX/SFX/FOES_SFX_Tourelle_Death_03_818F3B66.wem</CachePath>
+					<CachePath>04/{0414C370-46C1-F103-07A8-361DD2656568}.wem</CachePath>
 				</File>
 			</Media>
 			<Plugins>
@@ -1760,12 +1760,12 @@
 				</ShareSets>
 			</Plugins>
 			<Events>
-				<Event Id="696694406" Name="Play_FOES_SFX_Projectil" ObjectPath="\Events\FOES_Tourelle_WU\Play_FOES_SFX_Projectil" GUID="{B21D01D5-2B89-4090-9F00-456FE3EF49C7}" MaxAttenuation="10" DurationType="Infinite">
+				<Event Id="696694406" Name="Play_FOES_SFX_Projectil" ObjectPath="\Events\FOES_Tourelle_WU\Play_FOES_SFX_Projectil" GUID="{B21D01D5-2B89-4090-9F00-456FE3EF49C7}" Color="10" MaxAttenuation="10" DurationType="Infinite">
 					<MediaRefs>
 						<MediaRef Id="885262966"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="305372709" Name="Play_FOES_SFX_Tourelle_Death_RC" ObjectPath="\Events\FOES_Tourelle_WU\Play_FOES_SFX_Tourelle_Death_RC" GUID="{03966878-2B14-4479-9F3B-3C317D6EB7B1}" MaxAttenuation="3000" DurationType="OneShot" DurationMin="1.3826165" DurationMax="2.620923">
+				<Event Id="305372709" Name="Play_FOES_SFX_Tourelle_Death_RC" ObjectPath="\Events\FOES_Tourelle_WU\Play_FOES_SFX_Tourelle_Death_RC" GUID="{03966878-2B14-4479-9F3B-3C317D6EB7B1}" Color="10" MaxAttenuation="3000" DurationType="OneShot" DurationMin="1.3826165" DurationMax="2.620923">
 					<MediaRefs>
 						<MediaRef Id="546468767"/>
 						<MediaRef Id="726017957"/>
@@ -1773,7 +1773,7 @@
 						<MediaRef Id="1052042829"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="2480809816" Name="Play_FOES_SFX_Tourelle_Shoot_RC" ObjectPath="\Events\FOES_Tourelle_WU\Play_FOES_SFX_Tourelle_Shoot_RC" GUID="{140E36FB-31F3-4C66-AC5D-E9E86C57BA68}" MaxAttenuation="3000" DurationType="OneShot" DurationMin="1.2318597" DurationMax="2.567487">
+				<Event Id="2480809816" Name="Play_FOES_SFX_Tourelle_Shoot_RC" ObjectPath="\Events\FOES_Tourelle_WU\Play_FOES_SFX_Tourelle_Shoot_RC" GUID="{140E36FB-31F3-4C66-AC5D-E9E86C57BA68}" Color="10" MaxAttenuation="3000" DurationType="OneShot" DurationMin="1.2318597" DurationMax="2.567487">
 					<MediaRefs>
 						<MediaRef Id="37180877"/>
 						<MediaRef Id="119224371"/>
@@ -1782,23 +1782,23 @@
 						<MediaRef Id="515409144"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="4047329776" Name="Stop_FOES_SFX_Projectil" ObjectPath="\Events\FOES_Tourelle_WU\Stop_FOES_SFX_Projectil" GUID="{DD66D73B-753F-4CEE-9201-B7AEDEE761D6}" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+				<Event Id="4047329776" Name="Stop_FOES_SFX_Projectil" ObjectPath="\Events\FOES_Tourelle_WU\Stop_FOES_SFX_Projectil" GUID="{DD66D73B-753F-4CEE-9201-B7AEDEE761D6}" Color="10" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
 			</Events>
 			<Busses>
-				<Bus Id="109159411" Name="Game_Global" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global" GUID="{FAD5C029-0A02-4BD2-97F7-F8C20B7A95BD}"/>
-				<Bus Id="393239870" Name="SFX" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global\SFX" GUID="{EB4CE24D-8196-408E-9775-5E8EEFE98495}"/>
-				<Bus Id="1117531639" Name="AMB" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global\AMB" GUID="{C1595F21-FBBF-4B04-AC1A-78D86879A937}"/>
-				<Bus Id="1551306167" Name="UI" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\UI" GUID="{B5E7816E-C3FC-4992-B763-4078089CE674}"/>
-				<Bus Id="1685527061" Name="MC" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global\MC" GUID="{B3079877-B26F-4239-A3AB-9C7AFFCBC797}"/>
-				<Bus Id="2290178407" Name="FOES_Tourelle" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global\FOES_Tourelle" GUID="{D783D57E-4B6F-4101-8F5F-FD96F0409170}"/>
-				<Bus Id="3313685232" Name="Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Voices" GUID="{00AA482D-3F12-46A5-8177-E8A172D08E63}"/>
-				<Bus Id="3623095082" Name="FOES_Flying" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global\FOES_Flying" GUID="{439831F9-AA50-4CD2-98C3-ACD8B187380E}"/>
-				<Bus Id="3991942870" Name="Music" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Music" GUID="{08156595-7637-4348-AC3C-2EDE3FCCB08F}"/>
-				<Bus Id="4056684167" Name="Master" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master" GUID="{F3A976BC-47E9-46E5-9EEC-F566BB39DBEE}"/>
-				<Bus Id="4219618961" Name="AMB_Crowd" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global\AMB_Crowd" GUID="{985719AF-3534-41FC-A751-99E11C3F7784}"/>
+				<Bus Id="109159411" Name="Game_Global" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global" GUID="{FAD5C029-0A02-4BD2-97F7-F8C20B7A95BD}" Color="16"/>
+				<Bus Id="393239870" Name="SFX" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global\SFX" GUID="{EB4CE24D-8196-408E-9775-5E8EEFE98495}" Color="17"/>
+				<Bus Id="1117531639" Name="AMB" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global\AMB" GUID="{C1595F21-FBBF-4B04-AC1A-78D86879A937}" Color="4"/>
+				<Bus Id="1551306167" Name="UI" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\UI" GUID="{B5E7816E-C3FC-4992-B763-4078089CE674}" Color="1"/>
+				<Bus Id="1685527061" Name="MC" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global\MC" GUID="{B3079877-B26F-4239-A3AB-9C7AFFCBC797}" Color="19"/>
+				<Bus Id="2290178407" Name="FOES_Tourelle" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global\FOES_Tourelle" GUID="{D783D57E-4B6F-4101-8F5F-FD96F0409170}" Color="10"/>
+				<Bus Id="3313685232" Name="Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Voices" GUID="{00AA482D-3F12-46A5-8177-E8A172D08E63}" Color="23"/>
+				<Bus Id="3623095082" Name="FOES_Flying" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global\FOES_Flying" GUID="{439831F9-AA50-4CD2-98C3-ACD8B187380E}" Color="11"/>
+				<Bus Id="3991942870" Name="Music" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Music" GUID="{08156595-7637-4348-AC3C-2EDE3FCCB08F}" Color="24"/>
+				<Bus Id="4056684167" Name="Master" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master" GUID="{F3A976BC-47E9-46E5-9EEC-F566BB39DBEE}" Color="9"/>
+				<Bus Id="4219618961" Name="AMB_Crowd" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global\AMB_Crowd" GUID="{985719AF-3534-41FC-A751-99E11C3F7784}" Color="4"/>
 			</Busses>
 			<AuxBusses>
-				<AuxBus Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}">
+				<AuxBus Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}" Color="9">
 					<PluginRefs>
 						<ShareSets>
 							<PluginRef Id="3442768367"/>
@@ -1806,14 +1806,14 @@
 						</ShareSets>
 					</PluginRefs>
 				</AuxBus>
-				<AuxBus Id="395111090" Name="RVB_BlackHouses" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_BlackHouses" GUID="{17B5E8F9-026F-4941-A027-1C0641AB0C14}">
+				<AuxBus Id="395111090" Name="RVB_BlackHouses" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_BlackHouses" GUID="{17B5E8F9-026F-4941-A027-1C0641AB0C14}" Color="26">
 					<PluginRefs>
 						<Custom>
 							<PluginRef Id="688337969"/>
 						</Custom>
 					</PluginRefs>
 				</AuxBus>
-				<AuxBus Id="1215931641" Name="RVB_Arena" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Arena" GUID="{54C7EBDA-4885-4850-8969-FB63BDACC807}">
+				<AuxBus Id="1215931641" Name="RVB_Arena" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Arena" GUID="{54C7EBDA-4885-4850-8969-FB63BDACC807}" Color="26">
 					<PluginRefs>
 						<Custom>
 							<PluginRef Id="272452003"/>
@@ -1821,35 +1821,35 @@
 						</Custom>
 					</PluginRefs>
 				</AuxBus>
-				<AuxBus Id="1408817756" Name="RVB_RFX_Arena" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_RFX_Arena" GUID="{CC7A2F05-EE75-4E8E-B097-98A1938CB5E4}">
+				<AuxBus Id="1408817756" Name="RVB_RFX_Arena" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_RFX_Arena" GUID="{CC7A2F05-EE75-4E8E-B097-98A1938CB5E4}" Color="27">
 					<PluginRefs>
 						<Custom>
 							<PluginRef Id="169636257"/>
 						</Custom>
 					</PluginRefs>
 				</AuxBus>
-				<AuxBus Id="2344250611" Name="RVB_Basement" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Basement" GUID="{BF09F5DA-71E8-4CAC-B0EB-19A1C29389BA}">
+				<AuxBus Id="2344250611" Name="RVB_Basement" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Basement" GUID="{BF09F5DA-71E8-4CAC-B0EB-19A1C29389BA}" Color="26">
 					<PluginRefs>
 						<Custom>
 							<PluginRef Id="97605317"/>
 						</Custom>
 					</PluginRefs>
 				</AuxBus>
-				<AuxBus Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}">
+				<AuxBus Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}" Color="9">
 					<PluginRefs>
 						<ShareSets>
 							<PluginRef Id="1008402193"/>
 						</ShareSets>
 					</PluginRefs>
 				</AuxBus>
-				<AuxBus Id="3571340017" Name="RVB_Hub" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Hub" GUID="{D499EBE4-F26A-48E5-B89D-1F7C43D829E3}">
+				<AuxBus Id="3571340017" Name="RVB_Hub" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Hub" GUID="{D499EBE4-F26A-48E5-B89D-1F7C43D829E3}" Color="26">
 					<PluginRefs>
 						<Custom>
 							<PluginRef Id="16383166"/>
 						</Custom>
 					</PluginRefs>
 				</AuxBus>
-				<AuxBus Id="3670521640" Name="RVB_Pyramid" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Pyramid" GUID="{668EA0D2-771E-452F-B241-11793F9755B0}">
+				<AuxBus Id="3670521640" Name="RVB_Pyramid" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Pyramid" GUID="{668EA0D2-771E-452F-B241-11793F9755B0}" Color="26">
 					<PluginRefs>
 						<Custom>
 							<PluginRef Id="498081942"/>
@@ -1861,7 +1861,7 @@
 				<GameParameter Id="1190880401" Name="RTPC_DoorPyramid" ObjectPath="\Game Parameters\Default Work Unit\RTPC_DoorPyramid" GUID="{D2AEC1CE-EF9E-486E-AE8B-FB121AC42B53}"/>
 				<GameParameter Id="2176662110" Name="RTPC_Tourelle_Projectil" ObjectPath="\Game Parameters\Default Work Unit\RTPC_Tourelle_Projectil" GUID="{00C509F2-F7BB-46D5-A5C8-1D7FA60484C0}"/>
 				<GameParameter Id="3438452020" Name="RTPC_SFX" ObjectPath="\Game Parameters\Default Work Unit\RTPC_SFX" GUID="{DD8DB651-4F18-462F-97D3-0195BD02087F}"/>
-				<GameParameter Id="3445598977" Name="RTPC_Master" ObjectPath="\Game Parameters\Default Work Unit\RTPC_Master" GUID="{74E6261E-6493-44A8-BAE7-1E79ABF4DED1}"/>
+				<GameParameter Id="3445598977" Name="RTPC_Master" ObjectPath="\Game Parameters\Default Work Unit\RTPC_Master" GUID="{74E6261E-6493-44A8-BAE7-1E79ABF4DED1}" Color="10"/>
 				<GameParameter Id="3553041361" Name="RTPC_AMB" ObjectPath="\Game Parameters\Default Work Unit\RTPC_AMB" GUID="{2EA08633-9826-4131-9D31-3F7F27FCA59E}"/>
 				<GameParameter Id="3709650428" Name="RTPC_Music" ObjectPath="\Game Parameters\Default Work Unit\RTPC_Music" GUID="{5DA4119B-967E-473A-9D3F-7F6BD36532D0}"/>
 				<GameParameter Id="4031456682" Name="RTPC_Voices" ObjectPath="\Game Parameters\Default Work Unit\RTPC_Voices" GUID="{F4B8FD9E-0723-43B2-923D-1563F7D70095}"/>
@@ -1878,206 +1878,206 @@
 				</StateGroup>
 			</StateGroups>
 		</SoundBank>
-		<SoundBank Id="3256182613" Type="User" GUID="{9DC5CBA4-02D0-4677-A565-21ECA413E694}" Language="SFX" Hash="{8D610FA8-9911-A741-8392-CAD947332A22}">
+		<SoundBank Id="3256182613" Type="User" GUID="{9DC5CBA4-02D0-4677-A565-21ECA413E694}" Color="4" Language="SFX" Hash="{7CC153C0-66E8-12C3-546E-09D8454CD4D2}">
 			<ObjectPath>\SoundBanks\SoundBanks_WU\AMB_SB</ObjectPath>
 			<ShortName>AMB_SB</ShortName>
 			<Path>AMB_SB.bnk</Path>
 			<Media>
 				<File Id="4481750" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\RFX\AMB_RFX_Crowd_Pitched_Reaction_04.wav</ShortName>
-					<CachePath>SFX/AMB/RFX/AMB_RFX_Crowd_Pitched_Reaction_04_818F3B66.wem</CachePath>
+					<CachePath>51/{51AC1D63-CEE4-5C33-895C-30F1C6AB9F29}.wem</CachePath>
 				</File>
 				<File Id="84736735" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\Pads\AMB_RFX_Negative_Reaction_06.wav</ShortName>
-					<CachePath>SFX/AMB/Pads/AMB_RFX_Negative_Reaction_06_818F3B66.wem</CachePath>
+					<CachePath>64/{64D69DE7-3060-E3F8-2CAB-2DAE27B79C20}.wem</CachePath>
 				</File>
 				<File Id="127175197" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\RFX\AMB_RFX_Crowd_Individual_05.wav</ShortName>
-					<CachePath>SFX/AMB/RFX/AMB_RFX_Crowd_Individual_05_818F3B66.wem</CachePath>
+					<CachePath>C0/{C0C65EF3-F4D2-7A69-A85F-83D596873CC7}.wem</CachePath>
 				</File>
 				<File Id="138942913" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\RFX\AMB_RFX_Crowd_ClassicReaction_06.wav</ShortName>
-					<CachePath>SFX/AMB/RFX/AMB_RFX_Crowd_ClassicReaction_06_818F3B66.wem</CachePath>
+					<CachePath>AE/{AE609917-19F0-FB39-4C9A-51433BDA89DB}.wem</CachePath>
 				</File>
 				<File Id="149514301" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\RFX\AMB_RFX_Crowd_Individual_03.wav</ShortName>
-					<CachePath>SFX/AMB/RFX/AMB_RFX_Crowd_Individual_03_818F3B66.wem</CachePath>
+					<CachePath>59/{596F381A-62E4-027A-F097-4C232AB01358}.wem</CachePath>
 				</File>
 				<File Id="155546430" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\RFX\AMB_RFX_Crowd_ClassicReaction_07.wav</ShortName>
-					<CachePath>SFX/AMB/RFX/AMB_RFX_Crowd_ClassicReaction_07_818F3B66.wem</CachePath>
+					<CachePath>78/{78BD4B09-9C2A-3D8A-AC07-B5DD74397BB9}.wem</CachePath>
 				</File>
 				<File Id="179362195" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\Pads\AMB_RFX_Negative_Reaction_08.wav</ShortName>
-					<CachePath>SFX/AMB/Pads/AMB_RFX_Negative_Reaction_08_818F3B66.wem</CachePath>
+					<CachePath>B7/{B70AABA4-B023-7E31-949F-D3C65585E919}.wem</CachePath>
 				</File>
 				<File Id="203208671" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\RFX\AMB_RFX_Crowd_Individual_07.wav</ShortName>
-					<CachePath>SFX/AMB/RFX/AMB_RFX_Crowd_Individual_07_818F3B66.wem</CachePath>
+					<CachePath>40/{40C55153-F350-77E3-F109-E5ADDE70D9E2}.wem</CachePath>
 				</File>
 				<File Id="268147826" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\Pads\AMB_RFX_Negative_Reaction_07.wav</ShortName>
-					<CachePath>SFX/AMB/Pads/AMB_RFX_Negative_Reaction_07_818F3B66.wem</CachePath>
+					<CachePath>EE/{EE5BCA64-79F1-A21D-FF3F-EA2E6D401A0D}.wem</CachePath>
 				</File>
 				<File Id="332135939" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\Pads\AMB_RFX_Negative_Reaction_09.wav</ShortName>
-					<CachePath>SFX/AMB/Pads/AMB_RFX_Negative_Reaction_09_818F3B66.wem</CachePath>
+					<CachePath>5D/{5DC3424B-6D2D-5915-E357-2BA25DF54FEC}.wem</CachePath>
 				</File>
 				<File Id="339009553" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\Pads\AMB_RFX_Negative_Reaction_01.wav</ShortName>
-					<CachePath>SFX/AMB/Pads/AMB_RFX_Negative_Reaction_01_818F3B66.wem</CachePath>
+					<CachePath>9B/{9B1C6E1C-12F4-7CDD-6A33-F8092401EFC1}.wem</CachePath>
 				</File>
 				<File Id="354075387" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\RFX\AMB_RFX_Crowd_Pitched_Reaction_08.wav</ShortName>
-					<CachePath>SFX/AMB/RFX/AMB_RFX_Crowd_Pitched_Reaction_08_818F3B66.wem</CachePath>
+					<CachePath>99/{99BF88F9-C472-8A91-053B-BC6654DC20AB}.wem</CachePath>
 				</File>
 				<File Id="367189538" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\RFX\AMB_RFX_WarHorns_05.wav</ShortName>
-					<CachePath>SFX/AMB/RFX/AMB_RFX_WarHorns_05_818F3B66.wem</CachePath>
+					<CachePath>77/{7788C646-8D3E-69DD-CFCE-B9F8A37CF251}.wem</CachePath>
 				</File>
 				<File Id="475148405" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\RFX\AMB_RFX_WarHorns_03.wav</ShortName>
-					<CachePath>SFX/AMB/RFX/AMB_RFX_WarHorns_03_818F3B66.wem</CachePath>
+					<CachePath>76/{760376C2-2B5B-F60B-EADC-DA94C1715080}.wem</CachePath>
 				</File>
 				<File Id="484735255" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\Pads\AMB_RFX_Negative_Reaction_05.wav</ShortName>
-					<CachePath>SFX/AMB/Pads/AMB_RFX_Negative_Reaction_05_818F3B66.wem</CachePath>
+					<CachePath>39/{39BA65D4-D145-F8AD-81E3-E2E278589B27}.wem</CachePath>
 				</File>
 				<File Id="533084126" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\RFX\AMB_RFX_Crowd_ClassicReaction_03.wav</ShortName>
-					<CachePath>SFX/AMB/RFX/AMB_RFX_Crowd_ClassicReaction_03_818F3B66.wem</CachePath>
+					<CachePath>48/{48859D68-8E01-BA14-516C-3C0FCFD2914D}.wem</CachePath>
 				</File>
 				<File Id="552226407" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\RFX\AMB_RFX_Crowd_Individual_04.wav</ShortName>
-					<CachePath>SFX/AMB/RFX/AMB_RFX_Crowd_Individual_04_818F3B66.wem</CachePath>
+					<CachePath>DC/{DC796F65-D858-8B09-3602-1F7A79108FDD}.wem</CachePath>
 				</File>
 				<File Id="585712298" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\RFX\AMB_RFX_Crowd_Pitched_Reaction_01.wav</ShortName>
-					<CachePath>SFX/AMB/RFX/AMB_RFX_Crowd_Pitched_Reaction_01_818F3B66.wem</CachePath>
+					<CachePath>40/{40B54D62-F468-D59B-6F42-4753B5EAFC7B}.wem</CachePath>
 				</File>
 				<File Id="680837929" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\RFX\AMB_RFX_Crowd_Pitched_Reaction_05.wav</ShortName>
-					<CachePath>SFX/AMB/RFX/AMB_RFX_Crowd_Pitched_Reaction_05_818F3B66.wem</CachePath>
+					<CachePath>DF/{DFA6B4FD-DA74-9096-E87A-37555CB99C34}.wem</CachePath>
 				</File>
 				<File Id="683095756" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\RFX\AMB_PAD_Hub.wav</ShortName>
-					<CachePath>SFX/AMB/RFX/AMB_PAD_Hub_FBC78EF0.wem</CachePath>
+					<CachePath>E2/{E2088ED0-2C56-9792-C16A-B55599F7342A}.wem</CachePath>
 				</File>
 				<File Id="742879851" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\RFX\AMB_RFX_Crowd_Individual_01.wav</ShortName>
-					<CachePath>SFX/AMB/RFX/AMB_RFX_Crowd_Individual_01_818F3B66.wem</CachePath>
+					<CachePath>46/{46D3C22D-8C90-9428-8F0D-5EF7C02B0433}.wem</CachePath>
 				</File>
 				<File Id="754770262" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\SP\AMB_SP_Incinerator.wav</ShortName>
-					<CachePath>SFX/AMB/SP/AMB_SP_Incinerator_FBC78EF0.wem</CachePath>
+					<CachePath>83/{83940751-A8B5-C1DF-6976-6D1709D098B8}.wem</CachePath>
 				</File>
 				<File Id="754998867" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\RFX\AMB_RFX_WarHorns_01.wav</ShortName>
-					<CachePath>SFX/AMB/RFX/AMB_RFX_WarHorns_01_818F3B66.wem</CachePath>
+					<CachePath>98/{98DA4CF2-525E-1D1D-CFDC-D924AAD260DB}.wem</CachePath>
 				</File>
 				<File Id="762008811" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\RFX\AMB_RFX_Crowd_ClassicReaction_01.wav</ShortName>
-					<CachePath>SFX/AMB/RFX/AMB_RFX_Crowd_ClassicReaction_01_818F3B66.wem</CachePath>
+					<CachePath>86/{8645F59B-3C67-78F8-C239-7AC6D017F895}.wem</CachePath>
 				</File>
 				<File Id="762580490" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\RFX\AMB_RFX_WarHorns_06.wav</ShortName>
-					<CachePath>SFX/AMB/RFX/AMB_RFX_WarHorns_06_818F3B66.wem</CachePath>
+					<CachePath>70/{704D3191-19CA-2D8D-0E12-9BBBE3740375}.wem</CachePath>
 				</File>
 				<File Id="773762840" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\RFX\AMB_RFX_Crowd_ClassicReaction_04.wav</ShortName>
-					<CachePath>SFX/AMB/RFX/AMB_RFX_Crowd_ClassicReaction_04_818F3B66.wem</CachePath>
+					<CachePath>9E/{9EFD9145-6944-2515-F524-2B68E6C4ABBF}.wem</CachePath>
 				</File>
 				<File Id="783949220" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\AMB_PAD_Crowd.wav</ShortName>
-					<CachePath>SFX/AMB/AMB_PAD_Crowd_FBC78EF0.wem</CachePath>
+					<CachePath>39/{399F1149-7F7B-AF17-551B-EACA048CCA05}.wem</CachePath>
 				</File>
 				<File Id="788907204" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\Pads\AMB_PAD_CorpseTrap.wav</ShortName>
-					<CachePath>SFX/AMB/Pads/AMB_PAD_CorpseTrap_FBC78EF0.wem</CachePath>
+					<CachePath>80/{80FDA040-07FD-95C9-7622-C403DDB501E8}.wem</CachePath>
 				</File>
 				<File Id="809714582" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\RFX\AMB_RFX_WarHorns_07.wav</ShortName>
-					<CachePath>SFX/AMB/RFX/AMB_RFX_WarHorns_07_818F3B66.wem</CachePath>
+					<CachePath>95/{955801AD-BB8C-25EC-0096-BF418342D7EA}.wem</CachePath>
 				</File>
 				<File Id="809843148" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\Pads\AMB_RFX_Negative_Reaction_02.wav</ShortName>
-					<CachePath>SFX/AMB/Pads/AMB_RFX_Negative_Reaction_02_818F3B66.wem</CachePath>
+					<CachePath>74/{74F4297A-A2C1-F65F-6EB8-5D09B70E0D9D}.wem</CachePath>
 				</File>
 				<File Id="828835349" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\RFX\AMB_RFX_Crowd_Individual_06.wav</ShortName>
-					<CachePath>SFX/AMB/RFX/AMB_RFX_Crowd_Individual_06_818F3B66.wem</CachePath>
+					<CachePath>49/{495571B2-DF9A-BAF4-0DE2-7A91BC7CC3CE}.wem</CachePath>
 				</File>
 				<File Id="832021469" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\Pads\AMB_RFX_Negative_Reaction_03.wav</ShortName>
-					<CachePath>SFX/AMB/Pads/AMB_RFX_Negative_Reaction_03_818F3B66.wem</CachePath>
+					<CachePath>D7/{D7C35C04-3EBF-9F08-C3DA-10959DB19742}.wem</CachePath>
 				</File>
 				<File Id="832253334" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\RFX\AMB_RFX_Crowd_Pitched_Reaction_03.wav</ShortName>
-					<CachePath>SFX/AMB/RFX/AMB_RFX_Crowd_Pitched_Reaction_03_818F3B66.wem</CachePath>
+					<CachePath>09/{09B1FA56-ADF7-8369-EC82-6FC4395EDE5F}.wem</CachePath>
 				</File>
 				<File Id="838454934" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\Pads\AMB_PAD_ControlCenter.wav</ShortName>
-					<CachePath>SFX/AMB/Pads/AMB_PAD_ControlCenter_FBC78EF0.wem</CachePath>
+					<CachePath>92/{9254CD53-F839-E9D6-9E5B-FE75F3638879}.wem</CachePath>
 				</File>
 				<File Id="843502340" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\RFX\AMB_RFX_Crowd_ClassicReaction_02.wav</ShortName>
-					<CachePath>SFX/AMB/RFX/AMB_RFX_Crowd_ClassicReaction_02_818F3B66.wem</CachePath>
+					<CachePath>8D/{8D79C84C-D6E6-A992-8288-0487DA2DE8B9}.wem</CachePath>
 				</File>
 				<File Id="855821515" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\RFX\AMB_RFX_Crowd_ClassicReaction_08.wav</ShortName>
-					<CachePath>SFX/AMB/RFX/AMB_RFX_Crowd_ClassicReaction_08_818F3B66.wem</CachePath>
+					<CachePath>35/{35B5D21D-EFEA-8262-D2AE-C4E3DDBDF451}.wem</CachePath>
 				</File>
 				<File Id="864351804" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\RFX\AMB_RFX_Crowd_Pitched_Reaction_06.wav</ShortName>
-					<CachePath>SFX/AMB/RFX/AMB_RFX_Crowd_Pitched_Reaction_06_818F3B66.wem</CachePath>
+					<CachePath>56/{56EB23CE-AA84-E1F4-70C6-B1F4B639EBD7}.wem</CachePath>
 				</File>
 				<File Id="877176436" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\RFX\AMB_RFX_Crowd_ClassicReaction_05.wav</ShortName>
-					<CachePath>SFX/AMB/RFX/AMB_RFX_Crowd_ClassicReaction_05_818F3B66.wem</CachePath>
+					<CachePath>87/{87416B6E-788E-84FE-DCAA-1D93387C0109}.wem</CachePath>
 				</File>
 				<File Id="900351003" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\RFX\AMB_RFX_WarHorns_02.wav</ShortName>
-					<CachePath>SFX/AMB/RFX/AMB_RFX_WarHorns_02_818F3B66.wem</CachePath>
+					<CachePath>15/{151F2BF3-3DB9-B2FB-AB01-8406F62FBBBA}.wem</CachePath>
 				</File>
 				<File Id="900928265" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\RFX\AMB_RFX_Crowd_Pitched_Reaction_02.wav</ShortName>
-					<CachePath>SFX/AMB/RFX/AMB_RFX_Crowd_Pitched_Reaction_02_818F3B66.wem</CachePath>
+					<CachePath>0F/{0F5835C7-BDAB-F1DF-6D69-1AB9877B10F0}.wem</CachePath>
 				</File>
 				<File Id="919954422" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\RFX\AMB_RFX_Crowd_Individual_02.wav</ShortName>
-					<CachePath>SFX/AMB/RFX/AMB_RFX_Crowd_Individual_02_818F3B66.wem</CachePath>
+					<CachePath>C5/{C5D4F69F-4A43-C271-EA82-1422D7D302A0}.wem</CachePath>
 				</File>
 				<File Id="935598577" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\Pads\AMB_RFX_Applause_04.wav</ShortName>
-					<CachePath>SFX/AMB/Pads/AMB_RFX_Applause_04_818F3B66.wem</CachePath>
+					<CachePath>A1/{A1A4EAE7-5EEC-6810-916D-26C1AE582470}.wem</CachePath>
 				</File>
 				<File Id="946185580" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\Pads\AMB_RFX_Negative_Reaction_04.wav</ShortName>
-					<CachePath>SFX/AMB/Pads/AMB_RFX_Negative_Reaction_04_818F3B66.wem</CachePath>
+					<CachePath>B2/{B20B2E31-60CB-2204-C02D-8A9D08E4B105}.wem</CachePath>
 				</File>
 				<File Id="966132969" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\Pads\AMB_RFX_Applause_02.wav</ShortName>
-					<CachePath>SFX/AMB/Pads/AMB_RFX_Applause_02_818F3B66.wem</CachePath>
+					<CachePath>C5/{C579FBFC-D2C1-BD57-554A-389BEF53FCB0}.wem</CachePath>
 				</File>
 				<File Id="1019889613" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\Pads\AMB_PAD_Pyramid_Closed.wav</ShortName>
-					<CachePath>SFX/AMB/Pads/AMB_PAD_Pyramid_Closed_FBC78EF0.wem</CachePath>
+					<CachePath>49/{4971C234-78D6-C8D7-BA8A-56A4853ACAC9}.wem</CachePath>
 				</File>
 				<File Id="1022096015" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\Pads\AMB_RFX_Applause_03.wav</ShortName>
-					<CachePath>SFX/AMB/Pads/AMB_RFX_Applause_03_818F3B66.wem</CachePath>
+					<CachePath>75/{752AF48E-A4FD-B874-DFE2-4B47C5363960}.wem</CachePath>
 				</File>
 				<File Id="1023349206" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\Pads\AMB_RFX_Applause_01.wav</ShortName>
-					<CachePath>SFX/AMB/Pads/AMB_RFX_Applause_01_818F3B66.wem</CachePath>
+					<CachePath>30/{3075027B-5B80-397B-D65C-E663C546A92C}.wem</CachePath>
 				</File>
 				<File Id="1029183318" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\RFX\AMB_RFX_WarHorns_04.wav</ShortName>
-					<CachePath>SFX/AMB/RFX/AMB_RFX_WarHorns_04_818F3B66.wem</CachePath>
+					<CachePath>84/{84E12CA0-DB07-B7C1-728C-58579A437BDD}.wem</CachePath>
 				</File>
 				<File Id="1029865606" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\RFX\AMB_RFX_Crowd_Pitched_Reaction_07.wav</ShortName>
-					<CachePath>SFX/AMB/RFX/AMB_RFX_Crowd_Pitched_Reaction_07_818F3B66.wem</CachePath>
+					<CachePath>89/{8941AF61-32F5-AD99-4310-7DEB1D0A6B04}.wem</CachePath>
 				</File>
 			</Media>
 			<Plugins>
@@ -2097,7 +2097,7 @@
 				</ShareSets>
 			</Plugins>
 			<Events>
-				<Event Id="3817670132" Name="Play_AMB_Arena_Crowd" ObjectPath="\Events\AMB_WU\Play_AMB_Arena_Crowd" GUID="{044D5574-12FD-4A7D-829F-E12D304EBC61}" MaxAttenuation="3000" DurationType="Infinite">
+				<Event Id="3817670132" Name="Play_AMB_Arena_Crowd" ObjectPath="\Events\AMB_WU\Play_AMB_Arena_Crowd" GUID="{044D5574-12FD-4A7D-829F-E12D304EBC61}" Color="4" MaxAttenuation="3000" DurationType="Infinite">
 					<MediaRefs>
 						<MediaRef Id="4481750"/>
 						<MediaRef Id="84736735"/>
@@ -2145,50 +2145,50 @@
 						<MediaRef Id="1029865606"/>
 					</MediaRefs>
 					<AuxBusRefs>
-						<AuxBusRef Id="1408817756" Name="RVB_RFX_Arena" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_RFX_Arena" GUID="{CC7A2F05-EE75-4E8E-B097-98A1938CB5E4}"/>
+						<AuxBusRef Id="1408817756" Name="RVB_RFX_Arena" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_RFX_Arena" GUID="{CC7A2F05-EE75-4E8E-B097-98A1938CB5E4}" Color="27"/>
 					</AuxBusRefs>
 				</Event>
-				<Event Id="1977891013" Name="Play_AMB_PAD_ControlCenter" ObjectPath="\Events\AMB_WU\Play_AMB_PAD_ControlCenter" GUID="{36CC78C6-483D-4AB2-9AF1-71F27874043E}" MaxAttenuation="3000" DurationType="Infinite">
+				<Event Id="1977891013" Name="Play_AMB_PAD_ControlCenter" ObjectPath="\Events\AMB_WU\Play_AMB_PAD_ControlCenter" GUID="{36CC78C6-483D-4AB2-9AF1-71F27874043E}" Color="4" MaxAttenuation="3000" DurationType="Infinite">
 					<MediaRefs>
 						<MediaRef Id="838454934"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="1229646826" Name="Play_AMB_PAD_CorpseTrap" ObjectPath="\Events\AMB_WU\Play_AMB_PAD_CorpseTrap" GUID="{06E4EAB2-C55E-4652-84C1-FD484B705D76}" MaxAttenuation="3000" DurationType="Infinite">
+				<Event Id="1229646826" Name="Play_AMB_PAD_CorpseTrap" ObjectPath="\Events\AMB_WU\Play_AMB_PAD_CorpseTrap" GUID="{06E4EAB2-C55E-4652-84C1-FD484B705D76}" Color="4" MaxAttenuation="3000" DurationType="Infinite">
 					<MediaRefs>
 						<MediaRef Id="788907204"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="2972533464" Name="Play_AMB_PAD_Hub" ObjectPath="\Events\AMB_WU\Play_AMB_PAD_Hub" GUID="{E1692669-CD47-4C1F-9271-81F40DE53532}" MaxAttenuation="1000" DurationType="Infinite">
+				<Event Id="2972533464" Name="Play_AMB_PAD_Hub" ObjectPath="\Events\AMB_WU\Play_AMB_PAD_Hub" GUID="{E1692669-CD47-4C1F-9271-81F40DE53532}" Color="4" MaxAttenuation="1000" DurationType="Infinite">
 					<MediaRefs>
 						<MediaRef Id="683095756"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="297916660" Name="Play_AMB_PAD_Pyramid_Closed" ObjectPath="\Events\AMB_WU\Play_AMB_PAD_Pyramid_Closed" GUID="{F627B9DE-2BDF-4BC2-B74E-5E799A3FBDBF}" MaxAttenuation="3000" DurationType="Infinite">
+				<Event Id="297916660" Name="Play_AMB_PAD_Pyramid_Closed" ObjectPath="\Events\AMB_WU\Play_AMB_PAD_Pyramid_Closed" GUID="{F627B9DE-2BDF-4BC2-B74E-5E799A3FBDBF}" Color="4" MaxAttenuation="3000" DurationType="Infinite">
 					<MediaRefs>
 						<MediaRef Id="1019889613"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="770793257" Name="Play_AMB_SP_Incinerator" ObjectPath="\Events\AMB_WU\Play_AMB_SP_Incinerator" GUID="{C2B84120-2D73-4FB5-AAF0-B5573838C530}" MaxAttenuation="2000" DurationType="Infinite">
+				<Event Id="770793257" Name="Play_AMB_SP_Incinerator" ObjectPath="\Events\AMB_WU\Play_AMB_SP_Incinerator" GUID="{C2B84120-2D73-4FB5-AAF0-B5573838C530}" Color="4" MaxAttenuation="2000" DurationType="Infinite">
 					<MediaRefs>
 						<MediaRef Id="754770262"/>
 					</MediaRefs>
 				</Event>
 			</Events>
 			<Busses>
-				<Bus Id="109159411" Name="Game_Global" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global" GUID="{FAD5C029-0A02-4BD2-97F7-F8C20B7A95BD}"/>
-				<Bus Id="393239870" Name="SFX" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global\SFX" GUID="{EB4CE24D-8196-408E-9775-5E8EEFE98495}"/>
-				<Bus Id="1117531639" Name="AMB" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global\AMB" GUID="{C1595F21-FBBF-4B04-AC1A-78D86879A937}"/>
-				<Bus Id="1551306167" Name="UI" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\UI" GUID="{B5E7816E-C3FC-4992-B763-4078089CE674}"/>
-				<Bus Id="1685527061" Name="MC" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global\MC" GUID="{B3079877-B26F-4239-A3AB-9C7AFFCBC797}"/>
-				<Bus Id="2290178407" Name="FOES_Tourelle" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global\FOES_Tourelle" GUID="{D783D57E-4B6F-4101-8F5F-FD96F0409170}"/>
-				<Bus Id="3313685232" Name="Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Voices" GUID="{00AA482D-3F12-46A5-8177-E8A172D08E63}"/>
-				<Bus Id="3623095082" Name="FOES_Flying" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global\FOES_Flying" GUID="{439831F9-AA50-4CD2-98C3-ACD8B187380E}"/>
-				<Bus Id="3991942870" Name="Music" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Music" GUID="{08156595-7637-4348-AC3C-2EDE3FCCB08F}"/>
-				<Bus Id="4056684167" Name="Master" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master" GUID="{F3A976BC-47E9-46E5-9EEC-F566BB39DBEE}"/>
-				<Bus Id="4219618961" Name="AMB_Crowd" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global\AMB_Crowd" GUID="{985719AF-3534-41FC-A751-99E11C3F7784}"/>
+				<Bus Id="109159411" Name="Game_Global" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global" GUID="{FAD5C029-0A02-4BD2-97F7-F8C20B7A95BD}" Color="16"/>
+				<Bus Id="393239870" Name="SFX" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global\SFX" GUID="{EB4CE24D-8196-408E-9775-5E8EEFE98495}" Color="17"/>
+				<Bus Id="1117531639" Name="AMB" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global\AMB" GUID="{C1595F21-FBBF-4B04-AC1A-78D86879A937}" Color="4"/>
+				<Bus Id="1551306167" Name="UI" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\UI" GUID="{B5E7816E-C3FC-4992-B763-4078089CE674}" Color="1"/>
+				<Bus Id="1685527061" Name="MC" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global\MC" GUID="{B3079877-B26F-4239-A3AB-9C7AFFCBC797}" Color="19"/>
+				<Bus Id="2290178407" Name="FOES_Tourelle" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global\FOES_Tourelle" GUID="{D783D57E-4B6F-4101-8F5F-FD96F0409170}" Color="10"/>
+				<Bus Id="3313685232" Name="Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Voices" GUID="{00AA482D-3F12-46A5-8177-E8A172D08E63}" Color="23"/>
+				<Bus Id="3623095082" Name="FOES_Flying" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global\FOES_Flying" GUID="{439831F9-AA50-4CD2-98C3-ACD8B187380E}" Color="11"/>
+				<Bus Id="3991942870" Name="Music" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Music" GUID="{08156595-7637-4348-AC3C-2EDE3FCCB08F}" Color="24"/>
+				<Bus Id="4056684167" Name="Master" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master" GUID="{F3A976BC-47E9-46E5-9EEC-F566BB39DBEE}" Color="9"/>
+				<Bus Id="4219618961" Name="AMB_Crowd" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\Game_Global\AMB_Crowd" GUID="{985719AF-3534-41FC-A751-99E11C3F7784}" Color="4"/>
 			</Busses>
 			<AuxBusses>
-				<AuxBus Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}">
+				<AuxBus Id="367558429" Name="RVB_Voices" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Voices" GUID="{483EAB60-BC92-484F-9830-D1776233B15C}" Color="9">
 					<PluginRefs>
 						<ShareSets>
 							<PluginRef Id="3442768367"/>
@@ -2196,14 +2196,14 @@
 						</ShareSets>
 					</PluginRefs>
 				</AuxBus>
-				<AuxBus Id="395111090" Name="RVB_BlackHouses" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_BlackHouses" GUID="{17B5E8F9-026F-4941-A027-1C0641AB0C14}">
+				<AuxBus Id="395111090" Name="RVB_BlackHouses" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_BlackHouses" GUID="{17B5E8F9-026F-4941-A027-1C0641AB0C14}" Color="26">
 					<PluginRefs>
 						<Custom>
 							<PluginRef Id="688337969"/>
 						</Custom>
 					</PluginRefs>
 				</AuxBus>
-				<AuxBus Id="1215931641" Name="RVB_Arena" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Arena" GUID="{54C7EBDA-4885-4850-8969-FB63BDACC807}">
+				<AuxBus Id="1215931641" Name="RVB_Arena" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Arena" GUID="{54C7EBDA-4885-4850-8969-FB63BDACC807}" Color="26">
 					<PluginRefs>
 						<Custom>
 							<PluginRef Id="272452003"/>
@@ -2211,35 +2211,35 @@
 						</Custom>
 					</PluginRefs>
 				</AuxBus>
-				<AuxBus Id="1408817756" Name="RVB_RFX_Arena" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_RFX_Arena" GUID="{CC7A2F05-EE75-4E8E-B097-98A1938CB5E4}">
+				<AuxBus Id="1408817756" Name="RVB_RFX_Arena" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_RFX_Arena" GUID="{CC7A2F05-EE75-4E8E-B097-98A1938CB5E4}" Color="27">
 					<PluginRefs>
 						<Custom>
 							<PluginRef Id="169636257"/>
 						</Custom>
 					</PluginRefs>
 				</AuxBus>
-				<AuxBus Id="2344250611" Name="RVB_Basement" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Basement" GUID="{BF09F5DA-71E8-4CAC-B0EB-19A1C29389BA}">
+				<AuxBus Id="2344250611" Name="RVB_Basement" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Basement" GUID="{BF09F5DA-71E8-4CAC-B0EB-19A1C29389BA}" Color="26">
 					<PluginRefs>
 						<Custom>
 							<PluginRef Id="97605317"/>
 						</Custom>
 					</PluginRefs>
 				</AuxBus>
-				<AuxBus Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}">
+				<AuxBus Id="2561323002" Name="AUX_LPF" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\AUX_LPF" GUID="{5D5AAEA6-57CB-46FD-9802-C041695A5809}" Color="9">
 					<PluginRefs>
 						<ShareSets>
 							<PluginRef Id="1008402193"/>
 						</ShareSets>
 					</PluginRefs>
 				</AuxBus>
-				<AuxBus Id="3571340017" Name="RVB_Hub" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Hub" GUID="{D499EBE4-F26A-48E5-B89D-1F7C43D829E3}">
+				<AuxBus Id="3571340017" Name="RVB_Hub" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Hub" GUID="{D499EBE4-F26A-48E5-B89D-1F7C43D829E3}" Color="26">
 					<PluginRefs>
 						<Custom>
 							<PluginRef Id="16383166"/>
 						</Custom>
 					</PluginRefs>
 				</AuxBus>
-				<AuxBus Id="3670521640" Name="RVB_Pyramid" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Pyramid" GUID="{668EA0D2-771E-452F-B241-11793F9755B0}">
+				<AuxBus Id="3670521640" Name="RVB_Pyramid" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Pyramid" GUID="{668EA0D2-771E-452F-B241-11793F9755B0}" Color="26">
 					<PluginRefs>
 						<Custom>
 							<PluginRef Id="498081942"/>
@@ -2250,7 +2250,7 @@
 			<GameParameters>
 				<GameParameter Id="1190880401" Name="RTPC_DoorPyramid" ObjectPath="\Game Parameters\Default Work Unit\RTPC_DoorPyramid" GUID="{D2AEC1CE-EF9E-486E-AE8B-FB121AC42B53}"/>
 				<GameParameter Id="3438452020" Name="RTPC_SFX" ObjectPath="\Game Parameters\Default Work Unit\RTPC_SFX" GUID="{DD8DB651-4F18-462F-97D3-0195BD02087F}"/>
-				<GameParameter Id="3445598977" Name="RTPC_Master" ObjectPath="\Game Parameters\Default Work Unit\RTPC_Master" GUID="{74E6261E-6493-44A8-BAE7-1E79ABF4DED1}"/>
+				<GameParameter Id="3445598977" Name="RTPC_Master" ObjectPath="\Game Parameters\Default Work Unit\RTPC_Master" GUID="{74E6261E-6493-44A8-BAE7-1E79ABF4DED1}" Color="10"/>
 				<GameParameter Id="3553041361" Name="RTPC_AMB" ObjectPath="\Game Parameters\Default Work Unit\RTPC_AMB" GUID="{2EA08633-9826-4131-9D31-3F7F27FCA59E}"/>
 				<GameParameter Id="3709650428" Name="RTPC_Music" ObjectPath="\Game Parameters\Default Work Unit\RTPC_Music" GUID="{5DA4119B-967E-473A-9D3F-7F6BD36532D0}"/>
 				<GameParameter Id="4031456682" Name="RTPC_Voices" ObjectPath="\Game Parameters\Default Work Unit\RTPC_Voices" GUID="{F4B8FD9E-0723-43B2-923D-1563F7D70095}"/>
@@ -2267,82 +2267,82 @@
 				</StateGroup>
 			</StateGroups>
 		</SoundBank>
-		<SoundBank Id="3896292454" Type="User" GUID="{459D1F67-52BD-4FA1-B846-B8F3A50C2C5F}" Language="SFX" Hash="{5E8BE29B-3E92-B6EB-9A5F-D137D73BE309}">
+		<SoundBank Id="3896292454" Type="User" GUID="{459D1F67-52BD-4FA1-B846-B8F3A50C2C5F}" Color="17" Language="SFX" Hash="{3F25947D-8A4F-B3B0-F1D3-1EC6B0FD17F6}">
 			<ObjectPath>\SoundBanks\SoundBanks_WU\SFX_SB</ObjectPath>
 			<ShortName>SFX_SB</ShortName>
 			<Path>SFX_SB.bnk</Path>
 			<Media>
 				<File Id="57706824" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>SFX_BlackSand_Glitchy_2s_Stereo_06.wav</ShortName>
-					<CachePath>SFX/SFX_BlackSand_Glitchy_2s_Stereo_06_818F3B66.wem</CachePath>
+					<CachePath>06/{061C427C-F281-2E9D-D7DC-D20EA58BFEC5}.wem</CachePath>
 				</File>
 				<File Id="418805659" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>SFX_BlackSand_Glitchy_2s_Stereo_04.wav</ShortName>
-					<CachePath>SFX/SFX_BlackSand_Glitchy_2s_Stereo_04_818F3B66.wem</CachePath>
+					<CachePath>5B/{5BFBE6F7-4E49-536F-9EEA-9C176EF25C3F}.wem</CachePath>
 				</File>
 				<File Id="460314317" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>SFX_BlackSand_Glitchy_2s_Stereo_02.wav</ShortName>
-					<CachePath>SFX/SFX_BlackSand_Glitchy_2s_Stereo_02_818F3B66.wem</CachePath>
+					<CachePath>0A/{0A54382E-C0DE-AD37-E077-EF38B145DF68}.wem</CachePath>
 				</File>
 				<File Id="482790053" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>MC\SFX_Door_Pyramid_Open.wav</ShortName>
-					<CachePath>SFX/MC/SFX_Door_Pyramid_Open_818F3B66.wem</CachePath>
+					<CachePath>18/{1849399E-D740-513D-FA9C-914BCAAD267D}.wem</CachePath>
 				</File>
 				<File Id="498448547" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>SFX_BlackSand_Glitchy_2s_Stereo_01.wav</ShortName>
-					<CachePath>SFX/SFX_BlackSand_Glitchy_2s_Stereo_01_818F3B66.wem</CachePath>
+					<CachePath>64/{64E42013-D7E2-808D-E95E-779D93FF55D5}.wem</CachePath>
 				</File>
 				<File Id="640927559" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>SFX_Button_Backstage.wav</ShortName>
-					<CachePath>SFX/SFX_Button_Backstage_818F3B66.wem</CachePath>
+					<CachePath>82/{82F255B1-9004-6903-C391-016D39FD6611}.wem</CachePath>
 				</File>
 				<File Id="794556847" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>MC\SFX_HourGlass_Idle_LP.wav</ShortName>
-					<CachePath>SFX/MC/SFX_HourGlass_Idle_LP_FBC78EF0.wem</CachePath>
+					<CachePath>9E/{9E9F4175-FA7A-716B-4585-6EDB4DFDB77D}.wem</CachePath>
 				</File>
 				<File Id="846163179" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>MC\SFX_EndCinematic.wav</ShortName>
-					<CachePath>SFX/MC/SFX_EndCinematic_818F3B66.wem</CachePath>
+					<CachePath>1F/{1F764E73-3056-A979-4624-357EC16404CB}.wem</CachePath>
 				</File>
 				<File Id="862611700" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>MC\SFX_Door_Pyramid.wav</ShortName>
-					<CachePath>SFX/MC/SFX_Door_Pyramid_AA228216.wem</CachePath>
+					<CachePath>1A/{1AD9C707-2215-0919-22D3-BF8A571C4E30}.wem</CachePath>
 				</File>
 				<File Id="1013981530" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>SFX_BlackSand_Glitchy_2s_Stereo_05.wav</ShortName>
-					<CachePath>SFX/SFX_BlackSand_Glitchy_2s_Stereo_05_818F3B66.wem</CachePath>
+					<CachePath>EB/{EB411A14-847D-B177-ACC9-45C294A582EB}.wem</CachePath>
 				</File>
 				<File Id="1028643509" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>SFX_BlackSand_Glitchy_2s_Stereo_03.wav</ShortName>
-					<CachePath>SFX/SFX_BlackSand_Glitchy_2s_Stereo_03_818F3B66.wem</CachePath>
+					<CachePath>A8/{A810EF3C-0027-8B6D-95B4-735D8FD5175C}.wem</CachePath>
 				</File>
 				<File Id="1049815799" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>MC\SFX_HourGlass_Destruction_2D.wav</ShortName>
-					<CachePath>SFX/MC/SFX_HourGlass_Destruction_2D_818F3B66.wem</CachePath>
+					<CachePath>06/{063FC635-A85C-DE7F-9008-1CC84261DC06}.wem</CachePath>
 				</File>
 			</Media>
 			<Events>
-				<Event Id="1623238786" Name="Play_SFX_Button_Backstage" ObjectPath="\Events\SFX_WU\Play_SFX_Button_Backstage" GUID="{F8593F23-32CE-4C34-A551-35034A61FD79}" MaxAttenuation="2000" DurationType="OneShot" DurationMin="0.9392083" DurationMax="0.9392083">
+				<Event Id="1623238786" Name="Play_SFX_Button_Backstage" ObjectPath="\Events\SFX_WU\Play_SFX_Button_Backstage" GUID="{F8593F23-32CE-4C34-A551-35034A61FD79}" Color="17" MaxAttenuation="2000" DurationType="OneShot" DurationMin="0.9392083" DurationMax="0.9392083">
 					<MediaRefs>
 						<MediaRef Id="640927559"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="1447435678" Name="Play_SFX_Door_Pyramid_Close" ObjectPath="\Events\SFX_WU\Play_SFX_Door_Pyramid_Close" GUID="{1829F329-FCFF-4E10-8065-7D10B11DDA83}" MaxAttenuation="2000" DurationType="OneShot" DurationMin="5.4468756" DurationMax="5.4468756">
+				<Event Id="1447435678" Name="Play_SFX_Door_Pyramid_Close" ObjectPath="\Events\SFX_WU\Play_SFX_Door_Pyramid_Close" GUID="{1829F329-FCFF-4E10-8065-7D10B11DDA83}" Color="17" MaxAttenuation="2000" DurationType="OneShot" DurationMin="5.4468756" DurationMax="5.4468756">
 					<MediaRefs>
 						<MediaRef Id="862611700"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="582941242" Name="Play_SFX_Door_Pyramid_Open" ObjectPath="\Events\SFX_WU\Play_SFX_Door_Pyramid_Open" GUID="{03DAD17B-66BC-4B93-B7D8-6E1B8239766D}" MaxAttenuation="2000" DurationType="OneShot" DurationMin="4.623" DurationMax="4.623">
+				<Event Id="582941242" Name="Play_SFX_Door_Pyramid_Open" ObjectPath="\Events\SFX_WU\Play_SFX_Door_Pyramid_Open" GUID="{03DAD17B-66BC-4B93-B7D8-6E1B8239766D}" Color="17" MaxAttenuation="2000" DurationType="OneShot" DurationMin="4.623" DurationMax="4.623">
 					<MediaRefs>
 						<MediaRef Id="482790053"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="3780890544" Name="Play_SFX_EndCinematic" ObjectPath="\Events\SFX_WU\Play_SFX_EndCinematic" GUID="{6045A319-19E1-40D4-AEC6-4D6054A6BBE3}" DurationType="OneShot" DurationMin="33.23227" DurationMax="33.23227">
+				<Event Id="3780890544" Name="Play_SFX_EndCinematic" ObjectPath="\Events\SFX_WU\Play_SFX_EndCinematic" GUID="{6045A319-19E1-40D4-AEC6-4D6054A6BBE3}" Color="17" DurationType="OneShot" DurationMin="33.23227" DurationMax="33.23227">
 					<MediaRefs>
 						<MediaRef Id="846163179"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="2496075354" Name="Play_SFX_HourGlass_Destruction_2D" ObjectPath="\Events\SFX_WU\Play_SFX_HourGlass_Destruction_2D" GUID="{FDD8C402-5336-447B-B1DA-70926B131299}" DurationType="OneShot" DurationMin="18.631792" DurationMax="18.631792">
+				<Event Id="2496075354" Name="Play_SFX_HourGlass_Destruction_2D" ObjectPath="\Events\SFX_WU\Play_SFX_HourGlass_Destruction_2D" GUID="{FDD8C402-5336-447B-B1DA-70926B131299}" Color="17" DurationType="OneShot" DurationMin="18.631792" DurationMax="18.631792">
 					<MediaRefs>
 						<MediaRef Id="57706824"/>
 						<MediaRef Id="418805659"/>
@@ -2353,93 +2353,93 @@
 						<MediaRef Id="1049815799"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="2563465684" Name="Play_SFX_HourGlass_Idle_LP" ObjectPath="\Events\SFX_WU\Play_SFX_HourGlass_Idle_LP" GUID="{0994537E-EF34-4F9C-A1D4-F9FFCF6E9CD1}" MaxAttenuation="150000" DurationType="Infinite">
+				<Event Id="2563465684" Name="Play_SFX_HourGlass_Idle_LP" ObjectPath="\Events\SFX_WU\Play_SFX_HourGlass_Idle_LP" GUID="{0994537E-EF34-4F9C-A1D4-F9FFCF6E9CD1}" Color="17" MaxAttenuation="150000" DurationType="Infinite">
 					<MediaRefs>
 						<MediaRef Id="794556847"/>
 					</MediaRefs>
 				</Event>
 			</Events>
 		</SoundBank>
-		<SoundBank Id="4155742227" Type="User" GUID="{D2378E68-5468-4849-BC4A-8FC6D8A3BF29}" Language="SFX" Hash="{80266133-A537-3180-AE75-DB61097E95F3}">
+		<SoundBank Id="4155742227" Type="User" GUID="{D2378E68-5468-4849-BC4A-8FC6D8A3BF29}" Color="15" Language="SFX" Hash="{1E3726AF-E57C-FA62-0D80-5C9C1F9FA1A7}">
 			<ObjectPath>\SoundBanks\SoundBanks_WU\GPE_SB</ObjectPath>
 			<ShortName>GPE_SB</ShortName>
 			<Path>GPE_SB.bnk</Path>
 			<Media>
 				<File Id="53581153" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\RFX\GPE_PillarDestroyed.wav</ShortName>
-					<CachePath>SFX/AMB/RFX/GPE_PillarDestroyed_818F3B66.wem</CachePath>
+					<CachePath>54/{54E974B0-F268-720F-0E44-0481334D8EB4}.wem</CachePath>
 				</File>
 				<File Id="131763475" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>MC_SFX_Dash_05.wav</ShortName>
-					<CachePath>SFX/MC_SFX_Dash_05_818F3B66.wem</CachePath>
+					<CachePath>B9/{B9E3DCB5-75A9-2D9D-76AA-364041C32F00}.wem</CachePath>
 				</File>
 				<File Id="226141576" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>MC\GPE_JumpPads_Mecha_01.wav</ShortName>
-					<CachePath>SFX/MC/GPE_JumpPads_Mecha_01_818F3B66.wem</CachePath>
+					<CachePath>DE/{DE0F8A94-2611-ED79-6DB0-62866ECBC017}.wem</CachePath>
 				</File>
 				<File Id="275758801" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\RFX\GPE_JumpPads_Activation-002.wav</ShortName>
-					<CachePath>SFX/AMB/RFX/GPE_JumpPads_Activation-002_818F3B66.wem</CachePath>
+					<CachePath>21/{2102FDD2-C56F-1808-8423-1BB56878533A}.wem</CachePath>
 				</File>
 				<File Id="280528909" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>MC_SFX_Dash_01.wav</ShortName>
-					<CachePath>SFX/MC_SFX_Dash_01_818F3B66.wem</CachePath>
+					<CachePath>C3/{C33F3192-04AE-2B70-F520-595933FA6A91}.wem</CachePath>
 				</File>
 				<File Id="411674623" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>MC_SFX_Dash_02.wav</ShortName>
-					<CachePath>SFX/MC_SFX_Dash_02_818F3B66.wem</CachePath>
+					<CachePath>D8/{D84C1EB7-FA78-ADD7-B5A3-90E31EAAFB16}.wem</CachePath>
 				</File>
 				<File Id="423129361" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\RFX\GPE_JumpPads_Activation-001.wav</ShortName>
-					<CachePath>SFX/AMB/RFX/GPE_JumpPads_Activation-001_818F3B66.wem</CachePath>
+					<CachePath>A0/{A0A5C690-1A5F-89A5-6FA8-568B86B018E5}.wem</CachePath>
 				</File>
 				<File Id="434078456" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\RFX\SFX_CorpseTrap_Closing.wav</ShortName>
-					<CachePath>SFX/AMB/RFX/SFX_CorpseTrap_Closing_818F3B66.wem</CachePath>
+					<CachePath>2F/{2F4F96F6-A400-C572-16CF-CF10C99CAEB0}.wem</CachePath>
 				</File>
 				<File Id="729439879" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>MC\GPE_Elevator_Start.wav</ShortName>
-					<CachePath>SFX/MC/GPE_Elevator_Start_818F3B66.wem</CachePath>
+					<CachePath>12/{1210BF06-AE68-3986-431F-1D0FDCED614A}.wem</CachePath>
 				</File>
 				<File Id="831778911" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>MC\GPE_JumpPads_Mecha_03.wav</ShortName>
-					<CachePath>SFX/MC/GPE_JumpPads_Mecha_03_818F3B66.wem</CachePath>
+					<CachePath>1D/{1D3F9979-4508-15A3-E16B-64D6D6ABE468}.wem</CachePath>
 				</File>
 				<File Id="865971538" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\RFX\GPE_JumpPads_Activation-003.wav</ShortName>
-					<CachePath>SFX/AMB/RFX/GPE_JumpPads_Activation-003_818F3B66.wem</CachePath>
+					<CachePath>4B/{4B96A81C-5732-D09C-D051-05FFEFA02764}.wem</CachePath>
 				</File>
 				<File Id="890446006" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>MC_SFX_Dash_03.wav</ShortName>
-					<CachePath>SFX/MC_SFX_Dash_03_818F3B66.wem</CachePath>
+					<CachePath>B8/{B85791D6-7480-6C2A-467B-079717D49A03}.wem</CachePath>
 				</File>
 				<File Id="904242620" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>MC\GPE_Elevator_LP.wav</ShortName>
-					<CachePath>SFX/MC/GPE_Elevator_LP_FBC78EF0.wem</CachePath>
+					<CachePath>22/{2206BF97-C979-8C24-DC7A-497BF7B9F2E9}.wem</CachePath>
 				</File>
 				<File Id="925500281" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>MC_SFX_Dash_04.wav</ShortName>
-					<CachePath>SFX/MC_SFX_Dash_04_818F3B66.wem</CachePath>
+					<CachePath>0C/{0C325A4E-BD6F-41EB-63FF-E18082938322}.wem</CachePath>
 				</File>
 				<File Id="929577030" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>MC\GPE_Elevator_Stop.wav</ShortName>
-					<CachePath>SFX/MC/GPE_Elevator_Stop_818F3B66.wem</CachePath>
+					<CachePath>35/{350D5C2E-6B60-67CC-9DF5-226A69CBA018}.wem</CachePath>
 				</File>
 				<File Id="932156054" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>MC\GPE_JumpPads_Mecha_04.wav</ShortName>
-					<CachePath>SFX/MC/GPE_JumpPads_Mecha_04_818F3B66.wem</CachePath>
+					<CachePath>61/{61AF3CBD-DD00-5AD2-580A-A3394977A190}.wem</CachePath>
 				</File>
 				<File Id="978522934" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\RFX\SFX_CorpseTrap_Opening.wav</ShortName>
-					<CachePath>SFX/AMB/RFX/SFX_CorpseTrap_Opening_818F3B66.wem</CachePath>
+					<CachePath>E7/{E75296D8-A45B-9D4E-5778-3B955DFDEC79}.wem</CachePath>
 				</File>
 				<File Id="1032185961" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>MC\GPE_JumpPads_Mecha_02.wav</ShortName>
-					<CachePath>SFX/MC/GPE_JumpPads_Mecha_02_818F3B66.wem</CachePath>
+					<CachePath>D4/{D44EC3B9-1CDD-BFE8-14D1-526B390DC911}.wem</CachePath>
 				</File>
 				<File Id="1037685382" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>MC\GPE_JumpPads_Mecha_05.wav</ShortName>
-					<CachePath>SFX/MC/GPE_JumpPads_Mecha_05_818F3B66.wem</CachePath>
+					<CachePath>78/{78CA57E8-D4C4-0911-2098-366608671470}.wem</CachePath>
 				</File>
 			</Media>
 			<Plugins>
@@ -2448,14 +2448,14 @@
 				</ShareSets>
 			</Plugins>
 			<Events>
-				<Event Id="3621014260" Name="Play_Elevator" ObjectPath="\Events\GPE_WU\Play_Elevator" GUID="{188D4000-553D-4750-9060-D75200C9FF92}" DurationType="Infinite">
+				<Event Id="3621014260" Name="Play_Elevator" ObjectPath="\Events\GPE_WU\Play_Elevator" GUID="{188D4000-553D-4750-9060-D75200C9FF92}" Color="14" DurationType="Infinite">
 					<MediaRefs>
 						<MediaRef Id="729439879"/>
 						<MediaRef Id="904242620"/>
 						<MediaRef Id="929577030"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="575283655" Name="Play_GPE_JumPads_RC" ObjectPath="\Events\GPE_WU\Play_GPE_JumPads_RC" GUID="{32F429C1-2B0E-427B-9F12-8775F5CFF0AD}" MaxAttenuation="2000" DurationType="OneShot" DurationMin="1.1072708" DurationMax="1.8">
+				<Event Id="575283655" Name="Play_GPE_JumPads_RC" ObjectPath="\Events\GPE_WU\Play_GPE_JumPads_RC" GUID="{32F429C1-2B0E-427B-9F12-8775F5CFF0AD}" Color="14" MaxAttenuation="2000" DurationType="OneShot" DurationMin="1.1072708" DurationMax="1.8">
 					<MediaRefs>
 						<MediaRef Id="131763475"/>
 						<MediaRef Id="226141576"/>
@@ -2474,24 +2474,24 @@
 						</ShareSets>
 					</PluginRefs>
 				</Event>
-				<Event Id="2353660422" Name="Play_GPE_JumpPads_Activation_RC" ObjectPath="\Events\GPE_WU\Play_GPE_JumpPads_Activation_RC" GUID="{7A4A1C10-6F19-4EFC-9649-9850E9202517}" MaxAttenuation="2000" DurationType="OneShot" DurationMin="3.2564793" DurationMax="3.8888958">
+				<Event Id="2353660422" Name="Play_GPE_JumpPads_Activation_RC" ObjectPath="\Events\GPE_WU\Play_GPE_JumpPads_Activation_RC" GUID="{7A4A1C10-6F19-4EFC-9649-9850E9202517}" Color="14" MaxAttenuation="2000" DurationType="OneShot" DurationMin="3.2564793" DurationMax="3.8888958">
 					<MediaRefs>
 						<MediaRef Id="275758801"/>
 						<MediaRef Id="423129361"/>
 						<MediaRef Id="865971538"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="3930718940" Name="Play_GPE_PillarDestroyed" ObjectPath="\Events\GPE_WU\Play_GPE_PillarDestroyed" GUID="{65F84DEF-9AA8-456B-A6AF-7249DA8CED54}" MaxAttenuation="3000" DurationType="OneShot" DurationMin="3.549459" DurationMax="3.549459">
+				<Event Id="3930718940" Name="Play_GPE_PillarDestroyed" ObjectPath="\Events\GPE_WU\Play_GPE_PillarDestroyed" GUID="{65F84DEF-9AA8-456B-A6AF-7249DA8CED54}" Color="14" MaxAttenuation="3000" DurationType="OneShot" DurationMin="3.549459" DurationMax="3.549459">
 					<MediaRefs>
 						<MediaRef Id="53581153"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="616160567" Name="Play_SFX_CorpseTrap_Closing" ObjectPath="\Events\GPE_WU\Play_SFX_CorpseTrap_Closing" GUID="{8B0069CF-C942-413E-842A-B22826187366}" MaxAttenuation="2000" DurationType="OneShot" DurationMin="2.4738333" DurationMax="2.4738333">
+				<Event Id="616160567" Name="Play_SFX_CorpseTrap_Closing" ObjectPath="\Events\GPE_WU\Play_SFX_CorpseTrap_Closing" GUID="{8B0069CF-C942-413E-842A-B22826187366}" Color="14" MaxAttenuation="2000" DurationType="OneShot" DurationMin="2.4738333" DurationMax="2.4738333">
 					<MediaRefs>
 						<MediaRef Id="434078456"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="2467711998" Name="Play_SFX_CorpseTrap_Opening" ObjectPath="\Events\GPE_WU\Play_SFX_CorpseTrap_Opening" GUID="{3B91810C-60F0-4DA1-8459-1EC729C58878}" MaxAttenuation="2000" DurationType="OneShot" DurationMin="2.3800209" DurationMax="2.3800209">
+				<Event Id="2467711998" Name="Play_SFX_CorpseTrap_Opening" ObjectPath="\Events\GPE_WU\Play_SFX_CorpseTrap_Opening" GUID="{3B91810C-60F0-4DA1-8459-1EC729C58878}" Color="14" MaxAttenuation="2000" DurationType="OneShot" DurationMin="2.3800209" DurationMax="2.3800209">
 					<MediaRefs>
 						<MediaRef Id="978522934"/>
 					</MediaRefs>
@@ -2499,5 +2499,5 @@
 			</Events>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{8987E15A-D38D-499C-0F98-AD9914785EF6}</FileHash>
+	<FileHash>{8AFA89E4-797B-77B6-5F91-5229543FE17F}</FileHash>
 </SoundBanksInfo>

@@ -12,26 +12,31 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #pragma once
 
+#include "Wwise/AdapterTypes/WwiseWrapperTypes.h"
 #include "Wwise/Metadata/WwiseMetadataExternalSource.h"
 #include "Wwise/Metadata/WwiseMetadataSwitchValue.h"
+#include "Wwise/Metadata/WwiseMetadataLoadable.h"
+#include "Wwise/Metadata/WwiseMetadataMedia.h"
+#include "Wwise/Metadata/WwiseMetadataPlugin.h"
 
-struct WWISEPROJECTDATABASE_API FWwiseMetadataSwitchContainer : public FWwiseMetadataLoadable
+
+struct WwiseMetadataSwitchContainer : public WwiseMetadataLoadable
 {
-	FWwiseMetadataSwitchValue SwitchValue;
-	TArray<FWwiseMetadataMediaReference> MediaRefs;
-	TArray<FWwiseMetadataExternalSourceReference> ExternalSourceRefs;
-	FWwiseMetadataPluginReferenceGroup* PluginRefs;
-	TArray<FWwiseMetadataSwitchContainer> Children;
+	WwiseMetadataSwitchValue SwitchValue;
+	WwiseDBArray<WwiseMetadataMediaReference> MediaRefs;
+	WwiseDBArray<WwiseMetadataExternalSourceReference> ExternalSourceRefs;
+	WwiseMetadataPluginReferenceGroup* PluginRefs;
+	WwiseDBArray<WwiseMetadataSwitchContainer> Children;
 
-	FWwiseMetadataSwitchContainer(FWwiseMetadataLoader& Loader);
-	TSet<FWwiseMetadataMediaReference> GetAllMedia() const;
-	TSet<FWwiseMetadataExternalSourceReference> GetAllExternalSources() const;
-	TSet<FWwiseMetadataPluginReference> GetAllCustomPlugins() const;
-	TSet<FWwiseMetadataPluginReference> GetAllPluginShareSets() const;
-	TSet<FWwiseMetadataPluginReference> GetAllAudioDevices() const;
+	WwiseMetadataSwitchContainer(WwiseMetadataLoader& Loader);
+	WwiseDBSet<WwiseMetadataMediaReference> GetAllMedia() const;
+	WwiseDBSet<WwiseMetadataExternalSourceReference> GetAllExternalSources() const;
+	WwiseDBSet<WwiseMetadataPluginReference> GetAllCustomPlugins() const;
+	WwiseDBSet<WwiseMetadataPluginReference> GetAllPluginShareSets() const;
+	WwiseDBSet<WwiseMetadataPluginReference> GetAllAudioDevices() const;
 };

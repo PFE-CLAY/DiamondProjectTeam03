@@ -12,7 +12,7 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #pragma once
@@ -29,11 +29,7 @@ public:
 	FAkMixerPlatform();
 	~FAkMixerPlatform();
 
-#if UE_5_0_OR_LATER
 	virtual FString GetPlatformApi() const override { return TEXT("AkMixerPlatform"); }
-#else
-	virtual Audio::EAudioMixerPlatformApi::Type GetPlatformApi() const override { return Audio::EAudioMixerPlatformApi::Other; }
-#endif
 	virtual bool InitializeHardware() override;
 	virtual bool TeardownHardware() override;
 	virtual bool IsInitialized() const override;
@@ -47,14 +43,8 @@ public:
 	virtual Audio::FAudioPlatformDeviceInfo GetPlatformDeviceInfo() const override;
 	virtual void SubmitBuffer(const uint8* Buffer) override;
 #if !UE_5_4_OR_LATER
-#if UE_5_0_OR_LATER
 	virtual FName GetRuntimeFormat(const USoundWave* InSoundWave) const override;
 	virtual ICompressedAudioInfo* CreateCompressedAudioInfo(const FName& InRuntimeFormat) const override;
-#else
-	virtual FName GetRuntimeFormat(USoundWave* InSoundWave) override;
-	virtual bool HasCompressedAudioInfoClass(USoundWave* InSoundWave) override;
-	virtual ICompressedAudioInfo* CreateCompressedAudioInfo(USoundWave* InSoundWave) override;
-#endif // UE_5_4_OR_LATER
 #endif // !UE_5_4_OR_LATER
 	virtual bool SupportsRealtimeDecompression() const { return true; }
 	virtual FString GetDefaultDeviceName() override;

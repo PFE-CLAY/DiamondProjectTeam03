@@ -12,7 +12,7 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #include "AcousticTextureParamLookup.h"
@@ -21,8 +21,7 @@ Copyright (c) 2024 Audiokinetic Inc.
 #include "WwiseUnrealHelper.h"
 #include "IAudiokineticTools.h"
 #include "Wwise/WwiseProjectDatabase.h"
-
-#include "Async/Async.h"
+#include "Wwise/WwiseTask.h"
 
 void AkAcousticTextureParamLookup::LoadAllTextures()
 {
@@ -33,10 +32,10 @@ void AkAcousticTextureParamLookup::LoadAllTextures()
 		return;
 	}
 
-	const FWwiseDataStructureScopeLock DataStructure(*ProjectDatabase);
+	const WwiseDataStructureScopeLock DataStructure(*ProjectDatabase);
 	const auto& AcousticTextures = DataStructure.GetAcousticTextures();
 
-	if (AcousticTextures.Num() == 0)
+	if (AcousticTextures.Size() == 0)
 	{
 		return;
 	}
@@ -51,21 +50,24 @@ void AkAcousticTextureParamLookup::LoadAllTextures()
 
 	for (auto& AcousticTexture : AcousticTextures)
 	{
-		const FString& TextureName = AcousticTexture.Value.AcousticTextureName().ToString();
-		float AbsorptionLow = AcousticTexture.Value.GetAcousticTexture()->AbsorptionLow;
-		float AbsorptionMidLow = AcousticTexture.Value.GetAcousticTexture()->AbsorptionMidLow;
-		float AbsorptionMidHigh = AcousticTexture.Value.GetAcousticTexture()->AbsorptionMidHigh;
-		float AbsorptionHigh = AcousticTexture.Value.GetAcousticTexture()->AbsorptionHigh;
-		uint32 TextureShortID = AcousticTexture.Key.Id;
+		WwiseDBPair<const WwiseDatabaseLocalizableIdKey, WwiseRefAcousticTexture> AcousticTexturePair(AcousticTexture);
+		const FString& TextureName = FWwiseStringConverter::ToFString(*AcousticTexturePair.GetSecond().AcousticTextureName());
+		float AbsorptionLow = AcousticTexturePair.GetSecond().GetAcousticTexture()->AbsorptionLow;
+		float AbsorptionMidLow = AcousticTexturePair.GetSecond().GetAcousticTexture()->AbsorptionMidLow;
+		float AbsorptionMidHigh = AcousticTexturePair.GetSecond().GetAcousticTexture()->AbsorptionMidHigh;
+		float AbsorptionHigh = AcousticTexturePair.GetSecond().GetAcousticTexture()->AbsorptionHigh;
+		uint32 TextureShortID = AcousticTexturePair.GetFirst().Id;
 
 		UE_LOG(LogAudiokineticTools, VeryVerbose, TEXT("Properties for texture %s (%" PRIu32 "): Absorption High: %.0f%%, MidHigh: %.0f%%, MidLow: %.0f%%, Low: %.0f%%"),
 			*TextureName, TextureShortID, AbsorptionHigh, AbsorptionMidHigh, AbsorptionMidLow, AbsorptionLow);
 
-		FGuid Id = AcousticTexture.Value.AcousticTextureGuid();
+		auto Id = AcousticTexturePair.GetSecond().AcousticTextureGuid();
 		
 		const FVector4 AbsorptionValues = FVector4(AbsorptionLow, AbsorptionMidLow, AbsorptionMidHigh, AbsorptionHigh) / 100.0f;
 
-		AkSettings->SetAcousticTextureParams(Id,{AbsorptionValues, TextureShortID});
+		int A, B, C, D;
+		Id.GetGuidValues(A, B, C, D);
+		AkSettings->SetAcousticTextureParams(FGuid(A, B, C, D),{AbsorptionValues, TextureShortID});
 	}
 }
 
@@ -76,7 +78,7 @@ void AkAcousticTextureParamLookup::UpdateParamsMap() const
 	{
 		AkSettings->ClearTextureParamsMap();
 		// Loading Textures requires a lookup to the Asset Registry that must be made on the Game thread
-		AsyncTask(ENamedThreads::Type::GameThread, [this]
+		LaunchWwiseTask(TEXT("AkAcousticTextureParamLookup::UpdateParamsMap"), EWwiseTaskPriority::GameThread, [this]
 		{
 			LoadAllTextures();
 		});

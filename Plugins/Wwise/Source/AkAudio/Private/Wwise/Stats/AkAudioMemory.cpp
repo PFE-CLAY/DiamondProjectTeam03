@@ -12,14 +12,22 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #include "Wwise/Stats/AkAudioMemory.h"
+#include "WwiseDefines.h"
 
-LLM_DEFINE_TAG(Audio_Wwise_SoundEngine, TEXT("SoundEngine Reserved"));
+LLM_DEFINE_TAG(Audio_Wwise_SoundEngine, TEXT("Wwise SoundEngine Reserved"));
 
+#if WWISE_2024_1_OR_LATER
+DEFINE_STAT(STAT_WwiseMemorySoundEnginePrimary);
+DEFINE_STAT(STAT_WwiseMemorySoundEngineMedia);
+DEFINE_STAT(STAT_WwiseMemorySoundEngineProfiler);
+#else
 DEFINE_STAT(STAT_WwiseMemorySoundEngineVM);
+#endif
+
 #if AK_SUPPORT_DEVICE_MEMORY
 DEFINE_STAT(STAT_WwiseMemorySoundEngineDevice);
 #endif

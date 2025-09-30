@@ -12,14 +12,14 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #pragma once
 
 #include "Wwise/Metadata/WwiseMetadataLoadable.h"
 
-struct WWISEPROJECTDATABASE_API FWwiseMetadataSettings : public FWwiseMetadataLoadable
+struct WwiseMetadataSettings : public WwiseMetadataLoadable
 {
 	bool bAutoSoundBankDefinition;
 	bool bCopyLooseStreamedMediaFiles;
@@ -38,7 +38,8 @@ struct WWISEPROJECTDATABASE_API FWwiseMetadataSettings : public FWwiseMetadataLo
 	bool bEstimatedDurationInfo;
 	bool bPrintObjectGuid;
 	bool bPrintObjectPath;
+	bool bPrintObjectColor;
 
-	FWwiseMetadataSettings();
-	FWwiseMetadataSettings(FWwiseMetadataLoader& Loader);
+	WwiseMetadataSettings();
+	WwiseMetadataSettings(WwiseMetadataLoader& Loader);
 };

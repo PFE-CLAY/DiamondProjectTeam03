@@ -12,7 +12,7 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #include "Wwise/AudioLink/WwiseAudioLinkInputClient.h"
@@ -25,6 +25,7 @@ Copyright (c) 2024 Audiokinetic Inc.
 #include "AkAudioEvent.h"
 #include "AkAudioDevice.h"
 #include "WwiseUnrealHelper.h"
+#include "Wwise/WwiseAllowShrinking.h"
 #include "Wwise/API/WwiseSoundEngineAPI.h"
 #include "Wwise/Stats/AudioLink.h"
 #include "Wwise/Stats/Global.h"
@@ -376,7 +377,7 @@ bool FWwiseAudioLinkInputClient::GetSamples(uint32 InNumChannels, uint32 InNumFr
 		{
 			InterleavedBuffer.SetNumUninitialized(
 				NumInterleavedSamplesNeeded,
-				true		// bAllowShrinking
+				EWwiseAllowShrinking::Yes
 			);
 		}
 

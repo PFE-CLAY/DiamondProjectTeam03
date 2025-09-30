@@ -12,21 +12,22 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #include "Wwise/Metadata/WwiseMetadataGroupValueReference.h"
 #include "Wwise/Metadata/WwiseMetadataLoader.h"
-#include "Wwise/Stats/ProjectDatabase.h"
 
-FWwiseMetadataGroupValueReference::FWwiseMetadataGroupValueReference()
+#include "Wwise/Metadata/WwiseMetadataBasicReference.h"
+
+WwiseMetadataGroupValueReference::WwiseMetadataGroupValueReference()
 {
-	UE_LOG(LogWwiseProjectDatabase, Error, TEXT("Using default FWwiseMetadataGroupValueReference"));
+	WWISE_DB_LOG(Error, "Using default WwiseMetadataGroupValueReference");
 }
 
-FWwiseMetadataGroupValueReference::FWwiseMetadataGroupValueReference(FWwiseMetadataLoader& Loader) :
-	FWwiseMetadataBasicReference(Loader),
-	GroupId(Loader.GetUint32(this, TEXT("GroupId")))
+WwiseMetadataGroupValueReference::WwiseMetadataGroupValueReference(WwiseMetadataLoader& Loader) :
+	::WwiseMetadataBasicReference(Loader),
+	GroupId(Loader.GetWwiseShortId(this, "GroupId"_wwise_db))
 {
-	Loader.LogParsed(TEXT("GroupValueReference"), GroupId, Name);
+	Loader.LogParsed("GroupValueReference"_wwise_db, GroupId, Name);
 }

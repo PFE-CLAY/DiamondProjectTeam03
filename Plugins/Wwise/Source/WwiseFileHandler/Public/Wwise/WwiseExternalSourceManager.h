@@ -12,7 +12,7 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #pragma once
@@ -24,16 +24,18 @@ Copyright (c) 2024 Audiokinetic Inc.
 struct FWwiseSharedLanguageId;
 struct AkExternalSourceInfo;
 struct FWwiseExternalSourceCookedData;
-class FWwiseResourceCooker;
+class IWwiseResourceCooker;
 
 #if WITH_EDITORONLY_DATA
 struct FWwiseSharedPlatformId;
 #endif
 
+typedef TSharedPtr<IWwiseExternalSourceManager> IWwiseExternalSourceManagerPtr;
+
 class IWwiseExternalSourceManager : public IWwiseStreamableFileHandler
 {
 public:
-	inline static IWwiseExternalSourceManager* Get()
+	inline static IWwiseExternalSourceManagerPtr Get()
 	{
 		if (auto* Module = IWwiseFileHandlerModule::GetModule())
 		{
@@ -45,9 +47,9 @@ public:
 	using FLoadExternalSourceCallback = TUniqueFunction<void(bool bSuccess)>;
 	using FUnloadExternalSourceCallback = TUniqueFunction<void()>;
 
-	virtual void LoadExternalSource(const FWwiseExternalSourceCookedData& InExternalSourceCookedData, const FName& InRootPath, 
+	virtual void LoadExternalSource(const FWwiseExternalSourceCookedData& InExternalSourceCookedData, 
 		const FWwiseLanguageCookedData& InLanguage, FLoadExternalSourceCallback&& InCallback) = 0;
-	virtual void UnloadExternalSource(const FWwiseExternalSourceCookedData& InExternalSourceCookedData, const FName& InRootPath,
+	virtual void UnloadExternalSource(const FWwiseExternalSourceCookedData& InExternalSourceCookedData,
 		const FWwiseLanguageCookedData& InLanguage, FUnloadExternalSourceCallback&& InCallback) = 0;
 	virtual void SetGranularity(uint32 Uint32) = 0;
 
@@ -62,8 +64,22 @@ public:
 
 
 #if WITH_EDITORONLY_DATA
-	virtual void Cook(FWwiseResourceCooker& InResourceCooker, const FWwiseExternalSourceCookedData& InCookedData, TFunctionRef<void(const TCHAR* Filename, void* Data, int64 Size)> WriteAdditionalFile,
-		const FWwiseSharedPlatformId& InPlatform, const FWwiseSharedLanguageId& InLanguage) = 0;
+	virtual void Cook(IWwiseResourceCooker& InResourceCooker, const FWwiseExternalSourceCookedData& InCookedData, const TCHAR* PackageFilename,
+		const TFunctionRef<void(const TCHAR* Filename, void* Data, int64 Size)>& WriteAdditionalFile, const FWwiseSharedPlatformId& InPlatform,
+		const FWwiseSharedLanguageId& InLanguage) = 0;
+
+	/**
+	 * Sets the path where the External Sources are located, relative to the Unreal Content folder.
+	 *
+	 * This is typically used to synchronize the settings in UAkSettings.
+	 * 
+	 * @param InPath Path where the External Sources are located.
+	 */
+	virtual void SetExternalSourcePath(const FDirectoryPath& DirectoryPath) = 0;
+	virtual const FDirectoryPath& GetExternalSourcePath() const = 0;
+	virtual FString GetExternalSourcePathFor(const FName& InPath) const { return GetExternalSourcePathFor(InPath.ToString()); }
+	virtual FString GetExternalSourcePathFor(const FString& InPath) const { return GetExternalSourcePath().Path / InPath; }
+
 #endif
 
 	virtual FString GetStagingDirectory() const { return TEXT("ExternalSources"); }

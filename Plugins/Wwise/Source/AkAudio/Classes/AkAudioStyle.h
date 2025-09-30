@@ -12,12 +12,13 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #pragma once
 
-#include "WaapiPicker/WwiseTreeItem.h"
+#include "WwiseItemType.h"
+#include "Styling/CoreStyle.h"
 #include "Materials/Material.h"
 #if WITH_EDITOR
 #include "Wwise/Ref/WwiseRefType.h"
@@ -33,14 +34,14 @@ public:
 	static void Initialize();
 	static void Shutdown();
 
-	static void DisplayEditorMessage(const FText& messageText, EWwiseItemType::Type wwiseItemType = EWwiseItemType::Type::None, float duration = 1.5f);
 
 	static FName GetStyleSetName();
 
+#if WITH_EDITOR
+	static void DisplayEditorMessage(const FText& messageText, EWwiseItemType::Type wwiseItemType = EWwiseItemType::Type::None, float duration = 1.5f);
 	static const FSlateBrush* GetWwiseIcon();
 	static const FSlateBrush* GetBrush(EWwiseItemType::Type ItemType);
-#if WITH_EDITOR
-	static const FSlateBrush* GetBrush(EWwiseRefType WwiseRefType);
+	static const FSlateBrush* GetBrush(WwiseRefType WwiseRefType);
 	static const FSlateBrush* GetBrush(UClass* Class);
 #endif
 	static const FSlateBrush* GetBrush(FName PropertyName, const ANSICHAR* Specifier = NULL);
