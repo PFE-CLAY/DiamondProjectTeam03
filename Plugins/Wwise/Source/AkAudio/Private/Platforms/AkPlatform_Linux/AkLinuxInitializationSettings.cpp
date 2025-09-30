@@ -12,7 +12,7 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #include "Platforms/AkPlatform_Linux/AkLinuxInitializationSettings.h"
@@ -38,7 +38,7 @@ void UAkLinuxInitializationSettings::FillInitializationStructure(FAkInitializati
 	CommunicationSettings.FillInitializationStructure(InitializationStructure);
 	AdvancedSettings.FillInitializationStructure(InitializationStructure);
 
-#if PLATFORM_LINUX && (!defined(PLATFORM_LINUXARM64) || !PLATFORM_LINUXARM64) && (!defined(PLATFORM_LINUXAARCH64) || !PLATFORM_LINUXAARCH64)
+#if PLATFORM_LINUX && (!defined(PLATFORM_LINUXARM64) || !PLATFORM_LINUXARM64)
 	InitializationStructure.PlatformInitSettings.uSampleRate = CommonSettings.SampleRate;
 #endif
 }

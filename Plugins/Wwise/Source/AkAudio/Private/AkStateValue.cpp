@@ -12,7 +12,7 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #include "AkStateValue.h"
@@ -29,7 +29,7 @@ Copyright (c) 2024 Audiokinetic Inc.
 void UAkStateValue::LoadGroupValue()
 {
 	SCOPED_AKAUDIO_EVENT_2(TEXT("UAkStateValue::LoadGroupValue"));
-	auto* ResourceLoader = FWwiseResourceLoader::Get();
+	FWwiseResourceLoaderPtr ResourceLoader = FWwiseResourceLoader::Get();
 	if (UNLIKELY(!ResourceLoader))
 	{
 		return;
@@ -48,14 +48,23 @@ void UAkStateValue::LoadGroupValue()
 		UE_LOG(LogAkAudio, VeryVerbose, TEXT("UAkStateValue::LoadGroupValue: Not loading '%s' because project database is not parsed."), *GetName())
 		return;
 	}
-	auto* ResourceCooker = FWwiseResourceCooker::GetDefault();
+	auto* ResourceCooker = IWwiseResourceCooker::GetDefault();
 	if (UNLIKELY(!ResourceCooker))
 	{
 		return;
 	}
-	if (UNLIKELY(!ResourceCooker->PrepareCookedData(GroupValueCookedData, GetValidatedInfo(GroupValueInfo), EWwiseGroupType::State)))
+	if (!ResourceCooker->PrepareCookedData(GroupValueCookedData, GetValidatedInfo(GroupValueInfo), EWwiseGroupType::State))
 	{
-		return;
+		const auto* AudioDevice = FAkAudioDevice::Get();
+		if( AudioDevice && AudioDevice->IsWwiseProfilerConnected())
+		{
+			UE_LOG(LogAkAudio, Verbose, TEXT("Could not fetch CookedData for State Value %s, but Wwise profiler is connected. Previous errors can be ignored."),
+			*GetName());
+		}
+		else
+		{
+			return;
+		}
 	}
 #endif
 	
@@ -80,7 +89,7 @@ void UAkStateValue::Serialize(FArchive& Ar)
  	if (Ar.IsCooking() && Ar.IsSaving() && !Ar.CookingTarget()->IsServerOnly())
 	{
 		FWwiseGroupValueCookedData CookedDataToArchive;
-		if (auto* ResourceCooker = FWwiseResourceCooker::GetForArchive(Ar))
+		if (auto* ResourceCooker = IWwiseResourceCooker::GetForArchive(Ar))
 		{
 			ResourceCooker->PrepareCookedData(CookedDataToArchive, GetValidatedInfo(GroupValueInfo), EWwiseGroupType::State);
 		}
@@ -95,7 +104,7 @@ void UAkStateValue::Serialize(FArchive& Ar)
 #if WITH_EDITORONLY_DATA
 void UAkStateValue::FillInfo()
 {
-	auto* ResourceCooker = FWwiseResourceCooker::GetDefault();
+	auto* ResourceCooker = IWwiseResourceCooker::GetDefault();
 	if (UNLIKELY(!ResourceCooker))
 	{
 		UE_LOG(LogAkAudio, Error, TEXT("UAkStateValue::FillInfo: ResourceCooker not initialized"));
@@ -110,34 +119,39 @@ void UAkStateValue::FillInfo()
 	}
 
 	FWwiseGroupValueInfo* AudioTypeInfo = static_cast<FWwiseGroupValueInfo*>(GetInfoMutable());
-	FWwiseRefState RefState = FWwiseDataStructureScopeLock(*ProjectDatabase).GetState(
+	WwiseRefState RefState = WwiseDataStructureScopeLock(*ProjectDatabase).GetState(
 		GetValidatedInfo(*AudioTypeInfo));
 
-	if (RefState.StateName().ToString().IsEmpty() || !RefState.StateGuid().IsValid() || RefState.StateId() == AK_INVALID_UNIQUE_ID)
+	if (RefState.StateName().IsEmpty() || !RefState.StateGuid().IsValid() || RefState.StateId() == AK_INVALID_UNIQUE_ID)
 	{
 		UE_LOG(LogAkAudio, Warning, TEXT("UAkStateValue::FillInfo: Valid object not found in Project Database"));
 		return;
 	}
 
-	AudioTypeInfo->WwiseName = RefState.StateName();
-	AudioTypeInfo->WwiseGuid = RefState.StateGuid();
+	int A, B, C, D;
+	RefState.StateGuid().GetGuidValues(A, B, C, D);
+	
+	AudioTypeInfo->WwiseName = FName(*RefState.StateName());
+	AudioTypeInfo->WwiseGuid = FGuid(A, B, C, D);
 	AudioTypeInfo->WwiseShortId = RefState.StateId();
 	AudioTypeInfo->GroupShortId = RefState.StateGroupId();
 }
 
-void UAkStateValue::FillInfo(const FWwiseAnyRef& CurrentWwiseRef)
+void UAkStateValue::FillInfo(const WwiseAnyRef& CurrentWwiseRef)
 {
 	FWwiseGroupValueInfo* AudioTypeInfo = static_cast<FWwiseGroupValueInfo*>(GetInfoMutable());
 
-	AudioTypeInfo->WwiseName = CurrentWwiseRef.GetName();
-	AudioTypeInfo->WwiseGuid = CurrentWwiseRef.GetGuid();
+	int A, B, C, D;
+	CurrentWwiseRef.GetGuid().GetGuidValues(A, B, C, D);
+	AudioTypeInfo->WwiseName = FName(*CurrentWwiseRef.GetName());
+	AudioTypeInfo->WwiseGuid = FGuid(A, B, C, D);;
 	AudioTypeInfo->WwiseShortId = CurrentWwiseRef.GetId();
 	AudioTypeInfo->GroupShortId = CurrentWwiseRef.GetGroupId();
 }
 
 FName UAkStateValue::GetWwiseGroupName()
 {
-	auto* ResourceCooker = FWwiseResourceCooker::GetDefault();
+	auto* ResourceCooker = IWwiseResourceCooker::GetDefault();
 	if (UNLIKELY(!ResourceCooker))
 	{
 		UE_LOG(LogAkAudio, Error, TEXT("UAkStateValue::FillInfo: ResourceCooker not initialized"));
@@ -152,15 +166,15 @@ FName UAkStateValue::GetWwiseGroupName()
 	}
 
 	FWwiseGroupValueInfo* AudioTypeInfo = static_cast<FWwiseGroupValueInfo*>(GetInfoMutable());
-	FWwiseRefState RefState = FWwiseDataStructureScopeLock(*ProjectDatabase).GetState(
+	WwiseRefState RefState = WwiseDataStructureScopeLock(*ProjectDatabase).GetState(
 		GetValidatedInfo(*AudioTypeInfo));
 
-	return RefState.StateGroupName();
+	return FName(**RefState.StateGroupName());
 }
 
 bool UAkStateValue::ObjectIsInSoundBanks()
 {
-	auto* ResourceCooker = FWwiseResourceCooker::GetDefault();
+	auto* ResourceCooker = IWwiseResourceCooker::GetDefault();
 	if (UNLIKELY(!ResourceCooker))
 	{
 		UE_LOG(LogAkAudio, Error, TEXT("UAkStateValue::GetWwiseRef: ResourceCooker not initialized"));
@@ -175,7 +189,7 @@ bool UAkStateValue::ObjectIsInSoundBanks()
 	}
 
 	FWwiseGroupValueInfo* AudioTypeInfo = static_cast<FWwiseGroupValueInfo*>(GetInfoMutable());
-	FWwiseRefState RefState = FWwiseDataStructureScopeLock(*ProjectDatabase).GetState(
+	WwiseRefState RefState = WwiseDataStructureScopeLock(*ProjectDatabase).GetState(
 		GetValidatedInfo(*AudioTypeInfo));
 
 	return RefState.IsValid();

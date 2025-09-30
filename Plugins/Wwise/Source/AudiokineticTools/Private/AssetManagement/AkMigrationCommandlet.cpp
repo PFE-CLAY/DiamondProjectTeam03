@@ -12,7 +12,7 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #include "AssetManagement/AkMigrationCommandlet.h"
@@ -174,11 +174,11 @@ int32 UAkMigrationCommandlet::Main(const FString& Params)
 			UE_LOG(LogAudiokineticTools, Error, TEXT("'transfer-banks-waapi' switch is set, but could not connect WAAPI Client, cancelling migration."));
 			return 1;
 		}
+		MigrationOperations.BankTransferMethod = AkAssetMigration::WAAPI;
 #else
 		UE_LOG(LogAudiokineticTools, Error, TEXT("UAkMigrationCommandlet: 'waapi-bank-transfer' switch is enabled, but the Unreal project does not support WAAPI. Ensure your current platform supports AkAutobahn."));
 		return 1;
 #endif
-		MigrationOperations.BankTransferMethod = AkAssetMigration::WAAPI;
 	}
 
 	if (bWriteBankDefinitionFile)

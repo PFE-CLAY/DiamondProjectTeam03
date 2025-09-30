@@ -12,7 +12,7 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #pragma once
@@ -39,7 +39,7 @@ public:
 			class AActor* Actor,
 			UPARAM(meta = (Bitmask, BitmaskEnum = "/Script/AkAudio.EAkCallbackType")) int32 CallbackMask,
 			const FOnAkPostEventCallback& PostEventCallback,
-			bool bStopWhenAttachedToDestroyed = false
+			bool bStopWhenAttachedToDestroyed = true
 		);
 
 public:
@@ -55,7 +55,7 @@ private:
 	AActor* Actor = nullptr;
 	int32 CallbackMask = 0;
 	FOnAkPostEventCallback PostEventCallback;
-	bool bStopWhenAttachedToDestroyed = false;
+	bool bStopWhenAttachedToDestroyed = true;
 	TFuture<AkPlayingID> PlayingIDFuture;
 	FTimerHandle Timer;
 };

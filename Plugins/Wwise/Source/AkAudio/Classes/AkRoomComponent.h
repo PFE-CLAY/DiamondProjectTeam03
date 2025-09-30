@@ -12,7 +12,7 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #pragma once
@@ -42,7 +42,7 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintSetter = SetEnable, Category="EnableComponent", meta = (DisplayName = "Enable Room"))
 	bool bEnable = false;
 
-	UFUNCTION(BlueprintSetter, Category = "EnableComponent")
+	UFUNCTION(BlueprintSetter, Category = "Audiokinetic|AkRoomComponent")
 	void SetEnable(bool bInEnable);
 
 	/** 
@@ -54,7 +54,7 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintSetter = SetDynamic, Category = "Room", meta = (DisplayName = "Room Is Dynamic"))
 	bool bDynamic = false;
 
-	UFUNCTION(BlueprintSetter, Category = "Room")
+	UFUNCTION(BlueprintSetter, Category = "Audiokinetic|AkRoomComponent")
 	void SetDynamic(bool bInDynamic);
 
 	/**
@@ -68,8 +68,7 @@ public:
 	/**
 	* Used to set the transmission loss value in wwise, on emitters in the Room, when no audio paths to the 
 	* listener are found via sound propagation in Wwise Spatial Audio. This value can be thought of as 
-	* 'thickness', as it relates to how much sound energy is transmitted through the wall. Valid range 0.0f-1.0f, 
-	* and is mapped to the occlusion curve as defined in the Wwise project.
+	* 'thickness', as it relates to how much sound energy is transmitted through the wall. Valid range 0.0f-1.0f.
 	*/
 	UPROPERTY(EditAnywhere, BlueprintSetter = SetTransmissionLoss, DisplayName = "Transmission Loss", Category = "Room", meta = (ClampMin=0.0f, ClampMax=1.0f, UIMin=0.0f, UIMax=1.0f))
 	float WallOcclusion = .0f;
@@ -78,7 +77,7 @@ public:
 	* Sets the transmission loss value.
 	* @param InTransmissionLoss - The new value for the transmission loss. Valid range 0.0f-1.0f.
 	*/
-	UFUNCTION(BlueprintSetter, Category = "Room")
+	UFUNCTION(BlueprintSetter, Category = "Audiokinetic|AkRoomComponent")
 	void SetTransmissionLoss(float InTransmissionLoss);
 
 	/**
@@ -91,7 +90,7 @@ public:
 	* Sets the Send level. A value of 0 disables the aux send.
 	* @param InAuxSendLevel - The new value for the Send level. Valid range 0.0f-1.0f.
 	*/
-	UFUNCTION(BlueprintSetter, Category = "ReverbZone")
+	UFUNCTION(BlueprintSetter, Category = "Audiokinetic|AkRoomComponent")
 	void SetAuxSendLevel(float InAuxSendLevel);
 
 	/** Automatically post the associated AkAudioEvent on BeginPlay */
@@ -108,7 +107,7 @@ public:
 	bool bEnableReverbZone = false;
 
 	/** Set bEnableReverbZone to a new value and set or remove the Reverb Zone in Wwise. */
-	UFUNCTION(BlueprintSetter, Category = "ReverbZone")
+	UFUNCTION(BlueprintSetter, Category = "Audiokinetic|AkRoomComponent")
 	void SetEnableReverbZone(bool bInEnableReverbZone);
 
 	/**
@@ -120,10 +119,10 @@ public:
 	* When set to None (the default value), the Reverb Zone is automatically attached to the 'outdoors' Room.
 	*/
 	UPROPERTY(EditAnywhere, BlueprintSetter = UpdateParentRoomActor, Category = "ReverbZone", meta = (EditCondition = "bEnableReverbZone"))
-	AActor* ParentRoomActor = nullptr;
+	TObjectPtr<AActor> ParentRoomActor = nullptr;
 
 	/** Set ParentRoomActor with a new actor and update the Reverb Zone in Wwise asynchronously. */
-	UFUNCTION(BlueprintSetter, Category = "ReverbZone")
+	UFUNCTION(BlueprintSetter, Category = "Audiokinetic|AkRoomComponent")
 	void UpdateParentRoomActor(AActor* InParentRoomActor);
 
 	/**
@@ -142,7 +141,7 @@ public:
 	float TransitionRegionWidth = 100.f;
 
 	/** Set TransitionRegionWidth to a new value and updates the Reverb Zone in Wwise asynchronously. */
-	UFUNCTION(BlueprintSetter, Category = "ReverbZone")
+	UFUNCTION(BlueprintSetter, Category = "Audiokinetic|AkRoomComponent")
 	void UpdateTransitionRegionWidth(float InTransitionRegionWidth);
 
 	/** Posts this game object's AkAudioEvent to Wwise, using this as the game object source */
@@ -258,7 +257,7 @@ private:
 	TWeakObjectPtr<class UPrimitiveComponent> Parent;
 
 	UPROPERTY(Transient)
-	class UAkAcousticTextureSetComponent* GeometryComponent = nullptr;
+	TObjectPtr<class UAkAcousticTextureSetComponent> GeometryComponent = nullptr;
 
 	PortalComponentMap ConnectedPortals;
 
@@ -278,7 +277,11 @@ private:
 	void UpdateParentRoom();
 	void ResetParentRoom();
 	bool IsAParentOf(TWeakObjectPtr<const UAkRoomComponent> InRoom) const;
-	void SetParentRoom(TWeakObjectPtr<const UAkRoomComponent> InParentRoom);
+	void SetParentRoom(TWeakObjectPtr<UAkRoomComponent> InParentRoom);
+
+	void AddChildRoom(TWeakObjectPtr<UAkRoomComponent> InChildRoom);
+	UPROPERTY()
+	TArray<TWeakObjectPtr<UAkRoomComponent>> ChildrenRooms;
 
 	UPROPERTY()
 	TWeakObjectPtr<const UAkRoomComponent> ParentRoom;

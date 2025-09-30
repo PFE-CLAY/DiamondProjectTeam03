@@ -12,10 +12,13 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #pragma once
+#include "WwiseCookEventContext.h"
+#include "Wwise/WwisePackagedFile.h"
+#include "Wwise/WwiseUnrealVersion.h"
 
 #include "WwiseMediaCookedData.generated.h"
 
@@ -26,62 +29,57 @@ struct WWISEFILEHANDLER_API FWwiseMediaCookedData
 
 	/**
 	 * @brief Short ID for the Media
-	*/
+	 */
 	UPROPERTY(BlueprintReadOnly, VisibleInstanceOnly, Category = "Wwise")
-	int32 MediaId = 0;
-
-	/**
-	 * @brief Path name relative to the platform's root.
-	*/
-	UPROPERTY(BlueprintReadOnly, VisibleInstanceOnly, Category = "Wwise")
-	FName MediaPathName;
-
-	/**
-	 * @brief How many bytes need to be retrieved at load-time. Only set if streaming.
-	*/
-	UPROPERTY(BlueprintReadOnly, VisibleInstanceOnly, Category = "Wwise")
-	int32 PrefetchSize = 0;
-
-	/**
-	 * @brief Alignment required to load the asset on device. Can be 0 if no particular requirements.
-	*/
-	UPROPERTY(BlueprintReadOnly, VisibleInstanceOnly, Category = "Wwise")
-	int32 MemoryAlignment = 0;
-
-	/**
-	 * @brief True if the asset needs to be loaded in a special memory zone on the device.
-	*/
-	UPROPERTY(BlueprintReadOnly, VisibleInstanceOnly, Category = "Wwise")
-	bool bDeviceMemory = false;
-
-	/**
-	 * @brief True if the asset should not be fully loaded in memory at load time.
-	*/
-	UPROPERTY(BlueprintReadOnly, VisibleInstanceOnly, Category = "Wwise")
-	bool bStreaming = false;
+	int32 MediaId{ 0 };
 
 	/**
 	 * @brief Optional debug name. Can be empty in release, contain the name, or the full path of the asset.
-	*/
+	 */
 	UPROPERTY(BlueprintReadOnly, VisibleInstanceOnly, Category = "Wwise")
 	FName DebugName;
+
+	/**
+	 * @brief Packaging information for this file.
+	 */
+	UPROPERTY(BlueprintReadOnly, VisibleInstanceOnly, Category = "Wwise")
+	FWwisePackagedFile PackagedFile;
+
+#if WITH_EDITORONLY_DATA
+	/**
+	 * @brief True if it is a Reference Language item, or is a media shared by multiple languages.
+	 *
+	 * Used during packaging for logging purposes.
+	 */
+	UPROPERTY(Transient)
+	bool bUsingReferenceLanguage{ false };
+#endif
 
 	FWwiseMediaCookedData();
 
 	void Serialize(FArchive& Ar);
+	void SerializeBulkData(FArchive& Ar, const FWwisePackagedFileSerializationOptions& Options);
+#if WITH_EDITORONLY_DATA && UE_5_5_OR_LATER
+	void GetPlatformCookDependencies(FWwiseCookEventContext& Context, FCbWriter& Writer) const;
+#endif
 
 	FString GetDebugString() const;
+
+	bool operator<(const FWwiseMediaCookedData& Rhs) const
+	{
+		return MediaId < Rhs.MediaId;
+	}
 };
 
 inline uint32 GetTypeHash(const FWwiseMediaCookedData& InCookedData)
 {
-	return HashCombine(GetTypeHash(InCookedData.MediaId), GetTypeHash(InCookedData.MediaPathName));
+	return HashCombine(GetTypeHash(InCookedData.MediaId), GetTypeHash(InCookedData.PackagedFile.PathName));
 }
 inline bool operator==(const FWwiseMediaCookedData& InLhs, const FWwiseMediaCookedData& InRhs)
 {
-	return InLhs.MediaId == InRhs.MediaId && InLhs.MediaPathName == InRhs.MediaPathName;
+	return InLhs.MediaId == InRhs.MediaId && InLhs.PackagedFile.PathName == InRhs.PackagedFile.PathName;
 }
 inline bool operator!=(const FWwiseMediaCookedData& InLhs, const FWwiseMediaCookedData& InRhs)
 {
-	return InLhs.MediaId != InRhs.MediaId || InLhs.MediaPathName != InRhs.MediaPathName;
+	return InLhs.MediaId != InRhs.MediaId || InLhs.PackagedFile.PathName != InRhs.PackagedFile.PathName;
 }

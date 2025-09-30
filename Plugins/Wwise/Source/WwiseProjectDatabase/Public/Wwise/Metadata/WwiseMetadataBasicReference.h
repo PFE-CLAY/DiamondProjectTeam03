@@ -12,45 +12,63 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #pragma once
 
 #include "Wwise/Metadata/WwiseMetadataLoadable.h"
+#include "Wwise/Ref/WwiseRefCollections.h"
 
-struct WWISEPROJECTDATABASE_API FWwiseMetadataBasicReference : public FWwiseMetadataLoadable
+struct WwiseMetadataBasicReference : public WwiseMetadataLoadable
 {
-	uint32 Id;
-	FName Name;
-	FName ObjectPath;
-	FGuid GUID;
+	WwiseDBShortId Id;
+	WwiseDBString Name;
+	WwiseDBString ObjectPath;
+	WwiseDBGuid GUID;
+	int Color;
 
-	FWwiseMetadataBasicReference();
-	FWwiseMetadataBasicReference(uint32 InId, FName&& InName, FName&& InObjectPath, FGuid&& InGUID) :
-		Id(MoveTemp(InId)),
-		Name(MoveTemp(InName)),
-		ObjectPath(MoveTemp(InObjectPath)),
-		GUID(MoveTemp(InGUID))
+	WwiseMetadataBasicReference();
+	WwiseMetadataBasicReference(WwiseDBShortId InId, WwiseDBString&& InName,
+								 WwiseDBString&& InObjectPath, WwiseDBGuid&& InGUID,
+								 int InColor = 0) :
+		Id(std::move(InId)),
+		Name(std::move(InName)),
+		ObjectPath(std::move(InObjectPath)),
+		GUID(std::move(InGUID)),
+		Color(std::move(InColor))
 	{}
-	FWwiseMetadataBasicReference(uint32 InId, const FName& InName, const FName& InObjectPath, const FGuid& InGUID) :
+	WwiseMetadataBasicReference(WwiseDBShortId InId, const WwiseDBString& InName,
+								 const WwiseDBString& InObjectPath, const WwiseDBGuid& InGUID,
+								 int InColor = 0) :
 		Id(InId),
 		Name(InName),
 		ObjectPath(InObjectPath),
-		GUID(InGUID)
+		GUID(InGUID),
+		Color(InColor)
 	{}
-	FWwiseMetadataBasicReference(FWwiseMetadataLoader& Loader);
+	WwiseMetadataBasicReference(WwiseMetadataLoader& Loader);
+
+	bool operator<(const WwiseMetadataBasicReference& Rhs)
+	{
+		return Id < Rhs.Id;
+	}
+
+	bool operator==(const WwiseMetadataBasicReference& Rhs)
+	{
+		return Id == Rhs.Id;
+	}
 };
 
-inline uint32 GetTypeHash(const FWwiseMetadataBasicReference& Ref)
+inline WwiseDBShortId GetTypeHash(const WwiseMetadataBasicReference& Ref)
 {
 	return GetTypeHash(Ref.Id);
 }
-inline bool operator==(const FWwiseMetadataBasicReference& Lhs, const FWwiseMetadataBasicReference& Rhs)
+inline bool operator==(const WwiseMetadataBasicReference& Lhs, const WwiseMetadataBasicReference& Rhs)
 {
 	return Lhs.Id == Rhs.Id;
 }
-inline bool operator<(const FWwiseMetadataBasicReference& Lhs, const FWwiseMetadataBasicReference& Rhs)
+inline bool operator<(const WwiseMetadataBasicReference& Lhs, const WwiseMetadataBasicReference& Rhs)
 {
 	return Lhs.Id < Rhs.Id;
 }

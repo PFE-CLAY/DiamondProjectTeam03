@@ -12,7 +12,7 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #include "Wwise/Ref/WwiseAnyRef.h"
@@ -40,438 +40,438 @@ Copyright (c) 2024 Audiokinetic Inc.
 #include "Wwise/Ref/WwiseRefSwitchContainer.h"
 #include "Wwise/Ref/WwiseRefTrigger.h"
 
-const FWwiseRefLanguage* FWwiseAnyRef::GetLanguageRef() const
+const WwiseRefLanguage* WwiseAnyRef::GetLanguageRef() const
 {
-	if (UNLIKELY(GetType() != EWwiseRefType::Language))
+	if (GetType() != WwiseRefType::Language) [[unlikely]]
 	{
 		return nullptr;
 	}
-	return static_cast<const FWwiseRefLanguage*>(Ref.Get());
+	return static_cast<const WwiseRefLanguage*>(Ref.Get());
 }
 
-const FWwiseRefPlatform* FWwiseAnyRef::GetPlatformRef() const
+const WwiseRefPlatform* WwiseAnyRef::GetPlatformRef() const
 {
-	if (UNLIKELY(GetType() != EWwiseRefType::Platform))
+	if (GetType() != WwiseRefType::Platform) [[unlikely]]
 	{
 		return nullptr;
 	}
-	return static_cast<const FWwiseRefPlatform*>(Ref.Get());
+	return static_cast<const WwiseRefPlatform*>(Ref.Get());
 }
 
-const FWwiseRefPluginLib* FWwiseAnyRef::GetPluginLibRef() const
+const WwiseRefPluginLib* WwiseAnyRef::GetPluginLibRef() const
 {
-	if (UNLIKELY(GetType() != EWwiseRefType::PluginLib))
+	if (GetType() != WwiseRefType::PluginLib) [[unlikely]]
 	{
 		return nullptr;
 	}
-	return static_cast<const FWwiseRefPluginLib*>(Ref.Get());
+	return static_cast<const WwiseRefPluginLib*>(Ref.Get());
 }
 
-const FWwiseRefSoundBank* FWwiseAnyRef::GetSoundBankRef() const
+const WwiseRefSoundBank* WwiseAnyRef::GetSoundBankRef() const
 {
-	if (UNLIKELY(GetType() < EWwiseRefType::SoundBank || GetType() > EWwiseRefType::AcousticTexture))
+	if (GetType() < WwiseRefType::SoundBank || GetType() > WwiseRefType::AcousticTexture) [[unlikely]]
 	{
 		return nullptr;
 	}
-	return static_cast<const FWwiseRefSoundBank*>(Ref.Get());
+	return static_cast<const WwiseRefSoundBank*>(Ref.Get());
 }
 
-const FWwiseRefMedia* FWwiseAnyRef::GetMediaRef() const
+const WwiseRefMedia* WwiseAnyRef::GetMediaRef() const
 {
-	if (UNLIKELY(GetType() != EWwiseRefType::Media))
+	if (GetType() != WwiseRefType::Media) [[unlikely]]
 	{
 		return nullptr;
 	}
-	return static_cast<const FWwiseRefMedia*>(Ref.Get());
+	return static_cast<const WwiseRefMedia*>(Ref.Get());
 }
 
-const FWwiseRefCustomPlugin* FWwiseAnyRef::GetCustomPluginRef() const
+const WwiseRefCustomPlugin* WwiseAnyRef::GetCustomPluginRef() const
 {
-	if (UNLIKELY(GetType() != EWwiseRefType::CustomPlugin))
+	if (GetType() != WwiseRefType::CustomPlugin) [[unlikely]]
 	{
 		return nullptr;
 	}
-	return static_cast<const FWwiseRefCustomPlugin*>(Ref.Get());
+	return static_cast<const WwiseRefCustomPlugin*>(Ref.Get());
 }
 
-const FWwiseRefPluginShareSet* FWwiseAnyRef::GetPluginShareSetRef() const
+const WwiseRefPluginShareSet* WwiseAnyRef::GetPluginShareSetRef() const
 {
-	if (UNLIKELY(GetType() != EWwiseRefType::PluginShareSet))
+	if (GetType() != WwiseRefType::PluginShareSet) [[unlikely]]
 	{
 		return nullptr;
 	}
-	return static_cast<const FWwiseRefPluginShareSet*>(Ref.Get());
+	return static_cast<const WwiseRefPluginShareSet*>(Ref.Get());
 }
 
-const FWwiseRefAudioDevice* FWwiseAnyRef::GetAudioDeviceRef() const
+const WwiseRefAudioDevice* WwiseAnyRef::GetAudioDeviceRef() const
 {
-	if (UNLIKELY(GetType() != EWwiseRefType::AudioDevice))
+	if (GetType() != WwiseRefType::AudioDevice) [[unlikely]]
 	{
 		return nullptr;
 	}
-	return static_cast<const FWwiseRefAudioDevice*>(Ref.Get());
+	return static_cast<const WwiseRefAudioDevice*>(Ref.Get());
 }
 
-const FWwiseRefEvent* FWwiseAnyRef::GetEventRef() const
+const WwiseRefEvent* WwiseAnyRef::GetEventRef() const
 {
-	if (UNLIKELY(GetType() < EWwiseRefType::Event || GetType() > EWwiseRefType::SwitchContainer))
+	if (GetType() < WwiseRefType::Event || GetType() > WwiseRefType::SwitchContainer) [[unlikely]]
 	{
 		return nullptr;
 	}
-	return static_cast<const FWwiseRefEvent*>(Ref.Get());
+	return static_cast<const WwiseRefEvent*>(Ref.Get());
 }
 
-const FWwiseRefSwitchContainer* FWwiseAnyRef::GetSwitchContainerRef() const
+const WwiseRefSwitchContainer* WwiseAnyRef::GetSwitchContainerRef() const
 {
-	if (UNLIKELY(GetType() != EWwiseRefType::SwitchContainer))
+	if (GetType() != WwiseRefType::SwitchContainer) [[unlikely]]
 	{
 		return nullptr;
 	}
-	return static_cast<const FWwiseRefSwitchContainer*>(Ref.Get());
+	return static_cast<const WwiseRefSwitchContainer*>(Ref.Get());
 }
 
-const FWwiseRefDialogueEvent* FWwiseAnyRef::GetDialogueEventRef() const
+const WwiseRefDialogueEvent* WwiseAnyRef::GetDialogueEventRef() const
 {
-	if (UNLIKELY(GetType() < EWwiseRefType::DialogueEvent || GetType() > EWwiseRefType::DialogueArgument))
+	if (GetType() < WwiseRefType::DialogueEvent || GetType() > WwiseRefType::DialogueArgument) [[unlikely]]
 	{
 		return nullptr;
 	}
-	return static_cast<const FWwiseRefDialogueEvent*>(Ref.Get());
+	return static_cast<const WwiseRefDialogueEvent*>(Ref.Get());
 }
 
-const FWwiseRefDialogueArgument* FWwiseAnyRef::GetDialogueArgumentRef() const
+const WwiseRefDialogueArgument* WwiseAnyRef::GetDialogueArgumentRef() const
 {
-	if (UNLIKELY(GetType() != EWwiseRefType::DialogueArgument))
+	if (GetType() != WwiseRefType::DialogueArgument) [[unlikely]]
 	{
 		return nullptr;
 	}
-	return static_cast<const FWwiseRefDialogueArgument*>(Ref.Get());
+	return static_cast<const WwiseRefDialogueArgument*>(Ref.Get());
 }
 
-const FWwiseRefBus* FWwiseAnyRef::GetBusRef() const
+const WwiseRefBus* WwiseAnyRef::GetBusRef() const
 {
-	if (UNLIKELY(GetType() != EWwiseRefType::Bus))
+	if (GetType() != WwiseRefType::Bus) [[unlikely]]
 	{
 		return nullptr;
 	}
-	return static_cast<const FWwiseRefBus*>(Ref.Get());
+	return static_cast<const WwiseRefBus*>(Ref.Get());
 }
 
-const FWwiseRefAuxBus* FWwiseAnyRef::GetAuxBusRef() const
+const WwiseRefAuxBus* WwiseAnyRef::GetAuxBusRef() const
 {
-	if (UNLIKELY(GetType() != EWwiseRefType::AuxBus))
+	if (GetType() != WwiseRefType::AuxBus) [[unlikely]]
 	{
 		return nullptr;
 	}
-	return static_cast<const FWwiseRefAuxBus*>(Ref.Get());
+	return static_cast<const WwiseRefAuxBus*>(Ref.Get());
 }
 
-const FWwiseRefGameParameter* FWwiseAnyRef::GetGameParameterRef() const
+const WwiseRefGameParameter* WwiseAnyRef::GetGameParameterRef() const
 {
-	if (UNLIKELY(GetType() != EWwiseRefType::GameParameter))
+	if (GetType() != WwiseRefType::GameParameter) [[unlikely]]
 	{
 		return nullptr;
 	}
-	return static_cast<const FWwiseRefGameParameter*>(Ref.Get());
+	return static_cast<const WwiseRefGameParameter*>(Ref.Get());
 }
 
-const FWwiseRefStateGroup* FWwiseAnyRef::GetStateGroupRef() const
+const WwiseRefStateGroup* WwiseAnyRef::GetStateGroupRef() const
 {
-	if (UNLIKELY(GetType() < EWwiseRefType::StateGroup || GetType() > EWwiseRefType::State))
+	if (GetType() < WwiseRefType::StateGroup || GetType() > WwiseRefType::State) [[unlikely]]
 	{
 		return nullptr;
 	}
-	return static_cast<const FWwiseRefStateGroup*>(Ref.Get());
+	return static_cast<const WwiseRefStateGroup*>(Ref.Get());
 }
 
-const FWwiseRefState* FWwiseAnyRef::GetStateRef() const
+const WwiseRefState* WwiseAnyRef::GetStateRef() const
 {
-	if (UNLIKELY(GetType() != EWwiseRefType::State))
+	if (GetType() != WwiseRefType::State) [[unlikely]]
 	{
 		return nullptr;
 	}
-	return static_cast<const FWwiseRefState*>(Ref.Get());
+	return static_cast<const WwiseRefState*>(Ref.Get());
 }
 
-const FWwiseRefSwitchGroup* FWwiseAnyRef::GetSwitchGroupRef() const
+const WwiseRefSwitchGroup* WwiseAnyRef::GetSwitchGroupRef() const
 {
-	if (UNLIKELY(GetType() < EWwiseRefType::SwitchGroup || GetType() > EWwiseRefType::Switch))
+	if (GetType() < WwiseRefType::SwitchGroup || GetType() > WwiseRefType::Switch) [[unlikely]]
 	{
 		return nullptr;
 	}
-	return static_cast<const FWwiseRefSwitchGroup*>(Ref.Get());
+	return static_cast<const WwiseRefSwitchGroup*>(Ref.Get());
 }
 
-const FWwiseRefSwitch* FWwiseAnyRef::GetSwitchRef() const
+const WwiseRefSwitch* WwiseAnyRef::GetSwitchRef() const
 {
-	if (UNLIKELY(GetType() != EWwiseRefType::Switch))
+	if (GetType() != WwiseRefType::Switch) [[unlikely]]
 	{
 		return nullptr;
 	}
-	return static_cast<const FWwiseRefSwitch*>(Ref.Get());
+	return static_cast<const WwiseRefSwitch*>(Ref.Get());
 }
 
-const FWwiseRefTrigger* FWwiseAnyRef::GetTriggerRef() const
+const WwiseRefTrigger* WwiseAnyRef::GetTriggerRef() const
 {
-	if (UNLIKELY(GetType() != EWwiseRefType::Trigger))
+	if (GetType() != WwiseRefType::Trigger) [[unlikely]]
 	{
 		return nullptr;
 	}
-	return static_cast<const FWwiseRefTrigger*>(Ref.Get());
+	return static_cast<const WwiseRefTrigger*>(Ref.Get());
 }
 
-const FWwiseRefExternalSource* FWwiseAnyRef::GetExternalSourceRef() const
+const WwiseRefExternalSource* WwiseAnyRef::GetExternalSourceRef() const
 {
-	if (UNLIKELY(GetType() != EWwiseRefType::ExternalSource))
+	if (GetType() != WwiseRefType::ExternalSource) [[unlikely]]
 	{
 		return nullptr;
 	}
-	return static_cast<const FWwiseRefExternalSource*>(Ref.Get());
+	return static_cast<const WwiseRefExternalSource*>(Ref.Get());
 }
 
-const FWwiseRefAcousticTexture* FWwiseAnyRef::GetAcousticTextureRef() const
+const WwiseRefAcousticTexture* WwiseAnyRef::GetAcousticTextureRef() const
 {
-	if (UNLIKELY(GetType() != EWwiseRefType::AcousticTexture))
+	if (GetType() != WwiseRefType::AcousticTexture) [[unlikely]]
 	{
 		return nullptr;
 	}
-	return static_cast<const FWwiseRefAcousticTexture*>(Ref.Get());
+	return static_cast<const WwiseRefAcousticTexture*>(Ref.Get());
 }
 
-const FWwiseMetadataLanguage* FWwiseAnyRef::GetLanguage() const
+const WwiseMetadataLanguage* WwiseAnyRef::GetLanguage() const
 {
 	const auto* LanguageRef = GetLanguageRef();
-	if (UNLIKELY(!LanguageRef))
+	if (!LanguageRef) [[unlikely]]
 	{
 		return nullptr;
 	}
 	return LanguageRef->GetLanguage();
 }
 
-const FWwiseMetadataPlatform* FWwiseAnyRef::GetPlatform() const
+const WwiseMetadataPlatform* WwiseAnyRef::GetPlatform() const
 {
 	const auto* PlatformRef = GetPlatformRef();
-	if (UNLIKELY(!PlatformRef))
+	if (!PlatformRef) [[unlikely]]
 	{
 		return nullptr;
 	}
 	return PlatformRef->GetPlatform();
 }
 
-const FWwiseMetadataPlatformReference* FWwiseAnyRef::GetPlatformReference() const
+const WwiseMetadataPlatformReference* WwiseAnyRef::GetPlatformReference() const
 {
 	const auto* PlatformRef = GetPlatformRef();
-	if (UNLIKELY(!PlatformRef))
+	if (!PlatformRef) [[unlikely]]
 	{
 		return nullptr;
 	}
 	return PlatformRef->GetPlatformReference();
 }
 
-const FWwiseMetadataPluginLib* FWwiseAnyRef::GetPluginLib() const
+const WwiseMetadataPluginLib* WwiseAnyRef::GetPluginLib() const
 {
 	const auto* PluginLibRef = GetPluginLibRef();
-	if (UNLIKELY(!PluginLibRef))
+	if (!PluginLibRef) [[unlikely]]
 	{
 		return nullptr;
 	}
 	return PluginLibRef->GetPluginLib();
 }
 
-const FWwiseMetadataSoundBank* FWwiseAnyRef::GetSoundBank() const
+const WwiseMetadataSoundBank* WwiseAnyRef::GetSoundBank() const
 {
 	const auto* SoundBankRef = GetSoundBankRef();
-	if (UNLIKELY(!SoundBankRef))
+	if (!SoundBankRef) [[unlikely]]
 	{
 		return nullptr;
 	}
 	return SoundBankRef->GetSoundBank();
 }
 
-const FWwiseMetadataMedia* FWwiseAnyRef::GetMedia() const
+const WwiseMetadataMedia* WwiseAnyRef::GetMedia() const
 {
 	const auto* MediaRef = GetMediaRef();
-	if (UNLIKELY(!MediaRef))
+	if (!MediaRef) [[unlikely]]
 	{
 		return nullptr;
 	}
 	return MediaRef->GetMedia();
 }
 
-const FWwiseMetadataPlugin* FWwiseAnyRef::GetCustomPlugin() const
+const WwiseMetadataPlugin* WwiseAnyRef::GetCustomPlugin() const
 {
 	const auto* CustomPluginRef = GetCustomPluginRef();
-	if (UNLIKELY(!CustomPluginRef))
+	if (!CustomPluginRef) [[unlikely]]
 	{
 		return nullptr;
 	}
 	return CustomPluginRef->GetPlugin();
 }
 
-const FWwiseMetadataPlugin* FWwiseAnyRef::GetPluginShareSet() const
+const WwiseMetadataPlugin* WwiseAnyRef::GetPluginShareSet() const
 {
 	const auto* PluginShareSetRef = GetPluginShareSetRef();
-	if (UNLIKELY(!PluginShareSetRef))
+	if (!PluginShareSetRef) [[unlikely]]
 	{
 		return nullptr;
 	}
 	return PluginShareSetRef->GetPlugin();
 }
 
-const FWwiseMetadataPlugin* FWwiseAnyRef::GetAudioDevice() const
+const WwiseMetadataPlugin* WwiseAnyRef::GetAudioDevice() const
 {
 	const auto* AudioDeviceRef = GetAudioDeviceRef();
-	if (UNLIKELY(!AudioDeviceRef))
+	if (!AudioDeviceRef) [[unlikely]]
 	{
 		return nullptr;
 	}
 	return AudioDeviceRef->GetPlugin();
 }
 
-const FWwiseMetadataEvent* FWwiseAnyRef::GetEvent() const
+const WwiseMetadataEvent* WwiseAnyRef::GetEvent() const
 {
 	const auto* EventRef = GetEventRef();
-	if (UNLIKELY(!EventRef))
+	if (!EventRef) [[unlikely]]
 	{
 		return nullptr;
 	}
 	return EventRef->GetEvent();
 }
 
-const FWwiseMetadataSwitchContainer* FWwiseAnyRef::GetSwitchContainer() const
+const WwiseMetadataSwitchContainer* WwiseAnyRef::GetSwitchContainer() const
 {
 	const auto* SwitchContainerRef = GetSwitchContainerRef();
-	if (UNLIKELY(!SwitchContainerRef))
+	if (!SwitchContainerRef) [[unlikely]]
 	{
 		return nullptr;
 	}
 	return SwitchContainerRef->GetSwitchContainer();
 }
 
-const FWwiseMetadataDialogueEvent* FWwiseAnyRef::GetDialogueEvent() const
+const WwiseMetadataDialogueEvent* WwiseAnyRef::GetDialogueEvent() const
 {
 	const auto* DialogueEventRef = GetDialogueEventRef();
-	if (UNLIKELY(!DialogueEventRef))
+	if (!DialogueEventRef) [[unlikely]]
 	{
 		return nullptr;
 	}
 	return DialogueEventRef->GetDialogueEvent();
 }
 
-const FWwiseMetadataDialogueArgument* FWwiseAnyRef::GetDialogueArgument() const
+const WwiseMetadataDialogueArgument* WwiseAnyRef::GetDialogueArgument() const
 {
 	const auto* DialogueArgumentRef = GetDialogueArgumentRef();
-	if (UNLIKELY(!DialogueArgumentRef))
+	if (!DialogueArgumentRef) [[unlikely]]
 	{
 		return nullptr;
 	}
 	return DialogueArgumentRef->GetDialogueArgument();
 }
 
-const FWwiseMetadataBus* FWwiseAnyRef::GetBus() const
+const WwiseMetadataBus* WwiseAnyRef::GetBus() const
 {
 	const auto* BusRef = GetBusRef();
-	if (UNLIKELY(!BusRef))
+	if (!BusRef) [[unlikely]]
 	{
 		return nullptr;
 	}
 	return BusRef->GetBus();
 }
 
-const FWwiseMetadataBus* FWwiseAnyRef::GetAuxBus() const
+const WwiseMetadataBus* WwiseAnyRef::GetAuxBus() const
 {
 	const auto* AuxBusRef = GetAuxBusRef();
-	if (UNLIKELY(!AuxBusRef))
+	if (!AuxBusRef) [[unlikely]]
 	{
 		return nullptr;
 	}
 	return AuxBusRef->GetAuxBus();
 }
 
-const FWwiseMetadataGameParameter* FWwiseAnyRef::GetGameParameter() const
+const WwiseMetadataGameParameter* WwiseAnyRef::GetGameParameter() const
 {
 	const auto* GameParameterRef = GetGameParameterRef();
-	if (UNLIKELY(!GameParameterRef))
+	if (!GameParameterRef) [[unlikely]]
 	{
 		return nullptr;
 	}
 	return GameParameterRef->GetGameParameter();
 }
 
-const FWwiseMetadataStateGroup* FWwiseAnyRef::GetStateGroup() const
+const WwiseMetadataStateGroup* WwiseAnyRef::GetStateGroup() const
 {
 	const auto* StateGroupRef = GetStateGroupRef();
-	if (UNLIKELY(!StateGroupRef))
+	if (!StateGroupRef) [[unlikely]]
 	{
 		return nullptr;
 	}
 	return StateGroupRef->GetStateGroup();
 }
 
-const FWwiseMetadataState* FWwiseAnyRef::GetState() const
+const WwiseMetadataState* WwiseAnyRef::GetState() const
 {
 	const auto* StateRef = GetStateRef();
-	if (UNLIKELY(!StateRef))
+	if (!StateRef) [[unlikely]]
 	{
 		return nullptr;
 	}
 	return StateRef->GetState();
 }
 
-const FWwiseMetadataSwitchGroup* FWwiseAnyRef::GetSwitchGroup() const
+const WwiseMetadataSwitchGroup* WwiseAnyRef::GetSwitchGroup() const
 {
 	const auto* SwitchGroupRef = GetSwitchGroupRef();
-	if (UNLIKELY(!SwitchGroupRef))
+	if (!SwitchGroupRef) [[unlikely]]
 	{
 		return nullptr;
 	}
 	return SwitchGroupRef->GetSwitchGroup();
 }
 
-const FWwiseMetadataSwitch* FWwiseAnyRef::GetSwitch() const
+const WwiseMetadataSwitch* WwiseAnyRef::GetSwitch() const
 {
 	const auto* SwitchRef = GetSwitchRef();
-	if (UNLIKELY(!SwitchRef))
+	if (!SwitchRef) [[unlikely]]
 	{
 		return nullptr;
 	}
 	return SwitchRef->GetSwitch();
 }
 
-const FWwiseMetadataTrigger* FWwiseAnyRef::GetTrigger() const
+const WwiseMetadataTrigger* WwiseAnyRef::GetTrigger() const
 {
 	const auto* TriggerRef = GetTriggerRef();
-	if (UNLIKELY(!TriggerRef))
+	if (!TriggerRef) [[unlikely]]
 	{
 		return nullptr;
 	}
 	return TriggerRef->GetTrigger();
 }
 
-const FWwiseMetadataExternalSource* FWwiseAnyRef::GetExternalSource() const
+const WwiseMetadataExternalSource* WwiseAnyRef::GetExternalSource() const
 {
 	const auto* ExternalSourceRef = GetExternalSourceRef();
-	if (UNLIKELY(!ExternalSourceRef))
+	if (!ExternalSourceRef) [[unlikely]]
 	{
 		return nullptr;
 	}
 	return ExternalSourceRef->GetExternalSource();
 }
 
-const FWwiseMetadataAcousticTexture* FWwiseAnyRef::GetAcousticTexture() const
+const WwiseMetadataAcousticTexture* WwiseAnyRef::GetAcousticTexture() const
 {
 	const auto* AcousticTextureRef = GetAcousticTextureRef();
-	if (UNLIKELY(!AcousticTextureRef))
+	if (!AcousticTextureRef) [[unlikely]]
 	{
 		return nullptr;
 	}
 	return AcousticTextureRef->GetAcousticTexture();
 }
 
-bool FWwiseAnyRef::GetRef(FWwiseRefLanguage& OutRef) const
+bool WwiseAnyRef::GetRef(WwiseRefLanguage& OutRef) const
 {
 	const auto* Result = GetLanguageRef();
-	if (UNLIKELY(!Result))
+	if (!Result) [[unlikely]]
 	{
 		return false;
 	}
@@ -479,10 +479,10 @@ bool FWwiseAnyRef::GetRef(FWwiseRefLanguage& OutRef) const
 	return true;
 }
 
-bool FWwiseAnyRef::GetRef(FWwiseRefPlatform& OutRef) const
+bool WwiseAnyRef::GetRef(WwiseRefPlatform& OutRef) const
 {
 	const auto* Result = GetPlatformRef();
-	if (UNLIKELY(!Result))
+	if (!Result) [[unlikely]]
 	{
 		return false;
 	}
@@ -490,10 +490,10 @@ bool FWwiseAnyRef::GetRef(FWwiseRefPlatform& OutRef) const
 	return true;
 }
 
-bool FWwiseAnyRef::GetRef(FWwiseRefPluginLib& OutRef) const
+bool WwiseAnyRef::GetRef(WwiseRefPluginLib& OutRef) const
 {
 	const auto* Result = GetPluginLibRef();
-	if (UNLIKELY(!Result))
+	if (!Result) [[unlikely]]
 	{
 		return false;
 	}
@@ -501,10 +501,10 @@ bool FWwiseAnyRef::GetRef(FWwiseRefPluginLib& OutRef) const
 	return true;
 }
 
-bool FWwiseAnyRef::GetRef(FWwiseRefSoundBank& OutRef) const
+bool WwiseAnyRef::GetRef(WwiseRefSoundBank& OutRef) const
 {
 	const auto* Result = GetSoundBankRef();
-	if (UNLIKELY(!Result))
+	if (!Result) [[unlikely]]
 	{
 		return false;
 	}
@@ -512,10 +512,10 @@ bool FWwiseAnyRef::GetRef(FWwiseRefSoundBank& OutRef) const
 	return true;
 }
 
-bool FWwiseAnyRef::GetRef(FWwiseRefMedia& OutRef) const
+bool WwiseAnyRef::GetRef(WwiseRefMedia& OutRef) const
 {
 	const auto* Result = GetMediaRef();
-	if (UNLIKELY(!Result))
+	if (!Result) [[unlikely]]
 	{
 		return false;
 	}
@@ -523,10 +523,10 @@ bool FWwiseAnyRef::GetRef(FWwiseRefMedia& OutRef) const
 	return true;
 }
 
-bool FWwiseAnyRef::GetRef(FWwiseRefCustomPlugin& OutRef) const
+bool WwiseAnyRef::GetRef(WwiseRefCustomPlugin& OutRef) const
 {
 	const auto* Result = GetCustomPluginRef();
-	if (UNLIKELY(!Result))
+	if (!Result) [[unlikely]]
 	{
 		return false;
 	}
@@ -534,10 +534,10 @@ bool FWwiseAnyRef::GetRef(FWwiseRefCustomPlugin& OutRef) const
 	return true;
 }
 
-bool FWwiseAnyRef::GetRef(FWwiseRefPluginShareSet& OutRef) const
+bool WwiseAnyRef::GetRef(WwiseRefPluginShareSet& OutRef) const
 {
 	const auto* Result = GetPluginShareSetRef();
-	if (UNLIKELY(!Result))
+	if (!Result) [[unlikely]]
 	{
 		return false;
 	}
@@ -545,10 +545,10 @@ bool FWwiseAnyRef::GetRef(FWwiseRefPluginShareSet& OutRef) const
 	return true;
 }
 
-bool FWwiseAnyRef::GetRef(FWwiseRefAudioDevice& OutRef) const
+bool WwiseAnyRef::GetRef(WwiseRefAudioDevice& OutRef) const
 {
 	const auto* Result = GetAudioDeviceRef();
-	if (UNLIKELY(!Result))
+	if (!Result) [[unlikely]]
 	{
 		return false;
 	}
@@ -556,10 +556,10 @@ bool FWwiseAnyRef::GetRef(FWwiseRefAudioDevice& OutRef) const
 	return true;
 }
 
-bool FWwiseAnyRef::GetRef(FWwiseRefEvent& OutRef) const
+bool WwiseAnyRef::GetRef(WwiseRefEvent& OutRef) const
 {
 	const auto* Result = GetEventRef();
-	if (UNLIKELY(!Result))
+	if (!Result) [[unlikely]]
 	{
 		return false;
 	}
@@ -567,10 +567,10 @@ bool FWwiseAnyRef::GetRef(FWwiseRefEvent& OutRef) const
 	return true;
 }
 
-bool FWwiseAnyRef::GetRef(FWwiseRefSwitchContainer& OutRef) const
+bool WwiseAnyRef::GetRef(WwiseRefSwitchContainer& OutRef) const
 {
 	const auto* Result = GetSwitchContainerRef();
-	if (UNLIKELY(!Result))
+	if (!Result) [[unlikely]]
 	{
 		return false;
 	}
@@ -578,10 +578,10 @@ bool FWwiseAnyRef::GetRef(FWwiseRefSwitchContainer& OutRef) const
 	return true;
 }
 
-bool FWwiseAnyRef::GetRef(FWwiseRefDialogueEvent& OutRef) const
+bool WwiseAnyRef::GetRef(WwiseRefDialogueEvent& OutRef) const
 {
 	const auto* Result = GetDialogueEventRef();
-	if (UNLIKELY(!Result))
+	if (!Result) [[unlikely]]
 	{
 		return false;
 	}
@@ -589,10 +589,10 @@ bool FWwiseAnyRef::GetRef(FWwiseRefDialogueEvent& OutRef) const
 	return true;
 }
 
-bool FWwiseAnyRef::GetRef(FWwiseRefDialogueArgument& OutRef) const
+bool WwiseAnyRef::GetRef(WwiseRefDialogueArgument& OutRef) const
 {
 	const auto* Result = GetDialogueArgumentRef();
-	if (UNLIKELY(!Result))
+	if (!Result) [[unlikely]]
 	{
 		return false;
 	}
@@ -600,10 +600,10 @@ bool FWwiseAnyRef::GetRef(FWwiseRefDialogueArgument& OutRef) const
 	return true;
 }
 
-bool FWwiseAnyRef::GetRef(FWwiseRefBus& OutRef) const
+bool WwiseAnyRef::GetRef(WwiseRefBus& OutRef) const
 {
 	const auto* Result = GetBusRef();
-	if (UNLIKELY(!Result))
+	if (!Result) [[unlikely]]
 	{
 		return false;
 	}
@@ -611,10 +611,10 @@ bool FWwiseAnyRef::GetRef(FWwiseRefBus& OutRef) const
 	return true;
 }
 
-bool FWwiseAnyRef::GetRef(FWwiseRefAuxBus& OutRef) const
+bool WwiseAnyRef::GetRef(WwiseRefAuxBus& OutRef) const
 {
 	const auto* Result = GetAuxBusRef();
-	if (UNLIKELY(!Result))
+	if (!Result) [[unlikely]]
 	{
 		return false;
 	}
@@ -622,10 +622,10 @@ bool FWwiseAnyRef::GetRef(FWwiseRefAuxBus& OutRef) const
 	return true;
 }
 
-bool FWwiseAnyRef::GetRef(FWwiseRefGameParameter& OutRef) const
+bool WwiseAnyRef::GetRef(WwiseRefGameParameter& OutRef) const
 {
 	const auto* Result = GetGameParameterRef();
-	if (UNLIKELY(!Result))
+	if (!Result) [[unlikely]]
 	{
 		return false;
 	}
@@ -633,10 +633,10 @@ bool FWwiseAnyRef::GetRef(FWwiseRefGameParameter& OutRef) const
 	return true;
 }
 
-bool FWwiseAnyRef::GetRef(FWwiseRefStateGroup& OutRef) const
+bool WwiseAnyRef::GetRef(WwiseRefStateGroup& OutRef) const
 {
 	const auto* Result = GetStateGroupRef();
-	if (UNLIKELY(!Result))
+	if (!Result) [[unlikely]]
 	{
 		return false;
 	}
@@ -644,10 +644,10 @@ bool FWwiseAnyRef::GetRef(FWwiseRefStateGroup& OutRef) const
 	return true;
 }
 
-bool FWwiseAnyRef::GetRef(FWwiseRefState& OutRef) const
+bool WwiseAnyRef::GetRef(WwiseRefState& OutRef) const
 {
 	const auto* Result = GetStateRef();
-	if (UNLIKELY(!Result))
+	if (!Result) [[unlikely]]
 	{
 		return false;
 	}
@@ -655,10 +655,10 @@ bool FWwiseAnyRef::GetRef(FWwiseRefState& OutRef) const
 	return true;
 }
 
-bool FWwiseAnyRef::GetRef(FWwiseRefSwitchGroup& OutRef) const
+bool WwiseAnyRef::GetRef(WwiseRefSwitchGroup& OutRef) const
 {
 	const auto* Result = GetSwitchGroupRef();
-	if (UNLIKELY(!Result))
+	if (!Result) [[unlikely]]
 	{
 		return false;
 	}
@@ -666,10 +666,10 @@ bool FWwiseAnyRef::GetRef(FWwiseRefSwitchGroup& OutRef) const
 	return true;
 }
 
-bool FWwiseAnyRef::GetRef(FWwiseRefSwitch& OutRef) const
+bool WwiseAnyRef::GetRef(WwiseRefSwitch& OutRef) const
 {
 	const auto* Result = GetSwitchRef();
-	if (UNLIKELY(!Result))
+	if (!Result) [[unlikely]]
 	{
 		return false;
 	}
@@ -677,10 +677,10 @@ bool FWwiseAnyRef::GetRef(FWwiseRefSwitch& OutRef) const
 	return true;
 }
 
-bool FWwiseAnyRef::GetRef(FWwiseRefTrigger& OutRef) const
+bool WwiseAnyRef::GetRef(WwiseRefTrigger& OutRef) const
 {
 	const auto* Result = GetTriggerRef();
-	if (UNLIKELY(!Result))
+	if (!Result) [[unlikely]]
 	{
 		return false;
 	}
@@ -688,10 +688,10 @@ bool FWwiseAnyRef::GetRef(FWwiseRefTrigger& OutRef) const
 	return true;
 }
 
-bool FWwiseAnyRef::GetRef(FWwiseRefExternalSource& OutRef) const
+bool WwiseAnyRef::GetRef(WwiseRefExternalSource& OutRef) const
 {
 	const auto* Result = GetExternalSourceRef();
-	if (UNLIKELY(!Result))
+	if (!Result) [[unlikely]]
 	{
 		return false;
 	}
@@ -699,10 +699,10 @@ bool FWwiseAnyRef::GetRef(FWwiseRefExternalSource& OutRef) const
 	return true;
 }
 
-bool FWwiseAnyRef::GetRef(FWwiseRefAcousticTexture& OutRef) const
+bool WwiseAnyRef::GetRef(WwiseRefAcousticTexture& OutRef) const
 {
 	const auto* Result = GetAcousticTextureRef();
-	if (UNLIKELY(!Result))
+	if (!Result) [[unlikely]]
 	{
 		return false;
 	}
@@ -710,191 +710,191 @@ bool FWwiseAnyRef::GetRef(FWwiseRefAcousticTexture& OutRef) const
 	return true;
 }
 
-FGuid FWwiseAnyRef::GetGuid(const EWwiseRefType* TypeOverride) const
+WwiseDBGuid WwiseAnyRef::GetGuid(const WwiseRefType* TypeOverride) const
 {
 	const auto Type = TypeOverride ? *TypeOverride : GetType();
 	switch (Type)
 	{
-	case EWwiseRefType::RootFile: return {};
-	case EWwiseRefType::ProjectInfo: return {};
-	case EWwiseRefType::Language: return GetLanguage()->GUID;
-	case EWwiseRefType::PlatformInfo: return {};
-	case EWwiseRefType::Platform: return GetPlatformReference()->GUID;
-	case EWwiseRefType::PluginInfo: return {};
-	case EWwiseRefType::PluginLib: return {};
-	case EWwiseRefType::SoundBanksInfo: return {};
-	case EWwiseRefType::SoundBank: return GetSoundBank()->GUID;
-	case EWwiseRefType::Media: return {};
-	case EWwiseRefType::CustomPlugin: return GetCustomPlugin()->GUID;
-	case EWwiseRefType::PluginShareSet: return GetPluginShareSet()->GUID;
-	case EWwiseRefType::AudioDevice: return GetAudioDevice()->GUID;
-	case EWwiseRefType::Event: return GetEvent()->GUID;
-	case EWwiseRefType::SwitchContainer: return {};
-	case EWwiseRefType::DialogueEvent: return GetDialogueEvent()->GUID;
-	case EWwiseRefType::DialogueArgument: return GetDialogueArgument()->GUID;
-	case EWwiseRefType::Bus: return GetBus()->GUID;
-	case EWwiseRefType::AuxBus: return GetAuxBus()->GUID;
-	case EWwiseRefType::GameParameter: return GetGameParameter()->GUID;
-	case EWwiseRefType::StateGroup: return GetStateGroup()->GUID;
-	case EWwiseRefType::State: return GetState()->GUID;
-	case EWwiseRefType::SwitchGroup: return GetSwitchGroup()->GUID;
-	case EWwiseRefType::Switch: return GetSwitch()->GUID;
-	case EWwiseRefType::Trigger: return GetTrigger()->GUID;
-	case EWwiseRefType::ExternalSource: return GetExternalSource()->GUID;
-	case EWwiseRefType::AcousticTexture: return GetAcousticTexture()->GUID;
-	case EWwiseRefType::None:
+	case WwiseRefType::RootFile: return {};
+	case WwiseRefType::ProjectInfo: return {};
+	case WwiseRefType::Language: return GetLanguage()->GUID;
+	case WwiseRefType::PlatformInfo: return {};
+	case WwiseRefType::Platform: return GetPlatformReference()->GUID;
+	case WwiseRefType::PluginInfo: return {};
+	case WwiseRefType::PluginLib: return {};
+	case WwiseRefType::SoundBanksInfo: return {};
+	case WwiseRefType::SoundBank: return GetSoundBank()->GUID;
+	case WwiseRefType::Media: return {};
+	case WwiseRefType::CustomPlugin: return GetCustomPlugin()->GUID;
+	case WwiseRefType::PluginShareSet: return GetPluginShareSet()->GUID;
+	case WwiseRefType::AudioDevice: return GetAudioDevice()->GUID;
+	case WwiseRefType::Event: return GetEvent()->GUID;
+	case WwiseRefType::SwitchContainer: return {};
+	case WwiseRefType::DialogueEvent: return GetDialogueEvent()->GUID;
+	case WwiseRefType::DialogueArgument: return GetDialogueArgument()->GUID;
+	case WwiseRefType::Bus: return GetBus()->GUID;
+	case WwiseRefType::AuxBus: return GetAuxBus()->GUID;
+	case WwiseRefType::GameParameter: return GetGameParameter()->GUID;
+	case WwiseRefType::StateGroup: return GetStateGroup()->GUID;
+	case WwiseRefType::State: return GetState()->GUID;
+	case WwiseRefType::SwitchGroup: return GetSwitchGroup()->GUID;
+	case WwiseRefType::Switch: return GetSwitch()->GUID;
+	case WwiseRefType::Trigger: return GetTrigger()->GUID;
+	case WwiseRefType::ExternalSource: return GetExternalSource()->GUID;
+	case WwiseRefType::AcousticTexture: return GetAcousticTexture()->GUID;
+	case WwiseRefType::None:
 	default:
 		return {};
 	}
 }
 
-uint32 FWwiseAnyRef::GetGroupId(const EWwiseRefType* TypeOverride) const
+WwiseDBShortId WwiseAnyRef::GetGroupId(const WwiseRefType* TypeOverride) const
 {
 	const auto Type = TypeOverride ? *TypeOverride : GetType();
 	switch (Type)
 	{
-	case EWwiseRefType::RootFile: return 0;
-	case EWwiseRefType::ProjectInfo: return 0;
-	case EWwiseRefType::Language: return 0;
-	case EWwiseRefType::PlatformInfo: return 0;
-	case EWwiseRefType::Platform: return 0;
-	case EWwiseRefType::PluginInfo: return 0;
-	case EWwiseRefType::PluginLib: return 0;
-	case EWwiseRefType::SoundBanksInfo: return 0;
-	case EWwiseRefType::SoundBank: return 0;
-	case EWwiseRefType::Media: return 0;
-	case EWwiseRefType::CustomPlugin: return 0;
-	case EWwiseRefType::PluginShareSet: return 0;
-	case EWwiseRefType::AudioDevice: return 0;
-	case EWwiseRefType::Event: return 0;
-	case EWwiseRefType::SwitchContainer: return 0;
-	case EWwiseRefType::DialogueEvent: return 0;
-	case EWwiseRefType::DialogueArgument: return 0;
-	case EWwiseRefType::Bus: return 0;
-	case EWwiseRefType::AuxBus: return 0;
-	case EWwiseRefType::GameParameter: return 0;
-	case EWwiseRefType::StateGroup: return 0;
-	case EWwiseRefType::State: return GetStateGroup()->Id;
-	case EWwiseRefType::SwitchGroup: return 0;
-	case EWwiseRefType::Switch: return GetSwitchGroup()->Id;
-	case EWwiseRefType::Trigger: return 0;
-	case EWwiseRefType::ExternalSource: return 0;
-	case EWwiseRefType::AcousticTexture: return 0;
-	case EWwiseRefType::None:
+	case WwiseRefType::RootFile: return 0;
+	case WwiseRefType::ProjectInfo: return 0;
+	case WwiseRefType::Language: return 0;
+	case WwiseRefType::PlatformInfo: return 0;
+	case WwiseRefType::Platform: return 0;
+	case WwiseRefType::PluginInfo: return 0;
+	case WwiseRefType::PluginLib: return 0;
+	case WwiseRefType::SoundBanksInfo: return 0;
+	case WwiseRefType::SoundBank: return 0;
+	case WwiseRefType::Media: return 0;
+	case WwiseRefType::CustomPlugin: return 0;
+	case WwiseRefType::PluginShareSet: return 0;
+	case WwiseRefType::AudioDevice: return 0;
+	case WwiseRefType::Event: return 0;
+	case WwiseRefType::SwitchContainer: return 0;
+	case WwiseRefType::DialogueEvent: return 0;
+	case WwiseRefType::DialogueArgument: return 0;
+	case WwiseRefType::Bus: return 0;
+	case WwiseRefType::AuxBus: return 0;
+	case WwiseRefType::GameParameter: return 0;
+	case WwiseRefType::StateGroup: return 0;
+	case WwiseRefType::State: return GetStateGroup()->Id;
+	case WwiseRefType::SwitchGroup: return 0;
+	case WwiseRefType::Switch: return GetSwitchGroup()->Id;
+	case WwiseRefType::Trigger: return 0;
+	case WwiseRefType::ExternalSource: return 0;
+	case WwiseRefType::AcousticTexture: return 0;
+	case WwiseRefType::None:
 	default:
 		return 0;
 	}
 }
 
-uint32 FWwiseAnyRef::GetId(const EWwiseRefType* TypeOverride) const
+WwiseDBShortId WwiseAnyRef::GetId(const WwiseRefType* TypeOverride) const
 {
 	const auto Type = TypeOverride ? *TypeOverride : GetType();
 	switch (Type)
 	{
-	case EWwiseRefType::RootFile: return 0;
-	case EWwiseRefType::ProjectInfo: return 0;
-	case EWwiseRefType::Language: return GetLanguage()->Id;
-	case EWwiseRefType::PlatformInfo: return 0;
-	case EWwiseRefType::Platform: return 0;
-	case EWwiseRefType::PluginInfo: return 0;
-	case EWwiseRefType::PluginLib: return 0;
-	case EWwiseRefType::SoundBanksInfo: return 0;
-	case EWwiseRefType::SoundBank: return GetSoundBank()->Id;
-	case EWwiseRefType::Media: return GetMedia()->Id;
-	case EWwiseRefType::CustomPlugin: return GetCustomPlugin()->Id;
-	case EWwiseRefType::PluginShareSet: return GetPluginShareSet()->Id;
-	case EWwiseRefType::AudioDevice: return GetAudioDevice()->Id;
-	case EWwiseRefType::Event: return GetEvent()->Id;
-	case EWwiseRefType::SwitchContainer: return 0;
-	case EWwiseRefType::DialogueEvent: return GetDialogueEvent()->Id;
-	case EWwiseRefType::DialogueArgument: return GetDialogueArgument()->Id;
-	case EWwiseRefType::Bus: return GetBus()->Id;
-	case EWwiseRefType::AuxBus: return GetAuxBus()->Id;
-	case EWwiseRefType::GameParameter: return GetGameParameter()->Id;
-	case EWwiseRefType::StateGroup: return GetStateGroup()->Id;
-	case EWwiseRefType::State: return GetState()->Id;
-	case EWwiseRefType::SwitchGroup: return GetSwitchGroup()->Id;
-	case EWwiseRefType::Switch: return GetSwitch()->Id;
-	case EWwiseRefType::Trigger: return GetTrigger()->Id;
-	case EWwiseRefType::ExternalSource: return GetExternalSource()->Cookie;
-	case EWwiseRefType::AcousticTexture: return GetAcousticTexture()->Id;
-	case EWwiseRefType::None:
+	case WwiseRefType::RootFile: return 0;
+	case WwiseRefType::ProjectInfo: return 0;
+	case WwiseRefType::Language: return GetLanguage()->Id;
+	case WwiseRefType::PlatformInfo: return 0;
+	case WwiseRefType::Platform: return 0;
+	case WwiseRefType::PluginInfo: return 0;
+	case WwiseRefType::PluginLib: return 0;
+	case WwiseRefType::SoundBanksInfo: return 0;
+	case WwiseRefType::SoundBank: return GetSoundBank()->Id;
+	case WwiseRefType::Media: return GetMedia()->Id;
+	case WwiseRefType::CustomPlugin: return GetCustomPlugin()->Id;
+	case WwiseRefType::PluginShareSet: return GetPluginShareSet()->Id;
+	case WwiseRefType::AudioDevice: return GetAudioDevice()->Id;
+	case WwiseRefType::Event: return GetEvent()->Id;
+	case WwiseRefType::SwitchContainer: return 0;
+	case WwiseRefType::DialogueEvent: return GetDialogueEvent()->Id;
+	case WwiseRefType::DialogueArgument: return GetDialogueArgument()->Id;
+	case WwiseRefType::Bus: return GetBus()->Id;
+	case WwiseRefType::AuxBus: return GetAuxBus()->Id;
+	case WwiseRefType::GameParameter: return GetGameParameter()->Id;
+	case WwiseRefType::StateGroup: return GetStateGroup()->Id;
+	case WwiseRefType::State: return GetState()->Id;
+	case WwiseRefType::SwitchGroup: return GetSwitchGroup()->Id;
+	case WwiseRefType::Switch: return GetSwitch()->Id;
+	case WwiseRefType::Trigger: return GetTrigger()->Id;
+	case WwiseRefType::ExternalSource: return GetExternalSource()->Cookie;
+	case WwiseRefType::AcousticTexture: return GetAcousticTexture()->Id;
+	case WwiseRefType::None:
 	default:
 		return 0;
 	}
 }
 
-FName FWwiseAnyRef::GetName(const EWwiseRefType* TypeOverride) const
+WwiseDBString WwiseAnyRef::GetName(const WwiseRefType* TypeOverride) const
 {
 	const auto Type = TypeOverride ? *TypeOverride : GetType();
 	switch (Type)
 	{
-	case EWwiseRefType::RootFile: return {};
-	case EWwiseRefType::ProjectInfo: return {};
-	case EWwiseRefType::Language: return GetLanguage()->Name;
-	case EWwiseRefType::PlatformInfo: return {};
-	case EWwiseRefType::Platform: return GetPlatformReference()->Name;
-	case EWwiseRefType::PluginInfo: return {};
-	case EWwiseRefType::PluginLib: return {};
-	case EWwiseRefType::SoundBanksInfo: return {};
-	case EWwiseRefType::SoundBank: return GetSoundBank()->ShortName;
-	case EWwiseRefType::Media: return GetMedia()->ShortName;
-	case EWwiseRefType::CustomPlugin: return GetCustomPlugin()->Name;
-	case EWwiseRefType::PluginShareSet: return GetPluginShareSet()->Name;
-	case EWwiseRefType::AudioDevice: return GetAudioDevice()->Name;
-	case EWwiseRefType::Event: return GetEvent()->Name;
-	case EWwiseRefType::SwitchContainer: return {};
-	case EWwiseRefType::DialogueEvent: return GetDialogueEvent()->Name;
-	case EWwiseRefType::DialogueArgument: return GetDialogueArgument()->Name;
-	case EWwiseRefType::Bus: return GetBus()->Name;
-	case EWwiseRefType::AuxBus: return GetAuxBus()->Name;
-	case EWwiseRefType::GameParameter: return GetGameParameter()->Name;
-	case EWwiseRefType::StateGroup: return GetStateGroup()->Name;
-	case EWwiseRefType::State: return GetState()->Name;
-	case EWwiseRefType::SwitchGroup: return GetSwitchGroup()->Name;
-	case EWwiseRefType::Switch: return GetSwitch()->Name;
-	case EWwiseRefType::Trigger: return GetTrigger()->Name;
-	case EWwiseRefType::ExternalSource: return GetExternalSource()->Name;
-	case EWwiseRefType::AcousticTexture: return GetAcousticTexture()->Name;
-	case EWwiseRefType::None:
+	case WwiseRefType::RootFile: return {};
+	case WwiseRefType::ProjectInfo: return {};
+	case WwiseRefType::Language: return GetLanguage()->Name;
+	case WwiseRefType::PlatformInfo: return {};
+	case WwiseRefType::Platform: return GetPlatformReference()->Name;
+	case WwiseRefType::PluginInfo: return {};
+	case WwiseRefType::PluginLib: return {};
+	case WwiseRefType::SoundBanksInfo: return {};
+	case WwiseRefType::SoundBank: return GetSoundBank()->ShortName;
+	case WwiseRefType::Media: return GetMedia()->ShortName;
+	case WwiseRefType::CustomPlugin: return GetCustomPlugin()->Name;
+	case WwiseRefType::PluginShareSet: return GetPluginShareSet()->Name;
+	case WwiseRefType::AudioDevice: return GetAudioDevice()->Name;
+	case WwiseRefType::Event: return GetEvent()->Name;
+	case WwiseRefType::SwitchContainer: return {};
+	case WwiseRefType::DialogueEvent: return GetDialogueEvent()->Name;
+	case WwiseRefType::DialogueArgument: return GetDialogueArgument()->Name;
+	case WwiseRefType::Bus: return GetBus()->Name;
+	case WwiseRefType::AuxBus: return GetAuxBus()->Name;
+	case WwiseRefType::GameParameter: return GetGameParameter()->Name;
+	case WwiseRefType::StateGroup: return GetStateGroup()->Name;
+	case WwiseRefType::State: return GetState()->Name;
+	case WwiseRefType::SwitchGroup: return GetSwitchGroup()->Name;
+	case WwiseRefType::Switch: return GetSwitch()->Name;
+	case WwiseRefType::Trigger: return GetTrigger()->Name;
+	case WwiseRefType::ExternalSource: return GetExternalSource()->Name;
+	case WwiseRefType::AcousticTexture: return GetAcousticTexture()->Name;
+	case WwiseRefType::None:
 	default:
 		return {};
 	}
 }
 
-FName FWwiseAnyRef::GetObjectPath(const EWwiseRefType* TypeOverride) const
+WwiseDBString WwiseAnyRef::GetObjectPath(const WwiseRefType* TypeOverride) const
 {
 	const auto Type = TypeOverride ? *TypeOverride : GetType();
 	switch (Type)
 	{
-	case EWwiseRefType::RootFile: return {};
-	case EWwiseRefType::ProjectInfo: return {};
-	case EWwiseRefType::Language: return {};
-	case EWwiseRefType::PlatformInfo: return {};
-	case EWwiseRefType::Platform: return {};
-	case EWwiseRefType::PluginInfo: return {};
-	case EWwiseRefType::PluginLib: return {};
-	case EWwiseRefType::SoundBanksInfo: return {};
-	case EWwiseRefType::SoundBank: return GetSoundBank()->ObjectPath;
-	case EWwiseRefType::Media: return {};
-	case EWwiseRefType::CustomPlugin: return GetCustomPlugin()->ObjectPath;
-	case EWwiseRefType::PluginShareSet: return GetPluginShareSet()->ObjectPath;
-	case EWwiseRefType::AudioDevice: return GetAudioDevice()->ObjectPath;
-	case EWwiseRefType::Event: return GetEvent()->ObjectPath;
-	case EWwiseRefType::SwitchContainer: return {};
-	case EWwiseRefType::DialogueEvent: return GetDialogueEvent()->ObjectPath;
-	case EWwiseRefType::DialogueArgument: return GetDialogueArgument()->ObjectPath;
-	case EWwiseRefType::Bus: return GetBus()->ObjectPath;
-	case EWwiseRefType::AuxBus: return GetAuxBus()->ObjectPath;
-	case EWwiseRefType::GameParameter: return GetGameParameter()->ObjectPath;
-	case EWwiseRefType::StateGroup: return GetStateGroup()->ObjectPath;
-	case EWwiseRefType::State: return GetState()->ObjectPath;
-	case EWwiseRefType::SwitchGroup: return GetSwitchGroup()->ObjectPath;
-	case EWwiseRefType::Switch: return GetSwitch()->ObjectPath;
-	case EWwiseRefType::Trigger: return GetTrigger()->ObjectPath;
-	case EWwiseRefType::ExternalSource: return GetExternalSource()->ObjectPath;
-	case EWwiseRefType::AcousticTexture: return GetAcousticTexture()->ObjectPath;
-	case EWwiseRefType::None:
+	case WwiseRefType::RootFile: return {};
+	case WwiseRefType::ProjectInfo: return {};
+	case WwiseRefType::Language: return {};
+	case WwiseRefType::PlatformInfo: return {};
+	case WwiseRefType::Platform: return {};
+	case WwiseRefType::PluginInfo: return {};
+	case WwiseRefType::PluginLib: return {};
+	case WwiseRefType::SoundBanksInfo: return {};
+	case WwiseRefType::SoundBank: return GetSoundBank()->ObjectPath;
+	case WwiseRefType::Media: return {};
+	case WwiseRefType::CustomPlugin: return GetCustomPlugin()->ObjectPath;
+	case WwiseRefType::PluginShareSet: return GetPluginShareSet()->ObjectPath;
+	case WwiseRefType::AudioDevice: return GetAudioDevice()->ObjectPath;
+	case WwiseRefType::Event: return GetEvent()->ObjectPath;
+	case WwiseRefType::SwitchContainer: return {};
+	case WwiseRefType::DialogueEvent: return GetDialogueEvent()->ObjectPath;
+	case WwiseRefType::DialogueArgument: return GetDialogueArgument()->ObjectPath;
+	case WwiseRefType::Bus: return GetBus()->ObjectPath;
+	case WwiseRefType::AuxBus: return GetAuxBus()->ObjectPath;
+	case WwiseRefType::GameParameter: return GetGameParameter()->ObjectPath;
+	case WwiseRefType::StateGroup: return GetStateGroup()->ObjectPath;
+	case WwiseRefType::State: return GetState()->ObjectPath;
+	case WwiseRefType::SwitchGroup: return GetSwitchGroup()->ObjectPath;
+	case WwiseRefType::Switch: return GetSwitch()->ObjectPath;
+	case WwiseRefType::Trigger: return GetTrigger()->ObjectPath;
+	case WwiseRefType::ExternalSource: return GetExternalSource()->ObjectPath;
+	case WwiseRefType::AcousticTexture: return GetAcousticTexture()->ObjectPath;
+	case WwiseRefType::None:
 	default:
 		return {};
 	}

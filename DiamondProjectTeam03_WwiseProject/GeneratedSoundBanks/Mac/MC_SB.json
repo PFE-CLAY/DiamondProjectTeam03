@@ -3,14 +3,15 @@
   "Platform": "Mac",
   "BasePlatform": "Mac",
   "SchemaVersion": "16",
-  "SoundBankVersion": "150",
+  "SoundBankVersion": "154",
   "SoundBanks": [
    {
     "Id": "1956625499",
     "Type": "User",
     "GUID": "{ADC2D189-6608-4828-BC9C-6EF6F90834DB}",
+    "Color": "19",
     "Language": "SFX",
-    "Hash": "{AAB30CC6-008F-7660-6C8D-DAA0D646E3AD}",
+    "Hash": "{BE089F69-CF7C-7132-EDCB-E092E802D9EF}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\MC_SB",
     "ShortName": "MC_SB",
     "Path": "MC_SB.bnk",
@@ -21,7 +22,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "AMB\\SP\\MC_FT_Concrete_Land_01.wav",
-      "CachePath": "SFX/AMB/SP/MC_FT_Concrete_Land_01_818F3B66.wem"
+      "CachePath": "02/{0253D852-A80A-8CE6-A0D4-85E5A0F584C7}.wem"
      },
      {
       "Id": "17784281",
@@ -29,7 +30,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "SFX\\MC_GetHit.wav",
-      "CachePath": "SFX/SFX/MC_GetHit_FBC78EF0.wem"
+      "CachePath": "4D/{4DD73478-F7F7-6E17-7755-643B10EA1F56}.wem"
      },
      {
       "Id": "34141530",
@@ -37,7 +38,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "AMB\\SP\\MC_FT_Sand_Jump_01.wav",
-      "CachePath": "SFX/AMB/SP/MC_FT_Sand_Jump_01_818F3B66.wem"
+      "CachePath": "0C/{0C986EED-5AF2-7F69-9762-257FCD695EE0}.wem"
      },
      {
       "Id": "36917763",
@@ -45,7 +46,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "MC_SFX_Gun_Shoot_01.wav",
-      "CachePath": "SFX/MC_SFX_Gun_Shoot_01_818F3B66.wem"
+      "CachePath": "29/{29B362C9-0E9F-4F98-8D87-CEC87FE9F0E7}.wem"
      },
      {
       "Id": "44684202",
@@ -53,7 +54,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "AMB\\SP\\MC_FT_Sand_08.wav",
-      "CachePath": "SFX/AMB/SP/MC_FT_Sand_08_818F3B66.wem"
+      "CachePath": "AC/{AC10CC08-AD22-831B-1F96-D1FF4171E416}.wem"
      },
      {
       "Id": "47427430",
@@ -61,7 +62,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "SFX\\MC_SFX_PickupWeapon_01.wav",
-      "CachePath": "SFX/SFX/MC_SFX_PickupWeapon_01_818F3B66.wem"
+      "CachePath": "80/{806A64A3-B19A-A733-68BB-601474FE7076}.wem"
      },
      {
       "Id": "57293249",
@@ -69,7 +70,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "MC\\MC_FT_Metal_03.wav",
-      "CachePath": "SFX/MC/MC_FT_Metal_03_818F3B66.wem"
+      "CachePath": "7B/{7B80DB22-E4D3-B198-BD37-C135E6E623A4}.wem"
      },
      {
       "Id": "58062480",
@@ -77,7 +78,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "AMB\\SP\\MC_FT_Sand_Jump_02.wav",
-      "CachePath": "SFX/AMB/SP/MC_FT_Sand_Jump_02_818F3B66.wem"
+      "CachePath": "E4/{E40A7934-05E0-B500-93D6-C59DAAD989B6}.wem"
      },
      {
       "Id": "62282605",
@@ -85,7 +86,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "MC_SFX_Gun_Shoot_02.wav",
-      "CachePath": "SFX/MC_SFX_Gun_Shoot_02_818F3B66.wem"
+      "CachePath": "6F/{6F5F0C1F-DBA0-BF94-E54E-F394DC4AA072}.wem"
      },
      {
       "Id": "64776164",
@@ -93,7 +94,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "MC\\MC_FT_Concrete_02.wav",
-      "CachePath": "SFX/MC/MC_FT_Concrete_02_818F3B66.wem"
+      "CachePath": "32/{324A9DFC-88A5-D474-01F3-E0D99CAEB188}.wem"
      },
      {
       "Id": "66925727",
@@ -101,7 +102,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "MC\\MC_FT_Concrete_03.wav",
-      "CachePath": "SFX/MC/MC_FT_Concrete_03_818F3B66.wem"
+      "CachePath": "77/{773D71E3-F4E5-4D21-ABA1-2721D2B8D42D}.wem"
      },
      {
       "Id": "70109824",
@@ -109,7 +110,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "MC_SFX_Gun_Shoot_04.wav",
-      "CachePath": "SFX/MC_SFX_Gun_Shoot_04_818F3B66.wem"
+      "CachePath": "FC/{FCFCED4F-42DB-F871-49BD-508D61888A7C}.wem"
      },
      {
       "Id": "97955047",
@@ -117,7 +118,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "AMB\\SP\\MC_FT_Metal_Land_03.wav",
-      "CachePath": "SFX/AMB/SP/MC_FT_Metal_Land_03_818F3B66.wem"
+      "CachePath": "EE/{EE1047A8-496A-737A-F28E-9E32A5DE7C56}.wem"
      },
      {
       "Id": "101923972",
@@ -125,7 +126,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "SFX\\MC_SFX_PickupWeapon_04.wav",
-      "CachePath": "SFX/SFX/MC_SFX_PickupWeapon_04_818F3B66.wem"
+      "CachePath": "0D/{0DAB03DE-2535-8076-66CE-EF2D57183BC3}.wem"
      },
      {
       "Id": "109232168",
@@ -133,7 +134,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "AMB\\SP\\MC_FT_Sand_10.wav",
-      "CachePath": "SFX/AMB/SP/MC_FT_Sand_10_818F3B66.wem"
+      "CachePath": "23/{232CC1EB-2886-7306-2F84-88FB776EA38A}.wem"
      },
      {
       "Id": "114517244",
@@ -141,7 +142,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "AMB\\SP\\MC_FT_Concrete_Jump_02.wav",
-      "CachePath": "SFX/AMB/SP/MC_FT_Concrete_Jump_02_818F3B66.wem"
+      "CachePath": "AF/{AF27FD3A-E5F2-945D-DC63-471942E9CB7F}.wem"
      },
      {
       "Id": "130136752",
@@ -149,7 +150,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "MC_SFX_Weapon_Armed.wav",
-      "CachePath": "SFX/MC_SFX_Weapon_Armed_818F3B66.wem"
+      "CachePath": "F6/{F6D6D4C3-0015-4B76-17A7-DBBECFCC2D43}.wem"
      },
      {
       "Id": "138501133",
@@ -157,7 +158,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "AMB\\SP\\MC_FT_Concrete_Land_05.wav",
-      "CachePath": "SFX/AMB/SP/MC_FT_Concrete_Land_05_818F3B66.wem"
+      "CachePath": "7B/{7B8B0B32-3BD3-C86C-2503-75D8701D9142}.wem"
      },
      {
       "Id": "146789455",
@@ -165,7 +166,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "AMB\\SP\\MC_FT_Metal_Land_05.wav",
-      "CachePath": "SFX/AMB/SP/MC_FT_Metal_Land_05_818F3B66.wem"
+      "CachePath": "E0/{E019203B-2A53-E4EB-04A2-A15E4A31F212}.wem"
      },
      {
       "Id": "148436568",
@@ -173,7 +174,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "AMB\\SP\\MC_FT_Concrete_Land_03.wav",
-      "CachePath": "SFX/AMB/SP/MC_FT_Concrete_Land_03_818F3B66.wem"
+      "CachePath": "6E/{6E0FB1C1-1509-9175-432B-F8C4A33B0CDB}.wem"
      },
      {
       "Id": "156842051",
@@ -181,7 +182,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "AMB\\SP\\MC_FT_Metal_Jump_04.wav",
-      "CachePath": "SFX/AMB/SP/MC_FT_Metal_Jump_04_818F3B66.wem"
+      "CachePath": "C4/{C457610E-5B3B-BB6E-5946-879B8D879212}.wem"
      },
      {
       "Id": "187397785",
@@ -189,7 +190,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "AMB\\SP\\MC_FT_Sand_Land_04.wav",
-      "CachePath": "SFX/AMB/SP/MC_FT_Sand_Land_04_818F3B66.wem"
+      "CachePath": "C5/{C55F1CD4-A153-48C0-639D-7EF067ACE247}.wem"
      },
      {
       "Id": "204180770",
@@ -197,7 +198,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "MC\\MC_FT_Concrete_04.wav",
-      "CachePath": "SFX/MC/MC_FT_Concrete_04_818F3B66.wem"
+      "CachePath": "67/{67B0903D-4598-6612-1EB7-DBDDAD91FB3A}.wem"
      },
      {
       "Id": "211150638",
@@ -205,7 +206,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "AMB\\SP\\MC_FT_Sand_01.wav",
-      "CachePath": "SFX/AMB/SP/MC_FT_Sand_01_818F3B66.wem"
+      "CachePath": "BF/{BF9D374E-1539-0DA6-DEAC-ABDC5FB2A55C}.wem"
      },
      {
       "Id": "221302388",
@@ -213,7 +214,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "MC\\MC_FT_Metal_09.wav",
-      "CachePath": "SFX/MC/MC_FT_Metal_09_818F3B66.wem"
+      "CachePath": "E5/{E59EE9DF-BF2C-344F-35AC-C4F9E867DD45}.wem"
      },
      {
       "Id": "282121010",
@@ -221,7 +222,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "AMB\\SP\\MC_FT_Sand_Land_05.wav",
-      "CachePath": "SFX/AMB/SP/MC_FT_Sand_Land_05_818F3B66.wem"
+      "CachePath": "5B/{5BC69A96-A34B-FC1D-CB4E-314D42B016D3}.wem"
      },
      {
       "Id": "305528684",
@@ -229,7 +230,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "AMB\\SP\\MC_FT_Sand_Jump_05.wav",
-      "CachePath": "SFX/AMB/SP/MC_FT_Sand_Jump_05_818F3B66.wem"
+      "CachePath": "DA/{DA2D8B2F-A44B-76D9-4948-449712F2707A}.wem"
      },
      {
       "Id": "318319530",
@@ -237,7 +238,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "AMB\\SP\\MC_FT_Concrete_Land_04.wav",
-      "CachePath": "SFX/AMB/SP/MC_FT_Concrete_Land_04_818F3B66.wem"
+      "CachePath": "0D/{0DF9B038-35E1-1F87-9942-F0BA7ECAFEF1}.wem"
      },
      {
       "Id": "330839300",
@@ -245,7 +246,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "MC\\MC_FT_Concrete_10.wav",
-      "CachePath": "SFX/MC/MC_FT_Concrete_10_818F3B66.wem"
+      "CachePath": "91/{91BC933F-994A-6F4D-4D4B-549D614DB628}.wem"
      },
      {
       "Id": "339856009",
@@ -253,7 +254,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "AMB\\SP\\MC_FT_Metal_Jump_01.wav",
-      "CachePath": "SFX/AMB/SP/MC_FT_Metal_Jump_01_818F3B66.wem"
+      "CachePath": "D6/{D6EF0C6A-7FDE-7920-BC56-7B16FECB5587}.wem"
      },
      {
       "Id": "370717002",
@@ -261,7 +262,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "MC\\MC_FT_Concrete_01.wav",
-      "CachePath": "SFX/MC/MC_FT_Concrete_01_818F3B66.wem"
+      "CachePath": "B0/{B07CA63B-2EC3-ED4C-313F-DA444D70C884}.wem"
      },
      {
       "Id": "387146543",
@@ -269,7 +270,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "AMB\\SP\\MC_FT_Sand_05.wav",
-      "CachePath": "SFX/AMB/SP/MC_FT_Sand_05_818F3B66.wem"
+      "CachePath": "5B/{5BD73E8F-F819-283E-59E4-E5BDBA985B28}.wem"
      },
      {
       "Id": "393881080",
@@ -277,7 +278,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "MC\\MC_FT_Metal_11.wav",
-      "CachePath": "SFX/MC/MC_FT_Metal_11_818F3B66.wem"
+      "CachePath": "43/{4360F1C2-1FCE-FDB7-4B26-5212DC166F93}.wem"
      },
      {
       "Id": "394666974",
@@ -285,7 +286,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "MC\\MC_FT_Metal_04.wav",
-      "CachePath": "SFX/MC/MC_FT_Metal_04_818F3B66.wem"
+      "CachePath": "5A/{5A1D40F0-5914-A78C-075C-BF03A67E6E71}.wem"
      },
      {
       "Id": "395573930",
@@ -293,7 +294,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "AMB\\SP\\MC_FT_Metal_Land_04.wav",
-      "CachePath": "SFX/AMB/SP/MC_FT_Metal_Land_04_818F3B66.wem"
+      "CachePath": "E3/{E33BCCA8-532D-DD54-1B4B-BA0E3D9C36A3}.wem"
      },
      {
       "Id": "407698228",
@@ -301,7 +302,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "MC\\MC_FT_Metal_06.wav",
-      "CachePath": "SFX/MC/MC_FT_Metal_06_818F3B66.wem"
+      "CachePath": "28/{28BFBD5C-359A-326A-F9E1-F43F30B6AA00}.wem"
      },
      {
       "Id": "418331982",
@@ -309,7 +310,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "SFX\\MC_SFX_Weapon_NoAmmo.wav",
-      "CachePath": "SFX/SFX/MC_SFX_Weapon_NoAmmo_818F3B66.wem"
+      "CachePath": "F3/{F379DCCA-C5DF-BC68-F8F8-F4EFCD01C65F}.wem"
      },
      {
       "Id": "430767489",
@@ -317,7 +318,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "AMB\\SP\\MC_FT_Sand_Land_03.wav",
-      "CachePath": "SFX/AMB/SP/MC_FT_Sand_Land_03_818F3B66.wem"
+      "CachePath": "75/{75A60252-2890-C3D9-2C9D-3DDFC89F6468}.wem"
      },
      {
       "Id": "442853450",
@@ -325,7 +326,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "AMB\\SP\\MC_FT_Concrete_Jump_04.wav",
-      "CachePath": "SFX/AMB/SP/MC_FT_Concrete_Jump_04_818F3B66.wem"
+      "CachePath": "93/{93FC02DD-9A82-052B-E535-C84B1F355EE7}.wem"
      },
      {
       "Id": "451049292",
@@ -333,7 +334,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "AMB\\SP\\MC_FT_Metal_Jump_05.wav",
-      "CachePath": "SFX/AMB/SP/MC_FT_Metal_Jump_05_818F3B66.wem"
+      "CachePath": "5A/{5A094BC8-7BD6-02A8-D732-3625B201554A}.wem"
      },
      {
       "Id": "454622091",
@@ -341,7 +342,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "AMB\\SP\\MC_FT_Metal_Land_02.wav",
-      "CachePath": "SFX/AMB/SP/MC_FT_Metal_Land_02_818F3B66.wem"
+      "CachePath": "FD/{FD2559DE-9390-7112-BD60-16788C291BA9}.wem"
      },
      {
       "Id": "472445877",
@@ -349,7 +350,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "MC\\MC_FT_Concrete_12.wav",
-      "CachePath": "SFX/MC/MC_FT_Concrete_12_818F3B66.wem"
+      "CachePath": "63/{631F81F3-E83F-47A9-2C5E-9EFA929033E7}.wem"
      },
      {
       "Id": "483253408",
@@ -357,7 +358,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "AMB\\SP\\MC_FT_Sand_Land_02.wav",
-      "CachePath": "SFX/AMB/SP/MC_FT_Sand_Land_02_818F3B66.wem"
+      "CachePath": "57/{579C8D85-4AC4-348A-B821-4B711EC40395}.wem"
      },
      {
       "Id": "499540378",
@@ -365,7 +366,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "AMB\\SP\\MC_FT_Concrete_Jump_01.wav",
-      "CachePath": "SFX/AMB/SP/MC_FT_Concrete_Jump_01_818F3B66.wem"
+      "CachePath": "17/{17DF5E72-0851-EC4D-2C03-3844F1997743}.wem"
      },
      {
       "Id": "511633870",
@@ -373,7 +374,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "SFX\\MC_SFX_PickupWeapon_03.wav",
-      "CachePath": "SFX/SFX/MC_SFX_PickupWeapon_03_818F3B66.wem"
+      "CachePath": "B7/{B7F926D6-55C7-C3BC-AC34-054E55BB5738}.wem"
      },
      {
       "Id": "541415762",
@@ -381,7 +382,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "AMB\\SP\\MC_FT_Metal_Jump_02.wav",
-      "CachePath": "SFX/AMB/SP/MC_FT_Metal_Jump_02_818F3B66.wem"
+      "CachePath": "5C/{5C72E2E7-050A-C5F9-CC3C-0360D38F61F6}.wem"
      },
      {
       "Id": "542236427",
@@ -389,7 +390,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "AMB\\SP\\MC_FT_Sand_12.wav",
-      "CachePath": "SFX/AMB/SP/MC_FT_Sand_12_818F3B66.wem"
+      "CachePath": "E6/{E6DEA5A7-659F-7793-0700-893203975F2D}.wem"
      },
      {
       "Id": "567050137",
@@ -397,7 +398,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "MC\\MC_FT_Metal_07.wav",
-      "CachePath": "SFX/MC/MC_FT_Metal_07_818F3B66.wem"
+      "CachePath": "DD/{DD9B7D2F-94AF-2ED9-773E-5896B8AE74A1}.wem"
      },
      {
       "Id": "573783568",
@@ -405,7 +406,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "MC\\MC_FT_Concrete_11.wav",
-      "CachePath": "SFX/MC/MC_FT_Concrete_11_818F3B66.wem"
+      "CachePath": "F0/{F00E889C-8DC7-1A04-460E-A528F3BFA183}.wem"
      },
      {
       "Id": "607185623",
@@ -413,7 +414,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "SFX\\MC_SFX_PickupWeapon_02.wav",
-      "CachePath": "SFX/SFX/MC_SFX_PickupWeapon_02_818F3B66.wem"
+      "CachePath": "C7/{C7A814FB-E5CB-624A-29BD-894732FF3A7E}.wem"
      },
      {
       "Id": "608609148",
@@ -421,7 +422,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "AMB\\SP\\MC_FT_Sand_Jump_03.wav",
-      "CachePath": "SFX/AMB/SP/MC_FT_Sand_Jump_03_818F3B66.wem"
+      "CachePath": "80/{80773488-5727-E501-F66D-1AECC9A631FE}.wem"
      },
      {
       "Id": "610072169",
@@ -429,7 +430,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "SFX\\MC_SFX_PickupWeapon_05.wav",
-      "CachePath": "SFX/SFX/MC_SFX_PickupWeapon_05_818F3B66.wem"
+      "CachePath": "C6/{C6A6C862-E60F-7923-DB6D-6F44E3D367EA}.wem"
      },
      {
       "Id": "610918733",
@@ -437,7 +438,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "MC_SFX_Gun_Shoot_03.wav",
-      "CachePath": "SFX/MC_SFX_Gun_Shoot_03_818F3B66.wem"
+      "CachePath": "AE/{AEA35F29-7903-40A5-8F82-F81A0242E86E}.wem"
      },
      {
       "Id": "620312545",
@@ -445,7 +446,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "AMB\\SP\\MC_FT_Sand_03.wav",
-      "CachePath": "SFX/AMB/SP/MC_FT_Sand_03_818F3B66.wem"
+      "CachePath": "EF/{EF4C78FF-7EA9-77C2-B410-A04034B32D83}.wem"
      },
      {
       "Id": "646411553",
@@ -453,7 +454,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "MC\\MC_FT_Metal_10.wav",
-      "CachePath": "SFX/MC/MC_FT_Metal_10_818F3B66.wem"
+      "CachePath": "E4/{E4456BFF-6EAB-856C-9583-B70CBA9905F2}.wem"
      },
      {
       "Id": "653322693",
@@ -461,7 +462,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "MC\\MC_FT_Concrete_07.wav",
-      "CachePath": "SFX/MC/MC_FT_Concrete_07_818F3B66.wem"
+      "CachePath": "F6/{F6C9306B-8C4A-1C10-36E0-577CF28D1E48}.wem"
      },
      {
       "Id": "655628158",
@@ -469,7 +470,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "MC\\MC_FT_Metal_05.wav",
-      "CachePath": "SFX/MC/MC_FT_Metal_05_818F3B66.wem"
+      "CachePath": "BD/{BDFFF67E-AA59-F3BF-68E7-F97EC894CC3C}.wem"
      },
      {
       "Id": "673489173",
@@ -477,7 +478,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "AMB\\SP\\MC_FT_Sand_09.wav",
-      "CachePath": "SFX/AMB/SP/MC_FT_Sand_09_818F3B66.wem"
+      "CachePath": "5B/{5BCEAF20-3138-0653-F222-9B22ED499DC5}.wem"
      },
      {
       "Id": "683985857",
@@ -485,7 +486,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "AMB\\SP\\MC_FT_Concrete_Land_02.wav",
-      "CachePath": "SFX/AMB/SP/MC_FT_Concrete_Land_02_818F3B66.wem"
+      "CachePath": "3E/{3EA9A9EF-F6C2-D964-B359-5977333B102A}.wem"
      },
      {
       "Id": "721183356",
@@ -493,7 +494,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "AMB\\SP\\MC_FT_Sand_07.wav",
-      "CachePath": "SFX/AMB/SP/MC_FT_Sand_07_818F3B66.wem"
+      "CachePath": "14/{14B0FD31-B814-07E0-36AB-6506253DB5AD}.wem"
      },
      {
       "Id": "727417662",
@@ -501,7 +502,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "MC\\MC_FT_Metal_02.wav",
-      "CachePath": "SFX/MC/MC_FT_Metal_02_818F3B66.wem"
+      "CachePath": "A4/{A4BFF4CA-138B-53D3-6583-927D961DC1E0}.wem"
      },
      {
       "Id": "728432909",
@@ -509,7 +510,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "AMB\\SP\\MC_FT_Metal_Land_01.wav",
-      "CachePath": "SFX/AMB/SP/MC_FT_Metal_Land_01_818F3B66.wem"
+      "CachePath": "E1/{E19132C0-E2C3-A4AD-4E71-35EBFCFD5B2B}.wem"
      },
      {
       "Id": "738022832",
@@ -517,7 +518,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "AMB\\SP\\MC_FT_Concrete_Jump_03.wav",
-      "CachePath": "SFX/AMB/SP/MC_FT_Concrete_Jump_03_818F3B66.wem"
+      "CachePath": "F6/{F6532AC5-A080-60CB-4353-4AF327D8B704}.wem"
      },
      {
       "Id": "779936328",
@@ -525,7 +526,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "AMB\\SP\\MC_FT_Sand_02.wav",
-      "CachePath": "SFX/AMB/SP/MC_FT_Sand_02_818F3B66.wem"
+      "CachePath": "34/{34E4058B-9F0F-CFF5-796B-FA1D906A1499}.wem"
      },
      {
       "Id": "793802699",
@@ -533,7 +534,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "AMB\\SP\\MC_FT_Concrete_Jump_05.wav",
-      "CachePath": "SFX/AMB/SP/MC_FT_Concrete_Jump_05_818F3B66.wem"
+      "CachePath": "87/{8708F7C4-AACA-A6A6-6393-CCABC8CB1CDC}.wem"
      },
      {
       "Id": "801578443",
@@ -541,7 +542,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "MC\\MC_FT_Concrete_06.wav",
-      "CachePath": "SFX/MC/MC_FT_Concrete_06_818F3B66.wem"
+      "CachePath": "3E/{3E8FEA14-C520-74CE-8000-00480DF60354}.wem"
      },
      {
       "Id": "808130812",
@@ -549,7 +550,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "MC\\MC_FT_Concrete_09.wav",
-      "CachePath": "SFX/MC/MC_FT_Concrete_09_818F3B66.wem"
+      "CachePath": "77/{77D4FBAD-F322-CE6A-EA61-DF6DE68E9282}.wem"
      },
      {
       "Id": "838939217",
@@ -557,7 +558,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "AMB\\SP\\MC_FT_Sand_04.wav",
-      "CachePath": "SFX/AMB/SP/MC_FT_Sand_04_818F3B66.wem"
+      "CachePath": "E3/{E3FB7249-4A09-0F66-2605-E948733A9C7A}.wem"
      },
      {
       "Id": "851952181",
@@ -565,7 +566,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "AMB\\SP\\MC_FT_Metal_Jump_03.wav",
-      "CachePath": "SFX/AMB/SP/MC_FT_Metal_Jump_03_818F3B66.wem"
+      "CachePath": "0E/{0E00B695-7A83-C3B0-3025-33130DAF0E36}.wem"
      },
      {
       "Id": "874237085",
@@ -573,7 +574,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "MC\\MC_FT_Concrete_08.wav",
-      "CachePath": "SFX/MC/MC_FT_Concrete_08_818F3B66.wem"
+      "CachePath": "07/{0791E9D9-1CB3-63CB-7D88-0B1F9385AF05}.wem"
      },
      {
       "Id": "881721480",
@@ -581,7 +582,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "MC\\MC_FT_Metal_08.wav",
-      "CachePath": "SFX/MC/MC_FT_Metal_08_818F3B66.wem"
+      "CachePath": "89/{89D78F83-4562-5586-7D9E-EBAF464BF2D4}.wem"
      },
      {
       "Id": "910413546",
@@ -589,7 +590,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "AMB\\SP\\MC_FT_Sand_06.wav",
-      "CachePath": "SFX/AMB/SP/MC_FT_Sand_06_818F3B66.wem"
+      "CachePath": "E0/{E04ED421-5DD9-00C9-7BD6-ABDA54AB5FF4}.wem"
      },
      {
       "Id": "967065821",
@@ -597,7 +598,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "AMB\\SP\\MC_FT_Sand_11.wav",
-      "CachePath": "SFX/AMB/SP/MC_FT_Sand_11_818F3B66.wem"
+      "CachePath": "AD/{AD57DE0A-A474-26BB-0471-48136B386916}.wem"
      },
      {
       "Id": "969386271",
@@ -605,7 +606,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "MC\\MC_FT_Metal_12.wav",
-      "CachePath": "SFX/MC/MC_FT_Metal_12_818F3B66.wem"
+      "CachePath": "24/{24B7921F-FA7D-6BDE-8B9A-15F28BCCD8AC}.wem"
      },
      {
       "Id": "971911144",
@@ -613,7 +614,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "AMB\\SP\\MC_FT_Sand_Jump_04.wav",
-      "CachePath": "SFX/AMB/SP/MC_FT_Sand_Jump_04_818F3B66.wem"
+      "CachePath": "3E/{3ED6A82A-04B8-6717-4BFA-ABC79F1B8E83}.wem"
      },
      {
       "Id": "993891927",
@@ -621,7 +622,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "MC\\MC_FT_Metal_01.wav",
-      "CachePath": "SFX/MC/MC_FT_Metal_01_818F3B66.wem"
+      "CachePath": "2F/{2FACB6E1-9176-B347-E678-21D408FBF239}.wem"
      },
      {
       "Id": "1003274806",
@@ -629,7 +630,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "AMB\\SP\\MC_FT_Sand_Land_01.wav",
-      "CachePath": "SFX/AMB/SP/MC_FT_Sand_Land_01_818F3B66.wem"
+      "CachePath": "22/{22A920E8-4E43-3A2E-9F29-CF4FAAE7C847}.wem"
      },
      {
       "Id": "1038551214",
@@ -637,7 +638,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "MC\\MC_FT_Concrete_05.wav",
-      "CachePath": "SFX/MC/MC_FT_Concrete_05_818F3B66.wem"
+      "CachePath": "EE/{EE68524C-8BCD-0543-26CD-95FA36E31C2F}.wem"
      }
     ],
     "Plugins": {
@@ -732,6 +733,7 @@
       "Name": "Play_MC_FOL_FT_Jump_SW",
       "ObjectPath": "\\Events\\MC_WU\\Play_MC_FOL_FT_Jump_SW",
       "GUID": "{84F52436-C579-4C37-9804-C7D11AEDCC08}",
+      "Color": "19",
       "DurationType": "OneShot",
       "DurationMin": "0.42432198",
       "DurationMax": "0.92546445",
@@ -819,6 +821,7 @@
       "Name": "Play_MC_FOL_FT_Land_SW",
       "ObjectPath": "\\Events\\MC_WU\\Play_MC_FOL_FT_Land_SW",
       "GUID": "{3AABFDF5-D848-4A71-84AA-A7DEDC1F4177}",
+      "Color": "19",
       "DurationType": "OneShot",
       "DurationMin": "0.35762826",
       "DurationMax": "0.91374254",
@@ -906,6 +909,7 @@
       "Name": "Play_MC_FOL_FT_SW",
       "ObjectPath": "\\Events\\MC_WU\\Play_MC_FOL_FT_SW",
       "GUID": "{770A8171-A3BF-4A55-9CA5-93ECE5CBF8BD}",
+      "Color": "19",
       "DurationType": "OneShot",
       "DurationMin": "0.20782226",
       "DurationMax": "0.8268297",
@@ -1195,6 +1199,7 @@
       "Name": "Play_MC_GetHit",
       "ObjectPath": "\\Events\\MC_WU\\Play_MC_GetHit",
       "GUID": "{DFDAAAFE-1AD5-4D67-9145-D4089C5F1FA9}",
+      "Color": "19",
       "MaxAttenuation": "2000",
       "DurationType": "Infinite",
       "MediaRefs": [
@@ -1208,6 +1213,7 @@
       "Name": "Play_MC_SFX_Gun_Shoot_RC",
       "ObjectPath": "\\Events\\MC_WU\\Play_MC_SFX_Gun_Shoot_RC",
       "GUID": "{19EDAAA1-DF79-4328-9566-97F28CD19D08}",
+      "Color": "19",
       "DurationType": "OneShot",
       "DurationMin": "1.1600068",
       "DurationMax": "2.3467753",
@@ -1231,6 +1237,7 @@
       "Name": "Play_MC_SFX_UpdateAmmo_RC",
       "ObjectPath": "\\Events\\MC_WU\\Play_MC_SFX_UpdateAmmo_RC",
       "GUID": "{4C30DC19-451C-449E-9B9A-AADEEAB14B44}",
+      "Color": "19",
       "DurationType": "OneShot",
       "DurationMin": "2.5657325",
       "DurationMax": "3.6410909",
@@ -1257,6 +1264,7 @@
       "Name": "Play_MC_SFX_Weapon_Armed_RC",
       "ObjectPath": "\\Events\\MC_WU\\Play_MC_SFX_Weapon_Armed_RC",
       "GUID": "{E22125BE-E0CB-4EC0-A4CB-7460BE42B80E}",
+      "Color": "19",
       "DurationType": "OneShot",
       "DurationMin": "3.3666666",
       "DurationMax": "3.3666666",
@@ -1271,6 +1279,7 @@
       "Name": "Play_MC_SFX_Weapon_NoAmmo_RC",
       "ObjectPath": "\\Events\\MC_WU\\Play_MC_SFX_Weapon_NoAmmo_RC",
       "GUID": "{708ACD16-F6BC-49F8-85D6-8076E283E48F}",
+      "Color": "19",
       "DurationType": "OneShot",
       "DurationMin": "1.7806667",
       "DurationMax": "1.7806667",
@@ -1286,67 +1295,78 @@
       "Id": "109159411",
       "Name": "Game_Global",
       "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\Game_Global",
-      "GUID": "{FAD5C029-0A02-4BD2-97F7-F8C20B7A95BD}"
+      "GUID": "{FAD5C029-0A02-4BD2-97F7-F8C20B7A95BD}",
+      "Color": "16"
      },
      {
       "Id": "393239870",
       "Name": "SFX",
       "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\Game_Global\\SFX",
-      "GUID": "{EB4CE24D-8196-408E-9775-5E8EEFE98495}"
+      "GUID": "{EB4CE24D-8196-408E-9775-5E8EEFE98495}",
+      "Color": "17"
      },
      {
       "Id": "1117531639",
       "Name": "AMB",
       "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\Game_Global\\AMB",
-      "GUID": "{C1595F21-FBBF-4B04-AC1A-78D86879A937}"
+      "GUID": "{C1595F21-FBBF-4B04-AC1A-78D86879A937}",
+      "Color": "4"
      },
      {
       "Id": "1551306167",
       "Name": "UI",
       "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\UI",
-      "GUID": "{B5E7816E-C3FC-4992-B763-4078089CE674}"
+      "GUID": "{B5E7816E-C3FC-4992-B763-4078089CE674}",
+      "Color": "1"
      },
      {
       "Id": "1685527061",
       "Name": "MC",
       "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\Game_Global\\MC",
-      "GUID": "{B3079877-B26F-4239-A3AB-9C7AFFCBC797}"
+      "GUID": "{B3079877-B26F-4239-A3AB-9C7AFFCBC797}",
+      "Color": "19"
      },
      {
       "Id": "2290178407",
       "Name": "FOES_Tourelle",
       "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\Game_Global\\FOES_Tourelle",
-      "GUID": "{D783D57E-4B6F-4101-8F5F-FD96F0409170}"
+      "GUID": "{D783D57E-4B6F-4101-8F5F-FD96F0409170}",
+      "Color": "10"
      },
      {
       "Id": "3313685232",
       "Name": "Voices",
       "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\Voices",
-      "GUID": "{00AA482D-3F12-46A5-8177-E8A172D08E63}"
+      "GUID": "{00AA482D-3F12-46A5-8177-E8A172D08E63}",
+      "Color": "23"
      },
      {
       "Id": "3623095082",
       "Name": "FOES_Flying",
       "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\Game_Global\\FOES_Flying",
-      "GUID": "{439831F9-AA50-4CD2-98C3-ACD8B187380E}"
+      "GUID": "{439831F9-AA50-4CD2-98C3-ACD8B187380E}",
+      "Color": "11"
      },
      {
       "Id": "3991942870",
       "Name": "Music",
       "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\Music",
-      "GUID": "{08156595-7637-4348-AC3C-2EDE3FCCB08F}"
+      "GUID": "{08156595-7637-4348-AC3C-2EDE3FCCB08F}",
+      "Color": "24"
      },
      {
       "Id": "4056684167",
       "Name": "Master",
       "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master",
-      "GUID": "{F3A976BC-47E9-46E5-9EEC-F566BB39DBEE}"
+      "GUID": "{F3A976BC-47E9-46E5-9EEC-F566BB39DBEE}",
+      "Color": "9"
      },
      {
       "Id": "4219618961",
       "Name": "AMB_Crowd",
       "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\Game_Global\\AMB_Crowd",
-      "GUID": "{985719AF-3534-41FC-A751-99E11C3F7784}"
+      "GUID": "{985719AF-3534-41FC-A751-99E11C3F7784}",
+      "Color": "4"
      }
     ],
     "AuxBusses": [
@@ -1355,6 +1375,7 @@
       "Name": "RVB_Voices",
       "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Voices",
       "GUID": "{483EAB60-BC92-484F-9830-D1776233B15C}",
+      "Color": "9",
       "PluginRefs": {
        "ShareSets": [
         {
@@ -1371,6 +1392,7 @@
       "Name": "RVB_BlackHouses",
       "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_BlackHouses",
       "GUID": "{17B5E8F9-026F-4941-A027-1C0641AB0C14}",
+      "Color": "26",
       "PluginRefs": {
        "Custom": [
         {
@@ -1384,6 +1406,7 @@
       "Name": "RVB_Arena",
       "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Arena",
       "GUID": "{54C7EBDA-4885-4850-8969-FB63BDACC807}",
+      "Color": "26",
       "PluginRefs": {
        "Custom": [
         {
@@ -1400,6 +1423,7 @@
       "Name": "RVB_RFX_Arena",
       "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_RFX_Arena",
       "GUID": "{CC7A2F05-EE75-4E8E-B097-98A1938CB5E4}",
+      "Color": "27",
       "PluginRefs": {
        "Custom": [
         {
@@ -1413,6 +1437,7 @@
       "Name": "RVB_Basement",
       "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Basement",
       "GUID": "{BF09F5DA-71E8-4CAC-B0EB-19A1C29389BA}",
+      "Color": "26",
       "PluginRefs": {
        "Custom": [
         {
@@ -1426,6 +1451,7 @@
       "Name": "AUX_LPF",
       "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\AUX_LPF",
       "GUID": "{5D5AAEA6-57CB-46FD-9802-C041695A5809}",
+      "Color": "9",
       "PluginRefs": {
        "ShareSets": [
         {
@@ -1439,6 +1465,7 @@
       "Name": "RVB_Hub",
       "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Hub",
       "GUID": "{D499EBE4-F26A-48E5-B89D-1F7C43D829E3}",
+      "Color": "26",
       "PluginRefs": {
        "Custom": [
         {
@@ -1452,6 +1479,7 @@
       "Name": "RVB_Pyramid",
       "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Pyramid",
       "GUID": "{668EA0D2-771E-452F-B241-11793F9755B0}",
+      "Color": "26",
       "PluginRefs": {
        "Custom": [
         {
@@ -1478,7 +1506,8 @@
       "Id": "3445598977",
       "Name": "RTPC_Master",
       "ObjectPath": "\\Game Parameters\\Default Work Unit\\RTPC_Master",
-      "GUID": "{74E6261E-6493-44A8-BAE7-1E79ABF4DED1}"
+      "GUID": "{74E6261E-6493-44A8-BAE7-1E79ABF4DED1}",
+      "Color": "10"
      },
      {
       "Id": "3553041361",
@@ -1569,6 +1598,6 @@
     ]
    }
   ],
-  "FileHash": "{C1328B0E-9043-087E-D6C7-FEE94A56BFCA}"
+  "FileHash": "{F8A01729-2C05-6AD9-83A2-C1CAA18D74DF}"
  }
 }

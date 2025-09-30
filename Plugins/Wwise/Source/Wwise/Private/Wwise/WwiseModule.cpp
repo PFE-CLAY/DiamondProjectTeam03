@@ -12,7 +12,7 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #include "Modules/ModuleManager.h"
@@ -24,29 +24,47 @@ Copyright (c) 2024 Audiokinetic Inc.
 #include "WwiseDefines.h"
 #include "WwiseUnrealDefines.h"
 
-#if UE_5_1_OR_LATER
+#include "Wwise/WwisePackagingRuntimeModuleImpl.h"
+#if WITH_EDITOR
+#include "Wwise/WwisePackagingEditorModuleImpl.h"
+#endif
+
 #include "Wwise/WwiseAudioLinkRuntimeModule.h"
 #if WITH_EDITOR
 #include "Wwise/WwiseAudioLinkEditorModule.h"
-#endif
 #endif
 #endif
 
 class FWwiseModule : public IModuleInterface
 {
 #if !UE_SERVER
-
-#if UE_5_1_OR_LATER
-	TUniquePtr<FWwiseAudioLinkRuntimeModule> WwiseAudioLinkRuntimeModule;
-#if WITH_EDITOR
-	TUniquePtr<FWwiseAudioLinkEditorModule> WwiseAudioLinkEditorModule;
-#endif
-#endif
-
 public:
 	virtual void StartupModule() override
 	{
 		auto& ModuleManager = FModuleManager::Get();
+
+		bool bPackageAsBulkData = false;
+		GConfig->GetBool(TEXT("/Script/WwisePackaging.WwisePackagingSettings"), TEXT("bPackageAsBulkData"), bPackageAsBulkData, GGameIni);
+		if (bPackageAsBulkData || WITH_EDITOR)
+		{
+			{
+				SCOPED_WWISE_EVENT(TEXT("StartupModule: WwisePackaging Runtime"));
+				UE_LOG(LogWwise, Log, TEXT("WwiseModule: Loading WwisePackagingRuntime"));
+				IWwisePackagingRuntimeModule::GetModule();
+			}
+#if WITH_EDITOR
+			{
+				SCOPED_WWISE_EVENT(TEXT("StartupModule: WwisePackaging Editor"));
+				UE_LOG(LogWwise, Log, TEXT("WwiseModule: Loading WwisePackagingEditor"));
+				IWwisePackagingEditorModule::GetModule();
+			}
+#endif
+		}
+		else
+		{
+			UE_LOG(LogWwise, Verbose, TEXT("WwiseModule: WwisePackaging is disabled without Bulk Data Packaging. Ignoring."));
+		}
+
 		{
 			SCOPED_WWISE_EVENT(TEXT("StartupModule: AkAudio"));
 			UE_LOG(LogWwise, Log, TEXT("WwiseModule: Loading AkAudio"));
@@ -68,20 +86,16 @@ public:
 		GConfig->GetBool(TEXT("/Script/AkAudio.AkSettings"), TEXT("bWwiseAudioLinkEnabled"), bWwiseAudioLinkEnabled, GGameIni);
 		if (bWwiseAudioLinkEnabled)
 		{
-#if UE_5_1_OR_LATER
 			{
 				SCOPED_WWISE_EVENT(TEXT("StartupModule: WwiseAudioLink Runtime"));
 				UE_LOG(LogWwise, Log, TEXT("WwiseModule: Loading WwiseAudioLink"));
-				WwiseAudioLinkRuntimeModule = MakeUnique<FWwiseAudioLinkRuntimeModule>();
+				ModuleManager.LoadModule(TEXT("WwiseAudioLinkRuntime"));
 			}
 #if WITH_EDITOR
 			{
 				SCOPED_WWISE_EVENT(TEXT("StartupModule: WwiseAudioLink Editor"));
-				WwiseAudioLinkEditorModule = MakeUnique<FWwiseAudioLinkEditorModule>();
+				ModuleManager.LoadModule(TEXT("WwiseAudioLinkEditor"));
 			}
-#endif
-#else
-			UE_LOG(LogWwise, Error, TEXT("WwiseModule: AudioLink is not available in Unreal versions prior to 5.1. Ignoring."));
 #endif
 		}
 	}
@@ -100,12 +114,6 @@ public:
 
 	virtual void ShutdownModule() override
 	{
-#if UE_5_1_OR_LATER
-#if WITH_EDITOR
-		WwiseAudioLinkEditorModule.Reset();
-#endif
-		WwiseAudioLinkRuntimeModule.Reset();
-#endif
 	}
 
 #endif

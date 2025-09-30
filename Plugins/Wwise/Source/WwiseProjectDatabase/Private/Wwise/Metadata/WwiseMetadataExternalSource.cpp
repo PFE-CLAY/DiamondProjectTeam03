@@ -12,23 +12,23 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #include "Wwise/Metadata/WwiseMetadataExternalSource.h"
 #include "Wwise/Metadata/WwiseMetadataLoader.h"
 
-FWwiseMetadataExternalSourceReference::FWwiseMetadataExternalSourceReference(FWwiseMetadataLoader& Loader) :
-	Cookie(Loader.GetUint32(this, TEXT("Cookie")))
+WwiseMetadataExternalSourceReference::WwiseMetadataExternalSourceReference(WwiseMetadataLoader& Loader) :
+	Cookie(Loader.GetWwiseShortId(this, "Cookie"_wwise_db))
 {
-	Loader.LogParsed(TEXT("ExternalSourceReference"), Cookie);
+	Loader.LogParsed("ExternalSourceReference"_wwise_db, Cookie);
 }
 
-FWwiseMetadataExternalSource::FWwiseMetadataExternalSource(FWwiseMetadataLoader& Loader) :
-	FWwiseMetadataExternalSourceReference(Loader),
-	Name(Loader.GetString(this, TEXT("Name"))),
-	ObjectPath(Loader.GetString(this, TEXT("ObjectPath"))),
-	GUID(Loader.GetGuid(this, TEXT("GUID")))
+WwiseMetadataExternalSource::WwiseMetadataExternalSource(WwiseMetadataLoader& Loader) :
+	WwiseMetadataExternalSourceReference(Loader),
+	Name(Loader.GetString(this, "Name"_wwise_db)),
+	ObjectPath(Loader.GetString(this, "ObjectPath"_wwise_db)),
+	GUID(Loader.GetGuid(this, "GUID"_wwise_db))
 {
-	Loader.LogParsed(TEXT("ExternalSource"), Cookie, Name);
+	Loader.LogParsed("ExternalSource"_wwise_db, Cookie, Name);
 }

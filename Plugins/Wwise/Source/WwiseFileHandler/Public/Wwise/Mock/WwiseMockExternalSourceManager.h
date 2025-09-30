@@ -12,7 +12,7 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #pragma once
@@ -30,28 +30,35 @@ public:
 
 	const TCHAR* GetManagingTypeName() const override { return TEXT("MockExternalSource"); }
 
-	virtual void LoadExternalSource(const FWwiseExternalSourceCookedData& InExternalSourceCookedData, const FName& InRootPath,
-	                                const FWwiseLanguageCookedData& InLanguage, FLoadExternalSourceCallback&& InCallback) override
+	virtual void LoadExternalSource(const FWwiseExternalSourceCookedData& InExternalSourceCookedData,
+		const FWwiseLanguageCookedData& InLanguage, FLoadExternalSourceCallback&& InCallback) override
 	{
 		SCOPED_WWISEFILEHANDLER_EVENT_4(TEXT("FWwiseMockExternalSourceManager::LoadExternalSource"))
 
 		// NOTE We are assuming a correspondence between Cookie and MediaId. This need not be the case, see the WwiseSimpleExtSrcManager for an example implementation of CookieMediaId maps
-		IncrementFileStateUseAsync(InExternalSourceCookedData.Cookie, EWwiseFileStateOperationOrigin::Loading, [this, InExternalSourceCookedData, InRootPath]() mutable 
+		IncrementFileStateUseAsync(InExternalSourceCookedData.Cookie, EWwiseFileStateOperationOrigin::Loading, [WeakThis=AsWeak(), InExternalSourceCookedData]() mutable 
 		{
-			return CreateOp(InExternalSourceCookedData, InRootPath);
+			auto SharedMockExternalSourceManager = StaticCastSharedPtr<FWwiseMockExternalSourceManager>(WeakThis.Pin());
+			if (!SharedMockExternalSourceManager.IsValid())
+			{
+				UE_LOG(LogWwiseFileHandler, Error,
+				       TEXT("FWwiseMockSoundBankManager::LoadSoundBank CreateOp Callback: Failed to get Mock ExternalSourceManager"))
+				return FWwiseFileStateSharedPtr(nullptr);
+			}
+			return SharedMockExternalSourceManager->CreateOp(InExternalSourceCookedData);
 		}, [InCallback = MoveTemp(InCallback)](const FWwiseFileStateSharedPtr, bool bInResult)
 		{
 			InCallback(bInResult);
 		});
 	}
-	
-	virtual void UnloadExternalSource(const FWwiseExternalSourceCookedData& InExternalSourceCookedData, const FName& InRootPath,
+
+	virtual void UnloadExternalSource(const FWwiseExternalSourceCookedData& InExternalSourceCookedData,
 		const FWwiseLanguageCookedData& InLanguage, FUnloadExternalSourceCallback&& InCallback) override
 	{
 		SCOPED_WWISEFILEHANDLER_EVENT_4(TEXT("FWwiseMockExternalSourceManager::UnLoadExternalSource"))
 		DecrementFileStateUseAsync(InExternalSourceCookedData.Cookie, nullptr, EWwiseFileStateOperationOrigin::Loading, MoveTemp(InCallback));
 	}
-	
+
 	virtual void SetGranularity(uint32 InStreamingGranularity) override {}
 
 	IWwiseStreamingManagerHooks& GetStreamingHooks() override final { return *this; }
@@ -66,9 +73,16 @@ public:
 
 
 #if WITH_EDITORONLY_DATA
-	virtual void Cook(FWwiseResourceCooker& InResourceCooker, const FWwiseExternalSourceCookedData& InCookedData,
-		TFunctionRef<void(const TCHAR* Filename, void* Data, int64 Size)> WriteAdditionalFile,
-		const FWwiseSharedPlatformId& InPlatform, const FWwiseSharedLanguageId& InLanguage) override {}
+	virtual void Cook(IWwiseResourceCooker& InResourceCooker, const FWwiseExternalSourceCookedData& InCookedData,
+		const TCHAR* PackageFilename,
+		const TFunctionRef<void(const TCHAR* Filename, void* Data, int64 Size)>& WriteAdditionalFile, const FWwiseSharedPlatformId& InPlatform, const FWwiseSharedLanguageId& InLanguage) override {}
+
+	virtual void SetExternalSourcePath(const FDirectoryPath& DirectoryPath) override { return; }
+	virtual const FDirectoryPath& GetExternalSourcePath() const override
+	{
+		static const FDirectoryPath Path{};
+		return Path;
+	}
 #endif
 
 	bool IsEmpty()
@@ -83,7 +97,7 @@ protected:
 		FWwiseFileHandlerBase::OnDeleteState(InShortId, InFileState, InOperationOrigin, MoveTemp(InCallback));
 	}
 	
-	FWwiseFileStateSharedPtr CreateOp(FWwiseExternalSourceCookedData InExternalSourceCookedData, FName Name)
+	FWwiseFileStateSharedPtr CreateOp(FWwiseExternalSourceCookedData InExternalSourceCookedData)
 	{
 		auto* FileState = new FWwiseMockFileState(InExternalSourceCookedData.Cookie);
 		return FWwiseFileStateSharedPtr(FileState);

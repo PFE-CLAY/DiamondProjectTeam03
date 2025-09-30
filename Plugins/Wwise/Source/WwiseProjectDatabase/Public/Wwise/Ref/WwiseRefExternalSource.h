@@ -12,47 +12,47 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #pragma once
 
 #include "Wwise/Ref/WwiseRefSoundBank.h"
 
-class WWISEPROJECTDATABASE_API FWwiseRefExternalSource : public FWwiseRefSoundBank
+class WwiseRefExternalSource : public WwiseRefSoundBank
 {
 public:
-	static const TCHAR* const NAME;
-	static constexpr EWwiseRefType TYPE = EWwiseRefType::ExternalSource;
+	static const WwiseDBString NAME;
+	static constexpr WwiseRefType TYPE = WwiseRefType::ExternalSource;
 	struct FGlobalIdsMap;
 
 	WwiseRefIndexType ExternalSourceIndex;
 
-	FWwiseRefExternalSource() {}
-	FWwiseRefExternalSource(const WwiseMetadataSharedRootFileConstPtr& InRootMediaRef, const FName& InJsonFilePath,
-		WwiseRefIndexType InSoundBankIndex, uint32 InLanguageId,
+	WwiseRefExternalSource() {}
+	WwiseRefExternalSource(const WwiseMetadataSharedRootFileConstPtr& InRootMediaRef, const WwiseDBString& InJsonFilePath,
+		WwiseRefIndexType InSoundBankIndex, WwiseDBShortId InLanguageId,
 		WwiseRefIndexType InExternalSourceIndex) :
-		FWwiseRefSoundBank(InRootMediaRef, InJsonFilePath, InSoundBankIndex, InLanguageId),
+		WwiseRefSoundBank(InRootMediaRef, InJsonFilePath, InSoundBankIndex, InLanguageId),
 		ExternalSourceIndex(InExternalSourceIndex)
 	{}
-	const FWwiseMetadataExternalSource* GetExternalSource() const;
+	const WwiseMetadataExternalSource* GetExternalSource() const;
 
-	uint32 ExternalSourceCookie() const;
-	FGuid ExternalSourceGuid() const;
-	FName ExternalSourceName() const;
-	FName ExternalSourceObjectPath() const;
+	WwiseDBShortId ExternalSourceCookie() const;
+	WwiseDBGuid ExternalSourceGuid() const;
+	const WwiseDBString*  ExternalSourceName() const;
+	const WwiseDBString*  ExternalSourceObjectPath() const;
 
-	uint32 Hash() const override;
-	EWwiseRefType Type() const override { return TYPE; }
-	bool operator==(const FWwiseRefExternalSource& Rhs) const
+	WwiseDBShortId Hash() const override;
+	WwiseRefType Type() const override { return TYPE; }
+	bool operator==(const WwiseRefExternalSource& Rhs) const
 	{
-		return FWwiseRefSoundBank::operator ==(Rhs)
+		return WwiseRefSoundBank::operator ==(Rhs)
 			&& ExternalSourceIndex == Rhs.ExternalSourceIndex;
 	}
-	bool operator!=(const FWwiseRefExternalSource& Rhs) const { return !operator==(Rhs); }
+	bool operator!=(const WwiseRefExternalSource& Rhs) const { return !operator==(Rhs); }
 };
 
-struct WWISEPROJECTDATABASE_API FWwiseRefExternalSource::FGlobalIdsMap
+struct WwiseRefExternalSource::FGlobalIdsMap
 {
 	WwiseExternalSourceGlobalIdsMap GlobalIdsMap;
 };

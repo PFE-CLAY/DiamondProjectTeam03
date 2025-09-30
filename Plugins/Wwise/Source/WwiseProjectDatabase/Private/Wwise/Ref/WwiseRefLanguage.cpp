@@ -12,22 +12,20 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #include "Wwise/Ref/WwiseRefLanguage.h"
-#include "Wwise/Stats/ProjectDatabase.h"
-#include "Wwise/WwiseProjectDatabaseModule.h"
 
 #include "Wwise/Metadata/WwiseMetadataLanguage.h"
 #include "Wwise/Metadata/WwiseMetadataProjectInfo.h"
 
-const TCHAR* const FWwiseRefLanguage::NAME = TEXT("Language");
+const WwiseDBString WwiseRefLanguage::NAME = "Language"_wwise_db;
 
-const FWwiseMetadataLanguage* FWwiseRefLanguage::GetLanguage() const
+const WwiseMetadataLanguage* WwiseRefLanguage::GetLanguage() const
 {
 	const auto* ProjectInfo = GetProjectInfo();
-	if (UNLIKELY(!ProjectInfo))
+	if (!ProjectInfo) [[unlikely]]
 	{
 		return nullptr;
 	}
@@ -38,44 +36,44 @@ const FWwiseMetadataLanguage* FWwiseRefLanguage::GetLanguage() const
 	}
 	else
 	{
-		UE_LOG(LogWwiseProjectDatabase, Error, TEXT("Could not get Language index #%zu"), LanguageIndex);
+		WWISE_DB_LOG(Error, "Could not get Language index #%zu", LanguageIndex);
 		return nullptr;
 	}
 }
 
-uint32 FWwiseRefLanguage::LanguageId() const
+WwiseDBShortId WwiseRefLanguage::LanguageId() const
 {
 	const auto* Language = GetLanguage();
-	if (UNLIKELY(!Language))
+	if (!Language) [[unlikely]]
 	{
 		return 0;
 	}
 	return Language->Id;
 }
 
-FGuid FWwiseRefLanguage::LanguageGuid() const
+WwiseDBGuid WwiseRefLanguage::LanguageGuid() const
 {
 	const auto* Language = GetLanguage();
-	if (UNLIKELY(!Language))
+	if (!Language) [[unlikely]]
 	{
 		return {};
 	}
 	return Language->GUID;
 }
 
-FName FWwiseRefLanguage::LanguageName() const
+WwiseDBString WwiseRefLanguage::LanguageName() const
 {
 	const auto* Language = GetLanguage();
-	if (UNLIKELY(!Language))
+	if (!Language) [[unlikely]]
 	{
 		return {};
 	}
 	return Language->Name;
 }
 
-uint32 FWwiseRefLanguage::Hash() const
+WwiseDBShortId WwiseRefLanguage::Hash() const
 {
-	auto Result = FWwiseRefProjectInfo::Hash();
-	Result = HashCombine(Result, GetTypeHash(LanguageIndex));
+	auto Result = WwiseRefProjectInfo::Hash();
+	Result = WwiseDBHashCombine(Result, GetTypeHash(LanguageIndex));
 	return Result;
 }

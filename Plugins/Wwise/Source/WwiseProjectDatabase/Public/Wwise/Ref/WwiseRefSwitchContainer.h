@@ -12,44 +12,44 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #pragma once
 
 #include "Wwise/Ref/WwiseRefEvent.h"
 
-class WWISEPROJECTDATABASE_API FWwiseRefSwitchContainer : public FWwiseRefEvent
+class WwiseRefSwitchContainer : public WwiseRefEvent
 {
 public:
-	static const TCHAR* const NAME;
-	static constexpr EWwiseRefType TYPE = EWwiseRefType::SwitchContainer;
+	static const WwiseDBString NAME;
+	static constexpr WwiseRefType TYPE = WwiseRefType::SwitchContainer;
 
-	TArray<WwiseRefIndexType> ChildrenIndices;
+	WwiseDBArray<WwiseRefIndexType> ChildrenIndices;
 
-	FWwiseRefSwitchContainer() {}
-	FWwiseRefSwitchContainer(const WwiseMetadataSharedRootFileConstPtr& InRootMediaRef, const FName& InJsonFilePath,
-		WwiseRefIndexType InSoundBankIndex, uint32 InLanguageId,
+	WwiseRefSwitchContainer() {}
+	WwiseRefSwitchContainer(const WwiseMetadataSharedRootFileConstPtr& InRootMediaRef, const WwiseDBString& InJsonFilePath,
+		WwiseRefIndexType InSoundBankIndex, WwiseDBShortId InLanguageId,
 		WwiseRefIndexType InEventIndex,
-		const TArray<WwiseRefIndexType>& InChildrenIndices) :
-		FWwiseRefEvent(InRootMediaRef, InJsonFilePath, InSoundBankIndex, InLanguageId, InEventIndex),
+		const WwiseDBArray<WwiseRefIndexType>& InChildrenIndices) :
+		WwiseRefEvent(InRootMediaRef, InJsonFilePath, InSoundBankIndex, InLanguageId, InEventIndex),
 		ChildrenIndices(InChildrenIndices)
 	{}
-	const FWwiseMetadataSwitchContainer* GetSwitchContainer() const;
-	FWwiseAnyRef GetSwitchValue(const WwiseSwitchGlobalIdsMap& SwitchGlobalMap, const WwiseStateGlobalIdsMap& StateGlobalMap) const;
+	const WwiseMetadataSwitchContainer* GetSwitchContainer() const;
+	WwiseAnyRef GetSwitchValue(const WwiseSwitchGlobalIdsMap& SwitchGlobalMap, const WwiseStateGlobalIdsMap& StateGlobalMap) const;
 	WwiseMediaIdsMap GetSwitchContainerMedia(const WwiseMediaGlobalIdsMap& GlobalMap) const;
 	WwiseExternalSourceIdsMap GetSwitchContainerExternalSources(const WwiseExternalSourceGlobalIdsMap& GlobalMap) const;
 	WwiseCustomPluginIdsMap GetSwitchContainerCustomPlugins(const WwiseCustomPluginGlobalIdsMap& GlobalMap) const;
 	WwisePluginShareSetIdsMap GetSwitchContainerPluginShareSets(const WwisePluginShareSetGlobalIdsMap& GlobalMap) const;
 	WwiseAudioDeviceIdsMap GetSwitchContainerAudioDevices(const WwiseAudioDeviceGlobalIdsMap& GlobalMap) const;
-	TArray<FWwiseAnyRef> GetSwitchValues(const WwiseSwitchGlobalIdsMap& SwitchGlobalMap, const WwiseStateGlobalIdsMap& StateGlobalMap) const;
+	WwiseDBArray<WwiseAnyRef> GetSwitchValues(const WwiseSwitchGlobalIdsMap& SwitchGlobalMap, const WwiseStateGlobalIdsMap& StateGlobalMap) const;
 
-	uint32 Hash() const override;
-	EWwiseRefType Type() const override { return TYPE; }
-	bool operator==(const FWwiseRefSwitchContainer& Rhs) const
+	WwiseDBShortId Hash() const override;
+	WwiseRefType Type() const override { return TYPE; }
+	bool operator==(const WwiseRefSwitchContainer& Rhs) const
 	{
-		return FWwiseRefEvent::operator ==(Rhs)
+		return WwiseRefEvent::operator ==(Rhs)
 			&& ChildrenIndices == Rhs.ChildrenIndices;
 	}
-	bool operator!=(const FWwiseRefSwitchContainer& Rhs) const { return !operator==(Rhs); }
+	bool operator!=(const WwiseRefSwitchContainer& Rhs) const { return !operator==(Rhs); }
 };

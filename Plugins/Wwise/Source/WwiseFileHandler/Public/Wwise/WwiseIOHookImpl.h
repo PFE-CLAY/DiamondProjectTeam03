@@ -12,14 +12,14 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #pragma once
 
 #include "Wwise/WwiseIOHook.h"
 #include "Wwise/WwiseExecutionQueue.h"
-
+#include "WwiseDefines.h"
 #include "Templates/Atomic.h"
 
 class IWwiseStreamingManagerHooks;
@@ -66,6 +66,7 @@ public:
 		BatchIoTransferItem*	in_pTransferItems
 	) override;
 
+#if !WWISE_2024_1_OR_LATER
 	/**
 	 * @brief Cancel IO from multiple files (asynchronous).
 	 *
@@ -77,6 +78,7 @@ public:
 		BatchIoTransferItem*	in_pTransferItems,
 		bool**					io_ppbCancelAllTransfersForThisFile
 	) override;
+#endif
 
 	/**
 	 * Cleans up a file.

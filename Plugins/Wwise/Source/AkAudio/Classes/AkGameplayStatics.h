@@ -12,7 +12,7 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 /*=============================================================================
@@ -30,6 +30,38 @@ Copyright (c) 2024 Audiokinetic Inc.
 // PostEvent functions need to return the PlayingID (uint32), but Blueprints only work with int32.
 // Make sure AkPlayingID is always 32 bits, or else we're gonna have a bad time.
 static_assert(sizeof(AkPlayingID) == sizeof(int32), "AkPlayingID is not 32 bits anymore. Change return value of PostEvent functions and callback info structures members!");
+
+USTRUCT(BlueprintType)
+struct FAkOutdoorsRoomParameters
+{
+	GENERATED_BODY()
+
+public:
+
+	/** Wwise Auxiliary Bus associated with the Outdoors Room. Default is null. */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Audiokinetic|Spatial Audio")
+	UAkAuxBus* ReverbAuxBus = nullptr;
+
+	/** Maximum send level to the Wwise Auxiliary Bus associated with the Outdoors Room. Valid range is 0.0f-1.0f. Default value is 1. */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Audiokinetic|Spatial Audio", meta = (ClampMin = "0.0", ClampMax = "1.0"))
+	float ReverbLevel = 1.0f;
+
+	/**
+	* The transmission loss value in Wwise, on emitters in the Outdoors Room, when no audio paths to the
+	* listener are found via sound propagation in Wwise Spatial Audio. Valid range 0.0f-1.0f. Default value is 0.
+	*/
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Audiokinetic|Spatial Audio", meta = (ClampMin = "0.0", ClampMax = "1.0"))
+	float TransmissionLoss = 0.0f;
+
+	/**
+	* Send level for sounds that are posted on the room. Valid range is 0.f-1.f.
+	* A value of 0 disables the aux send. Default value is 0.
+	*/
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Audiokinetic|Spatial Audio", meta = (ClampMin = "0.0", ClampMax = "1.0"))
+	float AuxSendLevel = 0.0f;
+
+	bool KeepRegistered = false;
+};
 
 UCLASS()
 class AKAUDIO_API UAkGameplayStatics : public UBlueprintFunctionLibrary
@@ -78,7 +110,7 @@ public:
 							class AActor* Actor, 
 							UPARAM(meta = (Bitmask, BitmaskEnum = "/Script/AkAudio.EAkCallbackType")) int32 CallbackMask,
 							const FOnAkPostEventCallback& PostEventCallback,
-							bool bStopWhenAttachedToDestroyed = false
+							bool bStopWhenAttachedToDestroyed = true
 							);
 
 	/**
@@ -92,8 +124,8 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Audiokinetic|Actor", meta = (Latent, LatentInfo = "LatentInfo", AdvancedDisplay = "2"))
 	static int32 PostAndWaitForEndOfEvent(class UAkAudioEvent* AkEvent,
 		class AActor* Actor,
-		bool bStopWhenAttachedToDestroyed,
-		FLatentActionInfo LatentInfo);
+		FLatentActionInfo LatentInfo,
+		bool bStopWhenAttachedToDestroyed = true);
 
 	/** Posts a Wwise Event at the specified location. This is a fire and forget sound, created on a temporary Wwise Game Object. Replication is also not handled at this point.
 	 *
@@ -112,7 +144,7 @@ public:
 	 * @param AutoDestroy - Automatically destroy the AkComponent once the event is finished.
 	 */
 	UFUNCTION(BlueprintCallable, BlueprintCosmetic, Category="Audiokinetic|AkComponent", meta=(WorldContext="WorldContextObject", AdvancedDisplay = "6"))
-	static class UAkComponent* SpawnAkComponentAtLocation(UObject* WorldContextObject, class UAkAudioEvent* AkEvent, FVector Location, FRotator Orientation, bool AutoPost, const FString& EventName, bool AutoDestroy = true);
+	static class UAkComponent* SpawnAkComponentAtLocation(UObject* WorldContextObject, class UAkAudioEvent* AkEvent, FVector Location, FRotator Orientation, bool AutoPost, bool AutoDestroy = true);
 
 	/**
 	* Sets the value of a Game Parameter, optionally targeting the root component of a specified actor.
@@ -122,7 +154,7 @@ public:
 	* @param Actor - (Optional) Actor on which to set the Game Parameter value
 	*/
 	UFUNCTION(BlueprintCallable, BlueprintCosmetic, Category = "Audiokinetic", meta = (AdvancedDisplay = "4"))
-	static void SetRTPCValue(class UAkRtpc const* RTPCValue, float Value, int32 InterpolationTimeMs, class AActor* Actor, FName RTPC);
+	static void SetRTPCValue(class UAkRtpc const* RTPCValue, float Value, int32 InterpolationTimeMs, class AActor* Actor);
 
 	/**
 	* Gets the value of a Game Parameter, optionally targeting the root component of a specified actor.
@@ -132,7 +164,7 @@ public:
 	* @param Actor - (Optional) Actor on which to set the Game Parameter value
 	*/
 	UFUNCTION(BlueprintCallable, BlueprintCosmetic, Category = "Audiokinetic", meta = (AdvancedDisplay = "7"))
-	static void GetRTPCValue(class UAkRtpc const* RTPCValue, int32 PlayingID, ERTPCValueType InputValueType, float& Value, ERTPCValueType& OutputValueType, class AActor* Actor, FName RTPC);
+	static void GetRTPCValue(class UAkRtpc const* RTPCValue, int32 PlayingID, ERTPCValueType InputValueType, float& Value, ERTPCValueType& OutputValueType, class AActor* Actor);
 
 	/**
 	* Resets the value of a Game Parameter to its default value, optionally targeting the root component of a specified actor.
@@ -142,7 +174,7 @@ public:
 	* @param RTPC - The name of the Game Parameter to reset
 	*/
 	UFUNCTION(BlueprintCallable, BlueprintCosmetic, Category = "Audiokinetic", meta = (AdvancedDisplay = "8"))
-	static void ResetRTPCValue(class UAkRtpc const* RTPCValue, int32 InterpolationTimeMs, class AActor* Actor, FName RTPC);
+	static void ResetRTPCValue(class UAkRtpc const* RTPCValue, int32 InterpolationTimeMs, class AActor* Actor);
 
 	/**
 	 * Set the active State for a given State Group.
@@ -150,7 +182,7 @@ public:
 	 * @param State - Name of the State to be made active
 	 */
 	UFUNCTION(BlueprintCallable, BlueprintCosmetic, Category="Audiokinetic", meta = (AdvancedDisplay = "1"))
-	static void SetState(class UAkStateValue const* StateValue, FName StateGroup, FName State);
+	static void SetState(class UAkStateValue const* StateValue);
 
 	/**
 	 * Posts a Trigger, targeting the root component of a specified actor.
@@ -158,7 +190,7 @@ public:
 	 * @param Actor - Actor on which to post the Trigger
 	 */
 	UFUNCTION(BlueprintCallable, BlueprintCosmetic, Category="Audiokinetic|Actor", meta = (AdvancedDisplay = "2"))
-	static void PostTrigger(class UAkTrigger const* TriggerValue, class AActor* Actor, FName Trigger);
+	static void PostTrigger(class UAkTrigger const* TriggerValue, class AActor* Actor);
 	
 	/**
 	 * Sets the active Switch for a given Switch Group, targeting the root component of a specified actor.
@@ -167,7 +199,7 @@ public:
 	 * @param Actor - Actor on which to set the switch
 	 */
 	UFUNCTION(BlueprintCallable, BlueprintCosmetic, Category="Audiokinetic|Actor", meta = (AdvancedDisplay = "2"))
-	static void SetSwitch(class UAkSwitchValue const* SwitchValue, class AActor* Actor, FName SwitchGroup, FName SwitchState);
+	static void SetSwitch(class UAkSwitchValue const* SwitchValue, class AActor* Actor);
 
     /** Sets multiple positions to a single game object.
     *  Setting multiple positions on a single game object is a way to simulate multiple emission sources while using the resources of only one voice.
@@ -309,6 +341,76 @@ public:
 	*/
 	UFUNCTION(BlueprintCallable, Category = "Audiokinetic|Spatial Audio")
 	static void SetPortalToPortalObstruction(UAkPortalComponent* PortalComponent0, UAkPortalComponent* PortalComponent1, float ObstructionValue);
+
+
+	/**
+	* Get the current Outdoors Room parameters.
+	*
+	* @return FAkOutdoorsRoomParameters - Structure containing the current parameters of the Outdoors Room.
+	*/
+	UFUNCTION(BlueprintCallable, Category = "Audiokinetic|Spatial Audio")
+	static FAkOutdoorsRoomParameters GetCurrentOutdoorsRoomParameters();
+
+	/**
+	* Sets the parameters of the defaut Outdoors Room.
+	*
+	* @param InOutdoorsRoomParameters - Structure containing the new parameters of the Outdoors Room.
+	*/
+	UFUNCTION(BlueprintCallable, Category = "Audiokinetic|Spatial Audio")
+	static void SetOutdoorsRoomParameters(FAkOutdoorsRoomParameters InOutdoorsRoomParameters);
+
+	/**
+	 * Resets the Outdoors Room parameters to their default values.
+	 */
+	UFUNCTION(BlueprintCallable, BlueprintCosmetic, Category = "Audiokinetic|Spatial Audio")
+	static void ResetOutdoorsRoomParams();
+
+	/** Posts an Event on the Outdoors Room.
+	 *
+	 * @param AkEvent - Event to play.
+	 */
+	UFUNCTION(BlueprintCallable, BlueprintCosmetic, Category = "Audiokinetic|Spatial Audio", meta = (AdvancedDisplay = "2", AutoCreateRefTerm = "PostEventCallback"))
+	static int32 PostEventOutdoors(class UAkAudioEvent* AkEvent,
+		UPARAM(meta = (Bitmask, BitmaskEnum = "/Script/AkAudio.EAkCallbackType")) int32 CallbackMask,
+		const FOnAkPostEventCallback& PostEventCallback
+	);
+
+	/**
+	 * Stops all sounds for the Outdoors Room.
+	 */
+	UFUNCTION(BlueprintCallable, BlueprintCosmetic, Category = "Audiokinetic|Spatial Audio")
+	static void StopOutdoors();
+
+	/**
+	* Sets the maximum number of validated reflection paths.
+	*
+	* @param InMaxReflectionPaths - The maximum number of validated reflection paths.
+	*/
+	UFUNCTION(BlueprintCallable, Category = "Audiokinetic|Spatial Audio")
+	static void SetMaxGlobalReflectionPaths(int InMaxReflectionPaths);
+
+	/**
+	* Set the maximum number of computed diffraction paths per UAkGameObject.
+	*
+	* @param InMaxDiffractionPaths - The maximum number of computed diffraction paths. Valid range [0-32].
+	* @param InGameObject - UAkGameObject to apply the maximum value to, or pass nullptr to apply to all UAkGameObject (that have not previously been passed to SetMaxDiffractionPaths).
+	*/
+	UFUNCTION(BlueprintCallable, Category = "Audiokinetic|Spatial Audio")
+	static void SetMaxDiffractionPaths(int InMaxDiffractionPaths, UAkGameObject* InGameObject = nullptr);
+
+	/**
+	*  [Experimental] Enable parameter smoothing on the diffraction paths generated by the Acoustics Engine, either globally or for a specific UAkGameObject.
+	*  Set 'Smoothing Constant (ms)' to a value greater than 0 to define the time constant (in milliseconds) for parameter smoothing. 
+	*  The time constant of an exponential moving average is the amount of time for the smoothed response of a unit step function to reach 1 - 1/e ~= 63.2% of the original signal.
+	*  A large value (eg. 500-1000 ms) results in less variance but introduces lag, which is a good choice when using conservative values for uNumberOfPrimaryRays (eg. 5-10), uMaxDiffractionPaths (eg. 1-3) or fMovementThreshold ( > 1m ), in order to reduce overall CPU cost. 
+	*  A small value (eg. 10-100 ms) results in greater accuracy and faster convergence of rendering parameters. Set to 0 to disable path smoothing.
+	*
+	* @param InSmoothingConstantMs -  Smoothing constant (ms)
+	* @param InGameObject - Affected UAkGameObject, or nullptr to set the global smoothing constant, affecting all Spatial Audio Emitters and Rooms.
+	*/
+	UFUNCTION(BlueprintCallable, Category = "Audiokinetic|Spatial Audio")
+	static void SetSmoothingConstant(float InSmoothingConstantMs, UAkGameObject* InGameObject = nullptr);
+
 
 	/**
 	* Set the output bus volume (direct) to be used for the specified game object.
@@ -573,5 +675,9 @@ public:
 	static void SetDistanceProbe(AActor* Listener, AActor* DistanceProbe);
 
 	static bool m_bSoundEngineRecording;
+
+private:
+
+	static FAkOutdoorsRoomParameters m_CurrentOutDoorsRoomParameters;
 
 };

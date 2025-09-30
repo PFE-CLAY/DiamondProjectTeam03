@@ -12,7 +12,7 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #pragma once
@@ -20,48 +20,48 @@ Copyright (c) 2024 Audiokinetic Inc.
 #include "Wwise/Ref/WwiseRefPlatformInfo.h"
 #include "Wwise/Ref/WwiseRefProjectInfo.h"
 
-class WWISEPROJECTDATABASE_API FWwiseRefPlatform : public FWwiseRefPlatformInfo
+class WwiseRefPlatform : public WwiseRefPlatformInfo
 {
 public:
-	static const TCHAR* const NAME;
-	static constexpr EWwiseRefType TYPE = EWwiseRefType::Platform;
+	static const WwiseDBString NAME;
+	static constexpr WwiseRefType TYPE = WwiseRefType::Platform;
 
 	// The reference does contain supplemental information, such as Path.
-	FWwiseRefProjectInfo ProjectInfo;
+	WwiseRefProjectInfo ProjectInfo;
 	WwiseRefIndexType ProjectInfoPlatformReferenceIndex;
 
-	FWwiseRefPlatform() :
+	WwiseRefPlatform() :
 		ProjectInfo(),
-		ProjectInfoPlatformReferenceIndex(INDEX_NONE)
+		ProjectInfoPlatformReferenceIndex(-1)
 	{}
-	FWwiseRefPlatform(const WwiseMetadataSharedRootFileConstPtr& InRootMediaRef, const FName& InJsonFilePath,
-		const WwiseMetadataSharedRootFileConstPtr& InProjectInfoRootMediaRef, const FName& InProjectInfoJsonFilePath,
+	WwiseRefPlatform(const WwiseMetadataSharedRootFileConstPtr& InRootMediaRef, const WwiseDBString& InJsonFilePath,
+		const WwiseMetadataSharedRootFileConstPtr& InProjectInfoRootMediaRef, const WwiseDBString& InProjectInfoJsonFilePath,
 		WwiseRefIndexType InProjectInfoPlatformReferenceIndex) :
-		FWwiseRefPlatformInfo(InRootMediaRef, InJsonFilePath),
+		WwiseRefPlatformInfo(InRootMediaRef, InJsonFilePath),
 		ProjectInfo(InProjectInfoRootMediaRef, InProjectInfoJsonFilePath),
 		ProjectInfoPlatformReferenceIndex(InProjectInfoPlatformReferenceIndex)
 	{}
-	FWwiseRefPlatform(const WwiseMetadataSharedRootFileConstPtr& InRootMediaRef, const FName& InJsonFilePath) :
-		FWwiseRefPlatformInfo(InRootMediaRef, InJsonFilePath),
+	WwiseRefPlatform(const WwiseMetadataSharedRootFileConstPtr& InRootMediaRef, const WwiseDBString& InJsonFilePath) :
+		WwiseRefPlatformInfo(InRootMediaRef, InJsonFilePath),
 		ProjectInfo(),
 		ProjectInfoPlatformReferenceIndex()
 	{}
-	FWwiseRefPlatform(const WwiseMetadataSharedRootFileConstPtr& InProjectInfoRootMediaRef, const FName& InProjectInfoJsonFilePath,
+	WwiseRefPlatform(const WwiseMetadataSharedRootFileConstPtr& InProjectInfoRootMediaRef, const WwiseDBString& InProjectInfoJsonFilePath,
 		WwiseRefIndexType InProjectInfoPlatformReferenceIndex) :
-		FWwiseRefPlatformInfo(),
+		WwiseRefPlatformInfo(),
 		ProjectInfo(InProjectInfoRootMediaRef, InProjectInfoJsonFilePath),
 		ProjectInfoPlatformReferenceIndex(InProjectInfoPlatformReferenceIndex)
 	{}
-	void Merge(FWwiseRefPlatform&& InOtherPlatform);
+	void Merge(WwiseRefPlatform&& InOtherPlatform);
 
-	const FWwiseMetadataPlatform* GetPlatform() const;
-	const FWwiseMetadataPlatformReference* GetPlatformReference() const;
+	const WwiseMetadataPlatform* GetPlatform() const;
+	const WwiseMetadataPlatformReference* GetPlatformReference() const;
 
-	FGuid PlatformGuid() const;
-	FName PlatformName() const;
-	FGuid BasePlatformGuid() const;
-	FName BasePlatformName() const;
+	const WwiseDBGuid* PlatformGuid() const;
+	const WwiseDBString* PlatformName() const;
+	WwiseDBGuid BasePlatformGuid() const;
+	WwiseDBString BasePlatformName() const;
 
-	uint32 Hash() const override;
-	EWwiseRefType Type() const override { return TYPE; }
+	WwiseDBShortId Hash() const override;
+	WwiseRefType Type() const override { return TYPE; }
 };

@@ -12,24 +12,22 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #include "Wwise/Ref/WwiseRefAudioDevice.h"
-#include "Wwise/WwiseProjectDatabaseModule.h"
 
 #include "Wwise/Metadata/WwiseMetadataPlugin.h"
 #include "Wwise/Metadata/WwiseMetadataPluginGroup.h"
 #include "Wwise/Metadata/WwiseMetadataSoundBank.h"
 #include "Wwise/Ref/WwiseRefMedia.h"
-#include "Wwise/Stats/ProjectDatabase.h"
 
-const TCHAR* const FWwiseRefAudioDevice::NAME = TEXT("AudioDevice");
+const WwiseDBString WwiseRefAudioDevice::NAME = "AudioDevice"_wwise_db;
 
-const FWwiseMetadataPlugin* FWwiseRefAudioDevice::GetPlugin() const
+const WwiseMetadataPlugin* WwiseRefAudioDevice::GetPlugin() const
 {
 	const auto* SoundBank = GetSoundBank();
-	if (UNLIKELY(!SoundBank || !SoundBank->Plugins))
+	if (!SoundBank || !SoundBank->Plugins) [[unlikely]]
 	{
 		return nullptr;
 	}
@@ -37,32 +35,32 @@ const FWwiseMetadataPlugin* FWwiseRefAudioDevice::GetPlugin() const
 	const auto& Plugins = SoundBank->Plugins->AudioDevices;
 	if (Plugins.IsValidIndex(AudioDeviceIndex))
 	{
-		return &Plugins[AudioDeviceIndex];
+		return &Plugins.Array[AudioDeviceIndex];
 	}
 	else
 	{
-		UE_LOG(LogWwiseProjectDatabase, Error, TEXT("Could not get Audio Device index #%zu"), AudioDeviceIndex);
+		WWISE_DB_LOG(Error, "Could not get Audio Device index #%zu", AudioDeviceIndex);
 		return nullptr;
 	}
 }
 
-WwiseMediaIdsMap FWwiseRefAudioDevice::GetPluginMedia(const WwiseMediaGlobalIdsMap& GlobalMap) const
+WwiseMediaIdsMap WwiseRefAudioDevice::GetPluginMedia(const WwiseMediaGlobalIdsMap& GlobalMap) const
 {
 	const auto* AudioDevice = GetPlugin();
 	const auto* SoundBank = GetSoundBank();
-	if (UNLIKELY(!AudioDevice || !SoundBank))
+	if (!AudioDevice || !SoundBank) [[unlikely]]
 	{
 		return {};
 	}
 	const auto& Media = AudioDevice->MediaRefs;
 
 	WwiseMediaIdsMap Result;
-	Result.Empty(Media.Num());
-	for (const auto& Elem : Media)
+	Result.Empty(Media.Size());
+	for (const auto& Elem : Media.Array)
 	{
-		FWwiseDatabaseMediaIdKey Id(Elem.Id, SoundBank->Id);
+		WwiseDatabaseLocalizableIdKey Id(Elem.Id, LanguageId, SoundBank->Id);
 
-		const auto* MediaInGlobalMap = GlobalMap.Find(Id);
+		const WwiseRefMedia* MediaInGlobalMap = GlobalMap.Find(Id);
 		if (MediaInGlobalMap)
 		{
 			Result.Add(Elem.Id, *MediaInGlobalMap);
@@ -71,49 +69,49 @@ WwiseMediaIdsMap FWwiseRefAudioDevice::GetPluginMedia(const WwiseMediaGlobalIdsM
 	return Result;
 }
 
-uint32 FWwiseRefAudioDevice::AudioDeviceId() const
+WwiseDBShortId WwiseRefAudioDevice::AudioDeviceId() const
 {
 	const auto* AudioDevice = GetPlugin();
-	if (UNLIKELY(!AudioDevice))
+	if (!AudioDevice) [[unlikely]]
 	{
 		return 0;
 	}
 	return AudioDevice->Id;
 }
 
-FGuid FWwiseRefAudioDevice::AudioDeviceGuid() const
+WwiseDBGuid WwiseRefAudioDevice::AudioDeviceGuid() const
 {
 	const auto* AudioDevice = GetPlugin();
-	if (UNLIKELY(!AudioDevice))
+	if (!AudioDevice) [[unlikely]]
 	{
 		return {};
 	}
 	return AudioDevice->GUID;
 }
 
-FName FWwiseRefAudioDevice::AudioDeviceName() const
+const WwiseDBString* WwiseRefAudioDevice::AudioDeviceName() const
 {
 	const auto* AudioDevice = GetPlugin();
-	if (UNLIKELY(!AudioDevice))
+	if (!AudioDevice) [[unlikely]]
 	{
 		return {};
 	}
-	return AudioDevice->Name;
+	return &AudioDevice->Name;
 }
 
-FName FWwiseRefAudioDevice::AudioDeviceObjectPath() const
+const WwiseDBString* WwiseRefAudioDevice::AudioDeviceObjectPath() const
 {
 	const auto* AudioDevice = GetPlugin();
-	if (UNLIKELY(!AudioDevice))
+	if (!AudioDevice) [[unlikely]]
 	{
 		return {};
 	}
-	return AudioDevice->ObjectPath;
+	return &AudioDevice->ObjectPath;
 }
 
-uint32 FWwiseRefAudioDevice::Hash() const
+WwiseDBShortId WwiseRefAudioDevice::Hash() const
 {
-	auto Result = FWwiseRefSoundBank::Hash();
-	Result = HashCombine(Result, GetTypeHash(AudioDeviceIndex));
+	auto Result = WwiseRefSoundBank::Hash();
+	Result = WwiseDBHashCombine(Result, GetTypeHash(AudioDeviceIndex));
 	return Result;
 }

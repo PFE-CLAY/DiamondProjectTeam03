@@ -12,7 +12,7 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #pragma once
@@ -60,12 +60,16 @@ public:
 
 	// Whether to connect to WAAPI or not
 	UPROPERTY(Config, EditAnywhere, Category = "WAAPI")
-	bool bAutoConnectToWAAPI = false;
+	bool bAutoConnectToWAAPI = true;
 
 	// Whether to synchronize the selection between the WAAPI picker and the Wwise Project Explorer
 	UPROPERTY(Config, EditAnywhere, Category = "WAAPI")
 	bool AutoSyncSelection = true;
 
+	// Time out value for Waapi calls (in ms). If set to -1, Waapi calls will never time out
+	UPROPERTY(Config, EditAnywhere, Category = "WAAPI", meta=(ClampMin=-1))
+	int32 WaapiCallsTimeout = 500;
+	
 	// Time out value for the waapi error message translator to translate an error message (in ms). If set to 0, disable the translator entirely
 	UPROPERTY(Config, EditAnywhere, Category = "Error Message Translator")
 	uint32 WaapiTranslatorTimeout = 0;

@@ -1,32 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="16" SoundBankVersion="150">
+<SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="16" SoundBankVersion="154">
 	<SoundBanks>
-		<SoundBank Id="1329476194" Type="User" GUID="{4B32F9EE-D939-4AEA-A633-697781A78CE3}" Language="SFX" Hash="{42888B95-2C94-0AC9-9D3B-09621A374442}">
+		<SoundBank Id="1329476194" Type="User" GUID="{4B32F9EE-D939-4AEA-A633-697781A78CE3}" Color="21" Language="SFX" Hash="{B70BEF31-A9E0-0E2D-C6FD-5A666AE0C821}">
 			<ObjectPath>\SoundBanks\SoundBanks_WU\MUS_SB</ObjectPath>
 			<ShortName>MUS_SB</ShortName>
 			<Path>MUS_SB.bnk</Path>
 			<Media>
 				<File Id="721910099" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>JV BLACK SAND MIX V2.wav</ShortName>
-					<CachePath>SFX/JV BLACK SAND MIX V2_818F3B66.wem</CachePath>
+					<CachePath>37/{372DD273-A2FD-930E-05EE-1B952E993533}.wem</CachePath>
 				</File>
 				<File Id="1072494655" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>MUS_Blacksands_Hub.wav</ShortName>
-					<CachePath>SFX/MUS_Blacksands_Hub_67AD3CF9.wem</CachePath>
+					<CachePath>AC/{AC2739F6-97FA-041C-A61D-AFA4E26DFCE4}.wem</CachePath>
 				</File>
 			</Media>
 			<Events>
-				<Event Id="1117189211" Name="Play_MUS_ARENA" ObjectPath="\Events\MUS_WU\Play_MUS_ARENA" GUID="{FCFD5ACC-2CA9-4324-8CC4-F10D48548642}" DurationType="OneShot" DurationMin="259.2" DurationMax="259.2">
+				<Event Id="1117189211" Name="Play_MUS_ARENA" ObjectPath="\Events\MUS_WU\Play_MUS_ARENA" GUID="{FCFD5ACC-2CA9-4324-8CC4-F10D48548642}" Color="8" DurationType="OneShot" DurationMin="259.2" DurationMax="259.2">
 					<MediaRefs>
 						<MediaRef Id="721910099"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="2485576600" Name="Play_MUS_Blacksands_Hub" ObjectPath="\Events\MUS_WU\Play_MUS_Blacksands_Hub" GUID="{5EFDE9D3-947B-4379-BC68-9A8FC45B710A}" DurationType="Infinite">
+				<Event Id="2485576600" Name="Play_MUS_Blacksands_Hub" ObjectPath="\Events\MUS_WU\Play_MUS_Blacksands_Hub" GUID="{5EFDE9D3-947B-4379-BC68-9A8FC45B710A}" Color="8" DurationType="Infinite">
 					<MediaRefs>
 						<MediaRef Id="1072494655"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="888771158" Name="Stop_MUS_Blacksands_Hub" ObjectPath="\Events\MUS_WU\Stop_MUS_Blacksands_Hub" GUID="{60E90B0F-AFEA-4121-8616-69BB7F5853C0}" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0">
+				<Event Id="888771158" Name="Stop_MUS_Blacksands_Hub" ObjectPath="\Events\MUS_WU\Stop_MUS_Blacksands_Hub" GUID="{60E90B0F-AFEA-4121-8616-69BB7F5853C0}" Color="8" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0">
 					<MediaRefs>
 						<MediaRef Id="1072494655"/>
 					</MediaRefs>
@@ -34,5 +34,5 @@
 			</Events>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{C77E61EC-8F6C-27AE-239C-FAF47F3C0547}</FileHash>
+	<FileHash>{641A1B5A-EA0C-699E-49D6-0048E5166168}</FileHash>
 </SoundBanksInfo>

@@ -12,7 +12,7 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #pragma once
@@ -20,10 +20,11 @@ Copyright (c) 2024 Audiokinetic Inc.
 #include "Async/TaskGraphInterfaces.h"
 #include "HAL/ThreadManager.h"
 #include "Stats/Stats.h"
+#include "Wwise/WwiseUnrealVersion.h"
 
 // Unreal Stat system assumes it runs on an Unreal thread. A lot of low-level I/O doesn't follow that assumption.
 
-#if STATS
+#if STATS && !UE_5_6_OR_LATER
 
 FORCEINLINE static void ASYNC_LAMBDA_STAT(TUniqueFunction<void()>&& Lambda)
 {

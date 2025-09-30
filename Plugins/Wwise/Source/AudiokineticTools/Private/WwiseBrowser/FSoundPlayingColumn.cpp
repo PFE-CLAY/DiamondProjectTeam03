@@ -12,7 +12,7 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #include "FSoundPlayingColumn.h"
@@ -20,7 +20,7 @@ Copyright (c) 2024 Audiokinetic Inc.
 #include "WwiseUEFeatures.h"
 #include "EditorStyleSet.h"
 #include "SWwiseBrowser.h"
-#include "WaapiPicker/WwiseTreeItem.h"
+#include "Wwise/WwiseTreeItem.h"
 
 #define LOCTEXT_NAMESPACE "AkAudio"
 
@@ -39,11 +39,7 @@ const TSharedRef<SWidget> FSoundPlayingColumn::ConstructRowWidget(FWwiseTreeItem
 {
 	auto WwiseBrowser = WwiseBrowserWeak.Pin();
 	return SNew(SImage)
-	#if UE_5_0_OR_LATER
 		.Image(FAkAppStyle::Get().GetBrush("ClassIcon.AmbientSound"))
-	#else
-		.Image(FEditorStyle::Get().GetBrush("Sequencer.Tracks.Audio"))
-	#endif
 		.Visibility_Raw(WwiseBrowser.Get(), &SWwiseBrowser::IsItemPlaying, TreeItem->ItemId);
 }
 

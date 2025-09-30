@@ -12,7 +12,7 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #include "AkSettingsDetailsCustomization.h"
@@ -221,6 +221,8 @@ TSharedRef<IDetailCustomization> FAkSettingsDetailsCustomization::MakeInstance()
 
 void FAkSettingsDetailsCustomization::CustomizeDetails(IDetailLayoutBuilder& DetailLayout)
 {
+	FWwiseDetailsCustomization::CustomizeDetails(DetailLayout);
+	
 	IDetailCategoryBuilder& GeometryCategoryBuilder = DetailLayout.EditCategory("Geometry Surface Properties", FText::GetEmpty(), ECategoryPriority::Uncommon);
 	GeometryCategoryBuilder.AddCustomRow(FText::FromString("Update Geometry Map")).WholeRowContent()
 	[

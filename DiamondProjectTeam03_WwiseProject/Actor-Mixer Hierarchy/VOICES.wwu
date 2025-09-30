@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<WwiseDocument Type="WorkUnit" ID="{46DADE32-2503-4D70-A7EF-8385A6296709}" SchemaVersion="119">
+<WwiseDocument Type="WorkUnit" ID="{46DADE32-2503-4D70-A7EF-8385A6296709}" SchemaVersion="123">
 	<AudioObjects>
 		<WorkUnit Name="VOICES" ID="{46DADE32-2503-4D70-A7EF-8385A6296709}" PersistMode="Standalone">
 			<ChildrenList>
@@ -570,6 +570,10 @@
 							<CustomState>
 								<StateRef Name="TargetInsidePyramid" ID="{1E0BA403-7723-4863-B8DD-93A6A3CA72ED}"/>
 								<CustomState Name="" ID="{58E161C1-E30E-4173-BD16-DF26FFE6C8FD}" ShortID="935738317"/>
+							</CustomState>
+							<CustomState>
+								<StateRef Name="None" ID="{EEC88170-01B2-4B8A-87BF-B7151380ADB4}"/>
+								<CustomState Name="" ID="{578529DA-2BC7-422A-9C4E-9C86A72A4482}" ShortID="258012060"/>
 							</CustomState>
 						</CustomStateList>
 					</StateInfo>

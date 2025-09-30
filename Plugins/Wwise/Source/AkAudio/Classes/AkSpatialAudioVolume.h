@@ -12,7 +12,7 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 /*=============================================================================
@@ -89,13 +89,13 @@ public:
 #endif
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "SpatialAudioVolume", meta = (ShowOnlyInnerProperties))
-	UAkSurfaceReflectorSetComponent* SurfaceReflectorSet = nullptr;
+	TObjectPtr<UAkSurfaceReflectorSetComponent> SurfaceReflectorSet = nullptr;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "SpatialAudioVolume", meta = (ShowOnlyInnerProperties))
-	UAkLateReverbComponent* LateReverb = nullptr;
+	TObjectPtr<UAkLateReverbComponent> LateReverb = nullptr;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "SpatialAudioVolume", meta = (ShowOnlyInnerProperties))
-	UAkRoomComponent* Room = nullptr;
+	TObjectPtr<UAkRoomComponent> Room = nullptr;
 
 #if WITH_EDITORONLY_DATA
 	/**

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<WwiseDocument Type="WorkUnit" ID="{E96921F1-C278-4664-92E6-7E226124E722}" SchemaVersion="119">
+<WwiseDocument Type="WorkUnit" ID="{E96921F1-C278-4664-92E6-7E226124E722}" SchemaVersion="123">
 	<Events>
 		<WorkUnit Name="MUS_WU" ID="{E96921F1-C278-4664-92E6-7E226124E722}" PersistMode="Standalone">
 			<PropertyList>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<WwiseDocument Type="WorkUnit" ID="{1C36EC12-43A5-4F7F-BD34-ADCCF4CCEFF3}" SchemaVersion="119">
+<WwiseDocument Type="WorkUnit" ID="{1C36EC12-43A5-4F7F-BD34-ADCCF4CCEFF3}" SchemaVersion="123">
 	<AudioObjects>
 		<WorkUnit Name="FOES_Tourelle_WU" ID="{1C36EC12-43A5-4F7F-BD34-ADCCF4CCEFF3}" PersistMode="Standalone">
 			<PropertyList>

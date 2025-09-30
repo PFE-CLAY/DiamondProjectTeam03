@@ -12,43 +12,51 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #pragma once
 
 #include "Wwise/Metadata/WwiseMetadataCollections.h"
 #include "Wwise/Ref/WwiseRefCollections.h"
+#include "Wwise/AdapterTypes/WwiseDataTypesAdapter.h"
+#include "Wwise/AdapterTypes/WwiseWrapperTypes.h"
 #include "Wwise/Ref/WwiseRefType.h"
 
-class WWISEPROJECTDATABASE_API FWwiseRefRootFile
+class WwiseRefRootFile
 {
 public:
-	static const TCHAR* const NAME;
-	static constexpr EWwiseRefType TYPE = EWwiseRefType::RootFile;
+	inline static const WwiseDBString emptyString = TEXT("");
+	static const WwiseDBString NAME;
+	static constexpr WwiseRefType TYPE = WwiseRefType::RootFile;
 
 	WwiseMetadataSharedRootFileConstPtr RootFileRef;
-	FName JsonFilePath;
+	WwiseDBString JsonFilePath;
 
-	FWwiseRefRootFile() {}
-	FWwiseRefRootFile(const WwiseMetadataSharedRootFileConstPtr& InRootMediaRef, const FName& InJsonFilePath) :
+	WwiseRefRootFile() {}
+	WwiseRefRootFile(const WwiseMetadataSharedRootFileConstPtr& InRootMediaRef, const WwiseDBString& InJsonFilePath) :
 		RootFileRef(InRootMediaRef),
 		JsonFilePath(InJsonFilePath)
 	{}
-	virtual ~FWwiseRefRootFile() {}
-	virtual uint32 Hash() const;
-	virtual EWwiseRefType Type() const { return TYPE; }
-	bool operator==(const FWwiseRefRootFile& Rhs) const
+	virtual ~WwiseRefRootFile() {}
+	virtual WwiseDBShortId Hash() const;
+	virtual WwiseRefType Type() const { return TYPE; }
+	bool operator==(const WwiseRefRootFile& Rhs) const
 	{
 		return JsonFilePath == Rhs.JsonFilePath;
 	}
-	bool operator!=(const FWwiseRefRootFile& Rhs) const { return !operator==(Rhs); }
+	bool operator!=(const WwiseRefRootFile& Rhs) const { return !operator==(Rhs); }
 
+	bool operator<(const WwiseRefRootFile& Rhs) const
+	{
+		return JsonFilePath < Rhs.JsonFilePath;
+	}
+	
 	bool IsValid() const;
-	const FWwiseMetadataRootFile* GetRootFile() const;
+	const WwiseMetadataRootFile* GetRootFile() const;
 };
 
-inline uint32 GetTypeHash(const FWwiseRefRootFile& Type)
+inline WwiseDBShortId GetTypeHash(const WwiseRefRootFile& Type)
 {
 	return Type.Hash();
 }

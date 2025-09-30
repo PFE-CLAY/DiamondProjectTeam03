@@ -12,7 +12,7 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #pragma once
@@ -20,18 +20,18 @@ Copyright (c) 2024 Audiokinetic Inc.
 #include "Wwise/Metadata/WwiseMetadataLoadable.h"
 #include "Wwise/Metadata/WwiseMetadataPluginLib.h"
 
-struct WWISEPROJECTDATABASE_API FWwiseMetadataPluginInfoAttributes : public FWwiseMetadataLoadable
+struct WwiseMetadataPluginInfoAttributes : public WwiseMetadataLoadable
 {
-	FName Platform;
-	FName BasePlatform;
+	WwiseDBString Platform;
+	WwiseDBString BasePlatform;
 
-	FWwiseMetadataPluginInfoAttributes(FWwiseMetadataLoader& Loader);
+	WwiseMetadataPluginInfoAttributes(WwiseMetadataLoader& Loader);
 };
 
-struct WWISEPROJECTDATABASE_API FWwiseMetadataPluginInfo : public FWwiseMetadataPluginInfoAttributes
+struct WwiseMetadataPluginInfo : public WwiseMetadataPluginInfoAttributes
 {
-	TArray<FWwiseMetadataPluginLib> PluginLibs;
-	FGuid FileHash;
+	WwiseDBArray<WwiseMetadataPluginLib> PluginLibs;
+	WwiseDBGuid FileHash;
 
-	FWwiseMetadataPluginInfo(FWwiseMetadataLoader& Loader);
+	WwiseMetadataPluginInfo(WwiseMetadataLoader& Loader);
 };

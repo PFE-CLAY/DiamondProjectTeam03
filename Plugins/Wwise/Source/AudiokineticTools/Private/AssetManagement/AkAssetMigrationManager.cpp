@@ -12,7 +12,7 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #include "AkAssetMigrationManager.h"
@@ -28,11 +28,7 @@ Copyright (c) 2024 Audiokinetic Inc.
 #include "ContentBrowserModule.h"
 #include "Editor.h"
 #include "Framework/Notifications/NotificationManager.h"
-#if UE_5_0_OR_LATER
 #include "HAL/PlatformFileManager.h"
-#else
-#include "HAL/PlatformFilemanager.h"
-#endif
 #include "IAudiokineticTools.h"
 #include "Misc/FileHelper.h"
 #include "Misc/MessageDialog.h"
@@ -41,6 +37,7 @@ Copyright (c) 2024 Audiokinetic Inc.
 #include "WwiseUnrealHelper.h"
 #include "ToolMenus.h"
 #include "FileHelpers.h"
+#include "Wwise/WwisePluginStyle.h"
 
 #define LOCTEXT_NAMESPACE "AkAudio"
 
@@ -123,11 +120,7 @@ bool AkAssetMigrationManager::IsMigrationRequired(AkAssetMigration::FMigrationCo
 	}
 
 	TArray<FAssetData> Banks;
-#if UE_5_1_OR_LATER
 	AssetRegistry.GetAssetsByClass(UAkAudioBank::StaticClass()->GetClassPathName(), Banks);
-#else
-	AssetRegistry.GetAssetsByClass(UAkAudioBank::StaticClass()->GetFName(), Banks);
-#endif
 	if (Banks.Num() > 0)
 	{
 		MigrationOptions.bBanksInProject = true;
@@ -320,7 +313,7 @@ AkAssetMigrationManager::MigrationResult AkAssetMigrationManager::PerformMigrati
 
 	FString ResultString = Result.bSuccess ? "Success" : "Failure";
 	FNotificationInfo Info(FText::Format(LOCTEXT("AkAssetManagementManagerResult", "Migration completed - {0}"), FText::FromString(ResultString)));
-	Info.Image = FAkAudioStyle::GetBrush(TEXT("AudiokineticTools.AkBrowserTabIcon"));
+	Info.Image = FWwisePluginStyle::Get()->GetBrush(FWwisePluginStyle::WwiseIconName);
 	Info.bFireAndForget = true;
 	Info.FadeOutDuration = 0.6f;
 	Info.ExpireDuration = 4.6f;
@@ -362,68 +355,23 @@ bool AkAssetMigrationManager::IsSoundDataPathInDirectoriesToAlwaysStage(const FS
 void AkAssetMigrationManager::CreateMigrationMenuOption()
 {
 	// Extend the build menu to handle Audiokinetic-specific entries
-#if UE_5_0_OR_LATER
-	{
-		UToolMenu* BuildMenu = UToolMenus::Get()->ExtendMenu("LevelEditor.MainMenu.Build");
-		FToolMenuSection& WwiseBuildSection = BuildMenu->AddSection(MigrationMenuSectionName, LOCTEXT("AkBuildLabel", "Audiokinetic Migration"), FToolMenuInsert("LevelEditorGeometry", EToolMenuInsertType::Default));
-		FUIAction MigrationUIAction;
-		MigrationUIAction.ExecuteAction.BindRaw(this, &AkAssetMigrationManager::EditorTryMigration);
-		WwiseBuildSection.AddMenuEntry(
-			NAME_None,
-			LOCTEXT("AKAudioBank_PostMigration", "Finish Project Migration"),
-			LOCTEXT("AkAudioBank_PostMigrationTooltip", "Transfer Bank hierarchy to Wwise, clean up bank files, delete Wwise media assets, clean up Wwise assets"),
-			FSlateIcon(),
-			MigrationUIAction
-		);
-	}
-#else
-	FLevelEditorModule& LevelEditorModule = FModuleManager::GetModuleChecked<FLevelEditorModule>(TEXT("LevelEditor"));
-	LevelViewportToolbarBuildMenuExtenderAkMigration = FLevelEditorModule::FLevelEditorMenuExtender::CreateLambda([this](const TSharedRef<FUICommandList> CommandList)
-		{
-			TSharedPtr<FExtender> Extender = MakeShared<FExtender>();
-			Extender->AddMenuExtension("LevelEditorGeometry", EExtensionHook::After, CommandList, FMenuExtensionDelegate::CreateLambda([this](FMenuBuilder& MenuBuilder)
-				{
-					MenuBuilder.BeginSection("Audiokinetic Migration", LOCTEXT("AudiokineticMigration", "Audiokinetic Migration"));
-					{
-						FUIAction MigrationAction;
-						MigrationAction.ExecuteAction.BindRaw(this, &AkAssetMigrationManager::EditorTryMigration);
-						MenuBuilder.AddMenuEntry(
-							LOCTEXT("AKAudioBank_PostMigration", "Finish Project Migration"),
-							LOCTEXT("AkAudioBank_PostMigrationTooltip", "Transfer Bank hierarchy to Wwise, clean up bank files, delete Wwise media assets, clean up Wwise assets"),
-							FSlateIcon(),
-							MigrationAction
-						);
-					}
-					MenuBuilder.EndSection();
-				}));
-
-			return Extender.ToSharedRef();
-		});
-
-	LevelEditorModule.GetAllLevelEditorToolbarBuildMenuExtenders().Add(LevelViewportToolbarBuildMenuExtenderAkMigration);
-	LevelViewportToolbarBuildMenuExtenderAkMigrationHandle = LevelEditorModule.GetAllLevelEditorToolbarBuildMenuExtenders().Last().GetHandle();
-#endif
+	UToolMenu* BuildMenu = UToolMenus::Get()->ExtendMenu("LevelEditor.MainMenu.Build");
+	FToolMenuSection& WwiseBuildSection = BuildMenu->AddSection(MigrationMenuSectionName, LOCTEXT("AkBuildLabel", "Audiokinetic Migration"), FToolMenuInsert("LevelEditorGeometry", EToolMenuInsertType::Default));
+	FUIAction MigrationUIAction;
+	MigrationUIAction.ExecuteAction.BindRaw(this, &AkAssetMigrationManager::EditorTryMigration);
+	WwiseBuildSection.AddMenuEntry(
+		NAME_None,
+		LOCTEXT("AKAudioBank_PostMigration", "Finish Project Migration"),
+		LOCTEXT("AkAudioBank_PostMigrationTooltip", "Transfer Bank hierarchy to Wwise, clean up bank files, delete Wwise media assets, clean up Wwise assets"),
+		FSlateIcon(),
+		MigrationUIAction
+	);
 }
 
 void AkAssetMigrationManager::RemoveMigrationMenuOption()
 {
-#if UE_5_0_OR_LATER
 	UToolMenu* BuildMenu = UToolMenus::Get()->ExtendMenu("LevelEditor.MainMenu.Build");
 	BuildMenu->RemoveSection(MigrationMenuSectionName);
-#else
-	if (LevelViewportToolbarBuildMenuExtenderAkMigrationHandle.IsValid())
-	{
-		if (FModuleManager::Get().IsModuleLoaded("LevelEditor"))
-		{
-			auto& LevelEditorModule = FModuleManager::GetModuleChecked<FLevelEditorModule>("LevelEditor");
-			LevelEditorModule.GetAllLevelEditorToolbarBuildMenuExtenders().RemoveAll([=](const FLevelEditorModule::FLevelEditorMenuExtender& Extender)
-				{
-					return Extender.GetHandle() == LevelViewportToolbarBuildMenuExtenderAkMigrationHandle;
-				});
-		}
-		LevelViewportToolbarBuildMenuExtenderAkMigrationHandle.Reset();
-	}
-#endif
 }
 
 void AkAssetMigrationManager::ClearSoundBanksForMigration()

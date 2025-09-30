@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<WwiseDocument Type="WorkUnit" ID="{3B4DA992-D06B-45A8-A1FE-AF5B7C9D33CA}" SchemaVersion="119">
+<WwiseDocument Type="WorkUnit" ID="{3B4DA992-D06B-45A8-A1FE-AF5B7C9D33CA}" SchemaVersion="123">
 	<Attenuations>
 		<WorkUnit Name="ATT_WU" ID="{3B4DA992-D06B-45A8-A1FE-AF5B7C9D33CA}" PersistMode="Standalone">
 			<PropertyList>

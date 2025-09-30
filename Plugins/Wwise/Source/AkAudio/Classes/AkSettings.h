@@ -12,7 +12,7 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #pragma once
@@ -50,11 +50,10 @@ enum EAkCollisionChannel
 UENUM()
 enum class EAkUnrealAudioRouting
 {
-	Custom UMETA(DisplayName = "Default", ToolTip = "Custom Unreal audio settings set up by the developer"),
-	Separate UMETA(DisplayName = "Both Wwise and Unreal audio", ToolTip = "Use default Unreal audio at the same time than Wwise SoundEngine (might be incompatible with some platforms)"),
-	AudioLink UMETA(DisplayName = "Route through AudioLink [UE5.1+]", ToolTip = "Use WwiseAudioLink to route all Unreal audio sources to Wwise SoundEngine Inputs (requires Unreal Engine 5.1 or higher)"),
-	AudioMixer UMETA(DisplayName = "Route through AkAudioMixer", ToolTip = "Use AkAudioMixer to route Unreal submixes to a Wwise SoundEngine Input"),
 	EnableWwiseOnly UMETA(DisplayName = "Enable Wwise SoundEngine only", ToolTip = "Only use Wwise SoundEngine, and disable Unreal audio"),
+	Separate UMETA(DisplayName = "Both Wwise and Unreal audio", ToolTip = "Use default Unreal audio at the same time than Wwise SoundEngine (might be incompatible with some platforms)"),
+	AudioLink UMETA(DisplayName = "Route through AudioLink", ToolTip = "Use WwiseAudioLink to route all Unreal audio sources to Wwise SoundEngine Inputs"),
+	AudioMixer UMETA(DisplayName = "Route through AkAudioMixer", ToolTip = "(DEPRECATED) Use AkAudioMixer to route Unreal submixes to a Wwise SoundEngine Input"),
 	EnableUnrealOnly UMETA(DisplayName = "Enable Unreal Audio only", ToolTip = "Only use Unreal audio, and disable Wwise SoundEngine")
 };
 
@@ -332,7 +331,7 @@ public:
 
 	// Routing Audio from Unreal Audio to Wwise Sound Engine
 	UPROPERTY(Config, EditAnywhere, Category = "Initialization", DisplayName = "Unreal Audio Routing", meta=(ConfigRestartRequired=true))
-	EAkUnrealAudioRouting AudioRouting = EAkUnrealAudioRouting::Custom;
+	EAkUnrealAudioRouting AudioRouting = EAkUnrealAudioRouting::EnableWwiseOnly;
 
 	UPROPERTY(Config, EditAnywhere, Category = "Initialization", meta=(ConfigRestartRequired=true, EditCondition="AudioRouting == EAkUnrealAudioRouting::Custom"))
 	bool bWwiseSoundEngineEnabled = true;
@@ -343,9 +342,9 @@ public:
 	UPROPERTY(Config, EditAnywhere, Category = "Initialization", meta=(ConfigRestartRequired=true, EditCondition="AudioRouting == EAkUnrealAudioRouting::Custom"))
 	bool bAkAudioMixerEnabled = false;
 
-	// The default value of the "Attenuation Scaling Factor" when an AkGameObject is created.
+	// The default value of the Scaling Factor when a Default Listener is created.
 	UPROPERTY(Config, EditAnywhere, Category = "Initialization", meta = (ClampMin = "0.0"))
-	float DefaultScalingFactor = 1.0f;
+	float DefaultListenerScalingFactor = 1.0f;
 
 	UPROPERTY(Config)
 	bool AskedToUseNewAssetManagement_DEPRECATED = false;
@@ -374,7 +373,7 @@ public:
 	bool DampingRTPCInUse() const;
 	bool PredelayRTPCInUse() const;
 
-	bool GetAssociatedAcousticTexture(const UPhysicalMaterial* physMaterial, UAkAcousticTexture*& acousticTexture) const;
+	bool GetAssociatedAcousticTexture(const UPhysicalMaterial* physMaterial, TObjectPtr<UAkAcousticTexture>& acousticTexture) const;
 	bool GetAssociatedOcclusionValue(const UPhysicalMaterial* physMaterial, float& occlusionValue) const;
 
 #if WITH_EDITOR
@@ -411,6 +410,7 @@ protected:
 
 private:
 #if WITH_EDITOR
+	FDelegateHandle PostEngineInitDelegate;
 	FString PreviousWwiseProjectPath;
 	FString PreviousWwiseGeneratedSoundBankFolder;
 	bool bTextureMapInitialized = false;
@@ -424,7 +424,7 @@ private:
 	void FillGeometrySurfacePropertiesTable();
 
 	void SanitizeProjectPath(FString& Path, const FString& PreviousPath, const FText& DialogMessage);
-	void OnAudioRoutingUpdate();
+	void UpdateAudioRouting();
 	
 	bool bGeometrySurfacePropertiesTableInitialized = false;
 
@@ -440,6 +440,9 @@ private:
 #endif
 
 	TMap<FGuid, FAkAcousticTextureParams> AcousticTextureParamsMap;
+	
+	UPROPERTY(Transient)
+	TObjectPtr<UDataTable> GeometrySurfacePropertiesKeepAlive = nullptr;
 
 public:
 	bool bRequestRefresh = false;

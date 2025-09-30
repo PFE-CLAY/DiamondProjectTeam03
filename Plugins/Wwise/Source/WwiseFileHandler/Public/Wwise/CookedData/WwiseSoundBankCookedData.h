@@ -12,12 +12,15 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #pragma once
 
 #include "AkInclude.h"
+#include "WwiseCookEventContext.h"
+#include "Wwise/WwisePackagedFile.h"
+#include "Wwise/WwiseUnrealVersion.h"
 
 #include "WwiseSoundBankCookedData.generated.h"
 
@@ -39,69 +42,81 @@ struct WWISEFILEHANDLER_API FWwiseSoundBankCookedData
 
 	/**
 	 * @brief Short ID for the SoundBank.
-	*/
+	 */
 	UPROPERTY(BlueprintReadOnly, VisibleInstanceOnly, Category = "Wwise")
-	int32 SoundBankId = 0;
-
-	/**
-	 * @brief Path name relative to the platform's root.
-	*/
-	UPROPERTY(BlueprintReadOnly, VisibleInstanceOnly, Category = "Wwise")
-	FName SoundBankPathName;
-
-	/**
-	 * @brief Alignment required to load the SoundBank on device. Can be 0 if no particular requirements.
-	*/
-	UPROPERTY(BlueprintReadOnly, VisibleInstanceOnly, Category = "Wwise")
-	int32 MemoryAlignment = 0;
-
-	/**
-	 * @brief True if the SoundBank needs to be loaded in a special memory zone on the device.
-	*/
-	UPROPERTY(BlueprintReadOnly, VisibleInstanceOnly, Category = "Wwise")
-	bool bDeviceMemory = false;
+	int32 SoundBankId{ 0 };
 
 	/**
 	 * @brief True if the SoundBank contains media or media parts. False means a data-only SoundBank.
 	 *
 	 * Useful to load the SoundBank as a copy instead of keeping it Memory-mapped, as the SoundEngine will decode
 	 * data from the SoundBank, and has no use for the file itself.
-	*/
+	 */
 	UPROPERTY(BlueprintReadOnly, VisibleInstanceOnly, Category = "Wwise")
-	bool bContainsMedia = false;
+	bool bContainsMedia{ false };
 
 	/**
 	 * @brief User-created SoundBank, Event Auto-defined SoundBank, or Bus Auto-defined SoundBank.
 	 *
 	 * Useful for loading by file name.
-	*/
+	 */
 	UPROPERTY(BlueprintReadOnly, VisibleInstanceOnly, Category = "Wwise")
-	EWwiseSoundBankType SoundBankType = EWwiseSoundBankType::User;
+	EWwiseSoundBankType SoundBankType{ EWwiseSoundBankType::User };
 
 	/**
 	 * @brief Optional debug name. Can be empty in release, contain the name, or the full path of the asset.
-	*/
+	 */
 	UPROPERTY(BlueprintReadOnly, VisibleInstanceOnly, Category = "Wwise")
 	FName DebugName;
+
+	/**
+	 * @brief Packaging information for this file.
+	 */
+	UPROPERTY(BlueprintReadOnly, VisibleInstanceOnly, Category = "Wwise")
+	FWwisePackagedFile PackagedFile;
 
 	FWwiseSoundBankCookedData();
 
 	void Serialize(FArchive& Ar);
-
+	void SerializeBulkData(FArchive& Ar, const FWwisePackagedFileSerializationOptions& Options);
+#if WITH_EDITORONLY_DATA && UE_5_5_OR_LATER
+	void GetPlatformCookDependencies(FWwiseCookEventContext& Context, FCbWriter& Writer) const;
+#endif
+	
 	FString GetDebugString() const;
+
+	bool operator<(const FWwiseSoundBankCookedData& Rhs) const
+	{
+		return SoundBankId < Rhs.SoundBankId;
+	}
 };
 
 inline uint32 GetTypeHash(const FWwiseSoundBankCookedData& InCookedData)
 {
-	return HashCombine(GetTypeHash(InCookedData.SoundBankId), GetTypeHash(InCookedData.SoundBankPathName));
+#if WITH_EDITORONLY_DATA
+	return HashCombine(GetTypeHash(InCookedData.PackagedFile.SourcePathName),
+		HashCombine(GetTypeHash(InCookedData.SoundBankId), GetTypeHash(InCookedData.PackagedFile.PathName)));
+#else
+	return HashCombine(GetTypeHash(InCookedData.SoundBankId), GetTypeHash(InCookedData.PackagedFile.PathName));
+#endif
 }
 
 inline bool operator==(const FWwiseSoundBankCookedData& InLhs, const FWwiseSoundBankCookedData& InRhs)
 {
-	return InLhs.SoundBankId == InRhs.SoundBankId && InLhs.SoundBankPathName == InRhs.SoundBankPathName;
+#if WITH_EDITORONLY_DATA
+	return InLhs.PackagedFile.SourcePathName == InRhs.PackagedFile.SourcePathName &&
+		InLhs.SoundBankId == InRhs.SoundBankId && InLhs.PackagedFile.PathName == InRhs.PackagedFile.PathName;
+#else
+	return InLhs.SoundBankId == InRhs.SoundBankId && InLhs.PackagedFile.PathName == InRhs.PackagedFile.PathName;
+#endif
 }
 
 inline bool operator!=(const FWwiseSoundBankCookedData& InLhs, const FWwiseSoundBankCookedData& InRhs)
 {
-	return InLhs.SoundBankId != InRhs.SoundBankId || InLhs.SoundBankPathName != InRhs.SoundBankPathName;
+#if WITH_EDITORONLY_DATA
+	return InLhs.PackagedFile.SourcePathName != InRhs.PackagedFile.SourcePathName ||
+		InLhs.SoundBankId != InRhs.SoundBankId || InLhs.PackagedFile.PathName != InRhs.PackagedFile.PathName;
+#else
+	return InLhs.SoundBankId != InRhs.SoundBankId || InLhs.PackagedFile.PathName != InRhs.PackagedFile.PathName;
+#endif
 }

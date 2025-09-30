@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<WwiseDocument Type="WorkUnit" ID="{15E07612-CB6D-4DA7-B6B8-69AB554425DC}" SchemaVersion="119">
+<WwiseDocument Type="WorkUnit" ID="{15E07612-CB6D-4DA7-B6B8-69AB554425DC}" SchemaVersion="123">
 	<AudioObjects>
 		<WorkUnit Name="FOES_Flying_WU" ID="{15E07612-CB6D-4DA7-B6B8-69AB554425DC}" PersistMode="Standalone">
 			<PropertyList>

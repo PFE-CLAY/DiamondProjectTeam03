@@ -12,46 +12,48 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #pragma once
 
 #include "Wwise/Ref/WwiseRefPluginInfo.h"
 
-class WWISEPROJECTDATABASE_API FWwiseRefPluginLib : public FWwiseRefPluginInfo
+class WwiseRefPluginLib : public WwiseRefPluginInfo
 {
 public:
-	static const TCHAR* const NAME;
-	static constexpr EWwiseRefType TYPE = EWwiseRefType::PluginLib;
+	static const WwiseDBString NAME;
+	static constexpr WwiseRefType TYPE = WwiseRefType::PluginLib;
 	struct FGlobalIdsMap;
 
 	WwiseRefIndexType PluginLibIndex;
 
-	FWwiseRefPluginLib() :
-		PluginLibIndex(INDEX_NONE)
+	WwiseRefPluginLib() :
+		PluginLibIndex(-1)
 	{}
-	FWwiseRefPluginLib(const WwiseMetadataSharedRootFileConstPtr& InRootMediaRef, const FName& InJsonFilePath,
+	WwiseRefPluginLib(const WwiseMetadataSharedRootFileConstPtr& InRootMediaRef, const WwiseDBString& InJsonFilePath,
 		WwiseRefIndexType InPluginIndex) :
-		FWwiseRefPluginInfo(InRootMediaRef, InJsonFilePath),
+		WwiseRefPluginInfo(InRootMediaRef, InJsonFilePath),
 		PluginLibIndex(InPluginIndex)
 	{}
-	const FWwiseMetadataPluginLib* GetPluginLib() const;
+	const WwiseMetadataPluginLib* GetPluginLib() const;
 
-	uint32 PluginLibId() const;
-	FName PluginLibName() const;
+	WwiseDBShortId PluginLibId() const;
+	const WwiseDBString* PluginLibName() const;
+	const WwiseDBString* PluginLibDLL() const;
+	const WwiseDBString* PluginLibStaticLib() const;
 
-	uint32 Hash() const override;
-	EWwiseRefType Type() const override { return TYPE; }
-	bool operator==(const FWwiseRefPluginLib& Rhs) const
+	WwiseDBShortId Hash() const override;
+	WwiseRefType Type() const override { return TYPE; }
+	bool operator==(const WwiseRefPluginLib& Rhs) const
 	{
-		return FWwiseRefPluginInfo::operator==(Rhs)
+		return WwiseRefPluginInfo::operator==(Rhs)
 			&& PluginLibIndex == Rhs.PluginLibIndex;
 	}
-	bool operator!=(const FWwiseRefPluginLib& Rhs) const { return !operator==(Rhs); }
+	bool operator!=(const WwiseRefPluginLib& Rhs) const { return !operator==(Rhs); }
 };
 
-struct WWISEPROJECTDATABASE_API FWwiseRefPluginLib::FGlobalIdsMap
+struct WwiseRefPluginLib::FGlobalIdsMap
 {
 	WwisePluginLibGlobalIdsMap GlobalIdsMap;
 };

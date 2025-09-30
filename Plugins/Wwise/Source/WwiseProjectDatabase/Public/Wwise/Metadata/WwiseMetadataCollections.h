@@ -12,18 +12,22 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #pragma once
 
 #include "Wwise/Metadata/WwiseMetadataForwardDeclarations.h"
+#include "Wwise/AdapterTypes/WwiseDataTypesAdapter.h"
+#include "Wwise/AdapterTypes/WwiseWrapperTypes.h"
 
-#include "CoreMinimal.h"
+#include "Wwise/AdapterTypes/WwiseMap.h"
+#include "Wwise/AdapterTypes/WwisePair.h"
+#include "Wwise/AdapterTypes/WwiseString.h"
 
-using WwiseMetadataSharedRootFilePtr = TSharedPtr<FWwiseMetadataRootFile>;
-using WwiseMetadataSharedRootFileConstPtr = TSharedPtr<const FWwiseMetadataRootFile>;
-using WwiseMetadataFileMap = TMap<FString, WwiseMetadataSharedRootFilePtr>;
+using WwiseMetadataSharedRootFilePtr = WwiseDBSharedPtr<WwiseMetadataRootFile>;
+using WwiseMetadataSharedRootFileConstPtr = WwiseDBSharedPtr<WwiseMetadataRootFile>;
+using WwiseMetadataFileMap = WwiseDBMap<WwiseDBString, WwiseMetadataSharedRootFilePtr>;
 
-using WwiseMetadataStateWithGroup = TPair<const FWwiseMetadataStateGroup&, const FWwiseMetadataState&>;
-using WwiseMetadataSwitchWithGroup = TPair<const FWwiseMetadataSwitchGroup&, const FWwiseMetadataSwitch&>;
+using WwiseMetadataStateWithGroup = WwiseDBPair<WwiseMetadataStateGroup, WwiseMetadataState>;
+using WwiseMetadataSwitchWithGroup = WwiseDBPair<WwiseMetadataSwitchGroup, WwiseMetadataSwitch>;

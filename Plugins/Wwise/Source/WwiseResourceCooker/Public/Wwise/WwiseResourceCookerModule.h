@@ -12,7 +12,7 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #pragma once
@@ -20,9 +20,12 @@ Copyright (c) 2024 Audiokinetic Inc.
 #include "Misc/ConfigCacheIni.h"
 #include "Modules/ModuleManager.h"
 #include "UObject/Class.h"
+#include "Wwise/WwisePackagedFile.h"
 
+struct FWwiseAssetLibraryInfo;
+class UWwiseAssetLibrary;
 struct FWwiseSharedPlatformId;
-class FWwiseResourceCooker;
+class IWwiseResourceCooker;
 
 UENUM()
 enum class EWwiseExportDebugNameRule
@@ -108,19 +111,23 @@ public:
 #endif
 	}
 
-	virtual FWwiseResourceCooker* GetResourceCooker()
+	virtual IWwiseResourceCooker* GetResourceCooker()
 	{
 		return nullptr;
 	}
-	virtual FWwiseResourceCooker* InstantiateResourceCooker()
+	virtual IWwiseResourceCooker* InstantiateResourceCooker()
 	{
 		return nullptr;
 	}
 
-	virtual FWwiseResourceCooker* CreateCookerForPlatform(
+	using FAssetLibraryInfoPtr = TSharedPtr<FWwiseAssetLibraryInfo>;
+	using FAssetLibraryInfoMap = TMap<UObject*, FAssetLibraryInfoPtr>;
+
+	virtual IWwiseResourceCooker* CreateCookerForPlatform(
 		const ITargetPlatform* TargetPlatform,
 		const FWwiseSharedPlatformId& InPlatform,
-		EWwiseExportDebugNameRule InExportDebugNameRule = EWwiseExportDebugNameRule::Release)
+		EWwisePackagingStrategy InTargetPackagingStrategy,
+		EWwiseExportDebugNameRule InExportDebugNameRule)
 	{
 		return nullptr;
 	}
@@ -129,12 +136,12 @@ public:
 	{
 	}
 
-	virtual FWwiseResourceCooker* GetCookerForPlatform(const ITargetPlatform* TargetPlatform)
+	virtual IWwiseResourceCooker* GetCookerForPlatform(const ITargetPlatform* TargetPlatform)
 	{
 		return nullptr;
 	}
 
-	FWwiseResourceCooker* GetCookerForArchive(const FArchive& InArchive)
+	IWwiseResourceCooker* GetCookerForArchive(const FArchive& InArchive)
 	{
 		if (!InArchive.IsCooking() || !InArchive.IsSaving())
 		{

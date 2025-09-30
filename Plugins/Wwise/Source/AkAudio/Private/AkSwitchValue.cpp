@@ -12,7 +12,7 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #include "AkSwitchValue.h"
@@ -29,7 +29,7 @@ Copyright (c) 2024 Audiokinetic Inc.
 void UAkSwitchValue::LoadGroupValue()
 {
 	SCOPED_AKAUDIO_EVENT_2(TEXT("UAkSwitchValue::LoadGroupValue"));
-	auto* ResourceLoader = FWwiseResourceLoader::Get();
+	FWwiseResourceLoaderPtr ResourceLoader = FWwiseResourceLoader::Get();
 	if (UNLIKELY(!ResourceLoader))
 	{
 		return;
@@ -48,14 +48,23 @@ void UAkSwitchValue::LoadGroupValue()
 		UE_LOG(LogAkAudio, VeryVerbose, TEXT("UAkSwitchValue::LoadGroupValue: Not loading '%s' because project database is not parsed."), *GetName())
 		return;
 	}
-	auto* ResourceCooker = FWwiseResourceCooker::GetDefault();
+	auto* ResourceCooker = IWwiseResourceCooker::GetDefault();
 	if (UNLIKELY(!ResourceCooker))
 	{
 		return;
 	}
-	if (UNLIKELY(!ResourceCooker->PrepareCookedData(GroupValueCookedData, GetValidatedInfo(GroupValueInfo), EWwiseGroupType::Switch)))
+	if (!ResourceCooker->PrepareCookedData(GroupValueCookedData, GetValidatedInfo(GroupValueInfo), EWwiseGroupType::Switch))
 	{
-		return;
+		const auto* AudioDevice = FAkAudioDevice::Get();
+		if( AudioDevice && AudioDevice->IsWwiseProfilerConnected())
+		{
+			UE_LOG(LogAkAudio, Verbose, TEXT("Could not fetch CookedData for Switch Value %s, but Wwise profiler is connected. Previous errors can be ignored."),
+			*GetName());
+		}
+		else
+		{
+			return;
+		}
 	}
 #endif
 	
@@ -81,7 +90,7 @@ void UAkSwitchValue::Serialize(FArchive& Ar)
  	if (Ar.IsCooking() && Ar.IsSaving() && !Ar.CookingTarget()->IsServerOnly())
 	{
 		FWwiseGroupValueCookedData CookedDataToArchive;
-		if (auto* ResourceCooker = FWwiseResourceCooker::GetForArchive(Ar))
+		if (auto* ResourceCooker = IWwiseResourceCooker::GetForArchive(Ar))
 		{
 			ResourceCooker->PrepareCookedData(CookedDataToArchive, GetValidatedInfo(GroupValueInfo), EWwiseGroupType::Switch);
 		}
@@ -96,7 +105,7 @@ void UAkSwitchValue::Serialize(FArchive& Ar)
 #if WITH_EDITORONLY_DATA
 void UAkSwitchValue::FillInfo()
 {
-	auto* ResourceCooker = FWwiseResourceCooker::GetDefault();
+	auto* ResourceCooker = IWwiseResourceCooker::GetDefault();
 	if (UNLIKELY(!ResourceCooker))
 	{
 		UE_LOG(LogAkAudio, Error, TEXT("UAkSwitchValue::FillInfo: ResourceCooker not initialized"));
@@ -111,36 +120,40 @@ void UAkSwitchValue::FillInfo()
 	}
 
 	FWwiseGroupValueInfo* AudioTypeInfo = static_cast<FWwiseGroupValueInfo*>(GetInfoMutable());
-	FWwiseRefSwitch RefSwitch = FWwiseDataStructureScopeLock(*ProjectDatabase).GetSwitch(
+	WwiseRefSwitch RefSwitch = WwiseDataStructureScopeLock(*ProjectDatabase).GetSwitch(
 		GetValidatedInfo(*AudioTypeInfo));
 
-	if (RefSwitch.SwitchName().ToString().IsEmpty() || !RefSwitch.SwitchGuid().IsValid() || RefSwitch.SwitchId() == AK_INVALID_UNIQUE_ID)
+	if (RefSwitch.SwitchName().IsEmpty() || !RefSwitch.SwitchGuid().IsValid() || RefSwitch.SwitchId() == AK_INVALID_UNIQUE_ID)
 	{
 		UE_LOG(LogAkAudio, Warning, TEXT("UAkSwitchValue::FillInfo: Valid object not found in Project Database"));
 		return;
 	}
 
-	FWwiseAnyRef Ref = FWwiseAnyRef::Create(RefSwitch);
+	WwiseAnyRef Ref = WwiseAnyRef::Create(RefSwitch);
 
-	AudioTypeInfo->WwiseName = RefSwitch.SwitchName();
-	AudioTypeInfo->WwiseGuid = RefSwitch.SwitchGuid();
+	int A, B, C, D;
+	RefSwitch.SwitchGuid().GetGuidValues(A, B, C, D);
+	AudioTypeInfo->WwiseName = FName(*RefSwitch.SwitchName());
+	AudioTypeInfo->WwiseGuid = FGuid(A, B, C, D);;
 	AudioTypeInfo->WwiseShortId = RefSwitch.SwitchId();
 	AudioTypeInfo->GroupShortId = RefSwitch.SwitchGroupId();
 }
 
-void UAkSwitchValue::FillInfo(const FWwiseAnyRef& CurrentWwiseRef)
+void UAkSwitchValue::FillInfo(const WwiseAnyRef& CurrentWwiseRef)
 {
 	FWwiseGroupValueInfo* AudioTypeInfo = static_cast<FWwiseGroupValueInfo*>(GetInfoMutable());
 
-	AudioTypeInfo->WwiseName = CurrentWwiseRef.GetName();
-	AudioTypeInfo->WwiseGuid = CurrentWwiseRef.GetGuid();
+	int A, B, C, D;
+	CurrentWwiseRef.GetGuid().GetGuidValues(A, B, C, D);
+	AudioTypeInfo->WwiseName = FName(*CurrentWwiseRef.GetName());
+	AudioTypeInfo->WwiseGuid = FGuid(A, B, C, D);;
 	AudioTypeInfo->WwiseShortId = CurrentWwiseRef.GetId();
 	AudioTypeInfo->GroupShortId = CurrentWwiseRef.GetGroupId();
 }
 
 bool UAkSwitchValue::ObjectIsInSoundBanks()
 {
-	auto* ResourceCooker = FWwiseResourceCooker::GetDefault();
+	auto* ResourceCooker = IWwiseResourceCooker::GetDefault();
 	if (UNLIKELY(!ResourceCooker))
 	{
 		UE_LOG(LogAkAudio, Error, TEXT("UAkSwitchValue::GetWwiseRef: ResourceCooker not initialized"));
@@ -156,7 +169,7 @@ bool UAkSwitchValue::ObjectIsInSoundBanks()
 	}
 
 	FWwiseGroupValueInfo* AudioTypeInfo = static_cast<FWwiseGroupValueInfo*>(GetInfoMutable());
-	FWwiseRefSwitch RefSwitch = FWwiseDataStructureScopeLock(*ProjectDatabase).GetSwitch(
+	WwiseRefSwitch RefSwitch = WwiseDataStructureScopeLock(*ProjectDatabase).GetSwitch(
 		GetValidatedInfo(*AudioTypeInfo));
 
 	return RefSwitch.IsValid();
@@ -165,7 +178,7 @@ bool UAkSwitchValue::ObjectIsInSoundBanks()
 FName UAkSwitchValue::GetWwiseGroupName()
 {
 
-	auto* ResourceCooker = FWwiseResourceCooker::GetDefault();
+	auto* ResourceCooker = IWwiseResourceCooker::GetDefault();
 	if (UNLIKELY(!ResourceCooker))
 	{
 		UE_LOG(LogAkAudio, Error, TEXT("UAkSwitchValue::GetWwiseRef: ResourceCooker not initialized"));
@@ -181,10 +194,11 @@ FName UAkSwitchValue::GetWwiseGroupName()
 	}
 
 	FWwiseGroupValueInfo* AudioTypeInfo = static_cast<FWwiseGroupValueInfo*>(GetInfoMutable());
-	FWwiseRefSwitch RefSwitch = FWwiseDataStructureScopeLock(*ProjectDatabase).GetSwitch(
+	WwiseRefSwitch RefSwitch = WwiseDataStructureScopeLock(*ProjectDatabase).GetSwitch(
 		GetValidatedInfo(*AudioTypeInfo));
 
-	return RefSwitch.SwitchGroupName();
+	return FName(**RefSwitch.SwitchGroupName());
+
 }
 #endif
 

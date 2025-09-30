@@ -12,10 +12,13 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #pragma once
+
+#include "WwiseCookEventContext.h"
+#include "Wwise/WwiseUnrealVersion.h"
 
 #include "WwiseExternalSourceCookedData.generated.h"
 
@@ -28,7 +31,7 @@ struct WWISEFILEHANDLER_API FWwiseExternalSourceCookedData
 	 * @brief User-defined Cookie for the External Source
 	*/
 	UPROPERTY(BlueprintReadOnly, VisibleInstanceOnly, Category = "Wwise")
-	int32 Cookie = 0;
+	int32 Cookie{ 0 };
 
 	/**
 	 * @brief Optional debug name. Can be empty in release, contain the name, or the full path of the asset.
@@ -38,9 +41,17 @@ struct WWISEFILEHANDLER_API FWwiseExternalSourceCookedData
 
 	FWwiseExternalSourceCookedData();
 
-	void Serialize(FArchive& Ar);
+	void Serialize(FArchive& Ar, UObject* Owner);
 
 	FString GetDebugString() const;
+#if WITH_EDITORONLY_DATA && UE_5_5_OR_LATER
+	void GetPlatformCookDependencies(FWwiseCookEventContext& Context, FCbWriter& Writer) const;
+#endif
+
+	bool operator<(const FWwiseExternalSourceCookedData& Rhs) const
+	{
+		return Cookie < Rhs.Cookie;
+	}
 };
 
 inline uint32 GetTypeHash(const FWwiseExternalSourceCookedData& InCookedData)
