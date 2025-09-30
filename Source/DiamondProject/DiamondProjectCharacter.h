@@ -55,6 +55,9 @@ class ADiamondProjectCharacter : public ACharacter
 	UInputAction* InteractAction;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Input, meta=(AllowPrivateAccess = "true"))
+	UInputAction* DashAction;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Input, meta=(AllowPrivateAccess = "true"))
 	UInputAction* MantleAction;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Input, meta=(AllowPrivateAccess = "true"))
@@ -95,7 +98,9 @@ public:
 
 	UPROPERTY(BlueprintAssignable, Category = "Interaction")
 	FOnInteract OnInteract;
-	
+
+	UPROPERTY(BlueprintAssignable, Category = "Interaction")
+	FOnInteract OnDash;
 	
 	UPROPERTY(BlueprintAssignable, Category = "Interaction")
 	FOnMantle OnMantle;
@@ -130,7 +135,9 @@ public:
 protected:
 	/** Called for movement input */
 	void Move(const FInputActionValue& Value);
-
+	
+	void Dash(const FInputActionValue& Value);
+	
 	/** Called for looking input */
 	void Look(const FInputActionValue& Value);
 

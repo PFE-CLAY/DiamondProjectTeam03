@@ -54,6 +54,9 @@ void ADiamondProjectCharacter::SetupPlayerInputComponent(UInputComponent* Player
 		EnhancedInputComponent->BindAction(JumpAction, ETriggerEvent::Started, this, &ACharacter::Jump);
 		EnhancedInputComponent->BindAction(JumpAction, ETriggerEvent::Completed, this, &ACharacter::StopJumping);
 
+		// Dashing
+		EnhancedInputComponent->BindAction(DashAction, ETriggerEvent::Started, this, &ADiamondProjectCharacter::Dash);
+		
 		// Moving
 		EnhancedInputComponent->BindAction(MoveAction, ETriggerEvent::Triggered, this, &ADiamondProjectCharacter::Move);
 
@@ -104,6 +107,10 @@ void ADiamondProjectCharacter::Move(const FInputActionValue& Value)
 		AddMovementInput(GetActorForwardVector(), MovementVector.Y);
 		AddMovementInput(GetActorRightVector(), MovementVector.X);
 	}
+}
+void ADiamondProjectCharacter::Dash(const FInputActionValue& Value)
+{
+	OnDash.Broadcast();
 }
 
 void ADiamondProjectCharacter::Look(const FInputActionValue& Value)
