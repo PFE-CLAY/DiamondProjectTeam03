@@ -12,7 +12,7 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #pragma once
@@ -74,7 +74,7 @@ public:
 
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (EditCondition = "!AutoAssignAuxBus"), Category = "Late Reverb")
-	class UAkAuxBus* AuxBus = nullptr;
+	TObjectPtr<class UAkAuxBus> AuxBus = nullptr;
 
 	/** Wwise Auxiliary Bus associated to this AkReverbVolume */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, AdvancedDisplay, meta = (EditCondition = "!AutoAssignAuxBus"), Category = "Late Reverb")
@@ -140,7 +140,7 @@ private:
 	
 	/** Save the manually assigned aux bus so we can recall it if auto-assign is disabled. */
 	UPROPERTY()
-	class UAkAuxBus* AuxBusManual = nullptr;
+	TObjectPtr<class UAkAuxBus> AuxBusManual = nullptr;
 
 	/** The component that will be used to estimate the HFDamping value. This will usually be an AkGeometryComponent.
 	 *  When the owning Actor is a Volume (as is the case for SpatialAudioVolume) this will be an AkSurfaceReflectorSetComponent.
@@ -178,19 +178,21 @@ private:
 #endif
 #if WITH_EDITORONLY_DATA
 	static float TextVisualizerHeightOffset;
-	bool bTextStatusNeedsUpdate = false;
+	bool bTextValuesNeedUpdate = false;
+	bool bTextVisibilityNeedUpdate = false;
+
 	// The text visualizers display the values of the parameter estimations directly in the level (or blueprint editor).
 	UPROPERTY(SkipSerialization, NonTransactional)
-	UTextRenderComponent* TextVisualizerLabels = nullptr;
+	mutable TObjectPtr<UTextRenderComponent> TextVisualizerLabels;
 	UPROPERTY(SkipSerialization, NonTransactional)
-	UTextRenderComponent* TextVisualizerValues = nullptr;
-	void UpdateTextVisualizerStatus();
-	bool TextVisualizersInitialized() const;
-	FText GetValuesLabels() const;
+	mutable TObjectPtr<UTextRenderComponent> TextVisualizerValues;
+	void UpdateTextVisibility();
+	bool IsTextVisualizersInitialized() const;
+	FText GetTextValues() const;
 	void DestroyTextVisualizers();
 	void InitTextVisualizers();
-	void UpdateValuesLabels();
-	bool WasSelected = false;
+	void UpdateTextValues();
+	bool bWasSelected = false;
 
 	FVector GetTextVisualizersLocation();
 

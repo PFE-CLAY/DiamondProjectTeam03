@@ -12,7 +12,7 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #include "Wwise/Ref/WwiseRefEvent.h"
@@ -27,23 +27,20 @@ Copyright (c) 2024 Audiokinetic Inc.
 #include "Wwise/Ref/WwiseRefSwitch.h"
 #include "Wwise/Ref/WwiseRefSwitchContainer.h"
 #include "Wwise/Ref/WwiseRefTrigger.h"
-#include "Wwise/WwiseProjectDatabaseModule.h"
 
 #include "Wwise/Metadata/WwiseMetadataEvent.h"
 #include "Wwise/Metadata/WwiseMetadataPlugin.h"
 #include "Wwise/Metadata/WwiseMetadataPluginGroup.h"
 #include "Wwise/Metadata/WwiseMetadataSoundBank.h"
 
-#include "Wwise/Stats/ProjectDatabase.h"
-
 #include <inttypes.h>
 
-const TCHAR* const FWwiseRefEvent::NAME = TEXT("Event");
+const WwiseDBString WwiseRefEvent::NAME = "Event"_wwise_db;
 
-const FWwiseMetadataEvent* FWwiseRefEvent::GetEvent() const
+const WwiseMetadataEvent* WwiseRefEvent::GetEvent() const
 {
 	const auto* SoundBank = GetSoundBank();
-	if (UNLIKELY(!SoundBank))
+	if (!SoundBank) [[unlikely]]
 	{
 		return nullptr;
 	}
@@ -54,26 +51,26 @@ const FWwiseMetadataEvent* FWwiseRefEvent::GetEvent() const
 	}
 	else
 	{
-		UE_LOG(LogWwiseProjectDatabase, Error, TEXT("Could not get Event index #%zu"), EventIndex);
+		WWISE_DB_LOG(Error, "Could not get Event index #%zu", EventIndex);
 		return nullptr;
 	}
 }
 
-WwiseMediaIdsMap FWwiseRefEvent::GetEventMedia(const WwiseMediaGlobalIdsMap& GlobalMap) const
+WwiseMediaIdsMap WwiseRefEvent::GetEventMedia(const WwiseMediaGlobalIdsMap& GlobalMap) const
 {
 	const auto* SoundBank = GetSoundBank();
 	const auto* Event = GetEvent();
-	if (!Event || !SoundBank)
+	if (!Event || !SoundBank) [[unlikely]]
 	{
 		return {};
 	}
 	const auto& MediaRefs = Event->MediaRefs;
 	WwiseMediaIdsMap Result;
-	Result.Empty(MediaRefs.Num());
+	Result.Empty(MediaRefs.Size());
 	for (const auto& Elem : MediaRefs)
 	{
-		FWwiseDatabaseMediaIdKey Id(Elem.Id, SoundBank->Id);
-		const auto* GlobalRef = GlobalMap.Find(Id);
+		WwiseDatabaseLocalizableIdKey Id(Elem.Id, LanguageId, SoundBank->Id);
+		const WwiseRefMedia* GlobalRef = GlobalMap.Find(Id);
 		if (GlobalRef)
 		{
 			Result.Add(Elem.Id, *GlobalRef);
@@ -82,11 +79,11 @@ WwiseMediaIdsMap FWwiseRefEvent::GetEventMedia(const WwiseMediaGlobalIdsMap& Glo
 	return Result;
 }
 
-WwiseMediaIdsMap FWwiseRefEvent::GetAllMedia(const WwiseMediaGlobalIdsMap& GlobalMap) const
+WwiseMediaIdsMap WwiseRefEvent::GetAllMedia(const WwiseMediaGlobalIdsMap& GlobalMap) const
 {
 	const auto* SoundBank = GetSoundBank();
 	const auto* Event = GetEvent();
-	if (!Event || !SoundBank)
+	if (!Event || !SoundBank) [[unlikely]]
 	{
 		return {};
 	}
@@ -97,8 +94,8 @@ WwiseMediaIdsMap FWwiseRefEvent::GetAllMedia(const WwiseMediaGlobalIdsMap& Globa
 	{
 		for (const auto& Elem : SwitchContainer.GetAllMedia())
 		{
-			FWwiseDatabaseMediaIdKey Id(Elem.Id, SoundBank->Id);
-			const auto* GlobalRef = GlobalMap.Find(Id);
+			WwiseDatabaseLocalizableIdKey Id(Elem.Id, LanguageId, SoundBank->Id);
+			const WwiseRefMedia* GlobalRef = GlobalMap.Find(Id);
 			if (GlobalRef)
 			{
 				Result.Add(Elem.Id, *GlobalRef);
@@ -108,20 +105,20 @@ WwiseMediaIdsMap FWwiseRefEvent::GetAllMedia(const WwiseMediaGlobalIdsMap& Globa
 
 	if (Event->PluginRefs && SoundBank->Plugins)
 	{
-		const auto& CustomPlugins = Event->PluginRefs->ShareSets;
+		const auto& CustomPlugins = Event->PluginRefs->Custom;
 		for (const auto& CustomPlugin : CustomPlugins)
 		{
 			const auto PluginId = CustomPlugin.Id;
-			const auto* Plugin = SoundBank->Plugins->Custom.FindByPredicate([PluginId](const FWwiseMetadataPlugin& RhsValue)
+			const auto* Plugin = SoundBank->Plugins->Custom.FindByPredicate([PluginId](const WwiseMetadataPlugin& RhsValue)
 			{
 				return RhsValue.Id == PluginId;
 			});
-			if (LIKELY(Plugin))
+			if (Plugin) [[likely]]
 			{
 				for (const auto& Elem : Plugin->MediaRefs)
 				{
-					FWwiseDatabaseMediaIdKey Id(Elem.Id, SoundBank->Id);
-					const auto* GlobalRef = GlobalMap.Find(Id);
+					WwiseDatabaseLocalizableIdKey Id(Elem.Id, LanguageId, SoundBank->Id);
+					const WwiseRefMedia* GlobalRef = GlobalMap.Find(Id);
 					if (GlobalRef)
 					{
 						Result.Add(Elem.Id, *GlobalRef);
@@ -130,7 +127,7 @@ WwiseMediaIdsMap FWwiseRefEvent::GetAllMedia(const WwiseMediaGlobalIdsMap& Globa
 			}
 			else
 			{
-				UE_LOG(LogWwiseProjectDatabase, Error, TEXT("Cannot find Plugin %" PRIu32), PluginId);
+				WWISE_DB_LOG(Error, "Cannot find Plugin %" PRIu32, PluginId);
 			}
 		}
 
@@ -138,16 +135,16 @@ WwiseMediaIdsMap FWwiseRefEvent::GetAllMedia(const WwiseMediaGlobalIdsMap& Globa
 		for (const auto& PluginShareSet : PluginShareSets)
 		{
 			const auto PluginId = PluginShareSet.Id;
-			const auto* Plugin = SoundBank->Plugins->ShareSets.FindByPredicate([PluginId](const FWwiseMetadataPlugin& RhsValue)
+			const auto* Plugin = SoundBank->Plugins->ShareSets.FindByPredicate([PluginId](const WwiseMetadataPlugin& RhsValue)
 			{
 				return RhsValue.Id == PluginId;
 			});
-			if (LIKELY(Plugin))
+			if (Plugin) [[likely]]
 			{
 				for (const auto& Elem : Plugin->MediaRefs)
 				{
-					FWwiseDatabaseMediaIdKey Id(Elem.Id, SoundBank->Id);
-					const auto* GlobalRef = GlobalMap.Find(Id);
+					WwiseDatabaseLocalizableIdKey Id(Elem.Id, LanguageId, SoundBank->Id);
+					const WwiseRefMedia* GlobalRef = GlobalMap.Find(Id);
 					if (GlobalRef)
 					{
 						Result.Add(Elem.Id, *GlobalRef);
@@ -156,7 +153,7 @@ WwiseMediaIdsMap FWwiseRefEvent::GetAllMedia(const WwiseMediaGlobalIdsMap& Globa
 			}
 			else
 			{
-				UE_LOG(LogWwiseProjectDatabase, Error, TEXT("Cannot find Plugin %" PRIu32), PluginId);
+				WWISE_DB_LOG(Error, "Cannot find Plugin %" PRIu32, PluginId);
 			}
 		}
 
@@ -164,16 +161,16 @@ WwiseMediaIdsMap FWwiseRefEvent::GetAllMedia(const WwiseMediaGlobalIdsMap& Globa
 		for (const auto& AudioDevice : AudioDevices)
 		{
 			const auto PluginId = AudioDevice.Id;
-			const auto* Plugin = SoundBank->Plugins->AudioDevices.FindByPredicate([PluginId](const FWwiseMetadataPlugin& RhsValue)
+			const auto* Plugin = SoundBank->Plugins->AudioDevices.FindByPredicate([PluginId](const WwiseMetadataPlugin& RhsValue)
 			{
 				return RhsValue.Id == PluginId;
 			});
-			if (LIKELY(Plugin))
+			if (Plugin) [[likely]]
 			{
 				for (const auto& Elem : Plugin->MediaRefs)
 				{
-					FWwiseDatabaseMediaIdKey Id(Elem.Id, SoundBank->Id);
-					const auto* GlobalRef = GlobalMap.Find(Id);
+					WwiseDatabaseLocalizableIdKey Id(Elem.Id, LanguageId, SoundBank->Id);
+					const WwiseRefMedia* GlobalRef = GlobalMap.Find(Id);
 					if (GlobalRef)
 					{
 						Result.Add(Elem.Id, *GlobalRef);
@@ -182,27 +179,27 @@ WwiseMediaIdsMap FWwiseRefEvent::GetAllMedia(const WwiseMediaGlobalIdsMap& Globa
 			}
 			else
 			{
-				UE_LOG(LogWwiseProjectDatabase, Error, TEXT("Cannot find Plugin %" PRIu32), PluginId);
+				WWISE_DB_LOG(Error, "Cannot find Plugin %u", PluginId);
 			}
 		}
 	}
 	return Result;
 }
 
-WwiseExternalSourceIdsMap FWwiseRefEvent::GetEventExternalSources(const WwiseExternalSourceGlobalIdsMap& GlobalMap) const
+WwiseExternalSourceIdsMap WwiseRefEvent::GetEventExternalSources(const WwiseExternalSourceGlobalIdsMap& GlobalMap) const
 {
 	const auto* Event = GetEvent();
-	if (!Event)
+	if (!Event) [[unlikely]]
 	{
 		return {};
 	}
 	const auto& ExternalSourceRefs = Event->ExternalSourceRefs;
 	WwiseExternalSourceIdsMap Result;
-	Result.Empty(ExternalSourceRefs.Num());
+	Result.Empty(ExternalSourceRefs.Size());
 	for (const auto& Elem : ExternalSourceRefs)
 	{
-		FWwiseDatabaseLocalizableIdKey Id(Elem.Cookie, LanguageId);
-		const auto* GlobalRef = GlobalMap.Find(Id);
+		WwiseDatabaseLocalizableIdKey Id(Elem.Cookie, LanguageId);
+		const WwiseRefExternalSource* GlobalRef = GlobalMap.Find(Id);
 		if (GlobalRef)
 		{
 			Result.Add(Elem.Cookie, *GlobalRef);
@@ -211,10 +208,10 @@ WwiseExternalSourceIdsMap FWwiseRefEvent::GetEventExternalSources(const WwiseExt
 	return Result;
 }
 
-WwiseExternalSourceIdsMap FWwiseRefEvent::GetAllExternalSources(const WwiseExternalSourceGlobalIdsMap& GlobalMap) const
+WwiseExternalSourceIdsMap WwiseRefEvent::GetAllExternalSources(const WwiseExternalSourceGlobalIdsMap& GlobalMap) const
 {
 	const auto* Event = GetEvent();
-	if (!Event)
+	if (!Event) [[unlikely]]
 	{
 		return {};
 	}
@@ -225,8 +222,8 @@ WwiseExternalSourceIdsMap FWwiseRefEvent::GetAllExternalSources(const WwiseExter
 	{
 		for (const auto& Elem : SwitchContainer.GetAllExternalSources())
 		{
-			FWwiseDatabaseLocalizableIdKey Id(Elem.Cookie, LanguageId);
-			const auto* GlobalRef = GlobalMap.Find(Id);
+			WwiseDatabaseLocalizableIdKey Id(Elem.Cookie, LanguageId);
+			const WwiseRefExternalSource* GlobalRef = GlobalMap.Find(Id);
 			if (GlobalRef)
 			{
 				Result.Add(Elem.Cookie, *GlobalRef);
@@ -236,7 +233,7 @@ WwiseExternalSourceIdsMap FWwiseRefEvent::GetAllExternalSources(const WwiseExter
 	return Result;
 }
 
-WwiseCustomPluginIdsMap FWwiseRefEvent::GetEventCustomPlugins(const WwiseCustomPluginGlobalIdsMap& GlobalMap) const
+WwiseCustomPluginIdsMap WwiseRefEvent::GetEventCustomPlugins(const WwiseCustomPluginGlobalIdsMap& GlobalMap) const
 {
 	const auto* Event = GetEvent();
 	if (!Event || !Event->PluginRefs)
@@ -245,11 +242,11 @@ WwiseCustomPluginIdsMap FWwiseRefEvent::GetEventCustomPlugins(const WwiseCustomP
 	}
 	const auto& Plugins = Event->PluginRefs->Custom;
 	WwiseCustomPluginIdsMap Result;
-	Result.Empty(Plugins.Num());
+	Result.Empty(Plugins.Size());
 	for (const auto& Elem : Plugins)
 	{
-		FWwiseDatabaseLocalizableIdKey Id(Elem.Id, LanguageId);
-		const auto* GlobalRef = GlobalMap.Find(Id);
+		WwiseDatabaseLocalizableIdKey Id(Elem.Id, LanguageId);
+		const WwiseRefCustomPlugin* GlobalRef = GlobalMap.Find(Id);
 		if (GlobalRef)
 		{
 			Result.Add(Elem.Id, *GlobalRef);
@@ -258,7 +255,7 @@ WwiseCustomPluginIdsMap FWwiseRefEvent::GetEventCustomPlugins(const WwiseCustomP
 	return Result;
 }
 
-WwiseCustomPluginIdsMap FWwiseRefEvent::GetAllCustomPlugins(const WwiseCustomPluginGlobalIdsMap& GlobalMap) const
+WwiseCustomPluginIdsMap WwiseRefEvent::GetAllCustomPlugins(const WwiseCustomPluginGlobalIdsMap& GlobalMap) const
 {
 	const auto* Event = GetEvent();
 	if (!Event || !Event->PluginRefs)
@@ -272,8 +269,8 @@ WwiseCustomPluginIdsMap FWwiseRefEvent::GetAllCustomPlugins(const WwiseCustomPlu
 	{
 		for (const auto& Elem : SwitchContainer.GetAllCustomPlugins())
 		{
-			FWwiseDatabaseLocalizableIdKey Id(Elem.Id, LanguageId);
-			const auto* GlobalRef = GlobalMap.Find(Id);
+			WwiseDatabaseLocalizableIdKey Id(Elem.Id, LanguageId);
+			const WwiseRefCustomPlugin* GlobalRef = GlobalMap.Find(Id);
 			if (GlobalRef)
 			{
 				Result.Add(Elem.Id, *GlobalRef);
@@ -283,7 +280,7 @@ WwiseCustomPluginIdsMap FWwiseRefEvent::GetAllCustomPlugins(const WwiseCustomPlu
 	return Result;
 }
 
-WwisePluginShareSetIdsMap FWwiseRefEvent::GetEventPluginShareSets(const WwisePluginShareSetGlobalIdsMap& GlobalMap) const
+WwisePluginShareSetIdsMap WwiseRefEvent::GetEventPluginShareSets(const WwisePluginShareSetGlobalIdsMap& GlobalMap) const
 {
 	const auto* Event = GetEvent();
 	if (!Event || !Event->PluginRefs)
@@ -292,11 +289,11 @@ WwisePluginShareSetIdsMap FWwiseRefEvent::GetEventPluginShareSets(const WwisePlu
 	}
 	const auto& Plugins = Event->PluginRefs->ShareSets;
 	WwisePluginShareSetIdsMap Result;
-	Result.Empty(Plugins.Num());
+	Result.Empty(Plugins.Size());
 	for (const auto& Elem : Plugins)
 	{
-		FWwiseDatabaseLocalizableIdKey Id(Elem.Id, LanguageId);
-		const auto* GlobalRef = GlobalMap.Find(Id);
+		WwiseDatabaseLocalizableIdKey Id(Elem.Id, LanguageId);
+		const WwiseRefPluginShareSet* GlobalRef = GlobalMap.Find(Id);
 		if (GlobalRef)
 		{
 			Result.Add(Elem.Id, *GlobalRef);
@@ -305,7 +302,7 @@ WwisePluginShareSetIdsMap FWwiseRefEvent::GetEventPluginShareSets(const WwisePlu
 	return Result;
 }
 
-WwisePluginShareSetIdsMap FWwiseRefEvent::GetAllPluginShareSets(const WwisePluginShareSetGlobalIdsMap& GlobalMap) const
+WwisePluginShareSetIdsMap WwiseRefEvent::GetAllPluginShareSets(const WwisePluginShareSetGlobalIdsMap& GlobalMap) const
 {
 	const auto* Event = GetEvent();
 	if (!Event || !Event->PluginRefs)
@@ -319,8 +316,8 @@ WwisePluginShareSetIdsMap FWwiseRefEvent::GetAllPluginShareSets(const WwisePlugi
 	{
 		for (const auto& Elem : SwitchContainer.GetAllPluginShareSets())
 		{
-			FWwiseDatabaseLocalizableIdKey Id(Elem.Id, LanguageId);
-			const auto* GlobalRef = GlobalMap.Find(Id);
+			WwiseDatabaseLocalizableIdKey Id(Elem.Id, LanguageId);
+			const WwiseRefPluginShareSet* GlobalRef = GlobalMap.Find(Id);
 			if (GlobalRef)
 			{
 				Result.Add(Elem.Id, *GlobalRef);
@@ -330,7 +327,7 @@ WwisePluginShareSetIdsMap FWwiseRefEvent::GetAllPluginShareSets(const WwisePlugi
 	return Result;
 }
 
-WwiseAudioDeviceIdsMap FWwiseRefEvent::GetEventAudioDevices(const WwiseAudioDeviceGlobalIdsMap& GlobalMap) const
+WwiseAudioDeviceIdsMap WwiseRefEvent::GetEventAudioDevices(const WwiseAudioDeviceGlobalIdsMap& GlobalMap) const
 {
 	const auto* Event = GetEvent();
 	if (!Event || !Event->PluginRefs)
@@ -339,11 +336,11 @@ WwiseAudioDeviceIdsMap FWwiseRefEvent::GetEventAudioDevices(const WwiseAudioDevi
 	}
 	const auto& Plugins = Event->PluginRefs->AudioDevices;
 	WwiseAudioDeviceIdsMap Result;
-	Result.Empty(Plugins.Num());
+	Result.Empty(Plugins.Size());
 	for (const auto& Elem : Plugins)
 	{
-		FWwiseDatabaseLocalizableIdKey Id(Elem.Id, LanguageId);
-		const auto* GlobalRef = GlobalMap.Find(Id);
+		WwiseDatabaseLocalizableIdKey Id(Elem.Id, LanguageId);
+		const WwiseRefAudioDevice* GlobalRef = GlobalMap.Find(Id);
 		if (GlobalRef)
 		{
 			Result.Add(Elem.Id, *GlobalRef);
@@ -352,7 +349,7 @@ WwiseAudioDeviceIdsMap FWwiseRefEvent::GetEventAudioDevices(const WwiseAudioDevi
 	return Result;
 }
 
-WwiseAudioDeviceIdsMap FWwiseRefEvent::GetAllAudioDevices(const WwiseAudioDeviceGlobalIdsMap& GlobalMap) const
+WwiseAudioDeviceIdsMap WwiseRefEvent::GetAllAudioDevices(const WwiseAudioDeviceGlobalIdsMap& GlobalMap) const
 {
 	const auto* Event = GetEvent();
 	if (!Event || !Event->PluginRefs)
@@ -366,8 +363,8 @@ WwiseAudioDeviceIdsMap FWwiseRefEvent::GetAllAudioDevices(const WwiseAudioDevice
 	{
 		for (const auto& Elem : SwitchContainer.GetAllPluginShareSets())
 		{
-			FWwiseDatabaseLocalizableIdKey Id(Elem.Id, LanguageId);
-			const auto* GlobalRef = GlobalMap.Find(Id);
+			WwiseDatabaseLocalizableIdKey Id(Elem.Id, LanguageId);
+			const WwiseRefAudioDevice* GlobalRef = GlobalMap.Find(Id);
 			if (GlobalRef)
 			{
 				Result.Add(Elem.Id, *GlobalRef);
@@ -377,33 +374,33 @@ WwiseAudioDeviceIdsMap FWwiseRefEvent::GetAllAudioDevices(const WwiseAudioDevice
 	return Result;
 }
 
-WwiseSwitchContainerArray FWwiseRefEvent::GetSwitchContainers(const WwiseSwitchContainersByEvent& GlobalMap) const
+WwiseSwitchContainerArray WwiseRefEvent::GetSwitchContainers(const WwiseSwitchContainersByEvent& GlobalMap) const
 {
 	const auto* Event = GetEvent();
-	if (!Event)
+	if (!Event) [[unlikely]]
 	{
 		return {};
 	}
-	FWwiseDatabaseLocalizableIdKey LocId(Event->Id, LanguageId);
+	WwiseDatabaseLocalizableIdKey LocId(Event->Id, LanguageId);
 
 	WwiseSwitchContainerArray Result;
 	GlobalMap.MultiFind(LocId, Result);
 	return Result;
 }
 
-WwiseEventIdsMap FWwiseRefEvent::GetActionPostEvent(const WwiseEventGlobalIdsMap& GlobalMap) const
+WwiseEventIdsMap WwiseRefEvent::GetActionPostEvent(const WwiseEventGlobalIdsMap& GlobalMap) const
 {
 	const auto* Event = GetEvent();
-	if (!Event)
+	if (!Event) [[unlikely]]
 	{
 		return {};
 	}
 	const auto& PostEvents = Event->ActionPostEvent;
 	WwiseEventIdsMap Result;
-	Result.Empty(PostEvents.Num());
+	Result.Empty(PostEvents.Size());
 	for (const auto& PostEvent : PostEvents)
 	{
-		const auto* GlobalRef = GlobalMap.Find(FWwiseDatabaseLocalizableIdKey(PostEvent.Id, LanguageId, SoundBankId()));
+		const WwiseRefEvent* GlobalRef = GlobalMap.Find(WwiseDatabaseLocalizableIdKey(PostEvent.Id, LanguageId));
 		if (GlobalRef)
 		{
 			Result.Add(PostEvent.Id, *GlobalRef);
@@ -413,26 +410,26 @@ WwiseEventIdsMap FWwiseRefEvent::GetActionPostEvent(const WwiseEventGlobalIdsMap
 	return Result;
 }
 
-WwiseStateIdsMap FWwiseRefEvent::GetActionSetState(const WwiseStateGlobalIdsMap& GlobalMap) const
+WwiseStateIdsMap WwiseRefEvent::GetActionSetState(const WwiseStateGlobalIdsMap& GlobalMap) const
 {
 	const auto* Event = GetEvent();
-	if (!Event)
+	if (!Event) [[unlikely]]
 	{
 		return {};
 	}
 	const auto& SetStates = Event->ActionSetState;
 	WwiseStateIdsMap Result;
-	Result.Empty(SetStates.Num());
+	Result.Empty(SetStates.Size());
 	for (const auto& SetState : SetStates)
 	{
-		const auto* StateRef = GlobalMap.Find(FWwiseDatabaseLocalizableGroupValueKey(SetState.GroupId, SetState.Id, LanguageId));
+		const WwiseRefState* StateRef = GlobalMap.Find(WwiseDatabaseLocalizableGroupValueKey(SetState.GroupId, SetState.Id, LanguageId));
 		if (StateRef)
 		{
 			const auto* State = StateRef->GetState();
 			const auto* StateGroup = StateRef->GetStateGroup();
 			if (State && StateGroup)
 			{
-				Result.Add(FWwiseDatabaseGroupValueKey(StateGroup->Id, State->Id), *StateRef);
+				Result.Add(WwiseDatabaseGroupValueKey(StateGroup->Id, State->Id), *StateRef);
 			}
 		}
 	}
@@ -440,26 +437,26 @@ WwiseStateIdsMap FWwiseRefEvent::GetActionSetState(const WwiseStateGlobalIdsMap&
 	return Result;
 }
 
-WwiseSwitchIdsMap FWwiseRefEvent::GetActionSetSwitch(const WwiseSwitchGlobalIdsMap& GlobalMap) const
+WwiseSwitchIdsMap WwiseRefEvent::GetActionSetSwitch(const WwiseSwitchGlobalIdsMap& GlobalMap) const
 {
 	const auto* Event = GetEvent();
-	if (!Event)
+	if (!Event) [[unlikely]]
 	{
 		return {};
 	}
 	const auto& SetSwitches = Event->ActionSetSwitch;
 	WwiseSwitchIdsMap Result;
-	Result.Empty(SetSwitches.Num());
+	Result.Empty(SetSwitches.Size());
 	for (const auto& SetSwitch : SetSwitches)
 	{
-		const auto* SwitchRef = GlobalMap.Find(FWwiseDatabaseLocalizableGroupValueKey(SetSwitch.GroupId, SetSwitch.Id, LanguageId));
+		const WwiseRefSwitch* SwitchRef = GlobalMap.Find(WwiseDatabaseLocalizableGroupValueKey(SetSwitch.GroupId, SetSwitch.Id, LanguageId));
 		if (SwitchRef)
 		{
 			const auto* Switch = SwitchRef->GetSwitch();
 			const auto* SwitchGroup = SwitchRef->GetSwitchGroup();
 			if (Switch && SwitchGroup)
 			{
-				Result.Add(FWwiseDatabaseGroupValueKey(SwitchGroup->Id, Switch->Id), *SwitchRef);
+				Result.Add(WwiseDatabaseGroupValueKey(SwitchGroup->Id, Switch->Id), *SwitchRef);
 			}
 		}
 	}
@@ -467,19 +464,19 @@ WwiseSwitchIdsMap FWwiseRefEvent::GetActionSetSwitch(const WwiseSwitchGlobalIdsM
 	return Result;
 }
 
-WwiseTriggerIdsMap FWwiseRefEvent::GetActionTrigger(const WwiseTriggerGlobalIdsMap& GlobalMap) const
+WwiseTriggerIdsMap WwiseRefEvent::GetActionTrigger(const WwiseTriggerGlobalIdsMap& GlobalMap) const
 {
 	const auto* Event = GetEvent();
-	if (!Event)
+	if (!Event) [[unlikely]]
 	{
 		return {};
 	}
 	const auto& Triggers = Event->ActionTrigger;
 	WwiseTriggerIdsMap Result;
-	Result.Empty(Triggers.Num());
+	Result.Empty(Triggers.Size());
 	for (const auto& Trigger : Triggers)
 	{
-		const auto* GlobalRef = GlobalMap.Find(FWwiseDatabaseLocalizableIdKey(Trigger.Id, LanguageId));
+		const WwiseRefTrigger* GlobalRef = GlobalMap.Find(WwiseDatabaseLocalizableIdKey(Trigger.Id, LanguageId));
 		if (GlobalRef)
 		{
 			Result.Add(Trigger.Id, *GlobalRef);
@@ -489,19 +486,19 @@ WwiseTriggerIdsMap FWwiseRefEvent::GetActionTrigger(const WwiseTriggerGlobalIdsM
 	return Result;
 }
 
-WwiseAuxBusIdsMap FWwiseRefEvent::GetEventAuxBusses(const WwiseAuxBusGlobalIdsMap& GlobalMap) const
+WwiseAuxBusIdsMap WwiseRefEvent::GetEventAuxBusses(const WwiseAuxBusGlobalIdsMap& GlobalMap) const
 {
 	const auto* Event = GetEvent();
-	if (!Event)
+	if (!Event) [[unlikely]]
 	{
 		return {};
 	}
 	const auto& AuxBusRefs = Event->AuxBusRefs;
 	WwiseAuxBusIdsMap Result;
-	Result.Empty(AuxBusRefs.Num());
+	Result.Empty(AuxBusRefs.Size());
 	for (const auto& AuxBusRef : AuxBusRefs)
 	{
-		const auto* GlobalRef = GlobalMap.Find(FWwiseDatabaseLocalizableIdKey(AuxBusRef.Id, LanguageId));
+		const WwiseRefAuxBus* GlobalRef = GlobalMap.Find(WwiseDatabaseLocalizableIdKey(AuxBusRef.Id, LanguageId));
 		if (GlobalRef)
 		{
 			Result.Add(AuxBusRef.Id, *GlobalRef);
@@ -511,60 +508,60 @@ WwiseAuxBusIdsMap FWwiseRefEvent::GetEventAuxBusses(const WwiseAuxBusGlobalIdsMa
 	return Result;
 }
 
-uint32 FWwiseRefEvent::EventId() const
+WwiseDBShortId WwiseRefEvent::EventId() const
 {
 	const auto* Event = GetEvent();
-	if (UNLIKELY(!Event))
+	if (!Event) [[unlikely]]
 	{
 		return {};
 	}
 	return Event->Id;
 }
 
-FGuid FWwiseRefEvent::EventGuid() const
+const WwiseDBGuid* WwiseRefEvent::EventGuid() const
 {
 	const auto* Event = GetEvent();
-	if (UNLIKELY(!Event))
+	if (!Event) [[unlikely]]
 	{
 		return {};
 	}
-	return Event->GUID;
+	return &Event->GUID;
 }
 
-FName FWwiseRefEvent::EventName() const
+const WwiseDBString* WwiseRefEvent::EventName() const
 {
 	const auto* Event = GetEvent();
-	if (UNLIKELY(!Event))
+	if (!Event) [[unlikely]]
 	{
-		return {};
+		return &emptyString;
 	}
-	return Event->Name;
+	return &Event->Name;
 }
 
-FName FWwiseRefEvent::EventObjectPath() const
+const WwiseDBString* WwiseRefEvent::EventObjectPath() const
 {
 	const auto* Event = GetEvent();
-	if (UNLIKELY(!Event))
+	if (!Event) [[unlikely]]
 	{
-		return {};
+		return &emptyString;
 	}
-	return Event->ObjectPath;
+	return &Event->ObjectPath;
 }
 
-float FWwiseRefEvent::MaxAttenuation() const
+float WwiseRefEvent::MaxAttenuation() const
 {
 	const auto* Event = GetEvent();
-	if (UNLIKELY(!Event))
+	if (!Event) [[unlikely]]
 	{
 		return 0.f;
 	}
 	return Event->MaxAttenuation;
 }
 
-bool FWwiseRefEvent::GetDuration(EWwiseMetadataEventDurationType& OutDurationType, float& OutDurationMin, float& OutDurationMax) const
+bool WwiseRefEvent::GetDuration(WwiseMetadataEventDurationType& OutDurationType, float& OutDurationMin, float& OutDurationMax) const
 {
 	const auto* Event = GetEvent();
-	if (UNLIKELY(!Event))
+	if (!Event) [[unlikely]]
 	{
 		return false;
 	}
@@ -575,9 +572,9 @@ bool FWwiseRefEvent::GetDuration(EWwiseMetadataEventDurationType& OutDurationTyp
 	return true;
 }
 
-uint32 FWwiseRefEvent::Hash() const
+WwiseDBShortId WwiseRefEvent::Hash() const
 {
-	auto Result = FWwiseRefSoundBank::Hash();
-	Result = HashCombine(Result, GetTypeHash(EventIndex));
+	auto Result = WwiseRefSoundBank::Hash();
+	Result = WwiseDBHashCombine(Result, GetTypeHash(EventIndex));
 	return Result;
 }

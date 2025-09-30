@@ -12,14 +12,15 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #pragma once
 
 #include "Wwise/WwiseExecutionQueue.h"
-#include "Wwise/WwiseFileStateTools.h"
 #include <atomic>
+
+#include "Containers/Queue.h"
 
 class FWwiseAsyncCycleCounter;
 class FWwiseStreamableFileStateInfo;
@@ -30,10 +31,10 @@ enum class WWISEFILEHANDLER_API EWwiseFileStateOperationOrigin
 	Streaming
 };
 
-class WWISEFILEHANDLER_API FWwiseFileState : protected FWwiseFileStateTools
+class WWISEFILEHANDLER_API FWwiseFileState
 {
 public:
-	~FWwiseFileState() override;
+	virtual ~FWwiseFileState();
 
 	template <typename RequestedType>
 	RequestedType* GetStateAs()
@@ -63,10 +64,11 @@ public:
 
 	using FBasicFunction = FWwiseExecutionQueue::FBasicFunction;
 	using FOpQueueItem = FWwiseExecutionQueue::FOpQueueItem; 
-	using FLaterOpQueue = TQueue<FOpQueueItem, EQueueMode::Spsc>;
+	using FLaterOpQueue = TQueue<FOpQueueItem, EQueueMode::Mpsc>;
 
 	/// Operation queue containing operations waiting to be unclogged (such as a load time)
 	FLaterOpQueue LaterOpQueue;
+	std::atomic<bool> bIsUnwindingLaterOpQueue{ false };
 
 	/// Number of instances opened. Slightly equivalent to LoadCount, but set synchronously and updated at extremities.
 	std::atomic<int> OpenedInstances{ 0 };

@@ -1,23 +1,28 @@
 {
-	"BuildId": "33043543",
+	"BuildId": "43139311",
 	"Modules": 
 	{
 		"AkAudio": "UnrealEditor-AkAudio.dll",
 		"AkAudioMixer": "UnrealEditor-AkAudioMixer.dll",
 		"AudiokineticTools": "UnrealEditor-AudiokineticTools.dll",
 		"Wwise": "UnrealEditor-Wwise.dll",
+		"WwiseAudioLinkEditor": "UnrealEditor-WwiseAudioLinkEditor.dll",
+		"WwiseAudioLinkRuntime": "UnrealEditor-WwiseAudioLinkRuntime.dll",
 		"WwiseConcurrency": "UnrealEditor-WwiseConcurrency.dll",
+		"WwiseEditorUtils": "UnrealEditor-WwiseEditorUtils.dll",
 		"WwiseEngineUtils": "UnrealEditor-WwiseEngineUtils.dll",
 		"WwiseFileHandler": "UnrealEditor-WwiseFileHandler.dll",
 		"WwiseObjectUtils": "UnrealEditor-WwiseObjectUtils.dll",
 		"WwiseObstructionOcclusion": "UnrealEditor-WwiseObstructionOcclusion.dll",
+		"WwisePackaging": "UnrealEditor-WwisePackaging.dll",
+		"WwisePackagingEditor": "UnrealEditor-WwisePackagingEditor.dll",
+		"WwisePackagingRuntime": "UnrealEditor-WwisePackagingRuntime.dll",
 		"WwiseProcessing": "UnrealEditor-WwiseProcessing.dll",
 		"WwiseProjectDatabase": "UnrealEditor-WwiseProjectDatabase.dll",
 		"WwiseReconcile": "UnrealEditor-WwiseReconcile.dll",
 		"WwiseResourceCooker": "UnrealEditor-WwiseResourceCooker.dll",
 		"WwiseResourceLoader": "UnrealEditor-WwiseResourceLoader.dll",
 		"WwiseSimpleExternalSource": "UnrealEditor-WwiseSimpleExternalSource.dll",
-		"WwiseSoundEngine": "UnrealEditor-WwiseSoundEngine.dll",
 		"WwiseUtils": "UnrealEditor-WwiseUtils.dll"
 	}
 }

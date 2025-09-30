@@ -12,41 +12,41 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #pragma once
 
 #include "Wwise/Ref/WwiseRefProjectInfo.h"
 
-class WWISEPROJECTDATABASE_API FWwiseRefLanguage : public FWwiseRefProjectInfo
+class WwiseRefLanguage : public WwiseRefProjectInfo
 {
 public:
-	static const TCHAR* const NAME;
-	static constexpr EWwiseRefType TYPE = EWwiseRefType::Language;
+	static const WwiseDBString NAME;
+	static constexpr WwiseRefType TYPE = WwiseRefType::Language;
 
 	WwiseRefIndexType LanguageIndex;
 
-	FWwiseRefLanguage() :
-		LanguageIndex(INDEX_NONE)
+	WwiseRefLanguage() :
+		LanguageIndex(-1)
 	{}
-	FWwiseRefLanguage(const WwiseMetadataSharedRootFileConstPtr& InRootMediaRef, const FName& InJsonFilePath,
+	WwiseRefLanguage(const WwiseMetadataSharedRootFileConstPtr& InRootMediaRef, const WwiseDBString& InJsonFilePath,
 		WwiseRefIndexType InLanguageIndex) :
-		FWwiseRefProjectInfo(InRootMediaRef, InJsonFilePath),
+		WwiseRefProjectInfo(InRootMediaRef, InJsonFilePath),
 		LanguageIndex(InLanguageIndex)
 	{}
-	const FWwiseMetadataLanguage* GetLanguage() const;
+	const WwiseMetadataLanguage* GetLanguage() const;
 
-	uint32 LanguageId() const;
-	FGuid LanguageGuid() const;
-	FName LanguageName() const;
+	WwiseDBShortId LanguageId() const;
+	WwiseDBGuid LanguageGuid() const;
+	WwiseDBString LanguageName() const;
 
-	uint32 Hash() const override;
-	EWwiseRefType Type() const override { return TYPE; }
-	bool operator==(const FWwiseRefLanguage& Rhs) const
+	WwiseDBShortId Hash() const override;
+	WwiseRefType Type() const override { return TYPE; }
+	bool operator==(const WwiseRefLanguage& Rhs) const
 	{
-		return FWwiseRefProjectInfo::operator==(Rhs)
+		return WwiseRefProjectInfo::operator==(Rhs)
 			&& LanguageIndex == Rhs.LanguageIndex;
 	}
-	bool operator!=(const FWwiseRefLanguage& Rhs) const { return !operator==(Rhs); }
+	bool operator!=(const WwiseRefLanguage& Rhs) const { return !operator==(Rhs); }
 };

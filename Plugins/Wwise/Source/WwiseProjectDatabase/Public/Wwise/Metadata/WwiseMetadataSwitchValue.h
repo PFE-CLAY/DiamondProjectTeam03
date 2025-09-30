@@ -12,37 +12,39 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #pragma once
 
+#include "Wwise/AdapterTypes/WwiseDataTypesAdapter.h"
 #include "Wwise/Metadata/WwiseMetadataLoadable.h"
 
-enum class EWwiseMetadataSwitchValueGroupType : uint32
+enum class WwiseMetadataSwitchValueGroupType : WwiseDBShortId
 {
 	Switch,
 	State,
-	Unknown = (uint32)-1
+	Unknown = (WwiseDBShortId)-1
 };
 
-struct WWISEPROJECTDATABASE_API FWwiseMetadataSwitchValueAttributes : public FWwiseMetadataLoadable
+struct WwiseMetadataSwitchValueAttributes : public WwiseMetadataLoadable
 {
-	EWwiseMetadataSwitchValueGroupType GroupType;
-	uint32 GroupId;
-	uint32 Id;
-	FGuid GUID;
+	WwiseMetadataSwitchValueGroupType GroupType;
+	WwiseDBShortId GroupId;
+	WwiseDBShortId Id;
+	WwiseDBGuid GUID;
+	int Color;
 	bool bDefault;
 
-	FWwiseMetadataSwitchValueAttributes();
-	FWwiseMetadataSwitchValueAttributes(FWwiseMetadataLoader& Loader);
+	WwiseMetadataSwitchValueAttributes();
+	WwiseMetadataSwitchValueAttributes(WwiseMetadataLoader& Loader);
 
 private:
-	static EWwiseMetadataSwitchValueGroupType GroupTypeFromString(const FName& TypeString);
+	static WwiseMetadataSwitchValueGroupType GroupTypeFromString(const WwiseDBString& TypeString);
 };
 
-struct WWISEPROJECTDATABASE_API FWwiseMetadataSwitchValue : public FWwiseMetadataSwitchValueAttributes
+struct WwiseMetadataSwitchValue : public WwiseMetadataSwitchValueAttributes
 {
-	FWwiseMetadataSwitchValue();
-	FWwiseMetadataSwitchValue(FWwiseMetadataLoader& Loader);
+	WwiseMetadataSwitchValue();
+	WwiseMetadataSwitchValue(WwiseMetadataLoader& Loader);
 };

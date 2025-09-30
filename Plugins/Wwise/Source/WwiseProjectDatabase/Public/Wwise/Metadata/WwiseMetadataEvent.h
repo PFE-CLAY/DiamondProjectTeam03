@@ -12,7 +12,7 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #pragma once
@@ -21,7 +21,7 @@ Copyright (c) 2024 Audiokinetic Inc.
 #include "Wwise/Metadata/WwiseMetadataBus.h"
 #include "Wwise/Metadata/WwiseMetadataSwitchContainer.h"
 
-enum class EWwiseMetadataEventDurationType : uint32
+enum class WwiseMetadataEventDurationType : WwiseDBShortId
 {
 	OneShot = 0,
 	Unknown = 1,
@@ -29,33 +29,33 @@ enum class EWwiseMetadataEventDurationType : uint32
 	Mixed = 3
 };
 
-struct WWISEPROJECTDATABASE_API FWwiseMetadataEventReference : public FWwiseMetadataBasicReference
+struct WwiseMetadataEventReference : public WwiseMetadataBasicReference
 {
 	float MaxAttenuation;
-	EWwiseMetadataEventDurationType DurationType;
+	WwiseMetadataEventDurationType DurationType;
 	float DurationMin;
 	float DurationMax;
 
-	FWwiseMetadataEventReference(FWwiseMetadataLoader& Loader);
+	WwiseMetadataEventReference(WwiseMetadataLoader& Loader);
 
 private:
-	static EWwiseMetadataEventDurationType DurationTypeFromString(const FName& TypeString);
+	static WwiseMetadataEventDurationType DurationTypeFromString(const WwiseDBString& TypeString);
 };
 
-struct WWISEPROJECTDATABASE_API FWwiseMetadataEvent : public FWwiseMetadataEventReference
+struct WWISEPROJECTDATABASE_API WwiseMetadataEvent : public WwiseMetadataEventReference
 {
-	TArray<FWwiseMetadataMediaReference> MediaRefs;
-	TArray<FWwiseMetadataExternalSourceReference> ExternalSourceRefs;
-	FWwiseMetadataPluginReferenceGroup* PluginRefs;
-	TArray<FWwiseMetadataBusReference> AuxBusRefs;
-	TArray<FWwiseMetadataSwitchContainer> SwitchContainers;
-	TArray<FWwiseMetadataActionPostEventEntry> ActionPostEvent;
-	TArray<FWwiseMetadataActionSetStateEntry> ActionSetState;
-	TArray<FWwiseMetadataActionSetSwitchEntry> ActionSetSwitch;
-	TArray<FWwiseMetadataActionTriggerEntry> ActionTrigger;
-	TArray<FWwiseMetadataActionSetFXEntry> ActionSetFX; 
+	WwiseDBArray<WwiseMetadataMediaReference> MediaRefs;
+	WwiseDBArray<WwiseMetadataExternalSourceReference> ExternalSourceRefs;
+	WwiseMetadataPluginReferenceGroup* PluginRefs;
+	WwiseDBArray<WwiseMetadataActionSetFXEntry> ActionSetFX; 
+	WwiseMetadataEvent(WwiseMetadataLoader& Loader);
+	WwiseDBArray<WwiseMetadataBusReference> AuxBusRefs;
+	WwiseDBArray<WwiseMetadataSwitchContainer> SwitchContainers;
+	WwiseDBArray<WwiseMetadataActionPostEventEntry> ActionPostEvent;
+	WwiseDBArray<WwiseMetadataActionSetStateEntry> ActionSetState;
+	WwiseDBArray<WwiseMetadataActionSetSwitchEntry> ActionSetSwitch;
+	WwiseDBArray<WwiseMetadataActionTriggerEntry> ActionTrigger;
 
-	FWwiseMetadataEvent(FWwiseMetadataLoader& Loader);
 
 	bool IsMandatory() const;
 };

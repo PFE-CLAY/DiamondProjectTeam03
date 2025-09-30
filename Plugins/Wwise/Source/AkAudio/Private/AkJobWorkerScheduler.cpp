@@ -12,7 +12,7 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #include "AkJobWorkerScheduler.h"
@@ -35,9 +35,9 @@ Copyright (c) 2024 Audiokinetic Inc.
 		TaskPriority = AkJobWorkerSchedulerInternals::Task##__job__
 
 static_assert(AK_NUM_JOB_TYPES == 3, "Update the stat groups and switch cases below for new job types!");
-AK_DECLARE_JOB_TYPE(Generic, "Wwise Generic Job", EWwiseTaskPriority::High)
-AK_DECLARE_JOB_TYPE(AudioProcessing, "Wwise Audio Processing Job", EWwiseTaskPriority::High)
-AK_DECLARE_JOB_TYPE(SpatialAudio, "Wwise Spatial Audio Job", EWwiseTaskPriority::High)
+AK_DECLARE_JOB_TYPE(Generic, "WwiseSoundEngine Generic Job", EWwiseTaskPriority::High)
+AK_DECLARE_JOB_TYPE(AudioProcessing, "WwiseSoundEngine Audio Processing Job", EWwiseTaskPriority::High)
+AK_DECLARE_JOB_TYPE(SpatialAudio, "WwiseSoundEngine Spatial Audio Job", EWwiseTaskPriority::High)
 
 static void OnJobWorkerRequest(AkJobWorkerFunc in_fnJobWorker, AkJobType in_jobType, AkUInt32 in_uNumWorkers, void* in_pUserData)
 {
@@ -59,11 +59,7 @@ static void OnJobWorkerRequest(AkJobWorkerFunc in_fnJobWorker, AkJobType in_jobT
 	{ 
 		LaunchWwiseTask(Name, TaskPriority, [=]() {
 #if STATS
-#if UE_5_0_OR_LATER
 			FScopeCycleCounter CycleCount(StatId, FStat_STAT_AkJobGeneric::GetFlags());
-#else
-			FScopeCycleCounter CycleCount(StatId);
-#endif
 #endif
 			in_fnJobWorker(in_jobType, MaxExecutionTime); 
 			// After completion of the worker function, release any thread-local memory resources

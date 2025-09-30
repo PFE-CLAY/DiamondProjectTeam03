@@ -12,22 +12,21 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #include "Wwise/Metadata/WwiseMetadataProject.h"
 #include "Wwise/Metadata/WwiseMetadataLoader.h"
-#include "Wwise/Stats/ProjectDatabase.h"
 
-FWwiseMetadataProject::FWwiseMetadataProject()
+WwiseMetadataProject::WwiseMetadataProject()
 {
-	UE_LOG(LogWwiseProjectDatabase, Error, TEXT("Using default Project"));
+	WWISE_DB_LOG(Error, "Using default Project");
 }
 
-FWwiseMetadataProject::FWwiseMetadataProject(FWwiseMetadataLoader& Loader) :
-	Name(Loader.GetString(this, TEXT("Name"))),
-	GUID(Loader.GetGuid(this, TEXT("GUID"))),
-	Generator(Loader.GetString(this, TEXT("Generator")))
+WwiseMetadataProject::WwiseMetadataProject(WwiseMetadataLoader& Loader) :
+	Name(Loader.GetString(this, "Name"_wwise_db)),
+	GUID(Loader.GetGuid(this, "GUID"_wwise_db)),
+	Generator(Loader.GetString(this, "Generator"_wwise_db))
 {
-	Loader.LogParsed(TEXT("Project"));
+	Loader.LogParsed("Project"_wwise_db);
 }

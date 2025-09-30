@@ -12,7 +12,7 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 /*=============================================================================
@@ -324,7 +324,7 @@ void UAkComponent::UpdateObstructionAndOcclusion()
 	}
 }
 
-void UAkComponent::PostTrigger(const UAkTrigger* TriggerValue, FString Trigger)
+void UAkComponent::PostTrigger(const UAkTrigger* TriggerValue)
 {
 	if (FAkAudioDevice::Get())
 	{
@@ -335,14 +335,10 @@ void UAkComponent::PostTrigger(const UAkTrigger* TriggerValue, FString Trigger)
 		{
 			SoundEngine->PostTrigger(TriggerValue->TriggerCookedData.TriggerId, GetAkGameObjectID());
 		}
-		else
-		{
-			SoundEngine->PostTrigger(TCHAR_TO_AK(*Trigger), GetAkGameObjectID());
-		}
 	}
 }
 
-void UAkComponent::SetSwitch(const UAkSwitchValue* SwitchValue, FString SwitchGroup, FString SwitchState)
+void UAkComponent::SetSwitch(const UAkSwitchValue* SwitchValue)
 {
 	if (FAkAudioDevice::Get())
 	{
@@ -352,13 +348,6 @@ void UAkComponent::SetSwitch(const UAkSwitchValue* SwitchValue, FString SwitchGr
 		if (SwitchValue)
 		{
 			SoundEngine->SetSwitch(SwitchValue->GroupValueCookedData.GroupId, SwitchValue->GroupValueCookedData.Id, GetAkGameObjectID());
-		}
-		else
-		{
-			uint32 SwitchGroupID = SoundEngine->GetIDFromString(TCHAR_TO_AK(*SwitchGroup));
-			uint32 SwitchStateID = SoundEngine->GetIDFromString(TCHAR_TO_AK(*SwitchState));
-
-			SoundEngine->SetSwitch(SwitchGroupID, SwitchStateID, GetAkGameObjectID());
 		}
 	}
 }
@@ -441,7 +430,7 @@ void UAkComponent::OnRegister()
 		RegisterGameObject(); // Done before parent so that OnUpdateTransform follows registration and updates position correctly.
 
 	FAkAudioDevice* AudioDevice = FAkAudioDevice::Get();
-	if (AudioDevice)
+	if (AudioDevice && CurrentWorld)
 	{
 		ObstructionService.Init(GetAkGameObjectID(), CurrentWorld, OcclusionRefreshInterval, AudioDevice->UsingSpatialAudioRooms(CurrentWorld));
 	}
@@ -490,7 +479,7 @@ void UAkComponent::OnUnregister()
 	// shot sounds.
 	AActor* Owner = GetOwner();
 	UWorld* CurrentWorld = GetWorld();
-	if( !Owner || !CurrentWorld || StopWhenOwnerDestroyed || CurrentWorld->bIsTearingDown || (Owner->GetClass() == APlayerController::StaticClass() && CurrentWorld->WorldType == EWorldType::PIE))
+	if( !Owner || !CurrentWorld || (StopWhenOwnerDestroyed && Owner->IsActorBeingDestroyed()) || CurrentWorld->bIsTearingDown || (Owner->GetClass() == APlayerController::StaticClass() && CurrentWorld->WorldType == EWorldType::PIE))
 	{
 		Stop();
 	}
@@ -648,6 +637,13 @@ void UAkComponent::BeginPlay()
 
 	if (EnableSpotReflectors)
 		AAkSpotReflector::UpdateSpotReflectors(this);
+
+	FAkAudioDevice* AudioDevice = FAkAudioDevice::Get();
+	UWorld* CurrentWorld = GetWorld();
+	if (AudioDevice && CurrentWorld)
+	{
+		ObstructionService.Init(GetAkGameObjectID(), CurrentWorld, OcclusionRefreshInterval, AudioDevice->UsingSpatialAudioRooms(CurrentWorld));
+	}
 }
 
 void UAkComponent::OnUpdateTransform(EUpdateTransformFlags UpdateTransformFlags, ETeleportType Teleport)

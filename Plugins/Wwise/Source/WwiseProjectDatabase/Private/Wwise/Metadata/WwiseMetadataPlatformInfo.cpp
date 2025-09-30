@@ -12,18 +12,18 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #include "Wwise/Metadata/WwiseMetadataPlatformInfo.h"
 #include "Wwise/Metadata/WwiseMetadataLoader.h"
 
-FWwiseMetadataPlatformInfo::FWwiseMetadataPlatformInfo(FWwiseMetadataLoader& Loader) :
-	Platform(Loader.GetObject<FWwiseMetadataPlatform>(this, TEXT("Platform"))),
-	RootPaths(Loader.GetObject<FWwiseMetadataRootPaths>(this, TEXT("RootPaths"))),
-	DefaultAlign(Loader.GetUint32(this, TEXT("DefaultAlign"))),
-	Settings(Loader.GetObject<FWwiseMetadataSettings>(this, TEXT("Settings"))),
-	FileHash(Loader.GetGuid(this, TEXT("FileHash")))
+WwiseMetadataPlatformInfo::WwiseMetadataPlatformInfo(WwiseMetadataLoader& Loader) :
+	Platform(Loader.GetLoaderObject<WwiseMetadataPlatform>(this, "Platform"_wwise_db)),
+	RootPaths(Loader.GetLoaderObject<WwiseMetadataRootPaths>(this, "RootPaths"_wwise_db)),
+	DefaultAlign(Loader.GetWwiseShortId(this, "DefaultAlign"_wwise_db)),
+	Settings(Loader.GetLoaderObject<WwiseMetadataSettings>(this, "Settings"_wwise_db)),
+	FileHash(Loader.GetGuid(this, "FileHash"_wwise_db))
 {
-	Loader.LogParsed(TEXT("PlatformInfo"));
+	Loader.LogParsed("PlatformInfo"_wwise_db);
 }

@@ -12,24 +12,22 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #include "Wwise/Ref/WwiseRefSoundBanksInfo.h"
 
 #include "Wwise/Metadata/WwiseMetadataRootFile.h"
-#include "Wwise/WwiseProjectDatabaseModule.h"
-#include "Wwise/Stats/ProjectDatabase.h"
 
-const TCHAR* const FWwiseRefSoundBanksInfo::NAME = TEXT("SoundbanksInfo");
+const WwiseDBString WwiseRefSoundBanksInfo::NAME = "SoundbanksInfo"_wwise_db;
 
-const FWwiseMetadataSoundBanksInfo* FWwiseRefSoundBanksInfo::GetSoundBanksInfo() const
+const WwiseMetadataSoundBanksInfo* WwiseRefSoundBanksInfo::GetSoundBanksInfo() const
 {
 	const auto* RootFile = GetRootFile();
-	if (!RootFile)
+	if (!RootFile) [[unlikely]]
 	{
 		return nullptr;
 	}
-	UE_CLOG(!RootFile->SoundBanksInfo, LogWwiseProjectDatabase, Error, TEXT("Could not get SoundBanksInfo"));
+	WWISE_DB_CLOG(!RootFile->SoundBanksInfo, Error, "Could not get SoundBanksInfo");
 	return RootFile->SoundBanksInfo;
 }

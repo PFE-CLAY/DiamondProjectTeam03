@@ -12,7 +12,7 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 /*=============================================================================
@@ -39,7 +39,7 @@ public:
 	*	Setting a value here will apply only to sounds playing on AK Components with EnableSpotReflectors to true.
 	*/
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = AkSpotReflector)
-	class UAkAuxBus * EarlyReflectionAuxBus = nullptr;
+	TObjectPtr<class UAkAuxBus> EarlyReflectionAuxBus = nullptr;
 
 	/**
 	*	Send to an Auxiliary Bus containing the Wwise Reflect plugin for early reflections rendering.
@@ -54,7 +54,7 @@ public:
 	*	If left to None, no filtering will be applied to the sound.
 	*/
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = AkSpotReflector)
-	UAkAcousticTexture* AcousticTexture = nullptr;
+	TObjectPtr<UAkAcousticTexture> AcousticTexture = nullptr;
 
 	/**
 	*	This number scales the distance between the listener and the actual image source, preserving orientation.
@@ -77,7 +77,7 @@ public:
 
 	/** The room in which the spot reflector will be virtually placed in. If set to None, the default "Outdoors" room will be used.*/
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = AkSpotReflector, meta = (EditCondition = "EnableRoomOverride"))
-	class AActor* RoomOverride = nullptr;
+	TObjectPtr<class AActor> RoomOverride = nullptr;
 
 	AkImageSourceID GetImageSourceID() const;
 	AkAuxBusID GetAuxBusID() const;

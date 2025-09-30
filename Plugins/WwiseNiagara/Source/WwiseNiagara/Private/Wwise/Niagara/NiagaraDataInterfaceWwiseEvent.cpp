@@ -12,7 +12,7 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #include "Wwise/Niagara/NiagaraDataInterfaceWwiseEvent.h"
@@ -55,21 +55,30 @@ struct FNiagaraPostEventDIFunctionVersion
 
 namespace NiagaraWwiseParticleHelpers
 {
-	UAkComponent* SpawnAkComponentAtLocation(class UAkAudioEvent* AkEvent, const USceneComponent* NiagaraComponent, FVector Location, FRotator Orientation, UWorld* World, bool bStopWhenDestroyed, bool bVisualizeComponent = false)
+	UAkComponent* SpawnAkComponentAtLocation(class UAkAudioEvent* AkEvent, USceneComponent* NiagaraComponent, FVector Location, FRotator Orientation, UWorld* World, bool bStopWhenDestroyed, bool bVisualizeComponent = false)
 	{
 		SCOPED_WWISENIAGARA_EVENT_2(TEXT("NiagaraWwiseParticleHelpers::SpawnAkComponentAtLocation"));
 		UAkComponent* AkComponent;
+
+		if (!AkEvent || !GEngine || !GEngine->UseSound())
+		{
+			return nullptr;
+		}
+
+		if (!World || !World->bAllowAudioPlayback || World->IsNetMode(NM_DedicatedServer))
+		{
+			UE_LOG(LogWwiseNiagara, Verbose, TEXT("NiagaraWwiseParticleHelpers::SpawnAkComponentAtLocation: Invalid World or no audio allowed. Not spawning component with event (%s),"), *AkEvent->GetName());
+			return nullptr;
+		}
+
 		if (NiagaraComponent)
 		{
-			AkComponent = NewObject<UAkComponent>(NiagaraComponent->GetOwner());
-		}
-		else if (World)
-		{
-			AkComponent = NewObject<UAkComponent>(World->GetWorldSettings());
+			AkComponent = NewObject<UAkComponent>(NiagaraComponent);
 		}
 		else
 		{
-			AkComponent = NewObject<UAkComponent>();
+			UE_LOG(LogWwiseNiagara, Warning, TEXT("NiagaraWwiseParticleHelpers::SpawnAkComponentAtLocation: No Component to attach to, while trying to spawn component with event (%s),"), *AkEvent->GetName());
+			AkComponent = nullptr;
 		}
 
 		if (AkComponent)
@@ -99,7 +108,7 @@ namespace NiagaraWwiseParticleHelpers
 			FString EventName = AkEvent->EventCookedData.DebugName.ToString();
 #endif
 
-			UE_LOG(LogWwiseNiagara, VeryVerbose, TEXT("Creating AkComponent %s for Event %s, with owner %s"), *AkComponent->GetName(), *EventName, *AkComponent->GetOwner()->GetName())
+			UE_LOG(LogWwiseNiagara, VeryVerbose, TEXT("Creating AkComponent %s (%p) for Event %s, with owner %s"), *AkComponent->GetName(), AkComponent, *EventName, *AkComponent->GetOwner()->GetName())
 		}
 
 		return AkComponent;
@@ -118,7 +127,6 @@ bool UNiagaraDataInterfaceWwiseEvent::UpgradeFunctionCall(FNiagaraFunctionSignat
 {
 	bool bChanged = false;
 
-#if UE_5_0_OR_LATER
 	// Update out UE4 assets to UE5. We need to make sure that Positions are using the latest type
 	if (FunctionSignature.FunctionVersion < FNiagaraPostEventDIFunctionVersion::VersionUE5)
 	{
@@ -152,7 +160,6 @@ bool UNiagaraDataInterfaceWwiseEvent::UpgradeFunctionCall(FNiagaraFunctionSignat
 
 		FunctionSignature.FunctionVersion = FNiagaraPostEventDIFunctionVersion::LatestVersion;
 	}
-#endif
 
 	return bChanged;
 }
@@ -173,9 +180,7 @@ bool UNiagaraDataInterfaceWwiseEvent::InitPerInstanceData(void* PerInstanceData,
 {
 	SCOPED_WWISENIAGARA_EVENT(TEXT("NiagaraDataInterfaceWwiseEvent::InitPerInstanceData"));
 	FWwiseEventInterface_InstanceData* PIData = new (PerInstanceData) FWwiseEventInterface_InstanceData;
-#if UE_5_0_OR_LATER
 	PIData->LWCConverter = SystemInstance->GetLWCConverter();
-#endif
 	if (bLimitPostsPerTick)
 	{
 		PIData->MaxPlaysPerTick = MaxPostsPerTick;
@@ -197,7 +202,14 @@ void UNiagaraDataInterfaceWwiseEvent::DestroyPerInstanceData(void* PerInstanceDa
 	{
 		if (Entry.Value.IsValid())
 		{
-			Entry.Value->Stop();
+			if (auto AkComponent = Entry.Value.Get())
+			{
+				UE_LOG(LogWwiseNiagara, VeryVerbose, TEXT("Stopping AkComponent %s (%p), with owner %s"),
+				       *AkComponent->GetName(),
+				       AkComponent,
+				       AkComponent->GetOwner() ? *AkComponent->GetOwner()->GetName() : TEXT("None"))
+				AkComponent->Stop();
+			}
 		}
 	}
 	InstData->~FWwiseEventInterface_InstanceData();
@@ -217,7 +229,7 @@ bool UNiagaraDataInterfaceWwiseEvent::PerInstanceTick(void* PerInstanceData, FNi
 		PIData->EventToPost = EventToPost;
 
 		PIData->GameParameters.Empty();
-		for (const auto GameParameter : GameParameters)
+		for (const auto& GameParameter : GameParameters)
 		{
 			PIData->GameParameters.Add(GameParameter);
 		}
@@ -251,7 +263,7 @@ bool UNiagaraDataInterfaceWwiseEvent::PerInstanceTickPostSimulate(void* PerInsta
 
 	if (!PIData->OneShotQueue.IsEmpty() && !PIData->bValidOneShotSound)
 	{
-		UE_LOG(LogAkAudio, Warning, TEXT("Niagara PostEventAtLocation: Not posting event at location, because it has infinite duration and there will be no way to stop it."));
+		UE_LOG(LogWwiseNiagara, Warning, TEXT("Niagara PostEventAtLocation: Not posting event at location, because it has infinite duration and there will be no way to stop it."));
 		PIData->OneShotQueue.Empty();
 	}
 	if (!PIData->OneShotQueue.IsEmpty() && System)
@@ -280,7 +292,7 @@ bool UNiagaraDataInterfaceWwiseEvent::PerInstanceTickPostSimulate(void* PerInsta
 #endif
 			if (!World)
 			{
-				UE_LOG(LogAkAudio, Warning, TEXT("Niagara PostEventAtLocation: Cannot post event because world is invalid."));
+				UE_LOG(LogWwiseNiagara, Warning, TEXT("Niagara PostEventAtLocation: Cannot post event because world is invalid."));
 				break;
 			}
 			if (!World->AllowAudioPlayback())
@@ -314,10 +326,16 @@ bool UNiagaraDataInterfaceWwiseEvent::PerInstanceTickPostSimulate(void* PerInsta
 		{
 			SCOPE_CYCLE_COUNTER(STAT_WwiseNiagaraStopEvent);
 			TWeakObjectPtr<UAkComponent> WeakComponent = Iterator.Value();
-			UAkComponent* AudioComponent = WeakComponent.IsValid() ? WeakComponent.Get() : nullptr;
-			if (AudioComponent)
+			if (auto AkComponent = WeakComponent.Get())
 			{
-				AudioComponent->ConditionalBeginDestroy();
+				if (PIData->bStopWhenComponentIsDestroyed)
+				{
+					AkComponent->Stop();
+					UE_LOG(LogWwiseNiagara, VeryVerbose,
+						   TEXT("Stop AkComponent %s (%p) with owner %s, its particle was destroyed or it was not updated."
+						   ), *AkComponent->GetName(), AkComponent,
+						   AkComponent->GetOwner()? *AkComponent->GetOwner()->GetName(): TEXT("None"))
+				}
 			}
 			Iterator.RemoveCurrent();
 		}
@@ -351,11 +369,7 @@ void UNiagaraDataInterfaceWwiseEvent::GetFunctions(TArray<FNiagaraFunctionSignat
 	Sig.bRequiresExecPin = true;
 	Sig.Inputs.Add(FNiagaraVariable(FNiagaraTypeDefinition(GetClass()), TEXT("Wwise Event Interface")));
 	Sig.Inputs.Add(FNiagaraVariable(FNiagaraTypeDefinition::GetBoolDef(), TEXT("Post Event")));
-#if UE_5_0_OR_LATER
 	Sig.Inputs.Add(FNiagaraVariable(FNiagaraTypeDefinition::GetPositionDef(), TEXT("Position")));
-#else
-	Sig.Inputs.Add(FNiagaraVariable(FNiagaraTypeDefinition::GetVec3Def(), TEXT("Position")));
-#endif
 	Sig.Inputs.Add(FNiagaraVariable(FNiagaraTypeDefinition::GetVec3Def(), TEXT("Rotation")));
 	Sig.Inputs.Add(FNiagaraVariable(FNiagaraTypeDefinition::GetFloatDef(), TEXT("StartTime")));
 	Sig.Outputs.Add(FNiagaraVariable(FNiagaraTypeDefinition::GetBoolDef(), TEXT("Success")));
@@ -374,11 +388,7 @@ void UNiagaraDataInterfaceWwiseEvent::GetFunctions(TArray<FNiagaraFunctionSignat
 	Sig.Inputs.Add(FNiagaraVariable(FNiagaraTypeDefinition(GetClass()), TEXT("Wwise Event Interface")));
 	Sig.Inputs.Add(FNiagaraVariable(FNiagaraTypeDefinition::GetBoolDef(), TEXT("Post Event")));
 	Sig.Inputs.Add(FNiagaraVariable(FNiagaraTypeDefinition::GetIntDef(), TEXT("Existing Audio Handle")));
-#if UE_5_0_OR_LATER
 	Sig.Inputs.Add(FNiagaraVariable(FNiagaraTypeDefinition::GetPositionDef(), TEXT("Position")));
-#else
-	Sig.Inputs.Add(FNiagaraVariable(FNiagaraTypeDefinition::GetVec3Def(), TEXT("Position")));
-#endif
 	Sig.Inputs.Add(FNiagaraVariable(FNiagaraTypeDefinition::GetVec3Def(), TEXT("Rotation")));
 	Sig.Inputs.Add(FNiagaraVariable(FNiagaraTypeDefinition::GetFloatDef(), TEXT("Start Time")));
 	Sig.Outputs.Add(FNiagaraVariable(FNiagaraTypeDefinition::GetIntDef(), TEXT("Audio Handle")));
@@ -396,11 +406,7 @@ void UNiagaraDataInterfaceWwiseEvent::GetFunctions(TArray<FNiagaraFunctionSignat
 	Sig.bRequiresExecPin = true;
 	Sig.Inputs.Add(FNiagaraVariable(FNiagaraTypeDefinition(GetClass()), TEXT("Wwise Event Interface")));
 	Sig.Inputs.Add(FNiagaraVariable(FNiagaraTypeDefinition::GetIntDef(), TEXT("Audio Handle")));
-#if UE_5_0_OR_LATER
 	Sig.Inputs.Add(FNiagaraVariable(FNiagaraTypeDefinition::GetPositionDef(), TEXT("Position")));
-#else
-	Sig.Inputs.Add(FNiagaraVariable(FNiagaraTypeDefinition::GetVec3Def(), TEXT("Position")));
-#endif
 	OutFunctions.Add(Sig);
 
 	Sig = FNiagaraFunctionSignature();
@@ -512,7 +518,7 @@ void UNiagaraDataInterfaceWwiseEvent::GetVMExternalFunction(const FVMExternalFun
 	}
 	else
 	{
-		UE_LOG(LogAkAudio, Display, TEXT("Could not find data interface external function in %s. Received Name: %s"), *GetPathNameSafe(this), *BindingInfo.Name.ToString());
+		UE_LOG(LogWwiseNiagara, Display, TEXT("Could not find data interface external function in %s. Received Name: %s"), *GetPathNameSafe(this), *BindingInfo.Name.ToString());
 	}
 }
 
@@ -529,11 +535,7 @@ void UNiagaraDataInterfaceWwiseEvent::UpdatePosition(FUnrealVectorVMContext& Con
 	for (int32 i = 0; i < Context.GetNumInstances(); ++i)
 	{
 		int32 Handle = AudioHandleInParam.GetAndAdvance();
-#if UE_5_0_OR_LATER
 		FVector Position = InstData->LWCConverter.ConvertSimulationPositionToWorld(PositionParam.GetAndAdvance());
-#else
-		FVector Position = PositionParam.GetAndAdvance();
-#endif
 		if (Handle > 0)
 		{
 
@@ -711,11 +713,7 @@ void UNiagaraDataInterfaceWwiseEvent::PostEventAtLocation(FUnrealVectorVMContext
 		FNiagaraBool ShouldPlay = PlayDataParam.GetAndAdvance();
 		FWwiseEventParticleData Data;
 
-#if UE_5_0_OR_LATER
 		Data.Position = InstData->LWCConverter.ConvertSimulationVectorToWorld(PositionParam.GetAndAdvance());
-#else
-		Data.Position = PositionParam.GetAndAdvance();
-#endif
 		const auto InRot = RotationParam.GetAndAdvance();
 		Data.Rotation = FRotator(InRot.X, InRot.Y, InRot.Z);
 		Data.StartTime = StartTimeParam.GetAndAdvance();
@@ -748,11 +746,7 @@ void UNiagaraDataInterfaceWwiseEvent::PostPersistentEvent(FUnrealVectorVMContext
 	{
 		bool ShouldPlay = PlayAudioParam.GetAndAdvance();
 		int32 Handle = AudioHandleInParam.GetAndAdvance();
-#if UE_5_0_OR_LATER
 		FVector Position = InstData->LWCConverter.ConvertSimulationVectorToWorld(PositionParam.GetAndAdvance());
-#else
-		FVector Position = PositionParam.GetAndAdvance();
-#endif
 		FUnrealFloatVector InRot = RotationParam.GetAndAdvance();
 		float StartTime = StartTimeParam.GetAndAdvance();
 
@@ -777,7 +771,7 @@ void UNiagaraDataInterfaceWwiseEvent::PostPersistentEvent(FUnrealVectorVMContext
 						UWorld* World = NiagaraComponent->GetWorld();
 						if (!World)
 						{
-							UE_LOG(LogAkAudio, Warning, TEXT("Niagara PostPersistentEvent: Cannot post event because world is invalid."));
+							UE_LOG(LogWwiseNiagara, Warning, TEXT("Niagara PostPersistentEvent: Cannot post event because world is invalid."));
 							return;
 						}
 						if (!World->AllowAudioPlayback())
@@ -787,7 +781,7 @@ void UNiagaraDataInterfaceWwiseEvent::PostPersistentEvent(FUnrealVectorVMContext
 						auto* AudioDevice = FAkAudioDevice::Get();
 						if (UNLIKELY(!AudioDevice))
 						{
-							UE_LOG(LogAkAudio, Warning, TEXT("Niagara PostPersistentEvent: Failed to post AkAudioEvent '%s' at a location without an Audio Device."), *Event->GetName());
+							UE_LOG(LogWwiseNiagara, Warning, TEXT("Niagara PostPersistentEvent: Failed to post AkAudioEvent '%s' at a location without an Audio Device."), *Event->GetName());
 							return;
 						}
 
@@ -809,7 +803,7 @@ void UNiagaraDataInterfaceWwiseEvent::PostPersistentEvent(FUnrealVectorVMContext
 						uint32 PlayingId = Event->PostOnComponent(AkComponent, nullptr, nullptr, nullptr, (AkCallbackType)0, nullptr, true, AudioContext);
 						if (PlayingId == AK_INVALID_PLAYING_ID )
 						{
-							AkComponent->ConditionalBeginDestroy();
+							AkComponent->DestroyComponent();
 							return;
 						}
 
@@ -839,9 +833,13 @@ void UNiagaraDataInterfaceWwiseEvent::PostPersistentEvent(FUnrealVectorVMContext
 			AudioData.UpdateCallback = [Handle](FWwiseEventInterface_InstanceData* InstanceData,  FNiagaraSystemInstance*)
 			{
 				SCOPE_CYCLE_COUNTER(STAT_WwiseNiagaraStopEvent);
-				TWeakObjectPtr<UAkComponent> AkComponent = InstanceData->PersistentComponents.FindRef(Handle);
-				if (AkComponent.IsValid())
+				TWeakObjectPtr<UAkComponent> WeakAkComponent = InstanceData->PersistentComponents.FindRef(Handle);
+				if (auto AkComponent = WeakAkComponent.Get())
 				{
+					UE_LOG(LogWwiseNiagara, VeryVerbose, TEXT("Play condition is not set. Stopping AkComponent %s (%p), with owner %s"),
+						   *AkComponent->GetName(),
+						   AkComponent,
+						   AkComponent->GetOwner()? *AkComponent->GetOwner()->GetName(): TEXT("None"))
 					AkComponent->Stop();
 					InstanceData->PersistentComponents.Remove(Handle);
 				}

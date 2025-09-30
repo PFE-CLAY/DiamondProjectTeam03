@@ -12,7 +12,7 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #include "Wwise/WwiseNiagaraModuleImpl.h"
@@ -27,12 +27,12 @@ FWwiseNiagaraModule::FWwiseNiagaraModule()
 
 void FWwiseNiagaraModule::StartupModule()
 {
-	UE_LOG(LogWwiseNiagara, Display, TEXT("Initializing default Niagara."));
+	UE_LOG(LogWwiseNiagara, Log, TEXT("Initializing default Niagara."));
 	IWwiseNiagaraModule::StartupModule();
 }
 
 void FWwiseNiagaraModule::ShutdownModule()
 {
-	UE_LOG(LogWwiseNiagara, Display, TEXT("Shutting down default Niagara."));
+	UE_LOG(LogWwiseNiagara, Log, TEXT("Shutting down default Niagara."));
 	IWwiseNiagaraModule::ShutdownModule();
 }

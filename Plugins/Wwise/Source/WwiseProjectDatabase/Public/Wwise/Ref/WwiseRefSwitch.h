@@ -12,48 +12,48 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #pragma once
 
 #include "Wwise/Ref/WwiseRefSwitchGroup.h"
 
-class WWISEPROJECTDATABASE_API FWwiseRefSwitch : public FWwiseRefSwitchGroup
+class WwiseRefSwitch : public WwiseRefSwitchGroup
 {
 public:
-	static const TCHAR* const NAME;
-	static constexpr EWwiseRefType TYPE = EWwiseRefType::Switch;
+	static const WwiseDBString NAME;
+	static constexpr WwiseRefType TYPE = WwiseRefType::Switch;
 	struct FGlobalIdsMap;
 
 	WwiseRefIndexType SwitchIndex;
 
-	FWwiseRefSwitch() {}
-	FWwiseRefSwitch(const WwiseMetadataSharedRootFileConstPtr& InRootMediaRef, const FName& InJsonFilePath,
-		WwiseRefIndexType InSoundBankIndex, uint32 InLanguageId,
+	WwiseRefSwitch() {}
+	WwiseRefSwitch(const WwiseMetadataSharedRootFileConstPtr& InRootMediaRef, const WwiseDBString& InJsonFilePath,
+		WwiseRefIndexType InSoundBankIndex, WwiseDBShortId InLanguageId,
 		WwiseRefIndexType InSwitchGroupIndex,
 		WwiseRefIndexType InSwitchIndex) :
-		FWwiseRefSwitchGroup(InRootMediaRef, InJsonFilePath, InSoundBankIndex, InLanguageId, InSwitchGroupIndex),
+		WwiseRefSwitchGroup(InRootMediaRef, InJsonFilePath, InSoundBankIndex, InLanguageId, InSwitchGroupIndex),
 		SwitchIndex(InSwitchIndex)
 	{}
-	const FWwiseMetadataSwitch* GetSwitch() const;
+	const WwiseMetadataSwitch* GetSwitch() const;
 
-	uint32 SwitchId() const;
-	FGuid SwitchGuid() const;
-	FName SwitchName() const;
-	FName SwitchObjectPath() const;
+	WwiseDBShortId SwitchId() const;
+	WwiseDBGuid SwitchGuid() const;
+	WwiseDBString SwitchName() const;
+	WwiseDBString SwitchObjectPath() const;
 
-	uint32 Hash() const override;
-	EWwiseRefType Type() const override { return TYPE; }
-	bool operator==(const FWwiseRefSwitch& Rhs) const
+	WwiseDBShortId Hash() const override;
+	WwiseRefType Type() const override { return TYPE; }
+	bool operator==(const WwiseRefSwitch& Rhs) const
 	{
-		return FWwiseRefSwitchGroup::operator ==(Rhs)
+		return WwiseRefSwitchGroup::operator ==(Rhs)
 			&& SwitchIndex == Rhs.SwitchIndex;
 	}
-	bool operator!=(const FWwiseRefSwitch& Rhs) const { return !operator==(Rhs); }
+	bool operator!=(const WwiseRefSwitch& Rhs) const { return !operator==(Rhs); }
 };
 
-struct WWISEPROJECTDATABASE_API FWwiseRefSwitch::FGlobalIdsMap
+struct WwiseRefSwitch::FGlobalIdsMap
 {
 	WwiseSwitchGlobalIdsMap GlobalIdsMap;
 };

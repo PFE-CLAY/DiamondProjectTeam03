@@ -12,25 +12,23 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #include "Wwise/Metadata/WwiseMetadataRootPaths.h"
 #include "Wwise/Metadata/WwiseMetadataLoader.h"
-#include "Wwise/WwiseProjectDatabaseModule.h"
-#include "Wwise/Stats/ProjectDatabase.h"
 
-FWwiseMetadataRootPaths::FWwiseMetadataRootPaths()
+WwiseMetadataRootPaths::WwiseMetadataRootPaths()
 {
-	UE_LOG(LogWwiseProjectDatabase, Error, TEXT("Using default FWwiseMetadataRootPaths"));
+	WWISE_DB_LOG(Error, "Using default WwiseMetadataRootPaths");
 }
 
-FWwiseMetadataRootPaths::FWwiseMetadataRootPaths(FWwiseMetadataLoader& Loader) :
-	ProjectRoot(Loader.GetString(this, TEXT("ProjectRoot"))),
-	SourceFilesRoot(Loader.GetString(this, TEXT("SourceFilesRoot"))),
-	SoundBanksRoot(Loader.GetString(this, TEXT("SoundBanksRoot"))),
-	ExternalSourcesInputFile(Loader.GetString(this, TEXT("ExternalSourcesInputFile"))),
-	ExternalSourcesOutputRoot(Loader.GetString(this, TEXT("ExternalSourcesOutputRoot")))
+WwiseMetadataRootPaths::WwiseMetadataRootPaths(WwiseMetadataLoader& Loader) :
+	ProjectRoot(Loader.GetString(this, "ProjectRoot"_wwise_db)),
+	SourceFilesRoot(Loader.GetString(this, "SourceFilesRoot"_wwise_db)),
+	SoundBanksRoot(Loader.GetString(this, "SoundBanksRoot"_wwise_db)),
+	ExternalSourcesInputFile(Loader.GetString(this, "ExternalSourcesInputFile"_wwise_db)),
+	ExternalSourcesOutputRoot(Loader.GetString(this, "ExternalSourcesOutputRoot"_wwise_db))
 {
-	Loader.LogParsed(TEXT("RootPaths"));
+	Loader.LogParsed("RootPaths"_wwise_db);
 }

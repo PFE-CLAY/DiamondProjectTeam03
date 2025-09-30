@@ -12,7 +12,7 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 /*=============================================================================
@@ -31,12 +31,12 @@ Copyright (c) 2024 Audiokinetic Inc.
 #include "Wwise/WwiseIOHook.h"
 #include "Wwise/WwiseResourceLoader.h"
 #include "Wwise/WwiseResourceLoaderImpl.h"
-#include "Wwise/API/WAAPI.h"
 #include "Wwise/API/WwiseMonitorAPI.h"
 #include "Wwise/API/WwiseSoundEngineAPI.h"
 #include "Wwise/API/WwiseSpatialAudioAPI.h"
 #include "Wwise/API/WwiseStreamMgrAPI.h"
 #include "Wwise/Stats/Global.h"
+#include "Wwise/WwiseAllowShrinking.h"
 #include "WwiseInitBankLoader/WwiseInitBankLoader.h"
 
 #include "AkCallbackInfoPool.h"
@@ -91,9 +91,17 @@ Copyright (c) 2024 Audiokinetic Inc.
 
 #if WITH_EDITORONLY_DATA && !defined(AK_OPTIMIZED)
 #include "Wwise/WwiseProjectDatabase.h"
+#include "Wwise/WwiseStringConverter.h"
+#endif
+
+#if AK_SUPPORT_WAAPI
+#include "Wwise/API/WAAPI.h"
 #endif
 
 #include <inttypes.h>
+
+#include "Wwise/WwiseGlobalCallbacks.h"
+
 
 /*------------------------------------------------------------------------------------
 	Statics and Globals
@@ -208,7 +216,7 @@ static bool GetInfoErrorMessageTranslatorFunction(IWwiseSoundEngineAPI::TagInfor
 		return false;
 	}
 	
-	FWwiseDataStructureScopeLock DB(*ProjectDB);
+	WwiseDataStructureScopeLock DB(*ProjectDB);
 	for (AkUInt32 i = 0; i < in_uCount && out_uTranslated != in_uCount; i++)
 	{
 		auto& Tag = in_pTagList[i];
@@ -225,7 +233,7 @@ static bool GetInfoErrorMessageTranslatorFunction(IWwiseSoundEngineAPI::TagInfor
 			const auto RefBank = DB.GetSoundBank(AssetInfo);
 			if (LIKELY(RefBank.IsValid()))
 			{
-				Name = RefBank.SoundBankShortName().ToString();
+				Name = FWwiseStringConverter::ToFString(*RefBank.SoundBankShortName());
 			}
 			break;
 		}
@@ -244,7 +252,7 @@ static bool GetInfoErrorMessageTranslatorFunction(IWwiseSoundEngineAPI::TagInfor
 			const auto RefMedia = DB.GetMediaFile(AssetInfo);
 			if (LIKELY(RefMedia.IsValid()))
 			{
-				Name = RefMedia.MediaShortName().ToString();
+				Name = FWwiseStringConverter::ToFString(*RefMedia.MediaShortName());
 			}
 			break;
 		}
@@ -253,7 +261,7 @@ static bool GetInfoErrorMessageTranslatorFunction(IWwiseSoundEngineAPI::TagInfor
 			const auto RefPlugin = DB.GetCustomPlugin(AssetInfo);
 			if (LIKELY(RefPlugin.IsValid()))
 			{
-				Name = RefPlugin.CustomPluginName().ToString();
+				Name = FWwiseStringConverter::ToFString(*RefPlugin.CustomPluginName());
 			}
 			break;
 		}
@@ -262,14 +270,14 @@ static bool GetInfoErrorMessageTranslatorFunction(IWwiseSoundEngineAPI::TagInfor
 			const auto RefSwitchGroup = DB.GetSwitchGroup(AssetInfo);
 			if (RefSwitchGroup.IsValid())
 			{
-				Name = RefSwitchGroup.SwitchGroupName().ToString();
+				Name = FWwiseStringConverter::ToFString(*RefSwitchGroup.SwitchGroupName());
 				break;
 			}
 
 			const auto RefStateGroup = DB.GetStateGroup(AssetInfo);
 			if (RefStateGroup.IsValid())
 			{
-				Name = RefStateGroup.StateGroupName().ToString();
+				Name = FWwiseStringConverter::ToFString(*RefStateGroup.StateGroupName());
 			}
 			break;
 		}
@@ -277,23 +285,23 @@ static bool GetInfoErrorMessageTranslatorFunction(IWwiseSoundEngineAPI::TagInfor
 		{
 			//$w is generic, it can mean a lot of unrelated types.
 			const TCHAR* FoundType = TEXT("");
-			FString FoundName;
+			WwiseDBString FoundName;
 
 			const auto EventInfo = FWwiseEventInfo(ID);
 			const auto RefEvents = DB.GetEvent(EventInfo);
-			if (RefEvents.Num() > 0)
+			if (RefEvents.Size() > 0)
 			{
 				FoundType = TEXT("Event");
-				FoundName = RefEvents.Array()[0].EventName().ToString();
+				FoundName = *RefEvents.AsArray()[0].EventName();
 			}
 
 			const auto RefGameParameter = DB.GetGameParameter(AssetInfo);
 			if (RefGameParameter.IsValid())
 			{
-				const auto NewName = RefGameParameter.GameParameterName().ToString();
+				const auto NewName = *RefGameParameter.GameParameterName();
 				if (UNLIKELY(!FoundName.IsEmpty() && NewName != FoundName))
 				{
-					UE_LOG(LogAkAudio, Warning, TEXT("Found two different names for the same object ID %" PRIu32 ": %s %s and GameParameter %s. Ignoring."), ID, FoundType, *FoundName, *NewName);
+					UE_LOG(LogAkAudio, Warning, TEXT("Found two different names for the same object ID %" PRIu32 ": %s %s and GameParameter %s. Ignoring."), ID, FoundType, *FWwiseStringConverter::ToFString(FoundName), *FWwiseStringConverter::ToFString(NewName));
 					continue;
 				}
 				FoundType = TEXT("GameParameter");
@@ -303,10 +311,10 @@ static bool GetInfoErrorMessageTranslatorFunction(IWwiseSoundEngineAPI::TagInfor
 			const auto RefShareSet = DB.GetPluginShareSet(AssetInfo);
 			if (RefShareSet.IsValid())
 			{
-				const auto NewName = RefShareSet.PluginShareSetName().ToString();
+				const auto NewName = *RefShareSet.PluginShareSetName();
 				if (UNLIKELY(!FoundName.IsEmpty() && NewName != FoundName))
 				{
-					UE_LOG(LogAkAudio, Warning, TEXT("Found two different names for the same object ID %" PRIu32 ": %s %s and ShareSet %s. Ignoring."), ID, FoundType, *FoundName, *NewName);
+					UE_LOG(LogAkAudio, Warning, TEXT("Found two different names for the same object ID %" PRIu32 ": %s %s and ShareSet %s. Ignoring."), ID, FoundType, *FWwiseStringConverter::ToFString(FoundName), *FWwiseStringConverter::ToFString(NewName));
 					continue;
 				}
 				FoundType = TEXT("ShareSet");
@@ -316,10 +324,10 @@ static bool GetInfoErrorMessageTranslatorFunction(IWwiseSoundEngineAPI::TagInfor
 			const auto RefBus = DB.GetBus(AssetInfo);
 			if (RefBus.IsValid())
 			{
-				const auto NewName = RefBus.BusName().ToString();
+				const auto NewName = *RefBus.BusName();
 				if (UNLIKELY(!FoundName.IsEmpty() && NewName != FoundName))
 				{
-					UE_LOG(LogAkAudio, Warning, TEXT("Found two different names for the same object ID %" PRIu32 ": %s %s and Bus %s. Ignoring."), ID, FoundType, *FoundName, *NewName);
+					UE_LOG(LogAkAudio, Warning, TEXT("Found two different names for the same object ID %" PRIu32 ": %s %s and Bus %s. Ignoring."), ID, FoundType, *FWwiseStringConverter::ToFString(FoundName), *FWwiseStringConverter::ToFString(NewName));
 					continue;
 				}
 				FoundType = TEXT("Bus");
@@ -329,10 +337,10 @@ static bool GetInfoErrorMessageTranslatorFunction(IWwiseSoundEngineAPI::TagInfor
 			const auto RefAuxBus = DB.GetAuxBus(AssetInfo);
 			if (RefAuxBus.IsValid())
 			{
-				const auto NewName = RefAuxBus.AuxBusName().ToString();
+				const auto NewName = *RefAuxBus.AuxBusName();
 				if (UNLIKELY(!FoundName.IsEmpty() && NewName != FoundName))
 				{
-					UE_LOG(LogAkAudio, Warning, TEXT("Found two different names for the same object ID %" PRIu32 ": %s %s and AuxBus %s. Ignoring."), ID, FoundType, *FoundName, *NewName);
+					UE_LOG(LogAkAudio, Warning, TEXT("Found two different names for the same object ID %" PRIu32 ": %s %s and AuxBus %s. Ignoring."), ID, FoundType, *FWwiseStringConverter::ToFString(FoundName), *FWwiseStringConverter::ToFString(NewName));
 					continue;
 				}
 				FoundType = TEXT("AuxBus");
@@ -342,7 +350,7 @@ static bool GetInfoErrorMessageTranslatorFunction(IWwiseSoundEngineAPI::TagInfor
 
 			if (!FoundName.IsEmpty())
 			{
-				Name = FoundName;
+				Name = FWwiseStringConverter::ToFString(FoundName);
 				break;
 			}
 			else
@@ -537,6 +545,25 @@ bool FAkAudioDevice::Init()
 		}
 	}
 #endif	
+
+	{
+		const auto CurrentLocale{ FInternationalization::Get().GetCurrentLocale() };
+		auto Name{ CurrentLocale->GetName() };
+
+		UE_LOG(LogAkAudio, Log, TEXT("Trying to set Audio Culture to Current Unreal Locale \"%s\""), *Name);
+		if (!SetCurrentAudioCulture(Name, EAudioCultureType::Unreal))
+		{
+			const auto CurrentLanguage{ FInternationalization::Get().GetCurrentLanguage() };
+			Name = CurrentLanguage->GetName();
+			UE_LOG(LogAkAudio, Log, TEXT("Trying to set Audio Culture to Current Unreal Language \"%s\""), *Name);
+			if (!SetCurrentAudioCulture(Name, EAudioCultureType::Unreal))
+			{
+				Name = GetDefaultLanguage();
+				UE_LOG(LogAkAudio, Log, TEXT("Trying to set Audio Culture to Wwise Project Default \"%s\""), *Name);
+				SetCurrentAudioCulture(Name, EAudioCultureType::Wwise);
+			}
+		}
+	}
 
 #if AK_SUPPORT_WAAPI
 	if (auto waapiClient = FAkWaapiClient::Get())
@@ -831,6 +858,17 @@ void FAkAudioDevice::ResumePie(const bool bIsSimulating)
 	}
 }
 
+void FAkAudioDevice::ExecuteActionOnPlayingID(AK::SoundEngine::AkActionOnEventType in_ActionType, uint32 PlayingID,
+                                              AkTimeMs in_uTransitionDuration, AkCurveInterpolation in_eFadeCurve)
+{
+	auto* SoundEngine = IWwiseSoundEngineAPI::Get();
+	if (LIKELY(SoundEngine))
+	{
+		SoundEngine->ExecuteActionOnPlayingID(in_ActionType, PlayingID,
+		                                      in_uTransitionDuration, in_eFadeCurve);
+	}
+}
+
 void FAkAudioDevice::OnSwitchBeginPIEAndSIE(const bool bIsSimulating)
 {
 	if(EditorListener != nullptr)
@@ -910,9 +948,7 @@ void FAkAudioDevice::UpdateRoomsForPortals()
 			{
 				if (Portal.IsValid())
 				{
-					const bool RoomsChanged = Portal->UpdateConnectedRooms();
-					if (RoomsChanged)
-						SetSpatialAudioPortal(Portal.Get());
+					Portal->PortalRoomsNeedUpdate();
 				}
 			}
 		}
@@ -973,6 +1009,12 @@ bool FAkAudioDevice::Update( float DeltaTime )
 void FAkAudioDevice::Teardown()
 {
 	SCOPED_AKAUDIO_EVENT_2(TEXT("FAkAudioDevice::Teardown"));
+
+	if (m_EngineExiting)
+	{
+		return;
+	}
+	
 #if AK_SUPPORT_WAAPI
 	if (auto waapiClient = FAkWaapiClient::Get())
 	{
@@ -1015,10 +1057,25 @@ void FAkAudioDevice::Teardown()
 
 			if (SoundEngine->IsInitialized())
 			{
-				FAkAudioDevice_Helpers::UnregisterAllGlobalCallbacks();
-
 				SoundEngine->StopAll();
 				SoundEngine->RenderAudio();
+
+				// Before unloading the SoundEngine, we are blocking the system until the resources are properly done playing.
+				// The delay is approximately adjusted to 500ms. After that delay, we give up. Most platforms have clear
+				// limits on app close delays.
+				int MaxCount = 500;
+				while (--MaxCount && ResourceUnloadFutures.Num())
+				{
+					FPlatformProcess::Sleep(0.001f);
+					CleanupUnfinishedResourceUnload();
+				}
+
+				if (UNLIKELY(ResourceUnloadFutures.Num()))
+				{
+					UE_LOG(LogAkAudio, Error, TEXT("%d resources remaining at shutdown"), ResourceUnloadFutures.Num());
+				}
+
+				FAkAudioDevice_Helpers::UnregisterAllGlobalCallbacks();
 			}
 		}
 
@@ -1042,17 +1099,23 @@ void FAkAudioDevice::Teardown()
 			IOHook = nullptr;
 		}
 
+#if WITH_EDITORONLY_DATA && !defined(AK_OPTIMIZED)
 		auto* Monitor = IWwiseMonitorAPI::Get();
 		if (LIKELY(Monitor))
 		{
-			Monitor->TerminateDefaultWAAPIErrorTranslator();
+#if AK_SUPPORT_WAAPI
+			auto* WAAPI = IWAAPI::Get();
+			if (LIKELY(WAAPI && Monitor))
+			{
+				WAAPI->TerminateErrorTranslator();
+			}
+#endif
 			Monitor->ResetTranslator();
-#if WITH_EDITORONLY_DATA && !defined(AK_OPTIMIZED)
 			delete m_UnrealErrorTranslator;
 			m_UnrealErrorTranslator = nullptr;
-#endif
 		}
-
+#endif
+		
 		m_bSoundEngineInitialized = false;
 	}
 
@@ -1408,14 +1471,6 @@ AKRESULT FAkAudioDevice::TryUnsetMedia(AkSourceSettings* in_pSourceSettings, uin
 	return SoundEngine->TryUnsetMedia(in_pSourceSettings, in_uNumSourceSettings, out_pUnsetResults);
 }
 
-AKRESULT FAkAudioDevice::UnsetMedia(AkSourceSettings* in_pSourceSettings, uint32 in_uNumSourceSettings)
-{
-	auto* SoundEngine = IWwiseSoundEngineAPI::Get();
-	if (UNLIKELY(!SoundEngine)) return AK_NotInitialized;
-
-	return SoundEngine->UnsetMedia(in_pSourceSettings, in_uNumSourceSettings);
-}
-
 FString FAkAudioDevice::GetCurrentAudioCulture() const
 {
 	auto* StreamMgr = IWwiseStreamMgrAPI::Get();
@@ -1502,70 +1557,174 @@ FWwiseLanguageCookedData FAkAudioDevice::GetLanguageCookedDataFromString(const F
 	return FWwiseLanguageCookedData(GetShortIDFromString(WwiseLanguage), FName(WwiseLanguage), EWwiseLanguageRequirement::IsOptional);
 }
 
-void FAkAudioDevice::SetCurrentAudioCulture(const FString& NewAudioCulture)
+bool FAkAudioDevice::GetLanguageCookedDataFromString(const FString& WwiseLanguage, FWwiseLanguageCookedData& OutCookedData)
 {
-	FString NewWwiseLanguage;
-	if (FindWwiseLanguage(NewAudioCulture, NewWwiseLanguage))
+#if WITH_EDITOR
+	const auto* ProjectDatabase = FWwiseProjectDatabase::Get();
+	if (UNLIKELY(!ProjectDatabase))
 	{
-		auto* ResourceLoader = FWwiseResourceLoader::Get();
-		if (UNLIKELY(!ResourceLoader))
-		{
-			return;
-		}
-		ResourceLoader->SetLanguage(GetLanguageCookedDataFromString(NewWwiseLanguage), EWwiseReloadLanguage::Immediate);
-
-		auto* StreamMgr = IWwiseStreamMgrAPI::Get();
-		if (UNLIKELY(!StreamMgr))
-		{
-			return;
-		}
-		StreamMgr->SetCurrentLanguage(TCHAR_TO_AK(*NewWwiseLanguage));
+		UE_LOG(LogAkAudio, Verbose,
+			TEXT("FAkAudioDevice::GetLanguageCookedDataFromString (%s): ProjectDatabase not initialized"),
+			*WwiseLanguage);
+		return false;
 	}
+
+	const WwiseDataStructureScopeLock DataStructure(*ProjectDatabase);
+	const WwiseDBSet<WwiseDBSharedLanguageId>& Languages = DataStructure.GetLanguages();
+	for (const WwiseDBSharedLanguageId& Language : Languages)
+	{
+		if (*Language.GetLanguageName() == WwiseLanguage)
+		{
+			OutCookedData = FWwiseLanguageCookedData(
+				(int32)Language.GetLanguageId(), FName(*Language.GetLanguageName()), (EWwiseLanguageRequirement)Language.LanguageRequirement);
+			return true;
+		}
+	}
+#else
+	auto* WwiseInitBankLoader = FWwiseInitBankLoader::Get();
+	if (LIKELY(WwiseInitBankLoader))
+	{
+		auto* InitBankAsset = WwiseInitBankLoader->GetInitBankAsset();
+		if (LIKELY(InitBankAsset))
+		{
+			for (auto& Language : InitBankAsset->InitBankCookedData.Language)
+			{
+				if (Language.LanguageName.ToString() == WwiseLanguage)
+				{
+					OutCookedData = FWwiseLanguageCookedData(Language.LanguageId, Language.LanguageName, Language.LanguageRequirement);
+					return true;
+				}
+			}
+		}
+	}
+#endif
+	
+	return false;
 }
 
-void FAkAudioDevice::SetCurrentAudioCultureAsync(const FString& NewAudioCulture, FSetCurrentAudioCultureAction* LatentAction)
+bool FAkAudioDevice::SetCurrentAudioCulture(const FString& NewAudioCulture, EAudioCultureType InAudioCultureType)
 {
 	FString NewWwiseLanguage;
 
-	if (FindWwiseLanguage(NewAudioCulture, NewWwiseLanguage))
+	if (InAudioCultureType == EAudioCultureType::Unreal)
 	{
-		SetCurrentAudioCultureAsyncTask* newTask = new SetCurrentAudioCultureAsyncTask(GetLanguageCookedDataFromString(NewWwiseLanguage), LatentAction);
-		if (newTask->Start())
+		if (!FindWwiseLanguage(NewAudioCulture, NewWwiseLanguage))
 		{
-			AudioCultureAsyncTasks.Add(newTask);
+			UE_LOG(LogAkAudio, Verbose, TEXT("FAkAudioDevice::SetCurrentAudioCulture: Could not find Unreal language %s in Wwise. Skipping."),
+				*NewAudioCulture);
+			return false;
 		}
-		else
+	}
+	else
+	{
+		NewWwiseLanguage = NewAudioCulture;
+	}
+
+	FWwiseLanguageCookedData CookedData;
+	if (UNLIKELY(!GetLanguageCookedDataFromString(NewWwiseLanguage, CookedData)))
+	{
+		UE_LOG(LogAkAudio, Verbose, TEXT("FAkAudioDevice::SetCurrentAudioCulture: Could not find Cooked Data for language %s in Wwise. Skipping."),
+			*NewWwiseLanguage);
+		return false;
+	}
+
+	FWwiseResourceLoaderPtr ResourceLoader = FWwiseResourceLoader::Get();
+	if (UNLIKELY(!ResourceLoader))
+	{
+		UE_LOG(LogAkAudio, Warning, TEXT("FAkAudioDevice::SetCurrentAudioCulture: Could not get ResourceLoader to set Wwise language to %s. Skipping."),
+			*NewWwiseLanguage);
+		return false;
+	}
+	ResourceLoader->SetLanguage(CookedData, EWwiseReloadLanguage::Immediate);
+
+	auto* StreamMgr = IWwiseStreamMgrAPI::Get();
+	if (UNLIKELY(!StreamMgr))
+	{
+		UE_LOG(LogAkAudio, Warning, TEXT("FAkAudioDevice::SetCurrentAudioCulture: Could not get StreamMgr to set Wwise language to %s. Skipping."),
+			*NewWwiseLanguage);
+		return false;
+	}
+	StreamMgr->SetCurrentLanguage(TCHAR_TO_AK(*NewWwiseLanguage));
+	return true;
+}
+
+void FAkAudioDevice::SetCurrentAudioCultureAsync(const FString& NewAudioCulture, FSetCurrentAudioCultureAction* LatentAction, EAudioCultureType InAudioCultureType)
+{
+	FString NewWwiseLanguage;
+
+	if (InAudioCultureType == EAudioCultureType::Unreal)
+	{
+		if (!FindWwiseLanguage(NewAudioCulture, NewWwiseLanguage))
 		{
+			UE_LOG(LogAkAudio, Verbose, TEXT("FAkAudioDevice::SetCurrentAudioCultureAsync: Could not find Unreal language %s in Wwise. Skipping."),
+				*NewAudioCulture);
 			LatentAction->ActionDone = true;
-			delete newTask;
+			return;
 		}
+	}
+	else
+	{
+		NewWwiseLanguage = NewAudioCulture;
+	}
+
+	FWwiseLanguageCookedData CookedData;
+	if (UNLIKELY(!GetLanguageCookedDataFromString(NewWwiseLanguage, CookedData)))
+	{
+		UE_LOG(LogAkAudio, Log, TEXT("FAkAudioDevice::SetCurrentAudioCultureAsync: Could not find Cooked Data for language %s in Wwise. Skipping."),
+			*NewWwiseLanguage);
+		LatentAction->ActionDone = true;
+		return;
+	}
+
+	SetCurrentAudioCultureAsyncTask* newTask = new SetCurrentAudioCultureAsyncTask(CookedData, LatentAction);
+	if (newTask->Start())
+	{
+		AudioCultureAsyncTasks.Add(newTask);
 	}
 	else
 	{
 		LatentAction->ActionDone = true;
+		delete newTask;
 	}
 }
 
-void FAkAudioDevice::SetCurrentAudioCultureAsync(const FString& NewAudioCulture, const FOnSetCurrentAudioCultureCompleted& CompletedCallback)
+void FAkAudioDevice::SetCurrentAudioCultureAsync(const FString& NewAudioCulture, const FOnSetCurrentAudioCultureCompleted& CompletedCallback, EAudioCultureType InAudioCultureType)
 {
 	FString NewWwiseLanguage;
 
-	if (FindWwiseLanguage(NewAudioCulture, NewWwiseLanguage))
+	if (InAudioCultureType == EAudioCultureType::Unreal)
 	{
-		SetCurrentAudioCultureAsyncTask* newTask = new SetCurrentAudioCultureAsyncTask(GetLanguageCookedDataFromString(NewWwiseLanguage), CompletedCallback);
-		if (newTask->Start())
+		if (!FindWwiseLanguage(NewAudioCulture, NewWwiseLanguage))
 		{
-			AudioCultureAsyncTasks.Add(newTask);
-		}
-		else
-		{
+			UE_LOG(LogAkAudio, Verbose, TEXT("FAkAudioDevice::SetCurrentAudioCultureAsync: Could not find Unreal language %s in Wwise. Skipping."),
+				*NewAudioCulture);
 			CompletedCallback.ExecuteIfBound(false);
-			delete newTask;
+			return;
 		}
 	}
 	else
 	{
-		CompletedCallback.ExecuteIfBound(true);
+		NewWwiseLanguage = NewAudioCulture;
+	}
+
+	FWwiseLanguageCookedData CookedData;
+	if (UNLIKELY(!GetLanguageCookedDataFromString(NewWwiseLanguage, CookedData)))
+	{
+		UE_LOG(LogAkAudio, Log, TEXT("FAkAudioDevice::SetCurrentAudioCultureAsync: Could not find Cooked Data for language %s in Wwise. Skipping."),
+			*NewWwiseLanguage);
+		CompletedCallback.ExecuteIfBound(false);
+		return;
+	}
+
+	SetCurrentAudioCultureAsyncTask* newTask = new SetCurrentAudioCultureAsyncTask(CookedData, CompletedCallback);
+	if (newTask->Start())
+	{
+		AudioCultureAsyncTasks.Add(newTask);
+	}
+	else
+	{
+		CompletedCallback.ExecuteIfBound(false);
+		delete newTask;
 	}
 }
 
@@ -1900,7 +2059,9 @@ AKRESULT FAkAudioDevice::SeekOnEvent(
 
 		if (Component->AllowAudioPlayback())
         {
-            return SoundEngine->SeekOnEvent(EventShortID, Component->GetAkGameObjectID(), Percent, bSeekToNearestMarker, PlayingID);
+			AKRESULT Result = SoundEngine->SeekOnEvent(EventShortID, Component->GetAkGameObjectID(), Percent,
+			                                           bSeekToNearestMarker, PlayingID);
+			return Result;
         }
     }
     return AKRESULT::AK_Fail;
@@ -2057,7 +2218,7 @@ void FAkAudioDevice::PostEventAtLocationEndOfEventCallback(AkCallbackType in_eTy
 		auto pPackage = (IAkUserEventCallbackPackage*)in_pCallbackInfo->pCookie;
 		if (pPackage && pPackage->HasExternalSources)
 		{
-			if (auto* ExternalSourceManager = IWwiseExternalSourceManager::Get())
+			if (auto ExternalSourceManager = IWwiseExternalSourceManager::Get())
 			{
 				ExternalSourceManager->OnEndOfEvent(((AkEventCallbackInfo*)in_pCallbackInfo)->playingID);
 			}
@@ -2065,8 +2226,13 @@ void FAkAudioDevice::PostEventAtLocationEndOfEventCallback(AkCallbackType in_eTy
 	}
 }
 
-UAkComponent* FAkAudioDevice::SpawnAkComponentAtLocation( class UAkAudioEvent* in_pAkEvent, FVector Location, FRotator Orientation, bool AutoPost, const FString& EventName, bool AutoDestroy, UWorld* in_World)
+UAkComponent* FAkAudioDevice::SpawnAkComponentAtLocation( class UAkAudioEvent* in_pAkEvent, FVector Location, FRotator Orientation, bool AutoPost, bool AutoDestroy, UWorld* in_World)
 {
+	if (in_pAkEvent == NULL)
+	{
+		UE_LOG(LogAkAudio, Warning, TEXT("SpawnAkComponentAtLocation: The specified event was null. Aborting."));
+		return NULL;
+	}
 	UAkComponent * AkComponent = NULL;
 	if (in_World)
 	{
@@ -2092,7 +2258,7 @@ UAkComponent* FAkAudioDevice::SpawnAkComponentAtLocation( class UAkAudioEvent* i
 		{
 			if (AkComponent->PostAssociatedAkEvent(0, FOnAkPostEventCallback()) == AK_INVALID_PLAYING_ID && AutoDestroy)
 			{
-				AkComponent->ConditionalBeginDestroy();
+				AkComponent->DestroyComponent();
 				AkComponent = NULL;
 			}
 		}
@@ -3034,12 +3200,55 @@ void FAkAudioDevice::StopGameObject( UAkComponent * in_pComponent )
 	{
 		gameObjId = in_pComponent->GetAkGameObjectID();
 	}
+
+	StopGameObjectID(gameObjId);
+}
+
+/**
+ * Stop all audio associated with a game object ID
+ *
+ * @param in_gameObjectID		ID of the game object
+ */
+void FAkAudioDevice::StopGameObjectID(AkGameObjectID in_gameObjectID)
+{
+	if (m_bSoundEngineInitialized)
+	{
+		auto* SoundEngine = IWwiseSoundEngineAPI::Get();
+		if (UNLIKELY(!SoundEngine)) return;
+
+		SoundEngine->StopAll(in_gameObjectID);
+	}
+}
+
+/**
+ * Pause all audio associated with a playing ID
+ *
+ * @param in_playingID		Playing ID to pause
+ */
+void FAkAudioDevice::PausePlayingID(AkPlayingID in_playingID, AkTimeMs in_uTransitionDuration, AkCurveInterpolation in_eFadeCurve)
+{
 	if ( m_bSoundEngineInitialized )
 	{
 		auto* SoundEngine = IWwiseSoundEngineAPI::Get();
 		if (UNLIKELY(!SoundEngine)) return;
 
-		SoundEngine->StopAll( gameObjId );
+		SoundEngine->ExecuteActionOnPlayingID(AK::SoundEngine::AkActionOnEventType_Pause, in_playingID, in_uTransitionDuration, in_eFadeCurve );
+	}
+}
+
+/**
+ * Resume all audio associated with a playing ID
+ *
+ * @param in_playingID		Playing ID to resume
+ */
+void FAkAudioDevice::ResumePlayingID( AkPlayingID in_playingID, AkTimeMs in_uTransitionDuration, AkCurveInterpolation in_eFadeCurve)
+{
+	if ( m_bSoundEngineInitialized )
+	{
+		auto* SoundEngine = IWwiseSoundEngineAPI::Get();
+		if (UNLIKELY(!SoundEngine)) return;
+
+		SoundEngine->ExecuteActionOnPlayingID(AK::SoundEngine::AkActionOnEventType_Resume, in_playingID, in_uTransitionDuration, in_eFadeCurve );
 	}
 }
 
@@ -3418,6 +3627,9 @@ AKRESULT FAkAudioDevice::UpdateRoom(UAkRoomComponent* in_pRoom, const AkRoomPara
 			auto* SpatialAudio = IWwiseSpatialAudioAPI::Get();
 			if (UNLIKELY(!SpatialAudio)) return AK_NotInitialized;
 
+			UAkLateReverbComponent* ReverbComp = in_pRoom->GetReverbComponent();
+			UE_CLOG(UNLIKELY(ReverbComp && ReverbComp->bEnable && in_RoomParams.ReverbAuxBus == AK_INVALID_AUX_ID), LogAkAudio, Warning, TEXT("Enabled Late Reverb component for room %s without an assigned Late Reverb Aux Bus"), *in_pRoom->GetRoomName());
+
 			result = SpatialAudio->SetRoom(in_pRoom->GetRoomID(), in_RoomParams, TCHAR_TO_ANSI(*in_pRoom->GetRoomName()));
 		}
 	}
@@ -3522,8 +3734,9 @@ bool FAkAudioDevice::SetSpatialAudioListener(UAkComponent* in_pListener)
 
 	auto* SpatialAudio = IWwiseSpatialAudioAPI::Get();
 	if (UNLIKELY(!SpatialAudio)) return false;
+	if (UNLIKELY(!IsValid(m_SpatialAudioListener))) return false;
 
-	SpatialAudio->RegisterListener((AkGameObjectID)m_SpatialAudioListener);
+	SpatialAudio->RegisterListener(m_SpatialAudioListener->GetAkGameObjectID());
 	return true;
 }
 
@@ -3746,6 +3959,26 @@ AKRESULT FAkAudioDevice::RegisterGameObject(AkGameObjectID GameObjectID, const F
 	return FAkAudioDevice_Helpers::RegisterGameObject(GameObjectID, Name);
 }
 
+void FAkAudioDevice::CleanupUnfinishedResourceUnload()
+{
+	FScopeLock Lock(&ResourceUnloadFuturesCriticalSection);
+	for (auto Num = ResourceUnloadFutures.Num() - 1; Num >= 0; --Num)
+	{
+		if (ResourceUnloadFutures[Num].IsReady())
+		{
+			ResourceUnloadFutures.RemoveAt(Num, 1, EWwiseAllowShrinking::No);
+		}
+	}
+}
+
+void FAkAudioDevice::AddUnfinishedResourceUnload(FWwiseResourceUnloadFuture&& ResourceUnload)
+{
+	CleanupUnfinishedResourceUnload();
+	
+	FScopeLock Lock(&ResourceUnloadFuturesCriticalSection);
+	ResourceUnloadFutures.Emplace(MoveTemp(ResourceUnload));
+}
+
 bool FAkAudioDevice::EnsureInitialized()
 {
 	static bool bPermanentInitializationFailure = false;
@@ -3759,20 +3992,24 @@ bool FAkAudioDevice::EnsureInitialized()
 	{
 		return false;
 	}
+	if (UNLIKELY(m_EngineExiting))
+	{
+		return false;
+	}
 
 	SCOPED_AKAUDIO_EVENT_2(TEXT("FAkAudioDevice::EnsureInitialized"));
 
-	UE_CLOG(bLogWwiseVersionOnce, LogAkAudio, Log,
-		TEXT("Wwise(R) SDK Version %d.%d.%d Build %d [%s]. Copyright (c) 2006-%d Audiokinetic Inc."),
+	UE_CLOG(bLogWwiseVersionOnce, LogAkAudio, Display,
+		TEXT("Wwise(R) SDK Version %d.%d.%d Build %d [%s]. %s"),
 		AK_WWISESDK_VERSION_MAJOR,
 		AK_WWISESDK_VERSION_MINOR,
 		AK_WWISESDK_VERSION_SUBMINOR,
 		AK_WWISESDK_VERSION_BUILD,
 		TEXT(WWISE_CONFIGURATION_DIR),
-		AK_WWISESDK_VERSION_MAJOR);
+		TEXT(AK_WWISESDK_COPYRIGHT));
 	bLogWwiseVersionOnce = false;
 
-	auto* ResourceLoader = FWwiseResourceLoader::Get();
+	FWwiseResourceLoaderPtr ResourceLoader = FWwiseResourceLoader::Get();
 	if (UNLIKELY(!ResourceLoader))
 	{
 		UE_LOG(LogAkAudio, Error, TEXT("Wwise Initialization Error: No ResourceLoader module"));
@@ -3874,6 +4111,23 @@ bool FAkAudioDevice::EnsureInitialized()
 		return false;
 	}
 
+#if WWISE_2024_1_OR_LATER
+	auto* GlobalCallbacks = FWwiseGlobalCallbacks::Get();
+	GlobalCallbacks->ProfilerConnectSync([this](AK::IAkGlobalPluginContext* InContext) mutable
+	{
+		bWwiseProfilerConnected = true;
+		UE_LOG(LogAkAudio, Verbose, TEXT("Wwise Profiler connected."))
+		return EWwiseDeferredAsyncResult::KeepRunning;
+	});
+	
+	GlobalCallbacks->ProfilerDisconnectSync([this](AK::IAkGlobalPluginContext* InContext) mutable
+	{
+		bWwiseProfilerConnected = false;
+		UE_LOG(LogAkAudio, Verbose, TEXT("Wwise Profiler disconnected."))
+		return EWwiseDeferredAsyncResult::KeepRunning;
+	});
+#endif
+	
 	UE_LOG(LogAkAudio, Log, TEXT("Wwise SoundEngine successfully initialized."));
 
 	SetLocalOutput();
@@ -3897,8 +4151,7 @@ bool FAkAudioDevice::EnsureInitialized()
 
 	//TUniquePtr
 	CallbackManager = new FAkComponentCallbackManager();
-	SetCurrentAudioCulture(GetDefaultLanguage());
-
+	
 	UE_LOG(LogAkAudio, Log, TEXT("Initialization complete."));
 
 	return CallbackManager != nullptr;
@@ -3919,7 +4172,11 @@ void FAkAudioDevice::SetLocalOutput()
 	if (AkSettingsPerUser->WaapiTranslatorTimeout > 0)
 	{
 #if AK_SUPPORT_WAAPI
-		Monitor->SetupDefaultWAAPIErrorTranslator(AkSettingsPerUser->WaapiIPAddress, AkSettingsPerUser->WaapiPort, AkSettingsPerUser->WaapiTranslatorTimeout);
+		auto* WAAPI = IWAAPI::Get();
+		if (LIKELY(WAAPI))
+		{
+			WAAPI->SetupErrorTranslator(AkSettingsPerUser->WaapiIPAddress, AkSettingsPerUser->WaapiPort, AkSettingsPerUser->WaapiTranslatorTimeout);
+		}
 #endif //AK_SUPPORT_WAAPI
 	}
 
@@ -3954,9 +4211,15 @@ void FAkAudioDevice::AddDefaultListener(UAkComponent* in_pListener)
 		in_pListener->IsListener = true;
 		in_pListener->IsDefaultListener = true;
 		UpdateDefaultActiveListeners();
+		if(auto* AkSettings = GetDefault<UAkSettings>())
+		{
+			in_pListener->SetAttenuationScalingFactor(AkSettings->DefaultListenerScalingFactor);	
+		}
 
 		if (m_SpatialAudioListener == nullptr)
+		{
 			SetSpatialAudioListener(in_pListener);
+		}
 	}
 }
 
@@ -4195,7 +4458,7 @@ bool FAkAudioDevice::SetCurrentAudioCultureAsyncTask::Start()
 
 	AsyncTask(ENamedThreads::AnyNormalThreadNormalTask, [this]()
 	{
-		auto* ResourceLoader = FWwiseResourceLoader::Get();
+		FWwiseResourceLoaderPtr ResourceLoader = FWwiseResourceLoader::Get();
 		if (UNLIKELY(!ResourceLoader))
 		{
 			UE_LOG(LogAkAudio, Error, TEXT("SetCurrentAudioCultureAsync: Could not get resource loader, cannot change language."));

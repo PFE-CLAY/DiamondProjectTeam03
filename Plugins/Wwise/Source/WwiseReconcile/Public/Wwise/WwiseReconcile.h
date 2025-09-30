@@ -12,13 +12,13 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #pragma once
 
 #include "Wwise/WwiseProjectDatabaseImpl.h"
-#include "WaapiPicker/WwiseTreeItem.h"
+#include "Wwise/WwiseTreeItem.h"
 #include "Wwise/Ref/WwiseAnyRef.h"
 #include "Wwise/WwiseReconcileModule.h"
 
@@ -41,7 +41,7 @@ ENUM_CLASS_FLAGS(EWwiseReconcileOperationFlags)
 
 struct FWwiseNewAsset
 {
-	const FWwiseAnyRef* WwiseAnyRef = nullptr;
+	const WwiseAnyRef* WwiseAnyRef = nullptr;
 	bool bAssetExists = false;
 };
 
@@ -111,6 +111,7 @@ class WWISERECONCILE_API IWwiseReconcile
 {
 protected:
 	TMap<FGuid, FWwiseNewAsset> GuidToWwiseRef;
+	TMap<uint32, FWwiseNewAsset> ShortIdToWwiseRef;
 
 	TArray<FWwiseReconcileItem> AssetsToUpdate;
 	TArray<FAssetData> AssetsToRename;
@@ -118,7 +119,7 @@ protected:
 	TArray<FWwiseReconcileItem> AssetsToMove;
 	TArray<FWwiseNewAsset> AssetsToCreate;
 
-	virtual bool IsAssetOutOfDate(const FAssetData& AssetData, const FWwiseAnyRef& WwiseRef) = 0;
+	virtual bool IsAssetOutOfDate(const FAssetData& AssetData, const WwiseAnyRef& WwiseRef) = 0;
 	virtual void GetAllWwiseRefs() = 0;
 	friend class FWwiseReconcileModule;
 public:
@@ -142,7 +143,7 @@ public:
 		return nullptr;
 	}
 	
-	virtual FString GetAssetPackagePath(const FWwiseAnyRef& WwiseRef) = 0;
+	virtual FString GetAssetPackagePath(const WwiseAnyRef& WwiseRef) const = 0;
 	virtual void GetAllAssets(TArray<FWwiseReconcileItem>& ReconcileItems) = 0;
 	virtual TArray<FAssetData> CreateAssets(FScopedSlowTask& SlowTask) = 0;
 	virtual TArray<FAssetData> UpdateExistingAssets(FScopedSlowTask& SlowTask) = 0;
@@ -151,14 +152,17 @@ public:
 	virtual int GetNumberOfAssets() = 0;
 	virtual int32 DeleteAssets(FScopedSlowTask& SlowTask) = 0;
 	virtual int32 MoveAssets(FScopedSlowTask& SlowTask) = 0;
-	virtual UClass* GetUClassFromWwiseRefType(EWwiseRefType RefType) = 0;
+	virtual UClass* GetUClassFromWwiseRefType(WwiseRefType RefType) = 0;
 	virtual void GetAssetChanges(TArray<FWwiseReconcileItem>& ReconcileItems, EWwiseReconcileOperationFlags OperationFlags = EWwiseReconcileOperationFlags::All) = 0;
 	virtual bool AddToDelete(FWwiseReconcileItem& Item) = 0;
 	virtual bool AddToCreate(FWwiseReconcileItem& Item) = 0;
 	virtual bool AddToRename(FWwiseReconcileItem& Item) = 0;
 	virtual bool AddToUpdate(FWwiseReconcileItem& Item) = 0;
 	virtual bool AddToMove(FWwiseReconcileItem& Item) = 0;
-	virtual bool ShouldMove(const FWwiseAnyRef& Ref, FAssetData InAssetPath, FString& OutNewAssetPath) = 0;
+	virtual bool ShouldMove(const WwiseAnyRef& Ref, FAssetData InAssetPath, FString& OutNewAssetPath) = 0;
+
+	bool UAssetExists(const WwiseAnyRef* WwiseRef) const;
+	bool IsPathTooLong(const WwiseAnyRef* WwiseRef) const;
 	
 	bool ReconcileAssets(EWwiseReconcileOperationFlags OperationFlags = EWwiseReconcileOperationFlags::All);
 

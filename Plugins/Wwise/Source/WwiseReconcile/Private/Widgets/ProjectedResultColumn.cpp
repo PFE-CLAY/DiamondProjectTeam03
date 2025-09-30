@@ -12,13 +12,13 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #include "ProjectedResultColumn.h"
 
 #include "AkAudioStyle.h"
-#include "WaapiPicker/WwiseTreeItem.h"
+#include "Wwise/WwiseTreeItem.h"
 #include "Widgets/SWidget.h"
 #include "AkUnrealAssetDataHelper.h"
 #include "WwiseUnrealHelper.h"
@@ -86,12 +86,9 @@ const TSharedRef<SWidget> FProjectedResultColumn::ConstructRowWidget(FWwiseRecon
 	}
 
 	auto WwiseRef = TreeItem.WwiseAnyRef.WwiseAnyRef;
-	FName AssetName = AkUnrealAssetDataHelper::GetAssetDefaultName(WwiseRef);
 	FString AssetPackagePath = IWwiseReconcile::Get()->GetAssetPackagePath(*WwiseRef);
-	int PackageLength = AssetViewUtils::GetPackageLengthForCooking(AssetPackagePath / AssetName.ToString(), FEngineBuildSettings::IsInternalBuild());
-	int MaxPath = AssetViewUtils::GetMaxCookPathLen();
 
-	if (PackageLength > MaxPath || PackageLength >= NAME_SIZE)
+	if (IWwiseReconcile::Get()->IsPathTooLong(WwiseRef))
 	{
 		return SNew(SHorizontalBox)
 			+ SHorizontalBox::Slot()
@@ -112,14 +109,7 @@ const TSharedRef<SWidget> FProjectedResultColumn::ConstructRowWidget(FWwiseRecon
 	
 	if(EnumHasAnyFlags(TreeItem.OperationRequired, EWwiseReconcileOperationFlags::Create | EWwiseReconcileOperationFlags::RenameExisting | EWwiseReconcileOperationFlags::Move))
 	{
-		FAssetRegistryModule& AssetRegistryModule = FModuleManager::LoadModuleChecked<FAssetRegistryModule>(TEXT("AssetRegistry"));
-#if UE_5_1_OR_LATER
-		FAssetData Asset = AssetRegistryModule.GetRegistry().GetAssetByObjectPath(AssetPackagePath / AkUnrealAssetDataHelper::GetAssetDefaultName(WwiseRef).ToString() + "." + AkUnrealAssetDataHelper::GetAssetDefaultName(WwiseRef).ToString());
-#else
-		FName AssetPath = FName(AssetPackagePath / AkUnrealAssetDataHelper::GetAssetDefaultName(WwiseRef).ToString() + "." + AkUnrealAssetDataHelper::GetAssetDefaultName(WwiseRef).ToString());
-		FAssetData Asset = AssetRegistryModule.GetRegistry().GetAssetByObjectPath(AssetPath);
-#endif
-		if(Asset.IsValid())
+		if(IWwiseReconcile::Get()->UAssetExists(WwiseRef))
 		{
 			return SNew(SHorizontalBox)
 				+ SHorizontalBox::Slot()
@@ -158,11 +148,7 @@ SHeaderRow::FColumn::FArguments FProjectedResultColumn::ConstructHeaderRowColumn
 	StatusLabel.Set(FText::FromString("Projected Result"));
 	ProjectedResultColumnHeader.DefaultLabel(StatusLabel);
 	ProjectedResultColumnHeader.DefaultTooltip(LOCTEXT("ProjectedResult_Tooltip", "The expected result of Reconciling an asset."));
-#if UE_5_0_OR_LATER
 	ProjectedResultColumnHeader.FillSized(600.f);
-#else
-	ProjectedResultColumnHeader.ManualWidth(600.f);
-#endif
 	return ProjectedResultColumnHeader;
 }
 

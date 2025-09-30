@@ -12,12 +12,11 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #include "Wwise/Ref/WwiseRefSwitchContainer.h"
 
-#include "Wwise/Stats/ProjectDatabase.h"
 #include "Wwise/Ref/WwiseAnyRef.h"
 #include "Wwise/Ref/WwiseRefAudioDevice.h"
 #include "Wwise/Ref/WwiseRefCustomPlugin.h"
@@ -25,7 +24,6 @@ Copyright (c) 2024 Audiokinetic Inc.
 #include "Wwise/Ref/WwiseRefMedia.h"
 #include "Wwise/Ref/WwiseRefPluginShareSet.h"
 #include "Wwise/Ref/WwiseRefState.h"
-#include "Wwise/WwiseProjectDatabaseModule.h"
 #include "Wwise/Ref/WwiseRefSwitch.h"
 #include "Wwise/Metadata/WwiseMetadataEvent.h"
 #include "Wwise/Metadata/WwiseMetadataMedia.h"
@@ -35,23 +33,23 @@ Copyright (c) 2024 Audiokinetic Inc.
 #include "Wwise/Metadata/WwiseMetadataSwitchContainer.h"
 #include "Wwise/Metadata/WwiseMetadataSwitchValue.h"
 
-const TCHAR* const FWwiseRefSwitchContainer::NAME = TEXT("SwitchContainer");
+const WwiseDBString WwiseRefSwitchContainer::NAME = "SwitchContainer"_wwise_db;
 
-const FWwiseMetadataSwitchContainer* FWwiseRefSwitchContainer::GetSwitchContainer() const
+const WwiseMetadataSwitchContainer* WwiseRefSwitchContainer::GetSwitchContainer() const
 {
 	const auto* Event = GetEvent();
-	if (UNLIKELY(!Event))
+	if (!Event) [[unlikely]]
 	{
 		return nullptr;
 	}
 
 	const auto* SwitchContainers = &Event->SwitchContainers;
-	const FWwiseMetadataSwitchContainer* Result = nullptr;
+	const WwiseMetadataSwitchContainer* Result = nullptr;
 	for (auto Index : ChildrenIndices)
 	{
 		if (!SwitchContainers->IsValidIndex(Index))
 		{
-			UE_LOG(LogWwiseProjectDatabase, Error, TEXT("Could not get Switch Container index #%zu"), Index);
+			WWISE_DB_LOG(Error, "Could not get Switch Container index #%zu", Index);
 			return nullptr;
 		}
 		Result = &(*SwitchContainers)[Index];
@@ -60,53 +58,52 @@ const FWwiseMetadataSwitchContainer* FWwiseRefSwitchContainer::GetSwitchContaine
 	return Result;
 }
 
-FWwiseAnyRef FWwiseRefSwitchContainer::GetSwitchValue(const WwiseSwitchGlobalIdsMap& SwitchGlobalMap, const WwiseStateGlobalIdsMap& StateGlobalMap) const
+WwiseAnyRef WwiseRefSwitchContainer::GetSwitchValue(const WwiseSwitchGlobalIdsMap& SwitchGlobalMap, const WwiseStateGlobalIdsMap& StateGlobalMap) const
 {
 	const auto* Container = GetSwitchContainer();
-	if (!Container)
+	if (!Container) [[unlikely]]
 	{
 		return {};
 	}
 	const auto& SwitchValue = Container->SwitchValue;
 	switch (SwitchValue.GroupType)
 	{
-	case EWwiseMetadataSwitchValueGroupType::Switch:
+	case WwiseMetadataSwitchValueGroupType::Switch:
 	{
-		const auto* GlobalRef = SwitchGlobalMap.Find(FWwiseDatabaseLocalizableGroupValueKey(SwitchValue.GroupId, SwitchValue.Id, LanguageId));
-		if (UNLIKELY(!GlobalRef))
+		const WwiseRefSwitch* GlobalRef = SwitchGlobalMap.Find(WwiseDatabaseLocalizableGroupValueKey(SwitchValue.GroupId, SwitchValue.Id, LanguageId));
+		if (!GlobalRef)
 		{
 			return {};
 		}
-		return FWwiseAnyRef::Create(*GlobalRef);
+		return WwiseAnyRef::Create(*GlobalRef);
 	}
-	case EWwiseMetadataSwitchValueGroupType::State:
+	case WwiseMetadataSwitchValueGroupType::State:
 	{
-		const auto* GlobalRef = StateGlobalMap.Find(FWwiseDatabaseLocalizableGroupValueKey(SwitchValue.GroupId, SwitchValue.Id, LanguageId));
-		if (UNLIKELY(!GlobalRef))
+		const WwiseRefState* GlobalRef = StateGlobalMap.Find(WwiseDatabaseLocalizableGroupValueKey(SwitchValue.GroupId, SwitchValue.Id, LanguageId));
+		if (!GlobalRef)
 		{
 			return {};
 		}
-		return FWwiseAnyRef::Create(*GlobalRef);
+		return WwiseAnyRef::Create(*GlobalRef);
 	}
 	}
 	return {};
 }
 
-WwiseMediaIdsMap FWwiseRefSwitchContainer::GetSwitchContainerMedia(const WwiseMediaGlobalIdsMap& GlobalMap) const
+WwiseMediaIdsMap WwiseRefSwitchContainer::GetSwitchContainerMedia(const WwiseMediaGlobalIdsMap& GlobalMap) const
 {
 	const auto* SwitchContainer = GetSwitchContainer();
 	const auto* SoundBank = GetSoundBank();
-	TArray<FWwiseDatabaseMediaIdKey> MapKeys;
-	if (!SwitchContainer || !SoundBank)
+	if (!SwitchContainer || !SoundBank) [[unlikely]]
 	{
 		return {};
 	}
 	const auto& MediaRefs = SwitchContainer->MediaRefs;
 	WwiseMediaIdsMap Result;
-	Result.Empty(MediaRefs.Num());
+	Result.Empty(MediaRefs.Size());
 	for (const auto& Elem : MediaRefs)
 	{
-		FWwiseDatabaseMediaIdKey SoundBankFileId(Elem.Id, SoundBank->Id);
+		WwiseDatabaseLocalizableIdKey SoundBankFileId(Elem.Id, LanguageId, SoundBank->Id);
 		const auto* GlobalRef = GlobalMap.Find(SoundBankFileId);
 		if (GlobalRef)
 		{
@@ -116,19 +113,19 @@ WwiseMediaIdsMap FWwiseRefSwitchContainer::GetSwitchContainerMedia(const WwiseMe
 	return Result;
 }
 
-WwiseExternalSourceIdsMap FWwiseRefSwitchContainer::GetSwitchContainerExternalSources(const WwiseExternalSourceGlobalIdsMap& GlobalMap) const
+WwiseExternalSourceIdsMap WwiseRefSwitchContainer::GetSwitchContainerExternalSources(const WwiseExternalSourceGlobalIdsMap& GlobalMap) const
 {
 	const auto* SwitchContainer = GetSwitchContainer();
-	if (!SwitchContainer)
+	if (!SwitchContainer) [[unlikely]]
 	{
 		return {};
 	}
 	const auto& ExternalSourceRefs = SwitchContainer->ExternalSourceRefs;
 	WwiseExternalSourceIdsMap Result;
-	Result.Empty(ExternalSourceRefs.Num());
+	Result.Empty(ExternalSourceRefs.Size());
 	for (const auto& Elem : ExternalSourceRefs)
 	{
-		FWwiseDatabaseLocalizableIdKey Id(Elem.Cookie, LanguageId);
+		WwiseDatabaseLocalizableIdKey Id(Elem.Cookie, LanguageId);
 		const auto* GlobalRef = GlobalMap.Find(Id);
 		if (GlobalRef)
 		{
@@ -138,20 +135,20 @@ WwiseExternalSourceIdsMap FWwiseRefSwitchContainer::GetSwitchContainerExternalSo
 	return Result;
 }
 
-WwiseCustomPluginIdsMap FWwiseRefSwitchContainer::GetSwitchContainerCustomPlugins(const WwiseCustomPluginGlobalIdsMap& GlobalMap) const
+WwiseCustomPluginIdsMap WwiseRefSwitchContainer::GetSwitchContainerCustomPlugins(const WwiseCustomPluginGlobalIdsMap& GlobalMap) const
 {
 	const auto* SwitchContainer = GetSwitchContainer();
-	if (!SwitchContainer || !SwitchContainer->PluginRefs)
+	if (!SwitchContainer || !SwitchContainer->PluginRefs) [[unlikely]]
 	{
 		return {};
 	}
 	const auto& Plugins = SwitchContainer->PluginRefs->Custom;
 	WwiseCustomPluginIdsMap Result;
-	Result.Empty(Plugins.Num());
+	Result.Empty(Plugins.Size());
 	for (const auto& Elem : Plugins)
 	{
-		FWwiseDatabaseLocalizableIdKey Id(Elem.Id, LanguageId);
-		const auto* GlobalRef = GlobalMap.Find(Id);
+		WwiseDatabaseLocalizableIdKey Id(Elem.Id, LanguageId);
+		const WwiseRefCustomPlugin* GlobalRef = GlobalMap.Find(Id);
 		if (GlobalRef)
 		{
 			Result.Add(Elem.Id, *GlobalRef);
@@ -160,20 +157,20 @@ WwiseCustomPluginIdsMap FWwiseRefSwitchContainer::GetSwitchContainerCustomPlugin
 	return Result;
 }
 
-WwisePluginShareSetIdsMap FWwiseRefSwitchContainer::GetSwitchContainerPluginShareSets(const WwisePluginShareSetGlobalIdsMap& GlobalMap) const
+WwisePluginShareSetIdsMap WwiseRefSwitchContainer::GetSwitchContainerPluginShareSets(const WwisePluginShareSetGlobalIdsMap& GlobalMap) const
 {
 	const auto* SwitchContainer = GetSwitchContainer();
-	if (!SwitchContainer || !SwitchContainer->PluginRefs)
+	if (!SwitchContainer || !SwitchContainer->PluginRefs) [[unlikely]]
 	{
 		return {};
 	}
 	const auto& Plugins = SwitchContainer->PluginRefs->ShareSets;
 	WwisePluginShareSetIdsMap Result;
-	Result.Empty(Plugins.Num());
+	Result.Empty(Plugins.Size());
 	for (const auto& Elem : Plugins)
 	{
-		FWwiseDatabaseLocalizableIdKey Id(Elem.Id, LanguageId);
-		const auto* GlobalRef = GlobalMap.Find(Id);
+		WwiseDatabaseLocalizableIdKey Id(Elem.Id, LanguageId);
+		const WwiseRefPluginShareSet* GlobalRef = GlobalMap.Find(Id);
 		if (GlobalRef)
 		{
 			Result.Add(Elem.Id, *GlobalRef);
@@ -182,20 +179,20 @@ WwisePluginShareSetIdsMap FWwiseRefSwitchContainer::GetSwitchContainerPluginShar
 	return Result;
 }
 
-WwiseAudioDeviceIdsMap FWwiseRefSwitchContainer::GetSwitchContainerAudioDevices(const WwiseAudioDeviceGlobalIdsMap& GlobalMap) const
+WwiseAudioDeviceIdsMap WwiseRefSwitchContainer::GetSwitchContainerAudioDevices(const WwiseAudioDeviceGlobalIdsMap& GlobalMap) const
 {
 	const auto* SwitchContainer = GetSwitchContainer();
-	if (!SwitchContainer || !SwitchContainer->PluginRefs)
+	if (!SwitchContainer || !SwitchContainer->PluginRefs) [[unlikely]]
 	{
 		return {};
 	}
 	const auto& Plugins = SwitchContainer->PluginRefs->AudioDevices;
 	WwiseAudioDeviceIdsMap Result;
-	Result.Empty(Plugins.Num());
+	Result.Empty(Plugins.Size());
 	for (const auto& Elem : Plugins)
 	{
-		FWwiseDatabaseLocalizableIdKey Id(Elem.Id, LanguageId);
-		const auto* GlobalRef = GlobalMap.Find(Id);
+		WwiseDatabaseLocalizableIdKey Id(Elem.Id, LanguageId);
+		const WwiseRefAudioDevice* GlobalRef = GlobalMap.Find(Id);
 		if (GlobalRef)
 		{
 			Result.Add(Elem.Id, *GlobalRef);
@@ -204,19 +201,19 @@ WwiseAudioDeviceIdsMap FWwiseRefSwitchContainer::GetSwitchContainerAudioDevices(
 	return Result;
 }
 
-TArray<FWwiseAnyRef> FWwiseRefSwitchContainer::GetSwitchValues(const WwiseSwitchGlobalIdsMap& SwitchGlobalMap, const WwiseStateGlobalIdsMap& StateGlobalMap) const
+WwiseDBArray<WwiseAnyRef> WwiseRefSwitchContainer::GetSwitchValues(const WwiseSwitchGlobalIdsMap& SwitchGlobalMap, const WwiseStateGlobalIdsMap& StateGlobalMap) const
 {
 	const auto* Event = GetEvent();
-	if (!Event)
+	if (!Event) [[unlikely]]
 	{
 		return {};
 	}
 
 	const auto* SwitchContainers = &Event->SwitchContainers;
-	TArray<FWwiseAnyRef> Result;
+	WwiseDBArray<WwiseAnyRef> Result;
 	for (auto Index : ChildrenIndices)
 	{
-		if (UNLIKELY(!SwitchContainers->IsValidIndex(Index)))
+		if (!SwitchContainers->IsValidIndex(Index))
 		{
 			return {};
 		}
@@ -228,24 +225,24 @@ TArray<FWwiseAnyRef> FWwiseRefSwitchContainer::GetSwitchValues(const WwiseSwitch
 		{
 			switch (SwitchValue.GroupType)
 			{
-			case EWwiseMetadataSwitchValueGroupType::Switch:
+			case WwiseMetadataSwitchValueGroupType::Switch:
 			{
-				const auto* GlobalRef = SwitchGlobalMap.Find(FWwiseDatabaseLocalizableGroupValueKey(SwitchValue.GroupId, SwitchValue.Id, LanguageId));
-				if (UNLIKELY(!GlobalRef))
+				const WwiseRefSwitch* GlobalRef = SwitchGlobalMap.Find(WwiseDatabaseLocalizableGroupValueKey(SwitchValue.GroupId, SwitchValue.Id, LanguageId));
+				if (!GlobalRef)
 				{
 					return {};
 				}
-				Result.Add(FWwiseAnyRef::Create(*GlobalRef));
+				Result.Add(WwiseAnyRef::Create(*GlobalRef));
 				break;
 			}
-			case EWwiseMetadataSwitchValueGroupType::State:
+			case WwiseMetadataSwitchValueGroupType::State:
 			{
-				const auto* GlobalRef = StateGlobalMap.Find(FWwiseDatabaseLocalizableGroupValueKey(SwitchValue.GroupId, SwitchValue.Id, LanguageId));
-				if (UNLIKELY(!GlobalRef))
+				const WwiseRefState* GlobalRef = StateGlobalMap.Find(WwiseDatabaseLocalizableGroupValueKey(SwitchValue.GroupId, SwitchValue.Id, LanguageId));
+				if (!GlobalRef)
 				{
 					return {};
 				}
-				Result.Add(FWwiseAnyRef::Create(*GlobalRef));
+				Result.Add(WwiseAnyRef::Create(*GlobalRef));
 				break;
 			}
 			default:
@@ -258,12 +255,12 @@ TArray<FWwiseAnyRef> FWwiseRefSwitchContainer::GetSwitchValues(const WwiseSwitch
 	return Result;
 }
 
-uint32 FWwiseRefSwitchContainer::Hash() const
+WwiseDBShortId WwiseRefSwitchContainer::Hash() const
 {
-	auto Result = FWwiseRefEvent::Hash();
-	if (ChildrenIndices.Num() > 0)
+	auto Result = WwiseRefEvent::Hash();
+	if (ChildrenIndices.Size() > 0)
 	{
-		Result = HashCombine(Result, uint32(CityHash64((const char*)ChildrenIndices.GetData(), ChildrenIndices.GetTypeSize() * ChildrenIndices.Num())));
+		Result = WwiseDBHashCombine(Result, WwiseDBShortId(WwiseDBHashCombine(GetTypeHash(*ChildrenIndices.GetData()), (unsigned int)(ChildrenIndices.GetTypeSize() * ChildrenIndices.Size()))));
 	}
 	return Result;
 }

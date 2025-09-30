@@ -3,11 +3,11 @@
   "Platform": {
    "Name": "Windows",
    "BasePlatform": "Windows",
-   "Generator": "2023.1.7.8574"
+   "Generator": "2024.1.8.8893"
   },
   "RootPaths": {
    "ProjectRoot": "../..",
-   "SourceFilesRoot": "../../.cache/Windows",
+   "SourceFilesRoot": "../../.cache",
    "SoundBanksRoot": ".",
    "ExternalSourcesInputFile": "",
    "ExternalSourcesOutputRoot": "."
@@ -30,8 +30,9 @@
    "MaxAttenuationInfo": "true",
    "EstimatedDurationInfo": "true",
    "PrintObjectGuid": "true",
-   "PrintObjectPath": "true"
+   "PrintObjectPath": "true",
+   "PrintObjectColor": "true"
   },
-  "FileHash": "{D18D316D-B0D3-4C02-070C-CBA15191E444}"
+  "FileHash": "{ED9F7545-992F-FACD-C77B-80CE28282459}"
  }
 }

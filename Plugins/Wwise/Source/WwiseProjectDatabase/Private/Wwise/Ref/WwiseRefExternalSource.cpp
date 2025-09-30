@@ -12,21 +12,20 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
+
 #include "Wwise/Ref/WwiseRefExternalSource.h"
-#include "Wwise/WwiseProjectDatabaseModule.h"
-#include "Wwise/Stats/ProjectDatabase.h"
 #include "Wwise/Metadata/WwiseMetadataExternalSource.h"
 #include "Wwise/Metadata/WwiseMetadataSoundBank.h"
 
-const TCHAR* const FWwiseRefExternalSource::NAME = TEXT("ExternalSource");
+const WwiseDBString WwiseRefExternalSource::NAME = "ExternalSource"_wwise_db;
 
-const FWwiseMetadataExternalSource* FWwiseRefExternalSource::GetExternalSource() const
+const WwiseMetadataExternalSource* WwiseRefExternalSource::GetExternalSource() const
 {
 	const auto* SoundBank = GetSoundBank();
-	if (UNLIKELY(!SoundBank))
+	if (!SoundBank) [[unlikely]]
 	{
 		return nullptr;
 	}
@@ -37,54 +36,54 @@ const FWwiseMetadataExternalSource* FWwiseRefExternalSource::GetExternalSource()
 	}
 	else
 	{
-		UE_LOG(LogWwiseProjectDatabase, Error, TEXT("Could not get External Source index #%zu"), ExternalSourceIndex);
+		WWISE_DB_LOG(Error, "Could not get External Source index #%zu", ExternalSourceIndex);
 		return nullptr;
 	}
 }
 
-uint32 FWwiseRefExternalSource::ExternalSourceCookie() const
+WwiseDBShortId WwiseRefExternalSource::ExternalSourceCookie() const
 {
 	const auto* ExternalSource = GetExternalSource();
-	if (UNLIKELY(!ExternalSource))
+	if (!ExternalSource) [[unlikely]]
 	{
 		return {};
 	}
 	return ExternalSource->Cookie;
 }
 
-FGuid FWwiseRefExternalSource::ExternalSourceGuid() const
+WwiseDBGuid WwiseRefExternalSource::ExternalSourceGuid() const
 {
 	const auto* ExternalSource = GetExternalSource();
-	if (UNLIKELY(!ExternalSource))
+	if (!ExternalSource) [[unlikely]]
 	{
 		return {};
 	}
 	return ExternalSource->GUID;
 }
 
-FName FWwiseRefExternalSource::ExternalSourceName() const
+const WwiseDBString*  WwiseRefExternalSource::ExternalSourceName() const
 {
 	const auto* ExternalSource = GetExternalSource();
-	if (UNLIKELY(!ExternalSource))
+	if (!ExternalSource) [[unlikely]]
 	{
-		return {};
+		return &emptyString;
 	}
-	return ExternalSource->Name;
+	return &ExternalSource->Name;
 }
 
-FName FWwiseRefExternalSource::ExternalSourceObjectPath() const
+const WwiseDBString* WwiseRefExternalSource::ExternalSourceObjectPath() const
 {
 	const auto* ExternalSource = GetExternalSource();
-	if (UNLIKELY(!ExternalSource))
+	if (!ExternalSource) [[unlikely]]
 	{
-		return {};
+		return &emptyString;
 	}
-	return ExternalSource->ObjectPath;
+	return &ExternalSource->ObjectPath;
 }
 
-uint32 FWwiseRefExternalSource::Hash() const
+WwiseDBShortId WwiseRefExternalSource::Hash() const
 {
-	auto Result = FWwiseRefSoundBank::Hash();
-	Result = HashCombine(Result, GetTypeHash(ExternalSourceIndex));
+	auto Result = WwiseRefSoundBank::Hash();
+	Result = WwiseDBHashCombine(Result, GetTypeHash(ExternalSourceIndex));
 	return Result;
 }

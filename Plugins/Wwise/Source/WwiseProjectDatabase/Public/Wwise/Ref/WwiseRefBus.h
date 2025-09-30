@@ -12,47 +12,47 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #pragma once
 
 #include "Wwise/Ref/WwiseRefSoundBank.h"
 
-class WWISEPROJECTDATABASE_API FWwiseRefBus : public FWwiseRefSoundBank
+class WwiseRefBus : public WwiseRefSoundBank
 {
 public:
-	static const TCHAR* const NAME;
-	static constexpr EWwiseRefType TYPE = EWwiseRefType::Bus;
+	static const WwiseDBString NAME;
+	static constexpr WwiseRefType TYPE = WwiseRefType::Bus;
 	struct FGlobalIdsMap;
 
 	WwiseRefIndexType BusIndex;
 
-	FWwiseRefBus() {}
-	FWwiseRefBus(const WwiseMetadataSharedRootFileConstPtr& InRootMediaRef, const FName& InJsonFilePath,
-		WwiseRefIndexType InSoundBankIndex, uint32 InLanguageId,
+	WwiseRefBus() {}
+	WwiseRefBus(const WwiseMetadataSharedRootFileConstPtr& InRootMediaRef, const WwiseDBString& InJsonFilePath,
+		WwiseRefIndexType InSoundBankIndex, WwiseDBShortId InLanguageId,
 		WwiseRefIndexType InBusIndex) :
-		FWwiseRefSoundBank(InRootMediaRef, InJsonFilePath, InSoundBankIndex, InLanguageId),
+		WwiseRefSoundBank(InRootMediaRef, InJsonFilePath, InSoundBankIndex, InLanguageId),
 		BusIndex(InBusIndex)
 	{}
-	const FWwiseMetadataBus* GetBus() const;
+	const WwiseMetadataBus* GetBus() const;
 
-	uint32 BusId() const;
-	FGuid BusGuid() const;
-	FName BusName() const;
-	FName BusObjectPath() const;
+	WwiseDBShortId BusId() const;
+	WwiseDBGuid BusGuid() const;
+	const WwiseDBString* BusName() const;
+	const WwiseDBString* BusObjectPath() const;
 
-	uint32 Hash() const override;
-	EWwiseRefType Type() const override { return TYPE; }
-	bool operator==(const FWwiseRefBus& Rhs) const
+	WwiseDBShortId Hash() const override;
+	WwiseRefType Type() const override { return TYPE; }
+	bool operator==(const WwiseRefBus& Rhs) const
 	{
-		return FWwiseRefSoundBank::operator ==(Rhs)
+		return WwiseRefSoundBank::operator ==(Rhs)
 			&& BusIndex == Rhs.BusIndex;
 	}
-	bool operator!=(const FWwiseRefBus& Rhs) const { return !operator==(Rhs); }
+	bool operator!=(const WwiseRefBus& Rhs) const { return !operator==(Rhs); }
 };
 
-struct WWISEPROJECTDATABASE_API FWwiseRefBus::FGlobalIdsMap
+struct WwiseRefBus::FGlobalIdsMap
 {
 	WwiseBusGlobalIdsMap GlobalIdsMap;
 };

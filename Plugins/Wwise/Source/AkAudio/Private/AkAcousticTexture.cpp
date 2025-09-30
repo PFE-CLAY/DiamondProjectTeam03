@@ -12,7 +12,7 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #include "AkAcousticTexture.h"
@@ -22,6 +22,11 @@ Copyright (c) 2024 Audiokinetic Inc.
 #include "Wwise/WwiseProjectDatabase.h"
 #include "Wwise/WwiseResourceCooker.h"
 #include "AkAudioDevice.h"
+#endif
+
+#if WITH_EDITORONLY_DATA && UE_5_5_OR_LATER
+#include "UObject/ObjectSaveContext.h"
+#include "Serialization/CompactBinaryWriter.h"
 #endif
 
 void UAkAcousticTexture::Serialize(FArchive& Ar)
@@ -37,7 +42,7 @@ void UAkAcousticTexture::Serialize(FArchive& Ar)
 	if (Ar.IsCooking() && Ar.IsSaving() && !Ar.CookingTarget()->IsServerOnly())
 	{
 		FWwiseAcousticTextureCookedData CookedDataToArchive;
-		if (auto* ResourceCooker = FWwiseResourceCooker::GetForArchive(Ar))
+		if (auto* ResourceCooker = IWwiseResourceCooker::GetForArchive(Ar))
 		{
 			ResourceCooker->PrepareCookedData(CookedDataToArchive, GetValidatedInfo(AcousticTextureInfo));
 		}
@@ -53,7 +58,7 @@ void UAkAcousticTexture::Serialize(FArchive& Ar)
 #if WITH_EDITORONLY_DATA
 bool UAkAcousticTexture::ObjectIsInSoundBanks()
 {
-	auto* ResourceCooker = FWwiseResourceCooker::GetDefault();
+	auto* ResourceCooker = IWwiseResourceCooker::GetDefault();
 	if (UNLIKELY(!ResourceCooker))
 	{
 		UE_LOG(LogAkAudio, Error, TEXT("UAkAcousticTexture::GetWwiseRef: ResourceCooker not initialized"));
@@ -68,7 +73,7 @@ bool UAkAcousticTexture::ObjectIsInSoundBanks()
 	}
 
 	FWwiseObjectInfo* AudioTypeInfo = &AcousticTextureInfo;
-	const FWwiseRefAcousticTexture AcousticTextureRef = FWwiseDataStructureScopeLock(*ProjectDatabase).GetAcousticTexture(
+	const WwiseRefAcousticTexture AcousticTextureRef = WwiseDataStructureScopeLock(*ProjectDatabase).GetAcousticTexture(
 		GetValidatedInfo(AcousticTextureInfo));
 
 	return AcousticTextureRef.IsValid();
@@ -76,7 +81,7 @@ bool UAkAcousticTexture::ObjectIsInSoundBanks()
 
 void UAkAcousticTexture::FillInfo()
 {
-	auto* ResourceCooker = FWwiseResourceCooker::GetDefault();
+	auto* ResourceCooker = IWwiseResourceCooker::GetDefault();
 	if (UNLIKELY(!ResourceCooker))
 	{
 		UE_LOG(LogAkAudio, Error, TEXT("UAkAcousticTexture::FillInfo: ResourceCooker not initialized"));
@@ -91,17 +96,19 @@ void UAkAcousticTexture::FillInfo()
 	}
 
 	FWwiseObjectInfo* AudioTypeInfo = &AcousticTextureInfo;
-	const FWwiseRefAcousticTexture AcousticTextureRef = FWwiseDataStructureScopeLock(*ProjectDatabase).GetAcousticTexture(
+	const WwiseRefAcousticTexture AcousticTextureRef = WwiseDataStructureScopeLock(*ProjectDatabase).GetAcousticTexture(
 		GetValidatedInfo(AcousticTextureInfo));
 
-	if (AcousticTextureRef.AcousticTextureName().ToString().IsEmpty() || !AcousticTextureRef.AcousticTextureGuid().IsValid() || AcousticTextureRef.AcousticTextureId() == AK_INVALID_UNIQUE_ID)
+	if (AcousticTextureRef.AcousticTextureName()->IsEmpty() || !AcousticTextureRef.AcousticTextureGuid().IsValid() || AcousticTextureRef.AcousticTextureId() == AK_INVALID_UNIQUE_ID)
 	{
 		UE_LOG(LogAkAudio, Warning, TEXT("UAkAcousticTexture::FillInfo: Valid object not found in Project Database"));
 		return;
 	}
 
-	AudioTypeInfo->WwiseName = AcousticTextureRef.AcousticTextureName();
-	AudioTypeInfo->WwiseGuid = AcousticTextureRef.AcousticTextureGuid();
+	int A, B, C, D;
+	AcousticTextureRef.AcousticTextureGuid().GetGuidValues(A, B, C, D);
+	AudioTypeInfo->WwiseName = FName(**AcousticTextureRef.AcousticTextureName());
+	AudioTypeInfo->WwiseGuid = FGuid(A, B, C, D);
 	AudioTypeInfo->WwiseShortId = AcousticTextureRef.AcousticTextureId();
 }
 
@@ -118,12 +125,68 @@ void UAkAcousticTexture::GetAcousticTextureCookedData()
 		UE_LOG(LogAkAudio, VeryVerbose, TEXT("UAkAcousticTexture::GetAcousticTextureCookedData: Not loading '%s' because project database is not parsed."), *GetName())
 		return;
 	}
-	auto* ResourceCooker = FWwiseResourceCooker::GetDefault();
+	auto* ResourceCooker = IWwiseResourceCooker::GetDefault();
 	if (UNLIKELY(!ResourceCooker))
 	{
 		return;
 	}
 
-	ResourceCooker->PrepareCookedData(AcousticTextureCookedData, GetValidatedInfo(AcousticTextureInfo));
+	if(!ResourceCooker->PrepareCookedData(AcousticTextureCookedData, GetValidatedInfo(AcousticTextureInfo)))
+	{
+		const auto* AudioDevice = FAkAudioDevice::Get();
+		if( AudioDevice && AudioDevice->IsWwiseProfilerConnected())
+		{
+			UE_LOG(LogAkAudio, Verbose, TEXT("Could not fetch CookedData for Acoustic Texture %s, but Wwise profiler is connected. Previous errors can be ignored."),
+			*GetName());
+		}
+		else
+		{
+			return;
+		}
+	}
+}
+#endif
+
+#if WITH_EDITORONLY_DATA && UE_5_5_OR_LATER
+UE_COOK_DEPENDENCY_FUNCTION(HashWwiseAcousticTextureDependenciesForCook, UAkAudioType::HashDependenciesForCook);
+
+#if UE_5_6_OR_LATER
+void UAkAcousticTexture::OnCookEvent(UE::Cook::ECookEvent CookEvent, UE::Cook::FCookEventContext& Context)
+{
+	ON_SCOPE_EXIT
+	{
+		Super::OnCookEvent(CookEvent, Context);
+	};
+#else
+void UAkAcousticTexture::PreSave(FObjectPreSaveContext Context)
+{
+	ON_SCOPE_EXIT
+	{
+		Super::PreSave(Context);
+	};
+#endif
+	if (!Context.IsCooking())
+	{
+		return;
+	}
+
+	auto* ResourceCooker = IWwiseResourceCooker::GetForPlatform(Context.GetTargetPlatform());
+	if (UNLIKELY(!ResourceCooker))
+	{
+		return;
+	}
+
+	FWwiseAcousticTextureCookedData CookedDataToArchive;
+	ResourceCooker->PrepareCookedData(CookedDataToArchive, GetValidatedInfo(AcousticTextureInfo));
+	FillMetadata(ResourceCooker->GetProjectDatabase());
+
+	FCbWriter Writer;
+	Writer.BeginObject();
+	CookedDataToArchive.GetPlatformCookDependencies(Context, Writer);
+	Writer.EndObject();
+	
+	WwiseCookEventContext::AddLoadBuildDependency(Context,
+		UE::Cook::FCookDependency::Function(
+			UE_COOK_DEPENDENCY_FUNCTION_CALL(HashWwiseAcousticTextureDependenciesForCook), Writer.Save()));
 }
 #endif
