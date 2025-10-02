@@ -44,14 +44,6 @@ void AAllied::BeginPlay()
 void AAllied::Patrol()
 {
 	if(Path->PatrolPoints.IsEmpty()) return;
-	UEnum* EnumPtr = FindObject<UEnum>(ANY_PACKAGE, TEXT("EPointType"), true);
-	if (EnumPtr)
-	{
-		FString EnumName = EnumPtr->GetNameStringByValue(static_cast<int64>(Path->PatrolPoints[PositionID]->PointType));
-		
-		//GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Purple, EnumName);
-		//GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow, Path->PatrolPoints[Position].GetName());
-	}
 	
 	if(PositionID < Path->PatrolPoints.Num()){
 		AnimInstance->bIsMoving = true;
