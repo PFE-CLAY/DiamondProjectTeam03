@@ -1,6 +1,9 @@
 // Copyright Epic Games, Inc. All Rights Reserved.
 
 #include "DiamondProjectCharacter.h"
+
+#include <rapidjson/document.h>
+
 #include "DiamondProjectProjectile.h"
 #include "Animation/AnimInstance.h"
 #include "Camera/CameraComponent.h"
@@ -43,6 +46,14 @@ void ADiamondProjectCharacter::BeginPlay()
 	Super::BeginPlay();
 }
 
+void ADiamondProjectCharacter::Tick(float deltaTime)
+{
+	if (bisDashing){
+		Move(dashDir);
+	}
+	Super::Tick(deltaTime);
+}
+
 //////////////////////////////////////////////////////////////////////////// Input
 
 void ADiamondProjectCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
@@ -54,6 +65,9 @@ void ADiamondProjectCharacter::SetupPlayerInputComponent(UInputComponent* Player
 		EnhancedInputComponent->BindAction(JumpAction, ETriggerEvent::Started, this, &ACharacter::Jump);
 		EnhancedInputComponent->BindAction(JumpAction, ETriggerEvent::Completed, this, &ACharacter::StopJumping);
 
+		// Dashing
+		EnhancedInputComponent->BindAction(DashAction, ETriggerEvent::Started, this, &ADiamondProjectCharacter::Dash);
+		
 		// Moving
 		EnhancedInputComponent->BindAction(MoveAction, ETriggerEvent::Triggered, this, &ADiamondProjectCharacter::Move);
 
@@ -96,14 +110,30 @@ void ADiamondProjectCharacter::SetupPlayerInputComponent(UInputComponent* Player
 void ADiamondProjectCharacter::Move(const FInputActionValue& Value)
 {
 	// input is a Vector2D
-	FVector2D MovementVector = Value.Get<FVector2D>();
-
-	if (Controller != nullptr)
+	if (!bisDashing)
 	{
-		// add movement 
-		AddMovementInput(GetActorForwardVector(), MovementVector.Y);
-		AddMovementInput(GetActorRightVector(), MovementVector.X);
+		FVector2D MovementVector = Value.Get<FVector2D>();
+
+			dashDir=MovementVector;
+		if (Controller != nullptr){
+			// add movement 
+			AddMovementInput(GetActorForwardVector(), MovementVector.Y);
+			AddMovementInput(GetActorRightVector(), MovementVector.X);
+		}
+	}else{
+		if (dashDir==FVector2D::ZeroVector){
+			dashDir=FVector2D(1,0);
+		}
+		AddMovementInput(GetActorForwardVector(), dashDir.Y);
+		AddMovementInput(GetActorRightVector(), dashDir.X);
 	}
+
+}
+void ADiamondProjectCharacter::Dash(const FInputActionValue& Value)
+{
+	bisDashing = true;
+
+	OnDash.Broadcast();
 }
 
 void ADiamondProjectCharacter::Look(const FInputActionValue& Value)

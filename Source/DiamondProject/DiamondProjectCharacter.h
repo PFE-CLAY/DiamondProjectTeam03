@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "FCEasing.h"
 #include "UWeaponComponent.h"
 #include "GameFramework/Character.h"
 #include "Logging/LogMacros.h"
@@ -55,6 +56,9 @@ class ADiamondProjectCharacter : public ACharacter
 	UInputAction* InteractAction;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Input, meta=(AllowPrivateAccess = "true"))
+	UInputAction* DashAction;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Input, meta=(AllowPrivateAccess = "true"))
 	UInputAction* MantleAction;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Input, meta=(AllowPrivateAccess = "true"))
@@ -86,6 +90,7 @@ public:
 
 protected:
 	virtual void BeginPlay();
+	virtual void Tick(float deltaTime);
 
 public:
 		
@@ -95,7 +100,9 @@ public:
 
 	UPROPERTY(BlueprintAssignable, Category = "Interaction")
 	FOnInteract OnInteract;
-	
+
+	UPROPERTY(BlueprintAssignable, Category = "Interaction")
+	FOnInteract OnDash;
 	
 	UPROPERTY(BlueprintAssignable, Category = "Interaction")
 	FOnMantle OnMantle;
@@ -130,7 +137,9 @@ public:
 protected:
 	/** Called for movement input */
 	void Move(const FInputActionValue& Value);
-
+	
+	void Dash(const FInputActionValue& Value);
+	
 	/** Called for looking input */
 	void Look(const FInputActionValue& Value);
 
@@ -159,6 +168,24 @@ protected:
 	virtual void SetupPlayerInputComponent(UInputComponent* InputComponent) override;
 	// End of APawn interface
 
+private:
+	//Dash parameters
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category=Dash, meta=(AllowPrivateAccess = "true"))
+	bool bisDashing;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Dash, meta=(AllowPrivateAccess = "true"))
+	float dashPower=7000;
+	UPROPERTY()
+	FVector2D dashDir;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Dash, meta=(AllowPrivateAccess = "true"))
+	float DashDurationATFull=.1f;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Dash, meta=(AllowPrivateAccess = "true"))
+	int DashCharge=1;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Dash, meta=(AllowPrivateAccess = "true"))
+	float DashDurationDecay=.1f;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Dash, meta=(AllowPrivateAccess = "true"))
+	EFCEase dashCurve = EFCEase::InCirc;
+	
+	
 public:
 	/** Returns Mesh1P subobject **/
 	USkeletalMeshComponent* GetMesh1P() const { return Mesh1P; }
