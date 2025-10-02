@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "FCEasing.h"
 #include "UWeaponComponent.h"
 #include "GameFramework/Character.h"
 #include "Logging/LogMacros.h"
@@ -172,11 +173,15 @@ private:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category=Dash, meta=(AllowPrivateAccess = "true"))
 	bool bisDashing;
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Dash, meta=(AllowPrivateAccess = "true"))
-	float dashPower;
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Dash, meta=(AllowPrivateAccess = "true"))
+	float dashPower=7000;
+	UPROPERTY()
 	FVector2D dashDir;
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Dash, meta=(AllowPrivateAccess = "true"))
-	UCurveFloat* dashCurve;
+	float DashDurationATFull=.1f;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Dash, meta=(AllowPrivateAccess = "true"))
+	float DashDurationDecay=.1f;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Dash, meta=(AllowPrivateAccess = "true"))
+	EFCEase dashCurve = EFCEase::InCirc;
 	
 	
 public:
