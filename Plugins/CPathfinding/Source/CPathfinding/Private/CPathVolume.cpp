@@ -360,7 +360,7 @@ void ACPathVolume::EndPlay(EEndPlayReason::Type EndPlayReason)
 	// (or avoiding FindPathAsync calls right before destroying)
 	// If you're not destroying this manyally, before unloading the level, then the 5ms thread hang won't really matter anyway
 	// So only worry about this if you're destroying volumes during the game
-
+	Super::EndPlay(EndPlayReason);
 	GeneratorThreads.clear();
 	GeneratorsRunning.store(0);
 	if (GenerationFinishedSemaphore)
