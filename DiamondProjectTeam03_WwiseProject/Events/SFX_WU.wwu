@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<WwiseDocument Type="WorkUnit" ID="{16CB7426-B996-4AC9-A2E3-C140ABEA16E4}" SchemaVersion="119">
+<WwiseDocument Type="WorkUnit" ID="{16CB7426-B996-4AC9-A2E3-C140ABEA16E4}" SchemaVersion="123">
 	<Events>
 		<WorkUnit Name="SFX_WU" ID="{16CB7426-B996-4AC9-A2E3-C140ABEA16E4}" PersistMode="Standalone">
 			<PropertyList>

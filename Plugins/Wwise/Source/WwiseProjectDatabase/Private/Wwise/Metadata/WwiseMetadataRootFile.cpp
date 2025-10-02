@@ -12,45 +12,37 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #include "Wwise/Metadata/WwiseMetadataRootFile.h"
 
-#include "Async/AsyncWork.h"
-#include "Async/ParallelFor.h"
-#include "Misc/FileHelper.h"
-#include "Serialization/JsonReader.h"
-#include "Serialization/JsonSerializer.h"
-
+#include "Wwise/AdapterTypes/WwiseSharedPtr.h"
 #include "Wwise/Metadata/WwiseMetadataPlatformInfo.h"
 #include "Wwise/Metadata/WwiseMetadataPluginInfo.h"
 #include "Wwise/Metadata/WwiseMetadataProjectInfo.h"
 #include "Wwise/Metadata/WwiseMetadataSoundBanksInfo.h"
 #include "Wwise/Metadata/WwiseMetadataLoader.h"
-#include "Wwise/Stats/ProjectDatabase.h"
 
-#include "WwiseDefines.h"
-
-FWwiseMetadataRootFile::FWwiseMetadataRootFile(FWwiseMetadataLoader& Loader) :
-	PlatformInfo(Loader.GetObjectPtr<FWwiseMetadataPlatformInfo>(this, TEXT("PlatformInfo"))),
-	PluginInfo(Loader.GetObjectPtr<FWwiseMetadataPluginInfo>(this, TEXT("PluginInfo"))),
-	ProjectInfo(Loader.GetObjectPtr<FWwiseMetadataProjectInfo>(this, TEXT("ProjectInfo"))),
-	SoundBanksInfo(Loader.GetObjectPtr<FWwiseMetadataSoundBanksInfo>(this, TEXT("SoundBanksInfo")))
+WwiseMetadataRootFile::WwiseMetadataRootFile(WwiseMetadataLoader& Loader) :
+	PlatformInfo(Loader.GetObjectPtr<WwiseMetadataPlatformInfo>(this, "PlatformInfo"_wwise_db)),
+	PluginInfo(Loader.GetObjectPtr<WwiseMetadataPluginInfo>(this, "PluginInfo"_wwise_db)),
+	ProjectInfo(Loader.GetObjectPtr<WwiseMetadataProjectInfo>(this, "ProjectInfo"_wwise_db)),
+	SoundBanksInfo(Loader.GetObjectPtr<WwiseMetadataSoundBanksInfo>(this, "SoundBanksInfo"_wwise_db))
 {
 	if (Loader.bResult && !PlatformInfo && !PluginInfo && !ProjectInfo && !SoundBanksInfo)
 	{
-		Loader.Fail(TEXT("FWwiseMetadataRootFile"));
+		Loader.Fail("WwiseMetadataRootFile"_wwise_db);
 	}
-	IncLoadedSize(sizeof(FWwiseMetadataRootFile));
+	IncLoadedSize(sizeof(WwiseMetadataRootFile));
 }
 
-FWwiseMetadataRootFile::~FWwiseMetadataRootFile()
+WwiseMetadataRootFile::~WwiseMetadataRootFile()
 {
 	if (PlatformInfo)
 	{
-		delete PluginInfo;
-		PluginInfo = nullptr;
+		delete PlatformInfo;
+		PlatformInfo = nullptr;
 	}
 	if (PluginInfo)
 	{
@@ -59,8 +51,8 @@ FWwiseMetadataRootFile::~FWwiseMetadataRootFile()
 	}
 	if (ProjectInfo)
 	{
-		delete PluginInfo;
-		PluginInfo = nullptr;
+		delete ProjectInfo;
+		ProjectInfo = nullptr;
 	}
 	if (SoundBanksInfo)
 	{
@@ -69,103 +61,39 @@ FWwiseMetadataRootFile::~FWwiseMetadataRootFile()
 	}
 }
 
-class FWwiseAsyncLoadFileTask : public FNonAbandonableTask
+WwiseMetadataSharedRootFilePtr WwiseMetadataRootFile::LoadFile(const WwiseDBString& FilePath)
 {
-	friend class FAsyncTask<FWwiseAsyncLoadFileTask>;
+	SCOPED_WWISEPROJECTDATABASE_EVENT_F_2(TEXT("FWwiseMetadataRootFile::LoadFile: %s"), *FilePath);
+	WWISE_DB_LOG(Verbose, "Parsing file in: %s", *FilePath);
 
-	WwiseMetadataSharedRootFilePtr& Output;
-	const FString& FilePath;
-
-public:
-	FWwiseAsyncLoadFileTask(
-		WwiseMetadataSharedRootFilePtr& OutputParam,
-		const FString& FilePathParam) :
-		Output(OutputParam),
-		FilePath(FilePathParam)
-	{
-	}
-
-protected:
-	void DoWork()
-	{
-		FString FileContents;
-		if (!FFileHelper::LoadFileToString(FileContents, *FilePath))
-		{
-			UE_LOG(LogWwiseProjectDatabase, Error, TEXT("Error while loading file %s to string"), *FilePath);
-			return;
-		}
-
-		Output = FWwiseMetadataRootFile::LoadFile(MoveTemp(FileContents), *FilePath);
-	}
-
-	FORCEINLINE TStatId GetStatId() const
-	{
-		RETURN_QUICK_DECLARE_CYCLE_STAT(FWwiseAsyncLoadFileTask, STATGROUP_WwiseProjectDatabase);
-	}
-};
-
-WwiseMetadataSharedRootFilePtr FWwiseMetadataRootFile::LoadFile(FString&& File, const FString& FilePath)
-{
-	UE_LOG(LogWwiseProjectDatabase, Verbose, TEXT("Parsing file in: %s"), *FilePath);
-
-	auto JsonReader = TJsonReaderFactory<>::Create(MoveTemp(File));
-	TSharedPtr<FJsonObject> RootJsonObject;
-	if (!FJsonSerializer::Deserialize(JsonReader, RootJsonObject))
-	{
-		UE_LOG(LogWwiseProjectDatabase, Error, TEXT("Error while decoding json"));
-		return {};
-	}
-
-	FWwiseMetadataLoader Loader(RootJsonObject.ToSharedRef());
-	auto Result = MakeShared<FWwiseMetadataRootFile>(Loader);
+	WwiseDBJsonObject RootJsonObject(FilePath);
+	WwiseMetadataLoader Loader(RootJsonObject);
+	auto Result = WwiseDBSharedPtr<WwiseMetadataRootFile>();
+	Result.Make_Shared(Loader);
 
 	if (!Loader.bResult)
 	{
-		Loader.LogParsed(TEXT("LoadFile"), 0, FName(FilePath));
+		Loader.LogParsed("LoadFile"_wwise_db, 0, WwiseDBString(FilePath));
 		return {};
 	}
 
 	return Result;
 }
 
-WwiseMetadataSharedRootFilePtr FWwiseMetadataRootFile::LoadFile(const FString& FilePath)
-{
-	FString FileContents;
-	if (!FFileHelper::LoadFileToString(FileContents, *FilePath))
-	{
-		UE_LOG(LogWwiseProjectDatabase, Error, TEXT("Error while loading file %s to string"), *FilePath);
-		return nullptr;
-	}
-
-	return LoadFile(MoveTemp(FileContents), FilePath);
-}
-
-WwiseMetadataFileMap FWwiseMetadataRootFile::LoadFiles(const TArray<FString>& FilePaths)
+WwiseMetadataFileMap WwiseMetadataRootFile::LoadFiles(const WwiseDBArray<WwiseDBString>& FilePaths)
 {
 	WwiseMetadataFileMap Result;
-	for (const auto& FilePath : FilePaths)
+
+	for(const auto& FilePath : FilePaths)
 	{
-		Result.Add(FilePath, {});
+		Result.Add(FilePath, nullptr);
 	}
-
-	TArray<FAsyncTask<FWwiseAsyncLoadFileTask>> Tasks;
-	Tasks.Empty(Result.Num());
-
-	for (auto& Elem : Result)
+	
+	WwiseParallelFor(FilePaths,
+	[&Result, &FilePaths](const auto& n)
 	{
-		Tasks.Emplace(Elem.Value, Elem.Key);
-	}
-
-	ParallelFor(Tasks.Num(), [&Tasks](int32 Num)
-	{
-		auto& Task { Tasks[Num] };
-		Task.StartSynchronousTask();
-	}, EParallelForFlags::BackgroundPriority);
-
-	for (auto& Task : Tasks)
-	{
-		Task.EnsureCompletion();
-	}
+		Result.AddOrReplace(FilePaths(n), WwiseMetadataRootFile::LoadFile(FilePaths(n)));
+	});
 
 	return Result;
 }

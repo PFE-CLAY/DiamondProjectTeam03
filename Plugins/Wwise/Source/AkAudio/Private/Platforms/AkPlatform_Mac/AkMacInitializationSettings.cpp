@@ -12,7 +12,7 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #include "Platforms/AkPlatform_Mac/AkMacInitializationSettings.h"
@@ -44,7 +44,11 @@ UAkMacInitializationSettings::UAkMacInitializationSettings(const FObjectInitiali
 
 void UAkMacInitializationSettings::FillInitializationStructure(FAkInitializationStructure& InitializationStructure) const
 {
+#if defined(WWISE_MAC_PLATFORM_FOLDER)
+	InitializationStructure.SetPluginDllPath(WWISE_MAC_PLATFORM_FOLDER);
+#else
 	InitializationStructure.SetPluginDllPath("Mac_Xcode1400");
+#endif
 
 	CommonSettings.FillInitializationStructure(InitializationStructure);
 	CommunicationSettings.FillInitializationStructure(InitializationStructure);

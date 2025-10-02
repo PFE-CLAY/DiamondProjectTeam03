@@ -12,7 +12,7 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #include "MovieSceneAkAudioEventTrackEditor.h"
@@ -40,11 +40,7 @@ Copyright (c) 2024 Audiokinetic Inc.
 #include "SequencerSectionPainter.h"
 #include "SequencerUtilities.h"
 #include "Slate/SlateTextures.h"
-#if UE_5_1_OR_LATER
 #include "TimeToPixel.h"
-#else
-#include "CommonMovieSceneTools.h"
-#endif
 
 #include "Textures/SlateTextureData.h"
 #include "Wwise/WwiseProjectDatabaseDelegates.h"
@@ -807,11 +803,7 @@ bool FMovieSceneAkAudioEventTrackEditor::SupportsType(TSubclassOf<UMovieSceneTra
 
 bool FMovieSceneAkAudioEventTrackEditor::SupportsSequence(UMovieSceneSequence* InSequence) const
 {
-#if UE_5_1_OR_LATER
 	static UClass* LevelSequenceClass = UClass::TryFindTypeSlow<UClass>(TEXT("/Script/LevelSequence.LevelSequence"), EFindFirstObjectOptions::ExactClass);
-#else
-	static UClass* LevelSequenceClass = FindObject<UClass>(ANY_PACKAGE, TEXT("LevelSequence"), true);
-#endif
 	return InSequence != nullptr && LevelSequenceClass != nullptr && InSequence->GetClass()->IsChildOf(LevelSequenceClass);
 }
 
@@ -953,7 +945,7 @@ bool FMovieSceneAkAudioEventTrackEditor::HandleAssetAdded(UObject* Asset, const 
 
 const FSlateBrush* FMovieSceneAkAudioEventTrackEditor::GetIconBrush() const
 {
-	return FAkAudioStyle::Get().GetBrush("AudiokineticTools.EventIcon");
+	return FAkAudioStyle::Get().GetBrush("Wwise.EventIcon");
 }
 
 void FMovieSceneAkAudioEventTrackEditor::BuildAddTrackMenu(FMenuBuilder& MenuBuilder)
@@ -961,7 +953,7 @@ void FMovieSceneAkAudioEventTrackEditor::BuildAddTrackMenu(FMenuBuilder& MenuBui
 	MenuBuilder.AddMenuEntry(
 		LOCTEXT("AddAkAudioEventTrack", "AkAudioEvent"),
 		LOCTEXT("AddAkAudioEventMasterTrackTooltip", "Adds a master AkAudioEvent track."),
-		FSlateIcon(FAkAudioStyle::GetStyleSetName(), "AudiokineticTools.EventIcon"),
+		FSlateIcon(FAkAudioStyle::GetStyleSetName(), "Wwise.EventIcon"),
 		FUIAction(FExecuteAction::CreateLambda([this]
 		{
 			auto FocusedMovieScene = GetFocusedMovieScene();
@@ -1005,17 +997,10 @@ TSharedRef<SWidget> FMovieSceneAkAudioEventTrackEditor::BuildAudioSubMenu(UMovie
 {
 	static const FName AssetRegistryModuleName = TEXT("AssetRegistry");
 	FAssetRegistryModule& AssetRegistryModule = FModuleManager::LoadModuleChecked<FAssetRegistryModule>(AssetRegistryModuleName);
-#if UE_5_1_OR_LATER
 	TArray<FTopLevelAssetPath> ClassPaths;
 	ClassPaths.Add(UAkAudioEvent::StaticClass()->GetClassPathName());
 	TSet<FTopLevelAssetPath> DerivedClassPaths;
 	AssetRegistryModule.Get().GetDerivedClassNames(ClassPaths, {}, DerivedClassPaths);
-#else
-	TArray<FName> ClassNames;
-	ClassNames.Add(UAkAudioEvent::StaticClass()->GetFName());
-	TSet<FName> DerivedClassNames;
-	AssetRegistryModule.Get().GetDerivedClassNames(ClassNames, {}, DerivedClassNames);
-#endif
 
 	FMenuBuilder MenuBuilder(true, nullptr);
 
@@ -1024,17 +1009,10 @@ TSharedRef<SWidget> FMovieSceneAkAudioEventTrackEditor::BuildAudioSubMenu(UMovie
 		AssetPickerConfig.OnAssetSelected = FOnAssetSelected::CreateRaw(this, &FMovieSceneAkAudioEventTrackEditor::OnAudioAssetSelected, Track);
 		AssetPickerConfig.bAllowNullSelection = true;
 		AssetPickerConfig.InitialAssetViewType = EAssetViewType::List;
-#if UE_5_1_OR_LATER
 		for (auto ClassPath : DerivedClassPaths)
 		{
 			AssetPickerConfig.Filter.ClassPaths.Add(ClassPath);
 		}
-#else
-		for (auto ClassName : DerivedClassNames)
-		{
-			AssetPickerConfig.Filter.ClassNames.Add(ClassName);
-		}
-#endif
 	}
 
 	FContentBrowserModule& ContentBrowserModule = FModuleManager::Get().LoadModuleChecked<FContentBrowserModule>(TEXT("ContentBrowser"));
@@ -1075,7 +1053,7 @@ void FMovieSceneAkAudioEventTrackEditor::BuildObjectBindingTrackMenu(FMenuBuilde
 		MenuBuilder.AddMenuEntry(
 			LOCTEXT("AddAkAudioEventTrack", "AkAudioEvent"),
 			LOCTEXT("AddAkAudioEventTrackTooltip", "Adds an AkAudioEvent track."),
-			FSlateIcon(FAkAudioStyle::GetStyleSetName(), "AudiokineticTools.EventIcon"),
+			FSlateIcon(FAkAudioStyle::GetStyleSetName(), "Wwise.EventIcon"),
 			FUIAction(FExecuteAction::CreateLambda([this, ObjectBinding = MoveTemp(ObjectBinding)]
 			{
 				auto FocusedMovieScene = GetFocusedMovieScene();

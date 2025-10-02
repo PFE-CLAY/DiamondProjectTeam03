@@ -12,7 +12,7 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 /*=============================================================================
@@ -25,7 +25,7 @@ AkSubmixInputComponent.cpp:
 
 #include <inttypes.h>
 
-UAkSubmixInputComponent::UAkSubmixInputComponent(const class FObjectInitializer& ObjectInitializer) :
+UDEPRECATED_UAkSubmixInputComponent::UDEPRECATED_UAkSubmixInputComponent(const class FObjectInitializer& ObjectInitializer) :
 	UAkAudioInputComponent(ObjectInitializer), SubmixListener(MakeShared<FAkSubmixBufferListener>())
 {}
 
@@ -42,7 +42,7 @@ void FAkSubmixBufferListener::OnNewSubmixBuffer(
 	SampleBuffer.Push(InAudioData, InNumSamples);
 }
 
-Audio::FMixerDevice* UAkSubmixInputComponent::GetAudioMixerDevice()
+Audio::FMixerDevice* UDEPRECATED_UAkSubmixInputComponent::GetAudioMixerDevice()
 {
 	UWorld* ThisWorld = GetWorld();
 	if (!ThisWorld || !ThisWorld->bAllowAudioPlayback || ThisWorld->GetNetMode() == NM_DedicatedServer)
@@ -64,7 +64,7 @@ Audio::FMixerDevice* UAkSubmixInputComponent::GetAudioMixerDevice()
 	return nullptr;
 }
 
-int32 UAkSubmixInputComponent::PostAssociatedAudioInputEvent()
+int32 UDEPRECATED_UAkSubmixInputComponent::PostAssociatedAudioInputEvent()
 {
 	if (PlayingID == AK_INVALID_PLAYING_ID)
 	{
@@ -105,7 +105,7 @@ int32 UAkSubmixInputComponent::PostAssociatedAudioInputEvent()
 	return PlayingID;
 }
 
-void UAkSubmixInputComponent::Stop()
+void UDEPRECATED_UAkSubmixInputComponent::Stop()
 {
 	Audio::FMixerDevice* AudioMixerDevice = GetAudioMixerDevice();
 	if (AudioMixerDevice)
@@ -127,7 +127,7 @@ void UAkSubmixInputComponent::Stop()
 	PlayingID = AK_INVALID_PLAYING_ID;
 }
 
-bool UAkSubmixInputComponent::FillSamplesBuffer(uint32 InNumChannels, uint32 InNumSamples, float** InOutBufferToFill)
+bool UDEPRECATED_UAkSubmixInputComponent::FillSamplesBuffer(uint32 InNumChannels, uint32 InNumSamples, float** InOutBufferToFill)
 {
 	check(InNumChannels == SubmixListener->NumChannels);
 	if (SubmixListener->SampleBuffer.Num() >= (InNumChannels * InNumSamples))
@@ -154,7 +154,7 @@ bool UAkSubmixInputComponent::FillSamplesBuffer(uint32 InNumChannels, uint32 InN
 	return true;
 }
 
-void UAkSubmixInputComponent::GetChannelConfig(AkAudioFormat& AudioFormat)
+void UDEPRECATED_UAkSubmixInputComponent::GetChannelConfig(AkAudioFormat& AudioFormat)
 {
 	Audio::FMixerDevice* AudioMixerDevice = GetAudioMixerDevice();
 	if (!AudioMixerDevice)

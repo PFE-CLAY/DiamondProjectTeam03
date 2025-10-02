@@ -12,7 +12,7 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #include "Platforms/AkPlatform_Android/AkAndroidInitializationSettings.h"
@@ -26,11 +26,6 @@ Copyright (c) 2024 Audiokinetic Inc.
 
 //////////////////////////////////////////////////////////////////////////
 // FAkAndroidAdvancedInitializationSettings
-
-FAkAndroidAdvancedInitializationSettings::FAkAndroidAdvancedInitializationSettings()
-{
-	VmPageSize = 16 * 1024;
-}
 
 void FAkAndroidAdvancedInitializationSettings::FillInitializationStructure(FAkInitializationStructure& InitializationStructure) const
 {
@@ -55,7 +50,6 @@ UAkAndroidInitializationSettings::UAkAndroidInitializationSettings(const FObject
 {
 	CommonSettings.MainOutputSettings.PanningRule = EAkPanningRule::Headphones;
 	CommonSettings.MainOutputSettings.ChannelConfigType = EAkChannelConfigType::Standard;
-	CommonSettings.MainOutputSettings.ChannelMask = AK_SPEAKER_SETUP_STEREO;
 }
 
 void UAkAndroidInitializationSettings::FillInitializationStructure(FAkInitializationStructure& InitializationStructure) const

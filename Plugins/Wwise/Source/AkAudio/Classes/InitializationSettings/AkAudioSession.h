@@ -12,7 +12,7 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #pragma once
@@ -21,6 +21,7 @@ Copyright (c) 2024 Audiokinetic Inc.
 #include "UObject/Object.h"
 
 #include "AkInclude.h"
+#include "WwiseDefines.h"
 #include "AkAudioSession.generated.h"
 
 UENUM()
@@ -31,13 +32,14 @@ enum class EAkAudioSessionCategory
     PlayAndRecord,
 };
 
-UENUM(Meta = (Bitmask))
+UENUM(Meta = (Bitmask, UseEnumValuesAsMaskValuesInEditor = "true"))
 enum class EAkAudioSessionCategoryOptions : uint32
 {
-    MixWithOthers,
-    DuckOthers,
-    AllowBluetooth,
-    DefaultToSpeaker,
+    MixWithOthers = 1 << 1,
+    DuckOthers = 1 << 2,
+    AllowBluetooth = 1 << 3,
+    DefaultToSpeaker = 1 << 4,
+    AllowBluetoothA2DP = 1 << 6
 };
 
 UENUM()
@@ -50,6 +52,14 @@ enum class EAkAudioSessionMode
     Measurement,
     MoviePlayback,
     VideoChat,
+};
+
+UENUM()
+enum class EAkAudioSessionRouteSharingPolicy
+{
+    Default = 0,
+    LongFormAudio = 1,
+    LongFormVideo = 3,
 };
 
 struct FAkInitializationStructure;
@@ -67,6 +77,10 @@ struct FAkAudioSession
 
     UPROPERTY(Config, Category = "Ak Initialization Settings|Audio Session", EditAnywhere, meta = (ToolTip = "The IDs of the iOS audio session modes, used for customizing the audio session for typical app types. These IDs are functionally equivalent to the corresponding constants defined by the iOS audio session service back-end (AVAudioSession). Refer to Xcode documentation for details on the audio session category options."))
     EAkAudioSessionMode AudioSessionMode = EAkAudioSessionMode::Default;
+
+    UPROPERTY(Config, Category = "Ak Initialization Settings|Audio Session", EditAnywhere, meta = (ToolTip = "Determines which audio routes are permitted for the audio session controlled by Wwise. These policies only apply for the \"Playback\" audio session category. These IDs are funtionally equivalent to the corresponding constants defined by the iOS audio session service backend (AVAudioSession). Refer to Xcode documentation for details on the audio session route-sharing policies."),
+        meta=(MinWwiseVersion="2024.1"))
+    EAkAudioSessionRouteSharingPolicy AudioSessionRouteSharingPolicy = EAkAudioSessionRouteSharingPolicy::Default;
 
     void FillInitializationStructure(FAkInitializationStructure& InitializationStructure) const;
 };

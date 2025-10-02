@@ -12,20 +12,23 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #include "Wwise/CookedData/WwiseExternalSourceCookedData.h"
 
 #include "Wwise/Stats/FileHandler.h"
+
+#if WITH_EDITORONLY_DATA && UE_5_5_OR_LATER
+#include "Serialization/CompactBinaryWriter.h"
+#endif
+
 #include <inttypes.h>
 
-FWwiseExternalSourceCookedData::FWwiseExternalSourceCookedData():
-	Cookie(0),
-	DebugName()
+FWwiseExternalSourceCookedData::FWwiseExternalSourceCookedData()
 {}
 
-void FWwiseExternalSourceCookedData::Serialize(FArchive& Ar)
+void FWwiseExternalSourceCookedData::Serialize(FArchive& Ar, UObject* Owner)
 {
 	UStruct* Struct = StaticStruct();
 	UE_CLOG(UNLIKELY(!Struct), LogWwiseFileHandler, Fatal, TEXT("ExternalSourceCookedData Serialize: No StaticStruct."));
@@ -48,3 +51,13 @@ FString FWwiseExternalSourceCookedData::GetDebugString() const
 {
 	return FString::Printf(TEXT("ExternalSource %s (%" PRIu32 ")"), *DebugName.ToString(), Cookie);
 }
+
+#if WITH_EDITORONLY_DATA && UE_5_5_OR_LATER
+void FWwiseExternalSourceCookedData::GetPlatformCookDependencies(FWwiseCookEventContext& Context, FCbWriter& Writer) const
+{
+	Writer << "ES";
+	Writer.BeginObject();
+	Writer << "Cookie" << Cookie;
+	Writer.EndObject();
+}
+#endif

@@ -12,49 +12,43 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #include "Wwise/WwiseDatabaseIdentifiers.h"
 
-uint32 GetTypeHash(const FWwiseDatabaseMediaIdKey& MediaId)
+WwiseDBShortId GetTypeHash(const WwiseDatabaseLocalizableIdKey& LocalizableId)
 {
-	return HashCombine(
-		GetTypeHash(MediaId.MediaId),
-		GetTypeHash(MediaId.SoundBankId));
-}
-
-uint32 GetTypeHash(const FWwiseDatabaseLocalizableIdKey& LocalizableId)
-{
-	return HashCombine(HashCombine(
+	return WwiseDBHashCombine(WwiseDBHashCombine(
 		GetTypeHash(LocalizableId.Id),
 		GetTypeHash(LocalizableId.SoundBankId)),
 		GetTypeHash(LocalizableId.LanguageId));
 }
 
-uint32 GetTypeHash(const FWwiseDatabaseGroupValueKey& GroupId)
+WwiseDBShortId GetTypeHash(const WwiseDatabaseGroupValueKey& GroupId)
 {
-	return HashCombine(
+	return WwiseDBHashCombine(
 		GetTypeHash(GroupId.GroupId),
 		GetTypeHash(GroupId.Id));
 }
 
-uint32 GetTypeHash(const FWwiseDatabaseLocalizableGroupValueKey& LocalizableGroupValue)
+WwiseDBShortId GetTypeHash(const WwiseDatabaseLocalizableGroupValueKey& LocalizableGroupValue)
 {
-	return HashCombine(
+	return WwiseDBHashCombine(
 		GetTypeHash(LocalizableGroupValue.GroupValue),
 		GetTypeHash(LocalizableGroupValue.LanguageId));
 }
 
-uint32 GetTypeHash(const FWwiseDatabaseLocalizableGuidKey& LocalizableGuid)
+WwiseDBShortId GetTypeHash(const WwiseDatabaseLocalizableGuidKey& LocalizableGuid)
 {
-	return HashCombine(
+	return WwiseDBHashCombine(
 		GetTypeHash(LocalizableGuid.Guid),
 		GetTypeHash(LocalizableGuid.LanguageId));
 }
-uint32 GetTypeHash(const FWwiseDatabaseLocalizableNameKey& LocalizableName)
+
+WwiseDBShortId GetTypeHash(const WwiseDatabaseLocalizableNameKey& LocalizableName)
 {
-	return HashCombine(
+	return WwiseDBHashCombine(
 		GetTypeHash(LocalizableName.Name),
 		GetTypeHash(LocalizableName.LanguageId));
 }

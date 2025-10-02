@@ -12,22 +12,20 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #include "Wwise/Ref/WwiseRefBus.h"
-#include "Wwise/WwiseProjectDatabaseModule.h"
 
 #include "Wwise/Metadata/WwiseMetadataBus.h"
 #include "Wwise/Metadata/WwiseMetadataSoundBank.h"
-#include "Wwise/Stats/ProjectDatabase.h"
 
-const TCHAR* const FWwiseRefBus::NAME = TEXT("Bus");
+const WwiseDBString WwiseRefBus::NAME = "Bus"_wwise_db;
 
-const FWwiseMetadataBus* FWwiseRefBus::GetBus() const
+const WwiseMetadataBus* WwiseRefBus::GetBus() const
 {
 	const auto* SoundBank = GetSoundBank();
-	if (UNLIKELY(!SoundBank))
+	if (!SoundBank) [[unlikely]]
 	{
 		return nullptr;
 	}
@@ -38,54 +36,54 @@ const FWwiseMetadataBus* FWwiseRefBus::GetBus() const
 	}
 	else
 	{
-		UE_LOG(LogWwiseProjectDatabase, Error, TEXT("Could not get Bus index #%zu"), BusIndex);
+		WWISE_DB_LOG(Error, "Could not get Bus index #%zu", BusIndex);
 		return nullptr;
 	}
 }
 
-uint32 FWwiseRefBus::BusId() const
+WwiseDBShortId WwiseRefBus::BusId() const
 {
 	const auto* Bus = GetBus();
-	if (UNLIKELY(!Bus))
+	if (!Bus) [[unlikely]]
 	{
 		return 0;
 	}
 	return Bus->Id;
 }
 
-FGuid FWwiseRefBus::BusGuid() const
+WwiseDBGuid WwiseRefBus::BusGuid() const
 {
 	const auto* Bus = GetBus();
-	if (UNLIKELY(!Bus))
+	if (!Bus) [[unlikely]]
 	{
 		return {};
 	}
 	return Bus->GUID;
 }
 
-FName FWwiseRefBus::BusName() const
+const WwiseDBString* WwiseRefBus::BusName() const
 {
 	const auto* Bus = GetBus();
-	if (UNLIKELY(!Bus))
+	if (!Bus) [[unlikely]]
 	{
-		return {};
+		return &emptyString;
 	}
-	return Bus->Name;
+	return &Bus->Name;
 }
 
-FName FWwiseRefBus::BusObjectPath() const
+const WwiseDBString* WwiseRefBus::BusObjectPath() const
 {
 	const auto* Bus = GetBus();
-	if (UNLIKELY(!Bus))
+	if (!Bus) [[unlikely]]
 	{
-		return {};
+		return &emptyString;
 	}
-	return Bus->ObjectPath;
+	return &Bus->ObjectPath;
 }
 
-uint32 FWwiseRefBus::Hash() const
+WwiseDBShortId WwiseRefBus::Hash() const
 {
-	auto Result = FWwiseRefSoundBank::Hash();
-	Result = HashCombine(Result, GetTypeHash(BusIndex));
+	auto Result = WwiseRefSoundBank::Hash();
+	Result = WwiseDBHashCombine(Result, GetTypeHash(BusIndex));
 	return Result;
 }

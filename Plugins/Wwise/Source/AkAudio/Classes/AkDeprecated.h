@@ -12,7 +12,7 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #pragma once
@@ -46,11 +46,11 @@ class AKAUDIO_API UAkAssetPlatformData : public UObject
 
 #if WITH_EDITORONLY_DATA
 	UPROPERTY(transient, VisibleAnywhere, Category = "UAkAssetData")
-	TMap<FString, UAkAssetData*> AssetDataPerPlatform;
+	TMap<FString, TObjectPtr<UAkAssetData>> AssetDataPerPlatform;
 #endif
 
 	UPROPERTY(transient)
-	UAkAssetData* CurrentAssetData = nullptr;
+	TObjectPtr<UAkAssetData> CurrentAssetData = nullptr;
 
 	void Serialize(FArchive& Ar) override
 	{
@@ -111,7 +111,7 @@ class AKAUDIO_API UAkMediaAsset : public UObject
 	GENERATED_BODY()
 
 	UPROPERTY(transient, VisibleAnywhere, Category = "AkMediaAsset")
-	TMap<FString, UAkMediaAssetData*> MediaAssetDataPerPlatform;
+	TMap<FString, TObjectPtr<UAkMediaAssetData>> MediaAssetDataPerPlatform;
 
 	void Serialize(FArchive& Ar) override
 	{

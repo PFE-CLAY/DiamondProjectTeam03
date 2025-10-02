@@ -3,14 +3,15 @@
   "Platform": "Windows",
   "BasePlatform": "Windows",
   "SchemaVersion": "16",
-  "SoundBankVersion": "150",
+  "SoundBankVersion": "154",
   "SoundBanks": [
    {
     "Id": "4155742227",
     "Type": "User",
     "GUID": "{D2378E68-5468-4849-BC4A-8FC6D8A3BF29}",
+    "Color": "15",
     "Language": "SFX",
-    "Hash": "{80266133-A537-3180-AE75-DB61097E95F3}",
+    "Hash": "{1E3726AF-E57C-FA62-0D80-5C9C1F9FA1A7}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\GPE_SB",
     "ShortName": "GPE_SB",
     "Path": "GPE_SB.bnk",
@@ -21,7 +22,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "AMB\\RFX\\GPE_PillarDestroyed.wav",
-      "CachePath": "SFX/AMB/RFX/GPE_PillarDestroyed_818F3B66.wem"
+      "CachePath": "54/{54E974B0-F268-720F-0E44-0481334D8EB4}.wem"
      },
      {
       "Id": "131763475",
@@ -29,7 +30,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "MC_SFX_Dash_05.wav",
-      "CachePath": "SFX/MC_SFX_Dash_05_818F3B66.wem"
+      "CachePath": "B9/{B9E3DCB5-75A9-2D9D-76AA-364041C32F00}.wem"
      },
      {
       "Id": "226141576",
@@ -37,7 +38,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "MC\\GPE_JumpPads_Mecha_01.wav",
-      "CachePath": "SFX/MC/GPE_JumpPads_Mecha_01_818F3B66.wem"
+      "CachePath": "DE/{DE0F8A94-2611-ED79-6DB0-62866ECBC017}.wem"
      },
      {
       "Id": "275758801",
@@ -45,7 +46,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "AMB\\RFX\\GPE_JumpPads_Activation-002.wav",
-      "CachePath": "SFX/AMB/RFX/GPE_JumpPads_Activation-002_818F3B66.wem"
+      "CachePath": "21/{2102FDD2-C56F-1808-8423-1BB56878533A}.wem"
      },
      {
       "Id": "280528909",
@@ -53,7 +54,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "MC_SFX_Dash_01.wav",
-      "CachePath": "SFX/MC_SFX_Dash_01_818F3B66.wem"
+      "CachePath": "C3/{C33F3192-04AE-2B70-F520-595933FA6A91}.wem"
      },
      {
       "Id": "411674623",
@@ -61,7 +62,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "MC_SFX_Dash_02.wav",
-      "CachePath": "SFX/MC_SFX_Dash_02_818F3B66.wem"
+      "CachePath": "D8/{D84C1EB7-FA78-ADD7-B5A3-90E31EAAFB16}.wem"
      },
      {
       "Id": "423129361",
@@ -69,7 +70,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "AMB\\RFX\\GPE_JumpPads_Activation-001.wav",
-      "CachePath": "SFX/AMB/RFX/GPE_JumpPads_Activation-001_818F3B66.wem"
+      "CachePath": "A0/{A0A5C690-1A5F-89A5-6FA8-568B86B018E5}.wem"
      },
      {
       "Id": "434078456",
@@ -77,7 +78,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "AMB\\RFX\\SFX_CorpseTrap_Closing.wav",
-      "CachePath": "SFX/AMB/RFX/SFX_CorpseTrap_Closing_818F3B66.wem"
+      "CachePath": "2F/{2F4F96F6-A400-C572-16CF-CF10C99CAEB0}.wem"
      },
      {
       "Id": "729439879",
@@ -85,7 +86,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "MC\\GPE_Elevator_Start.wav",
-      "CachePath": "SFX/MC/GPE_Elevator_Start_818F3B66.wem"
+      "CachePath": "12/{1210BF06-AE68-3986-431F-1D0FDCED614A}.wem"
      },
      {
       "Id": "831778911",
@@ -93,7 +94,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "MC\\GPE_JumpPads_Mecha_03.wav",
-      "CachePath": "SFX/MC/GPE_JumpPads_Mecha_03_818F3B66.wem"
+      "CachePath": "1D/{1D3F9979-4508-15A3-E16B-64D6D6ABE468}.wem"
      },
      {
       "Id": "865971538",
@@ -101,7 +102,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "AMB\\RFX\\GPE_JumpPads_Activation-003.wav",
-      "CachePath": "SFX/AMB/RFX/GPE_JumpPads_Activation-003_818F3B66.wem"
+      "CachePath": "4B/{4B96A81C-5732-D09C-D051-05FFEFA02764}.wem"
      },
      {
       "Id": "890446006",
@@ -109,7 +110,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "MC_SFX_Dash_03.wav",
-      "CachePath": "SFX/MC_SFX_Dash_03_818F3B66.wem"
+      "CachePath": "B8/{B85791D6-7480-6C2A-467B-079717D49A03}.wem"
      },
      {
       "Id": "904242620",
@@ -117,7 +118,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "MC\\GPE_Elevator_LP.wav",
-      "CachePath": "SFX/MC/GPE_Elevator_LP_FBC78EF0.wem"
+      "CachePath": "22/{2206BF97-C979-8C24-DC7A-497BF7B9F2E9}.wem"
      },
      {
       "Id": "925500281",
@@ -125,7 +126,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "MC_SFX_Dash_04.wav",
-      "CachePath": "SFX/MC_SFX_Dash_04_818F3B66.wem"
+      "CachePath": "0C/{0C325A4E-BD6F-41EB-63FF-E18082938322}.wem"
      },
      {
       "Id": "929577030",
@@ -133,7 +134,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "MC\\GPE_Elevator_Stop.wav",
-      "CachePath": "SFX/MC/GPE_Elevator_Stop_818F3B66.wem"
+      "CachePath": "35/{350D5C2E-6B60-67CC-9DF5-226A69CBA018}.wem"
      },
      {
       "Id": "932156054",
@@ -141,7 +142,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "MC\\GPE_JumpPads_Mecha_04.wav",
-      "CachePath": "SFX/MC/GPE_JumpPads_Mecha_04_818F3B66.wem"
+      "CachePath": "61/{61AF3CBD-DD00-5AD2-580A-A3394977A190}.wem"
      },
      {
       "Id": "978522934",
@@ -149,7 +150,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "AMB\\RFX\\SFX_CorpseTrap_Opening.wav",
-      "CachePath": "SFX/AMB/RFX/SFX_CorpseTrap_Opening_818F3B66.wem"
+      "CachePath": "E7/{E75296D8-A45B-9D4E-5778-3B955DFDEC79}.wem"
      },
      {
       "Id": "1032185961",
@@ -157,7 +158,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "MC\\GPE_JumpPads_Mecha_02.wav",
-      "CachePath": "SFX/MC/GPE_JumpPads_Mecha_02_818F3B66.wem"
+      "CachePath": "D4/{D44EC3B9-1CDD-BFE8-14D1-526B390DC911}.wem"
      },
      {
       "Id": "1037685382",
@@ -165,7 +166,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "MC\\GPE_JumpPads_Mecha_05.wav",
-      "CachePath": "SFX/MC/GPE_JumpPads_Mecha_05_818F3B66.wem"
+      "CachePath": "78/{78CA57E8-D4C4-0911-2098-366608671470}.wem"
      }
     ],
     "Plugins": {
@@ -186,6 +187,7 @@
       "Name": "Play_Elevator",
       "ObjectPath": "\\Events\\GPE_WU\\Play_Elevator",
       "GUID": "{188D4000-553D-4750-9060-D75200C9FF92}",
+      "Color": "14",
       "DurationType": "Infinite",
       "MediaRefs": [
        {
@@ -204,6 +206,7 @@
       "Name": "Play_GPE_JumPads_RC",
       "ObjectPath": "\\Events\\GPE_WU\\Play_GPE_JumPads_RC",
       "GUID": "{32F429C1-2B0E-427B-9F12-8775F5CFF0AD}",
+      "Color": "14",
       "MaxAttenuation": "2000",
       "DurationType": "OneShot",
       "DurationMin": "1.1072708",
@@ -253,6 +256,7 @@
       "Name": "Play_GPE_JumpPads_Activation_RC",
       "ObjectPath": "\\Events\\GPE_WU\\Play_GPE_JumpPads_Activation_RC",
       "GUID": "{7A4A1C10-6F19-4EFC-9649-9850E9202517}",
+      "Color": "14",
       "MaxAttenuation": "2000",
       "DurationType": "OneShot",
       "DurationMin": "3.2564793",
@@ -274,6 +278,7 @@
       "Name": "Play_GPE_PillarDestroyed",
       "ObjectPath": "\\Events\\GPE_WU\\Play_GPE_PillarDestroyed",
       "GUID": "{65F84DEF-9AA8-456B-A6AF-7249DA8CED54}",
+      "Color": "14",
       "MaxAttenuation": "3000",
       "DurationType": "OneShot",
       "DurationMin": "3.549459",
@@ -289,6 +294,7 @@
       "Name": "Play_SFX_CorpseTrap_Closing",
       "ObjectPath": "\\Events\\GPE_WU\\Play_SFX_CorpseTrap_Closing",
       "GUID": "{8B0069CF-C942-413E-842A-B22826187366}",
+      "Color": "14",
       "MaxAttenuation": "2000",
       "DurationType": "OneShot",
       "DurationMin": "2.4738333",
@@ -304,6 +310,7 @@
       "Name": "Play_SFX_CorpseTrap_Opening",
       "ObjectPath": "\\Events\\GPE_WU\\Play_SFX_CorpseTrap_Opening",
       "GUID": "{3B91810C-60F0-4DA1-8459-1EC729C58878}",
+      "Color": "14",
       "MaxAttenuation": "2000",
       "DurationType": "OneShot",
       "DurationMin": "2.3800209",
@@ -317,6 +324,6 @@
     ]
    }
   ],
-  "FileHash": "{7A34D4F3-E2A1-9723-B9C3-289F77250763}"
+  "FileHash": "{5242B350-2310-3AC8-4CA8-1BFAB35B462D}"
  }
 }

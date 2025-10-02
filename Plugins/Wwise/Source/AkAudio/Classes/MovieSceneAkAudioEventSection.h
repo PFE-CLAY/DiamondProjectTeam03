@@ -12,7 +12,7 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #pragma once
@@ -46,7 +46,7 @@ class UMovieSceneAkAudioEventSection : public UMovieSceneSection
 
 	/** The AkAudioEvent represented by this section */
 	UPROPERTY(EditAnywhere, Category = "AkAudioEvent", meta = (NoResetToDefault))
-	UAkAudioEvent* Event = nullptr;
+	TObjectPtr<UAkAudioEvent> Event = nullptr;
 
 	/* Indicates whether the Wwise event will be re-triggered when the end is reached. */
 	UPROPERTY(EditAnywhere, Category = "AkAudioEvent")
@@ -60,10 +60,6 @@ class UMovieSceneAkAudioEventSection : public UMovieSceneSection
 	/** Indicates whether the Wwise event should be stopped when the section stops in the Unreal Sequencer. */
 	UPROPERTY(EditAnywhere, Category = "AkAudioEvent")
 	bool StopAtSectionEnd = true;
-
-	/** The name of the AkAudioEvent represented by this section */
-	UPROPERTY(EditAnywhere, AdvancedDisplay, Category = "AkAudioEvent")
-	FString EventName = "";
 
 	/** The duration of the longest Wwise source that the Wwise event contains (taking trim into account). */
 	UPROPERTY(VisibleAnywhere, Category = "AkAudioEvent")
@@ -81,7 +77,7 @@ public:
 	/** Returns the UAkAudioEvent that this section triggers. */
 	AKAUDIO_API UAkAudioEvent* GetEvent() const { return Event; }
 
-	AKAUDIO_API FString GetEventName() const { return (Event == nullptr) ? EventName : Event->GetName(); }
+	AKAUDIO_API FString GetEventName() const { return (Event == nullptr) ? FString() : Event->GetName(); }
 
 	AKAUDIO_API bool EventShouldStopAtSectionEnd() const;
 
@@ -91,7 +87,7 @@ public:
 
 	AKAUDIO_API float GetEndTime() const;
 
-	/** Returns the minimum and maximum durations for the specified Event or EventName. This uses the generated XML data, not WAAPI. */
+	/** Returns the minimum and maximum durations for the specified Event or EventName. This uses the AkAudioEvent asset data, not WAAPI. */
 	AKAUDIO_API FFloatRange GetEventDuration() const;
 
 	bool RequiresUpdate = false;
@@ -170,18 +166,13 @@ public:
 	/** Returns true if the audio source information is initialized and valid. */
 	AKAUDIO_API bool AudioSourceInfoIsValid() const;
 
-#if !UE_4_26_OR_LATER
-    /* UMovieSceneSection interface */
-	AKAUDIO_API virtual FMovieSceneEvalTemplatePtr GenerateTemplate() const override;
-#endif
-
 	/** Check if the workunit is dirty. If so, enable the soundbank generation notification in the event section. */
 	AKAUDIO_API void CheckForWorkunitChanges(bool in_bNotifyTrack = false);
 
 	/** Update the AK event info using the UAkAudioEvent Event member. This should be called when the event is changed. */
 	AKAUDIO_API bool UpdateAkEventInfo();
 
-	bool IsValid() const { return Event != nullptr || !EventName.IsEmpty(); }
+	bool IsValid() const { return Event != nullptr;  }
 
 	bool GetStopAtSectionEnd() const { return StopAtSectionEnd; }
 
@@ -199,7 +190,7 @@ public:
 	virtual void PostEditChangeProperty(struct FPropertyChangedEvent& e) override;
 
 	/** Associate a new AK audio event with this section. Also updates section time and audio source info. */
-	bool SetEvent(UAkAudioEvent* AudioEvent, const FString& Name);
+	bool SetEvent(UAkAudioEvent* AudioEvent);
 
 	/** Use WAAPI to get the peak data for the Wwise event, with the given arguments and options. This is called by GetAudioSourcePeaks(). */
 	void WAAPIGetPeaks(const char* in_uri, TSharedRef<FJsonObject> in_getPeaksArgs,

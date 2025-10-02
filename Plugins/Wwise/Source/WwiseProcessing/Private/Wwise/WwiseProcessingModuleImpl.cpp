@@ -12,7 +12,7 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #include "Wwise/WwiseProcessingModuleImpl.h"
@@ -28,7 +28,7 @@ FWwiseProcessingModule::FWwiseProcessingModule()
 
 void FWwiseProcessingModule::StartupModule()
 {
-	UE_LOG(LogWwiseProcessing, Display, TEXT("Initializing default Processing."));
+	UE_LOG(LogWwiseProcessing, Log, TEXT("Initializing default Processing."));
 
 	GlobalCallbacksLock.WriteLock();
 	if (!GlobalCallbacks)
@@ -42,7 +42,7 @@ void FWwiseProcessingModule::StartupModule()
 
 void FWwiseProcessingModule::ShutdownModule()
 {
-	UE_LOG(LogWwiseProcessing, Display, TEXT("Shutting down default Processing."));
+	UE_LOG(LogWwiseProcessing, Log, TEXT("Shutting down default Processing."));
 	GlobalCallbacksLock.WriteLock();
 	TerminateGlobalCallbacks();
 	GlobalCallbacksLock.WriteUnlock();

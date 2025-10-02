@@ -12,7 +12,7 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 /*=============================================================================
@@ -36,11 +36,11 @@ public:
 
 	/** AkAudioEvent to play. Deprecated as UE4.7 integration: Use AkComponent->AkAudioEvent instead */
 	UPROPERTY()
-	class UAkAudioEvent * AkAudioEvent_DEPRECATED = nullptr;
+	TObjectPtr<class UAkAudioEvent> AkAudioEvent_DEPRECATED = nullptr;
 
 	/** AkComponent to handle playback */
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category=AkAmbientSound, meta=(ShowOnlyInnerProperties) )
-	class UAkComponent* AkComponent = nullptr;
+	TObjectPtr<class UAkComponent> AkComponent = nullptr;
 	
 	/** Stop playback if the owner is destroyed */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = AkAmbientSound, SimpleDisplay)

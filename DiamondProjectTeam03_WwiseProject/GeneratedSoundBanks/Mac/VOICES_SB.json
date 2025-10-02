@@ -3,14 +3,14 @@
   "Platform": "Mac",
   "BasePlatform": "Mac",
   "SchemaVersion": "16",
-  "SoundBankVersion": "150",
+  "SoundBankVersion": "154",
   "SoundBanks": [
    {
     "Id": "2765162312",
     "Type": "User",
     "GUID": "{9B915276-16F3-4721-B819-126344F97366}",
     "Language": "SFX",
-    "Hash": "{09656090-FA5D-B6BD-C9DD-96D87BCF6D3D}",
+    "Hash": "{1D2B3B5A-F531-57BE-C00F-99DC7F59746B}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\VOICES_SB",
     "ShortName": "VOICES_SB",
     "Path": "VOICES_SB.bnk",
@@ -21,7 +21,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "DUB_ARENA_1_2_2.wav",
-      "CachePath": "SFX/DUB_ARENA_1_2_2_818F3B66.wem"
+      "CachePath": "8E/{8E217C91-05C9-6D25-9FC5-E1ABC71AE6E7}.wem"
      },
      {
       "Id": "12434701",
@@ -29,7 +29,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "DUB_ALLY_1_3_0.wav",
-      "CachePath": "SFX/DUB_ALLY_1_3_0_818F3B66.wem"
+      "CachePath": "DF/{DF042FAB-C038-EC21-58EF-4012A74E0012}.wem"
      },
      {
       "Id": "45960235",
@@ -37,7 +37,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "DUB_ALLY_1_4_0.wav",
-      "CachePath": "SFX/DUB_ALLY_1_4_0_B42FC9A2.wem"
+      "CachePath": "C8/{C8F13A6E-6FFE-DA71-BDDB-B9696E55CB34}.wem"
      },
      {
       "Id": "73406871",
@@ -45,7 +45,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "DUB_ARENA_1_7_0.wav",
-      "CachePath": "SFX/DUB_ARENA_1_7_0_818F3B66.wem"
+      "CachePath": "31/{31217CD0-4A85-AB69-19F0-A5C7E3C160E8}.wem"
      },
      {
       "Id": "83922193",
@@ -53,7 +53,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "DUB_ARENA_1_2_3.wav",
-      "CachePath": "SFX/DUB_ARENA_1_2_3_818F3B66.wem"
+      "CachePath": "8B/{8BA4B464-F190-9D6F-6CD3-12E04209AC0B}.wem"
      },
      {
       "Id": "84247758",
@@ -61,7 +61,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "DUB_ALLY_1_8_0.wav",
-      "CachePath": "SFX/DUB_ALLY_1_8_0_818F3B66.wem"
+      "CachePath": "78/{787BE243-97F7-8F18-F8F2-C9137263F111}.wem"
      },
      {
       "Id": "93564485",
@@ -69,7 +69,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "DUB_ARENA_1_0_0.wav",
-      "CachePath": "SFX/DUB_ARENA_1_0_0_818F3B66.wem"
+      "CachePath": "38/{3802189E-7AEE-4C59-6B61-6C15CC7465B1}.wem"
      },
      {
       "Id": "115645254",
@@ -77,7 +77,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "DUB_ARENA_1_9_4.wav",
-      "CachePath": "SFX/DUB_ARENA_1_9_4_818F3B66.wem"
+      "CachePath": "DC/{DCC34616-4D38-1A17-2403-5858166A92F8}.wem"
      },
      {
       "Id": "140616404",
@@ -85,7 +85,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "DUB_ARENA_1_8_0.wav",
-      "CachePath": "SFX/DUB_ARENA_1_8_0_818F3B66.wem"
+      "CachePath": "D4/{D4D0517E-478A-0B55-C1B9-0D504DF985D1}.wem"
      },
      {
       "Id": "157392684",
@@ -93,7 +93,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "DUB_ARENA_1_9_2.wav",
-      "CachePath": "SFX/DUB_ARENA_1_9_2_818F3B66.wem"
+      "CachePath": "3B/{3B93FD09-E5F4-0493-48F4-9609DB78757E}.wem"
      },
      {
       "Id": "166584951",
@@ -101,7 +101,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "DUB_ARENA_1_9_1.wav",
-      "CachePath": "SFX/DUB_ARENA_1_9_1_818F3B66.wem"
+      "CachePath": "72/{72AD6E02-5701-E887-D5AD-CF76F210866A}.wem"
      },
      {
       "Id": "199901849",
@@ -109,7 +109,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "DUB_ALLY_1_2_0.wav",
-      "CachePath": "SFX/DUB_ALLY_1_2_0_818F3B66.wem"
+      "CachePath": "0A/{0A3D82B3-B445-0D1A-59D6-67E5174BE8E3}.wem"
      },
      {
       "Id": "276376101",
@@ -117,7 +117,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "DUB_ALLY_1_0_2.wav",
-      "CachePath": "SFX/DUB_ALLY_1_0_2_818F3B66.wem"
+      "CachePath": "E1/{E182045D-3DC8-F5B4-5AED-1F257318FDA0}.wem"
      },
      {
       "Id": "278418833",
@@ -125,7 +125,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "DUB_ARENA_1_9_3.wav",
-      "CachePath": "SFX/DUB_ARENA_1_9_3_818F3B66.wem"
+      "CachePath": "2A/{2A56BA60-F908-0310-7776-AAD09F716D21}.wem"
      },
      {
       "Id": "279456589",
@@ -133,7 +133,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "DUB_ARENA_1_9_5.wav",
-      "CachePath": "SFX/DUB_ARENA_1_9_5_818F3B66.wem"
+      "CachePath": "7F/{7F57E39D-CC05-1DFF-BE03-1271DD51180F}.wem"
      },
      {
       "Id": "289625457",
@@ -141,7 +141,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "DUB_ARENA_1_3_0.wav",
-      "CachePath": "SFX/DUB_ARENA_1_3_0_818F3B66.wem"
+      "CachePath": "D1/{D1AABFE6-25E4-CA90-2E83-5BB0BCF531E4}.wem"
      },
      {
       "Id": "305437427",
@@ -149,7 +149,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "DUB_ALLY_1_4_0.wav",
-      "CachePath": "SFX/DUB_ALLY_1_4_0_E0C25F29.wem"
+      "CachePath": "03/{03B7213D-31EC-A6AB-7763-7E0B00E5D1DF}.wem"
      },
      {
       "Id": "315927435",
@@ -157,7 +157,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "DUB_ALLY_1_6_1.wav",
-      "CachePath": "SFX/DUB_ALLY_1_6_1_818F3B66.wem"
+      "CachePath": "26/{26C0B2D1-1B68-D881-A009-D526C922DF39}.wem"
      },
      {
       "Id": "338368799",
@@ -165,7 +165,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "DUB_ARENA_1_1_2.wav",
-      "CachePath": "SFX/DUB_ARENA_1_1_2_818F3B66.wem"
+      "CachePath": "5D/{5DE03B1E-37AA-2369-8F9B-84B396A8B36B}.wem"
      },
      {
       "Id": "338492853",
@@ -173,7 +173,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "DUB_ALLY_1_6_0.wav",
-      "CachePath": "SFX/DUB_ALLY_1_6_0_818F3B66.wem"
+      "CachePath": "A0/{A051E24E-4DE2-0BEE-201C-F7509C23E99A}.wem"
      },
      {
       "Id": "381597154",
@@ -181,7 +181,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "DUB_ALLY_1_1_0.wav",
-      "CachePath": "SFX/DUB_ALLY_1_1_0_818F3B66.wem"
+      "CachePath": "FD/{FDFD349B-DF83-C298-37FA-F67623021F0D}.wem"
      },
      {
       "Id": "411650085",
@@ -189,7 +189,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "DUB_ARENA_1_9_6.wav",
-      "CachePath": "SFX/DUB_ARENA_1_9_6_818F3B66.wem"
+      "CachePath": "D9/{D9E07449-DEFC-B8DC-D3BE-0DDA7B150202}.wem"
      },
      {
       "Id": "435995496",
@@ -197,7 +197,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "DUB_ARENA_1_6_0.wav",
-      "CachePath": "SFX/DUB_ARENA_1_6_0_818F3B66.wem"
+      "CachePath": "F5/{F5F0436D-31A1-5198-7C9E-72ACBE407141}.wem"
      },
      {
       "Id": "500906151",
@@ -205,7 +205,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "DUB_ARENA_1_1_1.wav",
-      "CachePath": "SFX/DUB_ARENA_1_1_1_818F3B66.wem"
+      "CachePath": "06/{061FAB3A-EEBF-9541-9536-5D7C843AF6B4}.wem"
      },
      {
       "Id": "675447814",
@@ -213,7 +213,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "DUB_ALLY_1_0_0.wav",
-      "CachePath": "SFX/DUB_ALLY_1_0_0_818F3B66.wem"
+      "CachePath": "0A/{0AD8E2B4-C8BD-525C-56BC-95E88633CDF6}.wem"
      },
      {
       "Id": "687283735",
@@ -221,7 +221,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "DUB_ARENA_1_2_0.wav",
-      "CachePath": "SFX/DUB_ARENA_1_2_0_818F3B66.wem"
+      "CachePath": "78/{78EFCF27-896C-815F-875E-1562F2478105}.wem"
      },
      {
       "Id": "700914992",
@@ -229,7 +229,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "DUB_ALLY_1_0_1.wav",
-      "CachePath": "SFX/DUB_ALLY_1_0_1_818F3B66.wem"
+      "CachePath": "BD/{BD9249CB-B968-E4EB-A453-EE7633D1526F}.wem"
      },
      {
       "Id": "753350392",
@@ -237,7 +237,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "DUB_ALLY_1_5_0.wav",
-      "CachePath": "SFX/DUB_ALLY_1_5_0_818F3B66.wem"
+      "CachePath": "58/{58BF3E23-ABDC-1413-46AF-8B6D0E09D446}.wem"
      },
      {
       "Id": "767088532",
@@ -245,7 +245,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "DUB_ARENA_1_9_0.wav",
-      "CachePath": "SFX/DUB_ARENA_1_9_0_818F3B66.wem"
+      "CachePath": "8F/{8F36CFD7-DEE3-9F31-852E-AEB489EDA886}.wem"
      },
      {
       "Id": "881110537",
@@ -253,7 +253,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "DUB_ARENA_1_3_2.wav",
-      "CachePath": "SFX/DUB_ARENA_1_3_2_818F3B66.wem"
+      "CachePath": "59/{5910D296-C4F6-5C5B-1E2C-2E4EB849D3E5}.wem"
      },
      {
       "Id": "898148885",
@@ -261,7 +261,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "DUB_ARENA_1_1_0.wav",
-      "CachePath": "SFX/DUB_ARENA_1_1_0_818F3B66.wem"
+      "CachePath": "E5/{E5792D3E-BA65-59B7-9AC6-75BEE0ED6977}.wem"
      },
      {
       "Id": "899907561",
@@ -269,7 +269,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "DUB_ARENA_1_5_0.wav",
-      "CachePath": "SFX/DUB_ARENA_1_5_0_818F3B66.wem"
+      "CachePath": "B7/{B76129DE-2911-66E0-B4AF-EBB1C2208482}.wem"
      },
      {
       "Id": "952186329",
@@ -277,7 +277,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "DUB_ARENA_1_4_0.wav",
-      "CachePath": "SFX/DUB_ARENA_1_4_0_818F3B66.wem"
+      "CachePath": "FF/{FFB7B35D-5192-EFF3-B17A-E5E852E55664}.wem"
      },
      {
       "Id": "981954510",
@@ -285,7 +285,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "DUB_ALLY_1_7_0.wav",
-      "CachePath": "SFX/DUB_ALLY_1_7_0_818F3B66.wem"
+      "CachePath": "7D/{7D2E1978-4608-9549-0B4D-670622F3A279}.wem"
      },
      {
       "Id": "1008445025",
@@ -293,7 +293,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "DUB_ARENA_1_2_1.wav",
-      "CachePath": "SFX/DUB_ARENA_1_2_1_818F3B66.wem"
+      "CachePath": "C0/{C059B990-EB5B-6ECA-898C-30D988AF678A}.wem"
      },
      {
       "Id": "1031568460",
@@ -301,7 +301,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "DUB_ARENA_1_3_1.wav",
-      "CachePath": "SFX/DUB_ARENA_1_3_1_818F3B66.wem"
+      "CachePath": "C6/{C66C08B2-DF11-C266-5146-8A13081FE63D}.wem"
      }
     ],
     "Events": [
@@ -505,13 +505,15 @@
         "Id": "367558429",
         "Name": "RVB_Voices",
         "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Voices",
-        "GUID": "{483EAB60-BC92-484F-9830-D1776233B15C}"
+        "GUID": "{483EAB60-BC92-484F-9830-D1776233B15C}",
+        "Color": "9"
        },
        {
         "Id": "2561323002",
         "Name": "AUX_LPF",
         "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\AUX_LPF",
-        "GUID": "{5D5AAEA6-57CB-46FD-9802-C041695A5809}"
+        "GUID": "{5D5AAEA6-57CB-46FD-9802-C041695A5809}",
+        "Color": "9"
        }
       ]
      },
@@ -533,13 +535,15 @@
         "Id": "367558429",
         "Name": "RVB_Voices",
         "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Voices",
-        "GUID": "{483EAB60-BC92-484F-9830-D1776233B15C}"
+        "GUID": "{483EAB60-BC92-484F-9830-D1776233B15C}",
+        "Color": "9"
        },
        {
         "Id": "2561323002",
         "Name": "AUX_LPF",
         "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\AUX_LPF",
-        "GUID": "{5D5AAEA6-57CB-46FD-9802-C041695A5809}"
+        "GUID": "{5D5AAEA6-57CB-46FD-9802-C041695A5809}",
+        "Color": "9"
        }
       ]
      },
@@ -561,13 +565,15 @@
         "Id": "367558429",
         "Name": "RVB_Voices",
         "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Voices",
-        "GUID": "{483EAB60-BC92-484F-9830-D1776233B15C}"
+        "GUID": "{483EAB60-BC92-484F-9830-D1776233B15C}",
+        "Color": "9"
        },
        {
         "Id": "2561323002",
         "Name": "AUX_LPF",
         "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\AUX_LPF",
-        "GUID": "{5D5AAEA6-57CB-46FD-9802-C041695A5809}"
+        "GUID": "{5D5AAEA6-57CB-46FD-9802-C041695A5809}",
+        "Color": "9"
        }
       ]
      },
@@ -589,13 +595,15 @@
         "Id": "367558429",
         "Name": "RVB_Voices",
         "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Voices",
-        "GUID": "{483EAB60-BC92-484F-9830-D1776233B15C}"
+        "GUID": "{483EAB60-BC92-484F-9830-D1776233B15C}",
+        "Color": "9"
        },
        {
         "Id": "2561323002",
         "Name": "AUX_LPF",
         "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\AUX_LPF",
-        "GUID": "{5D5AAEA6-57CB-46FD-9802-C041695A5809}"
+        "GUID": "{5D5AAEA6-57CB-46FD-9802-C041695A5809}",
+        "Color": "9"
        }
       ]
      },
@@ -617,13 +625,15 @@
         "Id": "367558429",
         "Name": "RVB_Voices",
         "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Voices",
-        "GUID": "{483EAB60-BC92-484F-9830-D1776233B15C}"
+        "GUID": "{483EAB60-BC92-484F-9830-D1776233B15C}",
+        "Color": "9"
        },
        {
         "Id": "2561323002",
         "Name": "AUX_LPF",
         "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\AUX_LPF",
-        "GUID": "{5D5AAEA6-57CB-46FD-9802-C041695A5809}"
+        "GUID": "{5D5AAEA6-57CB-46FD-9802-C041695A5809}",
+        "Color": "9"
        }
       ]
      },
@@ -645,13 +655,15 @@
         "Id": "367558429",
         "Name": "RVB_Voices",
         "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Voices",
-        "GUID": "{483EAB60-BC92-484F-9830-D1776233B15C}"
+        "GUID": "{483EAB60-BC92-484F-9830-D1776233B15C}",
+        "Color": "9"
        },
        {
         "Id": "2561323002",
         "Name": "AUX_LPF",
         "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\AUX_LPF",
-        "GUID": "{5D5AAEA6-57CB-46FD-9802-C041695A5809}"
+        "GUID": "{5D5AAEA6-57CB-46FD-9802-C041695A5809}",
+        "Color": "9"
        }
       ]
      },
@@ -673,13 +685,15 @@
         "Id": "367558429",
         "Name": "RVB_Voices",
         "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Voices",
-        "GUID": "{483EAB60-BC92-484F-9830-D1776233B15C}"
+        "GUID": "{483EAB60-BC92-484F-9830-D1776233B15C}",
+        "Color": "9"
        },
        {
         "Id": "2561323002",
         "Name": "AUX_LPF",
         "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\AUX_LPF",
-        "GUID": "{5D5AAEA6-57CB-46FD-9802-C041695A5809}"
+        "GUID": "{5D5AAEA6-57CB-46FD-9802-C041695A5809}",
+        "Color": "9"
        }
       ]
      },
@@ -701,13 +715,15 @@
         "Id": "367558429",
         "Name": "RVB_Voices",
         "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Voices",
-        "GUID": "{483EAB60-BC92-484F-9830-D1776233B15C}"
+        "GUID": "{483EAB60-BC92-484F-9830-D1776233B15C}",
+        "Color": "9"
        },
        {
         "Id": "2561323002",
         "Name": "AUX_LPF",
         "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\AUX_LPF",
-        "GUID": "{5D5AAEA6-57CB-46FD-9802-C041695A5809}"
+        "GUID": "{5D5AAEA6-57CB-46FD-9802-C041695A5809}",
+        "Color": "9"
        }
       ]
      },
@@ -729,13 +745,15 @@
         "Id": "367558429",
         "Name": "RVB_Voices",
         "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Voices",
-        "GUID": "{483EAB60-BC92-484F-9830-D1776233B15C}"
+        "GUID": "{483EAB60-BC92-484F-9830-D1776233B15C}",
+        "Color": "9"
        },
        {
         "Id": "2561323002",
         "Name": "AUX_LPF",
         "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\AUX_LPF",
-        "GUID": "{5D5AAEA6-57CB-46FD-9802-C041695A5809}"
+        "GUID": "{5D5AAEA6-57CB-46FD-9802-C041695A5809}",
+        "Color": "9"
        }
       ]
      },
@@ -757,13 +775,15 @@
         "Id": "367558429",
         "Name": "RVB_Voices",
         "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Voices",
-        "GUID": "{483EAB60-BC92-484F-9830-D1776233B15C}"
+        "GUID": "{483EAB60-BC92-484F-9830-D1776233B15C}",
+        "Color": "9"
        },
        {
         "Id": "2561323002",
         "Name": "AUX_LPF",
         "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\AUX_LPF",
-        "GUID": "{5D5AAEA6-57CB-46FD-9802-C041695A5809}"
+        "GUID": "{5D5AAEA6-57CB-46FD-9802-C041695A5809}",
+        "Color": "9"
        }
       ]
      },
@@ -785,13 +805,15 @@
         "Id": "367558429",
         "Name": "RVB_Voices",
         "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Voices",
-        "GUID": "{483EAB60-BC92-484F-9830-D1776233B15C}"
+        "GUID": "{483EAB60-BC92-484F-9830-D1776233B15C}",
+        "Color": "9"
        },
        {
         "Id": "2561323002",
         "Name": "AUX_LPF",
         "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\AUX_LPF",
-        "GUID": "{5D5AAEA6-57CB-46FD-9802-C041695A5809}"
+        "GUID": "{5D5AAEA6-57CB-46FD-9802-C041695A5809}",
+        "Color": "9"
        }
       ]
      },
@@ -813,13 +835,15 @@
         "Id": "367558429",
         "Name": "RVB_Voices",
         "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Voices",
-        "GUID": "{483EAB60-BC92-484F-9830-D1776233B15C}"
+        "GUID": "{483EAB60-BC92-484F-9830-D1776233B15C}",
+        "Color": "9"
        },
        {
         "Id": "2561323002",
         "Name": "AUX_LPF",
         "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\AUX_LPF",
-        "GUID": "{5D5AAEA6-57CB-46FD-9802-C041695A5809}"
+        "GUID": "{5D5AAEA6-57CB-46FD-9802-C041695A5809}",
+        "Color": "9"
        }
       ]
      },
@@ -841,13 +865,15 @@
         "Id": "367558429",
         "Name": "RVB_Voices",
         "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Voices",
-        "GUID": "{483EAB60-BC92-484F-9830-D1776233B15C}"
+        "GUID": "{483EAB60-BC92-484F-9830-D1776233B15C}",
+        "Color": "9"
        },
        {
         "Id": "2561323002",
         "Name": "AUX_LPF",
         "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\AUX_LPF",
-        "GUID": "{5D5AAEA6-57CB-46FD-9802-C041695A5809}"
+        "GUID": "{5D5AAEA6-57CB-46FD-9802-C041695A5809}",
+        "Color": "9"
        }
       ]
      },
@@ -869,13 +895,15 @@
         "Id": "367558429",
         "Name": "RVB_Voices",
         "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Voices",
-        "GUID": "{483EAB60-BC92-484F-9830-D1776233B15C}"
+        "GUID": "{483EAB60-BC92-484F-9830-D1776233B15C}",
+        "Color": "9"
        },
        {
         "Id": "2561323002",
         "Name": "AUX_LPF",
         "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\AUX_LPF",
-        "GUID": "{5D5AAEA6-57CB-46FD-9802-C041695A5809}"
+        "GUID": "{5D5AAEA6-57CB-46FD-9802-C041695A5809}",
+        "Color": "9"
        }
       ]
      },
@@ -897,13 +925,15 @@
         "Id": "367558429",
         "Name": "RVB_Voices",
         "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Voices",
-        "GUID": "{483EAB60-BC92-484F-9830-D1776233B15C}"
+        "GUID": "{483EAB60-BC92-484F-9830-D1776233B15C}",
+        "Color": "9"
        },
        {
         "Id": "2561323002",
         "Name": "AUX_LPF",
         "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\AUX_LPF",
-        "GUID": "{5D5AAEA6-57CB-46FD-9802-C041695A5809}"
+        "GUID": "{5D5AAEA6-57CB-46FD-9802-C041695A5809}",
+        "Color": "9"
        }
       ]
      },
@@ -925,13 +955,15 @@
         "Id": "367558429",
         "Name": "RVB_Voices",
         "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Voices",
-        "GUID": "{483EAB60-BC92-484F-9830-D1776233B15C}"
+        "GUID": "{483EAB60-BC92-484F-9830-D1776233B15C}",
+        "Color": "9"
        },
        {
         "Id": "2561323002",
         "Name": "AUX_LPF",
         "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\AUX_LPF",
-        "GUID": "{5D5AAEA6-57CB-46FD-9802-C041695A5809}"
+        "GUID": "{5D5AAEA6-57CB-46FD-9802-C041695A5809}",
+        "Color": "9"
        }
       ]
      },
@@ -953,13 +985,15 @@
         "Id": "367558429",
         "Name": "RVB_Voices",
         "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Voices",
-        "GUID": "{483EAB60-BC92-484F-9830-D1776233B15C}"
+        "GUID": "{483EAB60-BC92-484F-9830-D1776233B15C}",
+        "Color": "9"
        },
        {
         "Id": "2561323002",
         "Name": "AUX_LPF",
         "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\AUX_LPF",
-        "GUID": "{5D5AAEA6-57CB-46FD-9802-C041695A5809}"
+        "GUID": "{5D5AAEA6-57CB-46FD-9802-C041695A5809}",
+        "Color": "9"
        }
       ]
      },
@@ -981,13 +1015,15 @@
         "Id": "367558429",
         "Name": "RVB_Voices",
         "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Voices",
-        "GUID": "{483EAB60-BC92-484F-9830-D1776233B15C}"
+        "GUID": "{483EAB60-BC92-484F-9830-D1776233B15C}",
+        "Color": "9"
        },
        {
         "Id": "2561323002",
         "Name": "AUX_LPF",
         "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\AUX_LPF",
-        "GUID": "{5D5AAEA6-57CB-46FD-9802-C041695A5809}"
+        "GUID": "{5D5AAEA6-57CB-46FD-9802-C041695A5809}",
+        "Color": "9"
        }
       ]
      },
@@ -1009,13 +1045,15 @@
         "Id": "367558429",
         "Name": "RVB_Voices",
         "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Voices",
-        "GUID": "{483EAB60-BC92-484F-9830-D1776233B15C}"
+        "GUID": "{483EAB60-BC92-484F-9830-D1776233B15C}",
+        "Color": "9"
        },
        {
         "Id": "2561323002",
         "Name": "AUX_LPF",
         "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\AUX_LPF",
-        "GUID": "{5D5AAEA6-57CB-46FD-9802-C041695A5809}"
+        "GUID": "{5D5AAEA6-57CB-46FD-9802-C041695A5809}",
+        "Color": "9"
        }
       ]
      },
@@ -1037,13 +1075,15 @@
         "Id": "367558429",
         "Name": "RVB_Voices",
         "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Voices",
-        "GUID": "{483EAB60-BC92-484F-9830-D1776233B15C}"
+        "GUID": "{483EAB60-BC92-484F-9830-D1776233B15C}",
+        "Color": "9"
        },
        {
         "Id": "2561323002",
         "Name": "AUX_LPF",
         "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\AUX_LPF",
-        "GUID": "{5D5AAEA6-57CB-46FD-9802-C041695A5809}"
+        "GUID": "{5D5AAEA6-57CB-46FD-9802-C041695A5809}",
+        "Color": "9"
        }
       ]
      },
@@ -1065,13 +1105,15 @@
         "Id": "367558429",
         "Name": "RVB_Voices",
         "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Voices",
-        "GUID": "{483EAB60-BC92-484F-9830-D1776233B15C}"
+        "GUID": "{483EAB60-BC92-484F-9830-D1776233B15C}",
+        "Color": "9"
        },
        {
         "Id": "2561323002",
         "Name": "AUX_LPF",
         "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\AUX_LPF",
-        "GUID": "{5D5AAEA6-57CB-46FD-9802-C041695A5809}"
+        "GUID": "{5D5AAEA6-57CB-46FD-9802-C041695A5809}",
+        "Color": "9"
        }
       ]
      },
@@ -1093,13 +1135,15 @@
         "Id": "367558429",
         "Name": "RVB_Voices",
         "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Voices",
-        "GUID": "{483EAB60-BC92-484F-9830-D1776233B15C}"
+        "GUID": "{483EAB60-BC92-484F-9830-D1776233B15C}",
+        "Color": "9"
        },
        {
         "Id": "2561323002",
         "Name": "AUX_LPF",
         "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\AUX_LPF",
-        "GUID": "{5D5AAEA6-57CB-46FD-9802-C041695A5809}"
+        "GUID": "{5D5AAEA6-57CB-46FD-9802-C041695A5809}",
+        "Color": "9"
        }
       ]
      },
@@ -1121,19 +1165,21 @@
         "Id": "367558429",
         "Name": "RVB_Voices",
         "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Voices",
-        "GUID": "{483EAB60-BC92-484F-9830-D1776233B15C}"
+        "GUID": "{483EAB60-BC92-484F-9830-D1776233B15C}",
+        "Color": "9"
        },
        {
         "Id": "2561323002",
         "Name": "AUX_LPF",
         "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\AUX_LPF",
-        "GUID": "{5D5AAEA6-57CB-46FD-9802-C041695A5809}"
+        "GUID": "{5D5AAEA6-57CB-46FD-9802-C041695A5809}",
+        "Color": "9"
        }
       ]
      }
     ]
    }
   ],
-  "FileHash": "{55E612F8-1E64-9033-8A06-555CC59973E0}"
+  "FileHash": "{CB095111-15FC-E478-4062-60E1C2BBDDFB}"
  }
 }

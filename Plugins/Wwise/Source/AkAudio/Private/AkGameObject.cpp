@@ -12,7 +12,7 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 /*=============================================================================
@@ -75,35 +75,20 @@ UAkGameObject::UAkGameObject(const class FObjectInitializer& ObjectInitializer) 
 	Super(ObjectInitializer)
 {
 	bEventPosted = false;
+
 }
 
-void UAkGameObject::PostLoad()
+float UAkGameObject::GetAttenuationScalingFactor() const
 {
-	Super::PostLoad();
-
-	const UAkSettings* AkSettings = GetDefault<UAkSettings>();
-	if (!bAttenuationScalingMigrated && LIKELY(AkSettings))
-	{
-		bAttenuationScalingMigrated = true;
-		bOverrideAttenuationScalingFactor = AkSettings->DefaultScalingFactor != AttenuationScalingFactor;
-	}
+	return AttenuationScalingFactor;
 }
 
 bool UAkGameObject::SetAttenuationScalingFactor()
 {
 	AKRESULT result = AK_Fail;
-
-	FAkAudioDevice* AudioDevice = FAkAudioDevice::Get();
-	if (AudioDevice)
+	if (FAkAudioDevice* AudioDevice = FAkAudioDevice::Get())
 	{
-		if (bOverrideAttenuationScalingFactor)
-		{
-			result = AudioDevice->SetAttenuationScalingFactor(this, AttenuationScalingFactor);
-		}
-		else if (auto AkSettings = GetDefault<UAkSettings>())
-		{
-			result = AudioDevice->SetAttenuationScalingFactor(this, AkSettings->DefaultScalingFactor);
-		}
+		result = AudioDevice->SetAttenuationScalingFactor(this, AttenuationScalingFactor);
 	}
 
 	return result == AK_Success;
@@ -273,32 +258,16 @@ bool UAkGameObject::HasActiveEvents() const
 	return (CallbackManager != nullptr) && CallbackManager->HasActiveEvents(GetAkGameObjectID());
 }
 
-
-void UAkGameObject::SetOverrideAttenuationScalingFactor(bool bInOverrideAttenuationScalingFactor)
-{
-	if (bOverrideAttenuationScalingFactor != bInOverrideAttenuationScalingFactor)
-	{
-		bOverrideAttenuationScalingFactor = bInOverrideAttenuationScalingFactor;
-		SetAttenuationScalingFactor();
-	}
-}
-
 void UAkGameObject::SetAttenuationScalingFactor(float InAttenuationScalingFactor)
 {
 	if (InAttenuationScalingFactor <= 0.f)
 	{
 		UE_LOG(LogAkAudio, Warning, TEXT("UAkGameObject::SetAttenuationScalingFactor: Attenuation scaling factor of %s is zero or a negative number."), *GetName());
 	}
-	else
+	else if (AttenuationScalingFactor != InAttenuationScalingFactor)
 	{
-		if (AttenuationScalingFactor != InAttenuationScalingFactor)
-		{
-			AttenuationScalingFactor = InAttenuationScalingFactor;
-			if (bOverrideAttenuationScalingFactor)
-			{
-				SetAttenuationScalingFactor();
-			}
-		}
+		AttenuationScalingFactor = InAttenuationScalingFactor;
+		SetAttenuationScalingFactor();
 	}
 }
 
@@ -333,10 +302,6 @@ void UAkGameObject::PostEditChangeProperty(FPropertyChangedEvent& PropertyChange
 			{
 				SetAttenuationScalingFactor();
 			}
-		}
-		if (PropertyChangedEvent.Property->GetFName() == GET_MEMBER_NAME_CHECKED(UAkGameObject, bOverrideAttenuationScalingFactor))
-		{
-			SetAttenuationScalingFactor();
 		}
 	}
 }

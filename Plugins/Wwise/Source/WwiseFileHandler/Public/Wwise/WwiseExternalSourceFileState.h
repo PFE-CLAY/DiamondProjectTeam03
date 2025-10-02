@@ -12,31 +12,28 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #pragma once
 
+#include "WwisePackagedFile.h"
 #include "Wwise/WwiseFileState.h"
 #include "Wwise/WwiseStreamableFileStateInfo.h"
 
-class FWwiseFileCacheHandle;
+class FWwiseFileSystemCacheHandle;
 
 class WWISEFILEHANDLER_API FWwiseExternalSourceFileState : public FWwiseFileState, public AkExternalSourceInfo
 {
 public:
-	const uint32 MemoryAlignment;
-	const bool bDeviceMemory;
-
 	const uint32 MediaId;
-	const FName MediaPathName;
-	const FName RootPath;
+	FWwisePackagedFile PackagedFile;
 
 	TAtomic<int> PlayCount;
 
 protected:
 	FWwiseExternalSourceFileState(uint32 InMemoryAlignment, bool bInDeviceMemory, 
-		uint32 InMediaId, const FName& InMediaPathName, const FName& InRootPath, int32 InCodecId);
+		uint32 InMediaId, const FName& InMediaPathName, int32 InCodecId);
 	~FWwiseExternalSourceFileState() override;
 
 public:
@@ -61,7 +58,7 @@ public:
 	IMappedFileRegion* MappedRegion;
 
 	FWwiseInMemoryExternalSourceFileState(uint32 InMemoryAlignment, bool bInDeviceMemory, 
-		uint32 InMediaId, const FName& InMediaPathName, const FName& InRootPath, int32 InCodecId);
+		uint32 InMediaId, const FName& InMediaPathName, int32 InCodecId);
 	~FWwiseInMemoryExternalSourceFileState() override { Term(); }
 
 	void OpenFile(FOpenFileCallback&& InCallback) override;
@@ -76,11 +73,11 @@ public:
 	const uint32 PrefetchSize;
 	const uint32 StreamingGranularity;
 
-	FWwiseFileCacheHandle* StreamedFile;
+	IWwiseFileCacheHandle* StreamedFile;
 
 	FWwiseStreamedExternalSourceFileState(uint32 InMemoryAlignment, bool bInDeviceMemory,
 		uint32 InPrefetchSize, uint32 InStreamingGranularity,
-		uint32 InMediaId, const FName& InMediaPathName, const FName& InRootPath, int32 InCodecId);
+		uint32 InMediaId, const FName& InMediaPathName, int32 InCodecId);
 	~FWwiseStreamedExternalSourceFileState() override { Term(); }
 
 	void CloseStreaming() override;

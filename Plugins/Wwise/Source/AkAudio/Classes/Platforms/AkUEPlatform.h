@@ -12,7 +12,7 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #pragma once
@@ -25,7 +25,7 @@ Copyright (c) 2024 Audiokinetic Inc.
 #include "AkPlatform_tvOS/AkTVOSPlatform.h"
 #elif PLATFORM_IOS && !PLATFORM_TVOS
 #include "AkPlatform_iOS/AkIOSPlatform.h"
-#elif (defined(PLATFORM_LINUXARM64) && PLATFORM_LINUXARM64) || (defined(PLATFORM_LINUXAARCH64) && PLATFORM_LINUXAARCH64)
+#elif defined(PLATFORM_LINUXARM64) && PLATFORM_LINUXARM64
 #include "AkPlatform_LinuxArm64/AkLinuxArm64Platform.h"
 #elif PLATFORM_LINUX
 #include "AkPlatform_Linux/AkLinuxPlatform.h"
@@ -45,6 +45,8 @@ Copyright (c) 2024 Audiokinetic Inc.
 #include "AkPlatform_XboxOneGC/AkXboxOneGDKPlatform.h"
 #elif defined(PLATFORM_XSX) && PLATFORM_XSX
 #include "AkPlatform_XboxSeriesX/AkXboxSeriesXPlatform.h"
+#elif defined(AK_PLATFORM_RUNTIME_SWITCH2) && AK_PLATFORM_RUNTIME_SWITCH2
+#include "AkPlatform_Switch2/AkSwitch2Platform.h"
 #else
 #error "The Wwise plug-in does not support the current build platform."
 #endif

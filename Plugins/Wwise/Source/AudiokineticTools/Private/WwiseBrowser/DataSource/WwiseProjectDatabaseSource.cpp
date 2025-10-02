@@ -12,7 +12,7 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #include "WwiseProjectDatabaseSource.h"
@@ -22,7 +22,7 @@ Copyright (c) 2024 Audiokinetic Inc.
 #include "IAudiokineticTools.h"
 #include "AssetManagement/AkAssetDatabase.h"
 #include "Async/Async.h"
-#include "WaapiPicker/WwiseTreeItem.h"
+#include "Wwise/WwiseTreeItem.h"
 #include "Wwise/WwiseProjectDatabase.h"
 #include "Wwise/WwiseProjectDatabaseDelegates.h"
 #include "Wwise/Metadata/WwiseMetadataProjectInfo.h"
@@ -44,14 +44,14 @@ FText FWwiseProjectDatabaseDataSource::GetProjectName()
 		return {};
 	}
 
-	const FWwiseDataStructureScopeLock DataStructure(*ProjectDatabase);
-	const FWwiseRefPlatform Platform = DataStructure.GetPlatform(ProjectDatabase->GetCurrentPlatform());
+	const WwiseDataStructureScopeLock DataStructure(*ProjectDatabase);
+	const WwiseRefPlatform Platform = DataStructure.GetPlatform(ProjectDatabase->GetCurrentPlatform());
 
 	if (Platform.IsValid())
 	{
-		if (const FWwiseMetadataProjectInfo* ProjectInfo = Platform.ProjectInfo.GetProjectInfo())
+		if (const WwiseMetadataProjectInfo* ProjectInfo = Platform.ProjectInfo.GetProjectInfo())
 		{
-			return FText::FromName(ProjectInfo->Project.Name);
+			return FText::FromString(*ProjectInfo->Project.Name);
 		}
 	}
 	return {};
@@ -95,7 +95,7 @@ bool FWwiseProjectDatabaseDataSource::ConstructTree(bool bShouldRefresh)
 	NodesByPath.Empty();
 
 	{
-		const FWwiseDataStructureScopeLock DataStructure(*ProjectDatabase);
+		const WwiseDataStructureScopeLock DataStructure(*ProjectDatabase);
 		if (DataStructure.GetCurrentPlatformData() == nullptr)
 		{
 			return false;
@@ -288,13 +288,14 @@ void FWwiseProjectDatabaseDataSource::BuildEvents(const WwiseEventGlobalIdsMap& 
 
 	for (const auto& Event : Events)
 	{
-		const auto& WwiseItem = Event.Value.GetEvent();
-		UE_LOG(LogAudiokineticTools, VeryVerbose, TEXT("Event Name: %s"), *WwiseItem->Name.ToString());
+		WwiseDBPair<const WwiseDatabaseLocalizableIdKey, WwiseRefEvent> EventPair(Event);
+		const auto& WwiseItem = EventPair.GetSecond().GetEvent();
+		UE_LOG(LogAudiokineticTools, VeryVerbose, TEXT("Event Name: %s"), *FWwiseStringConverter::ToFString(WwiseItem->Name));
 
-		FWwiseMetadataBasicReference EventRef = FWwiseMetadataBasicReference(WwiseItem->Id, WwiseItem->Name, WwiseItem->ObjectPath, WwiseItem->GUID);
+		WwiseMetadataBasicReference EventRef = WwiseMetadataBasicReference(WwiseItem->Id, WwiseItem->Name, WwiseItem->ObjectPath, WwiseItem->GUID);
 		if (!BuildFolderHierarchy(EventRef, EWwiseItemType::Event, FolderItem))
 		{
-			UE_LOG(LogAudiokineticTools, Error, TEXT("Failed to place %s in the Wwise Browser"), *WwiseItem->ObjectPath.ToString());
+			UE_LOG(LogAudiokineticTools, Error, TEXT("Failed to place %s in the Wwise Browser"), *FWwiseStringConverter::ToFString(WwiseItem->ObjectPath));
 		}
 	}
 
@@ -316,12 +317,13 @@ void FWwiseProjectDatabaseDataSource::BuildBusses(const WwiseBusGlobalIdsMap& Bu
 
 	for (auto& Bus : Busses)
 	{
-		const auto& WwiseItem = Bus.Value.GetBus();
-		UE_LOG(LogAudiokineticTools, VeryVerbose, TEXT("Bus Name: %s"), *WwiseItem->Name.ToString());
+		WwiseDBPair<const WwiseDatabaseLocalizableIdKey, WwiseRefBus> BusPair(Bus);
+		const auto& WwiseItem = BusPair.GetSecond().GetBus();
+		UE_LOG(LogAudiokineticTools, VeryVerbose, TEXT("Bus Name: %s"), *FWwiseStringConverter::ToFString(WwiseItem->Name));
 
 		if (!BuildFolderHierarchy(*WwiseItem, EWwiseItemType::Bus, FolderItem))
 		{
-			UE_LOG(LogAudiokineticTools, Error, TEXT("Failed to place %s in the Wwise Browser"), *WwiseItem->ObjectPath.ToString());
+			UE_LOG(LogAudiokineticTools, Error, TEXT("Failed to place %s in the Wwise Browser"), *FWwiseStringConverter::ToFString(WwiseItem->ObjectPath));
 		}
 	}
 
@@ -341,12 +343,13 @@ void FWwiseProjectDatabaseDataSource::BuildAuxBusses(const WwiseAuxBusGlobalIdsM
 
 	for (const auto& AuxBus : AuxBusses)
 	{
-		const auto& WwiseItem = AuxBus.Value.GetAuxBus();
-		UE_LOG(LogAudiokineticTools, VeryVerbose, TEXT("Aux Bus Name: %s"), *WwiseItem->Name.ToString());
+		WwiseDBPair<const WwiseDatabaseLocalizableIdKey, WwiseRefAuxBus> AuxBusPair(AuxBus);
+		const auto& WwiseItem = AuxBusPair.GetSecond().GetAuxBus();
+		UE_LOG(LogAudiokineticTools, VeryVerbose, TEXT("Aux Bus Name: %s"), *FWwiseStringConverter::ToFString(WwiseItem->Name));
 
 		if (!BuildFolderHierarchy(*WwiseItem, EWwiseItemType::AuxBus, FolderItem))
 		{
-			UE_LOG(LogAudiokineticTools, Error, TEXT("Failed to place %s in the Wwise Browser"), *WwiseItem->ObjectPath.ToString());
+			UE_LOG(LogAudiokineticTools, Error, TEXT("Failed to place %s in the Wwise Browser"), *FWwiseStringConverter::ToFString(WwiseItem->ObjectPath));
 		}
 	}
 }
@@ -365,12 +368,13 @@ void FWwiseProjectDatabaseDataSource::BuildAcousticTextures(const WwiseAcousticT
 
 	for (const auto& AcousticTexture : AcousticTextures)
 	{
-		const FWwiseMetadataAcousticTexture* WwiseItem = AcousticTexture.Value.GetAcousticTexture();
-		UE_LOG(LogAudiokineticTools, VeryVerbose, TEXT("Acoustic Texture Name: %s"), *WwiseItem->Name.ToString());
+		WwiseDBPair<const WwiseDatabaseLocalizableIdKey, WwiseRefAcousticTexture> AcousticTexturePair(AcousticTexture);
+		const WwiseMetadataAcousticTexture* WwiseItem = AcousticTexturePair.GetSecond().GetAcousticTexture();
+		UE_LOG(LogAudiokineticTools, VeryVerbose, TEXT("Acoustic Texture Name: %s"), *FWwiseStringConverter::ToFString(WwiseItem->Name));
 
 		if (!BuildFolderHierarchy(*WwiseItem, EWwiseItemType::AcousticTexture, FolderItem))
 		{
-			UE_LOG(LogAudiokineticTools, Error, TEXT("Failed to place %s in the Wwise Browser"), *WwiseItem->ObjectPath.ToString());
+			UE_LOG(LogAudiokineticTools, Error, TEXT("Failed to place %s in the Wwise Browser"), *FWwiseStringConverter::ToFString(WwiseItem->ObjectPath));
 		}
 	}
 
@@ -389,12 +393,13 @@ void FWwiseProjectDatabaseDataSource::BuildAudioDevices(const WwiseAudioDeviceGl
 
 	for (const auto& AudioDevice : AudioDevices)
 	{
-		const auto& WwiseItem = AudioDevice.Value.GetPlugin();
-		UE_LOG(LogAudiokineticTools, VeryVerbose, TEXT("Audio Device Name: %s"), *WwiseItem->Name.ToString());
+		WwiseDBPair<const WwiseDatabaseLocalizableIdKey, WwiseRefAudioDevice> AudioDevicePair(AudioDevice);
+		const auto& WwiseItem = AudioDevicePair.GetSecond().GetPlugin();
+		UE_LOG(LogAudiokineticTools, VeryVerbose, TEXT("Audio Device Name: %s"), *FWwiseStringConverter::ToFString(WwiseItem->Name));
 
 		if (!BuildFolderHierarchy(*WwiseItem, EWwiseItemType::AudioDeviceShareSet, FolderItem))
 		{
-			UE_LOG(LogAudiokineticTools, Error, TEXT("Failed to place %s in the Wwise Picker"), *WwiseItem->ObjectPath.ToString());
+			UE_LOG(LogAudiokineticTools, Error, TEXT("Failed to place %s in the Wwise Picker"), *FWwiseStringConverter::ToFString(*WwiseItem->ObjectPath));
 		}
 	}
 
@@ -415,12 +420,13 @@ void FWwiseProjectDatabaseDataSource::BuildStateGroups(const WwiseStateGroupGlob
 
 	for (const auto& StateGroup : StateGroups)
 	{
-		const auto& WwiseItem = StateGroup.Value.GetStateGroup();
-		UE_LOG(LogAudiokineticTools, VeryVerbose, TEXT("State Group Name: %s"), *WwiseItem->Name.ToString());
+		WwiseDBPair<const WwiseDatabaseLocalizableIdKey, WwiseRefStateGroup> StateGroupPair(StateGroup);
+		const auto& WwiseItem = StateGroupPair.GetSecond().GetStateGroup();
+		UE_LOG(LogAudiokineticTools, VeryVerbose, TEXT("State Group Name: %s"), *FWwiseStringConverter::ToFString(WwiseItem->Name));
 
 		if (!BuildFolderHierarchy(*WwiseItem, EWwiseItemType::StateGroup, FolderItem))
 		{
-			UE_LOG(LogAudiokineticTools, Error, TEXT("Failed to place %s in the Wwise Browser"), *WwiseItem->ObjectPath.ToString());
+			UE_LOG(LogAudiokineticTools, Error, TEXT("Failed to place %s in the Wwise Browser"), *FWwiseStringConverter::ToFString(WwiseItem->ObjectPath));
 		}
 	}
 
@@ -440,11 +446,12 @@ void FWwiseProjectDatabaseDataSource::BuildStates(const WwiseStateGlobalIdsMap& 
 
 	for (const auto& State : States)
 	{
-		const auto& WwiseItem = State.Value.GetState();
+		WwiseDBPair<const WwiseDatabaseLocalizableGroupValueKey, WwiseRefState> StatePair(State);
+		const auto& WwiseItem = StatePair.GetSecond().GetState();
 
-		if (!BuildFolderHierarchy(*WwiseItem, EWwiseItemType::State, StateGroupFolderItem, State.Value.GetStateGroup()->Id))
+		if (!BuildFolderHierarchy(*WwiseItem, EWwiseItemType::State, StateGroupFolderItem, StatePair.GetSecond().GetStateGroup()->Id))
 		{
-			UE_LOG(LogAudiokineticTools, Error, TEXT("Failed to place %s in the Wwise Browser"), *WwiseItem->ObjectPath.ToString());
+			UE_LOG(LogAudiokineticTools, Error, TEXT("Failed to place %s in the Wwise Browser"), *FWwiseStringConverter::ToFString(WwiseItem->ObjectPath));
 		}
 	}
 }
@@ -463,12 +470,13 @@ void FWwiseProjectDatabaseDataSource::BuildSwitchGroups(const WwiseSwitchGroupGl
 
 	for (const auto& SwitchGroup : SwitchGroups)
 	{
-		const auto& WwiseItem = SwitchGroup.Value.GetSwitchGroup();
-		UE_LOG(LogAudiokineticTools, VeryVerbose, TEXT("Switch Group Name: %s"), *WwiseItem->Name.ToString());
+		WwiseDBPair<const WwiseDatabaseLocalizableIdKey, WwiseRefSwitchGroup> SwitchGroupPair(SwitchGroup);
+		const auto& WwiseItem = SwitchGroupPair.GetSecond().GetSwitchGroup();
+		UE_LOG(LogAudiokineticTools, VeryVerbose, TEXT("Switch Group Name: %s"), *FWwiseStringConverter::ToFString(WwiseItem->Name));
 
 		if (!BuildFolderHierarchy(*WwiseItem, EWwiseItemType::SwitchGroup, FolderItem))
 		{
-			UE_LOG(LogAudiokineticTools, Error, TEXT("Failed to place %s in the Wwise Browser"), *WwiseItem->ObjectPath.ToString());
+			UE_LOG(LogAudiokineticTools, Error, TEXT("Failed to place %s in the Wwise Browser"), *FWwiseStringConverter::ToFString(WwiseItem->ObjectPath));
 		}
 	}
 
@@ -488,11 +496,12 @@ void FWwiseProjectDatabaseDataSource::BuildSwitches(const WwiseSwitchGlobalIdsMa
 
 	for (const auto& Switch : Switches)
 	{
-		const auto& WwiseItem = Switch.Value.GetSwitch();
+		WwiseDBPair<const WwiseDatabaseLocalizableGroupValueKey, WwiseRefSwitch> SwitchPair(Switch);
+		const auto& WwiseItem = SwitchPair.GetSecond().GetSwitch();
 
-		if (!BuildFolderHierarchy(*WwiseItem, EWwiseItemType::Switch, SwitchGroupFolderItem, Switch.Value.GetSwitchGroup()->Id))
+		if (!BuildFolderHierarchy(*WwiseItem, EWwiseItemType::Switch, SwitchGroupFolderItem, SwitchPair.GetSecond().GetSwitchGroup()->Id))
 		{
-			UE_LOG(LogAudiokineticTools, Error, TEXT("Failed to place %s in the Wwise Browser"), *WwiseItem->ObjectPath.ToString());
+			UE_LOG(LogAudiokineticTools, Error, TEXT("Failed to place %s in the Wwise Browser"), *FWwiseStringConverter::ToFString(WwiseItem->ObjectPath));
 		}
 	}
 }
@@ -511,12 +520,13 @@ void FWwiseProjectDatabaseDataSource::BuildGameParameters(const WwiseGameParamet
 
 	for (const auto& GameParameter : GameParameters)
 	{
-		const FWwiseMetadataGameParameter* WwiseItem = GameParameter.Value.GetGameParameter();
-		UE_LOG(LogAudiokineticTools, VeryVerbose, TEXT("GameParameter Name: %s"), *WwiseItem->Name.ToString());
+		WwiseDBPair<const WwiseDatabaseLocalizableIdKey, WwiseRefGameParameter> GameParameterPair(GameParameter);
+		const WwiseMetadataGameParameter* WwiseItem = GameParameterPair.GetSecond().GetGameParameter();
+		UE_LOG(LogAudiokineticTools, VeryVerbose, TEXT("GameParameter Name: %s"), *FWwiseStringConverter::ToFString(WwiseItem->Name));
 
 		if (!BuildFolderHierarchy(*WwiseItem, EWwiseItemType::GameParameter, FolderItem))
 		{
-			UE_LOG(LogAudiokineticTools, Error, TEXT("Failed to place %s in the Wwise Browser"), *WwiseItem->ObjectPath.ToString());
+			UE_LOG(LogAudiokineticTools, Error, TEXT("Failed to place %s in the Wwise Browser"), *FWwiseStringConverter::ToFString(WwiseItem->ObjectPath));
 		}
 	}
 
@@ -537,12 +547,13 @@ void FWwiseProjectDatabaseDataSource::BuildTriggers(const WwiseTriggerGlobalIdsM
 
 	for (const auto& Trigger : Triggers)
 	{
-		const auto& WwiseItem = Trigger.Value.GetTrigger();
-		UE_LOG(LogAudiokineticTools, VeryVerbose, TEXT("Trigger Name: %s"), *WwiseItem->Name.ToString());
+		WwiseDBPair<const WwiseDatabaseLocalizableIdKey, WwiseRefTrigger> TriggerPair(Trigger);
+		const auto& WwiseItem = TriggerPair.GetSecond().GetTrigger();
+		UE_LOG(LogAudiokineticTools, VeryVerbose, TEXT("Trigger Name: %s"), *FWwiseStringConverter::ToFString(WwiseItem->Name));
 
 		if (!BuildFolderHierarchy(*WwiseItem, EWwiseItemType::Trigger, FolderItem))
 		{
-			UE_LOG(LogAudiokineticTools, Error, TEXT("Failed to place %s in the Wwise Browser"), *WwiseItem->ObjectPath.ToString());
+			UE_LOG(LogAudiokineticTools, Error, TEXT("Failed to place %s in the Wwise Browser"), *FWwiseStringConverter::ToFString(WwiseItem->ObjectPath));
 		}
 	}
 
@@ -563,12 +574,13 @@ void FWwiseProjectDatabaseDataSource::BuildEffectShareSets(const WwisePluginShar
 
 	for (const auto& EffectShareSet : EffectShareSets)
 	{
-		const auto& WwiseItem = EffectShareSet.Value.GetPlugin();
-		UE_LOG(LogAudiokineticTools, VeryVerbose, TEXT("ShareSet Name: %s"), *WwiseItem->Name.ToString());
+		WwiseDBPair<const WwiseDatabaseLocalizableIdKey, WwiseRefPluginShareSet> EffectShareSetPair(EffectShareSet);
+		const auto& WwiseItem = EffectShareSetPair.GetSecond().GetPlugin();
+		UE_LOG(LogAudiokineticTools, VeryVerbose, TEXT("ShareSet Name: %s"), *FWwiseStringConverter::ToFString(WwiseItem->Name));
 
 		if (!BuildFolderHierarchy(*WwiseItem, EWwiseItemType::EffectShareSet, FolderItem))
 		{
-			UE_LOG(LogAudiokineticTools, Error, TEXT("Failed to place %s in the Wwise Browser"), *WwiseItem->ObjectPath.ToString());
+			UE_LOG(LogAudiokineticTools, Error, TEXT("Failed to place %s in the Wwise Browser"), *FWwiseStringConverter::ToFString(WwiseItem->ObjectPath));
 		}
 	}
 
@@ -605,10 +617,10 @@ bool FWwiseProjectDatabaseDataSource::IsContainer(EWwiseItemType::Type ItemType)
 }
 
 bool FWwiseProjectDatabaseDataSource::BuildFolderHierarchy(
-	const FWwiseMetadataBasicReference& WwiseItem, EWwiseItemType::Type
+	const WwiseMetadataBasicReference& WwiseItem, EWwiseItemType::Type
 	ItemType, const FWwiseTreeItemPtr CurrentRootFolder, uint32 GroupId)
 {
-	const FString ItemPath = WwiseItem.ObjectPath.ToString();
+	const FString ItemPath = *WwiseItem.ObjectPath;
 	WwiseItemTreePath TreePath;
 	FWwiseTreeItemPtr ParentItem = CurrentRootFolder;
 
@@ -642,15 +654,22 @@ bool FWwiseProjectDatabaseDataSource::BuildFolderHierarchy(
 			ParentItem = FolderItem;
 		}
 
-		if (!AllValidTreeItemsByGuid.Find(WwiseItem.GUID))
+		int A, B, C, D;
+		WwiseItem.GUID.GetGuidValues(A, B, C, D);
+		FGuid Guid(A, B, C, D);
+		if (!AllValidTreeItemsByGuid.Find(Guid))
 		{
-			if(auto TreeItemPtr = NodesByPath.Find(WwiseItem.ObjectPath.ToString()))
+			if(auto TreeItemPtr = NodesByPath.Find(*FWwiseStringConverter::ToFString(WwiseItem.ObjectPath)))
 			{
 				auto TreeItem = *TreeItemPtr;
 				TreeItem->ItemType = ItemType;
-				TreeItem->ItemId = WwiseItem.GUID;
+				TreeItem->ItemId = Guid;
 				TreeItem->ShortId = WwiseItem.Id;
 				TreeItem->GroupId = GroupId;
+				if(ItemType == EWwiseItemType::AuxBus)
+				{
+					TreeItem->WwiseItemRef = MakeShared<WwiseMetadataBasicReference>(WwiseItem.Id, WwiseItem.Name, WwiseItem.ObjectPath, WwiseItem.GUID);
+				}
 			}
 			else
 			{
@@ -662,7 +681,7 @@ bool FWwiseProjectDatabaseDataSource::BuildFolderHierarchy(
 
 				if (IsContainer(ItemType))
 				{
-					NodesByPath.Add(WwiseItem.ObjectPath.ToString(), NewWwiseTreeItem);
+					NodesByPath.Add(FWwiseStringConverter::ToFString(WwiseItem.ObjectPath), NewWwiseTreeItem);
 				}
 			}
 		}

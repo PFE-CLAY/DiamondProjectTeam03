@@ -12,7 +12,7 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 using UnrealBuildTool;
@@ -46,11 +46,7 @@ public class AkAudio : ModuleRules
 			new string[]
 			{
 				"UMG",
-#if !UE_5_1_OR_LATER
-				"APEX",
-				"PhysX", 
-#endif
-				"WwiseConcurrency",
+				"WwisePackaging",
 				"WwiseResourceLoader",
 				"WwiseObstructionOcclusion",
 				"WwiseProcessing",
@@ -79,21 +75,27 @@ public class AkAudio : ModuleRules
 				"SlateCore",
 				"XmlParser",
 
+				"WwiseConcurrency",
 				"WwiseFileHandler",
+				"WwiseLowLevelUtils",
 				"WwiseSoundEngine",
-				"WwiseUtils"
+				"WwiseUtils",
 			}
 		);
 
 		if (Target.bBuildEditor)
 		{
+			PublicDependencyModuleNames.AddRange(
+				new string[]
+				{
+				}
+			);
+			
 			PrivateDependencyModuleNames.AddRange(
 				new string[]
 				{
 					"DesktopPlatform",
-#if UE_5_0_OR_LATER
 					"DeveloperToolSettings",
-#endif
 					"EditorStyle",
 
 					"GeometryMode",
@@ -102,7 +104,10 @@ public class AkAudio : ModuleRules
 					"SharedSettingsWidgets",
 					"SourceControl",
 					"TargetPlatform",
-					"UnrealEd"
+					"UnrealEd",
+
+					"WwiseAuthoring",
+					"WwiseEditorUtils",
 				}
 			);
 		}
@@ -110,8 +115,9 @@ public class AkAudio : ModuleRules
 		if (Target.bBuildWithEditorOnlyData)
 		{
 			PublicDependencyModuleNames.AddRange(
-				new String[]
+				new string[]
 				{
+					"WwisePackagingEditor",
 					"WwiseProjectDatabase"
 				}
 			);

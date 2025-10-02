@@ -12,7 +12,7 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #pragma once
@@ -22,7 +22,7 @@ Copyright (c) 2024 Audiokinetic Inc.
 
 namespace EWwiseItemType
 {
-	UENUM()
+
 	enum Type
 	{
 		Event,
@@ -63,7 +63,6 @@ namespace EWwiseItemType
 	static const FString GameParametersBrowserName = TEXT("GameParameters");
 	static const FString TriggersBrowserName = TEXT("Triggers");
 	static const FString ShareSetsBrowserName =	TEXT("Effect ShareSets");
-	static const FString ActorMixerPickerName =TEXT("Actor-Mixer Hierarchy");
 	static const FString OrphanAssetsBrowserName = TEXT("Orphan Assets");
 
 	//Name to show in the Browser

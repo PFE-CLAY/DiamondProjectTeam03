@@ -12,7 +12,7 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 /*=============================================================================
@@ -121,10 +121,6 @@ void UAkLateReverbComponent::SetAutoAssignAuxBus(bool bInEnable)
 		AuxBus = AuxBusManual;
 		ReverbParamsChanged = true;
 	}
-
-#if WITH_EDITOR
-	bTextStatusNeedsUpdate = true;
-#endif //WITH_EDITOR
 }
 
 uint32 UAkLateReverbComponent::GetAuxBusId() const
@@ -161,6 +157,15 @@ void UAkLateReverbComponent::InitializeParent()
 			AkComponentHelpers::LogAttachmentError(this, SceneParent, "UPrimitiveComponent");
 			return;
 		}
+#if WITH_EDITOR
+		if (!IsRunningCommandlet())
+		{
+			DestroyTextVisualizers();
+			InitTextVisualizers();
+			bTextValuesNeedUpdate = true;
+			bTextVisibilityNeedUpdate = true;
+		}
+#endif
 	}
 	else // will happen when this component gets detached from its parent
 	{
@@ -258,12 +263,11 @@ void UAkLateReverbComponent::EndPlay(const EEndPlayReason::Type EndPlayReason)
 void UAkLateReverbComponent::OnUnregister()
 {
 #if WITH_EDITOR
-	auto* World = GetWorld();
-	if(World && World->IsPlayInEditor())
+	if (!HasAnyFlags(RF_Transient))
 	{
 		DestroyTextVisualizers();
 	}
-	
+
 	UAkSettings* AkSettings = GetMutableDefault<UAkSettings>();
 	if (AkSettings != nullptr)
 	{
@@ -312,21 +316,14 @@ void UAkLateReverbComponent::OnUpdateTransform(EUpdateTransformFlags UpdateTrans
 	}
 
 #if WITH_EDITOR
-	if (TextVisualizerLabels != nullptr)
+	// text visualizers should not scale
+	if (TextVisualizerLabels)
 	{
 		TextVisualizerLabels->SetWorldScale3D(FVector::OneVector);
-		if (Parent.IsValid())
-		{
-			TextVisualizerLabels->SetWorldLocation(GetTextVisualizersLocation());
-		}
 	}
-	if (TextVisualizerValues != nullptr)
+	if (TextVisualizerValues)
 	{
 		TextVisualizerValues->SetWorldScale3D(FVector::OneVector);
-		if (Parent.IsValid())
-		{
-			TextVisualizerValues->SetWorldLocation(GetTextVisualizersLocation());
-		}
 	}
 #endif
 }
@@ -347,6 +344,9 @@ void UAkLateReverbComponent::TickComponent(float DeltaTime, enum ELevelTick Tick
 			RecalculateDecay();
 			DecayEstimationNeedsUpdate = false;
 			TextureSetHasChanged = false;
+#if WITH_EDITOR
+			bTextValuesNeedUpdate = true;
+#endif
 		}
 		if (SecondsSincePredelayUpdate < PARAM_ESTIMATION_UPDATE_PERIOD)
 		{
@@ -356,57 +356,70 @@ void UAkLateReverbComponent::TickComponent(float DeltaTime, enum ELevelTick Tick
 		{
 			RecalculatePredelay();
 			PredelayEstimationNeedsUpdate = false;
+#if WITH_EDITOR
+			bTextValuesNeedUpdate = true;
+#endif
 		}
 		if (ReverbAssignmentNeedsUpdate)
 		{
 			UpdateDecayEstimation(ReverbDescriptor.T60Decay, ReverbDescriptor.PrimitiveVolume, ReverbDescriptor.PrimitiveSurfaceArea);
 			ReverbAssignmentNeedsUpdate = false;
+#if WITH_EDITOR
+			bTextValuesNeedUpdate = true;
+#endif
 		}
 		if (ReverbParamsChanged)
 		{
 			OnReverbParamsChanged();
 			ReverbParamsChanged = false;
+#if WITH_EDITOR
+			bTextValuesNeedUpdate = true;
+#endif
 		}
 	}
 
 #if WITH_EDITOR
 	UWorld* World = GetWorld();
-	if (World == nullptr)
-		return;
+	if (World && World->WorldType == EWorldType::Editor)
+	{
+		if (GCurrentLevelEditingViewportClient != nullptr)
+		{
+			// Keep the text renderers pointing to the camera.
+			if (TextVisualizerLabels)
+			{
+				FVector PointTo = GCurrentLevelEditingViewportClient->GetViewLocation() - TextVisualizerLabels->GetComponentLocation();
+				TextVisualizerLabels->SetWorldRotation(PointTo.Rotation());
+			}
+			if (TextVisualizerValues)
+			{
+				FVector PointTo = GCurrentLevelEditingViewportClient->GetViewLocation() - TextVisualizerValues->GetComponentLocation();
+				TextVisualizerValues->SetWorldRotation(PointTo.Rotation());
+			}
+		}
 
-	if (GCurrentLevelEditingViewportClient != nullptr && World->WorldType == EWorldType::Editor)
-	{
-		// Keep the text renderers pointing to the camera.
-		if (IsValid(TextVisualizerLabels))
+		// Only update the text visibility when selecting or unselecting actors in editor.
+		if (GetOwner()->IsSelected() && !bWasSelected)
 		{
-			FVector PointTo = GCurrentLevelEditingViewportClient->GetViewLocation() - TextVisualizerLabels->GetComponentLocation();
-			TextVisualizerLabels->SetWorldRotation(PointTo.Rotation());
+			bWasSelected = true;
+			bTextVisibilityNeedUpdate = true;
 		}
-		if (IsValid(TextVisualizerValues))
+		if (!GetOwner()->IsSelected() && bWasSelected)
 		{
-			FVector PointTo = GCurrentLevelEditingViewportClient->GetViewLocation() - TextVisualizerValues->GetComponentLocation();
-			TextVisualizerValues->SetWorldRotation(PointTo.Rotation());
-		}
-	}
-	if (World->WorldType == EWorldType::Editor || World->WorldType == EWorldType::PIE)
-	{
-		// Only show the text renderer for selected actors.
-		if (GetOwner()->IsSelected() && !WasSelected)
-		{
-			WasSelected = true;
-			UpdateValuesLabels();
-		}
-		if (!GetOwner()->IsSelected() && WasSelected)
-		{
-			WasSelected = false;
-			UpdateValuesLabels();
+			bWasSelected = false;
+			bTextVisibilityNeedUpdate = true;
 		}
 	}
 
-	if (bTextStatusNeedsUpdate)
+	if (bTextValuesNeedUpdate && bEnable)
 	{
-		UpdateTextVisualizerStatus();
-		bTextStatusNeedsUpdate = false;
+		UpdateTextValues();
+		bTextValuesNeedUpdate = false;
+	}
+
+	if (bTextVisibilityNeedUpdate)
+	{
+		UpdateTextVisibility();
+		bTextVisibilityNeedUpdate = false;
 	}
 #endif
 }
@@ -437,22 +450,26 @@ void UAkLateReverbComponent::TextureSetUpdated()
 #if WITH_EDITOR
 void UAkLateReverbComponent::RegisterReverbInfoEnabledCallback()
 {
+	if (ShowReverbInfoChangedHandle.IsValid()) return;
+
 	UAkSettingsPerUser* AkSettingsPerUser = GetMutableDefault<UAkSettingsPerUser>();
-	if (AkSettingsPerUser == nullptr || ShowReverbInfoChangedHandle.IsValid())
-		return;
+	if (AkSettingsPerUser == nullptr) return;
+
 	ShowReverbInfoChangedHandle = AkSettingsPerUser->OnShowReverbInfoChanged.AddLambda([this, AkSettingsPerUser]()
 	{
-		bTextStatusNeedsUpdate = true;
+		UpdateTextVisibility();
 	});
 }
 
 void UAkLateReverbComponent::OnComponentDestroyed(bool bDestroyingHierarchy)
 {
 	UAkSettingsPerUser* AkSettingsPerUser = GetMutableDefault<UAkSettingsPerUser>();
-	if (!AkSettingsPerUser)
-		return;
-	AkSettingsPerUser->OnShowRoomsPortalsChanged.Remove(ShowReverbInfoChangedHandle);
+	if (AkSettingsPerUser == nullptr) return;
+
+	AkSettingsPerUser->OnShowReverbInfoChanged.Remove(ShowReverbInfoChangedHandle);
 	ShowReverbInfoChangedHandle.Reset();
+
+	Super::OnComponentDestroyed(bDestroyingHierarchy);
 }
 
 void UAkLateReverbComponent::InitializeComponent()
@@ -491,32 +508,33 @@ void UAkLateReverbComponent::HandleObjectsReplaced(const TMap<UObject*, UObject*
 	}
 }
 
-void UAkLateReverbComponent::UpdateTextVisualizerStatus()
+void UAkLateReverbComponent::UpdateTextVisibility()
 {
-	bool bShowReverbInfo = GetDefault<UAkSettingsPerUser>()->bShowReverbInfo;
-	// The reverb descriptor may or may not require updates depending on which global RTPCs are in use, and whether auto assign aux bus is selected.
-	// We only want to show the text renderers when the reverb parameter estimation is in use.
-	if ((!bShowReverbInfo || !ReverbDescriptor.RequiresUpdates()) && TextVisualizersInitialized())
+	if (!IsTextVisualizersInitialized()) return;
+	if (GetOwner() == nullptr) return;
+
+	bool bIsVisible = false;
+
+	if (GetDefault<UAkSettingsPerUser>()->bShowReverbInfo && bEnable && GetWorld() != nullptr)
 	{
-		DestroyTextVisualizers();
+		EWorldType::Type WorldType = GetWorld()->WorldType;
+		if (WorldType == EWorldType::Editor)
+		{
+			bIsVisible = GetOwner()->IsSelected();
+		}
+		else if (WorldType == EWorldType::EditorPreview)
+		{
+			bIsVisible = true;
+		}
 	}
-	else if ((bShowReverbInfo && ReverbDescriptor.RequiresUpdates()) && !TextVisualizersInitialized())
-	{
-		InitTextVisualizers();
-		DecayEstimationNeedsUpdate = ReverbDescriptor.ShouldEstimateDecay();
-		PredelayEstimationNeedsUpdate = ReverbDescriptor.ShouldEstimatePredelay();
-	}
+
+	TextVisualizerLabels->SetVisibility(bIsVisible);
+	TextVisualizerValues->SetVisibility(bIsVisible);
 }
 
-bool UAkLateReverbComponent::TextVisualizersInitialized() const
+FText UAkLateReverbComponent::GetTextValues() const
 {
-	return IsValid(TextVisualizerLabels) && IsValid(TextVisualizerValues);
-}
-
-FText UAkLateReverbComponent::GetValuesLabels() const
-{
-	// Get a nicely formatted string showing the values of all of the reverb properties in a left-aligned block.
-	// They will appear adjacent to a right-aligned block showing the property labels.
+	// Get a nicely formatted string showing the values of all of the reverb properties.
 	FString BusName = FString("NONE");
 	if (AuxBus != nullptr)
 		AuxBus->GetName(BusName);
@@ -581,84 +599,69 @@ FText UAkLateReverbComponent::GetValuesLabels() const
 
 void UAkLateReverbComponent::InitTextVisualizers()
 {
-	if (!HasAnyFlags(RF_Transient) && bEnable)
+	if (!HasAnyFlags(RF_Transient))
 	{
-		if (ReverbDescriptor.RequiresUpdates())
+		FString TextVizName = GetOwner()->GetActorLabel() + GetName();
+		UMaterialInterface* mat = Cast<UMaterialInterface>(FAkAudioStyle::GetAkForegroundTextMaterial());
+
+		UWorld* World = GetWorld();
+
+		TextVisualizerLabels = NewObject<UTextRenderComponent>(GetOuter(), *(TextVizName + TEXT("TextLabels")));
+		if (mat != nullptr)
 		{
-			FString OwnerName;
-#if WITH_EDITOR
-			OwnerName = GetOwner()->GetActorLabel();
-#else
-			OwnerName = GetOwner()->GetName();
-#endif
-			FString TextVizName = OwnerName + GetName();
-			UMaterialInterface* mat = Cast<UMaterialInterface>(FAkAudioStyle::GetAkForegroundTextMaterial());
-			if (!IsValid(TextVisualizerLabels))
-			{
-				TextVisualizerLabels = NewObject<UTextRenderComponent>(GetOuter(), *(TextVizName + TEXT("TextLabels")));
-				if (IsValid(TextVisualizerLabels))
-				{
-					if (mat != nullptr)
-						TextVisualizerLabels->SetTextMaterial(mat);
-					TextVisualizerLabels->SetHorizontalAlignment(EHorizTextAligment::EHTA_Right);
-					TextVisualizerLabels->RegisterComponentWithWorld(GetWorld());
-					TextVisualizerLabels->AttachToComponent(this, FAttachmentTransformRules::KeepWorldTransform);
-					TextVisualizerLabels->ResetRelativeTransform();
-					TextVisualizerLabels->SetWorldScale3D(FVector::OneVector);
-					if (Parent.IsValid())
-					{
-						TextVisualizerLabels->SetWorldLocation(GetTextVisualizersLocation());
-						UWorld* World = TextVisualizerLabels->GetWorld();
-						if (World != nullptr && World->WorldType == EWorldType::EditorPreview)
-						{
-							TextVisualizerLabels->SetWorldRotation(FVector(100, 0, 0).Rotation());
-						}
-					}
-					TextVisualizerLabels->bIsEditorOnly = true;
-					// Creates a right-aligned block of text showing the property labels.
-					TextVisualizerLabels->SetText(FText::FromString(FString::Format(TEXT("Volume {0}Area {0}Decay {0}AuxBus {0}Time to first reflection {0}HFDamping "), { LINE_TERMINATOR })));
-					TextVisualizerLabels->bSelectable = false;
-				}
-			}
-			if (!IsValid(TextVisualizerValues))
-			{
-				TextVisualizerValues = NewObject<UTextRenderComponent>(GetOuter(), *(TextVizName + TEXT("TextValues")));
-				if (IsValid(TextVisualizerValues))
-				{
-					if (mat != nullptr)
-						TextVisualizerValues->SetTextMaterial(mat);
-					TextVisualizerValues->SetHorizontalAlignment(EHorizTextAligment::EHTA_Left);
-					TextVisualizerValues->RegisterComponentWithWorld(GetWorld());
-					TextVisualizerValues->AttachToComponent(this, FAttachmentTransformRules::KeepWorldTransform);
-					TextVisualizerValues->ResetRelativeTransform();
-					TextVisualizerValues->SetWorldScale3D(FVector::OneVector);
-					if (Parent.IsValid())
-					{
-						TextVisualizerValues->SetWorldLocation(GetTextVisualizersLocation());
-						UWorld* World = TextVisualizerValues->GetWorld();
-						if (World != nullptr && World->WorldType == EWorldType::EditorPreview)
-						{
-							TextVisualizerValues->SetWorldRotation(FVector(100, 0, 0).Rotation());
-						}
-					}
-					TextVisualizerValues->bIsEditorOnly = true;
-					TextVisualizerValues->bSelectable = false;
-					UpdateValuesLabels();
-				}
-			}
+			TextVisualizerLabels->SetTextMaterial(mat);
 		}
+		TextVisualizerLabels->SetHorizontalAlignment(EHorizTextAligment::EHTA_Right);
+		TextVisualizerLabels->RegisterComponentWithWorld(World);
+		TextVisualizerLabels->AttachToComponent(this, FAttachmentTransformRules::KeepWorldTransform);
+		TextVisualizerLabels->ResetRelativeTransform();
+		TextVisualizerLabels->SetWorldScale3D(FVector::OneVector);
+		TextVisualizerLabels->SetWorldLocation(GetTextVisualizersLocation());
+		if (World != nullptr && World->WorldType == EWorldType::EditorPreview)
+		{
+			TextVisualizerLabels->SetWorldRotation(FVector(100, 0, 0).Rotation());
+		}
+		TextVisualizerLabels->bIsEditorOnly = true;
+		// Creates a right-aligned block of text showing the property labels.
+		TextVisualizerLabels->SetText(FText::FromString(FString::Format(TEXT("Volume {0}Area {0}Decay {0}AuxBus {0}Time to first reflection {0}HFDamping "), { LINE_TERMINATOR })));
+		TextVisualizerLabels->bSelectable = false;
+		TextVisualizerLabels->SetVisibility(false);
+
+		TextVisualizerValues = NewObject<UTextRenderComponent>(GetOuter(), *(TextVizName + TEXT("TextValues")));
+		if (mat != nullptr)
+		{
+			TextVisualizerValues->SetTextMaterial(mat);
+		}
+		TextVisualizerValues->SetHorizontalAlignment(EHorizTextAligment::EHTA_Left);
+		TextVisualizerValues->RegisterComponentWithWorld(World);
+		TextVisualizerValues->AttachToComponent(this, FAttachmentTransformRules::KeepWorldTransform);
+		TextVisualizerValues->ResetRelativeTransform();
+		TextVisualizerValues->SetWorldScale3D(FVector::OneVector);
+		TextVisualizerValues->SetWorldLocation(GetTextVisualizersLocation());
+		if (World != nullptr && World->WorldType == EWorldType::EditorPreview)
+		{
+			TextVisualizerValues->SetWorldRotation(FVector(100, 0, 0).Rotation());
+		}
+		TextVisualizerValues->bIsEditorOnly = true;
+		TextVisualizerValues->bSelectable = false;
+		TextVisualizerValues->SetVisibility(false);
 	}
+}
+
+bool UAkLateReverbComponent::IsTextVisualizersInitialized() const
+{
+	return TextVisualizerLabels && TextVisualizerValues;
 }
 
 void UAkLateReverbComponent::DestroyTextVisualizers()
 {
-	if (IsValid(TextVisualizerLabels))
+	if (TextVisualizerLabels)
 	{
 		TextVisualizerLabels->DetachFromComponent(FDetachmentTransformRules(EDetachmentRule::KeepWorld, /*bCallModify=*/ false));
 		TextVisualizerLabels->DestroyComponent();
 		TextVisualizerLabels = nullptr;
 	}
-	if (IsValid(TextVisualizerValues))
+	if (TextVisualizerValues)
 	{
 		TextVisualizerValues->DetachFromComponent(FDetachmentTransformRules(EDetachmentRule::KeepWorld, /*bCallModify=*/ false));
 		TextVisualizerValues->DestroyComponent();
@@ -666,34 +669,14 @@ void UAkLateReverbComponent::DestroyTextVisualizers()
 	}
 }
 
-void UAkLateReverbComponent::UpdateValuesLabels()
+void UAkLateReverbComponent::UpdateTextValues()
 {
-	if (!GetDefault<UAkSettingsPerUser>()->bShowReverbInfo)
-		return;
-	if (!TextVisualizersInitialized())
-		InitTextVisualizers();
-	if (IsValid(TextVisualizerValues))
+	if (!GetDefault<UAkSettingsPerUser>()->bShowReverbInfo) return;
+	if (!IsTextVisualizersInitialized()) return;
+
+	if (TextVisualizerValues)
 	{
-		TextVisualizerValues->SetText(GetValuesLabels());
-		bool visible = false;
-		if (GetWorld() != nullptr)
-		{
-			EWorldType::Type WorldType = GetWorld()->WorldType;
-			if (WorldType == EWorldType::Editor)
-			{
-				visible = GetOwner() != nullptr && GetOwner()->IsSelected();
-			}
-			else if (WorldType == EWorldType::EditorPreview)
-			{
-				visible = true;
-			}
-		}
-		if (GetOwner() != nullptr)
-		{
-			TextVisualizerValues->SetVisibility(visible);
-			if (IsValid(TextVisualizerLabels))
-				TextVisualizerLabels->SetVisibility(visible);
-		}
+		TextVisualizerValues->SetText(GetTextValues());
 	}
 }
 #endif // WITH_EDITOR
@@ -738,8 +721,6 @@ void UAkLateReverbComponent::UpdateDecayEstimation(float decay, float volume, fl
 	EnvironmentVolume = volume;
 	SurfaceArea = surfaceArea;
 	EnvironmentDecayEstimate = decay;
-
-	UpdateValuesLabels();
 #endif // WITH_EDITOR
 }
 
@@ -747,13 +728,11 @@ void UAkLateReverbComponent::UpdateDecayEstimation(float decay, float volume, fl
 void UAkLateReverbComponent::UpdateHFDampingEstimation(float hfDamping)
 {
 	HFDamping = hfDamping;
-	UpdateValuesLabels();
 }
 
 void UAkLateReverbComponent::UpdatePredelayEstimation(float predelay)
 {
 	TimeToFirstReflection = predelay;
-	UpdateValuesLabels();
 }
 
 void UAkLateReverbComponent::PreEditChange(FProperty* PropertyAboutToChange)
@@ -784,15 +763,12 @@ void UAkLateReverbComponent::PostEditChangeProperty(FPropertyChangedEvent& Prope
 	if (MemberPropertyName == GET_MEMBER_NAME_CHECKED(UAkLateReverbComponent, AutoAssignAuxBus))
 	{
 		DecayEstimationNeedsUpdate = true;
-		bTextStatusNeedsUpdate = true;
 
 		if (!AutoAssignAuxBus)
 		{
 			AuxBus = AuxBusManual;
 			ReverbParamsChanged = true;
 		}
-
-		UpdateValuesLabels();
 	}
 	if (MemberPropertyName == GET_MEMBER_NAME_CHECKED(UAkLateReverbComponent, AuxBus))
 	{
@@ -801,7 +777,6 @@ void UAkLateReverbComponent::PostEditChangeProperty(FPropertyChangedEvent& Prope
 			AuxBusManual = AuxBus;
 		}
 		ReverbParamsChanged = true;
-		UpdateValuesLabels();
 	}
 	if (MemberPropertyName == GET_MEMBER_NAME_CHECKED(UAkLateReverbComponent, bEnable))
 	{
@@ -834,11 +809,6 @@ void UAkLateReverbComponent::PostEditChangeProperty(FPropertyChangedEvent& Prope
 				// Late reverb is inside an active room. Update the room such that the reverb aux bus is correctly updated.
 				RoomCmpt->UpdateSpatialAudioRoom();
 			}
-		}
-		else if (CreationMethod == EComponentCreationMethod::Instance && bEnable
-			&& GetDefault<UAkSettingsPerUser>()->bShowReverbInfo)
-		{
-			InitTextVisualizers();
 		}
 	}
 	if (MemberPropertyName == GET_MEMBER_NAME_CHECKED(UAkLateReverbComponent, SendLevel))
@@ -881,7 +851,6 @@ void UAkLateReverbComponent::RegisterReverbAssignmentChangedCallback()
 		ReverbAssignmentChangedHandle = AkSettings->OnReverbAssignmentChanged.AddLambda([this]()
 		{
 			ReverbAssignmentNeedsUpdate = true;
-			bTextStatusNeedsUpdate = true;
 		});
 	}
 }
@@ -898,7 +867,6 @@ void UAkLateReverbComponent::RegisterGlobalDecayAbsorptionChangedCallback()
 		GlobalDecayAbsorptionChangedHandle = AkSettings->OnGlobalDecayAbsorptionChanged.AddLambda([this]()
 		{
 			DecayEstimationNeedsUpdate = true;
-			bTextStatusNeedsUpdate = true;
 		});
 	}
 }
@@ -916,7 +884,6 @@ void UAkLateReverbComponent::RegisterReverbRTPCChangedCallback()
 		{
 			DecayEstimationNeedsUpdate = true;
 			PredelayEstimationNeedsUpdate = true;
-			bTextStatusNeedsUpdate = true;
 		});
 	}
 }

@@ -12,14 +12,14 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #pragma once
 
 #include "AkInclude.h"
 #include "InitializationSettings/AkInitializationSettings.h"
-#include "InitializationSettings/AkPlatformInitialisationSettingsBase.h"
+#include "InitializationSettings/AkPlatformInitializationSettingsBase.h"
 
 #include "AkWindowsInitializationSettings.generated.h"
 
@@ -33,12 +33,13 @@ struct FAkWindowsAdvancedInitializationSettings : public FAkAdvancedInitializati
 
 	UPROPERTY(EditAnywhere, Category = "Ak Initialization Settings", meta = (ToolTip = "Maximum number of System Audio Objects to reserve. Other processes will not be able to use them. Default is 128."))
 	uint32 MaxSystemAudioObjects = 128;
+
 	void FillInitializationStructure(FAkInitializationStructure& InitializationStructure) const;
 };
 
 
 UCLASS(config = Game, defaultconfig)
-class AKAUDIO_API UAkWindowsInitializationSettings : public UObject, public IAkPlatformInitialisationSettingsBase
+class AKAUDIO_API UAkWindowsInitializationSettings : public UAkPlatformInitializationSettingsBase
 {
 	GENERATED_BODY()
 

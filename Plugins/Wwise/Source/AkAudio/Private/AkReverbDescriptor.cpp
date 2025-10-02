@@ -12,7 +12,7 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #include "AkReverbDescriptor.h"
@@ -94,23 +94,12 @@ void UpdateVolumeAndArea(UBodySetup* bodySetup, const FVector& scale, float& vol
 {
 	surfaceArea = 0.0f;
 	// Initially use the Unreal UBodySetup::GetVolume function to calculate volume...
-#if UE_5_1_OR_LATER
 	volume = bodySetup->GetScaledVolume(scale);
-#else
-	volume = bodySetup->GetVolume(scale);
-#endif
 	FKAggregateGeom& geometry = bodySetup->AggGeom;
 
 	for (const FKBoxElem& box : geometry.BoxElems)
 	{
 		surfaceArea += BoxSurfaceArea(box, scale);
-#if (!UE_5_1_OR_LATER)
-		// ... correct for any FKBoxElem elements in the geometry.
-		// UBodySetup::GetVolume has an inaccuracy for box elements. It is scaled uniformly by the minimum scale dimension (see FKBoxElem::GetVolume).
-		// For our purposes we want to scale by each dimension individually.
-		volume -= InaccurateBoxVolume(box, scale);
-		volume += BoxVolume(box, scale);
-#endif
 	}
 	for (const FKConvexElem& convexElem : geometry.ConvexElems)
 	{
@@ -124,10 +113,6 @@ void UpdateVolumeAndArea(UBodySetup* bodySetup, const FVector& scale, float& vol
 			FVector v2 = ScaleTransform.TransformPosition(convexElem.VertexData[convexElem.IndexData[3 * triIdx + 2]]);
 
 			surfaceArea += FAkReverbDescriptor::TriangleArea(v0, v1, v2);
-#if AK_USE_CHAOS && !(UE_5_1_OR_LATER)
-			// FKConvexElem::GetVolume is not implemented with Chaos before UE 5.1
-			volume += FAkReverbDescriptor::SignedVolumeOfTriangle(v0, v1, v2);
-#endif
 		}
 	}
 	for (const FKSphereElem& sphere : geometry.SphereElems)
@@ -169,11 +154,7 @@ bool ConvertToAkAcousticTextures(TArray<FAkAcousticTextureParams>& InTexturesPar
 =============================================================================*/
 double FAkReverbDescriptor::TriangleArea(const FVector& v1, const FVector& v2, const FVector& v3)
 {
-#if UE_5_0_OR_LATER
 	double Mag = 0.0;
-#else
-	float Mag = 0.0f;
-#endif
 	FVector Dir;
 	FVector::CrossProduct(v2 - v1, v3 - v1).ToDirectionAndLength(Dir, Mag);
 	return 0.5 * Mag;

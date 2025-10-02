@@ -12,140 +12,168 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #pragma once
 
+#include <shared_mutex>
+
+#include "Wwise/WwiseStringConverter.h"
 #include "Wwise/WwiseDataStructure.h"
 #include "Wwise/WwiseResourceLoader.h"
 #include "Wwise/WwiseProjectDatabaseModule.h"
+#include "Wwise/AdapterTypes/WwiseDataTypesAdapter.h"
+#include "Wwise/AdapterTypes/WwiseProjectDatabaseLogging.h"
 
 #include "Misc/CommandLine.h"
+#include "Wwise/Info/WwiseEventInfo.h"
+#include "Wwise/Info/WwiseGroupValueInfo.h"
 
-class FWwiseResourceLoader;
+struct FWwiseObjectInfo;
 class FWwiseProjectDatabase;
-using FSharedWwiseDataStructure = TSharedRef<FWwiseDataStructure, ESPMode::ThreadSafe>;
+using FSharedWwiseDataStructure = TSharedRef<WwiseDataStructure, ESPMode::ThreadSafe>;
 
-class WWISEPROJECTDATABASE_API FWwiseDataStructureScopeLock : public FRWScopeLock
+class WWISEPROJECTDATABASE_API WwiseDataStructureScopeLock
 {
+	std::shared_lock<std::shared_mutex> Lock;
 public:
-	FWwiseDataStructureScopeLock(const FWwiseProjectDatabase& InProjectDatabase);
+	WwiseDataStructureScopeLock(const FWwiseProjectDatabase& InProjectDatabase);
 
-	const FWwiseDataStructure& operator*() const
+	~WwiseDataStructureScopeLock()
+	{
+		Lock.mutex()->unlock_shared();
+	}
+	
+	const WwiseDataStructure& operator*() const
 	{
 		return DataStructure;
 	}
 
-	const FWwiseDataStructure* operator->() const
+	const WwiseDataStructure* operator->() const
 	{
 		return &DataStructure;
 	}
 
 	const WwiseAcousticTextureGlobalIdsMap& GetAcousticTextures() const;
-	FWwiseRefAcousticTexture GetAcousticTexture(const FWwiseObjectInfo& InInfo) const;
+	WwiseRefAcousticTexture GetAcousticTexture(const FWwiseObjectInfo& InInfo) const;
 
 	const WwiseAudioDeviceGlobalIdsMap& GetAudioDevices() const;
-	FWwiseRefAudioDevice GetAudioDevice(const FWwiseObjectInfo& InInfo) const;
+	WwiseRefAudioDevice GetAudioDevice(const FWwiseObjectInfo& InInfo) const;
 	
 	const WwiseAuxBusGlobalIdsMap& GetAuxBusses() const;
-	FWwiseRefAuxBus GetAuxBus(const FWwiseObjectInfo& InInfo) const;
+	WwiseRefAuxBus GetAuxBus(const FWwiseObjectInfo& InInfo) const;
 	
 	const WwiseBusGlobalIdsMap& GetBusses() const;
-	FWwiseRefBus GetBus(const FWwiseObjectInfo& InInfo) const;
+	WwiseRefBus GetBus(const FWwiseObjectInfo& InInfo) const;
 	
 	const WwiseCustomPluginGlobalIdsMap& GetCustomPlugins() const;
-	FWwiseRefCustomPlugin GetCustomPlugin(const FWwiseObjectInfo& InInfo) const;
+	WwiseRefCustomPlugin GetCustomPlugin(const FWwiseObjectInfo& InInfo) const;
 	
 	const WwiseDialogueArgumentGlobalIdsMap& GetDialogueArguments() const;
-	FWwiseRefDialogueArgument GetDialogueArgument(const FWwiseObjectInfo& InInfo) const;
+	WwiseRefDialogueArgument GetDialogueArgument(const FWwiseObjectInfo& InInfo) const;
 	
 	const WwiseDialogueEventGlobalIdsMap& GetDialogueEvents() const;
-	FWwiseRefDialogueEvent GetDialogueEvent(const FWwiseObjectInfo& InInfo) const;
+	WwiseRefDialogueEvent GetDialogueEvent(const FWwiseObjectInfo& InInfo) const;
 	
 	const WwiseEventGlobalIdsMap& GetEvents() const;
-	TSet<FWwiseRefEvent> GetEvent(const FWwiseEventInfo& InInfo) const;
+	WwiseDBSet<WwiseRefEvent> GetEvent(const FWwiseEventInfo& InInfo) const;
+	WwiseDBSet<WwiseRefEvent> GetAllLanguageEvents(const FWwiseEventInfo& InInfo) const;
 	
 	const WwiseExternalSourceGlobalIdsMap& GetExternalSources() const;
-	FWwiseRefExternalSource GetExternalSource(const FWwiseObjectInfo& InInfo) const;
+	WwiseRefExternalSource GetExternalSource(const FWwiseObjectInfo& InInfo) const;
 	
 	const WwiseGameParameterGlobalIdsMap& GetGameParameters() const;
-	FWwiseRefGameParameter GetGameParameter(const FWwiseObjectInfo& InInfo) const;
+	WwiseRefGameParameter GetGameParameter(const FWwiseObjectInfo& InInfo) const;
 	
 	const WwiseMediaGlobalIdsMap& GetMediaFiles() const;
-	FWwiseRefMedia GetMediaFile(const FWwiseObjectInfo& InInfo) const;
+	WwiseRefMedia GetMediaFile(const FWwiseObjectInfo& InInfo, uint32 InLanguageId = 0) const;
 	
 	const WwisePluginLibGlobalIdsMap& GetPluginLibs() const;
-	FWwiseRefPluginLib GetPluginLib(const FWwiseObjectInfo& InInfo) const;
+	WwiseRefPluginLib GetPluginLib(const FWwiseObjectInfo& InInfo) const;
 	
 	const WwisePluginShareSetGlobalIdsMap& GetPluginShareSets() const;
-	FWwiseRefPluginShareSet GetPluginShareSet(const FWwiseObjectInfo& InInfo) const;
+	WwiseRefPluginShareSet GetPluginShareSet(const FWwiseObjectInfo& InInfo) const;
 	
 	const WwiseSoundBankGlobalIdsMap& GetSoundBanks() const;
-	FWwiseRefSoundBank GetSoundBank(const FWwiseObjectInfo& InInfo) const;
+	WwiseRefSoundBank GetSoundBank(const FWwiseObjectInfo& InInfo, uint32 InLanguageId = 0) const;
 	
 	const WwiseStateGlobalIdsMap& GetStates() const;
-	FWwiseRefState GetState(const FWwiseGroupValueInfo& InInfo) const;
+	WwiseRefState GetState(const FWwiseGroupValueInfo& InInfo) const;
 	
 	const WwiseStateGroupGlobalIdsMap& GetStateGroups() const;
-	FWwiseRefStateGroup GetStateGroup(const FWwiseObjectInfo& InInfo) const;
+	WwiseRefStateGroup GetStateGroup(const FWwiseObjectInfo& InInfo) const;
 	
 	const WwiseSwitchGlobalIdsMap& GetSwitches() const;
-	FWwiseRefSwitch GetSwitch(const FWwiseGroupValueInfo& InInfo) const;
+	WwiseRefSwitch GetSwitch(const FWwiseGroupValueInfo& InInfo) const;
 	
 	const WwiseSwitchGroupGlobalIdsMap& GetSwitchGroups() const;
-	FWwiseRefSwitchGroup GetSwitchGroup(const FWwiseObjectInfo& InInfo) const;
+	WwiseRefSwitchGroup GetSwitchGroup(const FWwiseObjectInfo& InInfo) const;
 	
 	const WwiseTriggerGlobalIdsMap& GetTriggers() const;
-	FWwiseRefTrigger GetTrigger(const FWwiseObjectInfo& InInfo) const;
+	WwiseRefTrigger GetTrigger(const FWwiseObjectInfo& InInfo) const;
 
-	const TSet<FWwiseSharedLanguageId>& GetLanguages() const;
-	const TSet<FWwiseSharedPlatformId>& GetPlatforms() const;
-	FWwiseRefPlatform GetPlatform(const FWwiseSharedPlatformId& InPlatformId) const;
+	const WwiseDBSet<WwiseDBSharedLanguageId>& GetLanguages() const;
+	const WwiseDBSet<WwiseDBSharedPlatformId>& GetPlatforms() const;
+	WwiseRefPlatform GetPlatform(const FWwiseSharedPlatformId& InPlatformId) const;
 
-	const FWwisePlatformDataStructure* GetCurrentPlatformData() const;
+	const WwisePlatformDataStructure* GetCurrentPlatformData() const;
 
-	const FWwiseSharedLanguageId& GetCurrentLanguage() const { return CurrentLanguage; }
-	const FWwiseSharedPlatformId& GetCurrentPlatform() const { return CurrentPlatform; }
+	const WwiseDBSharedLanguageId& GetCurrentLanguage() const { return CurrentLanguage; }
+	const WwiseDBSharedPlatformId& GetCurrentPlatform() const { return CurrentPlatform; }
 	bool DisableDefaultPlatforms() const { return bDisableDefaultPlatforms; }
-	
-private:
-	const FWwiseDataStructure& DataStructure;
 
-	FWwiseSharedLanguageId CurrentLanguage;
-	FWwiseSharedPlatformId CurrentPlatform;
+	int GetUsageCount(const WwiseAnyRef& Asset) const;
+	int GetMediaUsageCount(uint32 InId) const;
+	int GetSoundBankUsageCount(uint32 InId, uint32 InLanguageId) const;
+	int GetSoundBankUsageCount(uint32 InId, const WwiseDBString& InLanguage) const;
+
+	uint32 GetLanguageId(const WwiseDBString& Name) const;
+	WwiseDBString GetLanguageName(uint32 InId) const;
+
+private:
+	const WwiseDataStructure& DataStructure;
+
+	WwiseDBSharedLanguageId CurrentLanguage;
+	WwiseDBSharedPlatformId CurrentPlatform;
 	bool bDisableDefaultPlatforms;
 
-	UE_NONCOPYABLE(FWwiseDataStructureScopeLock);
+	UE_NONCOPYABLE(WwiseDataStructureScopeLock);
 };
 
-class WWISEPROJECTDATABASE_API FWwiseDataStructureWriteScopeLock : public FRWScopeLock
+class WWISEPROJECTDATABASE_API WwiseDataStructureWriteScopeLock
 {
+	std::unique_lock<std::shared_mutex> Lock;
 public:
-	FWwiseDataStructureWriteScopeLock(FWwiseProjectDatabase& InProjectDatabase);
+	WwiseDataStructureWriteScopeLock(FWwiseProjectDatabase& InProjectDatabase);
 
-	FWwiseDataStructure& operator*()
+	~WwiseDataStructureWriteScopeLock()
+	{
+		Lock.unlock();
+	}
+	
+	WwiseDataStructure& operator*()
 	{
 		return DataStructure;
 	}
 
-	FWwiseDataStructure* operator->()
+	WwiseDataStructure* operator->()
 	{
 		return &DataStructure;
 	}
 
 private:
-	FWwiseDataStructure& DataStructure;
-	UE_NONCOPYABLE(FWwiseDataStructureWriteScopeLock);
+	WwiseDataStructure& DataStructure;
+	UE_NONCOPYABLE(WwiseDataStructureWriteScopeLock);
 };
 
 class WWISEPROJECTDATABASE_API FWwiseProjectDatabase
 {
-	friend class FWwiseDataStructureScopeLock;
-	friend class FWwiseDataStructureWriteScopeLock;
+	friend class WwiseDataStructureScopeLock;
+	friend class WwiseDataStructureWriteScopeLock;
 
 public:
-	static const FGuid BasePlatformGuid;
+	static const WwiseDBGuid BasePlatformGuid;
 
 	inline static FWwiseProjectDatabase* Get()
 	{
@@ -167,40 +195,69 @@ public:
 		return nullptr;
 	}
 
+	static FWwiseProjectDatabase* Instantiate(const FWwiseProjectDatabase& DefaultProjectDatabase)
+	{
+		if (auto* ProjectDatabase = Instantiate())
+		{
+			ProjectDatabase->InitForStaging(DefaultProjectDatabase);
+			return ProjectDatabase;
+		}
+		return nullptr;
+	}
+
 
 	FWwiseProjectDatabase() {}
 	virtual ~FWwiseProjectDatabase() {}
 
 	virtual void UpdateDataStructure(
-		const FDirectoryPath* InUpdateGeneratedSoundBanksPath = nullptr,
-		const FGuid* InBasePlatformGuid = &BasePlatformGuid) {}
+		const WwiseDBGuid* InBasePlatformGuid = &BasePlatformGuid) {}
 
-	virtual void PrepareProjectDatabaseForPlatform(FWwiseResourceLoader*&& InResourceLoader) {}
-	virtual FWwiseResourceLoader* GetResourceLoader() { return nullptr; }
-	virtual const FWwiseResourceLoader* GetResourceLoader() const { return nullptr; }
+	virtual void PrepareProjectDatabaseForPlatform(FWwiseResourceLoaderPtr&& InResourceLoader) {}
+	virtual FWwiseResourceLoaderPtr GetResourceLoader() { return nullptr; }
+	virtual const FWwiseResourceLoaderPtr GetResourceLoader() const { return nullptr; }
 
 	FWwiseSharedLanguageId GetCurrentLanguage() const;
 	FWwiseSharedPlatformId GetCurrentPlatform() const;
-	virtual bool IsProjectDatabaseParsed() const {return bIsDatabaseParsed;};
+	virtual bool IsProjectDatabaseParsed() const { return bIsDatabaseParsed; };
 
+	/**
+	 * Sets the path where the Generated SoundBanks are located, relative to the Unreal Content folder.
+	 *
+	 * This is typically used to synchronize the setting in UAkSettings.
+	 * 
+	 * @param DirectoryPath Path where the Generated SoundBanks are located.
+	 */
+	virtual void SetGeneratedSoundBanksPath(const FDirectoryPath& DirectoryPath);
+	virtual const FDirectoryPath& GetGeneratedSoundBanksPath() const { return GeneratedSoundBanksPath; }
+	virtual FString GetGeneratedSoundBanksPathFor(const FName& InPath) const { return GetGeneratedSoundBanksPathFor(InPath.ToString()); }
+	virtual FString GetGeneratedSoundBanksPathFor(const FString& InPath) const { return GetGeneratedSoundBanksPath().Path / InPath; }
 
 protected:
+	/**
+	 * This is called by Instantiate when a new Project Database is instantiated for staging purposes.
+	 * 
+	 * @param DefaultProjectDatabase The original Project Database
+	 */
+	virtual void InitForStaging(const FWwiseProjectDatabase& DefaultProjectDatabase);
+	
 	virtual FSharedWwiseDataStructure& GetLockedDataStructure() { check(false); UE_ASSUME(false); }
 	virtual const FSharedWwiseDataStructure& GetLockedDataStructure() const { check(false); UE_ASSUME(false); }
 
 	template <typename RequiredRef>
 	bool GetRef(RequiredRef& OutRef, const FWwiseObjectInfo& InInfo)
 	{
-		const auto* ResourceLoader = GetResourceLoader();
+		const FWwiseResourceLoaderPtr ResourceLoader = GetResourceLoader();
 		check(ResourceLoader);
 		const auto& PlatformRef = ResourceLoader->GetCurrentPlatform();
 
 		const auto& DataStructure = *GetLockedDataStructure();
 
-		const auto* Platform = DataStructure.Platforms.Find(PlatformRef);
+		WwiseDBGuid Guid(PlatformRef.Platform->PlatformGuid.A, PlatformRef.Platform->PlatformGuid.B,
+			PlatformRef.Platform->PlatformGuid.C, PlatformRef.Platform->PlatformGuid.D);
+		const auto* Platform = DataStructure.Platforms.Find(WwiseDBSharedPlatformId(Guid, FWwiseStringConverter::ToWwiseDBString(PlatformRef.Platform->PlatformName.ToString())));
 		if (UNLIKELY(!Platform))
 		{
-			UE_LOG(LogWwiseProjectDatabase, Error, TEXT("GetRef: Platform not found"));
+			WWISE_DB_LOG(Error, "GetRef: Platform not found");
 			return false;
 		}
 
@@ -208,5 +265,22 @@ protected:
 	}
 
 	bool DisableDefaultPlatforms() const;
+	
 	bool bIsDatabaseParsed = false;
+	FDirectoryPath GeneratedSoundBanksPath;
 };
+
+inline WwiseDBObjectInfo ConvertWwiseObjectInfo(const FWwiseObjectInfo& InInfo)
+{
+	return WwiseDBObjectInfo
+	(WwiseDBGuid(InInfo.WwiseGuid.A, InInfo.WwiseGuid.B, InInfo.WwiseGuid.C, InInfo.WwiseGuid.D), InInfo.WwiseShortId,
+		FWwiseStringConverter::ToWwiseDBString(InInfo.WwiseName.ToString()), InInfo.HardCodedSoundBankShortId);
+}
+
+inline WwiseDBGroupValueInfo ConvertWwiseGroupValueInfo(const FWwiseGroupValueInfo& InInfo)
+{
+	return WwiseDBGroupValueInfo
+		(WwiseDBGuid(InInfo.WwiseGuid.A, InInfo.WwiseGuid.B, InInfo.WwiseGuid.C, InInfo.WwiseGuid.D),
+		InInfo.GroupShortId, InInfo.WwiseShortId,
+		FWwiseStringConverter::ToWwiseDBString(InInfo.WwiseName.ToString()));
+}

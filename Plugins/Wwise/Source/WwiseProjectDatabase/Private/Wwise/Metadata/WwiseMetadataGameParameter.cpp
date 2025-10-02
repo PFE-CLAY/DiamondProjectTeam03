@@ -12,20 +12,20 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #include "Wwise/Metadata/WwiseMetadataGameParameter.h"
 #include "Wwise/Metadata/WwiseMetadataLoader.h"
 
-FWwiseMetadataGameParameterReference::FWwiseMetadataGameParameterReference(FWwiseMetadataLoader& Loader) :
-	Id(Loader.GetUint32(this, TEXT("Id")))
+WwiseMetadataGameParameterReference::WwiseMetadataGameParameterReference(WwiseMetadataLoader& Loader) :
+	Id(Loader.GetWwiseShortId(this, "Id"_wwise_db))
 {
-	Loader.LogParsed(TEXT("GameParameterReference"), Id);
+	Loader.LogParsed("GameParameterReference"_wwise_db, Id);
 }
 
-FWwiseMetadataGameParameter::FWwiseMetadataGameParameter(FWwiseMetadataLoader& Loader) :
-	FWwiseMetadataBasicReference(Loader)
+WwiseMetadataGameParameter::WwiseMetadataGameParameter(WwiseMetadataLoader& Loader) :
+	WwiseMetadataBasicReference(Loader)
 {
-	Loader.LogParsed(TEXT("GameParameter"), Id, Name);
+	Loader.LogParsed("GameParameter"_wwise_db, Id, Name);
 }

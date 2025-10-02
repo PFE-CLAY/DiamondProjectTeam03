@@ -12,36 +12,36 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #pragma once
 
 #include "Wwise/Metadata/WwiseMetadataLoadable.h"
 
-struct WWISEPROJECTDATABASE_API FWwiseMetadataPlatformAttributes : public FWwiseMetadataLoadable
+struct WwiseMetadataPlatformAttributes : public WwiseMetadataLoadable
 {
-	FName Name;
-	FName BasePlatform;
-	FName Generator;
+	WwiseDBString Name;
+	WwiseDBString BasePlatform;
+	WwiseDBString Generator;
 
-	FWwiseMetadataPlatformAttributes();
-	FWwiseMetadataPlatformAttributes(FWwiseMetadataLoader& Loader);
+	WwiseMetadataPlatformAttributes();
+	WwiseMetadataPlatformAttributes(WwiseMetadataLoader& Loader);
 };
 
-struct WWISEPROJECTDATABASE_API FWwiseMetadataPlatformReference : public FWwiseMetadataLoadable
+struct WwiseMetadataPlatformReference : public WwiseMetadataLoadable
 {
-	FName Name;
-	FGuid GUID;
-	FName BasePlatform;
-	FGuid BasePlatformGUID;
-	FName Path;
+	WwiseDBString Name;
+	WwiseDBGuid GUID;
+	WwiseDBString BasePlatform;
+	WwiseDBGuid BasePlatformGUID;
+	WwiseDBString Path;
 
-	FWwiseMetadataPlatformReference(FWwiseMetadataLoader& Loader);
+	WwiseMetadataPlatformReference(WwiseMetadataLoader& Loader);
 };
 
-struct WWISEPROJECTDATABASE_API FWwiseMetadataPlatform : public FWwiseMetadataPlatformAttributes
+struct WwiseMetadataPlatform : public WwiseMetadataPlatformAttributes
 {
-	FWwiseMetadataPlatform();
-	FWwiseMetadataPlatform(FWwiseMetadataLoader& Loader);
+	WwiseMetadataPlatform();
+	WwiseMetadataPlatform(WwiseMetadataLoader& Loader);
 };

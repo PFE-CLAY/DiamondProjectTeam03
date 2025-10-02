@@ -12,18 +12,30 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #pragma once
 
 #include "AkAudioDevice.h"
 #include "AkComponent.h"
+#include "UObject/ObjectPtr.h"
+
+enum class EWwiseEventTrackerState
+{
+	None,
+	Stopped,
+	Playing,
+	Paused,
+	Scrubbing,
+	Jumping,
+	Stepping,
+	Last
+};
+
 
 /** This can be used to track a Wwise event as it is triggered and stopped.
  *  Maintains a collection of playing IDs and a collection of IDs that have scheduled stop calls.
- *  Also maintains a collection of Vector2Ds that indicate the history of start times and durations
- *  of event retriggers.
  */
 struct AKAUDIO_API FWwiseEventTracker
 {
@@ -51,9 +63,11 @@ struct AKAUDIO_API FWwiseEventTracker
 	bool IsDirty = false;
 
 	bool IsPlaying()        const { FScopeLock autoLock(&PlayingIDsLock); return PlayingIDs.Num()     > 0; }
+	EWwiseEventTrackerState GetState()        const { return State; }
+	void SetState(EWwiseEventTrackerState InState)         { State = InState; }
 	bool HasScheduledStop() const { FScopeLock autoLock(&ScheduledStopsLock); return ScheduledStops.Num() > 0; }
 	float GetClipDuration() const { return ClipEndTime - ClipStartTime; }
-	
+
 	TArray<AkPlayingID> PlayingIDs;
 	TArray<AkPlayingID> ScheduledStops;
 	FFloatRange         EventDuration;
@@ -69,24 +83,29 @@ struct AKAUDIO_API FWwiseEventTracker
 	float               CurrentDurationEstimation          = -1.0f;
 	float               CurrentDurationProportionRemaining = 1.0f;
 	bool                bStopAtSectionEnd                  = true;
+	EWwiseEventTrackerState State                          = EWwiseEventTrackerState::None;
 };
 
 /** A collection of helper functions for triggering tracked Wwise events */
 namespace WwiseEventTriggering
 {
-	AKAUDIO_API TArray<AkPlayingID, TInlineAllocator<16>> GetPlayingIds(FWwiseEventTracker& EventTracker);
+	AKAUDIO_API TArray<AkPlayingID> GetPlayingIds(FWwiseEventTracker& EventTracker);
 
 	AKAUDIO_API void LogDirtyPlaybackWarning();
 
+	AKAUDIO_API void PausePlayingID(FAkAudioDevice * AudioDevice, FWwiseEventTracker & EventTracker, AkPlayingID InPlayingID);
+	AKAUDIO_API void PauseAllPlayingIDs(FAkAudioDevice* AudioDevice, FWwiseEventTracker& EventTracker);
+	AKAUDIO_API void ResumePlayingID(TObjectPtr<UObject> Object, FAkAudioDevice * AudioDevice, FWwiseEventTracker & EventTracker, AkReal32 ProportionalTime, AkPlayingID InPlayingID);
+	AKAUDIO_API void ResumeAllPlayingIDs(FAkAudioDevice * AudioDevice, FWwiseEventTracker & EventTracker, AkReal32 SeekTime);
 	AKAUDIO_API void StopAllPlayingIDs(FAkAudioDevice* AudioDevice, FWwiseEventTracker& EventTracker);
 
-	AKAUDIO_API AkPlayingID PostEventOnDummyObject(FAkAudioDevice* AudioDevice, FWwiseEventTracker& EventTracker, float CurrentTime);
+	AKAUDIO_API AkPlayingID PostEventOnDummyObject(FAkAudioDevice* AudioDevice, FWwiseEventTracker& EventTracker);
 
-	AKAUDIO_API AkPlayingID PostEvent(UObject* Object, FAkAudioDevice* AudioDevice, FWwiseEventTracker& EventTracker, float CurrentTime);
+	AKAUDIO_API AkPlayingID PostEvent(TObjectPtr<UObject> Object, FAkAudioDevice* AudioDevice, FWwiseEventTracker& EventTracker);
 
 	AKAUDIO_API void StopEvent(FAkAudioDevice* AudioDevice, AkPlayingID InPlayingID, FWwiseEventTracker* EventTracker);
 
-	AKAUDIO_API void TriggerStopEvent(FAkAudioDevice* AudioDevice, FWwiseEventTracker& EventTracker, AkPlayingID PlayingID);
+	AKAUDIO_API void TriggerStopEvent(FAkAudioDevice* AudioDevice, FWwiseEventTracker& EventTracker, AkPlayingID InPlayingID);
 
 	AKAUDIO_API void ScheduleStopEventsForCurrentlyPlayingIDs(FAkAudioDevice* AudioDevice, FWwiseEventTracker& EventTracker);
 
@@ -94,11 +113,11 @@ namespace WwiseEventTriggering
 	AKAUDIO_API void TriggerScrubSnippetOnDummyObject(FAkAudioDevice* AudioDevice, FWwiseEventTracker& EventTracker);
 
 	/** Trigger and EventTracker's Wwise event and schedule an accompanying stop event. */
-	AKAUDIO_API void TriggerScrubSnippet(UObject* Object, FAkAudioDevice* AudioDevice, FWwiseEventTracker& EventTracker);
+	AKAUDIO_API void TriggerScrubSnippet(TObjectPtr<UObject> Object, FAkAudioDevice* AudioDevice, FWwiseEventTracker& EventTracker);
 
-	AKAUDIO_API void SeekOnEvent(UObject* Object, FAkAudioDevice* AudioDevice, AkReal32 in_fPercent, FWwiseEventTracker& EventTracker, AkPlayingID InPlayingID);
+	AKAUDIO_API void SeekOnEvent(TObjectPtr<UObject> Object, FAkAudioDevice* AudioDevice, AkReal32 in_fPercent, FWwiseEventTracker& EventTracker, AkPlayingID InPlayingID);
 
-	AKAUDIO_API void SeekOnEvent(UObject* Object, FAkAudioDevice* AudioDevice, AkReal32 in_fPercent, FWwiseEventTracker& EventTracker);
+	AKAUDIO_API void SeekOnEvent(TObjectPtr<UObject> Object, FAkAudioDevice* AudioDevice, AkReal32 ProportionalTime, FWwiseEventTracker& EventTracker);
 
 	AKAUDIO_API void SeekOnEventWithDummyObject(FAkAudioDevice* AudioDevice, AkReal32 ProportionalTime, FWwiseEventTracker& EventTracker, AkPlayingID InPlayingID);
 

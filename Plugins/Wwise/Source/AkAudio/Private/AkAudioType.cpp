@@ -12,7 +12,7 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #include "AkAudioType.h"
@@ -22,6 +22,7 @@ Copyright (c) 2024 Audiokinetic Inc.
 #include "AkSettings.h"
 #include "AkCustomVersion.h"
 #include "Platforms/AkPlatformInfo.h"
+#include "Wwise/API/WwiseSoundEngineAPI.h"
 #if UE_5_4_OR_LATER
 #include "UObject/AssetRegistryTagsContext.h"
 #endif
@@ -30,10 +31,10 @@ Copyright (c) 2024 Audiokinetic Inc.
 #include "Wwise/WwiseResourceCooker.h"
 #endif
 
+bool UAkAudioType::bWaitForResourceUnload = false;
+
 UAkAudioType::~UAkAudioType()
 {
-	SCOPED_AKAUDIO_EVENT_3(TEXT("UAkAudioType Dtor"));
-	ResourceUnload.Wait();
 }
 
 void UAkAudioType::Serialize(FArchive& Ar)
@@ -49,6 +50,7 @@ void UAkAudioType::Serialize(FArchive& Ar)
 
 #if WITH_EDITORONLY_DATA
 	CheckWwiseObjectInfo();
+	EnsureResourceCookerCreated(Ar.CookingTarget());
 #endif
 	LogSerializationState(Ar);
 }
@@ -86,13 +88,38 @@ void UAkAudioType::BeginDestroy()
 	Super::BeginDestroy();
 }
 
+bool UAkAudioType::IsReadyForFinishDestroy()
+{
+	if (!bWaitForResourceUnload)
+	{
+		return true;
+	}
+	if (IsEngineExitRequested() || !FAkAudioDevice::IsInitialized())		// Resource unload will be waited during teardown.
+	{
+		return true;
+	}
+	if (!ResourceUnload.IsValid())
+	{
+		return true;
+	}
+	if (ResourceUnload.IsReady())
+	{
+		return true;
+	}
+	return false;
+}
+
 void UAkAudioType::FinishDestroy()
 {
-	{
-		SCOPED_AKAUDIO_EVENT_2(TEXT("UAkAudioType::FinishDestroy"));
-		UE_LOG(LogAkAudio, VeryVerbose, TEXT("UAkAudioType::FinishDestroy[%p]"), this);
+	SCOPED_AKAUDIO_EVENT_2(TEXT("UAkAudioType::FinishDestroy"));
+	UE_LOG(LogAkAudio, VeryVerbose, TEXT("UAkAudioType::FinishDestroy[%p]"), this);
 
-		ResourceUnload.Wait();
+	if (ResourceUnload.IsValid() && !ResourceUnload.IsReady())
+	{
+		if (auto* AudioDevice = FAkAudioDevice::Get())
+		{
+			AudioDevice->AddUnfinishedResourceUnload(MoveTemp(ResourceUnload));
+		}
 	}
 	Super::FinishDestroy();
 }
@@ -153,6 +180,22 @@ void UAkAudioType::WaitForResourceUnloaded()
 	SCOPED_AKAUDIO_EVENT_3(TEXT("UAkAudioType::WaitForResourceUnloaded"));
 	ResourceUnload.Wait();
 	ResourceUnload.Reset();
+}
+
+void UAkAudioType::EnsureResourceCookerCreated(const ITargetPlatform* TargetPlatform)
+{
+	if (TargetPlatform == nullptr)
+	{
+		return;
+	}
+
+	if (auto* AkSettings = GetDefault<UAkSettings>())
+	{
+		if (AkSettings->AreSoundBanksGenerated())
+		{
+			FAkAudioModule::CreateResourceCookerForPlatform(TargetPlatform);
+		}
+	}
 }
 
 void UAkAudioType::CheckWwiseObjectInfo()
@@ -258,7 +301,19 @@ void UAkAudioType::GetAssetRegistryTags(TArray<FAssetRegistryTag>& OutTags) cons
 	OutTags.Add(FAssetRegistryTag(GET_MEMBER_NAME_CHECKED(FWwiseObjectInfo, WwiseName), WwiseInfo.WwiseName.ToString(), FAssetRegistryTag::ETagType::TT_Hidden));
 }
 #endif // UE_5_4_OR_LATER
+
 #endif // WITH_EDITOR
+
+#if WITH_EDITORONLY_DATA && UE_5_5_OR_LATER
+void UAkAudioType::HashDependenciesForCook(FCbFieldViewIterator Args, UE::Cook::FCookDependencyContext& Context)
+{
+	TArray<uint8> Memory;
+	Memory.AddUninitialized(Args.GetSize());
+	FMutableMemoryView MemoryView(Memory.GetData(), Memory.Num());
+	Args.CopyTo(MemoryView);
+	Context.Update(Memory.GetData(), Memory.Num());
+}
+#endif
 
 void UAkAudioType::BeginCacheForCookedPlatformData(const ITargetPlatform* TargetPlatform)
 {
@@ -271,17 +326,19 @@ void UAkAudioType::BeginCacheForCookedPlatformData(const ITargetPlatform* Target
 			{
 				return;
 			}
-			auto PlatformID = UAkPlatformInfo::GetSharedPlatformInfo(TargetPlatform->IniPlatformName());
-			FWwiseResourceCooker::CreateForPlatform(TargetPlatform, PlatformID, EWwiseExportDebugNameRule::Name);
+			FAkAudioModule::AkAudioModuleInstance->CreateResourceCookerForPlatform(TargetPlatform);
 		}
 	}
 }
 
-bool UAkAudioType::IsAssetOutOfDate(const FWwiseAnyRef& CurrentWwiseRef)
+bool UAkAudioType::IsAssetOutOfDate(const WwiseAnyRef& CurrentWwiseRef)
 {
 	FWwiseObjectInfo* ObjectInfo = GetInfoMutable();
-	if (CurrentWwiseRef.GetGuid() != ObjectInfo->WwiseGuid
-		|| CurrentWwiseRef.GetName() != ObjectInfo->WwiseName
+
+	int A, B, C, D;
+	CurrentWwiseRef.GetGuid().GetGuidValues(A, B, C, D);
+	if (FGuid(A, B, C, D) != ObjectInfo->WwiseGuid
+		|| FName(*CurrentWwiseRef.GetName()) != ObjectInfo->WwiseName
 		|| CurrentWwiseRef.GetId() != ObjectInfo->WwiseShortId) 
 	{
 		return true;
@@ -290,13 +347,15 @@ bool UAkAudioType::IsAssetOutOfDate(const FWwiseAnyRef& CurrentWwiseRef)
 	return false;
 }
 
-void UAkAudioType::FillInfo(const FWwiseAnyRef& CurrentWwiseRef)
+void UAkAudioType::FillInfo(const WwiseAnyRef& CurrentWwiseRef)
 {
 	FWwiseObjectInfo* ObjectInfo = GetInfoMutable();
 
-	ObjectInfo->WwiseGuid = CurrentWwiseRef.GetGuid();
+	int A, B, C, D;
+	CurrentWwiseRef.GetGuid().GetGuidValues(A, B, C, D);
+	ObjectInfo->WwiseGuid = FGuid(A, B, C, D);
 	ObjectInfo->WwiseShortId = CurrentWwiseRef.GetId();
-	ObjectInfo->WwiseName = CurrentWwiseRef.GetName();
+	ObjectInfo->WwiseName = FName(*CurrentWwiseRef.GetName());
 }
 
 FName UAkAudioType::GetAssetDefaultName()
@@ -308,11 +367,7 @@ FName UAkAudioType::GetAssetDefaultName()
 	{
 		FNameBuilder DefaultName;
 		DefaultName << WwiseGroupName << TEXT("-") << WwiseAssetName;
-#if UE_5_0_OR_LATER
 		return FName(DefaultName.ToView());
-#else
-		return FName(DefaultName.ToString());
-#endif
 	}
 
 	return WwiseAssetName;

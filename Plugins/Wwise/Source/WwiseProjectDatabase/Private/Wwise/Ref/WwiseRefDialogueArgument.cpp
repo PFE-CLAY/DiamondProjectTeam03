@@ -12,20 +12,18 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #include "Wwise/Ref/WwiseRefDialogueArgument.h"
-#include "Wwise/WwiseProjectDatabaseModule.h"
-#include "Wwise/Stats/ProjectDatabase.h"
 #include "Wwise/Metadata/WwiseMetadataDialogue.h"
 
-const TCHAR* const FWwiseRefDialogueArgument::NAME = TEXT("DialogueArgument");
+const WwiseDBString WwiseRefDialogueArgument::NAME = "DialogueArgument"_wwise_db;
 
-const FWwiseMetadataDialogueArgument* FWwiseRefDialogueArgument::GetDialogueArgument() const
+const WwiseMetadataDialogueArgument* WwiseRefDialogueArgument::GetDialogueArgument() const
 {
 	const auto* DialogueEvent = GetDialogueEvent();
-	if (UNLIKELY(!DialogueEvent))
+	if (!DialogueEvent) [[unlikely]]
 	{
 		return nullptr;
 	}
@@ -36,54 +34,54 @@ const FWwiseMetadataDialogueArgument* FWwiseRefDialogueArgument::GetDialogueArgu
 	}
 	else
 	{
-		UE_LOG(LogWwiseProjectDatabase, Error, TEXT("Could not get Dialogue Argument index #%zu"), DialogueArgumentIndex);
+		WWISE_DB_LOG(Error,"Could not get Dialogue Argument index #%zu", DialogueArgumentIndex);
 		return nullptr;
 	}
 }
 
-uint32 FWwiseRefDialogueArgument::DialogueArgumentId() const
+WwiseDBShortId WwiseRefDialogueArgument::DialogueArgumentId() const
 {
 	const auto* DialogueArgument = GetDialogueArgument();
-	if (UNLIKELY(!DialogueArgument))
+	if (!DialogueArgument) [[unlikely]]
 	{
 		return 0;
 	}
 	return DialogueArgument->Id;
 }
 
-FGuid FWwiseRefDialogueArgument::DialogueArgumentGuid() const
+WwiseDBGuid WwiseRefDialogueArgument::DialogueArgumentGuid() const
 {
 	const auto* DialogueArgument = GetDialogueArgument();
-	if (UNLIKELY(!DialogueArgument))
+	if (!DialogueArgument) [[unlikely]]
 	{
 		return {};
 	}
 	return DialogueArgument->GUID;
 }
 
-FName FWwiseRefDialogueArgument::DialogueArgumentName() const
+WwiseDBString WwiseRefDialogueArgument::DialogueArgumentName() const
 {
 	const auto* DialogueArgument = GetDialogueArgument();
-	if (UNLIKELY(!DialogueArgument))
+	if (!DialogueArgument) [[unlikely]]
 	{
 		return {};
 	}
 	return DialogueArgument->Name;
 }
 
-FName FWwiseRefDialogueArgument::DialogueArgumentObjectPath() const
+WwiseDBString WwiseRefDialogueArgument::DialogueArgumentObjectPath() const
 {
 	const auto* DialogueArgument = GetDialogueArgument();
-	if (UNLIKELY(!DialogueArgument))
+	if (!DialogueArgument) [[unlikely]]
 	{
 		return {};
 	}
 	return DialogueArgument->ObjectPath;
 }
 
-uint32 FWwiseRefDialogueArgument::Hash() const
+WwiseDBShortId WwiseRefDialogueArgument::Hash() const
 {
-	auto Result = FWwiseRefDialogueEvent::Hash();
-	Result = HashCombine(Result, GetTypeHash(DialogueArgumentIndex));
+	auto Result = WwiseRefDialogueEvent::Hash();
+	Result = WwiseDBHashCombine(Result, GetTypeHash(DialogueArgumentIndex));
 	return Result;
 }

@@ -12,7 +12,7 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 using UnrealBuildTool;
@@ -22,18 +22,29 @@ public class WwiseFileHandler : ModuleRules
 	public WwiseFileHandler(ReadOnlyTargetRules Target) : base(Target)
 	{
 		PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
+		
+		PublicDefinitions.AddRange(new string[]
+		{
+			"AK_ENABLE_BANK_MGR_THREAD=0"
+		});
 
 		PublicDependencyModuleNames.AddRange(new string[] {
 			"WwiseConcurrency",
+			"WwiseLowLevelUtils",
 			"WwiseSoundEngine",
-			"WwiseUtils"
 		});
 
 		if (Target.bCompileAgainstCoreUObject)
 		{
-			PublicDependencyModuleNames.AddRange(new string[]
-			{
+			PublicDependencyModuleNames.AddRange(new string[] {
 				"WwiseObjectUtils"
+			});
+		}
+		
+		if (Target.bCompileAgainstEngine)
+		{
+			PublicDependencyModuleNames.AddRange(new string[] {
+				"WwiseEngineUtils"
 			});
 		}
 

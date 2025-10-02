@@ -12,24 +12,24 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #include "Wwise/Metadata/WwiseMetadataBus.h"
 #include "Wwise/Metadata/WwiseMetadataLoader.h"
 #include "Wwise/Metadata/WwiseMetadataPluginGroup.h"
 
-FWwiseMetadataBusReference::FWwiseMetadataBusReference(FWwiseMetadataLoader& Loader) :
-	FWwiseMetadataBasicReference(Loader)
+WwiseMetadataBusReference::WwiseMetadataBusReference(WwiseMetadataLoader& Loader) :
+	WwiseMetadataBasicReference(Loader)
 {
-	Loader.LogParsed(TEXT("BusReference"), Id, Name);
+	Loader.LogParsed("BusReference"_wwise_db, Id, Name);
 }
 
-FWwiseMetadataBus::FWwiseMetadataBus(FWwiseMetadataLoader& Loader) :
-	FWwiseMetadataBusReference(Loader),
-	PluginRefs(Loader.GetObjectPtr<FWwiseMetadataPluginReferenceGroup>(this, TEXT("PluginRefs"))),
-	AuxBusRefs(Loader.GetArray<FWwiseMetadataBusReference>(this, TEXT("AuxBusRefs"))),
-	MaxAttenuation(Loader.GetFloat(this, TEXT("MaxAttenuation"), EWwiseRequiredMetadata::Optional))
+WwiseMetadataBus::WwiseMetadataBus(WwiseMetadataLoader& Loader) :
+	WwiseMetadataBusReference(Loader),
+	PluginRefs(Loader.GetObjectPtr<WwiseMetadataPluginReferenceGroup>(this, "PluginRefs"_wwise_db)),
+	AuxBusRefs(Loader.GetArray<WwiseMetadataBusReference>(this, "AuxBusRefs"_wwise_db)),
+	MaxAttenuation(Loader.GetFloat(this, "MaxAttenuation"_wwise_db, WwiseRequiredMetadata::Optional))
 {
-	Loader.LogParsed(TEXT("Bus"), Id, Name);
+	Loader.LogParsed("Bus"_wwise_db, Id, Name);
 }

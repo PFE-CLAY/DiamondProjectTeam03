@@ -12,24 +12,24 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #pragma once
 
 #include "Wwise/Ref/WwiseRefRootFile.h"
 
-class WWISEPROJECTDATABASE_API FWwiseRefSoundBanksInfo : public FWwiseRefRootFile
+class WWISEPROJECTDATABASE_API WwiseRefSoundBanksInfo : public WwiseRefRootFile
 {
 public:
-	static const TCHAR* const NAME;
-	static constexpr EWwiseRefType TYPE = EWwiseRefType::SoundBanksInfo;
+	static const WwiseDBString NAME;
+	static constexpr WwiseRefType TYPE = WwiseRefType::SoundBanksInfo;
 
-	EWwiseRefType Type() const override { return TYPE; }
+	WwiseRefType Type() const override { return TYPE; }
 
-	FWwiseRefSoundBanksInfo() {}
-	FWwiseRefSoundBanksInfo(const WwiseMetadataSharedRootFileConstPtr& InRootMediaRef, const FName& InJsonFilePath) :
-		FWwiseRefRootFile(InRootMediaRef, InJsonFilePath)
+	WwiseRefSoundBanksInfo() {}
+	WwiseRefSoundBanksInfo(const WwiseMetadataSharedRootFileConstPtr& InRootMediaRef, const WwiseDBString& InJsonFilePath) :
+		WwiseRefRootFile(InRootMediaRef, InJsonFilePath)
 	{}
-	const FWwiseMetadataSoundBanksInfo* GetSoundBanksInfo() const;
+	const WwiseMetadataSoundBanksInfo* GetSoundBanksInfo() const;
 };

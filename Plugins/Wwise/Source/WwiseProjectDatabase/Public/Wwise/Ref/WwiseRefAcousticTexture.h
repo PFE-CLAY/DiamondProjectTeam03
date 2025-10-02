@@ -12,47 +12,47 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #pragma once
 
 #include "Wwise/Ref/WwiseRefSoundBank.h"
 
-class WWISEPROJECTDATABASE_API FWwiseRefAcousticTexture : public FWwiseRefSoundBank
+class WwiseRefAcousticTexture : public WwiseRefSoundBank
 {
 public:
-	static const TCHAR* const NAME;
-	static constexpr EWwiseRefType TYPE = EWwiseRefType::AcousticTexture;
+	static const WwiseDBString NAME;
+	static constexpr WwiseRefType TYPE = WwiseRefType::AcousticTexture;
 	struct FGlobalIdsMap;
 
 	WwiseRefIndexType AcousticTextureIndex;
 
-	FWwiseRefAcousticTexture() {}
-	FWwiseRefAcousticTexture(const WwiseMetadataSharedRootFileConstPtr& InRootMediaRef, const FName& InJsonFilePath,
-		WwiseRefIndexType InSoundBankIndex, uint32 InLanguageId,
+	WwiseRefAcousticTexture() {}
+	WwiseRefAcousticTexture(const WwiseMetadataSharedRootFileConstPtr& InRootMediaRef, const WwiseDBString& InJsonFilePath,
+		WwiseRefIndexType InSoundBankIndex, WwiseDBShortId InLanguageId,
 		WwiseRefIndexType InAcousticTextureIndex) :
-		FWwiseRefSoundBank(InRootMediaRef, InJsonFilePath, InSoundBankIndex, InLanguageId),
+		WwiseRefSoundBank(InRootMediaRef, InJsonFilePath, InSoundBankIndex, InLanguageId),
 		AcousticTextureIndex(InAcousticTextureIndex)
 	{}
-	const FWwiseMetadataAcousticTexture* GetAcousticTexture() const;
+	const WwiseMetadataAcousticTexture* GetAcousticTexture() const;
 	
-	uint32 AcousticTextureId() const;
-	FGuid AcousticTextureGuid() const;
-	FName AcousticTextureName() const;
-	FName AcousticTextureObjectPath() const;
+	WwiseDBShortId AcousticTextureId() const;
+	WwiseDBGuid AcousticTextureGuid() const;
+	const WwiseDBString* AcousticTextureName() const;
+	const WwiseDBString* AcousticTextureObjectPath() const;
 
-	uint32 Hash() const override;
-	EWwiseRefType Type() const override { return TYPE; }
-	bool operator==(const FWwiseRefAcousticTexture& Rhs) const
+	WwiseDBShortId Hash() const override;
+	WwiseRefType Type() const override { return TYPE; }
+	bool operator==(const WwiseRefAcousticTexture& Rhs) const
 	{
-		return FWwiseRefSoundBank::operator ==(Rhs)
+		return WwiseRefSoundBank::operator ==(Rhs)
 			&& AcousticTextureIndex == Rhs.AcousticTextureIndex;
 	}
-	bool operator!=(const FWwiseRefAcousticTexture& Rhs) const { return !operator==(Rhs); }
+	bool operator!=(const WwiseRefAcousticTexture& Rhs) const { return !operator==(Rhs); }
 };
 
-struct WWISEPROJECTDATABASE_API FWwiseRefAcousticTexture::FGlobalIdsMap
+struct WwiseRefAcousticTexture::FGlobalIdsMap
 {
 	WwiseAcousticTextureGlobalIdsMap GlobalIdsMap;
 
@@ -61,6 +61,6 @@ struct WWISEPROJECTDATABASE_API FWwiseRefAcousticTexture::FGlobalIdsMap
 		GlobalIdsMap(Rhs.GlobalIdsMap)
 	{}
 	FGlobalIdsMap(FGlobalIdsMap&& Rhs) :
-		GlobalIdsMap(MoveTemp(Rhs.GlobalIdsMap))
+		GlobalIdsMap(std::move(Rhs.GlobalIdsMap))
 	{}
 };

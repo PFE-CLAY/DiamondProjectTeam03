@@ -12,24 +12,22 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #include "Wwise/Ref/WwiseRefCustomPlugin.h"
 
-#include "Wwise/WwiseProjectDatabaseModule.h"
 #include "Wwise/Metadata/WwiseMetadataPlugin.h"
 #include "Wwise/Metadata/WwiseMetadataPluginGroup.h"
 #include "Wwise/Metadata/WwiseMetadataSoundBank.h"
 #include "Wwise/Ref/WwiseRefMedia.h"
-#include "Wwise/Stats/ProjectDatabase.h"
 
-const TCHAR* const FWwiseRefCustomPlugin::NAME = TEXT("CustomPlugin");
+const WwiseDBString WwiseRefCustomPlugin::NAME = "CustomPlugin"_wwise_db;
 
-const FWwiseMetadataPlugin* FWwiseRefCustomPlugin::GetPlugin() const
+const WwiseMetadataPlugin* WwiseRefCustomPlugin::GetPlugin() const
 {
 	const auto* SoundBank = GetSoundBank();
-	if (UNLIKELY(!SoundBank || !SoundBank->Plugins))
+	if (!SoundBank || !SoundBank->Plugins) [[unlikely]]
 	{
 		return nullptr;
 	}
@@ -41,28 +39,28 @@ const FWwiseMetadataPlugin* FWwiseRefCustomPlugin::GetPlugin() const
 	}
 	else
 	{
-		UE_LOG(LogWwiseProjectDatabase, Error, TEXT("Could not get Custom Plugin index #%zu"), CustomPluginIndex);
+		WWISE_DB_LOG(Error, "Could not get Custom Plugin index #%zu", CustomPluginIndex);
 		return nullptr;
 	}
 }
 
-WwiseMediaIdsMap FWwiseRefCustomPlugin::GetPluginMedia(const WwiseMediaGlobalIdsMap& GlobalMap) const
+WwiseMediaIdsMap WwiseRefCustomPlugin::GetPluginMedia(const WwiseMediaGlobalIdsMap& GlobalMap) const
 {
 	const auto* CustomPlugin = GetPlugin();
 	const auto* SoundBank = GetSoundBank();
-	if (UNLIKELY(!CustomPlugin || !SoundBank))
+	if (!CustomPlugin || !SoundBank) [[unlikely]]
 	{
 		return {};
 	}
 	const auto& Media = CustomPlugin->MediaRefs;
 
 	WwiseMediaIdsMap Result;
-	Result.Empty(Media.Num());
+	Result.Empty(Media.Size());
 	for (const auto& Elem : Media)
 	{
-		FWwiseDatabaseMediaIdKey Id(Elem.Id, SoundBank->Id);
+		WwiseDatabaseLocalizableIdKey Id(Elem.Id, LanguageId, SoundBank->Id);
 
-		const auto* MediaInGlobalMap = GlobalMap.Find(Id);
+		const WwiseRefMedia* MediaInGlobalMap = GlobalMap.Find(Id);
 		if (MediaInGlobalMap)
 		{
 			Result.Add(Elem.Id, *MediaInGlobalMap);
@@ -71,49 +69,49 @@ WwiseMediaIdsMap FWwiseRefCustomPlugin::GetPluginMedia(const WwiseMediaGlobalIds
 	return Result;
 }
 
-uint32 FWwiseRefCustomPlugin::CustomPluginId() const
+WwiseDBShortId WwiseRefCustomPlugin::CustomPluginId() const
 {
 	const auto* CustomPlugin = GetPlugin();
-	if (UNLIKELY(!CustomPlugin))
+	if (!CustomPlugin) [[unlikely]]
 	{
 		return 0;
 	}
 	return CustomPlugin->Id;
 }
 
-FGuid FWwiseRefCustomPlugin::CustomPluginGuid() const
+WwiseDBGuid WwiseRefCustomPlugin::CustomPluginGuid() const
 {
 	const auto* CustomPlugin = GetPlugin();
-	if (UNLIKELY(!CustomPlugin))
+	if (!CustomPlugin) [[unlikely]]
 	{
 		return {};
 	}
 	return CustomPlugin->GUID;
 }
 
-FName FWwiseRefCustomPlugin::CustomPluginName() const
+const WwiseDBString* WwiseRefCustomPlugin::CustomPluginName() const
 {
 	const auto* CustomPlugin = GetPlugin();
-	if (UNLIKELY(!CustomPlugin))
+	if (!CustomPlugin) [[unlikely]]
 	{
-		return {};
+		return &emptyString;
 	}
-	return CustomPlugin->Name;
+	return &CustomPlugin->Name;
 }
 
-FName FWwiseRefCustomPlugin::CustomPluginObjectPath() const
+const WwiseDBString* WwiseRefCustomPlugin::CustomPluginObjectPath() const
 {
 	const auto* CustomPlugin = GetPlugin();
-	if (UNLIKELY(!CustomPlugin))
+	if (!CustomPlugin) [[unlikely]]
 	{
-		return {};
+		return &emptyString;
 	}
-	return CustomPlugin->ObjectPath;
+	return &CustomPlugin->ObjectPath;
 }
 
-uint32 FWwiseRefCustomPlugin::Hash() const
+WwiseDBShortId WwiseRefCustomPlugin::Hash() const
 {
-	auto Result = FWwiseRefSoundBank::Hash();
-	Result = HashCombine(Result, GetTypeHash(CustomPluginIndex));
+	auto Result = WwiseRefSoundBank::Hash();
+	Result = WwiseDBHashCombine(Result, GetTypeHash(CustomPluginIndex));
 	return Result;
 }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<WwiseDocument Type="WorkUnit" ID="{29491AAD-2CC5-4E24-81EC-BAA4ED991611}" SchemaVersion="119">
+<WwiseDocument Type="WorkUnit" ID="{29491AAD-2CC5-4E24-81EC-BAA4ED991611}" SchemaVersion="123">
 	<Events>
 		<WorkUnit Name="VOICES_WU" ID="{29491AAD-2CC5-4E24-81EC-BAA4ED991611}" PersistMode="Standalone">
 			<ChildrenList>

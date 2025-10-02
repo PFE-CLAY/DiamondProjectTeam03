@@ -12,7 +12,7 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #pragma once
@@ -20,23 +20,23 @@ Copyright (c) 2024 Audiokinetic Inc.
 #include "Wwise/Metadata/WwiseMetadataBasicReference.h"
 
 
-struct WWISEPROJECTDATABASE_API FWwiseMetadataGroupValueReference : public FWwiseMetadataBasicReference
+struct WwiseMetadataGroupValueReference : public WwiseMetadataBasicReference
 {
-	uint32 GroupId;
+	WwiseDBShortId GroupId;
 
-	FWwiseMetadataGroupValueReference();
-	FWwiseMetadataGroupValueReference(FWwiseMetadataLoader& Loader);
+	WwiseMetadataGroupValueReference();
+	WwiseMetadataGroupValueReference(WwiseMetadataLoader& Loader);
 };
 
-inline uint32 GetTypeHash(const FWwiseMetadataGroupValueReference& Ref)
+inline WwiseDBShortId GetTypeHash(const WwiseMetadataGroupValueReference& Ref)
 {
-	return HashCombine(GetTypeHash((const FWwiseMetadataBasicReference&)Ref), GetTypeHash(Ref.Id));
+	return HashCombine(GetTypeHash((const WwiseMetadataBasicReference&)Ref), GetTypeHash(Ref.Id));
 }
-inline bool operator==(const FWwiseMetadataGroupValueReference& Lhs, const FWwiseMetadataGroupValueReference& Rhs)
+inline bool operator==(const WwiseMetadataGroupValueReference& Lhs, const WwiseMetadataGroupValueReference& Rhs)
 {
-	return (const FWwiseMetadataBasicReference&)Lhs == Rhs && Lhs.GroupId == Rhs.GroupId;
+	return (const WwiseMetadataBasicReference&)Lhs == Rhs && Lhs.GroupId == Rhs.GroupId;
 }
-inline bool operator<(const FWwiseMetadataGroupValueReference& Lhs, const FWwiseMetadataGroupValueReference& Rhs)
+inline bool operator<(const WwiseMetadataGroupValueReference& Lhs, const WwiseMetadataGroupValueReference& Rhs)
 {
-	return (const FWwiseMetadataBasicReference&)Lhs < Rhs && Lhs.GroupId < Rhs.GroupId;
+	return (const WwiseMetadataBasicReference&)Lhs < Rhs && Lhs.GroupId < Rhs.GroupId;
 }

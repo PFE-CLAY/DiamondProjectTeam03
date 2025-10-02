@@ -12,7 +12,7 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #pragma once
@@ -30,10 +30,10 @@ Copyright (c) 2024 Audiokinetic Inc.
 #include "Wwise/CookedData/WwiseTriggerCookedData.h"
 
 #include "Wwise/Info/WwiseObjectInfo.h"
-
 #include "Wwise/WwiseDatabaseIdentifiers.h"
 
 class IWwiseExternalSourceManager;
+typedef TSharedPtr<IWwiseExternalSourceManager> IWwiseExternalSourceManagerPtr;
 
 class WWISERESOURCECOOKER_API FWwiseCookingCache
 {
@@ -42,13 +42,13 @@ public:
 		ExternalSourceManager(nullptr)
 	{}
 
-	TMap<FString, FString> StagedFiles;
+	TMap<FName, FString> StagedFiles;
 	TMap<FWwiseObjectInfo, FWwiseLocalizedAuxBusCookedData> AuxBusCache;
 	TMap<FWwiseObjectInfo, FWwiseLocalizedSoundBankCookedData> SoundBankCache;
 	TMap<FWwiseEventInfo, FWwiseLocalizedEventCookedData> EventCache;
 	TMap<uint32, FWwiseExternalSourceCookedData> ExternalSourceCache;
 	TMap<FWwiseObjectInfo, FWwiseInitBankCookedData> InitBankCache;
-	TMap<FWwiseDatabaseMediaIdKey, FWwiseMediaCookedData> MediaCache;
+	TMap<uint32, FWwiseMediaCookedData> MediaCache;
 	TMap<FWwiseObjectInfo, FWwiseLocalizedShareSetCookedData> ShareSetCache;
 	TMap<FWwiseGroupValueInfo, FWwiseGroupValueCookedData> StateCache;
 	TMap<FWwiseGroupValueInfo, FWwiseGroupValueCookedData> SwitchCache;
@@ -57,5 +57,9 @@ public:
 	TMap<FWwiseObjectInfo, FWwiseAudioDeviceShareSetCookedData> AudioDeviceShareSetCache;
 	TMap<FWwiseObjectInfo, FWwiseTriggerCookedData> TriggerCache;
 
-	IWwiseExternalSourceManager* ExternalSourceManager;
+	using FCookedAssetLibraryFiles = TArray<FWwisePackagedFile>;
+	using FCookedAssetLibraryMap = TMap<UObject*, FCookedAssetLibraryFiles>;
+	FCookedAssetLibraryMap CookedAssetLibraryMap;
+
+	IWwiseExternalSourceManagerPtr ExternalSourceManager;
 };

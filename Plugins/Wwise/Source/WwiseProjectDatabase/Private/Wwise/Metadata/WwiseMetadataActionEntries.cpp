@@ -12,38 +12,38 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #include "Wwise/Metadata/WwiseMetadataActionEntries.h"
 #include "Wwise/Metadata/WwiseMetadataLoader.h"
 
-FWwiseMetadataActionPostEventEntry::FWwiseMetadataActionPostEventEntry(FWwiseMetadataLoader& Loader) :
-	FWwiseMetadataBasicReference(Loader)
+WwiseMetadataActionPostEventEntry::WwiseMetadataActionPostEventEntry(WwiseMetadataLoader& Loader) :
+	WwiseMetadataBasicReference(Loader)
 {
-	Loader.LogParsed(TEXT("ActionPostEventEntry"), Id, Name);
+	Loader.LogParsed("ActionPostEventEntry"_wwise_db, Id, Name);
 }
 
-FWwiseMetadataActionSetFXEntry::FWwiseMetadataActionSetFXEntry(FWwiseMetadataLoader& Loader) :
-	FWwiseMetadataBasicReference(Loader)
+WwiseMetadataActionSetFXEntry::WwiseMetadataActionSetFXEntry(WwiseMetadataLoader& Loader) :
+	WwiseMetadataBasicReference(Loader)
 {
-	Loader.LogParsed(TEXT("ActionSetFXEntry"), Id, Name);
+	Loader.LogParsed("ActionSetFXEntry"_wwise_db, Id, Name);
 }
 
-FWwiseMetadataActionSetStateEntry::FWwiseMetadataActionSetStateEntry(FWwiseMetadataLoader& Loader) :
-	FWwiseMetadataGroupValueReference(Loader)
+WwiseMetadataActionSetStateEntry::WwiseMetadataActionSetStateEntry(WwiseMetadataLoader& Loader) :
+	WwiseMetadataGroupValueReference(Loader)
 {
-	Loader.LogParsed(TEXT("ActionSetStateEntry"), Id, Name);
+	Loader.LogParsed("ActionSetStateEntry"_wwise_db, Id, Name);
 }
 
-FWwiseMetadataActionSetSwitchEntry::FWwiseMetadataActionSetSwitchEntry(FWwiseMetadataLoader& Loader) :
-	FWwiseMetadataGroupValueReference(Loader)
+WwiseMetadataActionSetSwitchEntry::WwiseMetadataActionSetSwitchEntry(WwiseMetadataLoader& Loader) :
+	WwiseMetadataGroupValueReference(Loader)
 {
-	Loader.LogParsed(TEXT("ActionSetSwitchEntry"), Id, Name);
+	Loader.LogParsed("ActionSetSwitchEntry"_wwise_db, Id, Name);
 }
 
-FWwiseMetadataActionTriggerEntry::FWwiseMetadataActionTriggerEntry(FWwiseMetadataLoader& Loader) :
-	FWwiseMetadataBasicReference(Loader)
+WwiseMetadataActionTriggerEntry::WwiseMetadataActionTriggerEntry(WwiseMetadataLoader& Loader) :
+	WwiseMetadataBasicReference(Loader)
 {
-	Loader.LogParsed(TEXT("ActionTriggerEntry"), Id, Name);
+	Loader.LogParsed("ActionTriggerEntry"_wwise_db, Id, Name);
 }

@@ -12,7 +12,7 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #include "Wwise/WwiseTask.h"
@@ -165,6 +165,25 @@ WWISE_TEST_CASE(Concurrency_Future_Smoke, "Wwise::Concurrency::Future_Smoke", "[
 			VoidPromise.EmplaceValue();
 		});
 		CHECK(VoidFuture.WaitFor(FTimespan::FromMilliseconds(10)));
+	}
+
+	SECTION("Two Wait")
+	{
+		TWwisePromise<void> VoidPromise;
+		auto VoidFuture( VoidPromise.GetFuture() );
+		VoidPromise.EmplaceValue();
+		VoidFuture.Wait();
+		VoidFuture.Wait();
+	}
+
+	SECTION("Two WaitFor")
+	{
+		TWwisePromise<void> VoidPromise;
+		auto VoidFuture( VoidPromise.GetFuture() );
+		CHECK_FALSE(VoidFuture.WaitFor(0));
+		CHECK_FALSE(VoidFuture.WaitFor(0));
+		VoidPromise.EmplaceValue();
+		CHECK(VoidFuture.WaitFor(0));
 	}
 
 	if (FPlatformProcess::SupportsMultithreading())

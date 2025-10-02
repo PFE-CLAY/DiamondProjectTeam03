@@ -12,7 +12,7 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #pragma once
@@ -25,6 +25,7 @@ Copyright (c) 2024 Audiokinetic Inc.
 #include "Templates/SharedPointer.h"
 #include "Misc/DateTime.h"
 #include "HAL/Event.h"
+#include "HAL/PlatformMisc.h"
 
 #include "Wwise/Stats/Concurrency.h"
 #include "Wwise/Stats/AsyncStats.h"
@@ -105,18 +106,24 @@ public:
 	bool WaitFor(const FTimespan& Duration)
 	{
 		check(!CompletionCallback.load(std::memory_order_seq_cst));
-		
+
 		if (IsComplete())
 		{
 			return true;
 		}
 
-		auto CompletionEvent = MakeShared<FEventRef, ESPMode::ThreadSafe>();
-		SetContinuation([CompletionEvent]
+		bool bResult;
 		{
-			CompletionEvent.Get()->Trigger();
-		});
-		return CompletionEvent.Get()->Wait(Duration);
+			auto CompletionEvent = MakeShared<FEventRef, ESPMode::ThreadSafe>();
+			SetContinuation([CompletionEvent]
+			{
+				CompletionEvent.Get()->Trigger();
+			});
+			bResult = CompletionEvent.Get()->Wait(Duration);
+			ResetContinuation();
+		}
+		
+		return bResult;
 	}
 
 	/**
@@ -151,6 +158,15 @@ public:
 			(*Copy)();
 			delete Copy;
 		}
+	}
+
+	/**
+	 * Reset the continuation function
+	 */
+	void ResetContinuation()
+	{
+		const auto OldCopy = CompletionCallback.exchange(nullptr);
+		delete OldCopy;
 	}
 
 protected:
