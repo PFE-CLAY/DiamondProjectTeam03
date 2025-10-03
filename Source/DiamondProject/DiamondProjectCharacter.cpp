@@ -57,7 +57,6 @@ void ADiamondProjectCharacter::Tick(float deltaTime)
 	
 	if (!GetCharacterMovement()->IsMovingOnGround()&&GetWorldTimerManager().IsTimerActive(TimerHandle)){
 		GetWorldTimerManager().PauseTimer(TimerHandle);
-		UE_LOG(LogTemplateCharacter, Error, TEXT("FEUR"));
 	}else if (GetCharacterMovement()->IsMovingOnGround()&&GetWorldTimerManager().IsTimerPaused(TimerHandle)){
 		GetWorldTimerManager().UnPauseTimer(TimerHandle);
 	}
@@ -159,7 +158,7 @@ void ADiamondProjectCharacter::Dash(const FInputActionValue& Value)
 {
 	if (DashCharge>0){
 		bisDashing = true;
-		if (TimerHandle.IsValid()){
+		if (!TimerHandle.IsValid()){
 			SetNewDashTimer();
 		}
 	}
