@@ -162,14 +162,24 @@ protected:
 	void CheatToggleAllyInvincibility(const FInputActionValue& Value);
 
 	void CheatEndLoop(const FInputActionValue& Value);
+	
+	
 
 protected:
 	// APawn interface
 	virtual void SetupPlayerInputComponent(UInputComponent* InputComponent) override;
+	
 	// End of APawn interface
 
 private:
+	UFUNCTION()
+	void SetNewDashTimer();
+	UFUNCTION()
+	void SetDashReady();
 	//Dash parameters
+	
+	UPROPERTY()
+	FTimerHandle TimerHandle;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category=Dash, meta=(AllowPrivateAccess = "true"))
 	bool bisDashing;
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Dash, meta=(AllowPrivateAccess = "true"))
@@ -178,8 +188,13 @@ private:
 	FVector2D dashDir;
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Dash, meta=(AllowPrivateAccess = "true"))
 	float DashDurationATFull=.1f;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category=Dash, meta=(AllowPrivateAccess = "true"))
+	int DashCharge=2;
+	UPROPERTY()
+	int DashMaxCharge;
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Dash, meta=(AllowPrivateAccess = "true"))
-	int DashCharge=1;
+	float DashCooldown=1.f;
+	
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Dash, meta=(AllowPrivateAccess = "true"))
 	float DashDurationDecay=.1f;
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Dash, meta=(AllowPrivateAccess = "true"))
