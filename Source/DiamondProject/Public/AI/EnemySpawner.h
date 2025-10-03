@@ -3,7 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "Enemy.h"
+#include "ShootingEnemy.h"
 #include "Components/BoxComponent.h"
 #include "GameFramework/Actor.h"
 #include "EnemySpawner.generated.h"
@@ -16,7 +16,7 @@ class DIAMONDPROJECT_API AEnemySpawner : public AActor
 protected:
 
 	UPROPERTY(EditDefaultsOnly, Category = Spawner)
-	TSubclassOf<AEnemy> EnemyToSpawn;
+	TSubclassOf<AShootingEnemy> EnemyToSpawn;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Spawner)
 	UBoxComponent* VolumeBox;
