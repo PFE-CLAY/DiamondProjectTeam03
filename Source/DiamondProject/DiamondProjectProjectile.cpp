@@ -4,6 +4,7 @@
 
 #include "Components/CapsuleComponent.h"
 #include "GameFramework/ProjectileMovementComponent.h"
+#include "LDIngredients/BreakableMesh.h"
 #include "LoopSystem/AC_Health.h"
 
 ADiamondProjectProjectile::ADiamondProjectProjectile() 
@@ -44,6 +45,11 @@ void ADiamondProjectProjectile::OnHit(UPrimitiveComponent* HitComp, AActor* Othe
 
 				//On peut pas cast en actor
 				healthComponent->DecreaseHealth(Damage, this);
+			}
+			else if (ABreakableMesh* Breakable = Cast<ABreakableMesh>(Hit.GetActor()))
+			{
+				Breakable->OnBreakMesh.Broadcast(Hit.ImpactPoint);
+				return;
 			}
 		}
 		
