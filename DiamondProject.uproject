@@ -28,10 +28,6 @@
 			"Enabled": true
 		},
 		{
-			"Name": "Text3D",
-			"Enabled": true
-		},
-		{
 			"Name": "NaniteDisplacedMesh",
 			"Enabled": true
 		},
@@ -39,6 +35,10 @@
 			"Name": "CPathfinding",
 			"Enabled": true,
 			"MarketplaceURL": "com.epicgames.launcher://ue/marketplace/product/c533ad0234c540fb81bdfa7bd55d3514"
+		},
+		{
+			"Name": "Text3D",
+			"Enabled": true
 		}
 	]
 }

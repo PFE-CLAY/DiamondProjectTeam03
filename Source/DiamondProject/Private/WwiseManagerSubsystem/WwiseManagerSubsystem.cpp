@@ -4,6 +4,7 @@
 
 #include "AkRtpc.h"
 #include "AkStateValue.h"
+#include "AkGroupValue.h"
 #include "../Plugins/Wwise/Source/AkAudio/Classes/AkAudioEvent.h"
 #include "WwiseManagerSubsystem/WwiseHandlerComponent.h"
 
@@ -93,12 +94,17 @@ void UWwiseManagerSubsystem::SetSwitch(const UAkSwitchValue* SwitchValue, AActor
 	UAkGameplayStatics::SetSwitch(SwitchValue, Actor);
 }
 
-void UWwiseManagerSubsystem::SetState(const UAkStateValue* StateValue)
+void UWwiseManagerSubsystem::SetState(UAkStateValue* StateValue)
 {
 	if (!StateValue) {
 		UE_LOG(LogTemp, Warning, TEXT("[UWwiseManagerSubsystem::SetState] StateValue is null!"));
 		return;
 	}
-	UE_LOG(LogTemp, Log, TEXT("[UWwiseManagerSubsystem::SetState] Setting State: %s"), *StateValue->GroupValueInfo.WwiseName.ToString());
+	#if UE_EDITOR
+	UE_LOG(LogTemp, Log, TEXT("[UWwiseManagerSubsystem::SetState] Setting State: %s"), *StateValue->GetInfoMutable()->WwiseName.ToString());
+	#else
+	UE_LOG(LogTemp, Log, TEXT("[UWwiseManagerSubsystem::SetState] Setting State"));
+	#endif
+	
 	UAkGameplayStatics::SetState(StateValue);
 }
