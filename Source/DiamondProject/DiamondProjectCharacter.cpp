@@ -13,6 +13,7 @@
 #include "EnhancedInputSubsystems.h"
 #include "InputActionValue.h"
 #include "Engine/LocalPlayer.h"
+#include "GameFramework/CharacterMovementComponent.h"
 
 DEFINE_LOG_CATEGORY(LogTemplateCharacter);
 
@@ -42,6 +43,8 @@ ADiamondProjectCharacter::ADiamondProjectCharacter()
 
 void ADiamondProjectCharacter::BeginPlay()
 {
+	DashMaxCharge=DashCharge;
+	UCharacterMovementComponent* characterMovement=GetCharacterMovement();
 	// Call the base class  
 	Super::BeginPlay();
 }
@@ -50,6 +53,12 @@ void ADiamondProjectCharacter::Tick(float deltaTime)
 {
 	if (bisDashing){
 		Move(dashDir);
+	}
+	
+	if (!GetCharacterMovement()->IsMovingOnGround()&&GetWorldTimerManager().IsTimerActive(TimerHandle)){
+		GetWorldTimerManager().PauseTimer(TimerHandle);
+	}else if (GetCharacterMovement()->IsMovingOnGround()&&GetWorldTimerManager().IsTimerPaused(TimerHandle)){
+		GetWorldTimerManager().UnPauseTimer(TimerHandle);
 	}
 	Super::Tick(deltaTime);
 }
@@ -106,6 +115,22 @@ void ADiamondProjectCharacter::SetupPlayerInputComponent(UInputComponent* Player
 	}
 }
 
+void ADiamondProjectCharacter::SetNewDashTimer()
+{
+	GetWorldTimerManager().SetTimer(TimerHandle, this,  &ADiamondProjectCharacter::SetDashReady, DashCooldown, false);
+}
+
+void ADiamondProjectCharacter::SetDashReady()
+{
+	GetWorldTimerManager().ClearTimer(TimerHandle);
+	TimerHandle.Invalidate();
+	DashCharge++;
+	
+	if (DashCharge<DashMaxCharge){
+		SetNewDashTimer();
+	}
+}
+
 
 void ADiamondProjectCharacter::Move(const FInputActionValue& Value)
 {
@@ -131,8 +156,12 @@ void ADiamondProjectCharacter::Move(const FInputActionValue& Value)
 }
 void ADiamondProjectCharacter::Dash(const FInputActionValue& Value)
 {
-	bisDashing = true;
-
+	if (DashCharge>0){
+		bisDashing = true;
+		if (!TimerHandle.IsValid()){
+			SetNewDashTimer();
+		}
+	}
 	OnDash.Broadcast();
 }
 

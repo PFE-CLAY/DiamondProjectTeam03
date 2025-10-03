@@ -49,5 +49,5 @@ public:
 	void SetSwitch(const UAkSwitchValue* SwitchValue, AActor* Actor);
 
 	UFUNCTION(BlueprintCallable, Category = "Wwise SubSystem")
-	void SetState(const UAkStateValue* StateValue);
+	void SetState(UAkStateValue* StateValue);
 };
