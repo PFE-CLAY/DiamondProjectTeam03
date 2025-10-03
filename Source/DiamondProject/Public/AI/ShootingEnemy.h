@@ -21,34 +21,22 @@ class DIAMONDPROJECT_API AShootingEnemy : public AEnemy
 	GENERATED_BODY()
 
 protected:
-
-	
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Enemy Behavior")
-	float MovementSpeed = 600;
-
-	
-
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Enemy Behavior")
 	float BaseDetectionRange = 300;
-
+	
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Enemy Behavior")
 	float MaxDetectionRange = 600;
 
 	UPROPERTY(BlueprintReadWrite, Category = "Enemy Behavior")
 	float DetectionRange;
-
 	
-
+	
 	UPROPERTY(EditDefaultsOnly, Category = "Enemy Behavior")
 	UClass* Projectile;
 	
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category="Enemy Behavior")
 	TArray<USceneComponent*> ShootPoints;
 
-
-	UPROPERTY(EditAnywhere)
-	bool bShouldShowDebug = false;
 	
 	//Garbage
 	
@@ -68,16 +56,8 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
-	UFUNCTION(BlueprintCallable, Category = "Enemy")
-	bool IsTargetOnSight(FRotator Rotation, FVector Location);
-
-	UFUNCTION(BlueprintCallable, BlueprintPure, Category = "Enemy")
-	virtual FRotator GetDirectionRotation(AActor* OriginActor, AActor* TargetActor);
-
 private:
-	UFUNCTION(BlueprintCallable, Category = "Enemy")
-	void DetectPlayer(AActor* Actor);
-
+	
 	
 
 	UFUNCTION(BlueprintCallable, Category = "Enemy")
@@ -96,6 +76,10 @@ public:
 
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
+	UFUNCTION(BlueprintCallable)
+	bool IsAnyTargetInRange();
+	UFUNCTION(BlueprintCallable, Category = "Enemy")
+	bool IsTargetOnSight(FRotator Rotation, FVector Location);
 
 	UFUNCTION()
 	UBehaviorTree* GetBehaviorTree() const;
@@ -105,13 +89,7 @@ public:
 
 	UPROPERTY(BlueprintAssignable, Category="Sunlight Detection")
 	FOnEnemyShoot OnEnemyShoot;
-
-	UFUNCTION(BlueprintCallable, BlueprintPure)
-	AActor* GetClosestAliveTarget();
-
-	UFUNCTION(BlueprintCallable)
-	bool IsAnyTargetInRange();
-
+	
 	UFUNCTION()
 	USceneComponent* GetNextShootPoint();
 

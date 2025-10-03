@@ -5,7 +5,6 @@
 #include "Components/BoxComponent.h"
 #include "DiamondProject/DiamondProjectCharacter.h"
 #include "GameFramework/CharacterMovementComponent.h"
-#include "Kismet/KismetMathLibrary.h"
 #include "AI/EnemySpawner.h"
 #include "AI/ProjectileEnemy.h"
 #include "Kismet/GameplayStatics.h"
@@ -25,25 +24,41 @@ AShootingEnemy::AShootingEnemy()
 void AShootingEnemy::BeginPlay()
 {
 	Super::BeginPlay();
-	AIController = this->GetController<AAIController>();
-	UGameplayStatics::GetAllActorsOfClass(GetWorld(), AAllied::StaticClass(), AllTargetActors);
-	AllTargetActors.Add(UGameplayStatics::GetPlayerPawn(GetWorld(), 0));
 	DetectionRange = BaseDetectionRange;
-	PlayerPawn = GetWorld()->GetFirstPlayerController()->GetPawn();
-	GetCharacterMovement()->MaxWalkSpeed = MovementSpeed;
+	GetCharacterMovement()->MaxWalkSpeed = Speed;
+	OnAttack.AddDynamic(this, &AShootingEnemy::Shoot);
 }
 
 
 
-void AShootingEnemy::DetectPlayer(AActor* Actor)
+bool AShootingEnemy::IsAnyTargetInRange()
 {
-	if(ADiamondProjectCharacter* PlayerCharacter = Cast<ADiamondProjectCharacter>(Actor)){
-		if(bCanAttack){
-			//hit
-			
-		}
-			
+	
+	FVector Direction = PlayerPawn->GetActorLocation() - GetActorLocation();
+	FRotator LookAtRotation;
+	LookAtRotation.Yaw = FMath::RadiansToDegrees(FMath::Atan2(Direction.Y, Direction.X)) ;
+	LookAtRotation.Pitch = FMath::RadiansToDegrees(FMath::Atan2(Direction.Z, FVector2D(Direction.X, Direction.Y).Size()));
+	LookAtRotation.Roll = 0;
+	float Distance = FVector::Distance(PlayerPawn->GetActorLocation(), GetActorLocation());
+	if(IsTargetOnSight(LookAtRotation, GetActorLocation()) && Distance < DetectionRange){
+		return true;
 	}
+	return false;
+}
+
+bool AShootingEnemy::IsTargetOnSight(FRotator Rotation, FVector Location)
+{
+	bool bIsPlayerOnSight = false;
+	FHitResult Hit;
+	FCollisionQueryParams CollisionParams;
+	
+	CollisionParams.AddIgnoredActor(this);
+	FVector End = GetActorLocation() + (Rotation.Vector() * DetectionRange);
+	bool bHasHit = GetWorld()->LineTraceSingleByChannel(Hit, Location, End, ECollisionChannel::ECC_Camera, CollisionParams);
+	//DrawDebugLine(GetWorld(), Location, End, bHasHit? FColor::Red : FColor::Green, false, 0.3f, 0, 10.f);
+	bIsPlayerOnSight = (bHasHit && (Hit.GetActor() == PlayerPawn));
+	//GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Red, FString::Printf(TEXT("Is Player On Sight: %s"), bIsPlayerOnSight ? TEXT("true") : TEXT("false")));
+	return bIsPlayerOnSight;
 }
 
 // Called every frame
@@ -64,45 +79,6 @@ void AShootingEnemy::SetupPlayerInputComponent(UInputComponent* PlayerInputCompo
 UBehaviorTree* AShootingEnemy::GetBehaviorTree() const
 {
 	return BehaviorTree;
-}
-
-AActor* AShootingEnemy::GetClosestAliveTarget()
-{
-	float ClosestRange = -1;
-	AActor* ClosestTarget = nullptr;
-	if(AllTargetActors.Num() <= 0) return nullptr;
-	for(AActor* Target : AllTargetActors){
-		if (Target->FindComponentByClass<UAC_Health>()->CurrentHealth == 0) continue;
-		float Distance = FVector::Distance(Target->GetActorLocation(), GetActorLocation());
-		if(Distance < ClosestRange || ClosestRange == -1){
-			ClosestTarget = Target;
-			ClosestRange = Distance;
-		}
-	}
-	return ClosestTarget;
-}
-
-bool AShootingEnemy::IsAnyTargetInRange()
-{
-	
-	int TargetNumber = 0;
-	for(AActor* Target : AllTargetActors){
-		FVector Direction = Target->GetActorLocation() - GetActorLocation();
-		FRotator LookAtRotation;
-		LookAtRotation.Yaw = FMath::RadiansToDegrees(FMath::Atan2(Direction.Y, Direction.X)) ;
-		LookAtRotation.Pitch = FMath::RadiansToDegrees(FMath::Atan2(Direction.Z, FVector2D(Direction.X, Direction.Y).Size()));
-		LookAtRotation.Roll = 0;
-		float Distance = FVector::Distance(Target->GetActorLocation(), GetActorLocation());
-		if(IsTargetOnSight(LookAtRotation, GetActorLocation()) && Distance < DetectionRange){
-			TargetNumber += 1;
-		}
-	}
-	//GEngine->AddOnScreenDebugMessage(-1, 10.f, FColor::White, FString::Printf(TEXT(" Number of targets: %d"), TargetNumber));
-	if(TargetNumber > 0){
-		return true;
-	}
-	return false;
-	
 }
 
 USceneComponent* AShootingEnemy::GetNextShootPoint()
@@ -141,6 +117,8 @@ void AShootingEnemy::RemoveShootPoint(USceneComponent* ShootPoint)
 		ShootPoints.Remove(ShootPoint);
 	}
 }
+
+
 
 void AShootingEnemy::Shoot(AActor* Target)
 {
@@ -183,24 +161,4 @@ void AShootingEnemy::RemoveEnemyFromSpawnerList()
 	/*EnemySpawner->SpawnedEnemies.Remove(this);*/
 }
 
-bool AShootingEnemy::IsTargetOnSight(FRotator Rotation, FVector Location)
-{
-	bool bIsPlayerOnSight = false;
-	FHitResult Hit;
-	FCollisionQueryParams CollisionParams;
-	
-	CollisionParams.AddIgnoredActor(this);
-	FVector End = GetActorLocation() + (Rotation.Vector() * DetectionRange);
-	bool bHasHit = GetWorld()->LineTraceSingleByChannel(Hit, Location, End, ECollisionChannel::ECC_Camera, CollisionParams);
-	//DrawDebugLine(GetWorld(), Location, End, bHasHit? FColor::Red : FColor::Green, false, 0.3f, 0, 10.f);
-	bIsPlayerOnSight = (bHasHit && (Hit.GetActor() == PlayerPawn || Cast<AAllied>(Hit.GetActor()) != nullptr));
-	//GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Red, FString::Printf(TEXT("Is Player On Sight: %s"), bIsPlayerOnSight ? TEXT("true") : TEXT("false")));
-	return bIsPlayerOnSight;
-}
 
-FRotator AShootingEnemy::GetDirectionRotation(AActor* OriginActor, AActor* TargetActor)
-{
-	FRotator Rotation = UKismetMathLibrary::FindLookAtRotation(OriginActor->GetActorLocation(),
-		TargetActor->GetActorLocation());
-	return Rotation;
-}
