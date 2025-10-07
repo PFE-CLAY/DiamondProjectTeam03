@@ -17,7 +17,7 @@ AMosquitoEnemy::AMosquitoEnemy()
 void AMosquitoEnemy::BeginPlay()
 {
 	Super::BeginPlay();
-	GetCharacterMovement()->MaxFlySpeed = MovementSpeed;
+	
 }
 
 FRotator AMosquitoEnemy::GetDirectionRotation(AActor* OriginActor, AActor* TargetActor)
