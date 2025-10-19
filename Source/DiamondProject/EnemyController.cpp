@@ -4,7 +4,7 @@
 #include "EnemyController.h"
 
 #include "BehaviorTree/BehaviorTree.h"
-#include "AI/Enemy.h"
+#include "AI/ShootingEnemy.h"
 
 // Sets default values
 AEnemyController::AEnemyController()
@@ -29,7 +29,7 @@ void AEnemyController::OnPossess(APawn* InPawn)
 {
 	
 	Super::OnPossess(InPawn);
-	if(const AEnemy* enemy = Cast<AEnemy>(InPawn)){
+	if(const AShootingEnemy* enemy = Cast<AShootingEnemy>(InPawn)){
 		if(UBehaviorTree* const BehaviorTree = enemy->GetBehaviorTree()){
 			UBlackboardComponent* BlackboardComponent;
 			UseBlackboard(BehaviorTree->BlackboardAsset, BlackboardComponent);
