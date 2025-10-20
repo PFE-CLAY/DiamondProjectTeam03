@@ -3110,18 +3110,6 @@
 			"Type": "RequiredResource"
 		},
 		{
-			"Path": "$(EngineDir)/Plugins/Experimental/Text3D/Binaries/Win64/UnrealEditor-Text3D.dll",
-			"Type": "DynamicLibrary"
-		},
-		{
-			"Path": "$(EngineDir)/Plugins/Experimental/Text3D/Binaries/Win64/UnrealEditor-Text3DEditor.dll",
-			"Type": "DynamicLibrary"
-		},
-		{
-			"Path": "$(EngineDir)/Plugins/Experimental/Text3D/Binaries/Win64/UnrealEditor.modules",
-			"Type": "RequiredResource"
-		},
-		{
 			"Path": "$(EngineDir)/Plugins/Experimental/ToolPresets/Binaries/Win64/UnrealEditor-ToolPresetAsset.dll",
 			"Type": "DynamicLibrary"
 		},
@@ -4211,18 +4199,6 @@
 		},
 		{
 			"Path": "$(EngineDir)/Plugins/VirtualProduction/CameraCalibrationCore/Binaries/Win64/UnrealEditor.modules",
-			"Type": "RequiredResource"
-		},
-		{
-			"Path": "$(EngineDir)/Plugins/VirtualProduction/GeometryMask/Binaries/Win64/UnrealEditor-GeometryMask.dll",
-			"Type": "DynamicLibrary"
-		},
-		{
-			"Path": "$(EngineDir)/Plugins/VirtualProduction/GeometryMask/Binaries/Win64/UnrealEditor-GeometryMaskEditor.dll",
-			"Type": "DynamicLibrary"
-		},
-		{
-			"Path": "$(EngineDir)/Plugins/VirtualProduction/GeometryMask/Binaries/Win64/UnrealEditor.modules",
 			"Type": "RequiredResource"
 		},
 		{
@@ -28700,10 +28676,6 @@
 			"Type": "UFS"
 		},
 		{
-			"Path": "$(EngineDir)/Plugins/Experimental/Text3D/Text3D.uplugin",
-			"Type": "UFS"
-		},
-		{
 			"Path": "$(EngineDir)/Plugins/Experimental/ToolPresets/ToolPresets.uplugin",
 			"Type": "UFS"
 		},
@@ -29044,10 +29016,6 @@
 			"Type": "UFS"
 		},
 		{
-			"Path": "$(EngineDir)/Plugins/VirtualProduction/GeometryMask/GeometryMask.uplugin",
-			"Type": "UFS"
-		},
-		{
 			"Path": "$(EngineDir)/Plugins/VirtualProduction/Takes/Takes.uplugin",
 			"Type": "UFS"
 		},
@@ -29291,7 +29259,6 @@
 		"GeometryCollectionPlugin",
 		"GeometryDataflow",
 		"GeometryFlow",
-		"GeometryMask",
 		"GeometryMode",
 		"GeometryProcessing",
 		"GitSourceControl",
@@ -29389,7 +29356,6 @@
 		"Takes",
 		"TcpMessaging",
 		"TemplateSequence",
-		"Text3D",
 		"TextureFormatOodle",
 		"ToolPresets",
 		"TraceUtilities",
