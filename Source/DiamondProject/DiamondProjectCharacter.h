@@ -105,6 +105,11 @@ public:
 	FOnInteract OnDash;
 	
 	UPROPERTY(BlueprintAssignable, Category = "Interaction")
+	FOnInteract OnDashRecovery;
+	UPROPERTY(BlueprintAssignable, Category = "Interaction")
+	FOnInteract OnDashRecoveryFull;
+	
+	UPROPERTY(BlueprintAssignable, Category = "Interaction")
 	FOnMantle OnMantle;
 
 	UPROPERTY(BlueprintAssignable, Category = "Interaction")
@@ -192,6 +197,8 @@ private:
 	int DashCharge=2;
 	UPROPERTY()
 	int DashMaxCharge;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Dash, meta=(AllowPrivateAccess = "true"))
+	float DashUIValue;
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Dash, meta=(AllowPrivateAccess = "true"))
 	float DashCooldown=1.f;
 	
