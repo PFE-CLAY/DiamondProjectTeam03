@@ -13,6 +13,7 @@
 #include "EnhancedInputSubsystems.h"
 #include "InputActionValue.h"
 #include "Engine/LocalPlayer.h"
+#include "Engine/RendererSettings.h"
 #include "GameFramework/CharacterMovementComponent.h"
 
 DEFINE_LOG_CATEGORY(LogTemplateCharacter);
@@ -55,9 +56,13 @@ void ADiamondProjectCharacter::Tick(float deltaTime)
 		Move(dashDir);
 	}
 	
-	if (!GetCharacterMovement()->IsMovingOnGround()&&GetWorldTimerManager().IsTimerActive(TimerHandle)){
-		GetWorldTimerManager().PauseTimer(TimerHandle);
-	}else if (GetCharacterMovement()->IsMovingOnGround()&&GetWorldTimerManager().IsTimerPaused(TimerHandle)){
+	if (GetWorldTimerManager().IsTimerActive(TimerHandle)){
+		if (!GetCharacterMovement()->IsMovingOnGround()){
+			GetWorldTimerManager().PauseTimer(TimerHandle);
+		}
+		DashUIValue=DashCharge+GetWorldTimerManager().GetTimerElapsed(TimerHandle);
+	}
+	if (GetCharacterMovement()->IsMovingOnGround()&&GetWorldTimerManager().IsTimerPaused(TimerHandle)){
 		GetWorldTimerManager().UnPauseTimer(TimerHandle);
 	}
 	Super::Tick(deltaTime);
@@ -127,7 +132,10 @@ void ADiamondProjectCharacter::SetDashReady()
 	DashCharge++;
 	
 	if (DashCharge<DashMaxCharge){
+		OnDashRecovery.Broadcast();
 		SetNewDashTimer();
+	}else{
+		OnDashRecoveryFull.Broadcast();
 	}
 }
 
