@@ -11,6 +11,7 @@
 #include "Animation/AnimInstance.h"
 #include "Engine/LocalPlayer.h"
 #include "Engine/World.h"
+#include "LDIngredients/BreakableMesh.h"
 #include "LoopSystem/AC_Health.h"
 
 // Sets default values for this component's properties
@@ -27,6 +28,11 @@ void UWeaponComponent::ProcessHit(const FHitResult& Hit, UWorld* World) const
 			healthComponent->DecreaseHealth(Damage, Cast<AActor>(this->GetOwner()));
 			return;
 		}
+		else if (ABreakableMesh* Breakable = Cast<ABreakableMesh>(Hit.GetActor()))
+        {
+            Breakable->OnBreakMesh.Broadcast(Hit.ImpactPoint);
+            return;
+        }
 	}
     
 	if (DecalMaterial){
