@@ -57,10 +57,11 @@ void ADiamondProjectCharacter::Tick(float deltaTime)
 	}
 	
 	if (GetWorldTimerManager().IsTimerActive(TimerHandle)){
+		DashUIValue=DashCharge+GetWorldTimerManager().GetTimerElapsed(TimerHandle);
+		OnDashUpdateCD.Broadcast();
 		if (!GetCharacterMovement()->IsMovingOnGround()){
 			GetWorldTimerManager().PauseTimer(TimerHandle);
 		}
-		DashUIValue=DashCharge+GetWorldTimerManager().GetTimerElapsed(TimerHandle);
 	}
 	if (GetCharacterMovement()->IsMovingOnGround()&&GetWorldTimerManager().IsTimerPaused(TimerHandle)){
 		GetWorldTimerManager().UnPauseTimer(TimerHandle);
@@ -134,6 +135,7 @@ void ADiamondProjectCharacter::SetDashReady()
 	if (DashCharge<DashMaxCharge){
 		OnDashRecovery.Broadcast();
 		SetNewDashTimer();
+		DashUIValue=DashCharge+GetWorldTimerManager().GetTimerElapsed(TimerHandle);
 	}else{
 		OnDashRecoveryFull.Broadcast();
 	}
@@ -146,8 +148,7 @@ void ADiamondProjectCharacter::Move(const FInputActionValue& Value)
 	if (!bisDashing)
 	{
 		FVector2D MovementVector = Value.Get<FVector2D>();
-
-			dashDir=MovementVector;
+		lastDir=MovementVector;
 		if (Controller != nullptr){
 			// add movement 
 			AddMovementInput(GetActorForwardVector(), MovementVector.Y);
@@ -164,12 +165,24 @@ void ADiamondProjectCharacter::Move(const FInputActionValue& Value)
 }
 void ADiamondProjectCharacter::Dash(const FInputActionValue& Value)
 {
-	if (DashCharge>0){
+	if (GetCharacterMovement()->Velocity.Size()>0)
+	{
+		dashDir=lastDir;
+	}
+	else
+	{
+		dashDir=FVector2D(0,1);
+	}
+	if (DashCharge>0)
+	{
 		bisDashing = true;
-		if (!TimerHandle.IsValid()){
+		if (!TimerHandle.IsValid())
+		{
 			SetNewDashTimer();
 		}
 	}
+	DashUIValue=DashCharge+GetWorldTimerManager().GetTimerElapsed(TimerHandle);
+
 	OnDash.Broadcast();
 }
 
@@ -237,3 +250,5 @@ void ADiamondProjectCharacter::CheatEndLoop(const FInputActionValue& Value)
 {
 	OnCheatEndLoop.Broadcast();
 }
+
+
