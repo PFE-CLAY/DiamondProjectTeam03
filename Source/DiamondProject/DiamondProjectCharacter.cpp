@@ -104,6 +104,9 @@ void ADiamondProjectCharacter::SetupPlayerInputComponent(UInputComponent* Player
 		//Preplan Zoom
 		EnhancedInputComponent->BindAction(PreplanZoomAction, ETriggerEvent::Triggered, this, &ADiamondProjectCharacter::PreplanZoom);
 
+		//Preplan On Off
+		EnhancedInputComponent->BindAction(PreplanOnOffAction, ETriggerEvent::Started, this, &ADiamondProjectCharacter::PreplanOnOff);
+
 		// Cheat actions
 		EnhancedInputComponent->BindAction(CheatOpenHatchAction, ETriggerEvent::Started, this, &ADiamondProjectCharacter::CheatOpenHatch);
 		
@@ -217,6 +220,12 @@ void ADiamondProjectCharacter::PreplanZoom(const FInputActionValue& Value)
 {
 	float PreplanZoomValue = Value.Get<float>();
 	OnPreplanZoom.Broadcast(PreplanZoomValue);
+}
+
+void ADiamondProjectCharacter::PreplanOnOff(const FInputActionValue& Value)
+{
+	bisPreplanOpen=!bisPreplanOpen;
+	OnPreplanOnOff.Broadcast();
 }
 
 void ADiamondProjectCharacter::CheatOpenHatch(const FInputActionValue& Value)
