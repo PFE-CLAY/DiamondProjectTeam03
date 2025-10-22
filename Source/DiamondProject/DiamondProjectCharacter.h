@@ -20,6 +20,7 @@ DECLARE_LOG_CATEGORY_EXTERN(LogTemplateCharacter, Log, All);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnInteract);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnMantle);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnPause);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnDash);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnPreplanMove, FVector2D, Value);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnPreplanZoom, float, ZoomValue);
 
@@ -100,14 +101,6 @@ public:
 
 	UPROPERTY(BlueprintAssignable, Category = "Interaction")
 	FOnInteract OnInteract;
-
-	UPROPERTY(BlueprintAssignable, Category = "Interaction")
-	FOnInteract OnDash;
-	
-	UPROPERTY(BlueprintAssignable, Category = "Interaction")
-	FOnInteract OnDashRecovery;
-	UPROPERTY(BlueprintAssignable, Category = "Interaction")
-	FOnInteract OnDashRecoveryFull;
 	
 	UPROPERTY(BlueprintAssignable, Category = "Interaction")
 	FOnMantle OnMantle;
@@ -115,6 +108,18 @@ public:
 	UPROPERTY(BlueprintAssignable, Category = "Interaction")
 	FOnPause OnPause;
 
+	UPROPERTY(BlueprintAssignable, Category = "Dash")
+	FOnDash OnDash;
+
+	UPROPERTY(BlueprintAssignable, Category = "Dash")
+	FOnDash OnDashRecovery;
+	
+	UPROPERTY(BlueprintAssignable, Category = "Dash")
+	FOnDash OnDashRecoveryFull;
+	
+	UPROPERTY(BlueprintAssignable, Category = "Dash")
+	FOnDash  OnDashUpdateCD;
+	
 	UPROPERTY(BlueprintAssignable, Category = "Preplan")
 	FOnPreplanMove OnPreplanMove;
 	
@@ -183,21 +188,23 @@ private:
 	void SetDashReady();
 	//Dash parameters
 	
-	UPROPERTY()
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Dash, meta=(AllowPrivateAccess = "true"))
 	FTimerHandle TimerHandle;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category=Dash, meta=(AllowPrivateAccess = "true"))
 	bool bisDashing;
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Dash, meta=(AllowPrivateAccess = "true"))
 	float dashPower=7000;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category=Dash, meta=(AllowPrivateAccess = "true"))
+	FVector2D dashDir=FVector2D(1,0);
 	UPROPERTY()
-	FVector2D dashDir;
+	FVector2D lastDir=FVector2D(1,0);;
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Dash, meta=(AllowPrivateAccess = "true"))
 	float DashDurationATFull=.1f;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category=Dash, meta=(AllowPrivateAccess = "true"))
 	int DashCharge=2;
 	UPROPERTY()
 	int DashMaxCharge;
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Dash, meta=(AllowPrivateAccess = "true"))
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category=Dash, meta=(AllowPrivateAccess = "true"))
 	float DashUIValue;
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Dash, meta=(AllowPrivateAccess = "true"))
 	float DashCooldown=1.f;
