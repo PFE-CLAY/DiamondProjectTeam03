@@ -148,16 +148,13 @@ void ADiamondProjectCharacter::Move(const FInputActionValue& Value)
 	if (!bisDashing)
 	{
 		FVector2D MovementVector = Value.Get<FVector2D>();
-		lastDir=MovementVector;
+		dashDir=MovementVector;
 		if (Controller != nullptr){
 			// add movement 
 			AddMovementInput(GetActorForwardVector(), MovementVector.Y);
 			AddMovementInput(GetActorRightVector(), MovementVector.X);
 		}
 	}else{
-		if (dashDir==FVector2D::ZeroVector){
-			dashDir=FVector2D(1,0);
-		}
 		AddMovementInput(GetActorForwardVector(), dashDir.Y);
 		AddMovementInput(GetActorRightVector(), dashDir.X);
 	}
@@ -165,11 +162,7 @@ void ADiamondProjectCharacter::Move(const FInputActionValue& Value)
 }
 void ADiamondProjectCharacter::Dash(const FInputActionValue& Value)
 {
-	if (GetCharacterMovement()->Velocity.Size()>0)
-	{
-		dashDir=lastDir;
-	}
-	else
+	if (GetCharacterMovement()->Velocity.Size()<=0)
 	{
 		dashDir=FVector2D(0,1);
 	}
