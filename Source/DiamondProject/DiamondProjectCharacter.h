@@ -195,9 +195,7 @@ private:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Dash, meta=(AllowPrivateAccess = "true"))
 	float dashPower=7000;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category=Dash, meta=(AllowPrivateAccess = "true"))
-	FVector2D dashDir=FVector2D(1,0);
-	UPROPERTY()
-	FVector2D lastDir=FVector2D(1,0);;
+	FVector2D dashDir;
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Dash, meta=(AllowPrivateAccess = "true"))
 	float DashDurationATFull=.1f;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category=Dash, meta=(AllowPrivateAccess = "true"))
