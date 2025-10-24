@@ -34,6 +34,9 @@ public:
 
 	UPROPERTY(BlueprintReadWrite)
 	float CrosshairSize = 0.1f;
+	
+	UPROPERTY(BlueprintReadWrite)
+	float DashUISize = 0.1f;
 
 	UPROPERTY(BlueprintReadWrite)
 	float MasterVolume = 1.0f;

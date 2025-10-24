@@ -1,6 +1,9 @@
 // Copyright Epic Games, Inc. All Rights Reserved.
 
 #include "DiamondProjectCharacter.h"
+
+#include <rapidjson/document.h>
+
 #include "DiamondProjectProjectile.h"
 #include "Animation/AnimInstance.h"
 #include "Camera/CameraComponent.h"
@@ -10,6 +13,8 @@
 #include "EnhancedInputSubsystems.h"
 #include "InputActionValue.h"
 #include "Engine/LocalPlayer.h"
+#include "Engine/RendererSettings.h"
+#include "GameFramework/CharacterMovementComponent.h"
 
 DEFINE_LOG_CATEGORY(LogTemplateCharacter);
 
@@ -39,8 +44,29 @@ ADiamondProjectCharacter::ADiamondProjectCharacter()
 
 void ADiamondProjectCharacter::BeginPlay()
 {
+	DashMaxCharge=DashCharge;
+	UCharacterMovementComponent* characterMovement=GetCharacterMovement();
 	// Call the base class  
 	Super::BeginPlay();
+}
+
+void ADiamondProjectCharacter::Tick(float deltaTime)
+{
+	if (bisDashing){
+		Move(dashDir);
+	}
+	
+	if (GetWorldTimerManager().IsTimerActive(TimerHandle)){
+		DashUIValue=DashCharge+GetWorldTimerManager().GetTimerElapsed(TimerHandle);
+		OnDashUpdateCD.Broadcast();
+		if (!GetCharacterMovement()->IsMovingOnGround()){
+			GetWorldTimerManager().PauseTimer(TimerHandle);
+		}
+	}
+	if (GetCharacterMovement()->IsMovingOnGround()&&GetWorldTimerManager().IsTimerPaused(TimerHandle)){
+		GetWorldTimerManager().UnPauseTimer(TimerHandle);
+	}
+	Super::Tick(deltaTime);
 }
 
 //////////////////////////////////////////////////////////////////////////// Input
@@ -54,6 +80,9 @@ void ADiamondProjectCharacter::SetupPlayerInputComponent(UInputComponent* Player
 		EnhancedInputComponent->BindAction(JumpAction, ETriggerEvent::Started, this, &ACharacter::Jump);
 		EnhancedInputComponent->BindAction(JumpAction, ETriggerEvent::Completed, this, &ACharacter::StopJumping);
 
+		// Dashing
+		EnhancedInputComponent->BindAction(DashAction, ETriggerEvent::Started, this, &ADiamondProjectCharacter::Dash);
+		
 		// Moving
 		EnhancedInputComponent->BindAction(MoveAction, ETriggerEvent::Triggered, this, &ADiamondProjectCharacter::Move);
 
@@ -75,6 +104,9 @@ void ADiamondProjectCharacter::SetupPlayerInputComponent(UInputComponent* Player
 		//Preplan Zoom
 		EnhancedInputComponent->BindAction(PreplanZoomAction, ETriggerEvent::Triggered, this, &ADiamondProjectCharacter::PreplanZoom);
 
+		//Preplan On Off
+		EnhancedInputComponent->BindAction(PreplanOnOffAction, ETriggerEvent::Started, this, &ADiamondProjectCharacter::PreplanOnOff);
+
 		// Cheat actions
 		EnhancedInputComponent->BindAction(CheatOpenHatchAction, ETriggerEvent::Started, this, &ADiamondProjectCharacter::CheatOpenHatch);
 		
@@ -92,18 +124,62 @@ void ADiamondProjectCharacter::SetupPlayerInputComponent(UInputComponent* Player
 	}
 }
 
+void ADiamondProjectCharacter::SetNewDashTimer()
+{
+	GetWorldTimerManager().SetTimer(TimerHandle, this,  &ADiamondProjectCharacter::SetDashReady, DashCooldown, false);
+}
+
+void ADiamondProjectCharacter::SetDashReady()
+{
+	GetWorldTimerManager().ClearTimer(TimerHandle);
+	TimerHandle.Invalidate();
+	DashCharge++;
+	
+	if (DashCharge<DashMaxCharge){
+		OnDashRecovery.Broadcast();
+		SetNewDashTimer();
+		DashUIValue=DashCharge+GetWorldTimerManager().GetTimerElapsed(TimerHandle);
+	}else{
+		OnDashRecoveryFull.Broadcast();
+	}
+}
+
 
 void ADiamondProjectCharacter::Move(const FInputActionValue& Value)
 {
 	// input is a Vector2D
-	FVector2D MovementVector = Value.Get<FVector2D>();
-
-	if (Controller != nullptr)
+	if (!bisDashing)
 	{
-		// add movement 
-		AddMovementInput(GetActorForwardVector(), MovementVector.Y);
-		AddMovementInput(GetActorRightVector(), MovementVector.X);
+		FVector2D MovementVector = Value.Get<FVector2D>();
+		dashDir=MovementVector;
+		if (Controller != nullptr){
+			// add movement 
+			AddMovementInput(GetActorForwardVector(), MovementVector.Y);
+			AddMovementInput(GetActorRightVector(), MovementVector.X);
+		}
+	}else{
+		AddMovementInput(GetActorForwardVector(), dashDir.Y);
+		AddMovementInput(GetActorRightVector(), dashDir.X);
 	}
+
+}
+void ADiamondProjectCharacter::Dash(const FInputActionValue& Value)
+{
+	if (GetCharacterMovement()->Velocity.Size()<=0)
+	{
+		dashDir=FVector2D(0,1);
+	}
+	if (DashCharge>0)
+	{
+		bisDashing = true;
+		if (!TimerHandle.IsValid())
+		{
+			SetNewDashTimer();
+		}
+	}
+	DashUIValue=DashCharge+GetWorldTimerManager().GetTimerElapsed(TimerHandle);
+
+	OnDash.Broadcast();
 }
 
 void ADiamondProjectCharacter::Look(const FInputActionValue& Value)
@@ -146,6 +222,12 @@ void ADiamondProjectCharacter::PreplanZoom(const FInputActionValue& Value)
 	OnPreplanZoom.Broadcast(PreplanZoomValue);
 }
 
+void ADiamondProjectCharacter::PreplanOnOff(const FInputActionValue& Value)
+{
+	bisPreplanOpen=!bisPreplanOpen;
+	OnPreplanOnOff.Broadcast();
+}
+
 void ADiamondProjectCharacter::CheatOpenHatch(const FInputActionValue& Value)
 {
 	OnCheatOpenHatch.Broadcast();
@@ -170,3 +252,5 @@ void ADiamondProjectCharacter::CheatEndLoop(const FInputActionValue& Value)
 {
 	OnCheatEndLoop.Broadcast();
 }
+
+
