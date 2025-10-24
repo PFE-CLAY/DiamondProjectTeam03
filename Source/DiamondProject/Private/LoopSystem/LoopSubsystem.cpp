@@ -28,22 +28,11 @@ void ULoopSubsystem::ReloadScene()
 	if (LevelSelectionSettings == nullptr) return;
 	
 	OnSceneReloadEvent.Broadcast();
-	if (PreplanDreamSubtitlesArray.IsEmpty())
+	bool mainLevelNull = LevelSelectionSettings->MainLevel.IsNull();
+	if (!mainLevelNull)
 	{
-		bool mainLevelNull = LevelSelectionSettings->MainLevel.IsNull();
-		if (!mainLevelNull)
-		{
-			UGameplayStatics::OpenLevelBySoftObjectPtr(this, LevelSelectionSettings->MainLevel, false);
-			return;
-		}
-	} else
-	{
-		bool dreamLevelNull = LevelSelectionSettings->DreamLevel.IsNull(); 
-		if (!dreamLevelNull)
-		{
-			UGameplayStatics::OpenLevelBySoftObjectPtr(this, LevelSelectionSettings->DreamLevel, false);
-			return;
-		}
+		UGameplayStatics::OpenLevelBySoftObjectPtr(this, LevelSelectionSettings->MainLevel, false);
+		return;
 	}
 	
 	UGameplayStatics::OpenLevel(this, FName(*GetWorld()->GetName()), false);
@@ -265,7 +254,7 @@ void ULoopSubsystem::InitializePreplan()
 {
 	InitializePreplanSteps();
 	InitializePreplanAdvices();
-	InitializePreplanLinks();
+	//InitializePreplanLinks();
 }
 
 void ULoopSubsystem::ActivatePreplanStep(FString PreplanID)
@@ -283,16 +272,16 @@ void ULoopSubsystem::ActivatePreplanStep(FString PreplanID)
 		return;
 	}
 	
-	bool bIsAnyPreviousStepActive = IsAnyPreviousStepActive(PreplanStep);
+	//bool bIsAnyPreviousStepActive = IsAnyPreviousStepActive(PreplanStep);
 
-	if (bIsAnyPreviousStepActive &&
+	if (
 		PreplanStep->NbActivations < PreplanStep->PreplanData->NbActivationsRequired){
 		++PreplanStep->NbActivations;
 
 		if (PreplanStep->NbActivations == PreplanStep->PreplanData->NbActivationsRequired){
 			PreplanStep->bIsStepActive = true;
 			
-			for (TObjectPtr<UPreplanLinkWidget> InLink : PreplanStep->InLinks)
+			/*for (TObjectPtr<UPreplanLinkWidget> InLink : PreplanStep->InLinks)
 			{
 				InLink->ActivateToData();
 			}
@@ -300,7 +289,7 @@ void ULoopSubsystem::ActivatePreplanStep(FString PreplanID)
 			for (TObjectPtr<UPreplanLinkWidget> OutLink : PreplanStep->OutLinks)
 			{
 				OutLink->ActivateFromData();
-			}
+			}*/
 			
 			if (PreplanStep->PreplanData->bShouldActivateDream &&
 				PreplanStep->PreplanData->DreamSubtitles != nullptr)
