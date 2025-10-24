@@ -224,7 +224,6 @@ void ADiamondProjectCharacter::PreplanZoom(const FInputActionValue& Value)
 
 void ADiamondProjectCharacter::PreplanOnOff(const FInputActionValue& Value)
 {
-	bisPreplanOpen=!bisPreplanOpen;
 	OnPreplanOnOff.Broadcast();
 }
 
