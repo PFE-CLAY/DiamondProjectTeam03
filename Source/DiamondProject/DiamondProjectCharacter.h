@@ -21,6 +21,7 @@ DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnInteract);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnMantle);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnPause);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnDash);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnPreplanOnOff);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnPreplanMove, FVector2D, Value);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnPreplanZoom, float, ZoomValue);
 
@@ -70,6 +71,9 @@ class ADiamondProjectCharacter : public ACharacter
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Input, meta=(AllowPrivateAccess = "true"))
 	UInputAction* PreplanZoomAction;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Input, meta=(AllowPrivateAccess = "true"))
+	UInputAction* PreplanOnOffAction;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Input, meta=(AllowPrivateAccess = "true"))
 	UInputAction* CheatOpenHatchAction;
@@ -125,6 +129,9 @@ public:
 	
 	UPROPERTY(BlueprintAssignable, Category = "Preplan")
 	FOnPreplanZoom OnPreplanZoom;
+	
+	UPROPERTY(BlueprintAssignable, Category = "Preplan")
+	FOnPreplanOnOff OnPreplanOnOff;
 
 	UPROPERTY(BlueprintAssignable, Category = "Cheats")
 	FOnCheatOpenHatch OnCheatOpenHatch;
@@ -162,6 +169,8 @@ protected:
 	void PreplanMove(const FInputActionValue& Value);
 
 	void PreplanZoom(const FInputActionValue& Value);
+	
+	void PreplanOnOff(const FInputActionValue& Value);
 
 	void CheatOpenHatch(const FInputActionValue& Value);
 	
@@ -195,9 +204,7 @@ private:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Dash, meta=(AllowPrivateAccess = "true"))
 	float dashPower=7000;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category=Dash, meta=(AllowPrivateAccess = "true"))
-	FVector2D dashDir=FVector2D(1,0);
-	UPROPERTY()
-	FVector2D lastDir=FVector2D(1,0);;
+	FVector2D dashDir;
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Dash, meta=(AllowPrivateAccess = "true"))
 	float DashDurationATFull=.1f;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category=Dash, meta=(AllowPrivateAccess = "true"))
@@ -213,7 +220,8 @@ private:
 	float DashDurationDecay=.1f;
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Dash, meta=(AllowPrivateAccess = "true"))
 	EFCEase dashCurve = EFCEase::InCirc;
-	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category=preplan, meta=(AllowPrivateAccess = "true"))
+	bool bisPreplanOpen;
 	
 public:
 	/** Returns Mesh1P subobject **/
