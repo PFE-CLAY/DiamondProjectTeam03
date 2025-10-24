@@ -22,6 +22,7 @@ void AEnemy::BeginPlay()
 	PlayerPawn = GetWorld()->GetFirstPlayerController()->GetPawn();;
 	GetCharacterMovement()->MaxWalkSpeed = Speed;
 	GetCharacterMovement()->MaxFlySpeed = Speed;
+	if(bIsActiveAtStart) StartBehavior();
 }
 
 void AEnemy::OnDeath()

@@ -46,7 +46,7 @@ void UAC_Health::ChangeHealth(int NewHealth, const AActor* DamageDealer)
 	CurrentHealth = NewHealth;
 	
 	if (CurrentHealth == 0 && !bIsDead) {
-		OnDeathEvent.Broadcast(DamageDealer);
+		OnDeathEvent.Broadcast(DamageDealer, GetOwner());
 		bIsDead = true;
 	}
 	

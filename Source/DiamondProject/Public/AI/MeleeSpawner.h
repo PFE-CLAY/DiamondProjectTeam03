@@ -30,6 +30,9 @@ private:
     	float TimeToWaitCheck = 4.f;
 
 	UPROPERTY(EditAnywhere, Category = "Spawner Infos")
+	float LongTimeBeforeRespawn = 40.f;
+
+	UPROPERTY(EditAnywhere, Category = "Spawner Infos")
 	int MaxEnemyCount = 20;
 
 	UPROPERTY(EditAnywhere)
@@ -39,7 +42,7 @@ private:
 public:
 	// Sets default values for this actor's properties
 	AMeleeSpawner();
-	UPROPERTY(BlueprintReadWrite)
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
 	TArray<AMeleeEnemy*> SpawnedEnemies;
 	
 
@@ -51,6 +54,9 @@ protected:
 	
 	UFUNCTION(BlueprintImplementableEvent)
     void CloseSpawnDoor();
+
+	UFUNCTION()
+	void DeathEnemy(const AActor* DamageDealer, AActor* Enemy);
 
 	UFUNCTION(BlueprintCallable)
 	void RestartLastEnemyTimer();

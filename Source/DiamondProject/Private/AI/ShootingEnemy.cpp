@@ -27,7 +27,6 @@ void AShootingEnemy::BeginPlay()
 	DetectionRange = BaseDetectionRange;
 	GetCharacterMovement()->MaxWalkSpeed = Speed;
 	OnAttack.AddDynamic(this, &AShootingEnemy::Shoot);
-	StartBehavior();
 }
 
 

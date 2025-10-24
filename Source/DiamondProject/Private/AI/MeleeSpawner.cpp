@@ -3,6 +3,8 @@
 
 #include "AI/MeleeSpawner.h"
 
+#include "LoopSystem/AC_Health.h"
+
 
 // Sets default values
 AMeleeSpawner::AMeleeSpawner()
@@ -23,6 +25,20 @@ void AMeleeSpawner::BeginPlay()
 	
 }
 
+void AMeleeSpawner::DeathEnemy(const AActor* DamageDealer, AActor* Enemy)
+{
+	AMeleeEnemy* MeleeEnemy = Cast<AMeleeEnemy>(Enemy);
+	if(SpawnedEnemies.Contains(MeleeEnemy))
+	{
+		if(SpawnedEnemies.Num() == MaxEnemyCount)
+		{
+			GetWorldTimerManager().SetTimer(LastEnemySpawnedTimer, this,  &AMeleeSpawner::Spawn, LongTimeBeforeRespawn,false);
+		}
+		SpawnedEnemies.Remove(MeleeEnemy);
+	}
+
+}
+
 void AMeleeSpawner::RestartLastEnemyTimer()
 {
 	GetWorldTimerManager().ClearTimer(LastEnemySpawnedTimer);
@@ -39,6 +55,8 @@ void AMeleeSpawner::Spawn()
 		
 	}
 	Super::Spawn();
+	UAC_Health* LastEnemyHealthComponent = Cast<UAC_Health>(LastSpawnedEnemy->GetComponentByClass(UAC_Health::StaticClass()));
+	LastEnemyHealthComponent->OnDeathEvent.AddDynamic(this, &AMeleeSpawner::DeathEnemy);
 	SpawnedEnemies.Add(Cast<AMeleeEnemy>(LastSpawnedEnemy));
 	
 	if(SpawnedEnemies.Num() < MaxEnemyCount)
@@ -47,6 +65,8 @@ void AMeleeSpawner::Spawn()
 		
 	}
 }
+
+
 
 void AMeleeSpawner::WaitForAnotherSpawn()
 {

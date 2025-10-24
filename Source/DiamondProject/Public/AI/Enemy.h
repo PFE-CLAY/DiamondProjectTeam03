@@ -45,10 +45,11 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Enemy Behavior")
 	float Speed = 600;
 
-	UPROPERTY(EditAnywhere, Category = "Attack")
+	UPROPERTY(EditAnywhere, Category = "Enemy Behavior")
 	bool bShouldShowDebug = false;
 	
-	
+	UPROPERTY(EditAnywhere, Category = "Enemy Behavior")
+	bool bIsActiveAtStart = false;
 
 	
 public:
