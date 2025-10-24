@@ -19,8 +19,7 @@ void AEnemy::BeginPlay()
 {
 	Super::BeginPlay();
 	AIController = this->GetController<AAIController>();
-	PlayerPawn = GetWorld()->GetFirstPlayerController()->GetPawn();
-	if(BehaviorTree != nullptr) AIController->RunBehaviorTree(BehaviorTree);
+	PlayerPawn = GetWorld()->GetFirstPlayerController()->GetPawn();;
 	GetCharacterMovement()->MaxWalkSpeed = Speed;
 	GetCharacterMovement()->MaxFlySpeed = Speed;
 }
@@ -47,6 +46,11 @@ void AEnemy::Attack(AActor* Target)
 void AEnemy::SetAttackReady()
 {
 	bCanAttack = true;
+}
+
+void AEnemy::StartBehavior()
+{
+	if(BehaviorTree != nullptr) AIController->RunBehaviorTree(BehaviorTree);
 }
 
 
