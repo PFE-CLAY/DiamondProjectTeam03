@@ -30,9 +30,6 @@ private:
     	float TimeToWaitCheck = 4.f;
 
 	UPROPERTY(EditAnywhere, Category = "Spawner Infos")
-	float LongTimeBeforeRespawn = 40.f;
-
-	UPROPERTY(EditAnywhere, Category = "Spawner Infos")
 	int MaxEnemyCount = 20;
 
 	UPROPERTY(EditAnywhere)
@@ -45,7 +42,7 @@ public:
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
 	TArray<AMeleeEnemy*> SpawnedEnemies;
 	
-
+	
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;

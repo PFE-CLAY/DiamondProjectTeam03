@@ -27,12 +27,7 @@ void AAlliedAIController::BeginPlay()
 void AAlliedAIController::OnMoveCompleted(FAIRequestID RequestID, EPathFollowingResult::Type Result)
 {
 	Super::OnMoveCompleted(RequestID, Result);
-	UEnum* EnumPtr = FindObject<UEnum>(ANY_PACKAGE, TEXT("EPathFollowingResult"), true);
-	if (EnumPtr)
-	{
-		FString EnumName = EnumPtr->GetNameStringByValue(static_cast<int64>(Result));
-		//GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Red, EnumName);
-	}
+	
 	AlliedControlled->LastNavigationPoint = AlliedControlled->GetCurrentNavigationPoint();
 	AlliedControlled->LastNavigationPoint->OnArrivingOnPoint();
 	if(AlliedControlled->LastNavigationPoint == nullptr) return;

@@ -32,7 +32,7 @@ void AMeleeSpawner::DeathEnemy(const AActor* DamageDealer, AActor* Enemy)
 	{
 		if(SpawnedEnemies.Num() == MaxEnemyCount)
 		{
-			GetWorldTimerManager().SetTimer(LastEnemySpawnedTimer, this,  &AMeleeSpawner::Spawn, LongTimeBeforeRespawn,false);
+			//GetWorldTimerManager().SetTimer(LastEnemySpawnedTimer, this,  &AMeleeSpawner::Spawn, LongTimeBeforeRespawn,false);
 		}
 		SpawnedEnemies.Remove(MeleeEnemy);
 	}
