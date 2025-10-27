@@ -38,7 +38,7 @@ void ULoopSubsystem::ReloadScene()
 	UGameplayStatics::OpenLevel(this, FName(*GetWorld()->GetName()), false);
 }
 
-bool ULoopSubsystem::IsAnyPreviousStepActive(const UPreplanStep* PreplanStep)
+/*bool ULoopSubsystem::IsAnyPreviousStepActive(const UPreplanStep* PreplanStep)
 {
 	if (PreplanStep == nullptr || PreplanStep->PreplanData == nullptr)
 		return false;
@@ -62,7 +62,7 @@ bool ULoopSubsystem::IsAnyPreviousStepActive(const UPreplanStep* PreplanStep)
 		}
 	}
 	return bIsPreviousStepActive;
-}
+}*/
 
 void ULoopSubsystem::InitializePreplanSteps()
 {
@@ -106,8 +106,8 @@ void ULoopSubsystem::InitializePreplanSteps()
 					PreplanStep->NbActivations = 0;
 					PreplanStep->PreplanData = PreplanDataWidget;
 					PreplanStep->PreplanAdvices.Empty();
-					PreplanStep->InLinks.Empty();
-					PreplanStep->OutLinks.Empty();
+					//PreplanStep->InLinks.Empty();
+					//PreplanStep->OutLinks.Empty();
 					PreplanStep->bIsStepVisible = PreplanStep->bIsStepActive;
 					SetPreplanVisibility(PreplanDataWidget, PreplanStep->bIsStepVisible);
 					PreplanDataWidget->SetStep(PreplanStep);
@@ -171,7 +171,7 @@ void ULoopSubsystem::InitializePreplanLinks()
 					continue;
 				}
 				
-				PreplanStepPtr->Get()->OutLinks.Add(PreplanLinkWidget);
+				//PreplanStepPtr->Get()->OutLinks.Add(PreplanLinkWidget);
 				if (PreplanStepPtr->Get()->bIsStepActive)
 				{
 					PreplanLinkWidget->ActivateFromData();
@@ -188,7 +188,7 @@ void ULoopSubsystem::InitializePreplanLinks()
 				if (PreplanStepPtr == nullptr || PreplanStepPtr->Get() == nullptr){
 					continue;
 				}
-				PreplanStepPtr->Get()->InLinks.Add(PreplanLinkWidget);
+				//PreplanStepPtr->Get()->InLinks.Add(PreplanLinkWidget);
 				if (PreplanStepPtr->Get()->bIsStepActive)
 				{
 					PreplanLinkWidget->ActivateToData();
@@ -198,7 +198,7 @@ void ULoopSubsystem::InitializePreplanLinks()
 				PreplanLinkWidget->ActivateToData();
 			}
 
-			PreplanLinkWidget->ChangeVisibility(PreplanLinkWidget->IsLinkActive());
+			//PreplanLinkWidget->ChangeVisibility(PreplanLinkWidget->IsLinkActive());
 		}
 	}
 }

@@ -43,8 +43,8 @@ private:
 	UFUNCTION(BlueprintCallable)
 	void ReloadScene();
 
-	UFUNCTION()
-	bool IsAnyPreviousStepActive(const UPreplanStep* PreplanStep);
+	//UFUNCTION()
+	//bool IsAnyPreviousStepActive(const UPreplanStep* PreplanStep);
 
 	UFUNCTION()
 	void InitializePreplanSteps();
