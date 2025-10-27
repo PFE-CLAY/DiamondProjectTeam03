@@ -10,7 +10,6 @@
 #include "Components/BoxComponent.h"
 #include "ShootingEnemy.generated.h"
 
-class AEnemySpawner;
 class UShootPointComponent;
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnEnemyShoot);
@@ -83,9 +82,6 @@ public:
 
 	UFUNCTION()
 	UBehaviorTree* GetBehaviorTree() const;
-
-	UPROPERTY()
-	TObjectPtr<AEnemySpawner> EnemySpawner = nullptr;
 
 	UPROPERTY(BlueprintAssignable, Category="Sunlight Detection")
 	FOnEnemyShoot OnEnemyShoot;
