@@ -31,7 +31,6 @@ FRotator ATurretEnemy::GetDirectionRotation(AActor* OriginActor, AActor* TargetA
 
 void ATurretEnemy::StartPatrol()
 {
-	
 	FVector NextPoint = PatrolPoints[Position]->GetActorLocation();
 	AIController->MoveToLocation(NextPoint);
 	Position++;
