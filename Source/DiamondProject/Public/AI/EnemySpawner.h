@@ -3,53 +3,39 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "ShootingEnemy.h"
-#include "Components/BoxComponent.h"
 #include "GameFramework/Actor.h"
+#include "Enemy.h"
 #include "EnemySpawner.generated.h"
 
 UCLASS()
 class DIAMONDPROJECT_API AEnemySpawner : public AActor
 {
 	GENERATED_BODY()
-
 protected:
+	UPROPERTY()
+	AEnemy* LastSpawnedEnemy;
 
-	UPROPERTY(EditDefaultsOnly, Category = Spawner)
-	TSubclassOf<AShootingEnemy> EnemyToSpawn;
+	UPROPERTY(EditAnywhere, Category = "Spawner Infos")
+	UClass* EnemyToSpawn;
 
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Spawner)
-	UBoxComponent* VolumeBox;
-
-
-
+	UPROPERTY(EditAnywhere)
+	USceneComponent* SpawnPoint;
+	UPROPERTY()
+	USceneComponent* Root;
 public:
 	// Sets default values for this actor's properties
 	AEnemySpawner();
 
-	UPROPERTY(EditDefaultsOnly, Category = "Debug")
-	bool bShouldShowDebug = false;
-
-	UPROPERTY()
-	float DistanceFromPlayer;
+	
 
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
-private:
-	
-	UFUNCTION()
-	FTransform GetRandomTransform() const;
+	UFUNCTION(BlueprintCallable)
+	virtual void Spawn(); 
 
 public:
-
-	UFUNCTION()
-	void SpawnMonster();
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
-
-	bool IsInActivationRange(float Distance, AActor* Actor);
-
-	void DebugDistance();
 };
