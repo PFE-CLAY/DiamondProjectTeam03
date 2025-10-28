@@ -68,7 +68,7 @@ void ULoopSubsystem::InitializePreplanSteps()
 {
 	TArray<UUserWidget*> FoundPreplanDataWidgets;
 	UWidgetBlueprintLibrary::GetAllWidgetsOfClass(GetWorld(), FoundPreplanDataWidgets, UPreplanDataWidget::StaticClass(),false);
-	
+	GEngine->AddOnScreenDebugMessage(-1, 10, FColor::Red, FString::FromInt(FoundPreplanDataWidgets.Num()));
 	if (!bIsInit){
 		bIsInit = true;
 
@@ -222,7 +222,10 @@ void ULoopSubsystem::CreatePreplanStep(UPreplanDataWidget* PreplanDataWidget)
 	{
 		return;
 	}
-	
+	if (PreplanDataWidget->PreplanID=="dash")
+	{
+		UE_LOG(LogTemp, Warning, TEXT("dash"))				
+	}
 	UPreplanStep* PreplanStep = NewObject<UPreplanStep>();
 	PreplanStep->PreplanData = PreplanDataWidget;
 			
@@ -289,13 +292,13 @@ void ULoopSubsystem::ActivatePreplanStep(FString PreplanID)
 			for (TObjectPtr<UPreplanLinkWidget> OutLink : PreplanStep->OutLinks)
 			{
 				OutLink->ActivateFromData();
-			}*/
+			}
 			
 			if (PreplanStep->PreplanData->bShouldActivateDream &&
 				PreplanStep->PreplanData->DreamSubtitles != nullptr)
 			{
 				PreplanDreamSubtitlesArray.Add(PreplanStep->PreplanData->DreamSubtitles);
-			}
+			}*/
 		}
 	}
 }
