@@ -8,7 +8,7 @@ public class DiamondProject : ModuleRules
 	{
 		PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
 
-		PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore", "EnhancedInput", "AIModule", "AkAudio", "UMG", "DeveloperSettings" });
+		PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore", "EnhancedInput", "AIModule", "AkAudio", "UMG", "DeveloperSettings", "GeometryCollectionEngine" });
 
         PublicDependencyModuleNames.AddRange(new[] { "FCTween" });
     }
