@@ -55,8 +55,8 @@ private:
 	UFUNCTION()
 	void InitializePreplanLinks();
 
-	UFUNCTION()
-	void SetPreplanVisibility(UPreplanDataWidget* PreplanData, bool bIsVisible);
+	//UFUNCTION()
+	//void SetPreplanVisibility(UPreplanDataWidget* PreplanData, bool bIsVisible);
 
 	UFUNCTION()
 	void CreatePreplanStep(UPreplanDataWidget* PreplanDataWidget);

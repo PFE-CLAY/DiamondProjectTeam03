@@ -109,7 +109,7 @@ void ULoopSubsystem::InitializePreplanSteps()
 					//PreplanStep->InLinks.Empty();
 					//PreplanStep->OutLinks.Empty();
 					PreplanStep->bIsStepVisible = PreplanStep->bIsStepActive;
-					SetPreplanVisibility(PreplanDataWidget, PreplanStep->bIsStepVisible);
+					//SetPreplanVisibility(PreplanDataWidget, PreplanStep->bIsStepVisible);
 					PreplanDataWidget->SetStep(PreplanStep);
 				}
 			}
@@ -203,7 +203,7 @@ void ULoopSubsystem::InitializePreplanLinks()
 	}
 }
 
-void ULoopSubsystem::SetPreplanVisibility(UPreplanDataWidget* PreplanData, bool bIsVisible)
+/*void ULoopSubsystem::SetPreplanVisibility(UPreplanDataWidget* PreplanData, bool bIsVisible)
 {
 	if (PreplanData == nullptr) return;
 	
@@ -214,7 +214,7 @@ void ULoopSubsystem::SetPreplanVisibility(UPreplanDataWidget* PreplanData, bool 
 	{
 		PreplanData->SetVisibility(ESlateVisibility::Hidden);
 	}
-}
+}*/
 
 void ULoopSubsystem::CreatePreplanStep(UPreplanDataWidget* PreplanDataWidget)
 {
@@ -236,8 +236,8 @@ void ULoopSubsystem::CreatePreplanStep(UPreplanDataWidget* PreplanDataWidget)
 			PreplanStep->bIsStepActive = true;
 			PreplanStep->bIsStepVisible = true;
 		}
-		PreplanStep->PreplanData->SetVisibility(ESlateVisibility::Visible);
-		SetPreplanVisibility(PreplanStep->PreplanData,PreplanDataWidget->bIsActiveOnStart);
+		//PreplanStep->PreplanData->SetVisibility(ESlateVisibility::Visible);
+		//SetPreplanVisibility(PreplanStep->PreplanData,PreplanDataWidget->bIsActiveOnStart);
 		PreplanSteps.Add(PreplanDataWidget->PreplanID,PreplanStep);
 		PreplanDataWidget->SetStep(PreplanStep);
 	}
@@ -247,8 +247,8 @@ void ULoopSubsystem::OnAdvicesVisibilityChanged(bool bNewVisibility)
 {
 	for (auto PreplanStep : PreplanSteps) {
 		for (auto PreplanAdvice : PreplanStep.Value->PreplanAdvices) {
-			bool value = !bNewVisibility || !PreplanStep.Value->bIsStepVisible;
-			PreplanAdvice->SetActorHiddenInGame(value);
+			//bool value = !bNewVisibility || !PreplanStep.Value->bIsStepVisible;
+			//PreplanAdvice->SetActorHiddenInGame(value);
 		}
 	}
 }
