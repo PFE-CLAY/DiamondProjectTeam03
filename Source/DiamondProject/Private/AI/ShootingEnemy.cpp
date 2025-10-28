@@ -5,7 +5,6 @@
 #include "Components/BoxComponent.h"
 #include "DiamondProject/DiamondProjectCharacter.h"
 #include "GameFramework/CharacterMovementComponent.h"
-#include "AI/EnemySpawner.h"
 #include "AI/ProjectileEnemy.h"
 #include "Kismet/GameplayStatics.h"
 #include "LoopSystem/AC_Health.h"
@@ -15,6 +14,7 @@ AShootingEnemy::AShootingEnemy()
 {
 	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
+	USceneComponent* Root = CreateDefaultSubobject<USceneComponent>(TEXT("Root"));
 	USceneComponent* ShootPoint = CreateDefaultSubobject<USceneComponent>("ShootPoint");
 	ShootPoint->SetupAttachment(GetMesh());
 	ShootPoints.Add(ShootPoint);
@@ -140,8 +140,10 @@ void AShootingEnemy::Shoot(AActor* Target)
 				ProjectileSpawned = GetWorld()->SpawnActor(Projectile, &Location, &Rotation);
 				OnEnemyShoot.Broadcast();
 			}
+			
 
 			if(ProjectileSpawned == nullptr){
+				
 				return;
 			}
 			

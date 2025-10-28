@@ -17,7 +17,7 @@ private:
 	DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnHealthChangedEvent, int, CurrentHealth, const AActor*, DamageDealer);
 
 	UDELEGATE(BlueprintCallable)
-	DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnDeathEvent, const AActor*, DamageDealer);
+	DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnDeathEvent, const AActor*, DamageDealer, AActor*, OwnerActor);
 
 public:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
