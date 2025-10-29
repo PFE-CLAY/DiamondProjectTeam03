@@ -24,12 +24,12 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="PreplanData")
 	bool bIsActiveOnStart = false;
 	
-	UPROPERTY(EditAnywhere,BlueprintReadOnly, Category="PreplanData")
+	/*UPROPERTY(EditAnywhere,BlueprintReadOnly, Category="PreplanData")
 	TArray<TObjectPtr<APreplanDataActor>> PreviousDatas;
 
 	UPROPERTY(EditAnywhere, Category="PreplanData")
 	bool bShouldActivateDream = false;
 
 	UPROPERTY(EditAnywhere, Category="PreplanData", meta = (EditCondition="bShouldActivateDream"))
-	TObjectPtr<UDataTable> DreamSubtitles;
+	TObjectPtr<UDataTable> DreamSubtitles;*/
 };

@@ -3,10 +3,10 @@
 
 #include "LoopSystem/PreplanLinkWidget.h"
 
-bool UPreplanLinkWidget::IsLinkActive() const
+/*bool UPreplanLinkWidget::IsLinkActive() const
 {
 	return bOutDataActive && bInDataActive;
-}
+}*/
 
 void UPreplanLinkWidget::ActivateFromData()
 {
