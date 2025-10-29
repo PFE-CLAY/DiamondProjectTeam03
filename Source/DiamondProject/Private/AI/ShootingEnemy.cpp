@@ -140,11 +140,8 @@ void AShootingEnemy::Shoot(AActor* Target)
 				ProjectileSpawned = GetWorld()->SpawnActor(Projectile, &Location, &Rotation);
 				OnEnemyShoot.Broadcast();
 			}
-			
 
 			if(ProjectileSpawned == nullptr){
-				
-				bCanAttack = true;
 				return;
 			}
 			

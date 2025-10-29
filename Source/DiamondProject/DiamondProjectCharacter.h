@@ -20,6 +20,8 @@ DECLARE_LOG_CATEGORY_EXTERN(LogTemplateCharacter, Log, All);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnInteract);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnMantle);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnPause);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnDash);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnPreplanOnOff);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnPreplanMove, FVector2D, Value);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnPreplanZoom, float, ZoomValue);
 
@@ -71,6 +73,9 @@ class ADiamondProjectCharacter : public ACharacter
 	UInputAction* PreplanZoomAction;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Input, meta=(AllowPrivateAccess = "true"))
+	UInputAction* PreplanOnOffAction;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Input, meta=(AllowPrivateAccess = "true"))
 	UInputAction* CheatOpenHatchAction;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Input, meta=(AllowPrivateAccess = "true"))
@@ -100,14 +105,6 @@ public:
 
 	UPROPERTY(BlueprintAssignable, Category = "Interaction")
 	FOnInteract OnInteract;
-
-	UPROPERTY(BlueprintAssignable, Category = "Interaction")
-	FOnInteract OnDash;
-	
-	UPROPERTY(BlueprintAssignable, Category = "Interaction")
-	FOnInteract OnDashRecovery;
-	UPROPERTY(BlueprintAssignable, Category = "Interaction")
-	FOnInteract OnDashRecoveryFull;
 	
 	UPROPERTY(BlueprintAssignable, Category = "Interaction")
 	FOnMantle OnMantle;
@@ -115,11 +112,26 @@ public:
 	UPROPERTY(BlueprintAssignable, Category = "Interaction")
 	FOnPause OnPause;
 
+	UPROPERTY(BlueprintAssignable, Category = "Dash")
+	FOnDash OnDash;
+
+	UPROPERTY(BlueprintAssignable, Category = "Dash")
+	FOnDash OnDashRecovery;
+	
+	UPROPERTY(BlueprintAssignable, Category = "Dash")
+	FOnDash OnDashRecoveryFull;
+	
+	UPROPERTY(BlueprintAssignable, Category = "Dash")
+	FOnDash  OnDashUpdateCD;
+	
 	UPROPERTY(BlueprintAssignable, Category = "Preplan")
 	FOnPreplanMove OnPreplanMove;
 	
 	UPROPERTY(BlueprintAssignable, Category = "Preplan")
 	FOnPreplanZoom OnPreplanZoom;
+	
+	UPROPERTY(BlueprintAssignable, Category = "Preplan")
+	FOnPreplanOnOff OnPreplanOnOff;
 
 	UPROPERTY(BlueprintAssignable, Category = "Cheats")
 	FOnCheatOpenHatch OnCheatOpenHatch;
@@ -157,6 +169,8 @@ protected:
 	void PreplanMove(const FInputActionValue& Value);
 
 	void PreplanZoom(const FInputActionValue& Value);
+	
+	void PreplanOnOff(const FInputActionValue& Value);
 
 	void CheatOpenHatch(const FInputActionValue& Value);
 	
@@ -183,13 +197,13 @@ private:
 	void SetDashReady();
 	//Dash parameters
 	
-	UPROPERTY()
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Dash, meta=(AllowPrivateAccess = "true"))
 	FTimerHandle TimerHandle;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category=Dash, meta=(AllowPrivateAccess = "true"))
 	bool bisDashing;
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Dash, meta=(AllowPrivateAccess = "true"))
 	float dashPower=7000;
-	UPROPERTY()
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category=Dash, meta=(AllowPrivateAccess = "true"))
 	FVector2D dashDir;
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Dash, meta=(AllowPrivateAccess = "true"))
 	float DashDurationATFull=.1f;
@@ -197,7 +211,7 @@ private:
 	int DashCharge=2;
 	UPROPERTY()
 	int DashMaxCharge;
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Dash, meta=(AllowPrivateAccess = "true"))
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category=Dash, meta=(AllowPrivateAccess = "true"))
 	float DashUIValue;
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Dash, meta=(AllowPrivateAccess = "true"))
 	float DashCooldown=1.f;
@@ -206,7 +220,8 @@ private:
 	float DashDurationDecay=.1f;
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Dash, meta=(AllowPrivateAccess = "true"))
 	EFCEase dashCurve = EFCEase::InCirc;
-	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category=preplan, meta=(AllowPrivateAccess = "true"))
+	bool bisPreplanOpen;
 	
 public:
 	/** Returns Mesh1P subobject **/
