@@ -27,7 +27,7 @@ public:
     TSoftObjectPtr<AActor> SunActor;
     
     UPROPERTY(EditAnywhere, Category="Sunlight Detection")
-    bool bShowDebugLines = true;
+    bool bShowDebugLines = false;
     
     UPROPERTY(EditAnywhere, Category="Sunlight Detection")
     float TraceDistance = 100000.0f;
