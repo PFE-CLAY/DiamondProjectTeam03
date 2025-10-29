@@ -37,6 +37,22 @@ void AJumpPad::BeginPlay()
 	Super::BeginPlay();
 }
 
+// Default launch vector uses the actor's up vector scaled by JumpForce
+FVector AJumpPad::ComputeJumpVector() const
+{
+	return (JumpPadMesh ? JumpPadMesh->GetUpVector() : GetActorUpVector()) * JumpForce;
+}
+
+// Default gating allows trigger; sun requirement is enforced here so subclasses inherit it
+bool AJumpPad::ShouldTriggerOnOverlap(AActor* OtherActor, UPrimitiveComponent* OtherComp, bool bFromSweep, const FHitResult& SweepResult) const
+{
+	if (bDoesJumppadRequireSun && !bIsIlluminated)
+	{
+		return false;
+	}
+	return true;
+}
+
 void AJumpPad::SetIsJumpadIlluminated(bool bNewValue)
 {
 	bIsIlluminated = bNewValue;
@@ -52,11 +68,12 @@ void AJumpPad::OnOverlapBegin(class UPrimitiveComponent* OverlappedComponent, cl
 {
 	if (!bCanBounce || !OtherActor) return;
 
-	if (bDoesJumppadRequireSun){
-		if (!bIsIlluminated) return;
+	if (!ShouldTriggerOnOverlap(OtherActor, OtherComp, bFromSweep, SweepResult))
+	{
+		return;
 	}
 
-	FVector JumpVector = JumpPadMesh->GetUpVector() * JumpForce;
+	const FVector JumpVector = ComputeJumpVector();
 
 	if (ACharacter* Character = Cast<ACharacter>(OtherActor))
 	{
@@ -85,4 +102,3 @@ void AJumpPad::ResetJump()
 	bCanBounce = true;
 	JumpPadMesh->SetMaterial(0, BaseMaterial);
 }
-
