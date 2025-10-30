@@ -3,6 +3,7 @@
 
 #include "AI/MeleeSpawner.h"
 
+#include "AI/SpawnerManager.h"
 #include "LoopSystem/AC_Health.h"
 
 
@@ -21,48 +22,38 @@ AMeleeSpawner::AMeleeSpawner()
 void AMeleeSpawner::BeginPlay()
 {
 	Super::BeginPlay();
-	//TODO => spawn in spawner manager instead of in start
 	
 }
 
 void AMeleeSpawner::DeathEnemy(const AActor* DamageDealer, AActor* Enemy)
 {
 	AMeleeEnemy* MeleeEnemy = Cast<AMeleeEnemy>(Enemy);
-	if(SpawnedEnemies.Contains(MeleeEnemy))
-	{
-		if(SpawnedEnemies.Num() == MaxEnemyCount)
-		{
-			//GetWorldTimerManager().SetTimer(LastEnemySpawnedTimer, this,  &AMeleeSpawner::Spawn, LongTimeBeforeRespawn,false);
-		}
-		SpawnedEnemies.Remove(MeleeEnemy);
-	}
+	SpawnerManager->OnDeathEnemy(MeleeEnemy);
 
 }
 
 void AMeleeSpawner::RestartLastEnemyTimer()
 {
-	GetWorldTimerManager().ClearTimer(LastEnemySpawnedTimer);
-	//LastEnemySpawnedTimer.Invalidate();
-	GetWorldTimerManager().SetTimer(LastEnemySpawnedTimer, this,  &AMeleeSpawner::CloseSpawnDoor, TimeToWaitCheck,false);
+	//GetWorldTimerManager().ClearTimer(LastEnemySpawnedTimer);
+	//GetWorldTimerManager().SetTimer(LastEnemySpawnedTimer, this,  &AMeleeSpawner::CloseSpawnDoor, TimeToWaitCheck,false);
 }
 
 void AMeleeSpawner::Spawn()
 {
-	//TODO => les 40 secondes d'attente si max Enemy est atteint mais qu'un enemy meurt
+	
 	if(!bIsDoorOpened)
 	{
 		OpenSpawnDoor();
-		
 	}
 	Super::Spawn();
 	UAC_Health* LastEnemyHealthComponent = Cast<UAC_Health>(LastSpawnedEnemy->GetComponentByClass(UAC_Health::StaticClass()));
 	LastEnemyHealthComponent->OnDeathEvent.AddDynamic(this, &AMeleeSpawner::DeathEnemy);
-	SpawnedEnemies.Add(Cast<AMeleeEnemy>(LastSpawnedEnemy));
-	
-	if(SpawnedEnemies.Num() < MaxEnemyCount)
+	AMeleeEnemy* SpawnedMelee = Cast<AMeleeEnemy>(LastSpawnedEnemy);
+	SpawnerManager->AddNewEnemy(SpawnedMelee);
+	SpawnedEnemiesInSpawner.Add(SpawnedMelee);
+	if(SpawnerManager->SpawnedEnemies.Num() < SpawnerManager->MaxEnemyCount)
 	{
 		WaitForAnotherSpawn();
-		
 	}
 }
 
@@ -71,14 +62,84 @@ void AMeleeSpawner::Spawn()
 void AMeleeSpawner::WaitForAnotherSpawn()
 {
 	GetWorldTimerManager().SetTimer(SpawnTimer, this,  &AMeleeSpawner::Spawn, SpawnCooldown, false);
-	RestartLastEnemyTimer();
 }
-
-
 
 // Called every frame
 void AMeleeSpawner::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 }
+
+void AMeleeSpawner::Activate(bool bShouldGetActive)
+{
+	if(bShouldGetActive)
+	{
+		
+		if(!bIsActive && SpawnerManager->SpawnedEnemies.Num() < SpawnerManager->MaxEnemyCount)
+		{
+			
+			Spawn(); //Démarre la boucle de spawns là
+			bIsActive = true;
+		}
+	}
+	else
+	{
+		StopSpawnTimer();
+		bIsActive = false;
+
+	}
+}
+
+void AMeleeSpawner::StopSpawnTimer()
+{
+	GetWorldTimerManager().ClearTimer(SpawnTimer);
+	
+	if(bIsDoorOpened) RestartLastEnemyTimer();
+	
+}
+
+void AMeleeSpawner::RemoveEnemyFromArray(AMeleeEnemy* Enemy)
+{
+	if(SpawnedEnemiesInSpawner.Contains(Enemy))
+	{
+		SpawnedEnemiesInSpawner.Remove(Enemy);
+		if(SpawnedEnemiesInSpawner.Num() <= 0)
+		{
+			CloseSpawnDoor();
+			bIsActive = false;
+		}
+	}
+	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
