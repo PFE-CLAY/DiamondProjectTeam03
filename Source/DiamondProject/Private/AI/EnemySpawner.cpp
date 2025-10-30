@@ -27,7 +27,7 @@ void AEnemySpawner::BeginPlay()
 void AEnemySpawner::Spawn()
 {
 	const FVector SpawnPosition = SpawnPoint->GetComponentLocation();
-	const FRotator SpawnRotation = FRotator(0, 0, SpawnPoint->GetComponentRotation().Yaw);
+	const FRotator SpawnRotation = FRotator(0, SpawnPoint->GetComponentRotation().Yaw, 0);
 	
 	FActorSpawnParameters SpawnParameters;
 	SpawnParameters.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
