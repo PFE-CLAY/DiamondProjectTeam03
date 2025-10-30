@@ -25,28 +25,45 @@ public:
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
 	TArray<AMeleeSpawner*> SpawnersList;
 
-	UPROPERTY(EditAnywhere, Category = "Spawner Manager")
+	UPROPERTY(EditAnywhere, Category = SpawnerManager)
 	int SpawnerToActivateCount;
 
-	UPROPERTY(EditAnywhere, Category = "Spawner Infos")
+	UPROPERTY(EditAnywhere, Category = SpawnerInfos)
 	int MaxEnemyCount;
 
-	UPROPERTY(EditAnywhere, Category = "Spawner Infos")
+	UPROPERTY(EditAnywhere, Category = SpawnerInfos)
 	float LongTimeBeforeRespawn = 40.f;
 
 	UPROPERTY()
 	AActor* PlayerActor;
+
+	UPROPERTY()
+	FTimerHandle LastEnemySpawnedTimer;
+
+	UPROPERTY()
+	bool bIsSpawnBlocked = false;
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
 	UFUNCTION()
 	TArray<AMeleeSpawner*>  GetClosestSpawners();
+private:
+	UFUNCTION()
+	void ActivateClosestSpawners();
 
+	UFUNCTION()
+	void StartSpawners();
 public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
 	UFUNCTION()
 	void Reset();
+
+	UFUNCTION()
+	void OnDeathEnemy(AMeleeEnemy* Enemy);
+
+	UFUNCTION()
+	void AddNewEnemy(AMeleeEnemy* Enemy);
 };
