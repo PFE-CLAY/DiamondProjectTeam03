@@ -45,7 +45,7 @@ public:
 	UPROPERTY()
 	ASpawnerManager* SpawnerManager;
 
-	UPROPERTY(BlueprintReadOnly)
+	UPROPERTY(BlueprintReadOnly, EditAnywhere)
 	TArray<AMeleeEnemy*> SpawnedEnemiesInSpawner;
 
 protected:
