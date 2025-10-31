@@ -43,8 +43,8 @@ private:
 	UFUNCTION(BlueprintCallable)
 	void ReloadScene();
 
-	UFUNCTION()
-	bool IsAnyPreviousStepActive(const UPreplanStep* PreplanStep);
+	//UFUNCTION()
+	//bool IsAnyPreviousStepActive(const UPreplanStep* PreplanStep);
 
 	UFUNCTION()
 	void InitializePreplanSteps();
@@ -55,8 +55,8 @@ private:
 	UFUNCTION()
 	void InitializePreplanLinks();
 
-	UFUNCTION()
-	void SetPreplanVisibility(UPreplanDataWidget* PreplanData, bool bIsVisible);
+	//UFUNCTION()
+	//void SetPreplanVisibility(UPreplanDataWidget* PreplanData, bool bIsVisible);
 
 	UFUNCTION()
 	void CreatePreplanStep(UPreplanDataWidget* PreplanDataWidget);

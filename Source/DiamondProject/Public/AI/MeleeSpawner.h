@@ -7,6 +7,8 @@
 #include "MeleeEnemy.h"
 #include "MeleeSpawner.generated.h"
 
+
+class ASpawnerManager;
 UCLASS()
 class DIAMONDPROJECT_API AMeleeSpawner : public AEnemySpawner
 {
@@ -16,6 +18,9 @@ protected:
 	bool bIsDoorOpened;
 	UPROPERTY(EditAnywhere, BlueprintReadOnly)
 	UStaticMeshComponent* Door;
+
+	UPROPERTY(BlueprintReadWrite)
+    bool bIsReady = false;
 private:
 	UPROPERTY()
 	FTimerHandle SpawnTimer;
@@ -29,20 +34,24 @@ private:
 	UPROPERTY(EditAnywhere, Category = "Spawner Infos")
     	float TimeToWaitCheck = 4.f;
 
-	UPROPERTY(EditAnywhere, Category = "Spawner Infos")
-	int MaxEnemyCount = 20;
-
 	UPROPERTY(EditAnywhere)
 	UBoxComponent* ActivationZone;
 
 	
+	
 public:
 	// Sets default values for this actor's properties
 	AMeleeSpawner();
-	UPROPERTY(BlueprintReadWrite, EditAnywhere)
-	TArray<AMeleeEnemy*> SpawnedEnemies;
-	
-	
+
+	UPROPERTY()
+	bool bIsActive = false;
+
+	UPROPERTY()
+	ASpawnerManager* SpawnerManager;
+
+	UPROPERTY(BlueprintReadOnly, EditAnywhere)
+	TArray<AMeleeEnemy*> SpawnedEnemiesInSpawner;
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -58,7 +67,7 @@ protected:
 	UFUNCTION(BlueprintCallable)
 	void RestartLastEnemyTimer();
 private:
-	virtual void Spawn() override;
+	
 
 	UFUNCTION()
 	void WaitForAnotherSpawn();
@@ -66,5 +75,13 @@ private:
 public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
+	virtual void Spawn() override;
+	UFUNCTION()
+	void Activate(bool bShouldGetActive);
+	
+	UFUNCTION()
+	void StopSpawnTimer();
+	UFUNCTION(BlueprintCallable)
+	void RemoveEnemyFromArray(AMeleeEnemy* Enemy);
 	
 };

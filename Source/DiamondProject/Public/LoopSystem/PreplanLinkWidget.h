@@ -30,8 +30,8 @@ private:
 	bool bOutDataActive = false;
 
 public:
-	UFUNCTION()
-	bool IsLinkActive() const;
+	/*UFUNCTION()
+	bool IsLinkActive() const;*/
 
 	UFUNCTION()
 	void ActivateFromData();
