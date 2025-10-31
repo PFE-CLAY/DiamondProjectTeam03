@@ -18,6 +18,9 @@ protected:
 	bool bIsDoorOpened;
 	UPROPERTY(EditAnywhere, BlueprintReadOnly)
 	UStaticMeshComponent* Door;
+
+	UPROPERTY(BlueprintReadWrite)
+    bool bIsReady = false;
 private:
 	UPROPERTY()
 	FTimerHandle SpawnTimer;
@@ -34,6 +37,7 @@ private:
 	UPROPERTY(EditAnywhere)
 	UBoxComponent* ActivationZone;
 
+	
 	
 public:
 	// Sets default values for this actor's properties
