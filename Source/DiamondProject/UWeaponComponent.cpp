@@ -96,7 +96,7 @@ bool UWeaponComponent::AttachWeapon(ADiamondProjectCharacter* TargetCharacter)
 	AttachToComponent(Character->GetMesh1P(), AttachmentRules, FName(TEXT("GripPoint")));
 	
 	// Get current rotation and adjust roll by -15 degrees
-	FRotator AdjustedRotation = GetRelativeRotation() + FRotator(0, -15, -7);
+	FRotator AdjustedRotation = FRotator(0, -15, -7);
 	SetRelativeRotation(AdjustedRotation);
 	
 	// add the weapon as an instance component to the character
