@@ -108,7 +108,7 @@ void ADiamondProjectCharacter::SetupPlayerInputComponent(UInputComponent* Player
 		EnhancedInputComponent->BindAction(PreplanOnOffAction, ETriggerEvent::Started, this, &ADiamondProjectCharacter::PreplanOnOff);
 
 		//Preplan Clicked
-		EnhancedInputComponent->BindAction(PreplanClickedAction, ETriggerEvent::Started, this, &ADiamondProjectCharacter::PreplanClicked);
+		//EnhancedInputComponent->BindAction(PreplanClickedAction, ETriggerEvent::Started, this, &ADiamondProjectCharacter::PreplanClicked);
 
 		// Cheat actions
 		EnhancedInputComponent->BindAction(CheatOpenHatchAction, ETriggerEvent::Started, this, &ADiamondProjectCharacter::CheatOpenHatch);
@@ -230,10 +230,10 @@ void ADiamondProjectCharacter::PreplanOnOff(const FInputActionValue& Value)
 	OnPreplanOnOff.Broadcast();
 }
 
-void ADiamondProjectCharacter::PreplanClicked(const FInputActionValue& Value)
+/*void ADiamondProjectCharacter::PreplanClicked(const FInputActionValue& Value)
 {
 	OnPreplanClicked.Broadcast();
-}
+}*/
 
 void ADiamondProjectCharacter::CheatOpenHatch(const FInputActionValue& Value)
 {
