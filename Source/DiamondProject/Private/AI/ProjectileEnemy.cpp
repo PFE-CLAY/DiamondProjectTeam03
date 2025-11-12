@@ -32,7 +32,6 @@ void AProjectileEnemy::Tick(float DeltaTime)
 
 void AProjectileEnemy::OnCollision(AActor* OverlappedActor, AActor* OtherActor)
 {
-	
 	if(Cast<AShootingEnemy>(OtherActor) == nullptr){
 		
 		if (UAC_Health* HealthComponent = OtherActor->FindComponentByClass<UAC_Health>()) {

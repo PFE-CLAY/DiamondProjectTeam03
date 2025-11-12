@@ -24,16 +24,16 @@ void ULoopSubsystem::ReloadScene()
 		PreplanStep.Value->PreplanData = nullptr;
 	}
 
-	const ULevelSelectionSettings* LevelSelectionSettings = GetDefault<ULevelSelectionSettings>();
-	if (LevelSelectionSettings == nullptr) return;
-	
+	// const ULevelSelectionSettings* LevelSelectionSettings = GetDefault<ULevelSelectionSettings>();
+	// if (LevelSelectionSettings == nullptr) return;
+	LoopNb++;	
 	OnSceneReloadEvent.Broadcast();
-	bool mainLevelNull = LevelSelectionSettings->MainLevel.IsNull();
-	if (!mainLevelNull)
-	{
-		UGameplayStatics::OpenLevelBySoftObjectPtr(this, LevelSelectionSettings->MainLevel, false);
-		return;
-	}
+	// bool mainLevelNull = LevelSelectionSettings->MainLevel.IsNull();
+	// if (!mainLevelNull)
+	// {
+	// 	UGameplayStatics::OpenLevelBySoftObjectPtr(this, LevelSelectionSettings->MainLevel, false);
+	// 	return;
+	// }
 	
 	UGameplayStatics::OpenLevel(this, FName(*GetWorld()->GetName()), false);
 }
