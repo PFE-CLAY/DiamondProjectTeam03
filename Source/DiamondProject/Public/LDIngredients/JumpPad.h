@@ -20,6 +20,9 @@ public:
 protected:
 	virtual void BeginPlay() override;
 
+	virtual FVector ComputeJumpVector() const; // Default: Up vector * JumpForce
+	virtual bool ShouldTriggerOnOverlap(class AActor* OtherActor, class UPrimitiveComponent* OtherComp, bool bFromSweep, const FHitResult& SweepResult) const; // Default: true
+
 	UPROPERTY(BlueprintAssignable)
 	FOnJumpadJump JumpadJump;
 

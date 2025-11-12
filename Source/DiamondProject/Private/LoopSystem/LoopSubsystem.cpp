@@ -38,7 +38,7 @@ void ULoopSubsystem::ReloadScene()
 	UGameplayStatics::OpenLevel(this, FName(*GetWorld()->GetName()), false);
 }
 
-bool ULoopSubsystem::IsAnyPreviousStepActive(const UPreplanStep* PreplanStep)
+/*bool ULoopSubsystem::IsAnyPreviousStepActive(const UPreplanStep* PreplanStep)
 {
 	if (PreplanStep == nullptr || PreplanStep->PreplanData == nullptr)
 		return false;
@@ -62,13 +62,13 @@ bool ULoopSubsystem::IsAnyPreviousStepActive(const UPreplanStep* PreplanStep)
 		}
 	}
 	return bIsPreviousStepActive;
-}
+}*/
 
 void ULoopSubsystem::InitializePreplanSteps()
 {
 	TArray<UUserWidget*> FoundPreplanDataWidgets;
 	UWidgetBlueprintLibrary::GetAllWidgetsOfClass(GetWorld(), FoundPreplanDataWidgets, UPreplanDataWidget::StaticClass(),false);
-	
+	GEngine->AddOnScreenDebugMessage(-1, 10, FColor::Red, FString::FromInt(FoundPreplanDataWidgets.Num()));
 	if (!bIsInit){
 		bIsInit = true;
 
@@ -106,10 +106,10 @@ void ULoopSubsystem::InitializePreplanSteps()
 					PreplanStep->NbActivations = 0;
 					PreplanStep->PreplanData = PreplanDataWidget;
 					PreplanStep->PreplanAdvices.Empty();
-					PreplanStep->InLinks.Empty();
-					PreplanStep->OutLinks.Empty();
+					//PreplanStep->InLinks.Empty();
+					//PreplanStep->OutLinks.Empty();
 					PreplanStep->bIsStepVisible = PreplanStep->bIsStepActive;
-					SetPreplanVisibility(PreplanDataWidget, PreplanStep->bIsStepVisible);
+					//SetPreplanVisibility(PreplanDataWidget, PreplanStep->bIsStepVisible);
 					PreplanDataWidget->SetStep(PreplanStep);
 				}
 			}
@@ -171,7 +171,7 @@ void ULoopSubsystem::InitializePreplanLinks()
 					continue;
 				}
 				
-				PreplanStepPtr->Get()->OutLinks.Add(PreplanLinkWidget);
+				//PreplanStepPtr->Get()->OutLinks.Add(PreplanLinkWidget);
 				if (PreplanStepPtr->Get()->bIsStepActive)
 				{
 					PreplanLinkWidget->ActivateFromData();
@@ -188,7 +188,7 @@ void ULoopSubsystem::InitializePreplanLinks()
 				if (PreplanStepPtr == nullptr || PreplanStepPtr->Get() == nullptr){
 					continue;
 				}
-				PreplanStepPtr->Get()->InLinks.Add(PreplanLinkWidget);
+				//PreplanStepPtr->Get()->InLinks.Add(PreplanLinkWidget);
 				if (PreplanStepPtr->Get()->bIsStepActive)
 				{
 					PreplanLinkWidget->ActivateToData();
@@ -198,12 +198,12 @@ void ULoopSubsystem::InitializePreplanLinks()
 				PreplanLinkWidget->ActivateToData();
 			}
 
-			PreplanLinkWidget->ChangeVisibility(PreplanLinkWidget->IsLinkActive());
+			//PreplanLinkWidget->ChangeVisibility(PreplanLinkWidget->IsLinkActive());
 		}
 	}
 }
 
-void ULoopSubsystem::SetPreplanVisibility(UPreplanDataWidget* PreplanData, bool bIsVisible)
+/*void ULoopSubsystem::SetPreplanVisibility(UPreplanDataWidget* PreplanData, bool bIsVisible)
 {
 	if (PreplanData == nullptr) return;
 	
@@ -214,7 +214,7 @@ void ULoopSubsystem::SetPreplanVisibility(UPreplanDataWidget* PreplanData, bool 
 	{
 		PreplanData->SetVisibility(ESlateVisibility::Hidden);
 	}
-}
+}*/
 
 void ULoopSubsystem::CreatePreplanStep(UPreplanDataWidget* PreplanDataWidget)
 {
@@ -222,7 +222,10 @@ void ULoopSubsystem::CreatePreplanStep(UPreplanDataWidget* PreplanDataWidget)
 	{
 		return;
 	}
-	
+	if (PreplanDataWidget->PreplanID=="dash")
+	{
+		UE_LOG(LogTemp, Warning, TEXT("dash"))				
+	}
 	UPreplanStep* PreplanStep = NewObject<UPreplanStep>();
 	PreplanStep->PreplanData = PreplanDataWidget;
 			
@@ -233,8 +236,8 @@ void ULoopSubsystem::CreatePreplanStep(UPreplanDataWidget* PreplanDataWidget)
 			PreplanStep->bIsStepActive = true;
 			PreplanStep->bIsStepVisible = true;
 		}
-		PreplanStep->PreplanData->SetVisibility(ESlateVisibility::Visible);
-		SetPreplanVisibility(PreplanStep->PreplanData,PreplanDataWidget->bIsActiveOnStart);
+		//PreplanStep->PreplanData->SetVisibility(ESlateVisibility::Visible);
+		//SetPreplanVisibility(PreplanStep->PreplanData,PreplanDataWidget->bIsActiveOnStart);
 		PreplanSteps.Add(PreplanDataWidget->PreplanID,PreplanStep);
 		PreplanDataWidget->SetStep(PreplanStep);
 	}
@@ -244,8 +247,8 @@ void ULoopSubsystem::OnAdvicesVisibilityChanged(bool bNewVisibility)
 {
 	for (auto PreplanStep : PreplanSteps) {
 		for (auto PreplanAdvice : PreplanStep.Value->PreplanAdvices) {
-			bool value = !bNewVisibility || !PreplanStep.Value->bIsStepVisible;
-			PreplanAdvice->SetActorHiddenInGame(value);
+			//bool value = !bNewVisibility || !PreplanStep.Value->bIsStepVisible;
+			//PreplanAdvice->SetActorHiddenInGame(value);
 		}
 	}
 }
@@ -289,13 +292,13 @@ void ULoopSubsystem::ActivatePreplanStep(FString PreplanID)
 			for (TObjectPtr<UPreplanLinkWidget> OutLink : PreplanStep->OutLinks)
 			{
 				OutLink->ActivateFromData();
-			}*/
+			}
 			
 			if (PreplanStep->PreplanData->bShouldActivateDream &&
 				PreplanStep->PreplanData->DreamSubtitles != nullptr)
 			{
 				PreplanDreamSubtitlesArray.Add(PreplanStep->PreplanData->DreamSubtitles);
-			}
+			}*/
 		}
 	}
 }
