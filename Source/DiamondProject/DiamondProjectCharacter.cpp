@@ -57,7 +57,7 @@ void ADiamondProjectCharacter::Tick(float deltaTime)
 	}
 	
 	if (GetWorldTimerManager().IsTimerActive(TimerHandle)){
-		DashUIValue=DashCharge+GetWorldTimerManager().GetTimerElapsed(TimerHandle);
+		DashUIValue=DashCharge+GetWorldTimerManager().GetTimerElapsed(TimerHandle)/DashCooldown;
 		OnDashUpdateCD.Broadcast();
 		if (!GetCharacterMovement()->IsMovingOnGround()){
 			GetWorldTimerManager().PauseTimer(TimerHandle);
@@ -141,7 +141,7 @@ void ADiamondProjectCharacter::SetDashReady()
 	if (DashCharge<DashMaxCharge){
 		OnDashRecovery.Broadcast();
 		SetNewDashTimer();
-		DashUIValue=DashCharge+GetWorldTimerManager().GetTimerElapsed(TimerHandle);
+		DashUIValue=DashCharge+GetWorldTimerManager().GetTimerElapsed(TimerHandle)/DashCooldown;
 	}else{
 		OnDashRecoveryFull.Broadcast();
 	}
@@ -180,8 +180,7 @@ void ADiamondProjectCharacter::Dash(const FInputActionValue& Value)
 			SetNewDashTimer();
 		}
 	}
-	DashUIValue=DashCharge+GetWorldTimerManager().GetTimerElapsed(TimerHandle);
-
+	DashUIValue=DashCharge+GetWorldTimerManager().GetTimerElapsed(TimerHandle)/DashCooldown;
 	OnDash.Broadcast();
 }
 
