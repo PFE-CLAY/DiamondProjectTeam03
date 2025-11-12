@@ -57,7 +57,7 @@ void ADiamondProjectCharacter::Tick(float deltaTime)
 	}
 	
 	if (GetWorldTimerManager().IsTimerActive(TimerHandle)){
-		DashUIValue=DashCharge+GetWorldTimerManager().GetTimerElapsed(TimerHandle);
+		DashUIValue=DashCharge+GetWorldTimerManager().GetTimerElapsed(TimerHandle)/DashCooldown;
 		OnDashUpdateCD.Broadcast();
 		if (!GetCharacterMovement()->IsMovingOnGround()){
 			GetWorldTimerManager().PauseTimer(TimerHandle);
@@ -108,7 +108,7 @@ void ADiamondProjectCharacter::SetupPlayerInputComponent(UInputComponent* Player
 		EnhancedInputComponent->BindAction(PreplanOnOffAction, ETriggerEvent::Started, this, &ADiamondProjectCharacter::PreplanOnOff);
 
 		//Preplan Clicked
-		//EnhancedInputComponent->BindAction(PreplanClickedAction, ETriggerEvent::Started, this, &ADiamondProjectCharacter::PreplanClicked);
+		EnhancedInputComponent->BindAction(PreplanClickedAction, ETriggerEvent::Started, this, &ADiamondProjectCharacter::PreplanClicked);
 
 		// Cheat actions
 		EnhancedInputComponent->BindAction(CheatOpenHatchAction, ETriggerEvent::Started, this, &ADiamondProjectCharacter::CheatOpenHatch);
@@ -141,7 +141,7 @@ void ADiamondProjectCharacter::SetDashReady()
 	if (DashCharge<DashMaxCharge){
 		OnDashRecovery.Broadcast();
 		SetNewDashTimer();
-		DashUIValue=DashCharge+GetWorldTimerManager().GetTimerElapsed(TimerHandle);
+		DashUIValue=DashCharge+GetWorldTimerManager().GetTimerElapsed(TimerHandle)/DashCooldown;
 	}else{
 		OnDashRecoveryFull.Broadcast();
 	}
@@ -180,8 +180,7 @@ void ADiamondProjectCharacter::Dash(const FInputActionValue& Value)
 			SetNewDashTimer();
 		}
 	}
-	DashUIValue=DashCharge+GetWorldTimerManager().GetTimerElapsed(TimerHandle);
-
+	DashUIValue=DashCharge+GetWorldTimerManager().GetTimerElapsed(TimerHandle)/DashCooldown;
 	OnDash.Broadcast();
 }
 
@@ -230,10 +229,10 @@ void ADiamondProjectCharacter::PreplanOnOff(const FInputActionValue& Value)
 	OnPreplanOnOff.Broadcast();
 }
 
-/*void ADiamondProjectCharacter::PreplanClicked(const FInputActionValue& Value)
+void ADiamondProjectCharacter::PreplanClicked(const FInputActionValue& Value)
 {
 	OnPreplanClicked.Broadcast();
-}*/
+}
 
 void ADiamondProjectCharacter::CheatOpenHatch(const FInputActionValue& Value)
 {
