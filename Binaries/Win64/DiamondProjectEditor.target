@@ -5714,6 +5714,10 @@
 			"Type": "DynamicLibrary"
 		},
 		{
+			"Path": "$(EngineDir)/Plugins/FX/NiagaraFluids/Binaries/Win64/UnrealEditor-NiagaraFluids.pdb",
+			"Type": "SymbolFile"
+		},
+		{
 			"Path": "$(EngineDir)/Plugins/FX/NiagaraFluids/Binaries/Win64/UnrealEditor.modules",
 			"Type": "RequiredResource"
 		},
