@@ -18,6 +18,9 @@ protected:
 	bool bIsDoorOpened;
 	UPROPERTY(EditAnywhere, BlueprintReadOnly)
 	UStaticMeshComponent* Door;
+
+	UPROPERTY(BlueprintReadWrite)
+    bool bIsReady = false;
 private:
 	UPROPERTY()
 	FTimerHandle SpawnTimer;
@@ -35,6 +38,7 @@ private:
 	UBoxComponent* ActivationZone;
 
 	
+	
 public:
 	// Sets default values for this actor's properties
 	AMeleeSpawner();
@@ -45,7 +49,7 @@ public:
 	UPROPERTY()
 	ASpawnerManager* SpawnerManager;
 
-	UPROPERTY(BlueprintReadOnly)
+	UPROPERTY(BlueprintReadOnly, EditAnywhere)
 	TArray<AMeleeEnemy*> SpawnedEnemiesInSpawner;
 
 protected:

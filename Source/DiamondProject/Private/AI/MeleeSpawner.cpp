@@ -43,6 +43,7 @@ void AMeleeSpawner::Spawn()
 	
 	if(!bIsDoorOpened)
 	{
+		GEngine->AddOnScreenDebugMessage(-1, 2.f, FColor::Cyan, "OpenDoor");
 		OpenSpawnDoor();
 	}
 	Super::Spawn();
@@ -73,12 +74,13 @@ void AMeleeSpawner::Tick(float DeltaTime)
 void AMeleeSpawner::Activate(bool bShouldGetActive)
 {
 	if(bShouldGetActive)
-	{
+	{	
 		
-		if(!bIsActive && SpawnerManager->SpawnedEnemies.Num() < SpawnerManager->MaxEnemyCount)
+		if(!bIsActive && SpawnerManager->SpawnedEnemies.Num() < SpawnerManager->MaxEnemyCount && bIsReady)
 		{
-			
+			//GEngine->AddOnScreenDebugMessage(-1, 3, FColor::Blue, "SPAWN AU DEBUT LO");
 			Spawn(); //Démarre la boucle de spawns là
+
 			bIsActive = true;
 		}
 	}

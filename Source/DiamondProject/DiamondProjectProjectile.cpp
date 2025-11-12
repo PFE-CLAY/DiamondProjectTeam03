@@ -38,19 +38,16 @@ ADiamondProjectProjectile::ADiamondProjectProjectile()
 void ADiamondProjectProjectile::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit)
 {
 	// Only add impulse and destroy projectile if we hit a physics
-	if ((OtherActor != nullptr) && (OtherActor != this) && (OtherComp != nullptr))
+	if (OtherActor != nullptr && OtherComp != nullptr && Hit.GetActor() != nullptr)
 	{
-		if (Hit.GetActor() != nullptr){
-			if (UAC_Health* healthComponent = Hit.GetActor()->FindComponentByClass<UAC_Health>()){
+		if (UAC_Health* healthComponent = OtherActor->FindComponentByClass<UAC_Health>()){
 
-				//On peut pas cast en actor
-				healthComponent->DecreaseHealth(Damage, this);
-			}
-			else if (ABreakableMesh* Breakable = Cast<ABreakableMesh>(Hit.GetActor()))
-			{
-				Breakable->OnBreakMesh.Broadcast(Hit.ImpactPoint);
-				return;
-			}
+			//On peut pas cast en actor
+			healthComponent->DecreaseHealth(Damage, this);
+		}
+		else if (ABreakableMesh* Breakable = Cast<ABreakableMesh>(Hit.GetActor()))
+		{
+			Breakable->OnBreakMesh.Broadcast(Hit.ImpactPoint);
 		}
 		
 		OnHitEvent.Broadcast(Hit);
