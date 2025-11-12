@@ -14,14 +14,16 @@ class DIAMONDPROJECT_API ULevelStreamingSubSystem : public UGameInstanceSubsyste
 {
 	GENERATED_BODY()
 private:
-	
 	UPROPERTY()
 	TMap<FName, TObjectPtr<ULevelStreaming>> LoadedLevelsCache;
 
 public:
 	UFUNCTION(BlueprintCallable, Category = "LevelStreaming SubSystem", meta = (AdvancedDisplay = "1"))
-	ULevelStreaming* LoadLevelByName(FName LevelName, bool bMakeVisibleAfterLoad = true, bool bShouldBlockOnLoad = true);
+	ULevelStreaming* LoadLevelByName(ULevel* Level, FName LevelName, bool bMakeVisibleAfterLoad = true, bool bShouldBlockOnLoad = true);
 
 	UFUNCTION(BlueprintCallable, Category = "LevelStreaming SubSystem")
 	void UnloadLevelByName(FName LevelName);
+
+	UFUNCTION()
+	ULevelStreaming* GetLoadedLevel(FName LevelName) const;
 };
