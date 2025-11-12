@@ -40,21 +40,24 @@ protected:
 	UPROPERTY()
 	UBoxComponent* BoxCollider;
 
-	UPROPERTY()
-	AAIController* AIController;
+	
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Enemy Behavior")
 	float Speed = 600;
 
-	UPROPERTY(EditAnywhere, Category = "Attack")
+	UPROPERTY(EditAnywhere, Category = "Enemy Behavior")
 	bool bShouldShowDebug = false;
 	
-	
+	UPROPERTY(EditAnywhere, Category = "Enemy Behavior")
+	bool bIsActiveAtStart = false;
 
 	
 public:
 	// Sets default values for this character's properties
 	AEnemy();
+	
+	UPROPERTY()
+    AAIController* AIController;
 
 protected:
 	// Called when the game starts or when spawned
@@ -67,7 +70,8 @@ protected:
 	void Attack(AActor* Target);
 	UFUNCTION()
 	void SetAttackReady();
-
+	UFUNCTION(BlueprintCallable)
+	void StartBehavior();
 	
 public:
 	// Called every frame
