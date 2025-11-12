@@ -28,16 +28,16 @@ public:
 	UPROPERTY()
 	TArray<TObjectPtr<APreplanAdvice>> PreplanAdvices;
 
-	UPROPERTY()
+	/*UPROPERTY()
 	TArray<TObjectPtr<UPreplanLinkWidget>> OutLinks;
 
 	UPROPERTY()
-	TArray<TObjectPtr<UPreplanLinkWidget>> InLinks;
+	TArray<TObjectPtr<UPreplanLinkWidget>> InLinks;*/
 	
 	UPROPERTY(BlueprintReadOnly)
 	bool bIsStepActive = false;
 
-	UPROPERTY(BlueprintReadOnly)
+	UPROPERTY(BlueprintReadOnly)// saùe thing now
 	bool bIsStepVisible = false;
 	
 	UPROPERTY(BlueprintReadWrite)

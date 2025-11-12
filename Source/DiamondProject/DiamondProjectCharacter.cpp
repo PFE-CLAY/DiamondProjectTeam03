@@ -25,7 +25,6 @@ ADiamondProjectCharacter::ADiamondProjectCharacter()
 {
 	// Set size for collision capsule
 	GetCapsuleComponent()->InitCapsuleSize(55.f, 96.0f);
-		
 	// Create a CameraComponent	
 	FirstPersonCameraComponent = CreateDefaultSubobject<UCameraComponent>(TEXT("FirstPersonCamera"));
 	FirstPersonCameraComponent->SetupAttachment(GetCapsuleComponent());
@@ -44,6 +43,7 @@ ADiamondProjectCharacter::ADiamondProjectCharacter()
 
 void ADiamondProjectCharacter::BeginPlay()
 {
+
 	DashMaxCharge=DashCharge;
 	UCharacterMovementComponent* characterMovement=GetCharacterMovement();
 	// Call the base class  
@@ -106,6 +106,9 @@ void ADiamondProjectCharacter::SetupPlayerInputComponent(UInputComponent* Player
 
 		//Preplan On Off
 		EnhancedInputComponent->BindAction(PreplanOnOffAction, ETriggerEvent::Started, this, &ADiamondProjectCharacter::PreplanOnOff);
+
+		//Preplan Clicked
+		//EnhancedInputComponent->BindAction(PreplanClickedAction, ETriggerEvent::Started, this, &ADiamondProjectCharacter::PreplanClicked);
 
 		// Cheat actions
 		EnhancedInputComponent->BindAction(CheatOpenHatchAction, ETriggerEvent::Started, this, &ADiamondProjectCharacter::CheatOpenHatch);
@@ -224,9 +227,13 @@ void ADiamondProjectCharacter::PreplanZoom(const FInputActionValue& Value)
 
 void ADiamondProjectCharacter::PreplanOnOff(const FInputActionValue& Value)
 {
-	bisPreplanOpen=!bisPreplanOpen;
 	OnPreplanOnOff.Broadcast();
 }
+
+/*void ADiamondProjectCharacter::PreplanClicked(const FInputActionValue& Value)
+{
+	OnPreplanClicked.Broadcast();
+}*/
 
 void ADiamondProjectCharacter::CheatOpenHatch(const FInputActionValue& Value)
 {

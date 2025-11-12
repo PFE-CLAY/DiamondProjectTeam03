@@ -134,16 +134,17 @@ void AShootingEnemy::Shoot(AActor* Target)
 			bCanAttack = false;
 			FActorSpawnParameters SpawnInfo;
 			SpawnInfo.Name = "aze";
+			SpawnInfo.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
+			//L'ennemi spawne le projectile mais ca se Destroy avant que ca accède au shoot tout ça
 			AActor* ProjectileSpawned = nullptr;
 			if (GetWorld()) {
-				//GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Cyan, "SKIBIDI");
 				ProjectileSpawned = GetWorld()->SpawnActor(Projectile, &Location, &Rotation);
 				OnEnemyShoot.Broadcast();
 			}
 			
 
 			if(ProjectileSpawned == nullptr){
-				
+				SetNewAttackTimer();
 				return;
 			}
 			
