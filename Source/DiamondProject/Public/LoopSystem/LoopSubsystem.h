@@ -29,6 +29,9 @@ class DIAMONDPROJECT_API ULoopSubsystem : public UGameInstanceSubsystem
 public:
 	UPROPERTY(BlueprintReadWrite)
 	bool bIsDreamLevel = false;
+
+	UPROPERTY(BlueprintReadOnly)
+	int LoopNb = 0;
 	
 	UPROPERTY(BlueprintAssignable)
 	FOnSceneReloadEvent OnSceneReloadEvent;
