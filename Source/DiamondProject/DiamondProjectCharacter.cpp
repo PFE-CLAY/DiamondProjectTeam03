@@ -59,7 +59,7 @@ void ADiamondProjectCharacter::Tick(float deltaTime)
 	if (GetWorldTimerManager().IsTimerActive(TimerHandle)){
 		DashUIValue=DashCharge+GetWorldTimerManager().GetTimerElapsed(TimerHandle)/DashCooldown;
 		OnDashUpdateCD.Broadcast();
-		if (!GetCharacterMovement()->IsMovingOnGround()){
+		if (!GetCharacterMovement()->IsMovingOnGround()&&!bisInAirNotAffectingDashCooldown){
 			GetWorldTimerManager().PauseTimer(TimerHandle);
 		}
 	}
