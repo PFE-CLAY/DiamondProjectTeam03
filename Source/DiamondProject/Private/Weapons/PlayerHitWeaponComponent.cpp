@@ -79,6 +79,7 @@ void UPlayerHitWeaponComponent::HandleFireReleased()
 	{
 		StartHeatRecovery();
 	}
+	OnFireFinished.Broadcast();
 }
 
 void UPlayerHitWeaponComponent::StartHeatRecovery()
