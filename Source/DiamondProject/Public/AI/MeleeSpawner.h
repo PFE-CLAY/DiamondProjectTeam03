@@ -27,6 +27,9 @@ private:
 
 	UPROPERTY()
 	FTimerHandle LastEnemySpawnedTimer;
+
+	UPROPERTY()
+	FTimerHandle TimerBeforeClosingDoor;
 	
 	UPROPERTY(EditAnywhere, Category = "Spawner Infos")
 	float SpawnCooldown = 1.f;
