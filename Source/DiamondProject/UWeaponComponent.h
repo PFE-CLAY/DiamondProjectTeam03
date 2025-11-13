@@ -42,7 +42,7 @@ public:
 	UPROPERTY(EditAnywhere, Category = GameplayVariables)
 	float Damage;
 
-	UPROPERTY(EditAnywhere, Category = GameplayVariables)
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = GameplayVariables)
 	float FireRatePerSecond;
 
 	UPROPERTY(EditAnywhere, Category = GameplayVariables)
