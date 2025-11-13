@@ -48,10 +48,12 @@ protected:
 
 	UFUNCTION()
 	TArray<AMeleeSpawner*>  GetClosestSpawners();
+
 private:
 	UFUNCTION()
 	void ActivateClosestSpawners();
-
+	
+	
 	UFUNCTION()
 	void StartSpawners();
 public:

@@ -40,10 +40,10 @@ void AMeleeSpawner::RestartLastEnemyTimer()
 
 void AMeleeSpawner::Spawn()
 {
-	
+	if(TimerBeforeClosingDoor.IsValid()) GetWorldTimerManager().ClearTimer(TimerBeforeClosingDoor);
 	if(!bIsDoorOpened)
 	{
-		GEngine->AddOnScreenDebugMessage(-1, 2.f, FColor::Cyan, "OpenDoor");
+		//GEngine->AddOnScreenDebugMessage(-1, 2.f, FColor::Cyan, "OpenDoor");
 		OpenSpawnDoor();
 	}
 	Super::Spawn();
@@ -107,7 +107,8 @@ void AMeleeSpawner::RemoveEnemyFromArray(AMeleeEnemy* Enemy)
 		SpawnedEnemiesInSpawner.Remove(Enemy);
 		if(SpawnedEnemiesInSpawner.Num() <= 0)
 		{
-			CloseSpawnDoor();
+			if(TimerBeforeClosingDoor.IsValid()) GetWorldTimerManager().ClearTimer(TimerBeforeClosingDoor);
+			GetWorldTimerManager().SetTimer(TimerBeforeClosingDoor, this, &AMeleeSpawner::CloseSpawnDoor, 1.f, false);
 			bIsActive = false;
 		}
 	}
