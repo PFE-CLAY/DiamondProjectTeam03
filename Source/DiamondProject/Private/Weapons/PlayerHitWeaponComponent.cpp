@@ -64,6 +64,7 @@ void UPlayerHitWeaponComponent::HandleFireReleased()
 {
 	if (!GetWorld()) return;
 
+	OnFireFinished.Broadcast();
 	if (bIsOverheated)
 	{
 		// start overheat delay if not started
@@ -71,15 +72,15 @@ void UPlayerHitWeaponComponent::HandleFireReleased()
 		{
 			GetWorld()->GetTimerManager().SetTimer(HeatRecoveryDelayHandle, this, &UPlayerHitWeaponComponent::StartHeatRecovery, 2.0f, false);
 		}
-		return;
+	} else
+	{
+		// Not overheated, start cooling
+		if (WeaponHeat > 0.f && !bIsCooling)
+		{
+			StartHeatRecovery();
+		}
 	}
 
-	// Not overheated, start cooling
-	if (WeaponHeat > 0.f && !bIsCooling)
-	{
-		StartHeatRecovery();
-	}
-	OnFireFinished.Broadcast();
 }
 
 void UPlayerHitWeaponComponent::StartHeatRecovery()
