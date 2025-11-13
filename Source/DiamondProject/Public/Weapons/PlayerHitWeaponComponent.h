@@ -11,6 +11,7 @@ DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnHeatChanged, float, NewHeat);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnOverheatStart);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnOverheatEnd);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnCoolingStart);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnFireFinished);
 
 /**
  * Projectile weapon with overheat mechanic (no ammo consumption)
