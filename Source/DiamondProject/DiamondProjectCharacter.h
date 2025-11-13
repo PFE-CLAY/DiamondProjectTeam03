@@ -210,6 +210,8 @@ private:
 	FTimerHandle TimerHandle;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category=Dash, meta=(AllowPrivateAccess = "true"))
 	bool bisDashing;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category=Dash, meta=(AllowPrivateAccess = "true"))
+	bool bisInAirNotAffectingDashCooldown;
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Dash, meta=(AllowPrivateAccess = "true"))
 	float dashPower=7000;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category=Dash, meta=(AllowPrivateAccess = "true"))
