@@ -79,11 +79,6 @@ TArray<AMeleeSpawner*> ASpawnerManager::GetClosestSpawners()
 	TArray<AMeleeSpawner*> Result;
 	for (const FSpawnerDist& SpawnerInfo : ClosestSpawnersInfos)
 	{
-		if(!ClosestSpawners.Contains(SpawnerInfo.Spawner))
-		{
-			if(!bIsSpawnBlocked) SpawnerInfo.Spawner->Activate(true);
-			
-		}
 		Result.Add(SpawnerInfo.Spawner);
 	}
 	
@@ -91,19 +86,25 @@ TArray<AMeleeSpawner*> ASpawnerManager::GetClosestSpawners()
 	return Result;
 }
 
+
+
 void ASpawnerManager::ActivateClosestSpawners()
 {
+	
 	bIsSpawnBlocked = false;
 	for (AMeleeSpawner* ClosestSpawner : ClosestSpawners)
 	{
-		ClosestSpawner->Activate(true);
+		if(!ClosestSpawner->bIsActive)
+		{
+			if(!bIsSpawnBlocked) ClosestSpawner->Activate(true);
+		}
 	}
 	
 }
 
 void ASpawnerManager::StartSpawners()
 {
-	
+	GetClosestSpawners();
 	ActivateClosestSpawners();
 }
 
@@ -111,7 +112,8 @@ void ASpawnerManager::StartSpawners()
 void ASpawnerManager::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-	ClosestSpawners = GetClosestSpawners();
+	GetClosestSpawners();
+	ActivateClosestSpawners();
 }
 
 void ASpawnerManager::Reset()
