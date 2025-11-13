@@ -54,6 +54,9 @@ public:
 	
 	UPROPERTY(BlueprintAssignable, Category = Overheat)
 	FOnCoolingStart OnCoolingStart;
+
+	UPROPERTY(BlueprintAssignable, Category = Overheat)
+	FOnFireFinished OnFireFinished;
 	
 	virtual void PerformShot() const override;
 	virtual bool AttachWeapon(ADiamondProjectCharacter* TargetCharacter) override;
