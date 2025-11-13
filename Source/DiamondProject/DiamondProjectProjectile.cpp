@@ -2,10 +2,17 @@
 
 #include "DiamondProjectProjectile.h"
 
+#include "DiamondProjectCharacter.h"
 #include "Components/CapsuleComponent.h"
 #include "GameFramework/ProjectileMovementComponent.h"
 #include "LDIngredients/BreakableMesh.h"
 #include "LoopSystem/AC_Health.h"
+
+void ADiamondProjectProjectile::EndPlay(EEndPlayReason::Type EndPlayReason)
+{
+	Super::EndPlay(EndPlayReason);
+	CollisionComp->OnComponentBeginOverlap.RemoveDynamic(this, &ADiamondProjectProjectile::OnOverlap);
+}
 
 ADiamondProjectProjectile::ADiamondProjectProjectile() 
 {
@@ -14,8 +21,8 @@ ADiamondProjectProjectile::ADiamondProjectProjectile()
 	CollisionComp->InitCapsuleSize(0.5, 5);
 	
 	CollisionComp->BodyInstance.SetCollisionProfileName("Projectile");
-	CollisionComp->OnComponentHit.AddDynamic(this, &ADiamondProjectProjectile::OnHit);		// set up a notification for when this component hits something blocking
-	
+	//CollisionComp->OnComponentHit.AddDynamic(this, &ADiamondProjectProjectile::OnHit);		// set up a notification for when this component hits something blocking
+	CollisionComp->OnComponentBeginOverlap.AddDynamic(this, &ADiamondProjectProjectile::OnOverlap);
 	// Players can't walk on it
 	CollisionComp->SetWalkableSlopeOverride(FWalkableSlopeOverride(WalkableSlope_Unwalkable, 0.f));
 	CollisionComp->CanCharacterStepUpOn = ECB_No;
@@ -35,14 +42,18 @@ ADiamondProjectProjectile::ADiamondProjectProjectile()
 	InitialLifeSpan = 3.0f;
 }
 
-void ADiamondProjectProjectile::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit)
+void ADiamondProjectProjectile::OnOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor,
+	UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& Hit)
 {
 	// Only add impulse and destroy projectile if we hit a physics
 	if (OtherActor != nullptr && OtherComp != nullptr && Hit.GetActor() != nullptr)
 	{
+		if (Cast<ADiamondProjectCharacter> (OtherActor))
+		{
+			return;
+		}
+		
 		if (UAC_Health* healthComponent = OtherActor->FindComponentByClass<UAC_Health>()){
-
-			//On peut pas cast en actor
 			healthComponent->DecreaseHealth(Damage, this);
 		}
 		else if (ABreakableMesh* Breakable = Cast<ABreakableMesh>(Hit.GetActor()))

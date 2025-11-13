@@ -16,6 +16,8 @@ class ADiamondProjectProjectile : public AActor
 {
 	GENERATED_BODY()
 
+	virtual void EndPlay(EEndPlayReason::Type EndPlayReason) override;
+	
 	/** Sphere collision component */
 	UPROPERTY(VisibleDefaultsOnly, Category=Projectile)
 	UCapsuleComponent* CollisionComp;
@@ -35,8 +37,8 @@ public:
 
 	/** called when projectile hits something */
 	UFUNCTION()
-	void OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit);
-
+	void OnOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& Hit);
+	
 	UFUNCTION()
 	void Initialize(const float WeaponDamage);
 	
