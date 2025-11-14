@@ -46,7 +46,7 @@ public:
 	// Sets default values for this actor's properties
 	AMeleeSpawner();
 
-	UPROPERTY()
+	UPROPERTY(EditAnywhere)
 	bool bIsActive = false;
 
 	UPROPERTY()

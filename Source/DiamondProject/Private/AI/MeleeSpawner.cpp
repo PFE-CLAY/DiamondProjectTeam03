@@ -78,15 +78,14 @@ void AMeleeSpawner::Activate(bool bShouldGetActive)
 		
 		if(!bIsActive && SpawnerManager->SpawnedEnemies.Num() < SpawnerManager->MaxEnemyCount && bIsReady)
 		{
-			//GEngine->AddOnScreenDebugMessage(-1, 3, FColor::Blue, "SPAWN AU DEBUT LO");
-			Spawn(); //Démarre la boucle de spawns là
-
+			GEngine->AddOnScreenDebugMessage(-1, 3, FColor::Blue, "SPAWN AU DEBUT LO");
+			Spawn(); // Lance la série de spawn
 			bIsActive = true;
 		}
 	}
 	else
 	{
-		StopSpawnTimer();
+		StopSpawnTimer();	
 		bIsActive = false;
 
 	}
