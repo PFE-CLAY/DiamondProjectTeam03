@@ -155,8 +155,8 @@ void UPlayerHitWeaponComponent::PerformShot() const
 		{
 			APlayerController* PlayerController = Cast<APlayerController>(Character->GetController());
 			if (!PlayerController) return;
-			//const FRotator SpawnRotation = PlayerController->PlayerCameraManager->GetCameraRotation();
-			const FRotator SpawnRotation = GetOwner()->GetActorRotation();
+			const FRotator SpawnRotation = PlayerController->PlayerCameraManager->GetCameraRotation();
+			//const FRotator SpawnRotation = GetOwner()->GetActorRotation();
 			const FVector ParentLocation = GetOwner()->GetActorLocation();
 			const FVector SpawnOffset = SpawnRotation.RotateVector(MuzzleOffset);
 			const FVector SpawnLocation = ParentLocation + SpawnOffset;
