@@ -28,6 +28,9 @@ public:
 	/** Projectile class to spawn */
 	UPROPERTY(EditDefaultsOnly, Category=Projectile)
 	TSubclassOf<class ADiamondProjectProjectile> ProjectileClass;
+
+	UPROPERTY(EditDefaultsOnly, Category=Projectile)
+	TObjectPtr<USceneComponent> ProjectileLocation;
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Overheat)
 	float WeaponHeat;
