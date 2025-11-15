@@ -19,6 +19,9 @@ protected:
 
 	UPROPERTY(BlueprintReadWrite, Category = "Attack")
 	bool bIsAttacking = true;
+
+	UPROPERTY()
+	FTimerHandle InvicibleTimerStart;
 public:
 	// Sets default values for this character's properties
 	AMeleeEnemy();
@@ -26,7 +29,6 @@ public:
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
-
 
 
 public:
@@ -37,6 +39,9 @@ public:
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 	UFUNCTION()
 	void HitMelee(AActor* Target);
+
+	UFUNCTION()
+	void SetKillable();
 	
 	UFUNCTION(BlueprintCallable, BlueprintPure)
 	bool IsTargetInRange(AActor* Target);
