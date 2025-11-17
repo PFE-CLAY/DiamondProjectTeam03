@@ -42,6 +42,9 @@ public:
 
 	UPROPERTY()
 	bool bIsSpawnBlocked = false;
+
+	UPROPERTY()
+	bool bIsActive = false;
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -51,7 +54,7 @@ protected:
 
 private:
 	UFUNCTION()
-	void ActivateClosestSpawners();
+	void SetManagerActive();
 	
 	
 	UFUNCTION()

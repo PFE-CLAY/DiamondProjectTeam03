@@ -24,13 +24,16 @@ void ASpawnerManager::BeginPlay()
 	for (auto SpawnerActor : SpawnerActors)
 	{
 		AMeleeSpawner* MeleeSpawner = Cast<AMeleeSpawner>(SpawnerActor);
-		MeleeSpawner->SpawnerManager = this;
-		SpawnersList.Add(MeleeSpawner);
+		if(MeleeSpawner->bIsManaged)
+		{
+			MeleeSpawner->SpawnerManager = this;
+			SpawnersList.Add(MeleeSpawner);
+		}
+		
 	}
 	PlayerActor = UGameplayStatics::GetPlayerCharacter(GetWorld(), 0);
-	ClosestSpawners = GetClosestSpawners();
 	FTimerHandle TimerBeforeStart;
-	GetWorldTimerManager().SetTimer(TimerBeforeStart, this, &ASpawnerManager::StartSpawners, 1.f,false);
+	GetWorldTimerManager().SetTimer(TimerBeforeStart, this, &ASpawnerManager::SetManagerActive, 1.f,false);
 
 }
 
@@ -77,43 +80,40 @@ TArray<AMeleeSpawner*> ASpawnerManager::GetClosestSpawners()
 		}
 	}
 	TArray<AMeleeSpawner*> Result;
+	FString Text = "";
 	for (const FSpawnerDist& SpawnerInfo : ClosestSpawnersInfos)
 	{
+		Text.Append(SpawnerInfo.Spawner->GetName() + " ");
+		if(!ClosestSpawners.Contains(SpawnerInfo.Spawner))
+		{
+			if(!bIsSpawnBlocked) SpawnerInfo.Spawner->Activate(true);
+		}
 		Result.Add(SpawnerInfo.Spawner);
 	}
 	
+	//GEngine->AddOnScreenDebugMessage(17, 1.f, FColor::Red, Text);
 	
 	return Result;
 }
 
 
 
-void ASpawnerManager::ActivateClosestSpawners()
+void ASpawnerManager::SetManagerActive()
 {
-	
-	bIsSpawnBlocked = false;
-	for (AMeleeSpawner* ClosestSpawner : ClosestSpawners)
-	{
-		if(!ClosestSpawner->bIsActive)
-		{
-			if(!bIsSpawnBlocked) ClosestSpawner->Activate(true);
-		}
-	}
-	
+	bIsActive = true;
 }
 
 void ASpawnerManager::StartSpawners()
 {
-	GetClosestSpawners();
-	ActivateClosestSpawners();
+	bIsSpawnBlocked = false;
 }
 
 // Called every frame
 void ASpawnerManager::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-	GetClosestSpawners();
-	ActivateClosestSpawners();
+	if(bIsActive) GetClosestSpawners();
+	
 }
 
 void ASpawnerManager::Reset()
@@ -125,6 +125,7 @@ void ASpawnerManager::OnDeathEnemy(AMeleeEnemy* Enemy)
 {
 	if(SpawnedEnemies.Contains(Enemy))
 	{
+		//GEngine->AddOnScreenDebugMessage(-1, 1.f, FColor::Red, "Dead");
 		if(SpawnedEnemies.Num() == MaxEnemyCount)
 		{
 			bIsSpawnBlocked = true;

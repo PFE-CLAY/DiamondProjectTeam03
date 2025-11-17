@@ -156,7 +156,10 @@ void UPlayerHitWeaponComponent::PerformShot() const
 			APlayerController* PlayerController = Cast<APlayerController>(Character->GetController());
 			if (!PlayerController) return;
 			const FRotator SpawnRotation = PlayerController->PlayerCameraManager->GetCameraRotation();
-			const FVector SpawnLocation = GetOwner()->GetActorLocation() + SpawnRotation.RotateVector(MuzzleOffset);
+			//const FRotator SpawnRotation = GetOwner()->GetActorRotation();
+			const FVector ParentLocation = GetOwner()->GetActorLocation();
+			const FVector SpawnOffset = SpawnRotation.RotateVector(MuzzleOffset);
+			const FVector SpawnLocation = ParentLocation + SpawnOffset;
 			FActorSpawnParameters ActorSpawnParams;
 			ActorSpawnParams.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AdjustIfPossibleButDontSpawnIfColliding;
 			ADiamondProjectProjectile* Projectile = World->SpawnActor<ADiamondProjectProjectile>(ProjectileClass, SpawnLocation, SpawnRotation, ActorSpawnParams);

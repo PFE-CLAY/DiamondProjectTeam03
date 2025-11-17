@@ -34,13 +34,14 @@ private:
 	UPROPERTY(EditAnywhere, Category = "Spawner Infos")
 	float SpawnCooldown = 1.f;
 	
-	UPROPERTY(EditAnywhere, Category = "Spawner Infos")
-    	float TimeToWaitCheck = 4.f;
-
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditDefaultsOnly)
 	UBoxComponent* ActivationZone;
 
-	
+	UPROPERTY(EditAnywhere, Category = "Spawner Infos", meta = (EditCondition = "!bIsManaged"))
+	int WaveMonsterCount = 10;
+
+	UPROPERTY()
+	TArray<AMeleeEnemy*> SpawnedEnemies;
 	
 public:
 	// Sets default values for this actor's properties
@@ -54,6 +55,11 @@ public:
 
 	UPROPERTY(BlueprintReadOnly, EditAnywhere)
 	TArray<AMeleeEnemy*> SpawnedEnemiesInSpawner;
+
+	UPROPERTY(EditDefaultsOnly)
+	bool bIsManaged;
+
+	
 
 protected:
 	// Called when the game starts or when spawned
@@ -74,6 +80,8 @@ private:
 
 	UFUNCTION()
 	void WaitForAnotherSpawn();
+	UFUNCTION()
+	void AddNewEnemy(AMeleeEnemy* Enemy);
 
 public:
 	// Called every frame

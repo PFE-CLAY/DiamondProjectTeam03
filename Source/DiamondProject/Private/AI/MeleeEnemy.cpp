@@ -16,6 +16,7 @@ void AMeleeEnemy::BeginPlay()
 {
 	Super::BeginPlay();
 	OnAttack.AddDynamic(this, &AMeleeEnemy::HitMelee);
+	GetWorldTimerManager().SetTimer(InvicibleTimerStart, this, &AMeleeEnemy::SetKillable, 0.2f, false);
 }
 
 // Called every frame
@@ -38,6 +39,15 @@ void AMeleeEnemy::HitMelee(AActor* Target)
 	OnAttackEvent((AActor*)Target);
 	SetNewAttackTimer();
 	
+}
+
+void AMeleeEnemy::SetKillable()
+{
+	UAC_Health* HealthComponent = Cast<UAC_Health>(GetComponentByClass(UAC_Health::StaticClass()));
+	if(HealthComponent != nullptr)
+	{
+		HealthComponent->bIsInvincible = false;
+	}
 }
 
 bool AMeleeEnemy::IsTargetInRange(AActor* Target)
