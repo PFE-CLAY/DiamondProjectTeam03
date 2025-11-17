@@ -53,8 +53,7 @@ protected:
 	TArray<AMeleeSpawner*>  GetClosestSpawners();
 
 private:
-	UFUNCTION()
-	void SetManagerActive();
+	
 	
 	
 	UFUNCTION()
@@ -71,4 +70,7 @@ public:
 
 	UFUNCTION()
 	void AddNewEnemy(AMeleeEnemy* Enemy);
+
+	UFUNCTION(BlueprintCallable)
+	void SetManagerActive();
 };
