@@ -32,8 +32,8 @@ void ASpawnerManager::BeginPlay()
 		
 	}
 	PlayerActor = UGameplayStatics::GetPlayerCharacter(GetWorld(), 0);
-	FTimerHandle TimerBeforeStart;
-	GetWorldTimerManager().SetTimer(TimerBeforeStart, this, &ASpawnerManager::SetManagerActive, 1.f,false);
+	//FTimerHandle TimerBeforeStart;
+	//GetWorldTimerManager().SetTimer(TimerBeforeStart, this, &ASpawnerManager::SetManagerActive, 1.f,false);
 
 }
 
