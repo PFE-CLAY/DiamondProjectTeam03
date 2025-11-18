@@ -31,6 +31,10 @@ ADiamondProjectCharacter::ADiamondProjectCharacter()
 	FirstPersonCameraComponent->SetRelativeLocation(FVector(-10.f, 0.f, 60.f)); // Position the camera
 	FirstPersonCameraComponent->bUsePawnControlRotation = true;
 
+	//Remove Mesh inherited from parent
+	GetMesh()->DestroyComponent();
+	//GetMesh()->SetActive(false); //Does nothing but just in case
+	
 	// Create a mesh component that will be used when being viewed from a '1st person' view (when controlling this pawn)
 	Mesh1P = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("CharacterMesh1P"));
 	Mesh1P->SetOnlyOwnerSee(true);

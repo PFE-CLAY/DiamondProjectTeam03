@@ -91,11 +91,6 @@ void ADiamondProjectProjectile::OnHit(UPrimitiveComponent* HitComponent, AActor*
 		}
 		
 		OnHitEvent.Broadcast(Hit);
-		if (OtherComp->IsSimulatingPhysics())
-		{
-			OtherComp->AddImpulseAtLocation(GetVelocity() * 100.0f, GetActorLocation());
-		}
-
 		Destroy();
 	}
 }
