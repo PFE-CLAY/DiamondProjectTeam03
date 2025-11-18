@@ -9,7 +9,6 @@
 /**
  * 
  */
-class UPreplanLinkWidget;
 class UPreplanDataWidget;
 class APreplanAdvice;
 
