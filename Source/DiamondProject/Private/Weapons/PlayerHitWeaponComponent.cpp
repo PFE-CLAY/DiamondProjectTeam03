@@ -17,6 +17,15 @@ UPlayerHitWeaponComponent::UPlayerHitWeaponComponent()
 	TimeToRecoverHeat = 3.f;
 	bIsOverheated = false;
 	bIsCooling = false;
+	TArray<USceneComponent*> SceneComponents;
+	GetOwner()->GetComponents<USceneComponent>(SceneComponents);
+ 
+	for (USceneComponent* Comp : SceneComponents)
+	{
+		if (Comp)
+		{
+		}
+	}
 }
 
 void UPlayerHitWeaponComponent::BeginPlay()
@@ -159,7 +168,7 @@ void UPlayerHitWeaponComponent::PerformShot() const
 			//const FRotator SpawnRotation = GetOwner()->GetActorRotation();
 			const FVector ParentLocation = GetOwner()->GetActorLocation();
 			const FVector SpawnOffset = SpawnRotation.RotateVector(MuzzleOffset);
-			const FVector SpawnLocation = ParentLocation + SpawnOffset;
+			const FVector SpawnLocation = ParentLocation; // + SpawnOffset;
 			FActorSpawnParameters ActorSpawnParams;
 			ActorSpawnParams.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AdjustIfPossibleButDontSpawnIfColliding;
 			ADiamondProjectProjectile* Projectile = World->SpawnActor<ADiamondProjectProjectile>(ProjectileClass, SpawnLocation, SpawnRotation, ActorSpawnParams);
