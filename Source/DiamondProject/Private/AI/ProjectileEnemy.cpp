@@ -2,8 +2,6 @@
 
 
 #include "AI/ProjectileEnemy.h"
-
-#include "AI/ShootingEnemy.h"
 #include "LoopSystem/AC_Health.h"
 #include "DiamondProject/DiamondProjectCharacter.h"
 #include "Engine/Engine.h"
@@ -35,7 +33,7 @@ void AProjectileEnemy::OnCollision(AActor* OverlappedActor, AActor* OtherActor)
 	if(Cast<AShootingEnemy>(OtherActor) == nullptr){
 		
 		if (UAC_Health* HealthComponent = OtherActor->FindComponentByClass<UAC_Health>()) {
-			HealthComponent->DecreaseHealth(ProjectileDamage, this);
+			HealthComponent->DecreaseHealth(ProjectileDamage, ProjectileOwner);
 		}
 		
 		OnProjectileDestroyed();
