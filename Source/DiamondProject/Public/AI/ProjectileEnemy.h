@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "Components/SphereComponent.h"
 #include "GameFramework/Actor.h"
+#include "AI/ShootingEnemy.h"
 #include "ProjectileEnemy.generated.h"
 
 UCLASS()
@@ -21,6 +22,9 @@ public:
 	// Sets default values for this actor's properties
 	UPROPERTY()
 	int ProjectileDamage = 0;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Projectile")
+	AActor* ProjectileOwner; 
 	
 	AProjectileEnemy();
 
