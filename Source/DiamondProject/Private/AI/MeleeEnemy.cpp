@@ -50,9 +50,24 @@ void AMeleeEnemy::SetKillable()
 	}
 }
 
+void AMeleeEnemy::AttackMelee()
+{
+	Attack(PlayerPawn);
+	OnMeleeAttack.Broadcast();
+}
+
+
 bool AMeleeEnemy::IsTargetInRange(AActor* Target)
 	{
 	float DistanceToPlayer = FVector::Dist(GetActorLocation(), Target->GetActorLocation());
 	return (DistanceToPlayer <= AttackRange);
+}
+
+void AMeleeEnemy::Charge()
+{
+	
+	FTimerHandle ChargeTimer;
+	GetWorldTimerManager().SetTimer(ChargeTimer, this, &AMeleeEnemy::AttackMelee ,ChargingDuration, false);
+	OnChargeEvent.Broadcast();
 }
 
