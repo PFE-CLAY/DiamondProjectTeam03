@@ -51,7 +51,7 @@ void AMeleeEnemy::SetKillable()
 }
 
 bool AMeleeEnemy::IsTargetInRange(AActor* Target)
-{
+	{
 	float DistanceToPlayer = FVector::Dist(GetActorLocation(), Target->GetActorLocation());
 	return (DistanceToPlayer <= AttackRange);
 }
