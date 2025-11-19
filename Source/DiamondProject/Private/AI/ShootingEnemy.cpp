@@ -139,7 +139,10 @@ void AShootingEnemy::Shoot(AActor* Target)
 			AActor* ProjectileSpawned = nullptr;
 			if (GetWorld()) {
 				ProjectileSpawned = GetWorld()->SpawnActor(Projectile, &Location, &Rotation);
-				Cast<AProjectileEnemy>(ProjectileSpawned)->ProjectileOwner=this;
+				if (IsValid(ProjectileSpawned))
+				{
+					Cast<AProjectileEnemy>(ProjectileSpawned)->ProjectileOwner=this;
+				}
 				OnEnemyShoot.Broadcast();
 			}
 			
