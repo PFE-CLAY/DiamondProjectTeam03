@@ -112,11 +112,11 @@ void FAkBlueprintDelegateEventCallbackPackage::HandleAction(AkCallbackType in_eT
 				return EWwiseDeferredAsyncResult::Done;
 			}
 
-			UAkCallbackInfo*  BlueprintAkCallbackInfo = AkCallbackTypeHelpers::GetBlueprintableCallbackInfo(BlueprintCallbackType, cbInfoCopy);
-			CachedBlueprintCallback.ExecuteIfBound(BlueprintCallbackType, BlueprintAkCallbackInfo);
 
 			if (auto AudioDevice = FAkAudioDevice::Get())
 			{
+				UAkCallbackInfo*  BlueprintAkCallbackInfo = AkCallbackTypeHelpers::GetBlueprintableCallbackInfo(BlueprintCallbackType, cbInfoCopy);
+				CachedBlueprintCallback.ExecuteIfBound(BlueprintCallbackType, BlueprintAkCallbackInfo);
 				if (auto CallbackInfoPool = AudioDevice->GetAkCallbackInfoPool())
 				{
 					CallbackInfoPool->Release(BlueprintAkCallbackInfo);
