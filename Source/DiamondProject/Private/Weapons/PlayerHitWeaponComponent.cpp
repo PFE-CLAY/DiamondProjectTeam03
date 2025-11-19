@@ -17,15 +17,6 @@ UPlayerHitWeaponComponent::UPlayerHitWeaponComponent()
 	TimeToRecoverHeat = 3.f;
 	bIsOverheated = false;
 	bIsCooling = false;
-	TArray<USceneComponent*> SceneComponents;
-	GetOwner()->GetComponents<USceneComponent>(SceneComponents);
- 
-	for (USceneComponent* Comp : SceneComponents)
-	{
-		if (Comp)
-		{
-		}
-	}
 }
 
 void UPlayerHitWeaponComponent::BeginPlay()
