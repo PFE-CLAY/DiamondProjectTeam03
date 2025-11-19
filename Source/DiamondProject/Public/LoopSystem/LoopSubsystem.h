@@ -85,7 +85,7 @@ public:
 	void InitializePreplan();
 
 	UFUNCTION(BlueprintCallable)
-	void ActivatePreplanStep(FString PreplanID);
+	void ActivatePreplanStep(FString PreplanID,int StepPart=1);
 
 	UFUNCTION(BlueprintCallable)
 	void ActivateCollectible(FString CollectibleID);
