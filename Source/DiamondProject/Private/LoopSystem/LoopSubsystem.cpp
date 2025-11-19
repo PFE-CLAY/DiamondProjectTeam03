@@ -5,6 +5,7 @@
 
 #include "Blueprint/WidgetBlueprintLibrary.h"
 #include "Kismet/GameplayStatics.h"
+#include "LoopSystem/Collectible.h"
 #include "LoopSystem/LevelSelectionSettings.h"
 #include "LoopSystem/PreplanAdvice.h"
 #include "LoopSystem/PreplanDataWidget.h"
@@ -63,6 +64,34 @@ void ULoopSubsystem::ReloadScene()
 	}
 	return bIsPreviousStepActive;
 }*/
+void ULoopSubsystem::InitializeCollectibles()
+{
+	TArray<AActor*> FoundActors;
+	UGameplayStatics::GetAllActorsOfClass(GetWorld(), Acollectible::StaticClass(), FoundActors);
+	if (!bIsCollectibleInit){
+		bIsCollectibleInit=true;
+		for (int i = 0; i < FoundActors.Num(); i++){
+			Acollectible* Collectible= Cast<Acollectible>(FoundActors[i]);
+			CreateCollectible(Collectible);
+		}
+	}else{
+		for (int i = 0; i < FoundActors.Num(); i++){
+			Acollectible* Collectible= Cast<Acollectible>(FoundActors[i]);
+			if (Collectible == nullptr){
+				continue;
+			}
+			
+			if (Collectible->CollectibleID.IsEmpty()){
+				UE_LOG(LogTemp, Warning, TEXT("Collectible has no ID. Collectible cannot be found."))				
+			} else{
+				if (Collectibles.Contains(Collectible->CollectibleID))
+				{
+					Collectible->bHasBeenCollected=Collectibles[Collectible->CollectibleID];
+				}
+			}
+		}
+	}
+}
 
 void ULoopSubsystem::InitializePreplanSteps()
 {
@@ -150,7 +179,7 @@ void ULoopSubsystem::InitializePreplanAdvices()
 	}
 }
 
-void ULoopSubsystem::InitializePreplanLinks()
+/*void ULoopSubsystem::InitializePreplanLinks()
 {
 	TArray<UUserWidget*> FoundPreplanLinkWidgets;
 	UWidgetBlueprintLibrary::GetAllWidgetsOfClass(GetWorld(), FoundPreplanLinkWidgets, UPreplanLinkWidget::StaticClass(),false);
@@ -201,7 +230,7 @@ void ULoopSubsystem::InitializePreplanLinks()
 			//PreplanLinkWidget->ChangeVisibility(PreplanLinkWidget->IsLinkActive());
 		}
 	}
-}
+}*/
 
 /*void ULoopSubsystem::SetPreplanVisibility(UPreplanDataWidget* PreplanData, bool bIsVisible)
 {
@@ -222,10 +251,6 @@ void ULoopSubsystem::CreatePreplanStep(UPreplanDataWidget* PreplanDataWidget)
 	{
 		return;
 	}
-	if (PreplanDataWidget->PreplanID=="dash")
-	{
-		UE_LOG(LogTemp, Warning, TEXT("dash"))				
-	}
 	UPreplanStep* PreplanStep = NewObject<UPreplanStep>();
 	PreplanStep->PreplanData = PreplanDataWidget;
 			
@@ -243,6 +268,15 @@ void ULoopSubsystem::CreatePreplanStep(UPreplanDataWidget* PreplanDataWidget)
 	}
 }
 
+void ULoopSubsystem::CreateCollectible(const Acollectible* Collectible)
+{
+	if (Collectible == nullptr)
+	{
+		return;
+	}
+	Collectibles.Add(Collectible->CollectibleID,Collectible->bHasBeenCollected);
+}
+
 void ULoopSubsystem::OnAdvicesVisibilityChanged(bool bNewVisibility)
 {
 	for (auto PreplanStep : PreplanSteps) {
@@ -256,6 +290,7 @@ void ULoopSubsystem::OnAdvicesVisibilityChanged(bool bNewVisibility)
 void ULoopSubsystem::InitializePreplan()
 {
 	InitializePreplanSteps();
+	InitializeCollectibles();
 	InitializePreplanAdvices();
 	//InitializePreplanLinks();
 }
@@ -301,4 +336,9 @@ void ULoopSubsystem::ActivatePreplanStep(FString PreplanID)
 			}*/
 		}
 	}
+}
+
+void ULoopSubsystem::ActivateCollectible(FString CollectibleID)
+{
+	Collectibles[CollectibleID]=true;
 }

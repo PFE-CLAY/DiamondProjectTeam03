@@ -71,11 +71,11 @@ void UCommentarySubSystem::OnEndEvent(UAkEventCallbackInfo* CallbackInfo, UWwise
 {
 	bIsPlaying = false;
 	CurrentEventPlayedWithPriority = {nullptr, -1};
-	owner->EndOfEventCallbackDelegate.RemoveDynamic(this, &UCommentarySubSystem::OnEndEvent);
+	owner->EndOfEventCallbackDelegate.Clear();
 }
 
 void UCommentarySubSystem::OnInterruption(UAkEventCallbackInfo* CallbackInfo, UWwiseHandlerComponent* owner)
 {
-	owner->EndOfEventCallbackDelegate.RemoveDynamic(this, &UCommentarySubSystem::OnInterruption);
+	owner->EndOfEventCallbackDelegate.Clear();
 	OnCommentaryEventInterruptDelegate.Execute();
 }

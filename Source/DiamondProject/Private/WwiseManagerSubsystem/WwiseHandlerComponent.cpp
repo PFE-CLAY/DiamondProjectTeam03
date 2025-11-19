@@ -26,6 +26,15 @@ void UWwiseHandlerComponent::BeginPlay()
 
 void UWwiseHandlerComponent::EndPlay(const EEndPlayReason::Type EndPlayReason)
 {
+	Super::EndPlay(EndPlayReason);
+	Callback.Clear();
+	EndOfEventCallbackDelegate.Clear();
+	MarkerCallbackDelegate.Clear();
+	DurationCallbackDelegate.Clear();
+	StarvationCallbackDelegate.Clear();
+	MusicPlayStartedCallbackDelegate.Clear();
+	MidiEventCallbackDelegate.Clear();
+	HandleCallbackDelegate.Clear();
 }
 
 

@@ -56,7 +56,7 @@ public:
 	// Sets default values for this character's properties
 	AEnemy();
 	
-	UPROPERTY()
+	UPROPERTY(BlueprintReadOnly)
     AAIController* AIController;
 
 protected:
@@ -70,7 +70,7 @@ protected:
 	void Attack(AActor* Target);
 	UFUNCTION()
 	void SetAttackReady();
-	UFUNCTION(BlueprintCallable)
+	UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
 	void StartBehavior();
 	
 public:
