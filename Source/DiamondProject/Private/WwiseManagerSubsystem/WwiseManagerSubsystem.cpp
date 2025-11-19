@@ -23,19 +23,18 @@ void UWwiseManagerSubsystem::Deinitialize()
 int32 UWwiseManagerSubsystem::PostEvent(UAkAudioEvent* Event, AActor* TargetActor)
 {
 	AkPlayingID PlayingID = AK_INVALID_PLAYING_ID;
-	FOnAkPostEventCallback Callback;
 	UWwiseHandlerComponent* WwiseHandler = nullptr;
 	
 	if (Event && TargetActor) {
 		EventCurrentlyPlayedByActor.Add(TargetActor, Event);
 		WwiseHandler = TargetActor->FindComponentByClass<UWwiseHandlerComponent>();
 		if (WwiseHandler) {
-			Callback = FOnAkPostEventCallback();
-			Callback.BindDynamic(WwiseHandler, &UWwiseHandlerComponent::HandleCallback);
+			WwiseHandler->Callback = FOnAkPostEventCallback();
+			WwiseHandler->Callback.BindDynamic(WwiseHandler, &UWwiseHandlerComponent::HandleCallback);
 		} else {
 			UE_LOG(LogTemp, Error, TEXT("[UWwiseManagerSubsystem::PostEvent] WwiseHandlerComponent not found on TargetActor: %s!"), *TargetActor->GetName());
 		}
-		PlayingID = UAkGameplayStatics::PostEvent(Event, TargetActor, WwiseHandler->CallbackMask, Callback);
+		PlayingID = UAkGameplayStatics::PostEvent(Event, TargetActor, WwiseHandler->CallbackMask, WwiseHandler->Callback);
 		WwiseHandler->LastPlayedID = PlayingID;
 		UE_LOG(LogTemp, Log, TEXT("[UWwiseManagerSubsystem::PostEvent] Playing Wwise Event: %s ID: %d"), *Event->GetName(), PlayingID);
 	} else {

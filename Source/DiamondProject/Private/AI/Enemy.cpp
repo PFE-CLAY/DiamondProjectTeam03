@@ -49,7 +49,7 @@ void AEnemy::SetAttackReady()
 	bCanAttack = true;
 }
 
-void AEnemy::StartBehavior()
+void AEnemy::StartBehavior_Implementation()
 {
 	if(BehaviorTree != nullptr) AIController->RunBehaviorTree(BehaviorTree);
 }
