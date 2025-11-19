@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "AkGameplayTypes.h"
 #include "Components/ActorComponent.h"
 #include "WwiseHandlerComponent.generated.h"
 
@@ -95,4 +96,7 @@ public:
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Wwise|Wwise Event")
 	int32 LastPlayedID = 0;
+
+	UPROPERTY()
+	FOnAkPostEventCallback Callback;
 };
