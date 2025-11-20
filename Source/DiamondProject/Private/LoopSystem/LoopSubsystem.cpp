@@ -132,12 +132,12 @@ void ULoopSubsystem::InitializePreplanSteps()
 				
 				TObjectPtr<UPreplanStep> PreplanStep = PreplanStepPtr->Get();
 				if (PreplanStep != nullptr) {
-					PreplanStep->NbActivations = 0;
+					PreplanStep->FirstNbActivations=0;
+					PreplanStep->SndNbActivations=0;
 					PreplanStep->PreplanData = PreplanDataWidget;
 					PreplanStep->PreplanAdvices.Empty();
 					//PreplanStep->InLinks.Empty();
 					//PreplanStep->OutLinks.Empty();
-					PreplanStep->bIsStepVisible = PreplanStep->bIsStepActive;
 					//SetPreplanVisibility(PreplanDataWidget, PreplanStep->bIsStepVisible);
 					PreplanDataWidget->SetStep(PreplanStep);
 				}
@@ -259,7 +259,7 @@ void ULoopSubsystem::CreatePreplanStep(UPreplanDataWidget* PreplanDataWidget)
 	} else {
 		if (PreplanDataWidget->bIsActiveOnStart){
 			PreplanStep->bIsStepActive = true;
-			PreplanStep->bIsStepVisible = true;
+			PreplanStep->bIsFirstStepVisible = true;
 		}
 		//PreplanStep->PreplanData->SetVisibility(ESlateVisibility::Visible);
 		//SetPreplanVisibility(PreplanStep->PreplanData,PreplanDataWidget->bIsActiveOnStart);
@@ -295,7 +295,7 @@ void ULoopSubsystem::InitializePreplan()
 	//InitializePreplanLinks();
 }
 
-void ULoopSubsystem::ActivatePreplanStep(FString PreplanID)
+void ULoopSubsystem::ActivatePreplanStep(FString PreplanID,int StepPart)
 {
 	const TObjectPtr<UPreplanStep>* PreplanStepPtr = PreplanSteps.Find(PreplanID);
 	if (PreplanStepPtr == nullptr)
@@ -305,20 +305,22 @@ void ULoopSubsystem::ActivatePreplanStep(FString PreplanID)
 	
 	TObjectPtr<UPreplanStep> PreplanStep = PreplanStepPtr->Get();
 
-	if (PreplanStep->bIsStepActive)
+	if (PreplanStep->bIsSndStepVisible||(PreplanStep->bIsStepActive&&StepPart==1))
 	{
 		return;
 	}
 	
 	//bool bIsAnyPreviousStepActive = IsAnyPreviousStepActive(PreplanStep);
+	if (StepPart == 1){
+	
+		if (PreplanStep->FirstNbActivations < PreplanStep->PreplanData->NbActivationsRequired){
+			++PreplanStep->FirstNbActivations;
 
-	if (
-		PreplanStep->NbActivations < PreplanStep->PreplanData->NbActivationsRequired){
-		++PreplanStep->NbActivations;
-
-		if (PreplanStep->NbActivations == PreplanStep->PreplanData->NbActivationsRequired){
-			PreplanStep->bIsStepActive = true;
-			
+			if (PreplanStep->FirstNbActivations == PreplanStep->PreplanData->NbActivationsRequired)
+			{
+				PreplanStep->bIsStepActive = true;
+				PreplanStep->bIsFirstStepVisible = true;
+			}
 			/*for (TObjectPtr<UPreplanLinkWidget> InLink : PreplanStep->InLinks)
 			{
 				InLink->ActivateToData();
@@ -328,12 +330,26 @@ void ULoopSubsystem::ActivatePreplanStep(FString PreplanID)
 			{
 				OutLink->ActivateFromData();
 			}
-			
+		
 			if (PreplanStep->PreplanData->bShouldActivateDream &&
 				PreplanStep->PreplanData->DreamSubtitles != nullptr)
 			{
 				PreplanDreamSubtitlesArray.Add(PreplanStep->PreplanData->DreamSubtitles);
 			}*/
+	
+		}
+	}
+	else if (StepPart == 2)
+	{
+		if (PreplanStep->SndNbActivations < PreplanStep->PreplanData->SndNbActivationsRequired)
+		{
+			++PreplanStep->SndNbActivations;
+
+			if (PreplanStep->SndNbActivations == PreplanStep->PreplanData->SndNbActivationsRequired)
+			{
+				PreplanStep->bIsStepActive = true;
+				PreplanStep->bIsSndStepVisible = true;
+			}
 		}
 	}
 }
