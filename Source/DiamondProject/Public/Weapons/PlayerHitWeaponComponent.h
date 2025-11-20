@@ -31,6 +31,9 @@ public:
 
 	UPROPERTY(BlueprintReadWrite, Category=Projectile)
 	TObjectPtr<USceneComponent> ProjectileSpawnLocationSceneComponent;
+
+	UPROPERTY(EditAnywhere,BlueprintReadWrite, Category=Projectile)
+	USceneComponent* ProjectileSpawnPoint;
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Overheat)
 	float WeaponHeat;
