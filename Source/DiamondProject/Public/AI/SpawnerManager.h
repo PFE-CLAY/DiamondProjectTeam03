@@ -42,16 +42,20 @@ public:
 
 	UPROPERTY()
 	bool bIsSpawnBlocked = false;
+
+	UPROPERTY()
+	bool bIsActive = false;
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
 	UFUNCTION()
 	TArray<AMeleeSpawner*>  GetClosestSpawners();
-private:
-	UFUNCTION()
-	void ActivateClosestSpawners();
 
+private:
+	
+	
+	
 	UFUNCTION()
 	void StartSpawners();
 public:
@@ -66,4 +70,7 @@ public:
 
 	UFUNCTION()
 	void AddNewEnemy(AMeleeEnemy* Enemy);
+
+	UFUNCTION(BlueprintCallable)
+	void SetManagerActive();
 };

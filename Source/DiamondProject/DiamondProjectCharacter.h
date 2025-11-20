@@ -6,6 +6,7 @@
 #include "FCEasing.h"
 #include "UWeaponComponent.h"
 #include "GameFramework/Character.h"
+#include "GameFramework/SpringArmComponent.h"
 #include "Logging/LogMacros.h"
 #include "DiamondProjectCharacter.generated.h"
 
@@ -22,6 +23,7 @@ DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnMantle);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnPause);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnDash);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnPreplanOnOff);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnPreplanClicked); //possiblement à remettre dans le code quand j'aurai trouvé une meilleure solution
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnPreplanMove, FVector2D, Value);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnPreplanZoom, float, ZoomValue);
 
@@ -40,6 +42,9 @@ class ADiamondProjectCharacter : public ACharacter
 	/** Pawn mesh: 1st person view (arms; seen only by self) */
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category=Mesh, meta = (AllowPrivateAccess = "true"))
 	USkeletalMeshComponent* Mesh1P;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category=Mesh, meta=(AllowPrivateAccess = "true"))
+	USpringArmComponent* SpringArm;
 
 	/** First person camera */
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
@@ -74,6 +79,9 @@ class ADiamondProjectCharacter : public ACharacter
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Input, meta=(AllowPrivateAccess = "true"))
 	UInputAction* PreplanOnOffAction;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Input, meta=(AllowPrivateAccess = "true"))
+	UInputAction* PreplanClickedAction;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Input, meta=(AllowPrivateAccess = "true"))
 	UInputAction* CheatOpenHatchAction;
@@ -133,6 +141,9 @@ public:
 	UPROPERTY(BlueprintAssignable, Category = "Preplan")
 	FOnPreplanOnOff OnPreplanOnOff;
 
+	UPROPERTY(BlueprintAssignable, Category = "Preplan")
+	FOnPreplanOnOff OnPreplanClicked;
+
 	UPROPERTY(BlueprintAssignable, Category = "Cheats")
 	FOnCheatOpenHatch OnCheatOpenHatch;
 
@@ -171,6 +182,8 @@ protected:
 	void PreplanZoom(const FInputActionValue& Value);
 	
 	void PreplanOnOff(const FInputActionValue& Value);
+	
+	void PreplanClicked(const FInputActionValue& Value);
 
 	void CheatOpenHatch(const FInputActionValue& Value);
 	
@@ -201,6 +214,8 @@ private:
 	FTimerHandle TimerHandle;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category=Dash, meta=(AllowPrivateAccess = "true"))
 	bool bisDashing;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category=Dash, meta=(AllowPrivateAccess = "true"))
+	bool bisInAirNotAffectingDashCooldown;
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Dash, meta=(AllowPrivateAccess = "true"))
 	float dashPower=7000;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category=Dash, meta=(AllowPrivateAccess = "true"))

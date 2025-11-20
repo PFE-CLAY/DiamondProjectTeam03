@@ -9,7 +9,7 @@
 
 class UPreplanDataWidget;
 class UPreplanStep;
-
+class UCollectible;
 /**
  * 
  */
@@ -23,12 +23,18 @@ class DIAMONDPROJECT_API ULoopSubsystem : public UGameInstanceSubsystem
 	UPROPERTY()
 	bool bIsInit = false;
 
+	UPROPERTY()
+	bool bIsCollectibleInit = false;
+
 	UDELEGATE(BlueprintCallable)
 	DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnSceneReloadEvent);
 
 public:
 	UPROPERTY(BlueprintReadWrite)
 	bool bIsDreamLevel = false;
+
+	UPROPERTY(BlueprintReadOnly)
+	int LoopNb = 0;
 	
 	UPROPERTY(BlueprintAssignable)
 	FOnSceneReloadEvent OnSceneReloadEvent;
@@ -36,12 +42,16 @@ public:
 	UPROPERTY()
 	TMap<FString, TObjectPtr<UPreplanStep>> PreplanSteps;
 
+	UPROPERTY()
+	TMap<FString,bool> Collectibles;
+
 	UPROPERTY(BlueprintReadOnly)
 	TArray<TObjectPtr<UDataTable>> PreplanDreamSubtitlesArray;
 
 private:
 	UFUNCTION(BlueprintCallable)
 	void ReloadScene();
+
 
 	//UFUNCTION()
 	//bool IsAnyPreviousStepActive(const UPreplanStep* PreplanStep);
@@ -52,14 +62,20 @@ private:
 	UFUNCTION()
 	void InitializePreplanAdvices();
 
+	//UFUNCTION()
+	//void InitializePreplanLinks();
+
 	UFUNCTION()
-	void InitializePreplanLinks();
+	void InitializeCollectibles();
 
 	//UFUNCTION()
 	//void SetPreplanVisibility(UPreplanDataWidget* PreplanData, bool bIsVisible);
 
 	UFUNCTION()
 	void CreatePreplanStep(UPreplanDataWidget* PreplanDataWidget);
+
+	UFUNCTION()
+	void CreateCollectible(const Acollectible* Collectible);
 
 public:
 	UFUNCTION()
@@ -69,5 +85,8 @@ public:
 	void InitializePreplan();
 
 	UFUNCTION(BlueprintCallable)
-	void ActivatePreplanStep(FString PreplanID);
+	void ActivatePreplanStep(FString PreplanID,int StepPart=1);
+
+	UFUNCTION(BlueprintCallable)
+	void ActivateCollectible(FString CollectibleID);
 };

@@ -5,7 +5,8 @@
 #include "CoreMinimal.h"
 #include "Enemy.h"
 #include "MeleeEnemy.generated.h"
-
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnCharge);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnMeleeAttack);
 UCLASS()
 class DIAMONDPROJECT_API AMeleeEnemy : public AEnemy
 {
@@ -17,8 +18,20 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Attack")
 	float AttackDuration = 0.5f;
 
+	UPROPERTY(BlueprintReadWrite, Category = "Attack Melee")
+	float ChargingDuration = 2.f;
+	
 	UPROPERTY(BlueprintReadWrite, Category = "Attack")
 	bool bIsAttacking = true;
+
+	UPROPERTY(BlueprintAssignable, Category="Attack Melee")
+	FOnCharge OnChargeEvent;
+
+	UPROPERTY(BlueprintAssignable, Category="Attack")
+	FOnMeleeAttack OnMeleeAttack;
+
+	UPROPERTY()
+	FTimerHandle InvicibleTimerStart;
 public:
 	// Sets default values for this character's properties
 	AMeleeEnemy();
@@ -26,7 +39,6 @@ public:
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
-
 
 
 public:
@@ -37,9 +49,18 @@ public:
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 	UFUNCTION()
 	void HitMelee(AActor* Target);
+
+	UFUNCTION()
+	void SetKillable();
+
+	UFUNCTION()
+	void AttackMelee();
 	
 	UFUNCTION(BlueprintCallable, BlueprintPure)
 	bool IsTargetInRange(AActor* Target);
 	UFUNCTION(BlueprintImplementableEvent)
 	void OnAttackEvent(AActor* Target);
+
+	UFUNCTION(BlueprintCallable)
+	void Charge();
 };

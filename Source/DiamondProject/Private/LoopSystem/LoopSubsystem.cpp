@@ -5,6 +5,7 @@
 
 #include "Blueprint/WidgetBlueprintLibrary.h"
 #include "Kismet/GameplayStatics.h"
+#include "LoopSystem/Collectible.h"
 #include "LoopSystem/LevelSelectionSettings.h"
 #include "LoopSystem/PreplanAdvice.h"
 #include "LoopSystem/PreplanDataWidget.h"
@@ -24,16 +25,16 @@ void ULoopSubsystem::ReloadScene()
 		PreplanStep.Value->PreplanData = nullptr;
 	}
 
-	const ULevelSelectionSettings* LevelSelectionSettings = GetDefault<ULevelSelectionSettings>();
-	if (LevelSelectionSettings == nullptr) return;
-	
+	// const ULevelSelectionSettings* LevelSelectionSettings = GetDefault<ULevelSelectionSettings>();
+	// if (LevelSelectionSettings == nullptr) return;
+	LoopNb++;	
 	OnSceneReloadEvent.Broadcast();
-	bool mainLevelNull = LevelSelectionSettings->MainLevel.IsNull();
-	if (!mainLevelNull)
-	{
-		UGameplayStatics::OpenLevelBySoftObjectPtr(this, LevelSelectionSettings->MainLevel, false);
-		return;
-	}
+	// bool mainLevelNull = LevelSelectionSettings->MainLevel.IsNull();
+	// if (!mainLevelNull)
+	// {
+	// 	UGameplayStatics::OpenLevelBySoftObjectPtr(this, LevelSelectionSettings->MainLevel, false);
+	// 	return;
+	// }
 	
 	UGameplayStatics::OpenLevel(this, FName(*GetWorld()->GetName()), false);
 }
@@ -63,6 +64,34 @@ void ULoopSubsystem::ReloadScene()
 	}
 	return bIsPreviousStepActive;
 }*/
+void ULoopSubsystem::InitializeCollectibles()
+{
+	TArray<AActor*> FoundActors;
+	UGameplayStatics::GetAllActorsOfClass(GetWorld(), Acollectible::StaticClass(), FoundActors);
+	if (!bIsCollectibleInit){
+		bIsCollectibleInit=true;
+		for (int i = 0; i < FoundActors.Num(); i++){
+			Acollectible* Collectible= Cast<Acollectible>(FoundActors[i]);
+			CreateCollectible(Collectible);
+		}
+	}else{
+		for (int i = 0; i < FoundActors.Num(); i++){
+			Acollectible* Collectible= Cast<Acollectible>(FoundActors[i]);
+			if (Collectible == nullptr){
+				continue;
+			}
+			
+			if (Collectible->CollectibleID.IsEmpty()){
+				UE_LOG(LogTemp, Warning, TEXT("Collectible has no ID. Collectible cannot be found."))				
+			} else{
+				if (Collectibles.Contains(Collectible->CollectibleID))
+				{
+					Collectible->bHasBeenCollected=Collectibles[Collectible->CollectibleID];
+				}
+			}
+		}
+	}
+}
 
 void ULoopSubsystem::InitializePreplanSteps()
 {
@@ -103,12 +132,12 @@ void ULoopSubsystem::InitializePreplanSteps()
 				
 				TObjectPtr<UPreplanStep> PreplanStep = PreplanStepPtr->Get();
 				if (PreplanStep != nullptr) {
-					PreplanStep->NbActivations = 0;
+					PreplanStep->FirstNbActivations=0;
+					PreplanStep->SndNbActivations=0;
 					PreplanStep->PreplanData = PreplanDataWidget;
 					PreplanStep->PreplanAdvices.Empty();
 					//PreplanStep->InLinks.Empty();
 					//PreplanStep->OutLinks.Empty();
-					PreplanStep->bIsStepVisible = PreplanStep->bIsStepActive;
 					//SetPreplanVisibility(PreplanDataWidget, PreplanStep->bIsStepVisible);
 					PreplanDataWidget->SetStep(PreplanStep);
 				}
@@ -150,7 +179,7 @@ void ULoopSubsystem::InitializePreplanAdvices()
 	}
 }
 
-void ULoopSubsystem::InitializePreplanLinks()
+/*void ULoopSubsystem::InitializePreplanLinks()
 {
 	TArray<UUserWidget*> FoundPreplanLinkWidgets;
 	UWidgetBlueprintLibrary::GetAllWidgetsOfClass(GetWorld(), FoundPreplanLinkWidgets, UPreplanLinkWidget::StaticClass(),false);
@@ -201,7 +230,7 @@ void ULoopSubsystem::InitializePreplanLinks()
 			//PreplanLinkWidget->ChangeVisibility(PreplanLinkWidget->IsLinkActive());
 		}
 	}
-}
+}*/
 
 /*void ULoopSubsystem::SetPreplanVisibility(UPreplanDataWidget* PreplanData, bool bIsVisible)
 {
@@ -222,10 +251,6 @@ void ULoopSubsystem::CreatePreplanStep(UPreplanDataWidget* PreplanDataWidget)
 	{
 		return;
 	}
-	if (PreplanDataWidget->PreplanID=="dash")
-	{
-		UE_LOG(LogTemp, Warning, TEXT("dash"))				
-	}
 	UPreplanStep* PreplanStep = NewObject<UPreplanStep>();
 	PreplanStep->PreplanData = PreplanDataWidget;
 			
@@ -234,13 +259,22 @@ void ULoopSubsystem::CreatePreplanStep(UPreplanDataWidget* PreplanDataWidget)
 	} else {
 		if (PreplanDataWidget->bIsActiveOnStart){
 			PreplanStep->bIsStepActive = true;
-			PreplanStep->bIsStepVisible = true;
+			PreplanStep->bIsFirstStepVisible = true;
 		}
 		//PreplanStep->PreplanData->SetVisibility(ESlateVisibility::Visible);
 		//SetPreplanVisibility(PreplanStep->PreplanData,PreplanDataWidget->bIsActiveOnStart);
 		PreplanSteps.Add(PreplanDataWidget->PreplanID,PreplanStep);
 		PreplanDataWidget->SetStep(PreplanStep);
 	}
+}
+
+void ULoopSubsystem::CreateCollectible(const Acollectible* Collectible)
+{
+	if (Collectible == nullptr)
+	{
+		return;
+	}
+	Collectibles.Add(Collectible->CollectibleID,Collectible->bHasBeenCollected);
 }
 
 void ULoopSubsystem::OnAdvicesVisibilityChanged(bool bNewVisibility)
@@ -256,11 +290,12 @@ void ULoopSubsystem::OnAdvicesVisibilityChanged(bool bNewVisibility)
 void ULoopSubsystem::InitializePreplan()
 {
 	InitializePreplanSteps();
+	InitializeCollectibles();
 	InitializePreplanAdvices();
 	//InitializePreplanLinks();
 }
 
-void ULoopSubsystem::ActivatePreplanStep(FString PreplanID)
+void ULoopSubsystem::ActivatePreplanStep(FString PreplanID,int StepPart)
 {
 	const TObjectPtr<UPreplanStep>* PreplanStepPtr = PreplanSteps.Find(PreplanID);
 	if (PreplanStepPtr == nullptr)
@@ -270,20 +305,22 @@ void ULoopSubsystem::ActivatePreplanStep(FString PreplanID)
 	
 	TObjectPtr<UPreplanStep> PreplanStep = PreplanStepPtr->Get();
 
-	if (PreplanStep->bIsStepActive)
+	if (PreplanStep->bIsSndStepVisible||(PreplanStep->bIsStepActive&&StepPart==1))
 	{
 		return;
 	}
 	
 	//bool bIsAnyPreviousStepActive = IsAnyPreviousStepActive(PreplanStep);
+	if (StepPart == 1){
+	
+		if (PreplanStep->FirstNbActivations < PreplanStep->PreplanData->NbActivationsRequired){
+			++PreplanStep->FirstNbActivations;
 
-	if (
-		PreplanStep->NbActivations < PreplanStep->PreplanData->NbActivationsRequired){
-		++PreplanStep->NbActivations;
-
-		if (PreplanStep->NbActivations == PreplanStep->PreplanData->NbActivationsRequired){
-			PreplanStep->bIsStepActive = true;
-			
+			if (PreplanStep->FirstNbActivations == PreplanStep->PreplanData->NbActivationsRequired)
+			{
+				PreplanStep->bIsStepActive = true;
+				PreplanStep->bIsFirstStepVisible = true;
+			}
 			/*for (TObjectPtr<UPreplanLinkWidget> InLink : PreplanStep->InLinks)
 			{
 				InLink->ActivateToData();
@@ -293,12 +330,31 @@ void ULoopSubsystem::ActivatePreplanStep(FString PreplanID)
 			{
 				OutLink->ActivateFromData();
 			}
-			
+		
 			if (PreplanStep->PreplanData->bShouldActivateDream &&
 				PreplanStep->PreplanData->DreamSubtitles != nullptr)
 			{
 				PreplanDreamSubtitlesArray.Add(PreplanStep->PreplanData->DreamSubtitles);
 			}*/
+	
 		}
 	}
+	else if (StepPart == 2)
+	{
+		if (PreplanStep->SndNbActivations < PreplanStep->PreplanData->SndNbActivationsRequired)
+		{
+			++PreplanStep->SndNbActivations;
+
+			if (PreplanStep->SndNbActivations == PreplanStep->PreplanData->SndNbActivationsRequired)
+			{
+				PreplanStep->bIsStepActive = true;
+				PreplanStep->bIsSndStepVisible = true;
+			}
+		}
+	}
+}
+
+void ULoopSubsystem::ActivateCollectible(FString CollectibleID)
+{
+	Collectibles[CollectibleID]=true;
 }
