@@ -44,7 +44,7 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Overheat)
 	float TimeToRecoverHeat;
 
-	UPROPERTY(BlueprintReadOnly, Category = Overheat)
+	UPROPERTY(BlueprintReadWrite, Category = Overheat)
 	bool bIsOverheated;
 	
 	UPROPERTY(BlueprintAssignable, Category = Overheat)
@@ -87,6 +87,8 @@ protected:
 
 	UFUNCTION()
 	void HandleFireReleased();
+
+	
 
 private:
 	FTimerHandle HeatRecoveryDelayHandle;
