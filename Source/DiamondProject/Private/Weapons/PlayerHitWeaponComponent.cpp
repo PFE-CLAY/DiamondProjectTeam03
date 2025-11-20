@@ -93,7 +93,7 @@ void UPlayerHitWeaponComponent::StartHeatRecovery()
 	{
 		if (bIsOverheated)
 		{
-			bIsOverheated = false;
+			//bIsOverheated = false;
 			OnOverheatEnd.Broadcast();
 		}
 		bIsCooling = false;
@@ -105,7 +105,7 @@ void UPlayerHitWeaponComponent::StartHeatRecovery()
 		OnHeatChanged.Broadcast(WeaponHeat);
 		if (bIsOverheated)
 		{
-			bIsOverheated = false;
+			//bIsOverheated = false;
 			OnOverheatEnd.Broadcast();
 		}
 		bIsCooling = false;
@@ -129,7 +129,7 @@ void UPlayerHitWeaponComponent::HeatRecoveryTick()
 		GetWorld()->GetTimerManager().ClearTimer(HeatRecoveryTickHandle);
 		if (bIsOverheated)
 		{
-			bIsOverheated = false;
+			//bIsOverheated = false;
 			OnOverheatEnd.Broadcast();
 		}
 		if (bIsCooling) { bIsCooling = false; }
