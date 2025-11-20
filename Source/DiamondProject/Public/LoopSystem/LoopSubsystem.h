@@ -89,4 +89,13 @@ public:
 
 	UFUNCTION(BlueprintCallable)
 	void ActivateCollectible(FString CollectibleID);
+
+	UFUNCTION(BlueprintCallable)
+	void SaveLoopData();
+
+	UFUNCTION(BlueprintCallable)
+	void LoadLoopData();
+
+	UFUNCTION(BlueprintCallable)
+	void ResetAllProgress();
 };

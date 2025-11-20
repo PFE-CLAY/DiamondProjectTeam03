@@ -12,6 +12,7 @@
 #include "LoopSystem/PreplanLinkWidget.h"
 #include "LoopSystem/PreplanStep.h"
 #include "UI/GameSettingsSubsystem.h"
+#include "SaveSystem/DiamondSaveGame.h"
 
 void ULoopSubsystem::Initialize(FSubsystemCollectionBase& Collection)
 {
@@ -37,6 +38,7 @@ void ULoopSubsystem::ReloadScene()
 	// }
 	
 	UGameplayStatics::OpenLevel(this, FName(*GetWorld()->GetName()), false);
+	SaveLoopData();
 }
 
 /*bool ULoopSubsystem::IsAnyPreviousStepActive(const UPreplanStep* PreplanStep)
@@ -100,7 +102,7 @@ void ULoopSubsystem::InitializePreplanSteps()
 	GEngine->AddOnScreenDebugMessage(-1, 10, FColor::Red, FString::FromInt(FoundPreplanDataWidgets.Num()));
 	if (!bIsInit){
 		bIsInit = true;
-
+		
 		for (int i = 0; i < FoundPreplanDataWidgets.Num(); i++)
 		{
 			UPreplanDataWidget* PreplanDataWidget = Cast<UPreplanDataWidget>(FoundPreplanDataWidgets[i]);
@@ -293,6 +295,7 @@ void ULoopSubsystem::InitializePreplan()
 	InitializeCollectibles();
 	InitializePreplanAdvices();
 	//InitializePreplanLinks();
+	LoadLoopData();
 }
 
 void ULoopSubsystem::ActivatePreplanStep(FString PreplanID,int StepPart)
@@ -352,9 +355,121 @@ void ULoopSubsystem::ActivatePreplanStep(FString PreplanID,int StepPart)
 			}
 		}
 	}
+	SaveLoopData();
 }
 
 void ULoopSubsystem::ActivateCollectible(FString CollectibleID)
 {
 	Collectibles[CollectibleID]=true;
+	SaveLoopData();
+}
+
+void ULoopSubsystem::SaveLoopData()
+{
+	UDiamondSaveGame* SaveGameInstance = Cast<UDiamondSaveGame>(UGameplayStatics::LoadGameFromSlot("DiamondSaveSlot", 0));
+	if (!SaveGameInstance)
+	{
+		SaveGameInstance = Cast<UDiamondSaveGame>(UGameplayStatics::CreateSaveGameObject(UDiamondSaveGame::StaticClass()));
+	}
+
+	if (SaveGameInstance)
+	{
+		SaveGameInstance->LoopData.LoopNb = LoopNb;
+		SaveGameInstance->LoopData.Collectibles = Collectibles;
+		SaveGameInstance->LoopData.bIsDreamLevel = bIsDreamLevel;
+
+		SaveGameInstance->LoopData.PreplanSteps.Empty();
+		for (const TPair<FString, TObjectPtr<UPreplanStep>>& Pair : PreplanSteps)
+		{
+			if (Pair.Value)
+			{
+				FPreplanStepSaveData StepData;
+				StepData.FirstNbActivations = Pair.Value->FirstNbActivations;
+				StepData.SndNbActivations = Pair.Value->SndNbActivations;
+				StepData.bIsStepActive = Pair.Value->bIsStepActive;
+				StepData.bIsFirstStepVisible = Pair.Value->bIsFirstStepVisible;
+				StepData.bIsFirstAlreadySeen = Pair.Value->bIsFirstAlreadySeen;
+				StepData.bIsSndStepVisible = Pair.Value->bIsSndStepVisible;
+				StepData.bIsSndAlreadySeen = Pair.Value->bIsSndAlreadySeen;
+
+				SaveGameInstance->LoopData.PreplanSteps.Add(Pair.Key, StepData);
+			}
+		}
+
+		UGameplayStatics::SaveGameToSlot(SaveGameInstance, "DiamondSaveSlot", 0);
+	}
+}
+
+void ULoopSubsystem::LoadLoopData()
+{
+	UDiamondSaveGame* SaveGameInstance = Cast<UDiamondSaveGame>(UGameplayStatics::LoadGameFromSlot("DiamondSaveSlot", 0));
+	if (SaveGameInstance)
+	{
+		LoopNb = SaveGameInstance->LoopData.LoopNb;
+		Collectibles = SaveGameInstance->LoopData.Collectibles;
+		bIsDreamLevel = SaveGameInstance->LoopData.bIsDreamLevel;
+
+		for (const TPair<FString, FPreplanStepSaveData>& Pair : SaveGameInstance->LoopData.PreplanSteps)
+		{
+			if (PreplanSteps.Contains(Pair.Key))
+			{
+				UPreplanStep* Step = PreplanSteps[Pair.Key];
+				if (Step)
+				{
+					Step->FirstNbActivations = Pair.Value.FirstNbActivations;
+					Step->SndNbActivations = Pair.Value.SndNbActivations;
+					Step->bIsStepActive = Pair.Value.bIsStepActive;
+					Step->bIsFirstStepVisible = Pair.Value.bIsFirstStepVisible;
+					Step->bIsFirstAlreadySeen = Pair.Value.bIsFirstAlreadySeen;
+					Step->bIsSndStepVisible = Pair.Value.bIsSndStepVisible;
+					Step->bIsSndAlreadySeen = Pair.Value.bIsSndAlreadySeen;
+				}
+			}
+		}
+	}
+}
+
+void ULoopSubsystem::ResetAllProgress()
+{
+	LoopNb = 0;
+	Collectibles.Empty();
+	bIsDreamLevel = false;
+
+	for (auto& Pair : PreplanSteps)
+	{
+		UPreplanStep* Step = Pair.Value;
+		if (Step && Step->PreplanData)
+		{
+			Step->FirstNbActivations = 0;
+			Step->SndNbActivations = 0;
+			Step->bIsStepActive = Step->PreplanData->bIsActiveOnStart;
+			Step->bIsFirstStepVisible = Step->PreplanData->bIsActiveOnStart;
+			Step->bIsFirstAlreadySeen = false;
+			Step->bIsSndStepVisible = false;
+			Step->bIsSndAlreadySeen = false;
+		}
+	}
+
+	TArray<AActor*> FoundActors;
+	UGameplayStatics::GetAllActorsOfClass(GetWorld(), Acollectible::StaticClass(), FoundActors);
+	for (int i = 0; i < FoundActors.Num(); i++){
+		Acollectible* Collectible= Cast<Acollectible>(FoundActors[i]);
+		if (Collectible)
+		{
+			Collectible->bHasBeenCollected = false;
+		}
+	}
+
+	UGameInstance* GameInstance = GetWorld()->GetGameInstance();
+	if (GameInstance)
+	{
+		UGameSettingsSubsystem* SettingsSubsystem = GameInstance->GetSubsystem<UGameSettingsSubsystem>();
+		if (SettingsSubsystem)
+		{
+			SettingsSubsystem->ResetSettings();
+		}
+	}
+
+	SaveLoopData();
+	UGameplayStatics::OpenLevel(this, FName(*GetWorld()->GetName()), false);
 }
