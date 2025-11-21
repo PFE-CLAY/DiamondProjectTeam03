@@ -59,4 +59,15 @@ public:
 	bool IsPreplanInSceneVisible() const;
 	UFUNCTION(BlueprintCallable)
 	void SetPreplanInSceneVisibility(bool IsPreplanVisible);
+
+	UFUNCTION(BlueprintCallable)
+	void SaveSettings();
+
+	UFUNCTION(BlueprintCallable)
+	void LoadSettings();
+
+	UFUNCTION(BlueprintCallable)
+	void ResetSettings();
+
+	virtual void Initialize(FSubsystemCollectionBase& Collection) override;
 };
