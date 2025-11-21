@@ -175,6 +175,7 @@ void ADiamondProjectCharacter::Move(const FInputActionValue& Value)
 }
 void ADiamondProjectCharacter::Dash(const FInputActionValue& Value)
 {
+	if(!bCanDash) return;
 	if (GetCharacterMovement()->Velocity.Size()<=0)
 	{
 		dashDir=FVector2D(0,1);
