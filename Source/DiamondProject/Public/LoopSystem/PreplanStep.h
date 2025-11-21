@@ -24,7 +24,7 @@ public:
 	UPROPERTY()
 	int SndNbActivations = 0;
 	
-	UPROPERTY()
+	UPROPERTY(BlueprintReadOnly)
 	TObjectPtr<UPreplanDataWidget> PreplanData;
 
 	UPROPERTY()
