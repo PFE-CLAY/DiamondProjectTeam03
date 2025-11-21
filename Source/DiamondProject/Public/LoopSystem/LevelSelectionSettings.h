@@ -17,7 +17,4 @@ public:
 	
 	UPROPERTY(Config, EditAnywhere, Category="Levels")
 	TSoftObjectPtr<UWorld> MainLevel;
-
-	UPROPERTY(Config, EditAnywhere, Category="Levels")
-	TSoftObjectPtr<UWorld> DreamLevel;
 };

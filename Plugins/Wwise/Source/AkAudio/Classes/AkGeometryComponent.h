@@ -12,7 +12,7 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #pragma once
@@ -26,9 +26,7 @@ Copyright (c) 2024 Audiokinetic Inc.
 #include "AkGeometryComponent.generated.h"
 
 class UAkSettings;
-#if UE_5_0_OR_LATER
 class UMaterialInterface;
-#endif
 
 DECLARE_DELEGATE(FOnRefreshDetails);
 
@@ -48,7 +46,7 @@ struct FAkGeometrySurfaceOverride
 	* If left to None, the mesh's physical material will be used to fetch an acoustic texture.
 	*/
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Geometry")
-	UAkAcousticTexture* AcousticTexture = nullptr;
+	TObjectPtr<UAkAcousticTexture> AcousticTexture = nullptr;
 
 	/** Enable Transmission Loss Override */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, DisplayName = "Enable Transmission Loss Override", Category = "Geometry")
@@ -123,28 +121,87 @@ public:
 
 	/** Override the acoustic properties of this mesh per material.*/
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Geometry", DisplayName = "Acoustic Properties Override")
-	TMap<UMaterialInterface*, FAkGeometrySurfaceOverride> StaticMeshSurfaceOverride;
+	TMap<TObjectPtr<UMaterialInterface>, FAkGeometrySurfaceOverride> StaticMeshSurfaceOverride;
 
 	/** Override the acoustic properties of the collision mesh.*/
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Geometry", DisplayName = "Acoustic Properties Override")
+	UPROPERTY(VisibleAnywhere, Category = "Geometry", DisplayName = "Acoustic Properties Override")
 	FAkGeometrySurfaceOverride CollisionMeshSurfaceOverride;
 
+	/**
+	 * Get the Acoustic Properties overriding this Geometry.
+	 * @param InMaterialInterface - If this Geometry's Mesh Type is set to Static Mesh, provide the Material Interface that the requested Acoustic Properties override. Leave empty if the Mesh Type is set to Simple Collision.
+	 * @param OutAcousticPropertiesOverride - The requested Acoustic Properties Override.
+	 * @return True if OutAcousticPropertiesOverride is valid.
+	**/
+	UFUNCTION(BlueprintCallable, Category = "Audiokinetic|AkGeometry")
+	bool GetAcousticPropertiesOverride(UMaterialInterface* InMaterialInterface, FAkGeometrySurfaceOverride& OutAcousticPropertiesOverride);
+
+	/**
+	 * Set the Acoustic Properties overriding this Geometry.
+	 * @param InMaterialInterface - If this Geometry's Mesh Type is set to Static Mesh, provide the Material Interface to override. Leave empty if the Mesh Type is set to Simple Collision.
+	 * @param InAcousticPropertiesOverride - Structure of Acoustic Properties Override to set with.
+	 * @param OutAcousticPropertiesOverride - Reference to the modified Acoustic Properties Override.
+	 * @return True if OutAcousticPropertiesOverride is valid.
+	**/
+	UFUNCTION(BlueprintCallable, Category = "Audiokinetic|AkGeometry")
+	bool SetAcousticPropertiesOverride(UMaterialInterface* InMaterialInterface, FAkGeometrySurfaceOverride InAcousticPropertiesOverride, FAkGeometrySurfaceOverride& OutAcousticPropertiesOverride);
+
+	/**
+	 * Set the Acoustic Texture overriding this Geometry.
+	 * @param InMaterialInterface - If this Geometry's Mesh Type is set to Static Mesh, provide the Material Interface to override. Leave empty if the Mesh Type is set to Simple Collision.
+	 * @param InAcousticTexture - Acoustic Texture to set with.
+	 * @param OutAcousticPropertiesOverride - Reference to the modified Acoustic Properties Override.
+	 * @return True if OutAcousticPropertiesOverride is valid.
+	**/
+	UFUNCTION(BlueprintCallable, Category = "Audiokinetic|AkGeometry")
+	bool SetAcousticTextureOverride(UMaterialInterface* InMaterialInterface, UAkAcousticTexture* InAcousticTexture, FAkGeometrySurfaceOverride& OutAcousticPropertiesOverride);
+
+	/**
+	 * Set the Transmission Loss overriding this Geometry.
+	 * @param InMaterialInterface - If this Geometry's Mesh Type is set to Static Mesh, provide the Material Interface to override. Leave empty if the Mesh Type is set to Simple Collision.
+	 * @param InTransmissionLoss - Transmission Loss value to set with.
+	 * @param OutAcousticPropertiesOverride - Reference to the modified Acoustic Properties Override.
+	 * @return True if OutAcousticPropertiesOverride is valid.
+	**/
+	UFUNCTION(BlueprintCallable, Category = "Audiokinetic|AkGeometry")
+	bool SetTransmissionLossOverride(UMaterialInterface* InMaterialInterface, float InTransmissionLoss, bool bInEnableTransmissionLossOverride, FAkGeometrySurfaceOverride& OutAcousticPropertiesOverride);
+
+	/**
+	 * Enable or disable the transmission loss of this Geometry to be overriden.
+	 * @param InMaterialInterface - If this Geometry's Mesh Type is set to Static Mesh, provide the Material Interface to override. Leave empty if the Mesh Type is set to Simple Collision.
+	 * @param bInEnableTransmissionLossOverride - Set to true to enable Transmission Loss override.
+	 * @param OutAcousticPropertiesOverride - Reference to the modified Acoustic Properties Override.
+	 * @return True if OutAcousticPropertiesOverride is valid.
+	**/
+	UFUNCTION(BlueprintCallable, Category = "Audiokinetic|AkGeometry")
+	bool SetEnableTransmissionLossOverride(UMaterialInterface* InMaterialInterface, bool bInEnableTransmissionLossOverride, FAkGeometrySurfaceOverride& OutAcousticPropertiesOverride);
+
 	/** Enable or disable geometric diffraction for this mesh. Check this box to have Wwise Spatial Audio generate diffraction edges on the geometry. The diffraction edges will be visible in the Wwise game object viewer when connected to the game. */
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Geometry")
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Geometry")
 	bool bEnableDiffraction = false;
 
 	/** Enable or disable geometric diffraction on boundary edges for this Geometry. Boundary edges are edges that are connected to only one triangle. Depending on the specific shape of the geometry, boundary edges may or may not be useful and it is beneficial to reduce the total number of diffraction edges to process.  */
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Geometry", meta = (EditCondition = "bEnableDiffraction"))
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Geometry", meta = (EditCondition = "bEnableDiffraction"))
 	bool bEnableDiffractionOnBoundaryEdges = false;
 
-	/** (Deprecated) Associate this Geometry component with a Room.
-	* This property is deprecated and will be removed in a future version. We recommend not using it by leaving it set to None.
-	* Associating a Geometry component with a particular Room limits the scope in which the geometry is accessible. Doing so reduces the search space for ray casting performed by reflection and diffraction calculations.
-	* When set to None, this geometry has a global scope.
-	* Note if one or more geometry sets are associated with a room, that room can no longer access geometry that is in the global scope.
+	/**
+	* Enable or disable geometric diffraction for this mesh.
+	* @param bInEnableDiffraction - Set to true to have Wwise Spatial Audio generate diffraction edges on the geometry.
+	* @param bInEnableDiffractionOnBoundaryEdges - Set to true to enable geometric diffraction on boundary edges for this Geometry. Boundary edges are edges that are connected to only one triangle.
 	*/
-	UPROPERTY(EditAnywhere, AdvancedDisplay, BlueprintReadWrite, Category = "Geometry")
-	AActor* AssociatedRoom = nullptr;
+	UFUNCTION(BlueprintCallable, Category = "Audiokinetic|AkGeometry")
+	void SetEnableDiffraction(bool bInEnableDiffraction, bool bInEnableDiffractionOnBoundaryEdges);
+
+	/**
+	* When set to false (default), the intersection of the geometry instance with any portal bounding box is subtracted from the geometry.In effect, an opening is created at the portal location through which sound can pass.
+	* When set to true, portals cannot create openings in the geometry instance. Enable this to allow the geometry instance to be an obstacle to paths going into or through portal bounds.
+	*/
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Geometry", DisplayName = "Bypass Portal Subtraction [Experimental]")
+	bool bBypassPortalSubtraction = false;
+
+	/** A solid geometry instance applies transmission loss once for each time a transmission path enters and exits its volume, using the max transmission loss between each hit surface. A non-solid geometry instance is one where each surface is infinitely thin, applying transmission loss at each surface. This option has no effect if the Transmission Operation is set to Max. */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Geometry")
+	bool bSolid = false;
 
 	float GetSurfaceAreaSquaredMeters(const int& surfaceIndex) const;
 
@@ -201,7 +258,7 @@ private:
 	UPROPERTY()
 	TMap<int, double> SurfaceAreas;
 	
-	TMap<UMaterialInterface*, FAkGeometrySurfaceOverride> PreviousStaticMeshSurfaceOverride;
+	TMap<TObjectPtr<UMaterialInterface>, FAkGeometrySurfaceOverride> PreviousStaticMeshSurfaceOverride;
 
 	void BeginPlayInternal();
 #if WITH_EDITOR
@@ -215,4 +272,8 @@ private:
 	FOnRefreshDetails OnRefreshDetails;
 	FDelegateHandle OnMeshMaterialChangedHandle;
 #endif
+
+	bool _SetAcousticPropertiesOverride(UMaterialInterface* InMaterialInterface, FAkGeometrySurfaceOverride InAcousticPropertiesOverride, FAkGeometrySurfaceOverride& OutAcousticPropertiesOverride);
+	void OnCollisionAcousticPropertiesOverrideChanged();
+	void OnStaticMeshAcousticPropertiesOverrideChanged(UMaterialInterface* InMaterialInterface);
 };

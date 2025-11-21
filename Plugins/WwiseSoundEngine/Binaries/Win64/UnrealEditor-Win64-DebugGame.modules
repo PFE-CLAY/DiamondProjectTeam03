@@ -1,0 +1,9 @@
+{
+	"BuildId": "43139311",
+	"Modules": 
+	{
+		"WwiseAuthoring": "UnrealEditor-WwiseAuthoring-Win64-DebugGame.dll",
+		"WwiseLowLevelUtils": "UnrealEditor-WwiseLowLevelUtils-Win64-DebugGame.dll",
+		"WwiseSoundEngine": "UnrealEditor-WwiseSoundEngine-Win64-DebugGame.dll"
+	}
+}

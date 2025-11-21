@@ -12,7 +12,7 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #pragma once
@@ -24,13 +24,12 @@ Copyright (c) 2024 Audiokinetic Inc.
 namespace WwiseUnrealHelper
 {
 	WWISEUTILS_API void SetHelperFunctions(
-		FString(*GetWwisePluginDirectoryImpl)(),
+		FString(*GetWwiseSoundEnginePluginDirectoryImpl)(),
 		FString(*GetWwiseProjectPathImpl)(),
-		FString(*GetSoundBankDirectoryImpl)(),
-		FString(*GetStagePathImpl)()
+		FString(*GetSoundBankDirectoryImpl)()
 		);
 
-	WWISEUTILS_API FString GetWwisePluginDirectory();
+	WWISEUTILS_API FString GetWwiseSoundEnginePluginDirectory();
 	WWISEUTILS_API FString GetWwiseProjectPath();
 	WWISEUTILS_API FString GetSoundBankDirectory();
 	WWISEUTILS_API FString GetSoundBankProjectMetadataFile();
@@ -40,15 +39,9 @@ namespace WwiseUnrealHelper
 	WWISEUTILS_API FString GetProjectDirectory();
 	WWISEUTILS_API FString GetThirdPartyDirectory();
 	WWISEUTILS_API FString GetContentDirectory();
-	WWISEUTILS_API FString GetExternalSourceDirectory();
-
-	WWISEUTILS_API FString GetWwiseProjectDirectoryPath();
-	WWISEUTILS_API FString GetWwiseSoundBankInfoCachePath();
-	WWISEUTILS_API FString FormatFolderPath(FString folderPath);
-	WWISEUTILS_API bool MakePathRelativeToWwiseProject(FString& AbsolutePath);
+	
 
 	WWISEUTILS_API void RunTaskInGameThread(TFunction<void()> Function);
-
 	extern WWISEUTILS_API const TCHAR* MediaFolderName;
 
 	extern WWISEUTILS_API const FGuid InitBankID;

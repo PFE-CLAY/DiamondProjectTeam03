@@ -12,7 +12,7 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #pragma once
@@ -56,7 +56,16 @@ public:
 	virtual void FillInfo() override;
 #endif
 
-private :
+#if WITH_EDITORONLY_DATA && UE_5_5_OR_LATER
+public:
+#if UE_5_6_OR_LATER
+	virtual void OnCookEvent(UE::Cook::ECookEvent CookEvent, UE::Cook::FCookEventContext& Context) override;
+#else
+	virtual void PreSave(FObjectPreSaveContext Context) override;
+#endif
+#endif
+
+private:
 	void LoadEffectShareSet();
 	void UnloadEffectShareSet(bool bAsync);
 	FWwiseLoadedShareSetPtrAtomic LoadedShareSet{nullptr};

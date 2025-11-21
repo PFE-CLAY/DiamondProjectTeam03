@@ -3,8 +3,10 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "TP_WeaponComponent.h"
+#include "FCEasing.h"
+#include "UWeaponComponent.h"
 #include "GameFramework/Character.h"
+#include "GameFramework/SpringArmComponent.h"
 #include "Logging/LogMacros.h"
 #include "DiamondProjectCharacter.generated.h"
 
@@ -19,6 +21,9 @@ DECLARE_LOG_CATEGORY_EXTERN(LogTemplateCharacter, Log, All);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnInteract);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnMantle);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnPause);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnDash);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnPreplanOnOff);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnPreplanClicked); //possiblement à remettre dans le code quand j'aurai trouvé une meilleure solution
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnPreplanMove, FVector2D, Value);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnPreplanZoom, float, ZoomValue);
 
@@ -38,6 +43,9 @@ class ADiamondProjectCharacter : public ACharacter
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category=Mesh, meta = (AllowPrivateAccess = "true"))
 	USkeletalMeshComponent* Mesh1P;
 
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category=Mesh, meta=(AllowPrivateAccess = "true"))
+	USpringArmComponent* SpringArm;
+
 	/** First person camera */
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
 	UCameraComponent* FirstPersonCameraComponent;
@@ -55,6 +63,9 @@ class ADiamondProjectCharacter : public ACharacter
 	UInputAction* InteractAction;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Input, meta=(AllowPrivateAccess = "true"))
+	UInputAction* DashAction;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Input, meta=(AllowPrivateAccess = "true"))
 	UInputAction* MantleAction;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Input, meta=(AllowPrivateAccess = "true"))
@@ -65,6 +76,12 @@ class ADiamondProjectCharacter : public ACharacter
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Input, meta=(AllowPrivateAccess = "true"))
 	UInputAction* PreplanZoomAction;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Input, meta=(AllowPrivateAccess = "true"))
+	UInputAction* PreplanOnOffAction;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Input, meta=(AllowPrivateAccess = "true"))
+	UInputAction* PreplanClickedAction;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Input, meta=(AllowPrivateAccess = "true"))
 	UInputAction* CheatOpenHatchAction;
@@ -86,6 +103,7 @@ public:
 
 protected:
 	virtual void BeginPlay();
+	virtual void Tick(float deltaTime);
 
 public:
 		
@@ -96,18 +114,35 @@ public:
 	UPROPERTY(BlueprintAssignable, Category = "Interaction")
 	FOnInteract OnInteract;
 	
-	
 	UPROPERTY(BlueprintAssignable, Category = "Interaction")
 	FOnMantle OnMantle;
 
 	UPROPERTY(BlueprintAssignable, Category = "Interaction")
 	FOnPause OnPause;
 
+	UPROPERTY(BlueprintAssignable, Category = "Dash")
+	FOnDash OnDash;
+
+	UPROPERTY(BlueprintAssignable, Category = "Dash")
+	FOnDash OnDashRecovery;
+	
+	UPROPERTY(BlueprintAssignable, Category = "Dash")
+	FOnDash OnDashRecoveryFull;
+	
+	UPROPERTY(BlueprintAssignable, Category = "Dash")
+	FOnDash  OnDashUpdateCD;
+	
 	UPROPERTY(BlueprintAssignable, Category = "Preplan")
 	FOnPreplanMove OnPreplanMove;
 	
 	UPROPERTY(BlueprintAssignable, Category = "Preplan")
 	FOnPreplanZoom OnPreplanZoom;
+	
+	UPROPERTY(BlueprintAssignable, Category = "Preplan")
+	FOnPreplanOnOff OnPreplanOnOff;
+
+	UPROPERTY(BlueprintAssignable, Category = "Preplan")
+	FOnPreplanOnOff OnPreplanClicked;
 
 	UPROPERTY(BlueprintAssignable, Category = "Cheats")
 	FOnCheatOpenHatch OnCheatOpenHatch;
@@ -125,12 +160,14 @@ public:
 	FOnCheatEndLoop OnCheatEndLoop;
 	
 	UPROPERTY()
-	TObjectPtr<UTP_WeaponComponent> CurrentWeapon;
+	TObjectPtr<UWeaponComponent> CurrentWeapon;
 
 protected:
 	/** Called for movement input */
 	void Move(const FInputActionValue& Value);
-
+	
+	void Dash(const FInputActionValue& Value);
+	
 	/** Called for looking input */
 	void Look(const FInputActionValue& Value);
 
@@ -143,6 +180,10 @@ protected:
 	void PreplanMove(const FInputActionValue& Value);
 
 	void PreplanZoom(const FInputActionValue& Value);
+	
+	void PreplanOnOff(const FInputActionValue& Value);
+	
+	void PreplanClicked(const FInputActionValue& Value);
 
 	void CheatOpenHatch(const FInputActionValue& Value);
 	
@@ -153,12 +194,52 @@ protected:
 	void CheatToggleAllyInvincibility(const FInputActionValue& Value);
 
 	void CheatEndLoop(const FInputActionValue& Value);
+	
+	
 
 protected:
 	// APawn interface
 	virtual void SetupPlayerInputComponent(UInputComponent* InputComponent) override;
+	
 	// End of APawn interface
 
+private:
+	UFUNCTION()
+	void SetNewDashTimer();
+	UFUNCTION()
+	void SetDashReady();
+	//Dash parameters
+	
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Dash, meta=(AllowPrivateAccess = "true"))
+	FTimerHandle TimerHandle;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category=Dash, meta=(AllowPrivateAccess = "true"))
+	bool bisDashing;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category=Dash, meta=(AllowPrivateAccess = "true"))
+	bool bCanDash;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category=Dash, meta=(AllowPrivateAccess = "true"))
+	bool bisInAirNotAffectingDashCooldown;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Dash, meta=(AllowPrivateAccess = "true"))
+	float dashPower=7000;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category=Dash, meta=(AllowPrivateAccess = "true"))
+	FVector2D dashDir;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Dash, meta=(AllowPrivateAccess = "true"))
+	float DashDurationATFull=.1f;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category=Dash, meta=(AllowPrivateAccess = "true"))
+	int DashCharge=2;
+	UPROPERTY()
+	int DashMaxCharge;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category=Dash, meta=(AllowPrivateAccess = "true"))
+	float DashUIValue;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Dash, meta=(AllowPrivateAccess = "true"))
+	float DashCooldown=1.f;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Dash, meta=(AllowPrivateAccess = "true"))
+	float DashDurationDecay=.1f;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Dash, meta=(AllowPrivateAccess = "true"))
+	EFCEase dashCurve = EFCEase::InCirc;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category=preplan, meta=(AllowPrivateAccess = "true"))
+	bool bisPreplanOpen;
+	
 public:
 	/** Returns Mesh1P subobject **/
 	USkeletalMeshComponent* GetMesh1P() const { return Mesh1P; }

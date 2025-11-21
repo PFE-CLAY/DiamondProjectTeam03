@@ -12,7 +12,7 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #include "AkSoundBankGenerationManager.h"
@@ -26,14 +26,11 @@ Copyright (c) 2024 Audiokinetic Inc.
 #include "Async/Async.h"
 #include "Framework/Docking/TabManager.h"
 #include "Framework/Notifications/NotificationManager.h"
-#if UE_5_0_OR_LATER
 #include "HAL/PlatformFileManager.h"
-#else
-#include "HAL/PlatformFilemanager.h"
-#endif
 #include "AkAudioModule.h"
 #include "Misc/ScopeExit.h"
 #include "Internationalization/Text.h"
+#include "Wwise/WwisePluginStyle.h"
 #include "Wwise/WwiseProjectDatabase.h"
 
 #define LOCTEXT_NAMESPACE "AkAudio"
@@ -126,8 +123,11 @@ void AkSoundBankGenerationManager::WrapUpGeneration(const bool bSuccess, const F
 	{
 		return;
 	}
-	FAkAudioModule::AkAudioModuleInstance->UpdateWwiseResourceLoaderSettings();
-	ProjectDatabase->UpdateDataStructure();
+	FAkAudioModule::UpdateWwiseResourceCookerSettings();
+	if(IsRunningCommandlet())
+	{
+		ProjectDatabase->UpdateDataStructure();		
+	}
 }
 
 void AkSoundBankGenerationManager::CreateNotificationItem()
@@ -138,15 +138,11 @@ void AkSoundBankGenerationManager::CreateNotificationItem()
 			{
 				FNotificationInfo Info(LOCTEXT("GeneratingSoundBanks", "Generating Wwise SoundBanks..."));
 
-				Info.Image = FAkAudioStyle::GetBrush(TEXT("AudiokineticTools.AkBrowserTabIcon"));
+				Info.Image = FWwisePluginStyle::Get()->GetBrush(FWwisePluginStyle::WwiseIconName);
 				Info.bFireAndForget = false;
 				Info.FadeOutDuration = 0.0f;
 				Info.ExpireDuration = 0.0f;
-	#if UE_4_26_OR_LATER
 				Info.Hyperlink = FSimpleDelegate::CreateLambda([]() { FGlobalTabmanager::Get()->TryInvokeTab(FName("OutputLog")); });
-	#else
-				Info.Hyperlink = FSimpleDelegate::CreateLambda([]() { FGlobalTabmanager::Get()->InvokeTab(FName("OutputLog")); });
-	#endif
 				Info.HyperlinkText = LOCTEXT("ShowOutputLogHyperlink", "Show Output Log");
 				sharedThis->NotificationItem = FSlateNotificationManager::Get().AddNotification(Info);
 			});
@@ -197,15 +193,6 @@ void AkSoundBankGenerationManager::NotifyProfilingInProgress()
 {
 	Notify(TEXT("SoundBankGenerationProfiling"),
 		TEXT("Cannot generate SoundBanks while Authoring is profiling."), 
-		TEXT("/Engine/EditorSounds/Notifications/CompileFailed_Cue.CompileFailed_Cue"),
-		false);
-}
-
-void AkSoundBankGenerationManager::NotifyAuthoringUnavailable() 
-{
-	Notify(
-		TEXT("SoundBankGenerationAuthoringLocked"), 
-		TEXT("Cannot generate SoundBanks while Authoring is in its current state."),
 		TEXT("/Engine/EditorSounds/Notifications/CompileFailed_Cue.CompileFailed_Cue"),
 		false);
 }
@@ -344,16 +331,6 @@ bool AkSoundBankGenerationManager::WAAPIGenerate()
 	TSharedRef<FJsonObject> args = MakeShared<FJsonObject>();
 	TSharedRef<FJsonObject> options = MakeShared<FJsonObject>();
 	TSharedPtr<FJsonObject> result;
-
-	if (FAkWaapiClient::Get()->Call(ak::wwise::core::remote::getConnectionStatus, args, options, result, -1))
-	{
-		bool isConnected = false;
-		if (result->TryGetBoolField(WwiseWaapiHelper::IS_CONNECTED, isConnected) && isConnected)
-		{
-			NotifyAuthoringUnavailable();
-			return false;
-		}
-	}
 
 	TArray<TSharedPtr<FJsonValue>> platformJsonArray;
 	for (auto& platform : InitParameters.Platforms)

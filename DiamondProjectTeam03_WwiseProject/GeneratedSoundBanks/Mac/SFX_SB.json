@@ -3,14 +3,15 @@
   "Platform": "Mac",
   "BasePlatform": "Mac",
   "SchemaVersion": "16",
-  "SoundBankVersion": "150",
+  "SoundBankVersion": "154",
   "SoundBanks": [
    {
     "Id": "3896292454",
     "Type": "User",
     "GUID": "{459D1F67-52BD-4FA1-B846-B8F3A50C2C5F}",
+    "Color": "17",
     "Language": "SFX",
-    "Hash": "{5E8BE29B-3E92-B6EB-9A5F-D137D73BE309}",
+    "Hash": "{3F25947D-8A4F-B3B0-F1D3-1EC6B0FD17F6}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\SFX_SB",
     "ShortName": "SFX_SB",
     "Path": "SFX_SB.bnk",
@@ -21,7 +22,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "SFX_BlackSand_Glitchy_2s_Stereo_06.wav",
-      "CachePath": "SFX/SFX_BlackSand_Glitchy_2s_Stereo_06_818F3B66.wem"
+      "CachePath": "06/{061C427C-F281-2E9D-D7DC-D20EA58BFEC5}.wem"
      },
      {
       "Id": "418805659",
@@ -29,7 +30,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "SFX_BlackSand_Glitchy_2s_Stereo_04.wav",
-      "CachePath": "SFX/SFX_BlackSand_Glitchy_2s_Stereo_04_818F3B66.wem"
+      "CachePath": "5B/{5BFBE6F7-4E49-536F-9EEA-9C176EF25C3F}.wem"
      },
      {
       "Id": "460314317",
@@ -37,7 +38,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "SFX_BlackSand_Glitchy_2s_Stereo_02.wav",
-      "CachePath": "SFX/SFX_BlackSand_Glitchy_2s_Stereo_02_818F3B66.wem"
+      "CachePath": "0A/{0A54382E-C0DE-AD37-E077-EF38B145DF68}.wem"
      },
      {
       "Id": "482790053",
@@ -45,7 +46,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "MC\\SFX_Door_Pyramid_Open.wav",
-      "CachePath": "SFX/MC/SFX_Door_Pyramid_Open_818F3B66.wem"
+      "CachePath": "18/{1849399E-D740-513D-FA9C-914BCAAD267D}.wem"
      },
      {
       "Id": "498448547",
@@ -53,7 +54,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "SFX_BlackSand_Glitchy_2s_Stereo_01.wav",
-      "CachePath": "SFX/SFX_BlackSand_Glitchy_2s_Stereo_01_818F3B66.wem"
+      "CachePath": "64/{64E42013-D7E2-808D-E95E-779D93FF55D5}.wem"
      },
      {
       "Id": "640927559",
@@ -61,7 +62,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "SFX_Button_Backstage.wav",
-      "CachePath": "SFX/SFX_Button_Backstage_818F3B66.wem"
+      "CachePath": "82/{82F255B1-9004-6903-C391-016D39FD6611}.wem"
      },
      {
       "Id": "794556847",
@@ -69,7 +70,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "MC\\SFX_HourGlass_Idle_LP.wav",
-      "CachePath": "SFX/MC/SFX_HourGlass_Idle_LP_FBC78EF0.wem"
+      "CachePath": "9E/{9E9F4175-FA7A-716B-4585-6EDB4DFDB77D}.wem"
      },
      {
       "Id": "846163179",
@@ -77,7 +78,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "MC\\SFX_EndCinematic.wav",
-      "CachePath": "SFX/MC/SFX_EndCinematic_818F3B66.wem"
+      "CachePath": "1F/{1F764E73-3056-A979-4624-357EC16404CB}.wem"
      },
      {
       "Id": "862611700",
@@ -85,7 +86,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "MC\\SFX_Door_Pyramid.wav",
-      "CachePath": "SFX/MC/SFX_Door_Pyramid_AA228216.wem"
+      "CachePath": "1A/{1AD9C707-2215-0919-22D3-BF8A571C4E30}.wem"
      },
      {
       "Id": "1013981530",
@@ -93,7 +94,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "SFX_BlackSand_Glitchy_2s_Stereo_05.wav",
-      "CachePath": "SFX/SFX_BlackSand_Glitchy_2s_Stereo_05_818F3B66.wem"
+      "CachePath": "EB/{EB411A14-847D-B177-ACC9-45C294A582EB}.wem"
      },
      {
       "Id": "1028643509",
@@ -101,7 +102,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "SFX_BlackSand_Glitchy_2s_Stereo_03.wav",
-      "CachePath": "SFX/SFX_BlackSand_Glitchy_2s_Stereo_03_818F3B66.wem"
+      "CachePath": "A8/{A810EF3C-0027-8B6D-95B4-735D8FD5175C}.wem"
      },
      {
       "Id": "1049815799",
@@ -109,7 +110,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "MC\\SFX_HourGlass_Destruction_2D.wav",
-      "CachePath": "SFX/MC/SFX_HourGlass_Destruction_2D_818F3B66.wem"
+      "CachePath": "06/{063FC635-A85C-DE7F-9008-1CC84261DC06}.wem"
      }
     ],
     "Events": [
@@ -118,6 +119,7 @@
       "Name": "Play_SFX_Button_Backstage",
       "ObjectPath": "\\Events\\SFX_WU\\Play_SFX_Button_Backstage",
       "GUID": "{F8593F23-32CE-4C34-A551-35034A61FD79}",
+      "Color": "17",
       "MaxAttenuation": "2000",
       "DurationType": "OneShot",
       "DurationMin": "0.9392083",
@@ -133,6 +135,7 @@
       "Name": "Play_SFX_Door_Pyramid_Close",
       "ObjectPath": "\\Events\\SFX_WU\\Play_SFX_Door_Pyramid_Close",
       "GUID": "{1829F329-FCFF-4E10-8065-7D10B11DDA83}",
+      "Color": "17",
       "MaxAttenuation": "2000",
       "DurationType": "OneShot",
       "DurationMin": "5.4468756",
@@ -148,6 +151,7 @@
       "Name": "Play_SFX_Door_Pyramid_Open",
       "ObjectPath": "\\Events\\SFX_WU\\Play_SFX_Door_Pyramid_Open",
       "GUID": "{03DAD17B-66BC-4B93-B7D8-6E1B8239766D}",
+      "Color": "17",
       "MaxAttenuation": "2000",
       "DurationType": "OneShot",
       "DurationMin": "4.623",
@@ -163,6 +167,7 @@
       "Name": "Play_SFX_EndCinematic",
       "ObjectPath": "\\Events\\SFX_WU\\Play_SFX_EndCinematic",
       "GUID": "{6045A319-19E1-40D4-AEC6-4D6054A6BBE3}",
+      "Color": "17",
       "DurationType": "OneShot",
       "DurationMin": "33.23227",
       "DurationMax": "33.23227",
@@ -177,6 +182,7 @@
       "Name": "Play_SFX_HourGlass_Destruction_2D",
       "ObjectPath": "\\Events\\SFX_WU\\Play_SFX_HourGlass_Destruction_2D",
       "GUID": "{FDD8C402-5336-447B-B1DA-70926B131299}",
+      "Color": "17",
       "DurationType": "OneShot",
       "DurationMin": "18.631792",
       "DurationMax": "18.631792",
@@ -209,6 +215,7 @@
       "Name": "Play_SFX_HourGlass_Idle_LP",
       "ObjectPath": "\\Events\\SFX_WU\\Play_SFX_HourGlass_Idle_LP",
       "GUID": "{0994537E-EF34-4F9C-A1D4-F9FFCF6E9CD1}",
+      "Color": "17",
       "MaxAttenuation": "150000",
       "DurationType": "Infinite",
       "MediaRefs": [
@@ -220,6 +227,6 @@
     ]
    }
   ],
-  "FileHash": "{792E8877-84B0-1E01-3185-A1C8A9D25B56}"
+  "FileHash": "{90D91396-C1C3-7174-2164-990359DAE463}"
  }
 }

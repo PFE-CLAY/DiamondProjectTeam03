@@ -34,6 +34,9 @@ public:
 
 	UPROPERTY(BlueprintReadWrite)
 	float CrosshairSize = 0.1f;
+	
+	UPROPERTY(BlueprintReadWrite)
+	float DashUISize = 0.1f;
 
 	UPROPERTY(BlueprintReadWrite)
 	float MasterVolume = 1.0f;
@@ -56,4 +59,15 @@ public:
 	bool IsPreplanInSceneVisible() const;
 	UFUNCTION(BlueprintCallable)
 	void SetPreplanInSceneVisibility(bool IsPreplanVisible);
+
+	UFUNCTION(BlueprintCallable)
+	void SaveSettings();
+
+	UFUNCTION(BlueprintCallable)
+	void LoadSettings();
+
+	UFUNCTION(BlueprintCallable)
+	void ResetSettings();
+
+	virtual void Initialize(FSubsystemCollectionBase& Collection) override;
 };

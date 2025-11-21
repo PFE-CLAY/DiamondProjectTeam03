@@ -12,7 +12,7 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #include "SAcousticSurfacesController.h"
@@ -254,6 +254,7 @@ void SAcousticSurfacesController::InitReflectorSetsFacesToEdit()
 	for (TWeakObjectPtr<UObject> ObjectBeingCustomized : ComponentsToEdit)
 	{
 		UAkSurfaceReflectorSetComponent* reflectorSetComponent = Cast<UAkSurfaceReflectorSetComponent>(ObjectBeingCustomized.Get());
+
 		if (reflectorSetComponent)
 		{
 			int ObjectSelectedFaces = 0;
@@ -261,18 +262,24 @@ void SAcousticSurfacesController::InitReflectorSetsFacesToEdit()
 			if (ApplyToAllFaces)
 			{
 				for (int i = 0; i < reflectorSetComponent->AcousticPolys.Num(); ++i)
+				{
 					FacesToEdit.Add(i);
-
-				ObjectSelectedFaces = FacesToEdit.Num();
+				}
 			}
 			else
 			{
 				FacesToEdit = reflectorSetComponent->GetSelectedFaceIndices(ObjectSelectedFaces);
 			}
-
+			ObjectSelectedFaces = FacesToEdit.Num();
 			NumFacesSelected += ObjectSelectedFaces;
-			if (FacesToEdit.Num() > 0)
+			if (ObjectSelectedFaces > 0)
+			{
 				ReflectorSetsFacesToEdit.Add(reflectorSetComponent, FacesToEdit);
+			}
+			else
+			{
+				ReflectorSetsFacesToEdit.Remove(reflectorSetComponent);
+			}
 		}
 	}
 
@@ -281,7 +288,7 @@ void SAcousticSurfacesController::InitReflectorSetsFacesToEdit()
 
 FAkSurfacePoly& SAcousticSurfacesController::GetAcousticSurfaceChecked(UAkSurfaceReflectorSetComponent* reflectorSet, int faceIndex)
 {
-	ensure(faceIndex <= reflectorSet->AcousticPolys.Num());
+	ensure(faceIndex < reflectorSet->AcousticPolys.Num());
 	return reflectorSet->AcousticPolys[faceIndex];
 }
 

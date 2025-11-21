@@ -31,9 +31,15 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="PreplanData")
 	bool bIsActiveOnStart = false;
 
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="PreplanData")
+	bool bIsInTwoParts = false;
+
 	UPROPERTY(EditAnywhere, Category="PreplanData")
+	int SndNbActivationsRequired = 2;
+
+	/*UPROPERTY(EditAnywhere, Category="PreplanData")
 	bool bShouldActivateDream = false;
 	
 	UPROPERTY(EditAnywhere, Category="PreplanData", meta = (EditCondition="bShouldActivateDream"))
-	TObjectPtr<UDataTable> DreamSubtitles;
+	TObjectPtr<UDataTable> DreamSubtitles;*/
 };

@@ -12,7 +12,7 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #pragma once
@@ -61,7 +61,7 @@ public:
 
 private:
 	UPROPERTY(Transient)
-	UPrimitiveComponent* Primitive = nullptr;
+	TObjectPtr<UPrimitiveComponent> Primitive = nullptr;
 	UAkLateReverbComponent* ReverbComponent = nullptr;
 	/* Looks for a room component attached to Primitive, whose room ID has been registered with wwise, and whose world is Game or PIE.
 		room will be null if no such room is found, or if there is no valid AkAudioDevice.

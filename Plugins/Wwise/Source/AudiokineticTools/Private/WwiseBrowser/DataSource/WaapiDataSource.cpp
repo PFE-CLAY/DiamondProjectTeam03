@@ -12,7 +12,7 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #include "WaapiDataSource.h"
@@ -29,7 +29,7 @@ Copyright (c) 2024 Audiokinetic Inc.
 #include "Async/Async.h"
 #include "Dom/JsonObject.h"
 #include "Misc/Paths.h"
-#include "WaapiPicker/WwiseTreeItem.h"
+#include "Wwise/WwiseTreeItem.h"
 
 FWaapiDataSource::~FWaapiDataSource()
 {
@@ -108,6 +108,7 @@ bool FWaapiDataSource::ConstructTree(bool bShouldRefresh)
 	{
 
 		FWwiseTreeItemPtr TreeRoot = ConstructTreeRoot(static_cast<EWwiseItemType::Type>(i));
+		if(TreeRoot)
 		{
 			FScopeLock AutoLock(&WaapiRootItemsLock);
 			RootItems.Add(TreeRoot);
@@ -1071,13 +1072,14 @@ EWwiseConnectionStatus FWaapiDataSource::IsProjectLoaded()
 			return EWwiseConnectionStatus::SettingDisabled;
 		}
 	}
+#if AK_SUPPORT_WAAPI
 	if(FAkWaapiClient::IsProjectLoaded())
 	{
 		if(auto AkWaapiClient = FAkWaapiClient::Get())
 		{
 			FString WaapiPath;
 			TSharedPtr<FJsonObject> outJsonResult;
-			AkWaapiClient->Call(ak::wwise::core::getProjectInfo, MakeShareable(new FJsonObject()), MakeShareable(new FJsonObject()), outJsonResult, 500, false);
+			AkWaapiClient->Call(ak::wwise::core::getProjectInfo, MakeShareable(new FJsonObject()), MakeShareable(new FJsonObject()), outJsonResult, false);
 			if(auto directoriesObject = outJsonResult->GetObjectField(TEXT("directories")))
 			{
 				WaapiPath = directoriesObject->GetStringField(TEXT("soundBankOutputRoot"));
@@ -1097,6 +1099,7 @@ EWwiseConnectionStatus FWaapiDataSource::IsProjectLoaded()
 			{
 				UnrealRootOutputPath += "/";
 			}
+			FAkWaapiClient::ConvertProjectPath(WaapiRootOutputPath);
 			if(WaapiRootOutputPath != UnrealRootOutputPath)
 			{
 				return EWwiseConnectionStatus::WrongRootOutputPath;
@@ -1109,6 +1112,7 @@ EWwiseConnectionStatus FWaapiDataSource::IsProjectLoaded()
 	{
 		return EWwiseConnectionStatus::WrongProjectOpened;
 	}
+#endif
 	return EWwiseConnectionStatus::WwiseNotOpen;
 }
 

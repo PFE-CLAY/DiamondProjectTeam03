@@ -12,7 +12,7 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #include "AkAudioDeviceShareSet.h"
@@ -36,7 +36,7 @@ void UAkAudioDeviceShareSet::Serialize(FArchive& Ar)
 	if (Ar.IsCooking() && Ar.IsSaving() && !Ar.CookingTarget()->IsServerOnly())
 	{
 		FWwiseAudioDeviceShareSetCookedData CookedDataToArchive;
-		if (auto* ResourceCooker = FWwiseResourceCooker::GetForArchive(Ar))
+		if (auto* ResourceCooker = IWwiseResourceCooker::GetForArchive(Ar))
 		{
 			ResourceCooker->PrepareCookedData(CookedDataToArchive, GetValidatedInfo(AudioDeviceShareSetInfo));
 		}
@@ -57,7 +57,7 @@ void UAkAudioDeviceShareSet::PostLoad()
 
 void UAkAudioDeviceShareSet::FillInfo()
 {
-	auto* ResourceCooker = FWwiseResourceCooker::GetDefault();
+	auto* ResourceCooker = IWwiseResourceCooker::GetDefault();
 	if (UNLIKELY(!ResourceCooker))
 	{
 		UE_LOG(LogAkAudio, Error, TEXT("UAkAudioDeviceShareSet::FillInfo: ResourceCooker not initialized"));
@@ -72,17 +72,19 @@ void UAkAudioDeviceShareSet::FillInfo()
 	}
 
 	FWwiseObjectInfo* AudioTypeInfo = &AudioDeviceShareSetInfo;
-	const FWwiseRefAudioDevice AudioTypeRef = FWwiseDataStructureScopeLock(*ProjectDatabase).GetAudioDevice(
+	const WwiseRefAudioDevice AudioTypeRef = WwiseDataStructureScopeLock(*ProjectDatabase).GetAudioDevice(
 		GetValidatedInfo(AudioDeviceShareSetInfo));
 
-	if (AudioTypeRef.AudioDeviceName().IsNone() || !AudioTypeRef.AudioDeviceGuid().IsValid() || AudioTypeRef.AudioDeviceId() == AK_INVALID_UNIQUE_ID)
+	if (AudioTypeRef.AudioDeviceName()->IsEmpty() || !AudioTypeRef.AudioDeviceGuid().IsValid() || AudioTypeRef.AudioDeviceId() == AK_INVALID_UNIQUE_ID)
 	{
 		UE_LOG(LogAkAudio, Warning, TEXT("UAkAudioDeviceShareSet::FillInfo: Valid object not found in Project Database"));
 		return;
 	}
 
-	AudioTypeInfo->WwiseName = AudioTypeRef.AudioDeviceName();
-	AudioTypeInfo->WwiseGuid = AudioTypeRef.AudioDeviceGuid();
+	AudioTypeInfo->WwiseName = FName(**AudioTypeRef.AudioDeviceName());
+	int A, B, C, D;
+	AudioTypeRef.AudioDeviceGuid().GetGuidValues(A, B, C, D);
+	AudioTypeInfo->WwiseGuid = FGuid(A, B, C, D);
 	AudioTypeInfo->WwiseShortId = AudioTypeRef.AudioDeviceId();
 }
 #endif
@@ -100,7 +102,7 @@ void UAkAudioDeviceShareSet::GetAudioDeviceShareSetCookedData()
 		UE_LOG(LogAkAudio, VeryVerbose, TEXT("UAkAudioDeviceShareSet::GetAudioDeviceShareSetCookedData: Not loading '%s' because project database is not parsed."), *GetName())
 			return;
 	}
-	auto* ResourceCooker = FWwiseResourceCooker::GetDefault();
+	auto* ResourceCooker = IWwiseResourceCooker::GetDefault();
 	if (UNLIKELY(!ResourceCooker))
 	{
 		return;

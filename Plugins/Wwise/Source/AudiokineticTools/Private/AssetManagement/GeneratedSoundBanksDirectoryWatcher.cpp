@@ -12,7 +12,7 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #include "AssetManagement/GeneratedSoundBanksDirectoryWatcher.h"
@@ -27,6 +27,7 @@ Copyright (c) 2024 Audiokinetic Inc.
 #include "Async/Async.h"
 #include "Framework/Docking/TabManager.h"
 #include "Framework/Notifications/NotificationManager.h"
+#include "Wwise/WwisePluginStyle.h"
 #include "Wwise/WwiseProjectDatabase.h"
 #include "Wwise/WwiseProjectDatabaseDelegates.h"
 #include "Wwise/WwiseSoundEngineModule.h"
@@ -48,11 +49,11 @@ void GeneratedSoundBanksDirectoryWatcher::CheckIfCachePathChanged()
 		return;
 	}
 
-	const FWwiseDataStructureScopeLock DataStructure(*ProjectDatabase);
-	const FWwiseRefPlatform Platform = DataStructure.GetPlatform(ProjectDatabase->GetCurrentPlatform());
+	const WwiseDataStructureScopeLock DataStructure(*ProjectDatabase);
+	const WwiseRefPlatform Platform = DataStructure.GetPlatform(ProjectDatabase->GetCurrentPlatform());
 	if (auto* ProjectInfo = Platform.ProjectInfo.GetProjectInfo())
 	{
-		const FString SourceCachePath = WwiseUnrealHelper::GetSoundBankDirectory() / ProjectInfo->CacheRoot.ToString();
+		const FString SourceCachePath = WwiseUnrealHelper::GetSoundBankDirectory() / FWwiseStringConverter::ToFString(ProjectInfo->CacheRoot);
 		if (SourceCachePath != CachePath || !CacheChangedHandle.IsValid())
 		{
 			UE_LOG(LogAudiokineticTools, Verbose, TEXT("GeneratedSoundBanksDirectoryWatcher::CheckIfCachePathChanged: Cache path changed, restarting cache watcher."));
@@ -112,13 +113,13 @@ void GeneratedSoundBanksDirectoryWatcher::StartWatchers()
 			UE_LOG(LogAudiokineticTools, Warning, TEXT("GeneratedSoundBanksDirectoryWatcher::StartWatchers: Could not get WwiseProjectDatabase. Wwise Cache watcher will not be initialized"));
 			return;
 		}
-		const FWwiseDataStructureScopeLock DataStructure(*ProjectDatabase);
-		const FWwiseRefPlatform Platform = DataStructure.GetPlatform(ProjectDatabase->GetCurrentPlatform());
+		const WwiseDataStructureScopeLock DataStructure(*ProjectDatabase);
+		const WwiseRefPlatform Platform = DataStructure.GetPlatform(ProjectDatabase->GetCurrentPlatform());
 		if (Platform.IsValid())
 		{
 			if (auto* ProjectInfo = Platform.ProjectInfo.GetProjectInfo())
 			{
-				const FString SourceCachePath = WwiseUnrealHelper::GetSoundBankDirectory() / ProjectInfo->CacheRoot.ToString();
+				const FString SourceCachePath = WwiseUnrealHelper::GetSoundBankDirectory() / FWwiseStringConverter::ToFString(ProjectInfo->CacheRoot);
 				StartCacheWatcher(SourceCachePath);
 			}
 		}
@@ -273,15 +274,11 @@ void GeneratedSoundBanksDirectoryWatcher::NotifyFilesChanged()
 		InfoString = FText::Format(InfoString, NamedArguments);
 		FNotificationInfo Info(InfoString);
 
-		Info.Image = FAkAudioStyle::GetBrush(TEXT("AudiokineticTools.AkBrowserTabIcon"));
+		Info.Image = FWwisePluginStyle::Get()->GetBrush(FWwisePluginStyle::WwiseIconName);
 		Info.bFireAndForget = false;
 		Info.FadeOutDuration = 0.5f;
 		Info.ExpireDuration = 0.0f;
-#if UE_4_26_OR_LATER
 		Info.Hyperlink = FSimpleDelegate::CreateLambda([]() { FGlobalTabmanager::Get()->TryInvokeTab(FName("OutputLog")); });
-#else
-		Info.Hyperlink = FSimpleDelegate::CreateLambda([]() { FGlobalTabmanager::Get()->InvokeTab(FName("OutputLog")); });
-#endif
 		Info.HyperlinkText = LOCTEXT("ShowOutputLogHyperlink", "Show Output Log");
 		this->NotificationItem = FSlateNotificationManager::Get().AddNotification(Info);
 	});

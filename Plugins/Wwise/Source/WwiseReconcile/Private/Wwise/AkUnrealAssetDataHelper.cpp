@@ -12,7 +12,7 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #include "AkUnrealAssetDataHelper.h"
@@ -74,22 +74,14 @@ namespace AkUnrealAssetDataHelper
 		}
 		if (Class)
 		{
-#if UE_5_1_OR_LATER
 			return Class->GetClassPathName().GetAssetName();
-#else
-			return Class->GetFName();
-#endif
 		}
 		return FName();
 	}
 
 	FName GetAssetClassName(const FAssetData& AssetData)
 	{
-#if UE_5_1_OR_LATER
 		return AssetData.AssetClassPath.GetAssetName();
-#else
-		return AssetData.AssetClass;
-#endif
 	}
 
 	bool IsAssetAkAudioType(const FAssetData& AssetData)
@@ -105,11 +97,7 @@ namespace AkUnrealAssetDataHelper
 
 	void SetAssetClassName(FAssetData& AssetData, UClass* Class)
 	{
-#if UE_5_1_OR_LATER 
 		AssetData.AssetClassPath = Class->GetClassPathName();
-#else
-		AssetData.AssetClass = Class->GetFName();
-#endif
 	}
 
 	FString GetAssetDefaultPackagePath(const FAssetData& AssetData)
@@ -122,7 +110,7 @@ namespace AkUnrealAssetDataHelper
 		return {};
 	}
 
-	FString GetAssetDefaultPackagePath(const FWwiseAnyRef* WwiseRef)
+	FString GetAssetDefaultPackagePath(const WwiseAnyRef* WwiseRef)
 	{
 		auto AkSettings = GetMutableDefault<UAkSettings>();
 		if (!AkSettings)
@@ -131,7 +119,7 @@ namespace AkUnrealAssetDataHelper
 			return {};
 		}
 
-		FString DefaultPath = AkSettings->DefaultAssetCreationPath + WwiseRef->GetObjectPath().ToString();
+		FString DefaultPath = AkSettings->DefaultAssetCreationPath + FWwiseStringConverter::ToFString(WwiseRef->GetObjectPath());
 		DefaultPath.ReplaceCharInline('\\', '/');
 		int32 Index;
 		if(DefaultPath.FindLastChar('/', Index))
@@ -151,43 +139,35 @@ namespace AkUnrealAssetDataHelper
 		return {};
 	}
 
-	FName GetAssetDefaultName(const FWwiseAnyRef* WwiseRef)
+	FName GetAssetDefaultName(const WwiseAnyRef* WwiseRef)
 	{
-		EWwiseRefType WwiseRefType = WwiseRef->GetType();
-		FName WwiseName = WwiseRef->GetName();
+		WwiseRefType WwiseRefType = WwiseRef->GetType();
+		FName WwiseName = FName(*WwiseRef->GetName());
 		FNameBuilder DefaultName;
 
 		switch (WwiseRefType)
 		{
-		case EWwiseRefType::AcousticTexture:
-		case EWwiseRefType::AudioDevice:
-		case EWwiseRefType::AuxBus:
-		case EWwiseRefType::Event:
-		case EWwiseRefType::GameParameter:
-		case EWwiseRefType::PluginShareSet:
-		case EWwiseRefType::Trigger:
+		case WwiseRefType::AcousticTexture:
+		case WwiseRefType::AuxBus:
+		case WwiseRefType::AudioDevice:
+		case WwiseRefType::Event:
+		case WwiseRefType::GameParameter:
+		case WwiseRefType::PluginShareSet:
+		case WwiseRefType::Trigger:
 			return WwiseName;
 
-		case EWwiseRefType::Switch:
+		case WwiseRefType::Switch:
 			{
-			FString GroupName = WwiseRef->GetSwitchGroup()->Name.ToString();
+			FString GroupName = FWwiseStringConverter::ToFString(WwiseRef->GetSwitchGroup()->Name);
 			DefaultName << GroupName << TEXT("-") << WwiseName;
-#if UE_5_0_OR_LATER
 			return FName(DefaultName.ToView());
-#else
-			return FName(DefaultName.ToString());
-#endif
 			}
 
-		case EWwiseRefType::State:
+		case WwiseRefType::State:
 			{
-			FString GroupName = WwiseRef->GetStateGroup()->Name.ToString();
+			FString GroupName = FWwiseStringConverter::ToFString(WwiseRef->GetStateGroup()->Name);
 			DefaultName << GroupName << TEXT("-") << WwiseName;
-#if UE_5_0_OR_LATER
 			return FName(DefaultName.ToView());
-#else
-			return FName(DefaultName.ToString());
-#endif
 			}
 
 		default:

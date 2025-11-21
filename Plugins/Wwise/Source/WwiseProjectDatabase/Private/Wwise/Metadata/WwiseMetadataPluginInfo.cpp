@@ -12,23 +12,23 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #include "Wwise/Metadata/WwiseMetadataPluginInfo.h"
 #include "Wwise/Metadata/WwiseMetadataLoader.h"
 
-FWwiseMetadataPluginInfoAttributes::FWwiseMetadataPluginInfoAttributes(FWwiseMetadataLoader& Loader) :
-	Platform(Loader.GetString(this, TEXT("Platform"))),
-	BasePlatform(Loader.GetString(this, TEXT("BasePlatform")))
+WwiseMetadataPluginInfoAttributes::WwiseMetadataPluginInfoAttributes(WwiseMetadataLoader& Loader) :
+	Platform(Loader.GetString(this, "Platform"_wwise_db)),
+	BasePlatform(Loader.GetString(this, "BasePlatform"_wwise_db))
 {
-	Loader.LogParsed(TEXT("PluginInfoAttributes"));
+	Loader.LogParsed("PluginInfoAttributes"_wwise_db);
 }
 
-FWwiseMetadataPluginInfo::FWwiseMetadataPluginInfo(FWwiseMetadataLoader& Loader) :
-	FWwiseMetadataPluginInfoAttributes(Loader),
-	PluginLibs(Loader.GetArray<FWwiseMetadataPluginLib>(this, TEXT("PluginLibs"))),
-	FileHash(Loader.GetGuid(this, TEXT("FileHash")))
+WwiseMetadataPluginInfo::WwiseMetadataPluginInfo(WwiseMetadataLoader& Loader) :
+	WwiseMetadataPluginInfoAttributes(Loader),
+	PluginLibs(Loader.GetArray<WwiseMetadataPluginLib>(this, "PluginLibs"_wwise_db)),
+	FileHash(Loader.GetGuid(this, "FileHash"_wwise_db))
 {
-	Loader.LogParsed(TEXT("PluginInfo"));
+	Loader.LogParsed("PluginInfo"_wwise_db);
 }

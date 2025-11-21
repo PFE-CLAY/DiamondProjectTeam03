@@ -12,7 +12,7 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #include "AkAudioInputManager.h"
@@ -67,28 +67,6 @@ namespace FAkAudioInputHelpers
 		}
 	}
 
-	// This is the equivalent of AkAudioBuffer::ZeroPadToMaxFrames, but doesn't use global variables.
-	static void ZeroPadToMaxFrames(AkAudioBuffer* Buffer)
-	{
-		check(Buffer);
-		auto pData = Buffer->GetInterleavedData();
-		check(pData || Buffer->MaxFrames() == 0)
-
-		// The following members MUST be copied locally due to multi-core calls to this function.
-		const AkUInt32 uNumChannels = Buffer->NumChannels();
-		const AkUInt32 uNumCurrentFrames = FMath::Min(Buffer->uValidFrames, Buffer->MaxFrames());
-		const AkUInt32 uNumZeroFrames = Buffer->MaxFrames() - uNumCurrentFrames;
-		if ( uNumZeroFrames )
-		{
-			check(pData);
-			for ( AkUInt32 i = 0; i < uNumChannels; ++i )
-			{
-				FPlatformMemory::Memset( GetChannel(Buffer, i) + uNumCurrentFrames, 0, uNumZeroFrames * sizeof(AkSampleType) );
-			}
-			Buffer->uValidFrames = Buffer->MaxFrames();
-		}
-	}
-
 	/* The global audio samples callback that searches AudioInputDelegates for
 	   the key PlayingID and executes the corresponding delegate*/
 	static void GetAudioSamples(AkPlayingID PlayingID, AkAudioBuffer* BufferToFill)
@@ -115,7 +93,7 @@ namespace FAkAudioInputHelpers
 				SamplesCallback = Delegates->AudioSamplesDelegate;
 			}
 		}
-		
+
 		if (SamplesCallback.IsBound())
 		{
 			UpdateDataPointers(BufferToFill);
@@ -125,12 +103,22 @@ namespace FAkAudioInputHelpers
 				{
 					BufferToFill->eState = AK_DataReady;
 				}
+				else
+				{
+					BufferToFill->ClearData();
+					BufferToFill->eState = AK_NoDataReady;
+				}
+			}
+			else
+			{
+				BufferToFill->ClearData();
+				BufferToFill->eState = AK_NoMoreData;
 			}
 		}
 		else
 		{
-			ZeroPadToMaxFrames(BufferToFill);
-
+			BufferToFill->ClearData();
+			BufferToFill->eState = AK_NoMoreData;
 		}
 	}
 

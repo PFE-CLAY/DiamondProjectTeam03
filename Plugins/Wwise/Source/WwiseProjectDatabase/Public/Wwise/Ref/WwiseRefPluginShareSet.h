@@ -12,51 +12,51 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #pragma once
 
 #include "Wwise/Ref/WwiseRefSoundBank.h"
 
-class WWISEPROJECTDATABASE_API FWwiseRefPluginShareSet : public FWwiseRefSoundBank
+class WwiseRefPluginShareSet : public WwiseRefSoundBank
 {
 public:
-	static const TCHAR* const NAME;
-	static constexpr EWwiseRefType TYPE = EWwiseRefType::PluginShareSet;
+	static const WwiseDBString NAME;
+	static constexpr WwiseRefType TYPE = WwiseRefType::PluginShareSet;
 	struct FGlobalIdsMap;
 
 	WwiseRefIndexType PluginShareSetIndex;
 
-	FWwiseRefPluginShareSet() {}
-	FWwiseRefPluginShareSet(const WwiseMetadataSharedRootFileConstPtr& InRootMediaRef, const FName& InJsonFilePath,
-		WwiseRefIndexType InSoundBankIndex, uint32 InLanguageId,
+	WwiseRefPluginShareSet() {}
+	WwiseRefPluginShareSet(const WwiseMetadataSharedRootFileConstPtr& InRootMediaRef, const WwiseDBString& InJsonFilePath,
+		WwiseRefIndexType InSoundBankIndex, WwiseDBShortId InLanguageId,
 		WwiseRefIndexType InPluginShareSetIndex) :
-		FWwiseRefSoundBank(InRootMediaRef, InJsonFilePath, InSoundBankIndex, InLanguageId),
+		WwiseRefSoundBank(InRootMediaRef, InJsonFilePath, InSoundBankIndex, InLanguageId),
 		PluginShareSetIndex(InPluginShareSetIndex)
 	{}
-	const FWwiseMetadataPlugin* GetPlugin() const;
+	const WwiseMetadataPlugin* GetPlugin() const;
 	WwiseMediaIdsMap GetPluginMedia(const WwiseMediaGlobalIdsMap& GlobalMap) const;
 	WwiseCustomPluginIdsMap GetPluginCustomPlugins(const WwiseCustomPluginGlobalIdsMap& GlobalMap) const;
 	WwisePluginShareSetIdsMap GetPluginPluginShareSets(const WwisePluginShareSetGlobalIdsMap& GlobalMap) const;
 	WwiseAudioDeviceIdsMap GetPluginAudioDevices(const WwiseAudioDeviceGlobalIdsMap& GlobalMap) const;
 
-	uint32 PluginShareSetId() const;
-	FGuid PluginShareSetGuid() const;
-	FName PluginShareSetName() const;
-	FName PluginShareSetObjectPath() const;
+	WwiseDBShortId PluginShareSetId() const;
+	WwiseDBGuid PluginShareSetGuid() const;
+	const WwiseDBString*  PluginShareSetName() const;
+	const WwiseDBString*  PluginShareSetObjectPath() const;
 
-	uint32 Hash() const override;
-	EWwiseRefType Type() const override { return TYPE; }
-	bool operator==(const FWwiseRefPluginShareSet& Rhs) const
+	WwiseDBShortId Hash() const override;
+	WwiseRefType Type() const override { return TYPE; }
+	bool operator==(const WwiseRefPluginShareSet& Rhs) const
 	{
-		return FWwiseRefSoundBank::operator==(Rhs)
+		return WwiseRefSoundBank::operator==(Rhs)
 			&& PluginShareSetIndex == Rhs.PluginShareSetIndex;
 	}
-	bool operator!=(const FWwiseRefPluginShareSet& Rhs) const { return !operator==(Rhs); }
+	bool operator!=(const WwiseRefPluginShareSet& Rhs) const { return !operator==(Rhs); }
 };
 
-struct WWISEPROJECTDATABASE_API FWwiseRefPluginShareSet::FGlobalIdsMap
+struct WwiseRefPluginShareSet::FGlobalIdsMap
 {
 	WwisePluginShareSetGlobalIdsMap GlobalIdsMap;
 };

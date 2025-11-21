@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<WwiseDocument Type="WorkUnit" ID="{F38C7AC6-6811-4B1E-A7A4-2F26EBB9F864}" SchemaVersion="119">
+<WwiseDocument Type="WorkUnit" ID="{F38C7AC6-6811-4B1E-A7A4-2F26EBB9F864}" SchemaVersion="123">
 	<Events>
 		<WorkUnit Name="FOES_Tourelle_WU" ID="{F38C7AC6-6811-4B1E-A7A4-2F26EBB9F864}" PersistMode="Standalone">
 			<PropertyList>

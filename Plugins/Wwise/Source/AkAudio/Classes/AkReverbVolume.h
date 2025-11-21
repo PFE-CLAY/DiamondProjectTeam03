@@ -12,7 +12,7 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 /*=============================================================================
@@ -48,7 +48,7 @@ public:
 	bool bEnabled_DEPRECATED = false;
 
 	UPROPERTY()
-	class UAkAuxBus * AuxBus_DEPRECATED = nullptr;
+	TObjectPtr<class UAkAuxBus> AuxBus_DEPRECATED = nullptr;
 
 	/** Wwise Auxiliary Bus associated to this AkReverbVolume */
 	UPROPERTY()
@@ -72,7 +72,7 @@ public:
 	float Priority_DEPRECATED = .0f;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "ReverbVolume", meta = (ShowOnlyInnerProperties))
-	UAkLateReverbComponent* LateReverbComponent = nullptr;
+	TObjectPtr<UAkLateReverbComponent> LateReverbComponent = nullptr;
 
 	virtual void PostLoad() override;
 	virtual void Serialize(FArchive& Ar) override;

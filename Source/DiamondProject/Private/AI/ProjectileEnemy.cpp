@@ -2,8 +2,6 @@
 
 
 #include "AI/ProjectileEnemy.h"
-
-#include "AI/Enemy.h"
 #include "LoopSystem/AC_Health.h"
 #include "DiamondProject/DiamondProjectCharacter.h"
 #include "Engine/Engine.h"
@@ -32,17 +30,20 @@ void AProjectileEnemy::Tick(float DeltaTime)
 
 void AProjectileEnemy::OnCollision(AActor* OverlappedActor, AActor* OtherActor)
 {
-	
-	if(Cast<AEnemy>(OtherActor) == nullptr){
+	if(Cast<AShootingEnemy>(OtherActor) == nullptr){
 		
 		if (UAC_Health* HealthComponent = OtherActor->FindComponentByClass<UAC_Health>()) {
-			HealthComponent->DecreaseHealth(ProjectileDamage, this);
+			if(!IsValid(ProjectileOwner)||ProjectileOwner==nullptr)
+			{
+				ProjectileOwner=this;
+			}
+			HealthComponent->DecreaseHealth(ProjectileDamage, ProjectileOwner);
 		}
 		
 		OnProjectileDestroyed();
 		return;
 	}
-	else if (Cast<AEnemy>(OtherActor)){
+	else if (Cast<AShootingEnemy>(OtherActor)){
 		return;
 	}
 	

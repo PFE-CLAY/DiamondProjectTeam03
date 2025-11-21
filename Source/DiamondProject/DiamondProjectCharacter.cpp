@@ -1,6 +1,9 @@
 // Copyright Epic Games, Inc. All Rights Reserved.
 
 #include "DiamondProjectCharacter.h"
+
+#include <rapidjson/document.h>
+
 #include "DiamondProjectProjectile.h"
 #include "Animation/AnimInstance.h"
 #include "Camera/CameraComponent.h"
@@ -10,6 +13,8 @@
 #include "EnhancedInputSubsystems.h"
 #include "InputActionValue.h"
 #include "Engine/LocalPlayer.h"
+#include "Engine/RendererSettings.h"
+#include "GameFramework/CharacterMovementComponent.h"
 
 DEFINE_LOG_CATEGORY(LogTemplateCharacter);
 
@@ -20,17 +25,23 @@ ADiamondProjectCharacter::ADiamondProjectCharacter()
 {
 	// Set size for collision capsule
 	GetCapsuleComponent()->InitCapsuleSize(55.f, 96.0f);
-		
 	// Create a CameraComponent	
 	FirstPersonCameraComponent = CreateDefaultSubobject<UCameraComponent>(TEXT("FirstPersonCamera"));
 	FirstPersonCameraComponent->SetupAttachment(GetCapsuleComponent());
 	FirstPersonCameraComponent->SetRelativeLocation(FVector(-10.f, 0.f, 60.f)); // Position the camera
 	FirstPersonCameraComponent->bUsePawnControlRotation = true;
 
+	SpringArm = CreateDefaultSubobject<USpringArmComponent>(TEXT("SpringArm"));
+	SpringArm->SetupAttachment(FirstPersonCameraComponent);
+
+	//Remove Mesh inherited from parent
+	GetMesh()->DestroyComponent();
+	//GetMesh()->SetActive(false); //Does nothing but just in case
+	
 	// Create a mesh component that will be used when being viewed from a '1st person' view (when controlling this pawn)
 	Mesh1P = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("CharacterMesh1P"));
 	Mesh1P->SetOnlyOwnerSee(true);
-	Mesh1P->SetupAttachment(FirstPersonCameraComponent);
+	Mesh1P->SetupAttachment(SpringArm);
 	Mesh1P->bCastDynamicShadow = false;
 	Mesh1P->CastShadow = false;
 	//Mesh1P->SetRelativeRotation(FRotator(0.9f, -19.19f, 5.2f));
@@ -39,8 +50,30 @@ ADiamondProjectCharacter::ADiamondProjectCharacter()
 
 void ADiamondProjectCharacter::BeginPlay()
 {
+
+	DashMaxCharge=DashCharge;
+	UCharacterMovementComponent* characterMovement=GetCharacterMovement();
 	// Call the base class  
 	Super::BeginPlay();
+}
+
+void ADiamondProjectCharacter::Tick(float deltaTime)
+{
+	if (bisDashing){
+		Move(dashDir);
+	}
+	
+	if (GetWorldTimerManager().IsTimerActive(TimerHandle)){
+		DashUIValue=DashCharge+GetWorldTimerManager().GetTimerElapsed(TimerHandle)/DashCooldown;
+		OnDashUpdateCD.Broadcast();
+		if (!GetCharacterMovement()->IsMovingOnGround()&&!bisInAirNotAffectingDashCooldown){
+			GetWorldTimerManager().PauseTimer(TimerHandle);
+		}
+	}
+	if (GetCharacterMovement()->IsMovingOnGround()&&GetWorldTimerManager().IsTimerPaused(TimerHandle)){
+		GetWorldTimerManager().UnPauseTimer(TimerHandle);
+	}
+	Super::Tick(deltaTime);
 }
 
 //////////////////////////////////////////////////////////////////////////// Input
@@ -54,6 +87,9 @@ void ADiamondProjectCharacter::SetupPlayerInputComponent(UInputComponent* Player
 		EnhancedInputComponent->BindAction(JumpAction, ETriggerEvent::Started, this, &ACharacter::Jump);
 		EnhancedInputComponent->BindAction(JumpAction, ETriggerEvent::Completed, this, &ACharacter::StopJumping);
 
+		// Dashing
+		EnhancedInputComponent->BindAction(DashAction, ETriggerEvent::Started, this, &ADiamondProjectCharacter::Dash);
+		
 		// Moving
 		EnhancedInputComponent->BindAction(MoveAction, ETriggerEvent::Triggered, this, &ADiamondProjectCharacter::Move);
 
@@ -75,6 +111,12 @@ void ADiamondProjectCharacter::SetupPlayerInputComponent(UInputComponent* Player
 		//Preplan Zoom
 		EnhancedInputComponent->BindAction(PreplanZoomAction, ETriggerEvent::Triggered, this, &ADiamondProjectCharacter::PreplanZoom);
 
+		//Preplan On Off
+		EnhancedInputComponent->BindAction(PreplanOnOffAction, ETriggerEvent::Started, this, &ADiamondProjectCharacter::PreplanOnOff);
+
+		//Preplan Clicked
+		EnhancedInputComponent->BindAction(PreplanClickedAction, ETriggerEvent::Started, this, &ADiamondProjectCharacter::PreplanClicked);
+
 		// Cheat actions
 		EnhancedInputComponent->BindAction(CheatOpenHatchAction, ETriggerEvent::Started, this, &ADiamondProjectCharacter::CheatOpenHatch);
 		
@@ -92,18 +134,62 @@ void ADiamondProjectCharacter::SetupPlayerInputComponent(UInputComponent* Player
 	}
 }
 
+void ADiamondProjectCharacter::SetNewDashTimer()
+{
+	GetWorldTimerManager().SetTimer(TimerHandle, this,  &ADiamondProjectCharacter::SetDashReady, DashCooldown, false);
+}
+
+void ADiamondProjectCharacter::SetDashReady()
+{
+	GetWorldTimerManager().ClearTimer(TimerHandle);
+	TimerHandle.Invalidate();
+	DashCharge++;
+	
+	if (DashCharge<DashMaxCharge){
+		OnDashRecovery.Broadcast();
+		SetNewDashTimer();
+		DashUIValue=DashCharge+GetWorldTimerManager().GetTimerElapsed(TimerHandle)/DashCooldown;
+	}else{
+		OnDashRecoveryFull.Broadcast();
+	}
+}
+
 
 void ADiamondProjectCharacter::Move(const FInputActionValue& Value)
 {
 	// input is a Vector2D
-	FVector2D MovementVector = Value.Get<FVector2D>();
-
-	if (Controller != nullptr)
+	if (!bisDashing)
 	{
-		// add movement 
-		AddMovementInput(GetActorForwardVector(), MovementVector.Y);
-		AddMovementInput(GetActorRightVector(), MovementVector.X);
+		FVector2D MovementVector = Value.Get<FVector2D>();
+		dashDir=MovementVector;
+		if (Controller != nullptr){
+			// add movement 
+			AddMovementInput(GetActorForwardVector(), MovementVector.Y);
+			AddMovementInput(GetActorRightVector(), MovementVector.X);
+		}
+	}else{
+		AddMovementInput(GetActorForwardVector(), dashDir.Y);
+		AddMovementInput(GetActorRightVector(), dashDir.X);
 	}
+
+}
+void ADiamondProjectCharacter::Dash(const FInputActionValue& Value)
+{
+	if(!bCanDash) return;
+	if (GetCharacterMovement()->Velocity.Size()<=0)
+	{
+		dashDir=FVector2D(0,1);
+	}
+	if (DashCharge>0)
+	{
+		bisDashing = true;
+		if (!TimerHandle.IsValid())
+		{
+			SetNewDashTimer();
+		}
+	}
+	DashUIValue=DashCharge+GetWorldTimerManager().GetTimerElapsed(TimerHandle)/DashCooldown;
+	OnDash.Broadcast();
 }
 
 void ADiamondProjectCharacter::Look(const FInputActionValue& Value)
@@ -146,6 +232,16 @@ void ADiamondProjectCharacter::PreplanZoom(const FInputActionValue& Value)
 	OnPreplanZoom.Broadcast(PreplanZoomValue);
 }
 
+void ADiamondProjectCharacter::PreplanOnOff(const FInputActionValue& Value)
+{
+	OnPreplanOnOff.Broadcast();
+}
+
+void ADiamondProjectCharacter::PreplanClicked(const FInputActionValue& Value)
+{
+	OnPreplanClicked.Broadcast();
+}
+
 void ADiamondProjectCharacter::CheatOpenHatch(const FInputActionValue& Value)
 {
 	OnCheatOpenHatch.Broadcast();
@@ -170,3 +266,5 @@ void ADiamondProjectCharacter::CheatEndLoop(const FInputActionValue& Value)
 {
 	OnCheatEndLoop.Broadcast();
 }
+
+

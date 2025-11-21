@@ -12,28 +12,28 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #include "Wwise/CookedData/WwiseMediaCookedData.h"
 
 #include "Wwise/Stats/FileHandler.h"
+
+#if WITH_EDITORONLY_DATA && UE_5_5_OR_LATER
+#include "Cooker/CookDependency.h"
+#include "Serialization/CompactBinaryWriter.h"
+#include "UObject/ObjectSaveContext.h"
+#endif
+
 #include <inttypes.h>
 
-FWwiseMediaCookedData::FWwiseMediaCookedData():
-	MediaId(0),
-	MediaPathName(),
-	PrefetchSize(0),
-	MemoryAlignment(0),
-	bDeviceMemory(false),
-	bStreaming(false),
-	DebugName()
+FWwiseMediaCookedData::FWwiseMediaCookedData()
 {}
 
 void FWwiseMediaCookedData::Serialize(FArchive& Ar)
 {
 	UStruct* Struct = StaticStruct();
-	UE_CLOG(UNLIKELY(!Struct), LogWwiseFileHandler, Fatal, TEXT("MediaCookedData Serialize: No StaticStruct."));
+	UE_CLOG(UNLIKELY(!Struct), LogWwiseFileHandler, Fatal, TEXT("MediaCookedData SerializeBulkData: No StaticStruct."));
 
 	if (Ar.WantBinaryPropertySerialization())
 	{
@@ -49,9 +49,33 @@ void FWwiseMediaCookedData::Serialize(FArchive& Ar)
 	}
 }
 
+void FWwiseMediaCookedData::SerializeBulkData(FArchive& Ar, const FWwisePackagedFileSerializationOptions& Options)
+{
+	auto MediaOptions{ Options };
+#if WITH_EDITORONLY_DATA
+	if (bUsingReferenceLanguage)
+	{
+		MediaOptions.ExtraLog += TEXT(", Ref Lang");
+	}
+#endif
+	PackagedFile.SerializeBulkData(Ar, MediaOptions);
+}
+
+#if WITH_EDITORONLY_DATA && UE_5_5_OR_LATER
+void FWwiseMediaCookedData::GetPlatformCookDependencies(FWwiseCookEventContext& Context, FCbWriter& Writer) const
+{
+	Writer << "M";
+	Writer.BeginObject();
+	Writer << "Media" << MediaId;
+	WwiseCookEventContext::AddLoadBuildDependency(Context,PackagedFile.GetCookDependency());
+	PackagedFile.FillCbObject(Writer);
+	Writer.EndObject();
+}
+#endif
+
 FString FWwiseMediaCookedData::GetDebugString() const
 {
 	return FString::Printf(TEXT("Media %s (%" PRIu32 ") @ %s (p:%" PRIi32 " ma:%" PRIi32 " %sdm %ss)"),
-		*DebugName.ToString(), MediaId, *MediaPathName.ToString(), PrefetchSize, MemoryAlignment,
-		bDeviceMemory ? TEXT("") : TEXT("!"), bStreaming ? TEXT("") : TEXT("!"));
+		*DebugName.ToString(), MediaId, *PackagedFile.PathName.ToString(), PackagedFile.PrefetchSize, PackagedFile.MemoryAlignment,
+		PackagedFile.bDeviceMemory ? TEXT("") : TEXT("!"), PackagedFile.bStreaming ? TEXT("") : TEXT("!"));
 }

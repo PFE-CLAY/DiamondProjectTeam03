@@ -4,6 +4,6 @@ Event	ID	Name			Wwise Object Path	Notes
 	2485576600	Play_MUS_Blacksands_Hub			\MUS_WU\Play_MUS_Blacksands_Hub	
 
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
-	721910099	MUS_ARENA	C:\Github Repos\BlackSands\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\JV BLACK SAND MIX V2_818F3B66.wem		\Actor-Mixer Hierarchy\MUS_WU\MUS_ARENA\MUS_ARENA		49766496
-	1072494655	MUS_Blacksands_Hub	C:\Github Repos\BlackSands\DiamondProjectTeam03_WwiseProject\.cache\Mac\SFX\MUS_Blacksands_Hub_67AD3CF9.wem		\Actor-Mixer Hierarchy\MUS_WU\MUS_HUB\MUS_Blacksands_Hub		32983724
+	721910099	MUS_ARENA	F:\Project\DiamondProjectTeam03_WwiseProject\.cache\37\{372DD273-A2FD-930E-05EE-1B952E993533}.wem		\Actor-Mixer Hierarchy\MUS_WU\MUS_ARENA\MUS_ARENA		49766496
+	1072494655	MUS_Blacksands_Hub	F:\Project\DiamondProjectTeam03_WwiseProject\.cache\AC\{AC2739F6-97FA-041C-A61D-AFA4E26DFCE4}.wem		\Actor-Mixer Hierarchy\MUS_WU\MUS_HUB\MUS_Blacksands_Hub		32983724
 

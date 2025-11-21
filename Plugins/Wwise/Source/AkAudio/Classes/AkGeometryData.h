@@ -12,7 +12,7 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 /*=============================================================================
@@ -22,6 +22,7 @@ Copyright (c) 2024 Audiokinetic Inc.
 #include "AkInclude.h"
 
 #include "AkAcousticTexture.h"
+#include "Materials/MaterialInterface.h"
 
 #include "AkGeometryData.generated.h"
 
@@ -83,11 +84,16 @@ struct FAkGeometryData
 	UPROPERTY()
 	TArray<FAkTriangle> Triangles;
 
+	/** Used to store the physical material to override the acoustic texture with at begin play. */
 	UPROPERTY()
-	TArray<UPhysicalMaterial*> ToOverrideAcousticTexture;
+	TArray<TObjectPtr<UPhysicalMaterial>> ToOverrideAcousticTexture;
 
+	/** Used to store the physical material to override the transmission loss values with at begin play. */
 	UPROPERTY(DisplayName = "To Override Transmission Loss")
-	TArray<UPhysicalMaterial*> ToOverrideOcclusion;
+	TArray<TObjectPtr<UPhysicalMaterial>> ToOverrideOcclusion;
+
+	UPROPERTY()
+	TMap<TObjectPtr<UMaterialInterface>, int32> MaterialToSurfaceIndex;
 
 	void AddBox(AkSurfIdx surfIdx, FVector center, FVector extent, FRotator rotation);
 	void AddSphere(AkSurfIdx surfIdx, const FVector& Center, const float Radius, int32 NumSides, int32 NumRings);

@@ -12,7 +12,7 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #include "AkAcousticTextureSetComponent.h"
@@ -216,7 +216,7 @@ void UAkAcousticTextureSetComponent::SendGeometryToWwise(const AkGeometryParams&
 	}
 }
 
-void UAkAcousticTextureSetComponent::SendGeometryInstanceToWwise(const FRotator& rotation, const FVector& location, const FVector& scale, const AkRoomID roomID, bool useForReflectionAndDiffraction)
+void UAkAcousticTextureSetComponent::SendGeometryInstanceToWwise(const FRotator& rotation, const FVector& location, const FVector& scale, bool useForReflectionAndDiffraction, bool solid, bool bypassPortalSubtraction)
 {
 	if (ShouldSendGeometry() && GeometryHasBeenSent)
 	{
@@ -230,7 +230,10 @@ void UAkAcousticTextureSetComponent::SendGeometryInstanceToWwise(const FRotator&
 		params.PositionAndOrientation.Set(position, front, up);
 		FAkAudioDevice::FVectorToAKVector(scale, params.Scale);
 		params.GeometrySetID = GetGeometrySetID();
-		params.RoomID = roomID;
+#if WWISE_2024_1_OR_LATER
+		params.BypassPortalSubtraction = bypassPortalSubtraction;
+		params.IsSolid = solid;
+#endif
 #if WWISE_2023_1_OR_LATER
 		params.UseForReflectionAndDiffraction = useForReflectionAndDiffraction;
 #endif
@@ -259,7 +262,7 @@ void UAkAcousticTextureSetComponent::RemoveGeometryInstanceFromWwise()
 	if (GeometryInstanceHasBeenSent)
 	{
 		FAkAudioDevice* AkAudioDevice = FAkAudioDevice::Get();
-		if (AkAudioDevice != nullptr && AkAudioDevice->RemoveGeometrySet(GetGeometrySetID()) == AK_Success)
+		if (AkAudioDevice != nullptr && AkAudioDevice->RemoveGeometryInstance(GetGeometrySetID()) == AK_Success)
 			GeometryInstanceHasBeenSent = false;
 	}
 }

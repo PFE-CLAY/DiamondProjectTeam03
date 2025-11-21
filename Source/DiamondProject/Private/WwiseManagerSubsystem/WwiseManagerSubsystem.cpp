@@ -3,6 +3,8 @@
 #include "WwiseManagerSubsystem/WwiseManagerSubsystem.h"
 
 #include "AkRtpc.h"
+#include "AkStateValue.h"
+#include "AkGroupValue.h"
 #include "../Plugins/Wwise/Source/AkAudio/Classes/AkAudioEvent.h"
 #include "WwiseManagerSubsystem/WwiseHandlerComponent.h"
 
@@ -21,19 +23,18 @@ void UWwiseManagerSubsystem::Deinitialize()
 int32 UWwiseManagerSubsystem::PostEvent(UAkAudioEvent* Event, AActor* TargetActor)
 {
 	AkPlayingID PlayingID = AK_INVALID_PLAYING_ID;
-	FOnAkPostEventCallback Callback;
 	UWwiseHandlerComponent* WwiseHandler = nullptr;
 	
 	if (Event && TargetActor) {
 		EventCurrentlyPlayedByActor.Add(TargetActor, Event);
 		WwiseHandler = TargetActor->FindComponentByClass<UWwiseHandlerComponent>();
 		if (WwiseHandler) {
-			Callback = FOnAkPostEventCallback();
-			Callback.BindDynamic(WwiseHandler, &UWwiseHandlerComponent::HandleCallback);
+			WwiseHandler->Callback = FOnAkPostEventCallback();
+			WwiseHandler->Callback.BindDynamic(WwiseHandler, &UWwiseHandlerComponent::HandleCallback);
 		} else {
 			UE_LOG(LogTemp, Error, TEXT("[UWwiseManagerSubsystem::PostEvent] WwiseHandlerComponent not found on TargetActor: %s!"), *TargetActor->GetName());
 		}
-		PlayingID = UAkGameplayStatics::PostEvent(Event, TargetActor, WwiseHandler->CallbackMask, Callback);
+		PlayingID = UAkGameplayStatics::PostEvent(Event, TargetActor, WwiseHandler->CallbackMask, WwiseHandler->Callback);
 		WwiseHandler->LastPlayedID = PlayingID;
 		UE_LOG(LogTemp, Log, TEXT("[UWwiseManagerSubsystem::PostEvent] Playing Wwise Event: %s ID: %d"), *Event->GetName(), PlayingID);
 	} else {
@@ -58,7 +59,7 @@ int32 UWwiseManagerSubsystem::PostEventWithoutActor(UAkAudioEvent* Event)
 void UWwiseManagerSubsystem::SetRTPCValue(const UAkRtpc* RTPCValue, float Value, int32 InterpolationTimeMs, AActor* Actor)
 {
 	if (RTPCValue && Actor) {
-		UAkGameplayStatics::SetRTPCValue(RTPCValue, Value, InterpolationTimeMs, Actor, FName());
+		UAkGameplayStatics::SetRTPCValue(RTPCValue, Value, InterpolationTimeMs, Actor);
 		UE_LOG(LogTemp, Log, TEXT("[UWwiseManagerSubsystem::SetRTPC] Set RTPC Value: %s to %f"), *RTPCValue->GetName(), Value);
 	} else {
 		UE_LOG(LogTemp, Warning, TEXT("[UWwiseManagerSubsystem::SetRTPC] RTPCValue or Actor is null!"));
@@ -77,19 +78,32 @@ void UWwiseManagerSubsystem::SetCategoryVolume(ESoundCategory Category, float Vo
 	}  
 	
 	if (!RTPCName.IsEmpty()) {
-		UAkGameplayStatics::SetRTPCValue(nullptr, Volume, InterpolateTimeMs, TargetActor, FName(RTPCName));
+		UAkGameplayStatics::SetRTPCValue(nullptr, Volume, InterpolateTimeMs, TargetActor);
 		UE_LOG(LogTemp, Log, TEXT("[UWwiseManagerSubsystem::SetCategoryVolume] Set volume for %s to %f"), *RTPCName, Volume);
 	}
 }
 
-void UWwiseManagerSubsystem::SetSwitch(const UAkSwitchValue* SwitchValue, AActor* Actor, FName SwitchGroup, FName SwitchState)
+void UWwiseManagerSubsystem::SetSwitch(const UAkSwitchValue* SwitchValue, AActor* Actor)
 {
-	UE_LOG(LogTemp, Log, TEXT("[UWwiseManagerSubsystem::SetSwitch] Setting Switch State: %s to %s from actor: %s"), *SwitchGroup.ToString(), *SwitchState.ToString(), *Actor->GetName());
-	UAkGameplayStatics::SetSwitch(SwitchValue, Actor, SwitchGroup, SwitchState);
+	if (!SwitchValue) {
+		UE_LOG(LogTemp, Warning, TEXT("[UWwiseManagerSubsystem::SetSwitch] SwitchValue is null!"));
+		return;
+	}
+	UE_LOG(LogTemp, Log, TEXT("[UWwiseManagerSubsystem::SetSwitch] Setting Switch State from actor: %s"), *Actor->GetName());
+	UAkGameplayStatics::SetSwitch(SwitchValue, Actor);
 }
 
-void UWwiseManagerSubsystem::SetState(const UAkStateValue* StateValue, FName stateGroup, FName state)
+void UWwiseManagerSubsystem::SetState(UAkStateValue* StateValue)
 {
-	UE_LOG(LogTemp, Log, TEXT("[UWwiseManagerSubsystem::SetState] Setting State: %s to %s"), *stateGroup.ToString(), *state.ToString());
-	UAkGameplayStatics::SetState(StateValue, stateGroup, state);
+	if (!StateValue) {
+		UE_LOG(LogTemp, Warning, TEXT("[UWwiseManagerSubsystem::SetState] StateValue is null!"));
+		return;
+	}
+	#if UE_EDITOR
+	UE_LOG(LogTemp, Log, TEXT("[UWwiseManagerSubsystem::SetState] Setting State: %s"), *StateValue->GetInfoMutable()->WwiseName.ToString());
+	#else
+	UE_LOG(LogTemp, Log, TEXT("[UWwiseManagerSubsystem::SetState] Setting State"));
+	#endif
+	
+	UAkGameplayStatics::SetState(StateValue);
 }

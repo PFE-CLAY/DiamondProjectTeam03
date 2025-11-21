@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<WwiseDocument Type="WorkUnit" ID="{44DB29AC-F5E7-466B-9313-B33937B56A9D}" SchemaVersion="119">
+<WwiseDocument Type="WorkUnit" ID="{44DB29AC-F5E7-466B-9313-B33937B56A9D}" SchemaVersion="123">
 	<Events>
 		<WorkUnit Name="GPE_WU" ID="{44DB29AC-F5E7-466B-9313-B33937B56A9D}" PersistMode="Standalone">
 			<PropertyList>

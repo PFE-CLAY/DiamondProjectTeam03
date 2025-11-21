@@ -12,7 +12,7 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #include "Wwise/CookedData/WwiseEventCookedData.h"
@@ -20,6 +20,10 @@ Copyright (c) 2024 Audiokinetic Inc.
 #include "Wwise/Stats/ResourceLoader.h"
 
 #include <inttypes.h>
+
+#if WITH_EDITORONLY_DATA && UE_5_5_OR_LATER
+#include "Serialization/CompactBinaryWriter.h"
+#endif
 
 FWwiseEventCookedData::FWwiseEventCookedData():
 	EventId(0),
@@ -45,6 +49,57 @@ void FWwiseEventCookedData::Serialize(FArchive& Ar)
 		Struct->SerializeTaggedProperties(Ar, (uint8*)this, Struct, nullptr);
 	}
 }
+
+void FWwiseEventCookedData::SerializeBulkData(FArchive& Ar, const FWwisePackagedFileSerializationOptions& Options)
+{
+	for (auto& SoundBank : SoundBanks)
+	{
+		SoundBank.SerializeBulkData(Ar, Options);
+	}
+	for (auto& MediaItem : Media)
+	{
+		MediaItem.SerializeBulkData(Ar, Options);
+	}
+	for (auto& Leaf : SwitchContainerLeaves)
+	{
+		Leaf.SerializeBulkData(Ar, Options);
+	}
+}
+
+#if WITH_EDITORONLY_DATA && UE_5_5_OR_LATER
+void FWwiseEventCookedData::GetPlatformCookDependencies(FWwiseCookEventContext& Context, FCbWriter& Writer) const
+{
+	Writer << "Event";
+	Writer.BeginObject();
+
+	Writer << "Id" << EventId;
+
+	Writer << "SBs";
+	Writer.BeginArray();
+	for (auto& SoundBank : SoundBanks)
+	{
+		SoundBank.GetPlatformCookDependencies(Context, Writer);
+	}
+	Writer.EndArray();
+
+	Writer << "Ms";
+	Writer.BeginArray();
+	for (auto& MediaItem : Media)
+	{
+		MediaItem.GetPlatformCookDependencies(Context, Writer);
+	}
+	Writer.EndArray();
+
+	Writer << "Ls";
+	Writer.BeginArray();
+	for (auto& Leaf : SwitchContainerLeaves)
+	{
+		Leaf.GetPlatformCookDependencies(Context, Writer);
+	}
+	Writer.EndArray();
+	Writer.EndObject();
+}
+#endif
 
 FString FWwiseEventCookedData::GetDebugString() const
 {

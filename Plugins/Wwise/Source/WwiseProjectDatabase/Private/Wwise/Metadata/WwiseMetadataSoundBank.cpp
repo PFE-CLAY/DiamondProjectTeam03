@@ -12,83 +12,82 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #include "Wwise/Metadata/WwiseMetadataSoundBank.h"
-#include "Wwise/Stats/ProjectDatabase.h"
 #include "Wwise/Metadata/WwiseMetadataCollections.h"
 #include "Wwise/Metadata/WwiseMetadataLoader.h"
 #include "Wwise/Metadata/WwiseMetadataPluginGroup.h"
 #include "Wwise/Metadata/WwiseMetadataStateGroup.h"
 #include "Wwise/Metadata/WwiseMetadataSwitchGroup.h"
-#include "Wwise/WwiseProjectDatabaseModule.h"
 
-FWwiseMetadataSoundBankReference::FWwiseMetadataSoundBankReference(FWwiseMetadataLoader& Loader) :
-	Id(Loader.GetUint32(this, TEXT("Id"))),
-	GUID(Loader.GetGuid(this, TEXT("GUID"))),
-	Language(Loader.GetString(this, TEXT("Language")))
+WwiseMetadataSoundBankReference::WwiseMetadataSoundBankReference(WwiseMetadataLoader& Loader) :
+	Id(Loader.GetWwiseShortId(this, "Id"_wwise_db)),
+	GUID(Loader.GetGuid(this, "GUID"_wwise_db)),
+	Language(Loader.GetString(this, "Language"_wwise_db))
 {
-	Loader.LogParsed(TEXT("SoundBankReference"), Id);
+	Loader.LogParsed("SoundBankReference"_wwise_db, Id);
 }
 
-FWwiseMetadataSoundBankAttributes::FWwiseMetadataSoundBankAttributes(FWwiseMetadataLoader& Loader) :
-	FWwiseMetadataSoundBankReference(Loader),
-	Align(Loader.GetUint32(this, TEXT("Align"), EWwiseRequiredMetadata::Optional)),
-	bDeviceMemory(Loader.GetBool(this, TEXT("DeviceMemory"), EWwiseRequiredMetadata::Optional)),
-	Hash(Loader.GetGuid(this, TEXT("Hash"))),
-	Type(TypeFromString(Loader.GetString(this, TEXT("Type"))))
+WwiseMetadataSoundBankAttributes::WwiseMetadataSoundBankAttributes(WwiseMetadataLoader& Loader) :
+	WwiseMetadataSoundBankReference(Loader),
+	Align(Loader.GetWwiseShortId(this, "Align"_wwise_db, WwiseRequiredMetadata::Optional)),
+	bDeviceMemory(Loader.GetBool(this, "DeviceMemory"_wwise_db, WwiseRequiredMetadata::Optional)),
+	Hash(Loader.GetGuid(this, "Hash"_wwise_db)),
+	Type(TypeFromString(Loader.GetString(this, "Type"_wwise_db)))
 {
 	IncLoadedSize(sizeof(EMetadataSoundBankType));
-	Loader.LogParsed(TEXT("SoundBankAttributes"), Id);
+	Loader.LogParsed("SoundBankAttributes"_wwise_db, Id);
 }
 
-EMetadataSoundBankType FWwiseMetadataSoundBankAttributes::TypeFromString(const FName& TypeString)
+EMetadataSoundBankType WwiseMetadataSoundBankAttributes::TypeFromString(const WwiseDBString& TypeString)
 {
-	if (TypeString == "User")
+	if (TypeString == "User"_wwise_db)
 	{
 		return EMetadataSoundBankType::User;
 	}
-	else if (TypeString == "Event")
+	else if (TypeString == "Event"_wwise_db)
 	{
 		return EMetadataSoundBankType::Event;
 	}
-	else if (TypeString == "Bus")
+	else if (TypeString == "Bus"_wwise_db)
 	{
 		return EMetadataSoundBankType::Bus;
 	}
 	else
 	{
-		UE_LOG(LogWwiseProjectDatabase, Warning, TEXT("FWwiseMetadataSoundBankAttributes: Unknown Type: %s"), *TypeString.ToString());
+		WWISE_DB_LOG(Warning, "Wwise/Metadata/WwiseMetadataSoundBankAttributes: Unknown Type: %s", *TypeString);
 		return EMetadataSoundBankType::Unknown;
 	}
 }
 
-FWwiseMetadataSoundBank::FWwiseMetadataSoundBank(FWwiseMetadataLoader& Loader) :
-	FWwiseMetadataSoundBankAttributes(Loader),
-	ObjectPath(Loader.GetString(this, TEXT("ObjectPath"))),
-	ShortName(Loader.GetString(this, TEXT("ShortName"))),
-	Path(Loader.GetString(this, TEXT("Path"))),
-	Media(Loader.GetArray<FWwiseMetadataMedia>(this, TEXT("Media"))),
-	Plugins(Loader.GetObjectPtr<FWwiseMetadataPluginGroup>(this, TEXT("Plugins"))),
-	Events(Loader.GetArray<FWwiseMetadataEvent>(this, TEXT("Events"))),
-	DialogueEvents(Loader.GetArray<FWwiseMetadataDialogueEvent>(this, TEXT("DialogueEvents"))),
-	Busses(Loader.GetArray<FWwiseMetadataBus>(this, TEXT("Busses"))),
-	AuxBusses(Loader.GetArray<FWwiseMetadataBus>(this, TEXT("AuxBusses"))),
-	GameParameters(Loader.GetArray<FWwiseMetadataGameParameter>(this, TEXT("GameParameters"))),
-	StateGroups(Loader.GetArray<FWwiseMetadataStateGroup>(this, TEXT("StateGroups"))),
-	SwitchGroups(Loader.GetArray<FWwiseMetadataSwitchGroup>(this, TEXT("SwitchGroups"))),
-	Triggers(Loader.GetArray<FWwiseMetadataTrigger>(this, TEXT("Triggers"))),
-	ExternalSources(Loader.GetArray<FWwiseMetadataExternalSource>(this, TEXT("ExternalSources"))),
-	AcousticTextures(Loader.GetArray<FWwiseMetadataAcousticTexture>(this, TEXT("AcousticTextures")))
+WwiseMetadataSoundBank::WwiseMetadataSoundBank(WwiseMetadataLoader& Loader) :
+	WwiseMetadataSoundBankAttributes(Loader),
+	ObjectPath(Loader.GetString(this, "ObjectPath"_wwise_db)),
+	Color(Loader.GetInt(this, "Color"_wwise_db, WwiseRequiredMetadata::Optional)),
+	ShortName(Loader.GetString(this, "ShortName"_wwise_db)),
+	Path(Loader.GetString(this, "Path"_wwise_db)),
+	Media(Loader.GetArray<WwiseMetadataMedia>(this, "Media"_wwise_db)),
+	Plugins(Loader.GetObjectPtr<WwiseMetadataPluginGroup>(this, "Plugins"_wwise_db)),
+	Events(Loader.GetArray<WwiseMetadataEvent>(this, "Events"_wwise_db)),
+	DialogueEvents(Loader.GetArray<WwiseMetadataDialogueEvent>(this, "DialogueEvents"_wwise_db)),
+	Busses(Loader.GetArray<WwiseMetadataBus>(this, "Busses"_wwise_db)),
+	AuxBusses(Loader.GetArray<WwiseMetadataBus>(this, "AuxBusses"_wwise_db)),
+	GameParameters(Loader.GetArray<WwiseMetadataGameParameter>(this, "GameParameters"_wwise_db)),
+	StateGroups(Loader.GetArray<WwiseMetadataStateGroup>(this, "StateGroups"_wwise_db)),
+	SwitchGroups(Loader.GetArray<WwiseMetadataSwitchGroup>(this, "SwitchGroups"_wwise_db)),
+	Triggers(Loader.GetArray<WwiseMetadataTrigger>(this, "Triggers"_wwise_db)),
+	ExternalSources(Loader.GetArray<WwiseMetadataExternalSource>(this, "ExternalSources"_wwise_db)),
+	AcousticTextures(Loader.GetArray<WwiseMetadataAcousticTexture>(this, "AcousticTextures"_wwise_db))
 {
-	bIsInitBank = ShortName == TEXT("Init");
-	Loader.LogParsed(TEXT("SoundBank"), Id);
+	bIsInitBank = ShortName == "Init"_wwise_db;
+	Loader.LogParsed("SoundBank"_wwise_db, Id);
 }
 
-TSet<FWwiseMetadataDialogueArgument> FWwiseMetadataSoundBank::GetAllDialogueArguments() const
+WwiseDBSet<WwiseMetadataDialogueArgument> WwiseMetadataSoundBank::GetAllDialogueArguments() const
 {
-	TSet<FWwiseMetadataDialogueArgument> Result;
+	WwiseDBSet<WwiseMetadataDialogueArgument> Result;
 	for (const auto& DialogueEvent : DialogueEvents)
 	{
 		Result.Append(DialogueEvent.Arguments);
@@ -96,9 +95,9 @@ TSet<FWwiseMetadataDialogueArgument> FWwiseMetadataSoundBank::GetAllDialogueArgu
 	return Result;
 }
 
-TSet<WwiseMetadataStateWithGroup> FWwiseMetadataSoundBank::GetAllStates() const
+WwiseDBSet<WwiseMetadataStateWithGroup> WwiseMetadataSoundBank::GetAllStates() const
 {
-	TSet<WwiseMetadataStateWithGroup> Result;
+	WwiseDBSet<WwiseMetadataStateWithGroup> Result;
 	for (const auto& StateGroup : StateGroups)
 	{
 		for (const auto& State : StateGroup.States)
@@ -109,9 +108,9 @@ TSet<WwiseMetadataStateWithGroup> FWwiseMetadataSoundBank::GetAllStates() const
 	return Result;
 }
 
-TSet<WwiseMetadataSwitchWithGroup> FWwiseMetadataSoundBank::GetAllSwitches() const
+WwiseDBSet<WwiseMetadataSwitchWithGroup> WwiseMetadataSoundBank::GetAllSwitches() const
 {
-	TSet<WwiseMetadataSwitchWithGroup> Result;
+	WwiseDBSet<WwiseMetadataSwitchWithGroup> Result;
 	for (const auto& SwitchGroup : SwitchGroups)
 	{
 		for (const auto& Switch : SwitchGroup.Switches)

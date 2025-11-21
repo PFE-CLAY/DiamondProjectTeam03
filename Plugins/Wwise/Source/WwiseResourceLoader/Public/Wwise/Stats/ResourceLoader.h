@@ -12,7 +12,7 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #pragma once
@@ -25,6 +25,7 @@ Copyright (c) 2024 Audiokinetic Inc.
 
 DECLARE_STATS_GROUP(TEXT("Resource Loader"), STATGROUP_WwiseResourceLoader, STATCAT_Wwise);
 
+DECLARE_DWORD_ACCUMULATOR_STAT_EXTERN(TEXT("Referenced Asset Libraries"), STAT_WwiseResourceLoaderAssetLibraries, STATGROUP_WwiseResourceLoader, WWISERESOURCELOADER_API);
 DECLARE_DWORD_ACCUMULATOR_STAT_EXTERN(TEXT("Referenced Aux Busses"), STAT_WwiseResourceLoaderAuxBusses, STATGROUP_WwiseResourceLoader, WWISERESOURCELOADER_API);
 DECLARE_DWORD_ACCUMULATOR_STAT_EXTERN(TEXT("Referenced Events"), STAT_WwiseResourceLoaderEvents, STATGROUP_WwiseResourceLoader, WWISERESOURCELOADER_API);
 DECLARE_DWORD_ACCUMULATOR_STAT_EXTERN(TEXT("Referenced External Sources"), STAT_WwiseResourceLoaderExternalSources, STATGROUP_WwiseResourceLoader, WWISERESOURCELOADER_API);

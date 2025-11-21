@@ -12,7 +12,7 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #include "WwiseReconcileObjectColumn.h"
@@ -58,7 +58,7 @@ const TSharedRef<SWidget> FWwiseReconcileObjectColumn::ConstructRowWidget(FWwise
 	VAlign(VAlign_Center)
 	[
 		SNew(STextBlock)
-		.Text(FText::FromName(TreeItem.WwiseAnyRef.WwiseAnyRef->GetName()))
+		.Text(FText::FromName(FName(*TreeItem.WwiseAnyRef.WwiseAnyRef->GetName())))
 	];
 }
 
@@ -67,11 +67,7 @@ SHeaderRow::FColumn::FArguments FWwiseReconcileObjectColumn::ConstructHeaderRowC
 	auto UEStatusColumnHeader = SHeaderRow::Column(GetColumnId());
 	TAttribute<FText> UEStatusLabel;
 	UEStatusLabel.Set(FText::FromString("Wwise Object in Bank"));
-#if UE_5_0_OR_LATER
 	UEStatusColumnHeader.FillSized(175.f);
-#else
-	UEStatusColumnHeader.ManualWidth((175.f));
-#endif
 	UEStatusColumnHeader.DefaultLabel(UEStatusLabel);
 	UEStatusColumnHeader.DefaultTooltip(LOCTEXT("WwiseReconcileObject_Tooltip", "The item in the SoundBanks."));
 	return UEStatusColumnHeader;

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<WwiseDocument Type="WorkUnit" ID="{B22A3D9B-0AF2-4C03-ADD1-522AA0AC5AA9}" SchemaVersion="119">
+<WwiseDocument Type="WorkUnit" ID="{B22A3D9B-0AF2-4C03-ADD1-522AA0AC5AA9}" SchemaVersion="123">
 	<Events>
 		<WorkUnit Name="FOES_Flying_WU" ID="{B22A3D9B-0AF2-4C03-ADD1-522AA0AC5AA9}" PersistMode="Standalone">
 			<PropertyList>

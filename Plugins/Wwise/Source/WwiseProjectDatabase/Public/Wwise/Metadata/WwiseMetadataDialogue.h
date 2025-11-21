@@ -12,26 +12,26 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #pragma once
 
 #include "Wwise/Metadata/WwiseMetadataBasicReference.h"
 
-struct WWISEPROJECTDATABASE_API FWwiseMetadataDialogueEventReference : public FWwiseMetadataBasicReference
+struct WwiseMetadataDialogueEventReference : public WwiseMetadataBasicReference
 {
-	FWwiseMetadataDialogueEventReference(FWwiseMetadataLoader& Loader);
+	WwiseMetadataDialogueEventReference(WwiseMetadataLoader& Loader);
 };
 
-struct WWISEPROJECTDATABASE_API FWwiseMetadataDialogueArgument : public FWwiseMetadataBasicReference
+struct WwiseMetadataDialogueArgument : public WwiseMetadataBasicReference
 {
-	FWwiseMetadataDialogueArgument(FWwiseMetadataLoader& Loader);
+	WwiseMetadataDialogueArgument(WwiseMetadataLoader& Loader);
 };
 
-struct WWISEPROJECTDATABASE_API FWwiseMetadataDialogueEvent : public FWwiseMetadataDialogueEventReference
+struct WwiseMetadataDialogueEvent : public WwiseMetadataDialogueEventReference
 {
-	TArray<FWwiseMetadataDialogueArgument> Arguments;
+	WwiseDBArray<WwiseMetadataDialogueArgument> Arguments;
 
-	FWwiseMetadataDialogueEvent(FWwiseMetadataLoader& Loader);
+	WwiseMetadataDialogueEvent(WwiseMetadataLoader& Loader);
 };

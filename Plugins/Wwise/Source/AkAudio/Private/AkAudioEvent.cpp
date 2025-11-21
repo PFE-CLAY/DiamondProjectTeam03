@@ -12,7 +12,7 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 /*=============================================================================
@@ -34,6 +34,13 @@ Copyright (c) 2024 Audiokinetic Inc.
 #include "Wwise/Stats/AkAudio.h"
 
 #include <inttypes.h>
+
+#include "WwiseCookEventContext.h"
+
+#if WITH_EDITORONLY_DATA && UE_5_5_OR_LATER
+#include "UObject/ObjectSaveContext.h"
+#include "Serialization/CompactBinaryWriter.h"
+#endif
 
 #if WITH_EDITORONLY_DATA
 #include "Wwise/WwiseProjectDatabase.h"
@@ -529,7 +536,7 @@ AkPlayingID UAkAudioEvent::PostEvent(const AkGameObjectID GameObjectID, FCreateC
 		return AK_INVALID_PLAYING_ID;
 	}
 
-	auto* ExternalSourceManager = IWwiseExternalSourceManager::Get();
+	auto ExternalSourceManager = IWwiseExternalSourceManager::Get();
 	if (UNLIKELY(!ExternalSourceManager))
 	{
 		UE_LOG(LogAkAudio, Warning, TEXT("Failed to post AkAudioEvent '%s' without the External Source Manager."), *GetName());
@@ -579,18 +586,19 @@ void UAkAudioEvent::Serialize(FArchive& Ar)
 	{
 		return;
 	}
-
+	FWwisePackagedFileSerializationOptions Options(this);
 #if !UE_SERVER
 #if WITH_EDITORONLY_DATA 
 	if (Ar.IsCooking() && Ar.IsSaving() && !Ar.CookingTarget()->IsServerOnly())
 	{
 		FWwiseLocalizedEventCookedData CookedDataToArchive;
-		if (auto* ResourceCooker = FWwiseResourceCooker::GetForArchive(Ar))
+		if (auto* ResourceCooker = IWwiseResourceCooker::GetForArchive(Ar))
 		{
-			ResourceCooker->PrepareCookedData(CookedDataToArchive, GetValidatedInfo(EventInfo));
+			ResourceCooker->PrepareCookedData(CookedDataToArchive, this, GetValidatedInfo(EventInfo));
 			FillMetadata(ResourceCooker->GetProjectDatabase());
 		}
 		CookedDataToArchive.Serialize(Ar);
+		CookedDataToArchive.SerializeBulkData(Ar, Options);
 		Ar << MaximumDuration;
 		Ar << MinimumDuration;
 		Ar << IsInfinite;
@@ -598,6 +606,7 @@ void UAkAudioEvent::Serialize(FArchive& Ar)
 	}
 #else
 	EventCookedData.Serialize(Ar);
+	EventCookedData.SerializeBulkData(Ar, Options);
 	Ar << MaximumDuration;
 	Ar << MinimumDuration;
 	Ar << IsInfinite;
@@ -606,10 +615,59 @@ void UAkAudioEvent::Serialize(FArchive& Ar)
 #endif
 }
 
+#if WITH_EDITORONLY_DATA && UE_5_5_OR_LATER
+UE_COOK_DEPENDENCY_FUNCTION(HashWwiseAudioEventDependenciesForCook, UAkAudioType::HashDependenciesForCook);
+
+#if UE_5_6_OR_LATER
+void UAkAudioEvent::OnCookEvent(UE::Cook::ECookEvent CookEvent, UE::Cook::FCookEventContext& Context)
+{
+	ON_SCOPE_EXIT
+	{
+		Super::OnCookEvent(CookEvent, Context);
+	};
+#else
+void UAkAudioEvent::PreSave(FObjectPreSaveContext Context)
+{
+	ON_SCOPE_EXIT
+	{
+		Super::PreSave(Context);
+	};
+#endif
+	if (!Context.IsCooking())
+	{
+		return;
+	}
+		
+	auto* ResourceCooker = IWwiseResourceCooker::GetForPlatform(Context.GetTargetPlatform());
+	if (UNLIKELY(!ResourceCooker))
+	{
+		return;
+	}
+
+	FWwiseLocalizedEventCookedData CookedDataToArchive;
+	ResourceCooker->PrepareCookedData(CookedDataToArchive, this, GetValidatedInfo(EventInfo));
+	FillMetadata(ResourceCooker->GetProjectDatabase());
+
+	FCbWriter Writer;
+	Writer.BeginObject();
+	CookedDataToArchive.GetPlatformCookDependencies(Context, Writer);
+	Writer
+		<< "Max" << MaximumDuration
+		<< "Min" << MinimumDuration
+		<< "Infinite" << IsInfinite
+		<< "Radius" << MaxAttenuationRadius;
+	Writer.EndObject();
+
+	WwiseCookEventContext::AddLoadBuildDependency(Context, 
+		UE::Cook::FCookDependency::Function(
+			UE_COOK_DEPENDENCY_FUNCTION_CALL(HashWwiseAudioEventDependenciesForCook), Writer.Save()));
+}
+#endif
+
 #if WITH_EDITORONLY_DATA
 void UAkAudioEvent::FillInfo()
 {
-	auto* ResourceCooker = FWwiseResourceCooker::GetDefault();
+	auto* ResourceCooker = IWwiseResourceCooker::GetDefault();
 	if (UNLIKELY(!ResourceCooker))
 	{
 		UE_LOG(LogAkAudio, Error, TEXT("UAkAudioEvent::FillInfo: ResourceCooker not initialized"));
@@ -623,37 +681,40 @@ void UAkAudioEvent::FillInfo()
 		return;
 	}
 
-	const TSet<FWwiseRefEvent> EventRef = FWwiseDataStructureScopeLock(*ProjectDatabase).GetEvent(GetValidatedInfo(EventInfo));
-	if (UNLIKELY(EventRef.Num() == 0))
+	const WwiseDBSet<WwiseRefEvent> EventRef = WwiseDataStructureScopeLock(*ProjectDatabase).GetEvent(GetValidatedInfo(EventInfo));
+	if (UNLIKELY(EventRef.Size() == 0))
 	{
 		UE_LOG(LogAkAudio, Log, TEXT("UAkAudioEvent::FillInfo (%s): Cannot fill Asset Info - Event is not loaded"), *GetName());
 		return;
 	}
 
-	const FWwiseMetadataEvent* EventMetadata = EventRef.Array()[0].GetEvent();
-	if (EventMetadata->Name.ToString().IsEmpty() || !EventMetadata->GUID.IsValid() || EventMetadata->Id == AK_INVALID_UNIQUE_ID) 
+	const WwiseMetadataEvent* EventMetadata = EventRef.AsArray()[0].GetEvent();
+	if (EventMetadata->Name.IsEmpty() || !EventMetadata->GUID.IsValid() || EventMetadata->Id == AK_INVALID_UNIQUE_ID) 
 	{
 		UE_LOG(LogAkAudio, Warning, TEXT("UAkAudioEvent::FillInfo: Valid object not found in Project Database"));
 		return;
 	}
-	EventInfo.WwiseGuid = EventMetadata->GUID;
+
+	int A, B, C, D;
+	EventMetadata->GUID.GetGuidValues(A, B, C, D);
+	EventInfo.WwiseGuid = FGuid(A, B, C, D);
 	EventInfo.WwiseShortId = EventMetadata->Id;
-	EventInfo.WwiseName = EventMetadata->Name;
+	EventInfo.WwiseName = FName(*EventMetadata->Name);
 }
 
 void UAkAudioEvent::FillMetadata(FWwiseProjectDatabase* ProjectDatabase)
 {
 	Super::FillMetadata(ProjectDatabase);
 
-	const TSet<FWwiseRefEvent> EventRef = FWwiseDataStructureScopeLock(*ProjectDatabase).GetEvent(GetValidatedInfo(EventInfo));
-	if (UNLIKELY(EventRef.Num() == 0))
+	const WwiseDBSet<WwiseRefEvent> EventRef = WwiseDataStructureScopeLock(*ProjectDatabase).GetEvent(GetValidatedInfo(EventInfo));
+	if (UNLIKELY(EventRef.Size() == 0))
 	{
 		UE_LOG(LogAkAudio, Log, TEXT("UAkAudioEvent::FillMetadata (%s): Cannot fill Metadata - Event not found in Project Database"), *GetName());
 		return;
 	}
 
-	const FWwiseMetadataEvent* EventMetadata = EventRef.Array()[0].GetEvent();
-	if (EventMetadata->Name.ToString().IsEmpty() || !EventMetadata->GUID.IsValid() || EventMetadata->Id == AK_INVALID_UNIQUE_ID)
+	const WwiseMetadataEvent* EventMetadata = EventRef.AsArray()[0].GetEvent();
+	if (EventMetadata->Name.IsEmpty() || !EventMetadata->GUID.IsValid() || EventMetadata->Id == AK_INVALID_UNIQUE_ID)
 	{
 		UE_LOG(LogAkAudio, Warning, TEXT("UAkAudioEvent::FillMetadata: Valid object not found in Project Database"));
 		return;
@@ -661,7 +722,7 @@ void UAkAudioEvent::FillMetadata(FWwiseProjectDatabase* ProjectDatabase)
 
 	MaximumDuration = EventMetadata->DurationMax;
 	MinimumDuration = EventMetadata->DurationMin;
-	IsInfinite = EventMetadata->DurationType == EWwiseMetadataEventDurationType::Infinite;
+	IsInfinite = EventMetadata->DurationType == WwiseMetadataEventDurationType::Infinite;
 	MaxAttenuationRadius = EventMetadata->MaxAttenuation;
 }
 
@@ -670,7 +731,7 @@ void UAkAudioEvent::FillMetadata(FWwiseProjectDatabase* ProjectDatabase)
 void UAkAudioEvent::LoadEventData()
 {
 	SCOPED_AKAUDIO_EVENT_2(TEXT("LoadEventData"));
-	auto* ResourceLoader = FWwiseResourceLoader::Get();
+	FWwiseResourceLoaderPtr ResourceLoader = FWwiseResourceLoader::Get();
 	if (UNLIKELY(!ResourceLoader))
 	{
 		return;
@@ -689,21 +750,34 @@ void UAkAudioEvent::LoadEventData()
 		UE_LOG(LogAkAudio, VeryVerbose, TEXT("UAkAudioEvent::LoadEventData: Not loading '%s' because project database is not parsed."), *GetName())
 		return;
 	}
-	auto* ResourceCooker = FWwiseResourceCooker::GetDefault();
+	auto* ResourceCooker = IWwiseResourceCooker::GetDefault();
 	if (UNLIKELY(!ResourceCooker))
 	{
 		return;
 	}
-	if (UNLIKELY(!ResourceCooker->PrepareCookedData(EventCookedData, GetValidatedInfo(EventInfo))))
+	
+	if (!ResourceCooker->PrepareCookedData(EventCookedData, this, GetValidatedInfo(EventInfo)))
 	{
-		return;
+		const auto* AudioDevice = FAkAudioDevice::Get();
+		if( AudioDevice && AudioDevice->IsWwiseProfilerConnected())
+		{
+			UE_LOG(LogAkAudio, Verbose, TEXT("Could not fetch CookedData for Event %s, but Wwise profiler is connected. Previous errors can be ignored."),
+			*GetName());
+		}
+		else
+		{
+			return;
+		}
 	}
+	
 	FillMetadata(ResourceCooker->GetProjectDatabase());
 #endif
 
 	UE_LOG(LogAkAudio, Verbose, TEXT("%s - LoadEventData"), *GetName());
 	
 	const auto NewlyLoadedEvent = ResourceLoader->LoadEvent(EventCookedData);
+	UE_CLOG(UNLIKELY(!NewlyLoadedEvent), LogAkAudio, Log,
+		TEXT("UAkAudioEvent::LoadEventData(%s): Could not LoadEvent"), *GetName());
 	auto PreviouslyLoadedEvent = LoadedEvent.exchange(NewlyLoadedEvent);
 	if (UNLIKELY(PreviouslyLoadedEvent))
 	{
@@ -749,7 +823,7 @@ void UAkAudioEvent::UnloadEventData(bool bAsync)
 	auto PreviouslyLoadedEvent = LoadedEvent.exchange(nullptr);
 	if (PreviouslyLoadedEvent)
 	{
-		auto* ResourceLoader = FWwiseResourceLoader::Get();
+		FWwiseResourceLoaderPtr ResourceLoader = FWwiseResourceLoader::Get();
 		if (UNLIKELY(!ResourceLoader))
 		{
 			return;
@@ -770,6 +844,13 @@ void UAkAudioEvent::UnloadEventData(bool bAsync)
 
 bool UAkAudioEvent::IsDataFullyLoaded() const
 {
+	auto* AudioDevice = FAkAudioDevice::Get();
+	if(AudioDevice && AudioDevice->IsWwiseProfilerConnected())
+	{
+		// Always assume data is loaded when profiler is connected, live edit takes care of everything
+		return true;
+	}
+
 	auto CurrentLoadedEvent = LoadedEvent.load();
 	if (!CurrentLoadedEvent)
 	{
@@ -781,13 +862,19 @@ bool UAkAudioEvent::IsDataFullyLoaded() const
 
 bool UAkAudioEvent::IsLoaded() const
 {
+	auto* AudioDevice = FAkAudioDevice::Get();
+	if(AudioDevice && AudioDevice->IsWwiseProfilerConnected())
+	{
+		// Always assume data is loaded when profiler is connected, live edit takes care of everything
+		return true;
+	}
 	return LoadedEvent.load() != nullptr;
 }
 
 #if WITH_EDITORONLY_DATA
 bool UAkAudioEvent::ObjectIsInSoundBanks()
 {
-	auto* ResourceCooker = FWwiseResourceCooker::GetDefault();
+	auto* ResourceCooker = IWwiseResourceCooker::GetDefault();
 	if (UNLIKELY(!ResourceCooker))
 	{
 		UE_LOG(LogAkAudio, Error, TEXT("UAkAudioEvent::GetWwiseRef: ResourceCooker not initialized"));
@@ -801,14 +888,14 @@ bool UAkAudioEvent::ObjectIsInSoundBanks()
 		return false;
 	}
 
-	const TSet<FWwiseRefEvent> EventRef = FWwiseDataStructureScopeLock(*ProjectDatabase).GetEvent(GetValidatedInfo(EventInfo));
-	if (UNLIKELY(EventRef.Num() == 0))
+	const WwiseDBSet<WwiseRefEvent> EventRef = WwiseDataStructureScopeLock(*ProjectDatabase).GetEvent(GetValidatedInfo(EventInfo));
+	if (UNLIKELY(EventRef.Size() == 0))
 	{
 		UE_LOG(LogAkAudio, Log, TEXT("UAkAudioEvent::GetWwiseRef (%s): Event is not loaded"), *GetName());
 		return false;
 	}
 
-	return EventRef.Array()[0].IsValid();
+	return EventRef.AsArray()[0].IsValid();
 }
 #endif
 
@@ -850,12 +937,12 @@ void UAkAudioEvent::CookAdditionalFilesOverride(const TCHAR* PackageFilename, co
 		return;
 	}
 
-	FWwiseResourceCooker* ResourceCooker = FWwiseResourceCooker::GetForPlatform(TargetPlatform);
+	EnsureResourceCookerCreated(TargetPlatform);
+	IWwiseResourceCooker* ResourceCooker = IWwiseResourceCooker::GetForPlatform(TargetPlatform);
 	if (!ResourceCooker)
 	{
 		return;
 	}
-	ResourceCooker->SetSandboxRootPath(PackageFilename);
-	ResourceCooker->CookEvent(GetValidatedInfo(EventInfo), WriteAdditionalFile);
+	ResourceCooker->CookEvent(GetValidatedInfo(EventInfo), this, PackageFilename, WriteAdditionalFile);
 }
 #endif

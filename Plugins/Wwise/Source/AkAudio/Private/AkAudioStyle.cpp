@@ -12,7 +12,7 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #include "AkAudioStyle.h"
@@ -26,7 +26,6 @@ Copyright (c) 2024 Audiokinetic Inc.
 #include "AkStateValue.h"
 #include "AkSwitchValue.h"
 #include "AkTrigger.h"
-#include "WaapiPicker/WwiseTreeItem.h"
 
 #include "Engine/Texture2D.h"
 #include "Framework/Notifications/NotificationManager.h"
@@ -34,6 +33,7 @@ Copyright (c) 2024 Audiokinetic Inc.
 #include "Styling/SlateStyleRegistry.h"
 #include "Widgets/Notifications/SNotificationList.h"
 #if WITH_EDITOR
+#include "Wwise/WwisePluginStyle.h"
 #include "Wwise/Ref/WwiseRefType.h"
 #endif
 
@@ -109,99 +109,6 @@ namespace AkAudioStyle_Helpers
 	}
 }
 
-void SetAkBrush(FSlateStyleSet& Style, const char* BrushName, const char* TextureName)
-{
-	using namespace AkAudioStyle_Helpers;
-
-	const FVector2D Icon15x15(15.0f, 15.0f);
-
-	auto Texture = LoadAkTexture("WwiseTree/Icons", TextureName);
-	if (Texture != nullptr)
-	{
-		Texture->AddToRoot();
-		Style.Set(BrushName, CreateAkImageBrush(Texture, Icon15x15));
-	}
-}
-
-void SetClassThumbnail(FSlateStyleSet& Style, const char* BrushName, const char* TextureName)
-{
-	using namespace AkAudioStyle_Helpers;
-
-	const FVector2D ThumbnailSize(256.0f, 256.0f);
-
-	auto Texture = LoadAkTexture("WwiseTypes", TextureName);
-	if (Texture != nullptr)
-	{
-		Texture->AddToRoot();
-		Style.Set(BrushName, CreateAkImageBrush(Texture, ThumbnailSize));
-	}
-}
-
-void SetClassIcon(FSlateStyleSet& Style, const char* BrushName, const char* TextureName)
-{
-	using namespace AkAudioStyle_Helpers;
-
-	const FVector2D ThumbnailSize(15.0f, 15.0f);
-
-	auto Texture = LoadAkTexture("WwiseTypes", TextureName);
-	if (Texture != nullptr)
-	{
-		Texture->AddToRoot();
-		Style.Set(BrushName, CreateAkImageBrush(Texture, ThumbnailSize));
-	}
-}
-
-void SetAkResourceBrushes(FSlateStyleSet& Style)
-{
-	SetAkBrush(Style, "AudiokineticTools.WwiseIcon", "Titlebar_WwiseAppIcon");
-
-	SetAkBrush(Style, "AudiokineticTools.ActorMixerIcon", "actor_mixer_nor");
-	SetAkBrush(Style, "AudiokineticTools.SoundIcon", "sound_fx_nor");
-	SetAkBrush(Style, "AudiokineticTools.SwitchContainerIcon", "container_switch_nor");
-	SetAkBrush(Style, "AudiokineticTools.RandomSequenceContainerIcon", "container_random_sequence_nor");
-	SetAkBrush(Style, "AudiokineticTools.BlendContainerIcon", "layer_container_nor");
-	SetAkBrush(Style, "AudiokineticTools.MotionBusIcon", "motion_bus_nor");
-	SetAkBrush(Style, "AudiokineticTools.AkBrowserTabIcon", "wwise_logo_32");
-	SetAkBrush(Style, "AudiokineticTools.EventIcon", "event_nor");
-	SetAkBrush(Style, "AudiokineticTools.AcousticTextureIcon", "acoutex_nor");
-	SetAkBrush(Style, "AudiokineticTools.AuxBusIcon", "auxbus_nor");
-	SetAkBrush(Style, "AudiokineticTools.BusIcon", "bus_nor");
-	SetAkBrush(Style, "AudiokineticTools.FolderIcon", "folder_nor");
-	SetAkBrush(Style, "AudiokineticTools.PhysicalFolderIcon", "physical_folder_nor");
-	SetAkBrush(Style, "AudiokineticTools.WorkUnitIcon", "workunit_nor");
-	SetAkBrush(Style, "AudiokineticTools.ProjectIcon", "wproj");
-	SetAkBrush(Style, "AudiokineticTools.RTPCIcon", "gameparameter_nor");
-	SetAkBrush(Style, "AudiokineticTools.StateIcon", "state_nor");
-	SetAkBrush(Style, "AudiokineticTools.StateGroupIcon", "stategroup_nor");
-	SetAkBrush(Style, "AudiokineticTools.SwitchIcon", "switch_nor");
-	SetAkBrush(Style, "AudiokineticTools.SwitchGroupIcon", "switchgroup_nor");
-	SetAkBrush(Style, "AudiokineticTools.TriggerIcon", "trigger_nor");
-	SetAkBrush(Style, "AudiokineticTools.EffectShareSetIcon", "effect_shareset_nor");
-	SetAkBrush(Style, "AudiokineticTools.AudioDeviceIcon", "audio_device_nor");
-
-	SetClassThumbnail(Style, "ClassThumbnail.AkAcousticTexture", "AkAcousticTexture");
-	SetClassThumbnail(Style, "ClassThumbnail.AkAudioEvent", "AkAudioEvent");
-	SetClassThumbnail(Style, "ClassThumbnail.AkAuxBus", "AkAuxBus");
-	SetClassThumbnail(Style, "ClassThumbnail.AkAudioBank", "AkAudioBank");
-	SetClassThumbnail(Style, "ClassThumbnail.AkInitBank", "AkAudioBank");
-	SetClassThumbnail(Style, "ClassThumbnail.AkLocalizedMediaAsset", "AkLocalizedMediaAsset");
-	SetClassThumbnail(Style, "ClassThumbnail.AkMediaAsset", "AkMediaAsset");
-	SetClassThumbnail(Style, "ClassThumbnail.AkExternalMediaAsset", "AkExternalMediaAsset");
-	SetClassThumbnail(Style, "ClassThumbnail.AkRtpc", "AkRtpc");
-	SetClassThumbnail(Style, "ClassThumbnail.AkStateValue", "AkStateValue");
-	SetClassThumbnail(Style, "ClassThumbnail.AkSwitchValue", "AkSwitchValue");
-	SetClassThumbnail(Style, "ClassThumbnail.AkTrigger", "AkTrigger");
-	SetClassThumbnail(Style, "ClassThumbnail.AkEffectShareSet", "AkEffectShareSet");
-	SetClassThumbnail(Style, "ClassThumbnail.AkAudioDeviceShareSet", "AkAudioDeviceShareSet");
-
-	SetClassThumbnail(Style, "ClassThumbnail.AkAcousticPortal", "AK_Acoustic_Portal");
-	SetClassIcon(Style, "ClassIcon.AkAcousticPortal", "AK_Acoustic_Portal_Explorer");
-	SetClassThumbnail(Style, "ClassThumbnail.AkSpatialAudioVolume", "AK_Spatial_Audio_Volume");
-	SetClassIcon(Style, "ClassIcon.AkSpatialAudioVolume", "AK_Spatial_Audio_Volume_Explorer");
-	SetClassThumbnail(Style, "ClassThumbnail.AkReverbVolume", "AK_Reverb_Volume");
-	SetClassIcon(Style, "ClassIcon.AkReverbVolume", "AK_Reverb_Volume_Explorer");
-}
-
 void FAkAudioStyle::Initialize()
 {
 	using namespace AkAudioStyle_Helpers;
@@ -215,8 +122,6 @@ void FAkAudioStyle::Initialize()
 
 		FSlateStyleSet& Style = *StyleInstance.Get();
 		{
-			SetAkResourceBrushes(Style);
-
 			Style.Set("AudiokineticTools.GroupBorder", CreateEngineBoxBrush(Style, "Common/GroupBorder", FMargin(4.0f / 16.0f)));
 			Style.Set("AudiokineticTools.AssetDragDropTooltipBackground", CreateEngineBoxBrush(Style, "Old/Menu_Background", FMargin(8.0f / 64.0f)));
 
@@ -251,6 +156,20 @@ void FAkAudioStyle::Shutdown()
     }
 }
 
+FName FAkAudioStyle::GetStyleSetName()
+{
+	static FName StyleSetName(TEXT("AudiokineticToolsStyle"));
+	return StyleSetName;
+}
+
+const ISlateStyle& FAkAudioStyle::Get()
+{
+	Initialize();
+	return *StyleInstance;
+}
+
+
+#if WITH_EDITOR
 void FAkAudioStyle::DisplayEditorMessage(const FText& messageText, EWwiseItemType::Type wwiseItemType /* = EWwiseItemType::Type::None*/, float duration /* = 1.5f */)
 {
 	if (!FApp::CanEverRender())
@@ -276,101 +195,97 @@ void FAkAudioStyle::DisplayEditorMessage(const FText& messageText, EWwiseItemTyp
 	NotificationItem->ExpireAndFadeout();
 }
 
-FName FAkAudioStyle::GetStyleSetName()
-{
-	static FName StyleSetName(TEXT("AudiokineticToolsStyle"));
-	return StyleSetName;
-}
-
-const ISlateStyle& FAkAudioStyle::Get()
-{
-	Initialize();
-	return *StyleInstance;
-}
-
 const FSlateBrush* FAkAudioStyle::GetWwiseIcon()
 {
-	auto& Style = Get();
-	return Style.GetBrush("AudiokineticTools.WwiseIcon");
+	auto Style = FWwisePluginStyle::Get();
+	if (!Style.IsValid())
+	{
+		return nullptr;
+	}
+	return Style->GetBrush(FWwisePluginStyle::WwiseIconName);
 }
 
 const FSlateBrush* FAkAudioStyle::GetBrush(EWwiseItemType::Type ItemType)
 {
-	auto& Style = Get();
+	auto Style = FWwisePluginStyle::Get();
+	if (!Style.IsValid())
+	{
+		return nullptr;
+	}
+	
 	switch (ItemType)
 	{
-	case EWwiseItemType::Event: return Style.GetBrush("AudiokineticTools.EventIcon");
-	case EWwiseItemType::AcousticTexture: return Style.GetBrush("AudiokineticTools.AcousticTextureIcon");
-	case EWwiseItemType::AuxBus: return Style.GetBrush("AudiokineticTools.AuxBusIcon");
-	case EWwiseItemType::Bus: return Style.GetBrush("AudiokineticTools.BusIcon");
-	case EWwiseItemType::Folder: return Style.GetBrush("AudiokineticTools.FolderIcon");
-	case EWwiseItemType::Project: return Style.GetBrush("AudiokineticTools.ProjectIcon");
-	case EWwiseItemType::PhysicalFolder: return Style.GetBrush("AudiokineticTools.PhysicalFolderIcon");
+	case EWwiseItemType::Event: return Style->GetBrush(FWwisePluginStyle::EventIconName);
+	case EWwiseItemType::AcousticTexture: return Style->GetBrush(FWwisePluginStyle::AcousticTextureIconName);
+	case EWwiseItemType::AuxBus: return Style->GetBrush(FWwisePluginStyle::AuxBusIconName);
+	case EWwiseItemType::Bus: return Style->GetBrush(FWwisePluginStyle::BusIconName);
+	case EWwiseItemType::Folder: return Style->GetBrush(FWwisePluginStyle::FolderIconName);
+	case EWwiseItemType::Project: return Style->GetBrush(FWwisePluginStyle::ProjectIconName);
+	case EWwiseItemType::PhysicalFolder: return Style->GetBrush(FWwisePluginStyle::PhysicalFolderIconName);
 	case EWwiseItemType::StandaloneWorkUnit:
-	case EWwiseItemType::NestedWorkUnit: return Style.GetBrush("AudiokineticTools.WorkUnitIcon");
-	case EWwiseItemType::ActorMixer: return Style.GetBrush("AudiokineticTools.ActorMixerIcon");
-	case EWwiseItemType::Sound: return Style.GetBrush("AudiokineticTools.SoundIcon");
-	case EWwiseItemType::SwitchContainer: return Style.GetBrush("AudiokineticTools.SwitchContainerIcon");
-	case EWwiseItemType::RandomSequenceContainer: return Style.GetBrush("AudiokineticTools.RandomSequenceContainerIcon");
-	case EWwiseItemType::BlendContainer: return Style.GetBrush("AudiokineticTools.BlendContainerIcon");
-	case EWwiseItemType::MotionBus: return Style.GetBrush("AudiokineticTools.MotionBusIcon");
-	case EWwiseItemType::GameParameter: return Style.GetBrush("AudiokineticTools.RTPCIcon");
-	case EWwiseItemType::State: return Style.GetBrush("AudiokineticTools.StateIcon");
-	case EWwiseItemType::StateGroup: return Style.GetBrush("AudiokineticTools.StateGroupIcon");
-	case EWwiseItemType::Switch: return Style.GetBrush("AudiokineticTools.SwitchIcon");
-	case EWwiseItemType::SwitchGroup: return Style.GetBrush("AudiokineticTools.SwitchGroupIcon");
-	case EWwiseItemType::Trigger: return Style.GetBrush("AudiokineticTools.TriggerIcon");
-	case EWwiseItemType::EffectShareSet: return Style.GetBrush("AudiokineticTools.EffectShareSetIcon");
-	case EWwiseItemType::AudioDeviceShareSet: return Style.GetBrush("AudiokineticTools.AudioDeviceIcon");
+	case EWwiseItemType::NestedWorkUnit: return Style->GetBrush(FWwisePluginStyle::WorkUnitIconName);
+	case EWwiseItemType::ActorMixer: return Style->GetBrush(FWwisePluginStyle::ActorMixerIconName);
+	case EWwiseItemType::Sound: return Style->GetBrush(FWwisePluginStyle::SoundIconName);
+	case EWwiseItemType::SwitchContainer: return Style->GetBrush(FWwisePluginStyle::SwitchContainerIconName);
+	case EWwiseItemType::RandomSequenceContainer: return Style->GetBrush(FWwisePluginStyle::RandomSequenceContainerIconName);
+	case EWwiseItemType::BlendContainer: return Style->GetBrush(FWwisePluginStyle::BlendContainerIconName);
+	case EWwiseItemType::MotionBus: return Style->GetBrush(FWwisePluginStyle::MotionBusIconName);
+	case EWwiseItemType::GameParameter: return Style->GetBrush(FWwisePluginStyle::GameParameterIconName);
+	case EWwiseItemType::State: return Style->GetBrush(FWwisePluginStyle::StateIconName);
+	case EWwiseItemType::StateGroup: return Style->GetBrush(FWwisePluginStyle::StateGroupIconName);
+	case EWwiseItemType::Switch: return Style->GetBrush(FWwisePluginStyle::SwitchIconName);
+	case EWwiseItemType::SwitchGroup: return Style->GetBrush(FWwisePluginStyle::SwitchGroupIconName);
+	case EWwiseItemType::Trigger: return Style->GetBrush(FWwisePluginStyle::TriggerIconName);
+	case EWwiseItemType::EffectShareSet: return Style->GetBrush(FWwisePluginStyle::EffectShareSetIconName);
+	case EWwiseItemType::AudioDeviceShareSet: return Style->GetBrush(FWwisePluginStyle::AudioDeviceIconName);
 
 	default:
 		return nullptr;
 	}
 }
 
-#if WITH_EDITOR
-const FSlateBrush* FAkAudioStyle::GetBrush(EWwiseRefType WwiseRefType)
+const FSlateBrush* FAkAudioStyle::GetBrush(WwiseRefType WwiseRefType)
 {
 	EWwiseItemType::Type ItemType = EWwiseItemType::Type::None;
 	switch (WwiseRefType)
 	{
-	case EWwiseRefType::Event:
+	case WwiseRefType::Event:
 		ItemType = EWwiseItemType::Event;
 		break;
-	case EWwiseRefType::SwitchContainer:
+	case WwiseRefType::SwitchContainer:
 		ItemType = EWwiseItemType::SwitchContainer;
 		break;
-	case EWwiseRefType::Bus:		
+	case WwiseRefType::Bus:		
 		ItemType = EWwiseItemType::Bus;
 		break;
-	case EWwiseRefType::AuxBus:
+	case WwiseRefType::AuxBus:
 		ItemType = EWwiseItemType::AuxBus;
 		break;
-	case EWwiseRefType::GameParameter:
+	case WwiseRefType::GameParameter:
 		ItemType = EWwiseItemType::GameParameter;
 		break;
-	case EWwiseRefType::StateGroup:
+	case WwiseRefType::StateGroup:
 		ItemType = EWwiseItemType::StateGroup;
 		break;
-	case EWwiseRefType::State:
+	case WwiseRefType::State:
 		ItemType = EWwiseItemType::State;
 		break;
-	case EWwiseRefType::SwitchGroup:
+	case WwiseRefType::SwitchGroup:
 		ItemType = EWwiseItemType::SwitchGroup;
 		break;
-	case EWwiseRefType::Switch:
+	case WwiseRefType::Switch:
 		ItemType = EWwiseItemType::Switch;
 		break;
-	case EWwiseRefType::Trigger:
+	case WwiseRefType::Trigger:
 		ItemType = EWwiseItemType::Trigger;
 		break;
-	case EWwiseRefType::AcousticTexture:
+	case WwiseRefType::AcousticTexture:
 		ItemType = EWwiseItemType::AcousticTexture;
 		break;
-	case EWwiseRefType::PluginShareSet:
+	case WwiseRefType::PluginShareSet:
 		ItemType = EWwiseItemType::EffectShareSet;
 		break;
-	case EWwiseRefType::AudioDevice:
+	case WwiseRefType::AudioDevice:
 		ItemType = EWwiseItemType::AudioDeviceShareSet;
 		break;
 	}

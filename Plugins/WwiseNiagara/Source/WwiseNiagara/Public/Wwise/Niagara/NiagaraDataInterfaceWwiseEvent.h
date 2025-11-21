@@ -12,7 +12,7 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #pragma once
@@ -28,11 +28,7 @@ Copyright (c) 2024 Audiokinetic Inc.
 #include "UObject/WeakObjectPtr.h"
 #include "NiagaraDataInterfaceWwiseEvent.generated.h"
 
-#if UE_5_0_OR_LATER
 using FUnrealVectorVMContext = FVectorVMExternalFunctionContext;
-#else
-using FUnrealVectorVMContext = FVectorVMContext;
-#endif
 
 class FAkComponentCallbackManager;
 class USoundConcurrency;
@@ -65,9 +61,7 @@ struct FWwiseEventInterface_InstanceData
 	TWeakObjectPtr<UAkAudioEvent> EventToPost;
 	TArray<TWeakObjectPtr<UAkRtpc>> GameParameters;
 
-#if UE_5_0_OR_LATER
 	FNiagaraLWCConverter LWCConverter;
-#endif
 	int32 MaxPlaysPerTick = 0;
 	bool bStopWhenComponentIsDestroyed = true;
 	bool bStopWhenNotUpdated = true;
@@ -90,11 +84,11 @@ public:
 
 	/** The AkAudioEvent asset to post. */
 	UPROPERTY(EditAnywhere, Category = "Audio")
-	UAkAudioEvent* EventToPost;
+	TObjectPtr<UAkAudioEvent> EventToPost;
 
 	/** A set of Game Parameters updated (via their index) in the Set Wwise Persistent Event Game Parameter module */
 	UPROPERTY(EditAnywhere, Category = "Parameters")
-	TArray<UAkRtpc*> GameParameters;
+	TArray<TObjectPtr<UAkRtpc>> GameParameters;
 
 	UPROPERTY(EditAnywhere, AdvancedDisplay, Category = "Audio", meta = (InlineEditConditionToggle))
 	bool bLimitPostsPerTick;

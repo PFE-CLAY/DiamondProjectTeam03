@@ -12,7 +12,7 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 /*=============================================================================
@@ -213,6 +213,16 @@ void UAkRoomComponent::PostLoad()
 
 void UAkRoomComponent::OnComponentDestroyed(bool bDestroyingHierarchy)
 {
+	// When we destroy a parent room, update the children
+	// so their parent room is undefined.
+	for (auto c : ChildrenRooms)
+	{
+		if (c.IsValid())
+		{
+			c->ResetParentRoom();
+		}
+	}
+	ChildrenRooms.Empty();
 	UAkSettingsPerUser* AkSettingsPerUser = GetMutableDefault<UAkSettingsPerUser>();
 	AkSettingsPerUser->OnShowRoomsPortalsChanged.Remove(ShowRoomsChangedHandle);
 	ShowRoomsChangedHandle.Reset();
@@ -469,6 +479,8 @@ void UAkRoomComponent::GetRoomParams(AkRoomParams& outParams)
 
 	if (GeometryComponent != nullptr)
 		outParams.GeometryInstanceID = GeometryComponent->GetGeometrySetID();
+
+	outParams.RoomPriority = Priority;
 	
 	outParams.RoomGameObj_AuxSendLevelToSelf = AuxSendLevel;
 	outParams.RoomGameObj_KeepRegistered = AkAudioEvent == NULL ? false : true;
@@ -705,7 +717,7 @@ void UAkRoomComponent::BeginPlayInternal()
 		SetReverbZone();
 	}
 
-	if (AutoPost)
+	if (AutoPost && bIsRegisteredWithWwise && !HasActiveEvents())
 	{
 		PostAssociatedAkEvent(0, FOnAkPostEventCallback());
 	}
@@ -1044,7 +1056,12 @@ AkRoomID UAkRoomComponent::GetRootID() const
 	return ParentRoom->GetRootID();
 }
 
-void UAkRoomComponent::SetParentRoom(TWeakObjectPtr<const UAkRoomComponent> InParentRoom)
+void UAkRoomComponent::AddChildRoom(TWeakObjectPtr<UAkRoomComponent> InChildRoom)
+{
+	ChildrenRooms.Add(InChildRoom);
+}
+
+void UAkRoomComponent::SetParentRoom(TWeakObjectPtr<UAkRoomComponent> InParentRoom)
 {
 	if (!InParentRoom.IsValid())
 	{
@@ -1075,4 +1092,7 @@ void UAkRoomComponent::SetParentRoom(TWeakObjectPtr<const UAkRoomComponent> InPa
 		ParentRoom = InParentRoom;
 		ParentRoomName = InParentRoom->GetRoomName();
 	}
+
+	// Add this UAkRoomComponent object as a child room of InParentRoom.
+	InParentRoom->AddChildRoom(this);
 }

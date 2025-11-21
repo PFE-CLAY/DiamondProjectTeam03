@@ -12,7 +12,7 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #pragma once
@@ -34,7 +34,7 @@ public:
     //Hash of the external source name, technically a uint32
     //Used as the search key external source in the default external source table
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category=ExternalSource)
-    int32 ExternalSourceCookie = 0;
+    int64 ExternalSourceCookie = 0;
 
     //Name of the external source name in Wwise
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category=ExternalSource)

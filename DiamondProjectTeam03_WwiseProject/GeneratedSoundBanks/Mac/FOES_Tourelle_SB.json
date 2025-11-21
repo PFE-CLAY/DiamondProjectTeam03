@@ -3,14 +3,15 @@
   "Platform": "Mac",
   "BasePlatform": "Mac",
   "SchemaVersion": "16",
-  "SoundBankVersion": "150",
+  "SoundBankVersion": "154",
   "SoundBanks": [
    {
     "Id": "3250948517",
     "Type": "User",
     "GUID": "{8CC30184-23AF-4DB5-9844-9B04DF10A650}",
+    "Color": "10",
     "Language": "SFX",
-    "Hash": "{48FF8BF8-8354-C460-3500-59FF52C15CEE}",
+    "Hash": "{3B991071-FA11-38EE-6363-B8BCA8C22EE3}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\FOES_Tourelle_SB",
     "ShortName": "FOES_Tourelle_SB",
     "Path": "FOES_Tourelle_SB.bnk",
@@ -21,7 +22,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "FOES_SFX_Tourelle_Shoot_02.wav",
-      "CachePath": "SFX/FOES_SFX_Tourelle_Shoot_02_818F3B66.wem"
+      "CachePath": "42/{4299AE49-FEB5-50AD-3AD7-4E5EAD9499CF}.wem"
      },
      {
       "Id": "119224371",
@@ -29,7 +30,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "FOES_SFX_Tourelle_Shoot_05.wav",
-      "CachePath": "SFX/FOES_SFX_Tourelle_Shoot_05_818F3B66.wem"
+      "CachePath": "F3/{F398FB23-2DD4-0AD3-ED63-52EAD3741B56}.wem"
      },
      {
       "Id": "363741101",
@@ -37,7 +38,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "FOES_SFX_Tourelle_Shoot_04.wav",
-      "CachePath": "SFX/FOES_SFX_Tourelle_Shoot_04_818F3B66.wem"
+      "CachePath": "FE/{FED8791A-63B4-B95F-C6DC-6BAA4A6F6103}.wem"
      },
      {
       "Id": "387455546",
@@ -45,7 +46,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "FOES_SFX_Tourelle_Shoot_01.wav",
-      "CachePath": "SFX/FOES_SFX_Tourelle_Shoot_01_818F3B66.wem"
+      "CachePath": "70/{70992BED-DE38-BA2D-95CE-15BBDC146BA1}.wem"
      },
      {
       "Id": "515409144",
@@ -53,7 +54,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "FOES_SFX_Tourelle_Shoot_03.wav",
-      "CachePath": "SFX/FOES_SFX_Tourelle_Shoot_03_818F3B66.wem"
+      "CachePath": "20/{20B67781-76DF-4682-1B08-CDA052D5A194}.wem"
      },
      {
       "Id": "546468767",
@@ -61,7 +62,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "SFX\\FOES_SFX_Tourelle_Death_04.wav",
-      "CachePath": "SFX/SFX/FOES_SFX_Tourelle_Death_04_818F3B66.wem"
+      "CachePath": "69/{69F2C0ED-B60A-CD6E-D4FC-EC48B1832686}.wem"
      },
      {
       "Id": "726017957",
@@ -69,7 +70,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "SFX\\FOES_SFX_Tourelle_Death_01.wav",
-      "CachePath": "SFX/SFX/FOES_SFX_Tourelle_Death_01_818F3B66.wem"
+      "CachePath": "EC/{EC029F1B-C079-2B3C-2062-46B52EB89F7B}.wem"
      },
      {
       "Id": "786312046",
@@ -77,7 +78,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "SFX\\FOES_SFX_Tourelle_Death_02.wav",
-      "CachePath": "SFX/SFX/FOES_SFX_Tourelle_Death_02_818F3B66.wem"
+      "CachePath": "63/{63652D44-0761-9B07-C3DD-4513C20F3CD9}.wem"
      },
      {
       "Id": "885262966",
@@ -85,7 +86,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "SFX\\FOES_SFX_Projectil.wav",
-      "CachePath": "SFX/SFX/FOES_SFX_Projectil_FBC78EF0.wem"
+      "CachePath": "D8/{D87718AD-8ACC-181C-0452-59C17E8B6FE3}.wem"
      },
      {
       "Id": "1052042829",
@@ -93,7 +94,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "SFX\\FOES_SFX_Tourelle_Death_03.wav",
-      "CachePath": "SFX/SFX/FOES_SFX_Tourelle_Death_03_818F3B66.wem"
+      "CachePath": "04/{0414C370-46C1-F103-07A8-361DD2656568}.wem"
      }
     ],
     "Plugins": {
@@ -188,6 +189,7 @@
       "Name": "Play_FOES_SFX_Projectil",
       "ObjectPath": "\\Events\\FOES_Tourelle_WU\\Play_FOES_SFX_Projectil",
       "GUID": "{B21D01D5-2B89-4090-9F00-456FE3EF49C7}",
+      "Color": "10",
       "MaxAttenuation": "10",
       "DurationType": "Infinite",
       "MediaRefs": [
@@ -201,6 +203,7 @@
       "Name": "Play_FOES_SFX_Tourelle_Death_RC",
       "ObjectPath": "\\Events\\FOES_Tourelle_WU\\Play_FOES_SFX_Tourelle_Death_RC",
       "GUID": "{03966878-2B14-4479-9F3B-3C317D6EB7B1}",
+      "Color": "10",
       "MaxAttenuation": "3000",
       "DurationType": "OneShot",
       "DurationMin": "1.3826165",
@@ -225,6 +228,7 @@
       "Name": "Play_FOES_SFX_Tourelle_Shoot_RC",
       "ObjectPath": "\\Events\\FOES_Tourelle_WU\\Play_FOES_SFX_Tourelle_Shoot_RC",
       "GUID": "{140E36FB-31F3-4C66-AC5D-E9E86C57BA68}",
+      "Color": "10",
       "MaxAttenuation": "3000",
       "DurationType": "OneShot",
       "DurationMin": "1.2318597",
@@ -252,6 +256,7 @@
       "Name": "Stop_FOES_SFX_Projectil",
       "ObjectPath": "\\Events\\FOES_Tourelle_WU\\Stop_FOES_SFX_Projectil",
       "GUID": "{DD66D73B-753F-4CEE-9201-B7AEDEE761D6}",
+      "Color": "10",
       "MaxAttenuation": "0",
       "DurationType": "OneShot",
       "DurationMin": "0",
@@ -263,67 +268,78 @@
       "Id": "109159411",
       "Name": "Game_Global",
       "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\Game_Global",
-      "GUID": "{FAD5C029-0A02-4BD2-97F7-F8C20B7A95BD}"
+      "GUID": "{FAD5C029-0A02-4BD2-97F7-F8C20B7A95BD}",
+      "Color": "16"
      },
      {
       "Id": "393239870",
       "Name": "SFX",
       "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\Game_Global\\SFX",
-      "GUID": "{EB4CE24D-8196-408E-9775-5E8EEFE98495}"
+      "GUID": "{EB4CE24D-8196-408E-9775-5E8EEFE98495}",
+      "Color": "17"
      },
      {
       "Id": "1117531639",
       "Name": "AMB",
       "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\Game_Global\\AMB",
-      "GUID": "{C1595F21-FBBF-4B04-AC1A-78D86879A937}"
+      "GUID": "{C1595F21-FBBF-4B04-AC1A-78D86879A937}",
+      "Color": "4"
      },
      {
       "Id": "1551306167",
       "Name": "UI",
       "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\UI",
-      "GUID": "{B5E7816E-C3FC-4992-B763-4078089CE674}"
+      "GUID": "{B5E7816E-C3FC-4992-B763-4078089CE674}",
+      "Color": "1"
      },
      {
       "Id": "1685527061",
       "Name": "MC",
       "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\Game_Global\\MC",
-      "GUID": "{B3079877-B26F-4239-A3AB-9C7AFFCBC797}"
+      "GUID": "{B3079877-B26F-4239-A3AB-9C7AFFCBC797}",
+      "Color": "19"
      },
      {
       "Id": "2290178407",
       "Name": "FOES_Tourelle",
       "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\Game_Global\\FOES_Tourelle",
-      "GUID": "{D783D57E-4B6F-4101-8F5F-FD96F0409170}"
+      "GUID": "{D783D57E-4B6F-4101-8F5F-FD96F0409170}",
+      "Color": "10"
      },
      {
       "Id": "3313685232",
       "Name": "Voices",
       "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\Voices",
-      "GUID": "{00AA482D-3F12-46A5-8177-E8A172D08E63}"
+      "GUID": "{00AA482D-3F12-46A5-8177-E8A172D08E63}",
+      "Color": "23"
      },
      {
       "Id": "3623095082",
       "Name": "FOES_Flying",
       "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\Game_Global\\FOES_Flying",
-      "GUID": "{439831F9-AA50-4CD2-98C3-ACD8B187380E}"
+      "GUID": "{439831F9-AA50-4CD2-98C3-ACD8B187380E}",
+      "Color": "11"
      },
      {
       "Id": "3991942870",
       "Name": "Music",
       "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\Music",
-      "GUID": "{08156595-7637-4348-AC3C-2EDE3FCCB08F}"
+      "GUID": "{08156595-7637-4348-AC3C-2EDE3FCCB08F}",
+      "Color": "24"
      },
      {
       "Id": "4056684167",
       "Name": "Master",
       "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master",
-      "GUID": "{F3A976BC-47E9-46E5-9EEC-F566BB39DBEE}"
+      "GUID": "{F3A976BC-47E9-46E5-9EEC-F566BB39DBEE}",
+      "Color": "9"
      },
      {
       "Id": "4219618961",
       "Name": "AMB_Crowd",
       "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\Game_Global\\AMB_Crowd",
-      "GUID": "{985719AF-3534-41FC-A751-99E11C3F7784}"
+      "GUID": "{985719AF-3534-41FC-A751-99E11C3F7784}",
+      "Color": "4"
      }
     ],
     "AuxBusses": [
@@ -332,6 +348,7 @@
       "Name": "RVB_Voices",
       "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Voices",
       "GUID": "{483EAB60-BC92-484F-9830-D1776233B15C}",
+      "Color": "9",
       "PluginRefs": {
        "ShareSets": [
         {
@@ -348,6 +365,7 @@
       "Name": "RVB_BlackHouses",
       "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_BlackHouses",
       "GUID": "{17B5E8F9-026F-4941-A027-1C0641AB0C14}",
+      "Color": "26",
       "PluginRefs": {
        "Custom": [
         {
@@ -361,6 +379,7 @@
       "Name": "RVB_Arena",
       "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Arena",
       "GUID": "{54C7EBDA-4885-4850-8969-FB63BDACC807}",
+      "Color": "26",
       "PluginRefs": {
        "Custom": [
         {
@@ -377,6 +396,7 @@
       "Name": "RVB_RFX_Arena",
       "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_RFX_Arena",
       "GUID": "{CC7A2F05-EE75-4E8E-B097-98A1938CB5E4}",
+      "Color": "27",
       "PluginRefs": {
        "Custom": [
         {
@@ -390,6 +410,7 @@
       "Name": "RVB_Basement",
       "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Basement",
       "GUID": "{BF09F5DA-71E8-4CAC-B0EB-19A1C29389BA}",
+      "Color": "26",
       "PluginRefs": {
        "Custom": [
         {
@@ -403,6 +424,7 @@
       "Name": "AUX_LPF",
       "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\AUX_LPF",
       "GUID": "{5D5AAEA6-57CB-46FD-9802-C041695A5809}",
+      "Color": "9",
       "PluginRefs": {
        "ShareSets": [
         {
@@ -416,6 +438,7 @@
       "Name": "RVB_Hub",
       "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Hub",
       "GUID": "{D499EBE4-F26A-48E5-B89D-1F7C43D829E3}",
+      "Color": "26",
       "PluginRefs": {
        "Custom": [
         {
@@ -429,6 +452,7 @@
       "Name": "RVB_Pyramid",
       "ObjectPath": "\\Master-Mixer Hierarchy\\Master_WU\\Master\\RVB_Pyramid",
       "GUID": "{668EA0D2-771E-452F-B241-11793F9755B0}",
+      "Color": "26",
       "PluginRefs": {
        "Custom": [
         {
@@ -461,7 +485,8 @@
       "Id": "3445598977",
       "Name": "RTPC_Master",
       "ObjectPath": "\\Game Parameters\\Default Work Unit\\RTPC_Master",
-      "GUID": "{74E6261E-6493-44A8-BAE7-1E79ABF4DED1}"
+      "GUID": "{74E6261E-6493-44A8-BAE7-1E79ABF4DED1}",
+      "Color": "10"
      },
      {
       "Id": "3553041361",
@@ -524,6 +549,6 @@
     ]
    }
   ],
-  "FileHash": "{E813524C-07C1-8F29-8959-55F463047F66}"
+  "FileHash": "{C8142D4D-C109-5346-B265-4AEA7E38DBDC}"
  }
 }

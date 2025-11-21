@@ -12,7 +12,7 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #include "AkComponentCallbackManager.h"
@@ -112,11 +112,11 @@ void FAkBlueprintDelegateEventCallbackPackage::HandleAction(AkCallbackType in_eT
 				return EWwiseDeferredAsyncResult::Done;
 			}
 
-			UAkCallbackInfo*  BlueprintAkCallbackInfo = AkCallbackTypeHelpers::GetBlueprintableCallbackInfo(BlueprintCallbackType, cbInfoCopy);
-			CachedBlueprintCallback.ExecuteIfBound(BlueprintCallbackType, BlueprintAkCallbackInfo);
 
 			if (auto AudioDevice = FAkAudioDevice::Get())
 			{
+				UAkCallbackInfo*  BlueprintAkCallbackInfo = AkCallbackTypeHelpers::GetBlueprintableCallbackInfo(BlueprintCallbackType, cbInfoCopy);
+				CachedBlueprintCallback.ExecuteIfBound(BlueprintCallbackType, BlueprintAkCallbackInfo);
 				if (auto CallbackInfoPool = AudioDevice->GetAkCallbackInfoPool())
 				{
 					CallbackInfoPool->Release(BlueprintAkCallbackInfo);
@@ -168,7 +168,7 @@ void FAkComponentCallbackManager::AkComponentCallback(AkCallbackType in_eType, A
 
 			if(pPackage->HasExternalSources)
 			{
-				if (auto* ExternalSourceMananger = IWwiseExternalSourceManager::Get())
+				if (auto ExternalSourceMananger = IWwiseExternalSourceManager::Get())
 				{
 					ExternalSourceMananger->OnEndOfEvent(((AkEventCallbackInfo*)in_pCallbackInfo)->playingID);
 				}

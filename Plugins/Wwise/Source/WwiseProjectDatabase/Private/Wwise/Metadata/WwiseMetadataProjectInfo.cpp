@@ -12,7 +12,7 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #include "Wwise/Metadata/WwiseMetadataProjectInfo.h"
@@ -21,12 +21,12 @@ Copyright (c) 2024 Audiokinetic Inc.
 #include "Wwise/Metadata/WwiseMetadataLoader.h"
 #include "Wwise/Metadata/WwiseMetadataPlatform.h"
 
-FWwiseMetadataProjectInfo::FWwiseMetadataProjectInfo(FWwiseMetadataLoader& Loader) :
-	Project(Loader.GetObject<FWwiseMetadataProject>(this, TEXT("Project"))),
-	CacheRoot(Loader.GetString(this, TEXT("CacheRoot"))),
-	Platforms(Loader.GetArray<FWwiseMetadataPlatformReference>(this, TEXT("Platforms"))),
-	Languages(Loader.GetArray<FWwiseMetadataLanguage>(this, TEXT("Languages"))),
-	FileHash(Loader.GetGuid(this, TEXT("FileHash")))
+WwiseMetadataProjectInfo::WwiseMetadataProjectInfo(WwiseMetadataLoader& Loader) :
+	Project(Loader.GetLoaderObject<WwiseMetadataProject>(this, "Project"_wwise_db)),
+	CacheRoot(Loader.GetString(this, "CacheRoot"_wwise_db)),
+	Platforms(Loader.GetArray<WwiseMetadataPlatformReference>(this, "Platforms"_wwise_db)),
+	Languages(Loader.GetArray<WwiseMetadataLanguage>(this, "Languages"_wwise_db)),
+	FileHash(Loader.GetGuid(this, "FileHash"_wwise_db))
 {
-	Loader.LogParsed(TEXT("ProjectInfo"));
+	Loader.LogParsed("ProjectInfo"_wwise_db);
 }

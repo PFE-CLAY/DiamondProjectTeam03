@@ -12,7 +12,7 @@ Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
 this file in accordance with the end user license agreement provided with the
 software or, alternatively, in accordance with the terms contained
 in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2024 Audiokinetic Inc.
+Copyright (c) 2025 Audiokinetic Inc.
 *******************************************************************************/
 
 #include "WwiseBrowserDataSource.h"
@@ -24,7 +24,7 @@ Copyright (c) 2024 Audiokinetic Inc.
 #include "WaapiDataSource.h"
 #include "WwiseProjectDatabaseSource.h"
 #include "Templates/SharedPointer.h"
-#include "WaapiPicker/WwiseTreeItem.h"
+#include "Wwise/WwiseTreeItem.h"
 #include "IAudiokineticTools.h"
 #include "AssetManagement/AkAssetDatabase.h"
 #include "AssetRegistry/AssetRegistryModule.h"
@@ -174,6 +174,8 @@ EWwiseItemType::Type FWwiseTypeFilter::GetExpectedType(EWwiseTypeFilter Filter) 
 	{
 	case AcousticTexture:
 		return EWwiseItemType::AcousticTexture;
+	case AudioDeviceShareSet:
+		return EWwiseItemType::AudioDeviceShareSet;
 	case Effects:
 		return EWwiseItemType::EffectShareSet;
 	case Events:
@@ -181,7 +183,7 @@ EWwiseItemType::Type FWwiseTypeFilter::GetExpectedType(EWwiseTypeFilter Filter) 
 	case GameParameters:
 		return EWwiseItemType::GameParameter;
 	case MasterMixerHierarchy:
-		return EWwiseItemType::Bus;
+		return EWwiseItemType::AuxBus;
 	case State:
 		return EWwiseItemType::State;
 	case Switch:
@@ -630,13 +632,14 @@ bool FWwiseBrowserDataSource::IsMoved(FWwiseTreeItemPtr CurrItem)
 		return false;
 	}
 	FString Out;
-	FWwiseDataStructureScopeLock DataStructure(*ProjectDatabase);
-	FWwiseAnyRef* Ref = nullptr;
-	TArray<FWwiseAnyRef> Refs;
-	DataStructure.GetCurrentPlatformData()->Guids.MultiFind(FWwiseDatabaseLocalizableGuidKey(CurrItem->ItemId, 0), Refs);
+	WwiseDataStructureScopeLock DataStructure(*ProjectDatabase);
+	WwiseAnyRef* Ref = nullptr;
+	WwiseDBArray<WwiseAnyRef> Refs;
+	WwiseDBGuid Guid = WwiseDBGuid(CurrItem->ItemId.A, CurrItem->ItemId.B, CurrItem->ItemId.C, CurrItem->ItemId.D);
+	DataStructure.GetCurrentPlatformData()->Guids.MultiFind(WwiseDatabaseLocalizableGuidKey(Guid, 0), Refs);
 	for(auto& InRef : Refs)
 	{
-		if(InRef.GetType() != EWwiseRefType::SoundBank)
+		if(InRef.GetType() != WwiseRefType::SoundBank)
 		{
 			Ref = &InRef;
 			break;
