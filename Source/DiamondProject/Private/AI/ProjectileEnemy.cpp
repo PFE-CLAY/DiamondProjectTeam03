@@ -33,6 +33,10 @@ void AProjectileEnemy::OnCollision(AActor* OverlappedActor, AActor* OtherActor)
 	if(Cast<AShootingEnemy>(OtherActor) == nullptr){
 		
 		if (UAC_Health* HealthComponent = OtherActor->FindComponentByClass<UAC_Health>()) {
+			if(!IsValid(ProjectileOwner)||ProjectileOwner==nullptr)
+			{
+				ProjectileOwner=this;
+			}
 			HealthComponent->DecreaseHealth(ProjectileDamage, ProjectileOwner);
 		}
 		

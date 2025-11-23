@@ -29,8 +29,11 @@ public:
 	UPROPERTY(EditDefaultsOnly, Category=Projectile)
 	TSubclassOf<class ADiamondProjectProjectile> ProjectileClass;
 
-	UPROPERTY(EditDefaultsOnly, Category=Projectile)
-	TObjectPtr<USceneComponent> ProjectileLocation;
+	UPROPERTY(BlueprintReadWrite, Category=Projectile)
+	TObjectPtr<USceneComponent> ProjectileSpawnLocationSceneComponent;
+
+	UPROPERTY(EditAnywhere,BlueprintReadWrite, Category=Projectile)
+	USceneComponent* ProjectileSpawnPoint;
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Overheat)
 	float WeaponHeat;
@@ -44,7 +47,7 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Overheat)
 	float TimeToRecoverHeat;
 
-	UPROPERTY(BlueprintReadOnly, Category = Overheat)
+	UPROPERTY(BlueprintReadWrite, Category = Overheat)
 	bool bIsOverheated;
 	
 	UPROPERTY(BlueprintAssignable, Category = Overheat)
@@ -87,6 +90,8 @@ protected:
 
 	UFUNCTION()
 	void HandleFireReleased();
+
+	
 
 private:
 	FTimerHandle HeatRecoveryDelayHandle;

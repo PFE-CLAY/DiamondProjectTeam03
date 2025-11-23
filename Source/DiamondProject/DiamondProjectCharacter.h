@@ -6,6 +6,7 @@
 #include "FCEasing.h"
 #include "UWeaponComponent.h"
 #include "GameFramework/Character.h"
+#include "GameFramework/SpringArmComponent.h"
 #include "Logging/LogMacros.h"
 #include "DiamondProjectCharacter.generated.h"
 
@@ -41,6 +42,9 @@ class ADiamondProjectCharacter : public ACharacter
 	/** Pawn mesh: 1st person view (arms; seen only by self) */
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category=Mesh, meta = (AllowPrivateAccess = "true"))
 	USkeletalMeshComponent* Mesh1P;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category=Mesh, meta=(AllowPrivateAccess = "true"))
+	USpringArmComponent* SpringArm;
 
 	/** First person camera */
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
@@ -210,6 +214,8 @@ private:
 	FTimerHandle TimerHandle;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category=Dash, meta=(AllowPrivateAccess = "true"))
 	bool bisDashing;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category=Dash, meta=(AllowPrivateAccess = "true"))
+	bool bCanDash;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category=Dash, meta=(AllowPrivateAccess = "true"))
 	bool bisInAirNotAffectingDashCooldown;
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Dash, meta=(AllowPrivateAccess = "true"))

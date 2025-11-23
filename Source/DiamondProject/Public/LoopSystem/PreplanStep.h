@@ -9,7 +9,6 @@
 /**
  * 
  */
-class UPreplanLinkWidget;
 class UPreplanDataWidget;
 class APreplanAdvice;
 
@@ -20,9 +19,12 @@ class DIAMONDPROJECT_API UPreplanStep : public UObject
 
 public:
 	UPROPERTY()
-	int NbActivations = 0;
+	int FirstNbActivations = 0;
 	
 	UPROPERTY()
+	int SndNbActivations = 0;
+	
+	UPROPERTY(BlueprintReadOnly)
 	TObjectPtr<UPreplanDataWidget> PreplanData;
 
 	UPROPERTY()
@@ -38,8 +40,16 @@ public:
 	bool bIsStepActive = false;
 
 	UPROPERTY(BlueprintReadOnly)// saùe thing now
-	bool bIsStepVisible = false;
+	bool bIsFirstStepVisible = false;
 	
 	UPROPERTY(BlueprintReadWrite)
-	bool bIsAlreadySeen = false;
+	bool bIsFirstAlreadySeen = false;
+
+	UPROPERTY(BlueprintReadOnly)// saùe thing now
+	bool bIsSndStepVisible = false;
+	
+	UPROPERTY(BlueprintReadWrite)
+	bool bIsSndAlreadySeen = false;
+
+	
 };

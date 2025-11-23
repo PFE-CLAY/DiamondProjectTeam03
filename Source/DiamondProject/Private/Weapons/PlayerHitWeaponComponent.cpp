@@ -93,7 +93,7 @@ void UPlayerHitWeaponComponent::StartHeatRecovery()
 	{
 		if (bIsOverheated)
 		{
-			bIsOverheated = false;
+			//bIsOverheated = false;
 			OnOverheatEnd.Broadcast();
 		}
 		bIsCooling = false;
@@ -105,7 +105,7 @@ void UPlayerHitWeaponComponent::StartHeatRecovery()
 		OnHeatChanged.Broadcast(WeaponHeat);
 		if (bIsOverheated)
 		{
-			bIsOverheated = false;
+			//bIsOverheated = false;
 			OnOverheatEnd.Broadcast();
 		}
 		bIsCooling = false;
@@ -129,7 +129,7 @@ void UPlayerHitWeaponComponent::HeatRecoveryTick()
 		GetWorld()->GetTimerManager().ClearTimer(HeatRecoveryTickHandle);
 		if (bIsOverheated)
 		{
-			bIsOverheated = false;
+			//bIsOverheated = false;
 			OnOverheatEnd.Broadcast();
 		}
 		if (bIsCooling) { bIsCooling = false; }
@@ -159,7 +159,12 @@ void UPlayerHitWeaponComponent::PerformShot() const
 			//const FRotator SpawnRotation = GetOwner()->GetActorRotation();
 			const FVector ParentLocation = GetOwner()->GetActorLocation();
 			const FVector SpawnOffset = SpawnRotation.RotateVector(MuzzleOffset);
-			const FVector SpawnLocation = ParentLocation + SpawnOffset;
+			 FVector SpawnLocation = ParentLocation;
+			if (ProjectileSpawnPoint != nullptr)
+			{
+				SpawnLocation = ProjectileSpawnPoint->GetComponentTransform().GetLocation();//+(ProjectileSpawnPoint.-ParentLocation); // + SpawnOffset;
+			}
+
 			FActorSpawnParameters ActorSpawnParams;
 			ActorSpawnParams.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AdjustIfPossibleButDontSpawnIfColliding;
 			ADiamondProjectProjectile* Projectile = World->SpawnActor<ADiamondProjectProjectile>(ProjectileClass, SpawnLocation, SpawnRotation, ActorSpawnParams);
