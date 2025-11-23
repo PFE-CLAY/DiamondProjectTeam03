@@ -182,6 +182,11 @@
 										<Property Name="3DSpatialization" Type="int16" Value="1"/>
 										<Property Name="EnableDiffraction" Type="bool" Value="True"/>
 										<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+										<Property Name="IsStreamingEnabled" Type="bool">
+											<ValueList>
+												<Value>True</Value>
+											</ValueList>
+										</Property>
 										<Property Name="OverrideOutput" Type="bool" Value="True"/>
 										<Property Name="OverridePositioning" Type="bool" Value="True"/>
 										<Property Name="Volume" Type="Real64">
@@ -195,7 +200,7 @@
 											<Custom CreatedFrom="{07C26E29-7C77-4AD6-AA3A-91A1861593D0}">
 												<Attenuation Name="ATT_30m (Custom)" ID="{BA1A1972-A702-424F-81D3-A3A1061F7A1E}" ShortID="994349857">
 													<PropertyList>
-														<Property Name="RadiusMax" Type="Real64" Value="3000"/>
+														<Property Name="RadiusMax" Type="Real64" Value="15000"/>
 													</PropertyList>
 													<CurveUsageInfoList>
 														<VolumeDryUsage>
@@ -212,7 +217,7 @@
 																			<SegmentShape>Log1</SegmentShape>
 																		</Point>
 																		<Point>
-																			<XPos>3000</XPos>
+																			<XPos>15000</XPos>
 																			<YPos>-200</YPos>
 																			<Flags>37</Flags>
 																		</Point>
@@ -240,7 +245,7 @@
 																			<SegmentShape>Exp1</SegmentShape>
 																		</Point>
 																		<Point>
-																			<XPos>3000</XPos>
+																			<XPos>15000</XPos>
 																			<YPos>63</YPos>
 																			<Flags>37</Flags>
 																		</Point>
@@ -265,7 +270,7 @@
 																			<SegmentShape>Log3</SegmentShape>
 																		</Point>
 																		<Point>
-																			<XPos>3000</XPos>
+																			<XPos>15000</XPos>
 																			<YPos>0</YPos>
 																			<Flags>37</Flags>
 																		</Point>
@@ -287,7 +292,7 @@
 																			<SegmentShape>Log3</SegmentShape>
 																		</Point>
 																		<Point>
-																			<XPos>3000</XPos>
+																			<XPos>15000</XPos>
 																			<YPos>0</YPos>
 																			<Flags>37</Flags>
 																		</Point>
