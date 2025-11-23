@@ -3,7 +3,7 @@
   "Project": {
    "Name": "DiamondProjectTeam03_WwiseProject",
    "GUID": "{9CD21330-0B10-4A1A-84A7-853BD5B840C0}",
-   "Generator": "2024.1.8.8893"
+   "Generator": "2024.1.8.8898"
   },
   "CacheRoot": "../.cache",
   "Platforms": [
@@ -31,6 +31,6 @@
     "UseAsStandIn": "true"
    }
   ],
-  "FileHash": "{4AB7701C-5517-48A6-0296-CB0E5445785C}"
+  "FileHash": "{FFD93BF6-8A7A-95E9-AA68-C103542AB189}"
  }
 }
