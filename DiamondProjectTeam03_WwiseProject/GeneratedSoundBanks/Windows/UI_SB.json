@@ -11,7 +11,7 @@
     "GUID": "{6B7E0BFB-A825-46AA-907A-12621FC4038F}",
     "Color": "1",
     "Language": "SFX",
-    "Hash": "{6F545D7F-D915-E7AA-9B1B-ADAB4B7586ED}",
+    "Hash": "{D6450A9C-EB13-D57D-7F9D-301009D5CC64}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\UI_SB",
     "ShortName": "UI_SB",
     "Path": "UI_SB.bnk",
@@ -543,6 +543,6 @@
     ]
    }
   ],
-  "FileHash": "{C1B62C3E-CF4E-4A2A-AD18-B65C75E478B4}"
+  "FileHash": "{F5CBA4A8-1823-3FB9-1FA6-09ECE4C11D81}"
  }
 }

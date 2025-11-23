@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="16" SoundBankVersion="154">
 	<SoundBanks>
-		<SoundBank Id="3256182613" Type="User" GUID="{9DC5CBA4-02D0-4677-A565-21ECA413E694}" Color="4" Language="SFX" Hash="{7CC153C0-66E8-12C3-546E-09D8454CD4D2}">
+		<SoundBank Id="3256182613" Type="User" GUID="{9DC5CBA4-02D0-4677-A565-21ECA413E694}" Color="4" Language="SFX" Hash="{B4B95944-7691-5858-8321-DDB342871511}">
 			<ObjectPath>\SoundBanks\SoundBanks_WU\AMB_SB</ObjectPath>
 			<ShortName>AMB_SB</ShortName>
 			<Path>AMB_SB.bnk</Path>
@@ -110,8 +110,9 @@
 					<ShortName>AMB\RFX\AMB_RFX_Crowd_ClassicReaction_04.wav</ShortName>
 					<CachePath>9E/{9EFD9145-6944-2515-F524-2B68E6C4ABBF}.wem</CachePath>
 				</File>
-				<File Id="783949220" Language="SFX" Streaming="false" Location="Memory">
+				<File Id="783949220" Language="SFX" Streaming="true" Location="Loose">
 					<ShortName>AMB\AMB_PAD_Crowd.wav</ShortName>
+					<Path>Media/783949220.wem</Path>
 					<CachePath>39/{399F1149-7F7B-AF17-551B-EACA048CCA05}.wem</CachePath>
 				</File>
 				<File Id="788907204" Language="SFX" Streaming="false" Location="Memory">
@@ -220,7 +221,7 @@
 				</ShareSets>
 			</Plugins>
 			<Events>
-				<Event Id="3817670132" Name="Play_AMB_Arena_Crowd" ObjectPath="\Events\AMB_WU\Play_AMB_Arena_Crowd" GUID="{044D5574-12FD-4A7D-829F-E12D304EBC61}" Color="4" MaxAttenuation="3000" DurationType="Infinite">
+				<Event Id="3817670132" Name="Play_AMB_Arena_Crowd" ObjectPath="\Events\AMB_WU\Play_AMB_Arena_Crowd" GUID="{044D5574-12FD-4A7D-829F-E12D304EBC61}" Color="4" MaxAttenuation="15000" DurationType="Infinite">
 					<MediaRefs>
 						<MediaRef Id="4481750"/>
 						<MediaRef Id="84736735"/>
@@ -391,5 +392,5 @@
 			</StateGroups>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{FF56344B-3F75-0F71-4376-9BEFE0DBA45F}</FileHash>
+	<FileHash>{2379CFDC-FAF9-6B1B-90F5-2F61EEA6886A}</FileHash>
 </SoundBanksInfo>
