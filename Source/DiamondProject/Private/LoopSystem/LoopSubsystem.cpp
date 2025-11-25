@@ -485,5 +485,4 @@ void ULoopSubsystem::ResetAllProgress()
 	}
 
 	SaveLoopData();
-	UGameplayStatics::OpenLevel(this, FName(*GetWorld()->GetName()), false);
 }
