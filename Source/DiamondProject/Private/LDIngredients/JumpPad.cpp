@@ -78,9 +78,7 @@ void AJumpPad::OnOverlapBegin(class UPrimitiveComponent* OverlappedComponent, cl
 	if (ACharacter* Character = Cast<ACharacter>(OtherActor))
 	{
 		Character->LaunchCharacter(JumpVector, true, true);
-  
-		// Apply cooldown only for characters
-		JumpPadMesh->SetMaterial(0, CooldownMaterial);
+		
 		GetWorldTimerManager().SetTimer(TimerHandle, this, &AJumpPad::ResetJump, CooldownDuration, false);
 		bCanBounce = false;
 
@@ -91,7 +89,6 @@ void AJumpPad::OnOverlapBegin(class UPrimitiveComponent* OverlappedComponent, cl
 		if (PrimComp->IsSimulatingPhysics())
 		{
 			PrimComp->AddImpulse(JumpVector, NAME_None, true);
-			// No cooldown for physics objects
 		}
 	}
 }
@@ -100,5 +97,4 @@ void AJumpPad::ResetJump()
 {
 	GetWorldTimerManager().ClearTimer(TimerHandle);
 	bCanBounce = true;
-	JumpPadMesh->SetMaterial(0, BaseMaterial);
 }
