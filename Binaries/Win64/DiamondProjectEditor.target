@@ -7570,6 +7570,26 @@
 			"Type": "RequiredResource"
 		},
 		{
+			"Path": "$(ProjectDir)/Plugins/NiagaraU409cc0a0b725V9/Binaries/Win64/UnrealEditor-NiagaraUIRenderer.dll",
+			"Type": "DynamicLibrary"
+		},
+		{
+			"Path": "$(ProjectDir)/Plugins/NiagaraU409cc0a0b725V9/Binaries/Win64/UnrealEditor-NiagaraUIRenderer.pdb",
+			"Type": "SymbolFile"
+		},
+		{
+			"Path": "$(ProjectDir)/Plugins/NiagaraU409cc0a0b725V9/Binaries/Win64/UnrealEditor-NiagaraUIRendererEditor.dll",
+			"Type": "DynamicLibrary"
+		},
+		{
+			"Path": "$(ProjectDir)/Plugins/NiagaraU409cc0a0b725V9/Binaries/Win64/UnrealEditor-NiagaraUIRendererEditor.pdb",
+			"Type": "SymbolFile"
+		},
+		{
+			"Path": "$(ProjectDir)/Plugins/NiagaraU409cc0a0b725V9/Binaries/Win64/UnrealEditor.modules",
+			"Type": "RequiredResource"
+		},
+		{
 			"Path": "$(ProjectDir)/Plugins/WwiseNiagara/Binaries/Win64/UnrealEditor-WwiseNiagara.dll",
 			"Type": "DynamicLibrary"
 		},
@@ -32324,6 +32344,10 @@
 			"Type": "UFS"
 		},
 		{
+			"Path": "$(ProjectDir)/Plugins/NiagaraU409cc0a0b725V9/NiagaraUIRenderer.uplugin",
+			"Type": "UFS"
+		},
+		{
 			"Path": "$(ProjectDir)/Plugins/WwiseNiagara/WwiseNiagara.uplugin",
 			"Type": "UFS"
 		},
@@ -32596,6 +32620,7 @@
 		"Niagara",
 		"NiagaraFluids",
 		"NiagaraSimCaching",
+		"NiagaraUIRenderer",
 		"NullSourceCodeAccess",
 		"ObjectMixer",
 		"OnlineBase",
