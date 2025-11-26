@@ -74,10 +74,15 @@ void ADiamondProjectCharacter::Tick(float deltaTime)
 		GetWorldTimerManager().UnPauseTimer(TimerHandle);
 	}
 	if (!GetCharacterMovement()->IsMovingOnGround()&&GetVelocity().Z<0){
-		GetCharacterMovement()->GravityScale+=deltaTime*DownardVelocity;
+		if (FastFallTimer> DelayFastFall&&GetCharacterMovement()->GravityScale<GravityMax)
+		{
+			GetCharacterMovement()->GravityScale+=deltaTime*DownardVelocity;
+		}
+		
 	}
 	else if (GetCharacterMovement()->IsMovingOnGround()){
-		GetCharacterMovement()->GravityScale=2,68;
+		FastFallTimer=0;
+		GetCharacterMovement()->GravityScale=2.68;
 	}
 
 	Super::Tick(deltaTime);

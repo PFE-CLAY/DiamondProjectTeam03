@@ -241,9 +241,14 @@ private:
 	EFCEase dashCurve = EFCEase::InCirc;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category=preplan, meta=(AllowPrivateAccess = "true"))
 	bool bisPreplanOpen;
-	UPROPERTY(EditAnywhere,Category=movement)
+	UPROPERTY(EditAnywhere,Category=fall)
 	double DownardVelocity= 5;
-
+	UPROPERTY(EditAnywhere,Category=fall)
+	double GravityMax= 10;
+	UPROPERTY(EditAnywhere,Category=fall)
+	float DelayFastFall= .5;
+	UPROPERTY()
+	float FastFallTimer=0;;
 public:
 	/** Returns Mesh1P subobject **/
 	USkeletalMeshComponent* GetMesh1P() const { return Mesh1P; }
