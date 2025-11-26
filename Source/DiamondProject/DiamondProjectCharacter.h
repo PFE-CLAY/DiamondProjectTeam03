@@ -162,6 +162,8 @@ public:
 	UPROPERTY()
 	TObjectPtr<UWeaponComponent> CurrentWeapon;
 
+
+
 protected:
 	/** Called for movement input */
 	void Move(const FInputActionValue& Value);
@@ -239,7 +241,9 @@ private:
 	EFCEase dashCurve = EFCEase::InCirc;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category=preplan, meta=(AllowPrivateAccess = "true"))
 	bool bisPreplanOpen;
-	
+	UPROPERTY(EditAnywhere,Category=movement)
+	double DownardVelocity= 5;
+
 public:
 	/** Returns Mesh1P subobject **/
 	USkeletalMeshComponent* GetMesh1P() const { return Mesh1P; }

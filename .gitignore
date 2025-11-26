@@ -60,6 +60,9 @@ Binaries/Win64/*
 Plugins/**/Binaries/Win64/*.pdb
 !Plugins/**/Binaries/Mac/*.dylib
 !Plugins/**/Binaries/Mac/*.app
+Plugins/Wwise
+Plugins/WwiseNiagara
+Plugins/WwiseSoundEngine
 
 # Builds
 
