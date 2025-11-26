@@ -9,7 +9,7 @@
 	</RootPaths>
 	<DialogueEvents/>
 	<SoundBanks>
-		<SoundBank Id="459280130" Type="User" GUID="{46F08C13-7BDA-47D5-A653-BDFCDAD2487B}" Color="11" Language="SFX" Hash="{31C73023-7286-D9F9-16DC-4BDCB6C0FAA5}">
+		<SoundBank Id="459280130" Type="User" GUID="{46F08C13-7BDA-47D5-A653-BDFCDAD2487B}" Color="11" Language="SFX" Hash="{40AC9952-8EC3-4DFA-6570-38406E4D413F}">
 			<ObjectPath>\SoundBanks\SoundBanks_WU\FOES_Flying_SB</ObjectPath>
 			<ShortName>FOES_Flying_SB</ShortName>
 			<Path>FOES_Flying_SB.bnk</Path>
@@ -166,7 +166,7 @@
 				</StateGroup>
 			</StateGroups>
 		</SoundBank>
-		<SoundBank Id="1329476194" Type="User" GUID="{4B32F9EE-D939-4AEA-A633-697781A78CE3}" Color="21" Language="SFX" Hash="{DF4A8B75-4B2A-CC93-6797-2A069B2463D1}">
+		<SoundBank Id="1329476194" Type="User" GUID="{4B32F9EE-D939-4AEA-A633-697781A78CE3}" Color="21" Language="SFX" Hash="{E78D4A8B-57FB-7309-8ED6-25D546D20865}">
 			<ObjectPath>\SoundBanks\SoundBanks_WU\MUS_SB</ObjectPath>
 			<ShortName>MUS_SB</ShortName>
 			<Path>MUS_SB.bnk</Path>
@@ -2268,7 +2268,7 @@
 				</StateGroup>
 			</StateGroups>
 		</SoundBank>
-		<SoundBank Id="3896292454" Type="User" GUID="{459D1F67-52BD-4FA1-B846-B8F3A50C2C5F}" Color="17" Language="SFX" Hash="{9EB9C799-ACDE-B6EF-28E6-635AAE40E833}">
+		<SoundBank Id="3896292454" Type="User" GUID="{459D1F67-52BD-4FA1-B846-B8F3A50C2C5F}" Color="17" Language="SFX" Hash="{6D14B597-C695-5589-E47A-AB7FA3D243CF}">
 			<ObjectPath>\SoundBanks\SoundBanks_WU\SFX_SB</ObjectPath>
 			<ShortName>SFX_SB</ShortName>
 			<Path>SFX_SB.bnk</Path>
@@ -2354,7 +2354,7 @@
 						<MediaRef Id="1049815799"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="2563465684" Name="Play_SFX_HourGlass_Idle_LP" ObjectPath="\Events\SFX_WU\Play_SFX_HourGlass_Idle_LP" GUID="{0994537E-EF34-4F9C-A1D4-F9FFCF6E9CD1}" Color="17" MaxAttenuation="150000" DurationType="Infinite">
+				<Event Id="2563465684" Name="Play_SFX_HourGlass_Idle_LP" ObjectPath="\Events\SFX_WU\Play_SFX_HourGlass_Idle_LP" GUID="{0994537E-EF34-4F9C-A1D4-F9FFCF6E9CD1}" Color="17" MaxAttenuation="10000" DurationType="Infinite">
 					<MediaRefs>
 						<MediaRef Id="794556847"/>
 					</MediaRefs>
@@ -2500,5 +2500,5 @@
 			</Events>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{59A96F88-9721-3388-4423-B302796104EC}</FileHash>
+	<FileHash>{8E93E798-BC11-C054-8987-5D6E80E4A9DC}</FileHash>
 </SoundBanksInfo>

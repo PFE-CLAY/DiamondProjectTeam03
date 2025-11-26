@@ -19,7 +19,7 @@
     "GUID": "{46F08C13-7BDA-47D5-A653-BDFCDAD2487B}",
     "Color": "11",
     "Language": "SFX",
-    "Hash": "{31C73023-7286-D9F9-16DC-4BDCB6C0FAA5}",
+    "Hash": "{40AC9952-8EC3-4DFA-6570-38406E4D413F}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\FOES_Flying_SB",
     "ShortName": "FOES_Flying_SB",
     "Path": "FOES_Flying_SB.bnk",
@@ -505,7 +505,7 @@
     "GUID": "{4B32F9EE-D939-4AEA-A633-697781A78CE3}",
     "Color": "21",
     "Language": "SFX",
-    "Hash": "{DF4A8B75-4B2A-CC93-6797-2A069B2463D1}",
+    "Hash": "{E78D4A8B-57FB-7309-8ED6-25D546D20865}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\MUS_SB",
     "ShortName": "MUS_SB",
     "Path": "MUS_SB.bnk",
@@ -6233,7 +6233,7 @@
     "GUID": "{459D1F67-52BD-4FA1-B846-B8F3A50C2C5F}",
     "Color": "17",
     "Language": "SFX",
-    "Hash": "{9EB9C799-ACDE-B6EF-28E6-635AAE40E833}",
+    "Hash": "{6D14B597-C695-5589-E47A-AB7FA3D243CF}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\SFX_SB",
     "ShortName": "SFX_SB",
     "Path": "SFX_SB.bnk",
@@ -6438,7 +6438,7 @@
       "ObjectPath": "\\Events\\SFX_WU\\Play_SFX_HourGlass_Idle_LP",
       "GUID": "{0994537E-EF34-4F9C-A1D4-F9FFCF6E9CD1}",
       "Color": "17",
-      "MaxAttenuation": "150000",
+      "MaxAttenuation": "10000",
       "DurationType": "Infinite",
       "MediaRefs": [
        {
@@ -6767,6 +6767,6 @@
     ]
    }
   ],
-  "FileHash": "{517DD77E-3EF1-BC30-CE88-04DFAFCC7C13}"
+  "FileHash": "{0E1A1161-6B37-DE21-787E-1FD107266BC1}"
  }
 }

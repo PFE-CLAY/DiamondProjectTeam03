@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="16" SoundBankVersion="154">
 	<SoundBanks>
-		<SoundBank Id="3896292454" Type="User" GUID="{459D1F67-52BD-4FA1-B846-B8F3A50C2C5F}" Color="17" Language="SFX" Hash="{9EB9C799-ACDE-B6EF-28E6-635AAE40E833}">
+		<SoundBank Id="3896292454" Type="User" GUID="{459D1F67-52BD-4FA1-B846-B8F3A50C2C5F}" Color="17" Language="SFX" Hash="{6D14B597-C695-5589-E47A-AB7FA3D243CF}">
 			<ObjectPath>\SoundBanks\SoundBanks_WU\SFX_SB</ObjectPath>
 			<ShortName>SFX_SB</ShortName>
 			<Path>SFX_SB.bnk</Path>
@@ -87,7 +87,7 @@
 						<MediaRef Id="1049815799"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="2563465684" Name="Play_SFX_HourGlass_Idle_LP" ObjectPath="\Events\SFX_WU\Play_SFX_HourGlass_Idle_LP" GUID="{0994537E-EF34-4F9C-A1D4-F9FFCF6E9CD1}" Color="17" MaxAttenuation="150000" DurationType="Infinite">
+				<Event Id="2563465684" Name="Play_SFX_HourGlass_Idle_LP" ObjectPath="\Events\SFX_WU\Play_SFX_HourGlass_Idle_LP" GUID="{0994537E-EF34-4F9C-A1D4-F9FFCF6E9CD1}" Color="17" MaxAttenuation="10000" DurationType="Infinite">
 					<MediaRefs>
 						<MediaRef Id="794556847"/>
 					</MediaRefs>
@@ -95,5 +95,5 @@
 			</Events>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{CE7933AC-8B71-26E3-D95B-3BDDDC59DD57}</FileHash>
+	<FileHash>{CC9CD87D-16AD-D74D-6FFA-5DC62884CDF0}</FileHash>
 </SoundBanksInfo>
