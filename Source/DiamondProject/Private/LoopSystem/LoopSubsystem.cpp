@@ -360,7 +360,21 @@ void ULoopSubsystem::ActivatePreplanStep(FString PreplanID,int StepPart)
 
 void ULoopSubsystem::ActivateCollectible(FString CollectibleID)
 {
-	Collectibles[CollectibleID]=true;
+	if (CollectibleID.IsEmpty())
+	{
+		UE_LOG(LogTemp, Warning, TEXT("ActivateCollectible called with empty CollectibleID."));
+		return;
+	}
+
+	if (Collectibles.Contains(CollectibleID)) // Key exists
+	{
+		Collectibles[CollectibleID] = true;
+	}
+	else // Key doesnt exist
+	{
+		Collectibles.Add(CollectibleID, true);
+	}
+
 	SaveLoopData();
 }
 
@@ -471,5 +485,4 @@ void ULoopSubsystem::ResetAllProgress()
 	}
 
 	SaveLoopData();
-	UGameplayStatics::OpenLevel(this, FName(*GetWorld()->GetName()), false);
 }
