@@ -43,6 +43,13 @@ void UAC_Health::DecreaseHealth(int Damage, const AActor* DamageDealer)
 void UAC_Health::ChangeHealth(int NewHealth, const AActor* DamageDealer)
 {
 	NewHealth = FMath::Clamp(NewHealth, 0, MaxHealth);
+	if (CurrentHealth > NewHealth)
+	{
+		OnDamageEvent.Broadcast(CurrentHealth, DamageDealer);
+	} else if (CurrentHealth < NewHealth)
+	{
+		OnHealEvent.Broadcast(NewHealth);
+	}
 	CurrentHealth = NewHealth;
 	
 	if (CurrentHealth == 0 && !bIsDead) {
