@@ -33,6 +33,7 @@ void AShootingEnemy::BeginPlay()
 
 bool AShootingEnemy::IsAnyTargetInRange()
 {
+	if (!PlayerPawn) return false;
 	
 	FVector Direction = PlayerPawn->GetActorLocation() - GetActorLocation();
 	FRotator LookAtRotation;
