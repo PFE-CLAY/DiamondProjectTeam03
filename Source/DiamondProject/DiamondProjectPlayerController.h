@@ -20,12 +20,16 @@ protected:
 
 	/** Input Mapping Context to be used for player input */
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input)
-	UInputMappingContext* InputMappingContext;
+	UInputMappingContext* AZERTYInputMappingContext;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input)
+	UInputMappingContext* QWERTYInputMappingContext;
 
 	// Begin Actor interface
 protected:
 
 	virtual void BeginPlay() override;
+	uint8 DetectKeyboardLayout();
 
 	// End Actor interface
 };
