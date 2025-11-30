@@ -60,9 +60,9 @@ Effect plug-ins	ID	Name	Type				Notes
 	3900114836	Metal_Hangar	Wwise RoomVerb			
 
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
-	543213447	UI_NavigateButton	F:\Project\DiamondProjectTeam03_WwiseProject\.cache\9C\{9C9B69EC-78F4-3A8E-7D3F-701F0E971102}.wem		\Actor-Mixer Hierarchy\UI_WU\UI\UI_NavigateButton		100164
-	572308694	UI_StartButton	F:\Project\DiamondProjectTeam03_WwiseProject\.cache\EE\{EEE4E70F-2608-B662-2B2B-A8211D85245F}.wem		\Actor-Mixer Hierarchy\UI_WU\UI\UI_StartButton		213264
-	749059103	UI_LaunchGame	F:\Project\DiamondProjectTeam03_WwiseProject\.cache\9C\{9CB45BD6-7ED2-BA30-D0FE-D901AB05383A}.wem		\Actor-Mixer Hierarchy\UI_WU\UI\UI_LaunchGame		647500
-	836416304	UI_ConfirmButton	F:\Project\DiamondProjectTeam03_WwiseProject\.cache\AE\{AED1EDBA-4045-A904-9466-C8E06771E51A}.wem		\Actor-Mixer Hierarchy\UI_WU\UI\UI_ConfirmButton		154152
-	1002772129	UI_CancelButton	F:\Project\DiamondProjectTeam03_WwiseProject\.cache\3A\{3A6B13D4-9A22-43DC-BB04-9DF16113CA69}.wem		\Actor-Mixer Hierarchy\UI_WU\UI\UI_CancelButton		161296
+	543213447	UI_NavigateButton	G:\Unreal\Unreal_Projects\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\9C\{9C9B69EC-78F4-3A8E-7D3F-701F0E971102}.wem		\Actor-Mixer Hierarchy\UI_WU\UI\UI_NavigateButton		100164
+	572308694	UI_StartButton	G:\Unreal\Unreal_Projects\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\EE\{EEE4E70F-2608-B662-2B2B-A8211D85245F}.wem		\Actor-Mixer Hierarchy\UI_WU\UI\UI_StartButton		213264
+	749059103	UI_LaunchGame	G:\Unreal\Unreal_Projects\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\9C\{9CB45BD6-7ED2-BA30-D0FE-D901AB05383A}.wem		\Actor-Mixer Hierarchy\UI_WU\UI\UI_LaunchGame		647500
+	836416304	UI_ConfirmButton	G:\Unreal\Unreal_Projects\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\AE\{AED1EDBA-4045-A904-9466-C8E06771E51A}.wem		\Actor-Mixer Hierarchy\UI_WU\UI\UI_ConfirmButton		154152
+	1002772129	UI_CancelButton	G:\Unreal\Unreal_Projects\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\3A\{3A6B13D4-9A22-43DC-BB04-9DF16113CA69}.wem		\Actor-Mixer Hierarchy\UI_WU\UI\UI_CancelButton		161296
 

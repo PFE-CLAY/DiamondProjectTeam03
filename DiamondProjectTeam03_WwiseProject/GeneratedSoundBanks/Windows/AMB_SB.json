@@ -11,7 +11,7 @@
     "GUID": "{9DC5CBA4-02D0-4677-A565-21ECA413E694}",
     "Color": "4",
     "Language": "SFX",
-    "Hash": "{7CC153C0-66E8-12C3-546E-09D8454CD4D2}",
+    "Hash": "{B4B95944-7691-5858-8321-DDB342871511}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\AMB_SB",
     "ShortName": "AMB_SB",
     "Path": "AMB_SB.bnk",
@@ -227,9 +227,10 @@
      {
       "Id": "783949220",
       "Language": "SFX",
-      "Streaming": "false",
-      "Location": "Memory",
+      "Streaming": "true",
+      "Location": "Loose",
       "ShortName": "AMB\\AMB_PAD_Crowd.wav",
+      "Path": "Media/783949220.wem",
       "CachePath": "39/{399F1149-7F7B-AF17-551B-EACA048CCA05}.wem"
      },
      {
@@ -502,7 +503,7 @@
       "ObjectPath": "\\Events\\AMB_WU\\Play_AMB_Arena_Crowd",
       "GUID": "{044D5574-12FD-4A7D-829F-E12D304EBC61}",
       "Color": "4",
-      "MaxAttenuation": "3000",
+      "MaxAttenuation": "15000",
       "DurationType": "Infinite",
       "MediaRefs": [
        {
@@ -999,6 +1000,6 @@
     ]
    }
   ],
-  "FileHash": "{7CBF0527-1DC8-9E19-B389-FF2427D7DD8A}"
+  "FileHash": "{61985350-E9B1-43AA-4E54-B0BE18DF7F29}"
  }
 }
