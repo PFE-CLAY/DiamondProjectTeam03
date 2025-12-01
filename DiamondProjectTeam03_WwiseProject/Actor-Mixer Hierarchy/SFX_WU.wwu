@@ -2563,7 +2563,7 @@
 									<Custom CreatedFrom="{07C26E29-7C77-4AD6-AA3A-91A1861593D0}">
 										<Attenuation Name="ATT_30m (Custom)" ID="{9FB024F6-A5B9-4C12-A642-E2FD131C1C54}" ShortID="63359846">
 											<PropertyList>
-												<Property Name="RadiusMax" Type="Real64" Value="150000"/>
+												<Property Name="RadiusMax" Type="Real64" Value="10000"/>
 											</PropertyList>
 											<CurveUsageInfoList>
 												<VolumeDryUsage>
@@ -2577,10 +2577,10 @@
 																	<XPos>0</XPos>
 																	<YPos>-0.46774</YPos>
 																	<Flags>5</Flags>
-																	<SegmentShape>Exp1</SegmentShape>
+																	<SegmentShape>Log2</SegmentShape>
 																</Point>
 																<Point>
-																	<XPos>150000</XPos>
+																	<XPos>10000</XPos>
 																	<YPos>-200</YPos>
 																	<Flags>37</Flags>
 																</Point>
@@ -2608,7 +2608,7 @@
 																	<SegmentShape>Exp1</SegmentShape>
 																</Point>
 																<Point>
-																	<XPos>150000</XPos>
+																	<XPos>10000</XPos>
 																	<YPos>64</YPos>
 																	<Flags>37</Flags>
 																</Point>
@@ -2633,7 +2633,7 @@
 																	<SegmentShape>Log3</SegmentShape>
 																</Point>
 																<Point>
-																	<XPos>150000</XPos>
+																	<XPos>10000</XPos>
 																	<YPos>0</YPos>
 																	<Flags>37</Flags>
 																</Point>
@@ -2655,7 +2655,7 @@
 																	<SegmentShape>Log3</SegmentShape>
 																</Point>
 																<Point>
-																	<XPos>150000</XPos>
+																	<XPos>10000</XPos>
 																	<YPos>0</YPos>
 																	<Flags>37</Flags>
 																</Point>

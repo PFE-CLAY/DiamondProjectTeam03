@@ -15,8 +15,12 @@ class DIAMONDPROJECT_API UGameSettingsSubsystem : public UGameInstanceSubsystem
 {
 	GENERATED_BODY()
 	DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnAdvicesVisibilityChangedEvent, bool, NewVisibility);
+	
 
+	
 public:
+
+	
 	UPROPERTY(BlueprintAssignable)
 	FOnAdvicesVisibilityChangedEvent OnAdvicesVisibilityChangedDelegate;
 
