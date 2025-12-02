@@ -11,7 +11,7 @@
     "GUID": "{48187E94-2869-42A3-9E99-A12DF1DA86DF}",
     "Color": "23",
     "Language": "SFX",
-    "Hash": "{27C2B351-EF68-EC4D-0915-60E3E01CEC1F}",
+    "Hash": "{C875FD78-A2BD-BD0B-9409-7378DA2B8E70}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\FOES_Invisible_SB",
     "ShortName": "FOES_Invisible_SB",
     "Path": "FOES_Invisible_SB.bnk",
@@ -381,6 +381,6 @@
     ]
    }
   ],
-  "FileHash": "{7499C9B3-3AD4-0B88-D9E9-FE1C72CC10D4}"
+  "FileHash": "{259FA57D-6153-F062-053E-37C0B92B6C50}"
  }
 }

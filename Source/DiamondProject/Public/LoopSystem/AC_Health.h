@@ -15,6 +15,12 @@ class DIAMONDPROJECT_API UAC_Health : public UActorComponent
 private:
 	UDELEGATE(BlueprintCallable)
 	DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnHealthChangedEvent, int, CurrentHealth, const AActor*, DamageDealer);
+	
+	UDELEGATE(BlueprintCallable)
+	DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnHealEvent, int, CurrentHealth);
+
+	UDELEGATE(BlueprintCallable)
+	DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnDamageEvent, int, CurrentHealth, const AActor*, DamageDealer);
 
 	UDELEGATE(BlueprintCallable)
 	DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnDeathEvent, const AActor*, DamageDealer, AActor*, OwnerActor);
@@ -28,6 +34,12 @@ public:
 	
 	UPROPERTY(BlueprintAssignable)
 	FOnHealthChangedEvent OnHealthChangedEvent;
+
+	UPROPERTY(BlueprintAssignable)
+	FOnHealEvent OnHealEvent;
+
+	UPROPERTY(BlueprintAssignable)
+	FOnDamageEvent OnDamageEvent;
 
 	UPROPERTY(BlueprintAssignable)
 	FOnDeathEvent OnDeathEvent;

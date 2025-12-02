@@ -11,7 +11,7 @@
     "GUID": "{ADC2D189-6608-4828-BC9C-6EF6F90834DB}",
     "Color": "19",
     "Language": "SFX",
-    "Hash": "{BE089F69-CF7C-7132-EDCB-E092E802D9EF}",
+    "Hash": "{1C92C7B5-DB38-EFD9-9AF6-3AB414D56E83}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\MC_SB",
     "ShortName": "MC_SB",
     "Path": "MC_SB.bnk",
@@ -1598,6 +1598,6 @@
     ]
    }
   ],
-  "FileHash": "{6D50211C-976D-29CF-1BA3-0D29614B84EE}"
+  "FileHash": "{5B0C49EA-5293-DD73-EE33-DAA15860F376}"
  }
 }
