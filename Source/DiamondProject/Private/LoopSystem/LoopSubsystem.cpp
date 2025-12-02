@@ -70,7 +70,7 @@ void ULoopSubsystem::InitializeCollectibles()
 {
 	TArray<AActor*> FoundActors;
 	UGameplayStatics::GetAllActorsOfClass(GetWorld(), Acollectible::StaticClass(), FoundActors);
-	if (!bIsCollectibleInit){
+	if (LoopNb==0){
 		bIsCollectibleInit=true;
 		for (int i = 0; i < FoundActors.Num(); i++){
 			Acollectible* Collectible= Cast<Acollectible>(FoundActors[i]);
@@ -291,11 +291,12 @@ void ULoopSubsystem::OnAdvicesVisibilityChanged(bool bNewVisibility)
 
 void ULoopSubsystem::InitializePreplan()
 {
+	LoadLoopData();
 	InitializePreplanSteps();
 	InitializeCollectibles();
 	InitializePreplanAdvices();
 	//InitializePreplanLinks();
-	LoadLoopData();
+
 }
 
 void ULoopSubsystem::ActivatePreplanStep(FString PreplanID,int StepPart)
@@ -420,9 +421,9 @@ void ULoopSubsystem::LoadLoopData()
 	if (SaveGameInstance)
 	{
 		LoopNb = SaveGameInstance->LoopData.LoopNb;
-		Collectibles = SaveGameInstance->LoopData.Collectibles;
+		//Collectibles = SaveGameInstance->LoopData.Collectibles;
 		bIsDreamLevel = SaveGameInstance->LoopData.bIsDreamLevel;
-
+		
 		for (const TPair<FString, FPreplanStepSaveData>& Pair : SaveGameInstance->LoopData.PreplanSteps)
 		{
 			if (PreplanSteps.Contains(Pair.Key))
@@ -439,6 +440,10 @@ void ULoopSubsystem::LoadLoopData()
 					Step->bIsSndAlreadySeen = Pair.Value.bIsSndAlreadySeen;
 				}
 			}
+		}
+		for (const TPair<FString, bool>& Pair : SaveGameInstance->LoopData.Collectibles)
+		{
+			Collectibles.Add(Pair.Key, Pair.Value);;
 		}
 	}
 }
