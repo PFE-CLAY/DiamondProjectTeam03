@@ -6,6 +6,7 @@
 #include "ShootingEnemy.h"
 #include "TurretEnemy.generated.h"
 
+
 UCLASS()
 class DIAMONDPROJECT_API ATurretEnemy : public AShootingEnemy
 {
@@ -17,6 +18,10 @@ protected:
 
 	UPROPERTY(BlueprintReadWrite, Category = "Turret Behavior")
 	int Position;
+	
+public:
+	UPROPERTY(EditAnywhere)
+	USceneComponent* ShootPointL;
 
 protected:
 	// Called when the game starts or when spawned
@@ -35,4 +40,6 @@ public:
 
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
+
+	
 };
