@@ -95,6 +95,28 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="Play_MC_Gun_MaxOverheat" ID="{1D8AC9DC-EFFE-4A5B-9123-6192F0B53ABA}">
+					<ChildrenList>
+						<Action Name="" ID="{D3D58663-F8D9-47DD-A1C8-C02776510614}" ShortID="259300881">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="MC_Gun_MaxOverheat" ID="{D33DC3B1-EDB9-4CB1-9CDF-5B167251783E}" WorkUnitID="{1B87B22A-8865-441B-A287-78E87390F212}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_MC_Gun_ReadyToFire" ID="{209918B4-E611-4C57-B030-530BFF706AC0}">
+					<ChildrenList>
+						<Action Name="" ID="{40E6242C-879C-4AA0-978F-CBA394454B7F}" ShortID="648088430">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="MC_Gun_ReadyToFire" ID="{D0727D6A-6A8D-4296-8757-3F0EB1F63196}" WorkUnitID="{1B87B22A-8865-441B-A287-78E87390F212}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>
