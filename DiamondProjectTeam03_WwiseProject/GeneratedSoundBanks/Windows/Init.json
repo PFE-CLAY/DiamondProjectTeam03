@@ -10,7 +10,7 @@
     "Type": "User",
     "GUID": "{701ECBBD-9C7B-4030-8CDB-749EE5D1C7B9}",
     "Language": "SFX",
-    "Hash": "{97D3FFBD-147A-FCB4-5522-D9D59B3F0F4D}",
+    "Hash": "{0192F850-236F-E486-F2DD-BCC0EED774E3}",
     "ObjectPath": "Init",
     "ShortName": "Init",
     "Path": "Init.bnk",
@@ -331,6 +331,12 @@
       "GUID": "{D2AEC1CE-EF9E-486E-AE8B-FB121AC42B53}"
      },
      {
+      "Id": "1829010369",
+      "Name": "RTPC_GunHeat",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\RTPC_GunHeat",
+      "GUID": "{F9A7333E-9305-4744-858A-05CCB5E8F620}"
+     },
+     {
       "Id": "2176662110",
       "Name": "RTPC_Tourelle_Projectil",
       "ObjectPath": "\\Game Parameters\\Default Work Unit\\RTPC_Tourelle_Projectil",
@@ -440,10 +446,36 @@
         "GUID": "{4F4901C3-CC0C-4142-BDF8-FF62F7720DE3}"
        }
       ]
+     },
+     {
+      "Id": "2552052118",
+      "Name": "SW_GunHeat",
+      "ObjectPath": "\\Switches\\Default Work Unit\\SW_GunHeat",
+      "GUID": "{AB3CF31E-D2E1-46A6-833A-2E551F1D31B8}",
+      "Switches": [
+       {
+        "Id": "691006007",
+        "Name": "Loop",
+        "ObjectPath": "\\Switches\\Default Work Unit\\SW_GunHeat\\Loop",
+        "GUID": "{D17BB8BF-1D5D-456B-85BB-3F5687F78394}"
+       },
+       {
+        "Id": "788884573",
+        "Name": "Stop",
+        "ObjectPath": "\\Switches\\Default Work Unit\\SW_GunHeat\\Stop",
+        "GUID": "{5309F748-1DFB-462A-A13A-189999414C19}"
+       },
+       {
+        "Id": "1281810935",
+        "Name": "Start",
+        "ObjectPath": "\\Switches\\Default Work Unit\\SW_GunHeat\\Start",
+        "GUID": "{1AAC5071-6A1D-474D-B65D-6FACC1E44992}"
+       }
+      ]
      }
     ]
    }
   ],
-  "FileHash": "{AAE0B1BB-FC10-2D91-0C77-DC05A1BCBF52}"
+  "FileHash": "{8283783F-D575-C41E-02B7-BCC85A10BD3D}"
  }
 }

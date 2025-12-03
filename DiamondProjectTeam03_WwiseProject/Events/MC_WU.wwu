@@ -95,6 +95,103 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="Play_MC_Gun_MaxOverheat" ID="{1D8AC9DC-EFFE-4A5B-9123-6192F0B53ABA}">
+					<ChildrenList>
+						<Action Name="" ID="{D3D58663-F8D9-47DD-A1C8-C02776510614}" ShortID="259300881">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="MC_Gun_MaxOverheat" ID="{D33DC3B1-EDB9-4CB1-9CDF-5B167251783E}" WorkUnitID="{1B87B22A-8865-441B-A287-78E87390F212}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_MC_Gun_ReadyToFire" ID="{209918B4-E611-4C57-B030-530BFF706AC0}">
+					<ChildrenList>
+						<Action Name="" ID="{40E6242C-879C-4AA0-978F-CBA394454B7F}" ShortID="648088430">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="MC_Gun_ReadyToFire" ID="{D0727D6A-6A8D-4296-8757-3F0EB1F63196}" WorkUnitID="{1B87B22A-8865-441B-A287-78E87390F212}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="GunHeat_Start" ID="{D3F33BAB-CA64-4957-95FB-1CA9C2086365}">
+					<ChildrenList>
+						<Action Name="" ID="{B5192E8C-2151-4FED-9968-3D44015E8B75}" ShortID="138982025">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="MC_SFX_GunHeat_Start" ID="{DC8EEB2D-262A-400A-A11E-FB629F34BAB3}" WorkUnitID="{1B87B22A-8865-441B-A287-78E87390F212}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{CD77F447-3F06-4DA6-B6CA-88E40FC0228E}" ShortID="82635080">
+							<PropertyList>
+								<Property Name="Delay" Type="Real64" Value="0.5"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="MC_SFX_GunHeat_Loop" ID="{6CCDC309-7EA8-4219-B123-0EC743CC1658}" WorkUnitID="{1B87B22A-8865-441B-A287-78E87390F212}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="GunHeat_Stop" ID="{FC0718D8-C0F8-452A-8B68-89922A78D92C}">
+					<ChildrenList>
+						<Action Name="" ID="{79984FA1-A397-4902-87B9-351F2BB482D9}" ShortID="943410887">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="MC_SFX_GunHeat_Loop" ID="{6CCDC309-7EA8-4219-B123-0EC743CC1658}" WorkUnitID="{1B87B22A-8865-441B-A287-78E87390F212}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{A33DC29B-796D-4109-8665-E0BB981224AE}" ShortID="100557560">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="MC_SFX_GunHeat_Stop" ID="{DCB888ED-245C-4C91-8E6B-D83647528464}" WorkUnitID="{1B87B22A-8865-441B-A287-78E87390F212}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_MC_SFX_Death" ID="{369E0466-2B87-411B-BCBB-99A217DAD9DA}">
+					<ChildrenList>
+						<Action Name="" ID="{D297DE4F-2ECD-45DB-954D-8CD21A53A04F}" ShortID="421708186">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="MC_SFX_Death" ID="{47D43CC5-0AE3-41C3-AAC0-1C7D91B51803}" WorkUnitID="{1B87B22A-8865-441B-A287-78E87390F212}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_MC_SFX_TakeDamage" ID="{2A19BED5-BFA6-4B71-84B0-F44CE93BE9BC}">
+					<ChildrenList>
+						<Action Name="" ID="{4C54A7BA-19A9-4FCC-885E-A2885AB30A10}" ShortID="639404402">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="MC_SFX_TakeDamage" ID="{0BB71E37-F700-4322-B76C-5FF7E5E06AD9}" WorkUnitID="{1B87B22A-8865-441B-A287-78E87390F212}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_MC_FOL_Dash" ID="{4D96658D-3207-4FF8-9FDC-51449BB5B0DB}">
+					<ChildrenList>
+						<Action Name="" ID="{37F3423F-B353-4871-AD46-60D670A5C8B8}" ShortID="773929426">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="MC_FOL_Dash" ID="{DD79EB32-6814-4D02-A7EB-712B782C8FBC}" WorkUnitID="{1B87B22A-8865-441B-A287-78E87390F212}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>
