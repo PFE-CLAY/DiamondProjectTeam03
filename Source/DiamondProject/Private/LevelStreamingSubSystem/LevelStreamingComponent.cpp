@@ -91,11 +91,11 @@ void ULevelStreamingComponent::ForceUnloadLevels(TArray<UWorld*> Levels) const
 	}
 }
 
-void ULevelStreamingComponent::EnableStreamingVolumes(bool Disable) const
+void ULevelStreamingComponent::EnableStreamingVolumes(bool Enable) const
 {
 	for (ALevelStreamingVolume* StreamingVolume : FoundStreamingVolumes) {
 		if (StreamingVolume) {
-			StreamingVolume->bDisabled = Disable;
+			StreamingVolume->bDisabled = !Enable;
 			UE_LOG(LogTemp, Log, TEXT("[ULevelStreamingComponent::EnableStreamingVolumes] Streaming Volume %s collision set to %s."), *StreamingVolume->GetName(), Enable ? TEXT("Enabled") : TEXT("Disabled"));
 		}
 	}
