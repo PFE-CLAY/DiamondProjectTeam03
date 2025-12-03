@@ -9,7 +9,7 @@
 	</RootPaths>
 	<DialogueEvents/>
 	<SoundBanks>
-		<SoundBank Id="459280130" Type="User" GUID="{46F08C13-7BDA-47D5-A653-BDFCDAD2487B}" Color="11" Language="SFX" Hash="{4F561A70-55FF-1B1A-A660-156D3B25A35B}">
+		<SoundBank Id="459280130" Type="User" GUID="{46F08C13-7BDA-47D5-A653-BDFCDAD2487B}" Color="11" Language="SFX" Hash="{9A030CC5-9991-A2C8-82C6-D7427C5531C8}">
 			<ObjectPath>\SoundBanks\SoundBanks_WU\FOES_Flying_SB</ObjectPath>
 			<ShortName>FOES_Flying_SB</ShortName>
 			<Path>FOES_Flying_SB.bnk</Path>
@@ -2735,5 +2735,5 @@
 			</Events>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{391ABC75-A4EA-EE0A-6D89-68F4E655086D}</FileHash>
+	<FileHash>{C30A9E2D-78F5-E169-7302-B3EB4C46B228}</FileHash>
 </SoundBanksInfo>
