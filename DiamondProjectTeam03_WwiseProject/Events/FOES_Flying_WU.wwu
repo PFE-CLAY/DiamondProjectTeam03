@@ -44,6 +44,64 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="Play_FOES_Melee_Attack" ID="{B05FBE0E-77CF-4193-8AD7-FBAF1711239E}">
+					<ChildrenList>
+						<Action Name="" ID="{AE6BDE72-3FC7-41B1-A58A-603337406DA4}" ShortID="641650482">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="FOES_Melee_Attack" ID="{444F6C7F-54FF-4F29-993D-7370D9FB49BF}" WorkUnitID="{15E07612-CB6D-4DA7-B6B8-69AB554425DC}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_FOES_Melee_Death" ID="{5AEC5573-B899-4EEA-B073-F8F0445C7362}">
+					<ChildrenList>
+						<Action Name="" ID="{E30401AB-A014-4C39-BA22-8C770B3689F8}" ShortID="675413730">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="FOES_Melee_Death" ID="{F10DDD00-8F87-426D-9873-AAC2C2DB1F95}" WorkUnitID="{15E07612-CB6D-4DA7-B6B8-69AB554425DC}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_FOES_Melee_Move_LP" ID="{DD99FFBE-5C9F-4818-9840-21638F3DB5B5}">
+					<ChildrenList>
+						<Action Name="" ID="{F5106BAC-E272-4241-AB4B-22CAB28B075A}" ShortID="532730852">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="FOES_Melee_Move_LP" ID="{14DBAC48-000E-4B94-BAB2-2B664408DA15}" WorkUnitID="{15E07612-CB6D-4DA7-B6B8-69AB554425DC}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_FOES_Melee_Charge" ID="{6D6D34D8-A204-4912-BAEF-A0433F66176B}">
+					<ChildrenList>
+						<Action Name="" ID="{B04005EF-A3F9-43A2-8878-22395AB422E5}" ShortID="223284172">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="FOES_Melee_Charge" ID="{DD3EF7CB-5DE7-4E9B-999A-FCD7A67039B7}" WorkUnitID="{15E07612-CB6D-4DA7-B6B8-69AB554425DC}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Stop_FOES_Melee_Move_LP" ID="{18745BF7-D887-423F-8BFC-07CF6218BA15}">
+					<ChildrenList>
+						<Action Name="" ID="{19225F1D-9AB4-4E19-B4CC-1C979CACF8F2}" ShortID="714255649">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="FOES_Melee_Move_LP" ID="{14DBAC48-000E-4B94-BAB2-2B664408DA15}" WorkUnitID="{15E07612-CB6D-4DA7-B6B8-69AB554425DC}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>
