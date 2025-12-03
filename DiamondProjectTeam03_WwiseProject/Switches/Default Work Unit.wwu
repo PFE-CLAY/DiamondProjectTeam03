@@ -10,6 +10,13 @@
 						<Switch Name="Metal" ID="{4F4901C3-CC0C-4142-BDF8-FF62F7720DE3}"/>
 					</ChildrenList>
 				</SwitchGroup>
+				<SwitchGroup Name="SW_GunHeat" ID="{AB3CF31E-D2E1-46A6-833A-2E551F1D31B8}">
+					<ChildrenList>
+						<Switch Name="Start" ID="{1AAC5071-6A1D-474D-B65D-6FACC1E44992}"/>
+						<Switch Name="Loop" ID="{D17BB8BF-1D5D-456B-85BB-3F5687F78394}"/>
+						<Switch Name="Stop" ID="{5309F748-1DFB-462A-A13A-189999414C19}"/>
+					</ChildrenList>
+				</SwitchGroup>
 			</ChildrenList>
 		</WorkUnit>
 	</Switches>
