@@ -658,6 +658,7 @@
 							<PropertyList>
 								<Property Name="3DPosition" Type="int16" Value="2"/>
 								<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+								<Property Name="OverrideEffect" Type="bool" Value="True"/>
 								<Property Name="OverridePositioning" Type="bool" Value="True"/>
 								<Property Name="UseGameAuxSends" Type="bool" Value="True"/>
 							</PropertyList>
@@ -701,6 +702,26 @@
 								</Position>
 							</PositioningInfo>
 							<ObjectLists>
+								<ObjectList Name="Effects">
+									<Reference>
+										<Local>
+											<EffectSlot Name="" ID="{BB4ED251-B2FB-408A-B44E-644A5B9E7C74}" ShortID="898715565">
+												<ReferenceList>
+													<Reference Name="Effect">
+														<Custom CreatedFrom="{724EE402-3242-4362-A459-AF1C0EE4BDAE}">
+															<Effect Name="New_Guitar_Distortion (Custom)" ID="{59B7F7A8-3341-466F-A17E-4F3D759E27E9}" ShortID="3531095" PluginName="Wwise Guitar Distortion" CompanyID="0" PluginID="126" PluginType="3">
+																<PropertyList>
+																	<Property Name="PreEQBand1Enable" Type="bool" Value="True"/>
+																	<Property Name="PreEQBand1Gain" Type="Real32" Value="29"/>
+																</PropertyList>
+															</Effect>
+														</Custom>
+													</Reference>
+												</ReferenceList>
+											</EffectSlot>
+										</Local>
+									</Reference>
+								</ObjectList>
 								<ObjectList Name="RTPC">
 									<Reference>
 										<Local>
@@ -776,6 +797,11 @@
 						<Sound Name="MC_SFX_GunHeat_Stop" ID="{DCB888ED-245C-4C91-8E6B-D83647528464}" ShortID="251148523">
 							<PropertyList>
 								<Property Name="UseGameAuxSends" Type="bool" Value="True"/>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>-9</Value>
+									</ValueList>
+								</Property>
 							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
