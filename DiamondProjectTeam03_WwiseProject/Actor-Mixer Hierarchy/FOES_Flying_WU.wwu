@@ -668,6 +668,13 @@
 							</ActiveSourceList>
 						</Sound>
 						<RandomSequenceContainer Name="FOES_Melee_Death" ID="{F10DDD00-8F87-426D-9873-AAC2C2DB1F95}" ShortID="77651138">
+							<PropertyList>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>9</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
