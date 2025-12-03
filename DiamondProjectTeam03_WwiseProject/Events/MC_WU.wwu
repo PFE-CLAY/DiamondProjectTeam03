@@ -159,6 +159,28 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="Play_MC_SFX_Death" ID="{369E0466-2B87-411B-BCBB-99A217DAD9DA}">
+					<ChildrenList>
+						<Action Name="" ID="{D297DE4F-2ECD-45DB-954D-8CD21A53A04F}" ShortID="421708186">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="MC_SFX_Death" ID="{47D43CC5-0AE3-41C3-AAC0-1C7D91B51803}" WorkUnitID="{1B87B22A-8865-441B-A287-78E87390F212}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_MC_SFX_TakeDamage" ID="{2A19BED5-BFA6-4B71-84B0-F44CE93BE9BC}">
+					<ChildrenList>
+						<Action Name="" ID="{4C54A7BA-19A9-4FCC-885E-A2885AB30A10}" ShortID="639404402">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="MC_SFX_TakeDamage" ID="{0BB71E37-F700-4322-B76C-5FF7E5E06AD9}" WorkUnitID="{1B87B22A-8865-441B-A287-78E87390F212}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

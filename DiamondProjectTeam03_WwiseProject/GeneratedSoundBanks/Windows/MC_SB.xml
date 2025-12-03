@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="16" SoundBankVersion="154">
 	<SoundBanks>
-		<SoundBank Id="1956625499" Type="User" GUID="{ADC2D189-6608-4828-BC9C-6EF6F90834DB}" Color="19" Language="SFX" Hash="{3E514B36-5153-9E69-19B3-3E91965F6E0B}">
+		<SoundBank Id="1956625499" Type="User" GUID="{ADC2D189-6608-4828-BC9C-6EF6F90834DB}" Color="19" Language="SFX" Hash="{2E8C2971-7302-E5F3-9F46-8681E094991B}">
 			<ObjectPath>\SoundBanks\SoundBanks_WU\MC_SB</ObjectPath>
 			<ShortName>MC_SB</ShortName>
 			<Path>MC_SB.bnk</Path>
@@ -608,6 +608,13 @@
 						<MediaRef Id="766974732"/>
 					</MediaRefs>
 				</Event>
+				<Event Id="4036448981" Name="Play_MC_SFX_Death" ObjectPath="\Events\MC_WU\Play_MC_SFX_Death" GUID="{369E0466-2B87-411B-BCBB-99A217DAD9DA}" Color="19" DurationType="OneShot" DurationMin="1.3978542" DurationMax="1.9379584">
+					<MediaRefs>
+						<MediaRef Id="497641606"/>
+						<MediaRef Id="553317585"/>
+						<MediaRef Id="615051598"/>
+					</MediaRefs>
+				</Event>
 				<Event Id="1177297501" Name="Play_MC_SFX_Gun_Shoot_RC" ObjectPath="\Events\MC_WU\Play_MC_SFX_Gun_Shoot_RC" GUID="{19EDAAA1-DF79-4328-9566-97F28CD19D08}" Color="19" DurationType="OneShot" DurationMin="0.45694295" DurationMax="0.7375112">
 					<MediaRefs>
 						<MediaRef Id="148074735"/>
@@ -616,6 +623,15 @@
 						<MediaRef Id="489469995"/>
 						<MediaRef Id="578370687"/>
 						<MediaRef Id="596462661"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="413846691" Name="Play_MC_SFX_TakeDamage" ObjectPath="\Events\MC_WU\Play_MC_SFX_TakeDamage" GUID="{2A19BED5-BFA6-4B71-84B0-F44CE93BE9BC}" Color="19" DurationType="OneShot" DurationMin="0.40547916" DurationMax="0.70947915">
+					<MediaRefs>
+						<MediaRef Id="372348210"/>
+						<MediaRef Id="378515017"/>
+						<MediaRef Id="505085735"/>
+						<MediaRef Id="941583903"/>
+						<MediaRef Id="997492934"/>
 					</MediaRefs>
 				</Event>
 				<Event Id="4122495842" Name="Play_MC_SFX_UpdateAmmo_RC" ObjectPath="\Events\MC_WU\Play_MC_SFX_UpdateAmmo_RC" GUID="{4C30DC19-451C-449E-9B9A-AADEEAB14B44}" Color="19" DurationType="OneShot" DurationMin="2.5657325" DurationMax="3.6410909">
@@ -742,5 +758,5 @@
 			</SwitchGroups>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{05AA1FC3-8926-2704-97C3-8F3DE6F0D774}</FileHash>
+	<FileHash>{D41569D2-8782-4431-5051-F32245454318}</FileHash>
 </SoundBanksInfo>
