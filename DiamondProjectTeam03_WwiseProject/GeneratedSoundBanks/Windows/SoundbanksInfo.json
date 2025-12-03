@@ -1813,7 +1813,7 @@
     "GUID": "{ADC2D189-6608-4828-BC9C-6EF6F90834DB}",
     "Color": "19",
     "Language": "SFX",
-    "Hash": "{2E8C2971-7302-E5F3-9F46-8681E094991B}",
+    "Hash": "{3A8DDD80-4843-7F45-2177-4D76DFCA2778}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\MC_SB",
     "ShortName": "MC_SB",
     "Path": "MC_SB.bnk",
@@ -1921,6 +1921,14 @@
       "Location": "Memory",
       "ShortName": "AMB\\SP\\MC_FT_Concrete_Jump_02.wav",
       "CachePath": "AF/{AF27FD3A-E5F2-945D-DC63-471942E9CB7F}.wem"
+     },
+     {
+      "Id": "123620866",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Swooshes, Whoosh, Wind, Soft, Short 02 SND55221 1.wav",
+      "CachePath": "86/{8649F01B-1F24-4252-2450-F8FB0313085F}.wem"
      },
      {
       "Id": "130136752",
@@ -2443,6 +2451,14 @@
       "CachePath": "3E/{3E8FEA14-C520-74CE-8000-00480DF60354}.wem"
      },
      {
+      "Id": "805197856",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Swooshes, Whoosh, Wind, Soft, Short 02 SND55221 2.wav",
+      "CachePath": "20/{209D0715-1542-4599-FFC7-03D765182649}.wem"
+     },
+     {
       "Id": "808130812",
       "Language": "SFX",
       "Streaming": "false",
@@ -2561,6 +2577,14 @@
       "Location": "Memory",
       "ShortName": "MC\\MC_FT_Concrete_05.wav",
       "CachePath": "EE/{EE68524C-8BCD-0543-26CD-95FA36E31C2F}.wem"
+     },
+     {
+      "Id": "1066849935",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Swooshes, Whoosh, Wind, Soft, Short 02 SND55221.wav",
+      "CachePath": "08/{08C83980-8B2C-E746-A7F4-DDEF15149BA8}.wem"
      }
     ],
     "Plugins": {
@@ -2705,6 +2729,27 @@
         }
        ]
       }
+     },
+     {
+      "Id": "3884301275",
+      "Name": "Play_MC_FOL_Dash",
+      "ObjectPath": "\\Events\\MC_WU\\Play_MC_FOL_Dash",
+      "GUID": "{4D96658D-3207-4FF8-9FDC-51449BB5B0DB}",
+      "Color": "19",
+      "DurationType": "OneShot",
+      "DurationMin": "0.83809435",
+      "DurationMax": "1.1124535",
+      "MediaRefs": [
+       {
+        "Id": "123620866"
+       },
+       {
+        "Id": "805197856"
+       },
+       {
+        "Id": "1066849935"
+       }
+      ]
      },
      {
       "Id": "2749485653",
@@ -7291,6 +7336,6 @@
     ]
    }
   ],
-  "FileHash": "{19660104-83E8-C4FA-8C2B-C2DFE0A8DBE4}"
+  "FileHash": "{5148D224-E2CB-781F-14C2-1C09A0DE75B3}"
  }
 }
