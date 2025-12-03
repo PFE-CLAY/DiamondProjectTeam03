@@ -608,6 +608,376 @@
 						</ActorMixer>
 					</ChildrenList>
 				</ActorMixer>
+				<ActorMixer Name="FOES_Melee" ID="{5C1657B3-C438-4CBC-8AF0-F2A1BFD77489}" ShortID="364599544">
+					<PropertyList>
+						<Property Name="3DSpatialization" Type="int16" Value="1"/>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Attenuation">
+							<ObjectRef Name="ATT_30m" ID="{07C26E29-7C77-4AD6-AA3A-91A1861593D0}" WorkUnitID="{3B4DA992-D06B-45A8-A1FE-AF5B7C9D33CA}"/>
+						</Reference>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D02282EE-6893-403D-9438-D481AB659EA3}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<Sound Name="FOES_Melee_Move_LP" ID="{14DBAC48-000E-4B94-BAB2-2B664408DA15}" ShortID="133015088">
+							<PropertyList>
+								<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+								<Property Name="IsStreamingEnabled" Type="bool">
+									<ValueList>
+										<Value>True</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D02282EE-6893-403D-9438-D481AB659EA3}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="FOES_Melee_Move_LP" ID="{C26C613D-ADBD-49DD-A580-C3AF10D3C633}">
+									<Language>SFX</Language>
+									<AudioFile>FOES_Melee_Move_LP.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="420741957"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="FOES_Melee_Move_LP" ID="{C26C613D-ADBD-49DD-A580-C3AF10D3C633}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<RandomSequenceContainer Name="FOES_Melee_Death" ID="{F10DDD00-8F87-426D-9873-AAC2C2DB1F95}" ShortID="77651138">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D02282EE-6893-403D-9438-D481AB659EA3}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<Sound Name="FOES_Melee_Death_01" ID="{072C6481-6EC5-471C-A902-E0D5A5C6EFBD}" ShortID="1005979322">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D02282EE-6893-403D-9438-D481AB659EA3}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="FOES_Melee_Death_01" ID="{97DA2C91-F526-4C06-9B07-1FE5F07F30B2}">
+											<Language>SFX</Language>
+											<AudioFile>FOES_Melee_Death_01.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="824206719"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="FOES_Melee_Death_01" ID="{97DA2C91-F526-4C06-9B07-1FE5F07F30B2}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="FOES_Melee_Death_02" ID="{80423BCB-C8CB-484A-83C9-840AAD452723}" ShortID="511593059">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D02282EE-6893-403D-9438-D481AB659EA3}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="FOES_Melee_Death_02" ID="{D46C562B-C2C1-4DE6-B47A-693DD022549A}">
+											<Language>SFX</Language>
+											<AudioFile>FOES_Melee_Death_02.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="294175006"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="FOES_Melee_Death_02" ID="{D46C562B-C2C1-4DE6-B47A-693DD022549A}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="FOES_Melee_Death_03" ID="{173BA695-54F3-494C-9152-BA67381597E5}" ShortID="581305416">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D02282EE-6893-403D-9438-D481AB659EA3}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="FOES_Melee_Death_03" ID="{3D8CED42-99F7-4C51-9A25-517DC5B9C27A}">
+											<Language>SFX</Language>
+											<AudioFile>FOES_Melee_Death_03.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="795697994"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="FOES_Melee_Death_03" ID="{3D8CED42-99F7-4C51-9A25-517DC5B9C27A}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="FOES_Melee_Death_04" ID="{7FBC4917-A9D9-4CA3-8336-89C07C474474}" ShortID="358763146">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D02282EE-6893-403D-9438-D481AB659EA3}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="FOES_Melee_Death_04" ID="{92FD770E-7B4D-467C-A797-080C8F6D0189}">
+											<Language>SFX</Language>
+											<AudioFile>FOES_Melee_Death_04.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="218138060"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="FOES_Melee_Death_04" ID="{92FD770E-7B4D-467C-A797-080C8F6D0189}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+							</ChildrenList>
+						</RandomSequenceContainer>
+						<RandomSequenceContainer Name="FOES_Melee_Attack" ID="{444F6C7F-54FF-4F29-993D-7370D9FB49BF}" ShortID="543929940">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D02282EE-6893-403D-9438-D481AB659EA3}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<Sound Name="FOES_Melee_Attack_01" ID="{4F502BDE-3623-469C-B1F6-5722A88C1CD2}" ShortID="587727452">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D02282EE-6893-403D-9438-D481AB659EA3}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="FOES_Melee_Attack_01" ID="{C0FAE51A-FCEE-469F-BFE5-C4974A81FF19}">
+											<Language>SFX</Language>
+											<AudioFile>FOES_Melee_Attack_01.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="258077565"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="FOES_Melee_Attack_01" ID="{C0FAE51A-FCEE-469F-BFE5-C4974A81FF19}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="FOES_Melee_Attack_02" ID="{BFAFF69B-8663-41AA-9909-6E6B53AF9C9C}" ShortID="489819785">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D02282EE-6893-403D-9438-D481AB659EA3}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="FOES_Melee_Attack_02" ID="{A9D647C0-E26D-4493-B0EF-C714625FFE12}">
+											<Language>SFX</Language>
+											<AudioFile>FOES_Melee_Attack_02.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="354348514"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="FOES_Melee_Attack_02" ID="{A9D647C0-E26D-4493-B0EF-C714625FFE12}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="FOES_Melee_Attack_03" ID="{80F88BD1-84AD-4580-AF56-55D7C3521204}" ShortID="748916250">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D02282EE-6893-403D-9438-D481AB659EA3}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="FOES_Melee_Attack_03" ID="{5814ECB5-FE23-47FE-9DB0-1445DCB2B1A7}">
+											<Language>SFX</Language>
+											<AudioFile>FOES_Melee_Attack_03.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="389462121"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="FOES_Melee_Attack_03" ID="{5814ECB5-FE23-47FE-9DB0-1445DCB2B1A7}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="FOES_Melee_Attack_04" ID="{FD7894FD-8635-4BD3-8483-351AD3D66776}" ShortID="626576040">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D02282EE-6893-403D-9438-D481AB659EA3}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="FOES_Melee_Attack_04" ID="{C0D3CE29-CE68-47AD-88C9-EB502994A917}">
+											<Language>SFX</Language>
+											<AudioFile>FOES_Melee_Attack_04.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="155865366"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="FOES_Melee_Attack_04" ID="{C0D3CE29-CE68-47AD-88C9-EB502994A917}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+							</ChildrenList>
+						</RandomSequenceContainer>
+						<RandomSequenceContainer Name="FOES_Melee_Charge" ID="{DD3EF7CB-5DE7-4E9B-999A-FCD7A67039B7}" ShortID="412216668">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D02282EE-6893-403D-9438-D481AB659EA3}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<Sound Name="FOES_Melee_Charge_01" ID="{790E0FA2-0855-409C-A4F9-9EC3C1A4BBF4}" ShortID="942077663">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D02282EE-6893-403D-9438-D481AB659EA3}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="FOES_Melee_Charge_01" ID="{7887CB02-C7BB-4EE5-8AA0-CE33561C1616}">
+											<Language>SFX</Language>
+											<AudioFile>FOES_Melee_Charge_01.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="744466602"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="FOES_Melee_Charge_01" ID="{7887CB02-C7BB-4EE5-8AA0-CE33561C1616}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="FOES_Melee_Charge_02" ID="{B6AE6240-6600-4446-A1D0-DCF469F5A6E2}" ShortID="678439237">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D02282EE-6893-403D-9438-D481AB659EA3}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="FOES_Melee_Charge_02" ID="{C319B94F-71EE-4C65-8A3F-EC50B8D02766}">
+											<Language>SFX</Language>
+											<AudioFile>FOES_Melee_Charge_02.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="309854413"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="FOES_Melee_Charge_02" ID="{C319B94F-71EE-4C65-8A3F-EC50B8D02766}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="FOES_Melee_Charge_03" ID="{E6922C16-D7D3-465A-BBBB-ED0A09EA7272}" ShortID="350137797">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D02282EE-6893-403D-9438-D481AB659EA3}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="FOES_Melee_Charge_03" ID="{02CA1EED-431B-48E2-A73B-5289CA271E18}">
+											<Language>SFX</Language>
+											<AudioFile>FOES_Melee_Charge_03.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="184148060"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="FOES_Melee_Charge_03" ID="{02CA1EED-431B-48E2-A73B-5289CA271E18}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="FOES_Melee_Charge_04" ID="{D7C6C032-1CC1-48A5-BD3A-846C16B27C8F}" ShortID="508022329">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D02282EE-6893-403D-9438-D481AB659EA3}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="FOES_Melee_Charge_04" ID="{FEF3B8B5-E84A-40EB-9753-350652D32B93}">
+											<Language>SFX</Language>
+											<AudioFile>FOES_Melee_Charge_04.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="361986473"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="FOES_Melee_Charge_04" ID="{FEF3B8B5-E84A-40EB-9753-350652D32B93}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="FOES_Melee_Charge_05" ID="{00C604E1-50FA-4EAB-91BC-05B295CBB6A9}" ShortID="740467811">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D02282EE-6893-403D-9438-D481AB659EA3}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="FOES_Melee_Charge_05" ID="{B8D635C5-850E-4B4B-A0CE-48E039127E6A}">
+											<Language>SFX</Language>
+											<AudioFile>FOES_Melee_Charge_05.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="420191815"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="FOES_Melee_Charge_05" ID="{B8D635C5-850E-4B4B-A0CE-48E039127E6A}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+							</ChildrenList>
+						</RandomSequenceContainer>
+					</ChildrenList>
+				</ActorMixer>
 			</ChildrenList>
 		</WorkUnit>
 	</AudioObjects>

@@ -62,7 +62,7 @@
 								</Reference>
 							</ReferenceList>
 							<ChildrenList>
-								<Sound Name="MC_SFX_Gun_Shoot_04" ID="{72A7C328-3DD7-42DB-B151-DDCA5A9852A9}" ShortID="251771390">
+								<Sound Name="MC_Gun_Shot_01" ID="{0E0D8B2E-1B6B-4CD8-A840-5B6E9FCA705F}" ShortID="324359807">
 									<ReferenceList>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
@@ -72,19 +72,19 @@
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
-										<AudioFileSource Name="MC_SFX_Gun_Shoot_04" ID="{4AA2232B-5818-4245-A914-BF2CAC4BD8D5}">
+										<AudioFileSource Name="MC_Gun_Shot_01" ID="{9A355214-F37F-4529-B900-557A34E35BD9}">
 											<Language>SFX</Language>
-											<AudioFile>MC_SFX_Gun_Shoot_04.wav</AudioFile>
+											<AudioFile>MC_Gun_Shot_01.wav</AudioFile>
 											<MediaIDList>
-												<MediaID ID="70109824"/>
+												<MediaID ID="379997934"/>
 											</MediaIDList>
 										</AudioFileSource>
 									</ChildrenList>
 									<ActiveSourceList>
-										<ActiveSource Name="MC_SFX_Gun_Shoot_04" ID="{4AA2232B-5818-4245-A914-BF2CAC4BD8D5}" Platform="Linked"/>
+										<ActiveSource Name="MC_Gun_Shot_01" ID="{9A355214-F37F-4529-B900-557A34E35BD9}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
-								<Sound Name="MC_SFX_Gun_Shoot_01" ID="{17235083-1BDD-4EF5-8CDC-6B31F904E439}" ShortID="207850729">
+								<Sound Name="MC_Gun_Shot_02" ID="{7943B6BC-39C7-48C5-BDD1-42CBFA9FA12E}" ShortID="455207603">
 									<ReferenceList>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
@@ -94,19 +94,19 @@
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
-										<AudioFileSource Name="MC_SFX_Gun_Shoot_01" ID="{9551CF21-A3C3-4DE2-B113-BA1A6FAF13D2}">
+										<AudioFileSource Name="MC_Gun_Shot_02" ID="{4A0B5F99-B58C-4406-BD51-AA309EB058D8}">
 											<Language>SFX</Language>
-											<AudioFile>MC_SFX_Gun_Shoot_01.wav</AudioFile>
+											<AudioFile>MC_Gun_Shot_02.wav</AudioFile>
 											<MediaIDList>
-												<MediaID ID="36917763"/>
+												<MediaID ID="489469995"/>
 											</MediaIDList>
 										</AudioFileSource>
 									</ChildrenList>
 									<ActiveSourceList>
-										<ActiveSource Name="MC_SFX_Gun_Shoot_01" ID="{9551CF21-A3C3-4DE2-B113-BA1A6FAF13D2}" Platform="Linked"/>
+										<ActiveSource Name="MC_Gun_Shot_02" ID="{4A0B5F99-B58C-4406-BD51-AA309EB058D8}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
-								<Sound Name="MC_SFX_Gun_Shoot_02" ID="{1B2B2AAD-F224-47CC-82E8-B15625DEBC89}" ShortID="789626655">
+								<Sound Name="MC_Gun_Shot_03" ID="{01CB2262-8CDE-47CC-9033-F58D8B3CB3E4}" ShortID="415168045">
 									<ReferenceList>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
@@ -116,19 +116,19 @@
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
-										<AudioFileSource Name="MC_SFX_Gun_Shoot_02" ID="{21C94D23-CCFF-48EA-818B-000B483012E1}">
+										<AudioFileSource Name="MC_Gun_Shot_03" ID="{19A34726-780C-4F70-9EDD-632975D3F934}">
 											<Language>SFX</Language>
-											<AudioFile>MC_SFX_Gun_Shoot_02.wav</AudioFile>
+											<AudioFile>MC_Gun_Shot_03.wav</AudioFile>
 											<MediaIDList>
-												<MediaID ID="62282605"/>
+												<MediaID ID="596462661"/>
 											</MediaIDList>
 										</AudioFileSource>
 									</ChildrenList>
 									<ActiveSourceList>
-										<ActiveSource Name="MC_SFX_Gun_Shoot_02" ID="{21C94D23-CCFF-48EA-818B-000B483012E1}" Platform="Linked"/>
+										<ActiveSource Name="MC_Gun_Shot_03" ID="{19A34726-780C-4F70-9EDD-632975D3F934}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
-								<Sound Name="MC_SFX_Gun_Shoot_03" ID="{24BA56E0-5B00-4769-939C-CB22DBBC6E2A}" ShortID="861543857">
+								<Sound Name="MC_Gun_Shot_04" ID="{F1164B0E-2F00-477F-B93D-9EEFB4FB137F}" ShortID="752697158">
 									<ReferenceList>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
@@ -138,16 +138,60 @@
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
-										<AudioFileSource Name="MC_SFX_Gun_Shoot_03" ID="{8DBDBFFE-3B02-4DBE-82AD-A1F435D60E57}">
+										<AudioFileSource Name="MC_Gun_Shot_04" ID="{8FCA1289-82B4-479E-AE9D-0D297AB8F7DB}">
 											<Language>SFX</Language>
-											<AudioFile>MC_SFX_Gun_Shoot_03.wav</AudioFile>
+											<AudioFile>MC_Gun_Shot_04.wav</AudioFile>
 											<MediaIDList>
-												<MediaID ID="610918733"/>
+												<MediaID ID="578370687"/>
 											</MediaIDList>
 										</AudioFileSource>
 									</ChildrenList>
 									<ActiveSourceList>
-										<ActiveSource Name="MC_SFX_Gun_Shoot_03" ID="{8DBDBFFE-3B02-4DBE-82AD-A1F435D60E57}" Platform="Linked"/>
+										<ActiveSource Name="MC_Gun_Shot_04" ID="{8FCA1289-82B4-479E-AE9D-0D297AB8F7DB}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="MC_Gun_Shot_05" ID="{525F9DC4-6CD7-411A-B20D-280DB64E5C1E}" ShortID="822002611">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D02282EE-6893-403D-9438-D481AB659EA3}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="MC_Gun_Shot_05" ID="{35E39828-8E1C-4599-B230-D6E4031A9BE6}">
+											<Language>SFX</Language>
+											<AudioFile>MC_Gun_Shot_05.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="389222580"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="MC_Gun_Shot_05" ID="{35E39828-8E1C-4599-B230-D6E4031A9BE6}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="MC_Gun_Shot_06" ID="{9ADC200B-51EA-4DA3-9C68-99FBF8B6B8F9}" ShortID="621142364">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D02282EE-6893-403D-9438-D481AB659EA3}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="MC_Gun_Shot_06" ID="{46C72FF3-44F8-48FB-95FF-B1F6C76B1626}">
+											<Language>SFX</Language>
+											<AudioFile>MC_Gun_Shot_06.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="148074735"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="MC_Gun_Shot_06" ID="{46C72FF3-44F8-48FB-95FF-B1F6C76B1626}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
 							</ChildrenList>
@@ -366,6 +410,420 @@
 								</Sound>
 							</ChildrenList>
 						</RandomSequenceContainer>
+						<RandomSequenceContainer Name="MC_SFX_TakeDamage" ID="{0BB71E37-F700-4322-B76C-5FF7E5E06AD9}" ShortID="514500814">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D02282EE-6893-403D-9438-D481AB659EA3}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<Sound Name="MC_SFX_TakeDamage_01" ID="{9A8E2406-721D-4A8C-9921-950AEC2B11F8}" ShortID="266330062">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D02282EE-6893-403D-9438-D481AB659EA3}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="MC_SFX_TakeDamage_01" ID="{14CF84F0-C4A4-4246-A3B9-7BAB74EAC103}">
+											<Language>SFX</Language>
+											<AudioFile>MC_SFX_TakeDamage_01.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="941583903"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="MC_SFX_TakeDamage_01" ID="{14CF84F0-C4A4-4246-A3B9-7BAB74EAC103}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="MC_SFX_TakeDamage_02" ID="{80817D47-CD0E-41B7-9B67-77F268020752}" ShortID="950480415">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D02282EE-6893-403D-9438-D481AB659EA3}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="MC_SFX_TakeDamage_02" ID="{970AB155-A099-4BC1-A785-0C04BD286659}">
+											<Language>SFX</Language>
+											<AudioFile>MC_SFX_TakeDamage_02.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="997492934"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="MC_SFX_TakeDamage_02" ID="{970AB155-A099-4BC1-A785-0C04BD286659}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="MC_SFX_TakeDamage_03" ID="{A3646225-E110-43D3-8AE8-CE1628C31356}" ShortID="898582298">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D02282EE-6893-403D-9438-D481AB659EA3}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="MC_SFX_TakeDamage_03" ID="{98A447CA-9B25-45C2-9D90-0A09A1DAEFFE}">
+											<Language>SFX</Language>
+											<AudioFile>MC_SFX_TakeDamage_03.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="372348210"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="MC_SFX_TakeDamage_03" ID="{98A447CA-9B25-45C2-9D90-0A09A1DAEFFE}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="MC_SFX_TakeDamage_04" ID="{B7B11406-B6C2-4DC2-9C3E-9556B14597C4}" ShortID="283947371">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D02282EE-6893-403D-9438-D481AB659EA3}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="MC_SFX_TakeDamage_04" ID="{BF95FB0E-BE01-4FE4-B14A-706C8DEB4F31}">
+											<Language>SFX</Language>
+											<AudioFile>MC_SFX_TakeDamage_04.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="378515017"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="MC_SFX_TakeDamage_04" ID="{BF95FB0E-BE01-4FE4-B14A-706C8DEB4F31}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="MC_SFX_TakeDamage_05" ID="{879881DC-92FC-4915-B3DC-2E994A70FD95}" ShortID="518179248">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D02282EE-6893-403D-9438-D481AB659EA3}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="MC_SFX_TakeDamage_05" ID="{955E0BED-6C76-4475-89D4-F29AEBE91CBE}">
+											<Language>SFX</Language>
+											<AudioFile>MC_SFX_TakeDamage_05.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="505085735"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="MC_SFX_TakeDamage_05" ID="{955E0BED-6C76-4475-89D4-F29AEBE91CBE}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+							</ChildrenList>
+						</RandomSequenceContainer>
+						<RandomSequenceContainer Name="MC_SFX_Death" ID="{47D43CC5-0AE3-41C3-AAC0-1C7D91B51803}" ShortID="332936194">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D02282EE-6893-403D-9438-D481AB659EA3}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<Sound Name="Voices, Male, Sudden Death, Combat, Pain 04 SND85287" ID="{9EFD7A66-ED76-46FD-A8C2-6E4289142015}" ShortID="234691817">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D02282EE-6893-403D-9438-D481AB659EA3}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Voices, Male, Sudden Death, Combat, Pain 04 SND85287" ID="{6CAF7426-C082-4C64-AB2E-8EC9279BD0FE}">
+											<Language>SFX</Language>
+											<AudioFile>Voices, Male, Sudden Death, Combat, Pain 04 SND85287.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="497641606"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Voices, Male, Sudden Death, Combat, Pain 04 SND85287" ID="{6CAF7426-C082-4C64-AB2E-8EC9279BD0FE}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="Voices, Scream, Male, Type 03, Death Scream, Intense 04 SND85478 1" ID="{102110E1-1942-4D32-8A24-9EF5738C15B6}" ShortID="667313082">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D02282EE-6893-403D-9438-D481AB659EA3}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Voices, Scream, Male, Type 03, Death Scream, Intense 04 SND85478 1" ID="{8E7C1F87-2F15-42A0-9948-1855973238B6}">
+											<Language>SFX</Language>
+											<AudioFile>Voices, Scream, Male, Type 03, Death Scream, Intense 04 SND85478 1.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="615051598"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Voices, Scream, Male, Type 03, Death Scream, Intense 04 SND85478 1" ID="{8E7C1F87-2F15-42A0-9948-1855973238B6}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="Voices, Scream, Male, Type 03, Death Scream, Intense 04 SND85478 2" ID="{D0C3AD48-423B-4592-9ED8-FADE92601049}" ShortID="615786873">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D02282EE-6893-403D-9438-D481AB659EA3}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Voices, Scream, Male, Type 03, Death Scream, Intense 04 SND85478 2" ID="{77C42A47-E4A4-4293-AB80-74197984F7DE}">
+											<Language>SFX</Language>
+											<AudioFile>Voices, Scream, Male, Type 03, Death Scream, Intense 04 SND85478 2.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="553317585"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Voices, Scream, Male, Type 03, Death Scream, Intense 04 SND85478 2" ID="{77C42A47-E4A4-4293-AB80-74197984F7DE}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+							</ChildrenList>
+						</RandomSequenceContainer>
+						<Sound Name="MC_Gun_MaxOverheat" ID="{D33DC3B1-EDB9-4CB1-9CDF-5B167251783E}" ShortID="921622758">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D02282EE-6893-403D-9438-D481AB659EA3}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="MC_Gun_MaxOverheat" ID="{C600202A-299A-4888-9D57-A782DE2945C2}">
+									<Language>SFX</Language>
+									<AudioFile>MC_Gun_MaxOverheat.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="154962763"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="MC_Gun_MaxOverheat" ID="{C600202A-299A-4888-9D57-A782DE2945C2}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="MC_Gun_ReadyToFire" ID="{D0727D6A-6A8D-4296-8757-3F0EB1F63196}" ShortID="1057736975">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D02282EE-6893-403D-9438-D481AB659EA3}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="MC_Gun_ReadyToFire" ID="{15BB82C4-0F0A-471F-8F5A-6446E96F9841}">
+									<Language>SFX</Language>
+									<AudioFile>MC_Gun_ReadyToFire.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="766974732"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="MC_Gun_ReadyToFire" ID="{15BB82C4-0F0A-471F-8F5A-6446E96F9841}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="MC_SFX_GunHeat_Loop" ID="{6CCDC309-7EA8-4219-B123-0EC743CC1658}" ShortID="488967550">
+							<PropertyList>
+								<Property Name="3DPosition" Type="int16" Value="2"/>
+								<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+								<Property Name="OverrideEffect" Type="bool" Value="True"/>
+								<Property Name="OverridePositioning" Type="bool" Value="True"/>
+								<Property Name="UseGameAuxSends" Type="bool" Value="True"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Attenuation">
+									<ObjectRef Name="ATT_30m" ID="{07C26E29-7C77-4AD6-AA3A-91A1861593D0}" WorkUnitID="{3B4DA992-D06B-45A8-A1FE-AF5B7C9D33CA}"/>
+								</Reference>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="SFX" ID="{EB4CE24D-8196-408E-9775-5E8EEFE98495}" WorkUnitID="{A9F2777E-FBA3-4BC0-B5B3-14E0777A7B23}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="Tools, Power, Workshop, Electrical, Circular Saw, Machine, Power, Buzz, Metal 02 SND133864-glued-02" ID="{4C196F38-12DE-4A1F-ABA1-B056FDDCB32D}">
+									<PropertyList>
+										<Property Name="ChannelConfigOverride" Type="int64" Value="49410"/>
+									</PropertyList>
+									<Language>SFX</Language>
+									<AudioFile>Tools, Power, Workshop, Electrical, Circular Saw, Machine, Power, Buzz, Metal 02 SND133864-glued-02.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="836470137"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<PositioningInfo>
+								<Position Name="" ID="{F708D384-F8B6-4868-866E-E6241814C175}">
+									<ChildrenList>
+										<Path2D Name="MC_SFX_GunHeat_Loop_Path" ID="{360ABC21-B32C-4F2F-A75C-1975EF93074B}">
+											<PointList>
+												<Point>
+													<XPos>28.93401</XPos>
+													<YPos>53.9548</YPos>
+													<Flags>12</Flags>
+													<Time>0</Time>
+												</Point>
+											</PointList>
+										</Path2D>
+									</ChildrenList>
+								</Position>
+							</PositioningInfo>
+							<ObjectLists>
+								<ObjectList Name="Effects">
+									<Reference>
+										<Local>
+											<EffectSlot Name="" ID="{BB4ED251-B2FB-408A-B44E-644A5B9E7C74}" ShortID="898715565">
+												<ReferenceList>
+													<Reference Name="Effect">
+														<Custom CreatedFrom="{724EE402-3242-4362-A459-AF1C0EE4BDAE}">
+															<Effect Name="New_Guitar_Distortion (Custom)" ID="{59B7F7A8-3341-466F-A17E-4F3D759E27E9}" ShortID="3531095" PluginName="Wwise Guitar Distortion" CompanyID="0" PluginID="126" PluginType="3">
+																<PropertyList>
+																	<Property Name="PreEQBand1Enable" Type="bool" Value="True"/>
+																	<Property Name="PreEQBand1Gain" Type="Real32" Value="29"/>
+																</PropertyList>
+															</Effect>
+														</Custom>
+													</Reference>
+												</ReferenceList>
+											</EffectSlot>
+										</Local>
+									</Reference>
+								</ObjectList>
+								<ObjectList Name="RTPC">
+									<Reference>
+										<Local>
+											<RTPC Name="" ID="{A00CAA27-01D2-456C-A766-93A7D7E117A7}" ShortID="388107661">
+												<PropertyList>
+													<Property Name="PropertyName" Type="string" Value="Pitch"/>
+												</PropertyList>
+												<ReferenceList>
+													<Reference Name="ControlInput">
+														<ObjectRef Name="RTPC_GunHeat" ID="{F9A7333E-9305-4744-858A-05CCB5E8F620}" WorkUnitID="{AF741D90-A9C1-41EB-958D-616E32A16F46}"/>
+													</Reference>
+													<Reference Name="Curve">
+														<Custom>
+															<Curve Name="" ID="{641D34C3-BCD7-4591-A9C6-8A4747B0FA75}">
+																<PropertyList>
+																	<Property Name="Flags" Type="int32" Value="65537"/>
+																</PropertyList>
+																<PointList>
+																	<Point>
+																		<XPos>0</XPos>
+																		<YPos>0</YPos>
+																		<Flags>5</Flags>
+																	</Point>
+																	<Point>
+																		<XPos>0.50755</XPos>
+																		<YPos>513</YPos>
+																		<Flags>0</Flags>
+																	</Point>
+																	<Point>
+																		<XPos>1</XPos>
+																		<YPos>748</YPos>
+																		<Flags>37</Flags>
+																	</Point>
+																</PointList>
+															</Curve>
+														</Custom>
+													</Reference>
+												</ReferenceList>
+											</RTPC>
+										</Local>
+									</Reference>
+								</ObjectList>
+							</ObjectLists>
+							<ActiveSourceList>
+								<ActiveSource Name="Tools, Power, Workshop, Electrical, Circular Saw, Machine, Power, Buzz, Metal 02 SND133864-glued-02" ID="{4C196F38-12DE-4A1F-ABA1-B056FDDCB32D}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="MC_SFX_GunHeat_Start" ID="{DC8EEB2D-262A-400A-A11E-FB629F34BAB3}" ShortID="567274947">
+							<PropertyList>
+								<Property Name="UseGameAuxSends" Type="bool" Value="True"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="SFX" ID="{EB4CE24D-8196-408E-9775-5E8EEFE98495}" WorkUnitID="{A9F2777E-FBA3-4BC0-B5B3-14E0777A7B23}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="Tools, Power, Workshop, Electrical, Circular Saw, Machine, Power, Buzz, Metal 02 SND133864-glued-01_001" ID="{BEE32EA6-82A2-4130-98BA-319C85F15983}">
+									<Language>SFX</Language>
+									<AudioFile>Tools, Power, Workshop, Electrical, Circular Saw, Machine, Power, Buzz, Metal 02 SND133864-glued-01_001.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="541217847"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="Tools, Power, Workshop, Electrical, Circular Saw, Machine, Power, Buzz, Metal 02 SND133864-glued-01_001" ID="{BEE32EA6-82A2-4130-98BA-319C85F15983}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="MC_SFX_GunHeat_Stop" ID="{DCB888ED-245C-4C91-8E6B-D83647528464}" ShortID="251148523">
+							<PropertyList>
+								<Property Name="UseGameAuxSends" Type="bool" Value="True"/>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>-9</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="SFX" ID="{EB4CE24D-8196-408E-9775-5E8EEFE98495}" WorkUnitID="{A9F2777E-FBA3-4BC0-B5B3-14E0777A7B23}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="Tools, Power, Workshop, Electrical, Circular Saw, Machine, Power, Buzz, Metal 02 SND133864-glued-01_002" ID="{E3F4A682-69E6-4EED-BA8B-2DBCF9EC7264}">
+									<Language>SFX</Language>
+									<AudioFile>Tools, Power, Workshop, Electrical, Circular Saw, Machine, Power, Buzz, Metal 02 SND133864-glued-01_002.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="212106629"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="Tools, Power, Workshop, Electrical, Circular Saw, Machine, Power, Buzz, Metal 02 SND133864-glued-01_002" ID="{E3F4A682-69E6-4EED-BA8B-2DBCF9EC7264}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
 					</ChildrenList>
 				</ActorMixer>
 				<ActorMixer Name="MC_FOL" ID="{4EC871DF-44FB-4787-8600-4B25B05C73DE}" ShortID="660162703">
