@@ -95,7 +95,7 @@ void ULevelStreamingComponent::EnableStreamingVolumes(bool Enable) const
 {
 	for (ALevelStreamingVolume* StreamingVolume : FoundStreamingVolumes) {
 		if (StreamingVolume) {
-			StreamingVolume->bDisabled = Enable;
+			StreamingVolume->bDisabled = !Enable;
 			UE_LOG(LogTemp, Log, TEXT("[ULevelStreamingComponent::EnableStreamingVolumes] Streaming Volume %s collision set to %s."), *StreamingVolume->GetName(), Enable ? TEXT("Enabled") : TEXT("Disabled"));
 		}
 	}
