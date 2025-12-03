@@ -117,6 +117,48 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="GunHeat_Start" ID="{D3F33BAB-CA64-4957-95FB-1CA9C2086365}">
+					<ChildrenList>
+						<Action Name="" ID="{B5192E8C-2151-4FED-9968-3D44015E8B75}" ShortID="138982025">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="MC_SFX_GunHeat_Start" ID="{DC8EEB2D-262A-400A-A11E-FB629F34BAB3}" WorkUnitID="{1B87B22A-8865-441B-A287-78E87390F212}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{CD77F447-3F06-4DA6-B6CA-88E40FC0228E}" ShortID="82635080">
+							<PropertyList>
+								<Property Name="Delay" Type="Real64" Value="0.5"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="MC_SFX_GunHeat_Loop" ID="{6CCDC309-7EA8-4219-B123-0EC743CC1658}" WorkUnitID="{1B87B22A-8865-441B-A287-78E87390F212}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="GunHeat_Stop" ID="{FC0718D8-C0F8-452A-8B68-89922A78D92C}">
+					<ChildrenList>
+						<Action Name="" ID="{79984FA1-A397-4902-87B9-351F2BB482D9}" ShortID="943410887">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="MC_SFX_GunHeat_Loop" ID="{6CCDC309-7EA8-4219-B123-0EC743CC1658}" WorkUnitID="{1B87B22A-8865-441B-A287-78E87390F212}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{A33DC29B-796D-4109-8665-E0BB981224AE}" ShortID="100557560">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="MC_SFX_GunHeat_Stop" ID="{DCB888ED-245C-4C91-8E6B-D83647528464}" WorkUnitID="{1B87B22A-8865-441B-A287-78E87390F212}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

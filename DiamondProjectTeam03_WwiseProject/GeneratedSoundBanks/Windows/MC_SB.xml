@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="16" SoundBankVersion="154">
 	<SoundBanks>
-		<SoundBank Id="1956625499" Type="User" GUID="{ADC2D189-6608-4828-BC9C-6EF6F90834DB}" Color="19" Language="SFX" Hash="{F81015F2-B315-79AB-3112-3092DED64CDD}">
+		<SoundBank Id="1956625499" Type="User" GUID="{ADC2D189-6608-4828-BC9C-6EF6F90834DB}" Color="19" Language="SFX" Hash="{97D7D93C-1E2B-14C3-ADDC-358A2F901BC1}">
 			<ObjectPath>\SoundBanks\SoundBanks_WU\MC_SB</ObjectPath>
 			<ShortName>MC_SB</ShortName>
 			<Path>MC_SB.bnk</Path>
@@ -97,6 +97,10 @@
 				<File Id="211150638" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\SP\MC_FT_Sand_01.wav</ShortName>
 					<CachePath>BF/{BF9D374E-1539-0DA6-DEAC-ABDC5FB2A55C}.wem</CachePath>
+				</File>
+				<File Id="212106629" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Tools, Power, Workshop, Electrical, Circular Saw, Machine, Power, Buzz, Metal 02 SND133864-glued-01_002.wav</ShortName>
+					<CachePath>71/{7180860B-91B4-5A52-E7B1-04CBF54605E6}.wem</CachePath>
 				</File>
 				<File Id="221302388" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>MC\MC_FT_Metal_09.wav</ShortName>
@@ -210,6 +214,10 @@
 					<ShortName>SFX\MC_SFX_PickupWeapon_03.wav</ShortName>
 					<CachePath>B7/{B7F926D6-55C7-C3BC-AC34-054E55BB5738}.wem</CachePath>
 				</File>
+				<File Id="541217847" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Tools, Power, Workshop, Electrical, Circular Saw, Machine, Power, Buzz, Metal 02 SND133864-glued-01_001.wav</ShortName>
+					<CachePath>E6/{E6646C77-87DE-9C34-72EC-F7998B13B255}.wem</CachePath>
+				</File>
 				<File Id="541415762" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\SP\MC_FT_Metal_Jump_02.wav</ShortName>
 					<CachePath>5C/{5C72E2E7-050A-C5F9-CC3C-0360D38F61F6}.wem</CachePath>
@@ -314,6 +322,10 @@
 					<ShortName>MC\MC_FT_Concrete_09.wav</ShortName>
 					<CachePath>77/{77D4FBAD-F322-CE6A-EA61-DF6DE68E9282}.wem</CachePath>
 				</File>
+				<File Id="836470137" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Tools, Power, Workshop, Electrical, Circular Saw, Machine, Power, Buzz, Metal 02 SND133864-glued-02.wav</ShortName>
+					<CachePath>0B/{0B189AAB-22A7-239D-2E40-B4AD496C79CE}.wem</CachePath>
+				</File>
 				<File Id="838939217" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\SP\MC_FT_Sand_04.wav</ShortName>
 					<CachePath>E3/{E3FB7249-4A09-0F66-2605-E948733A9C7A}.wem</CachePath>
@@ -369,6 +381,7 @@
 			</Media>
 			<Plugins>
 				<Custom>
+					<Plugin Id="3531095" Name="New_Guitar_Distortion (Custom)" ObjectPath="\Actor-Mixer Hierarchy\MC_WU\MC_SFX\MC_SFX_GunHeat_Loop\[Effect Slot [0]: (Guitar Distortion)]\New_Guitar_Distortion (Custom)" GUID="{59B7F7A8-3341-466F-A17E-4F3D759E27E9}" LibName="Wwise Guitar Distortion" LibId="8257539"/>
 					<Plugin Id="16383166" Name="Hall_Medium_Bright (Custom)" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Hub\[Effect Slot [0]: (RoomVerb)]\Hall_Medium_Bright (Custom)" GUID="{2B8E8BE0-9B77-422E-880F-E9F637DE5BCF}" LibName="Wwise RoomVerb" LibId="7733251"/>
 					<Plugin Id="97605317" Name="Hall_Medium_Dark (Custom)" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Basement\[Effect Slot [0]: (RoomVerb)]\Hall_Medium_Dark (Custom)" GUID="{8C478E3B-5F92-4AEE-A130-8EAD54778042}" LibName="Wwise RoomVerb" LibId="7733251"/>
 					<Plugin Id="169636257" Name="Have_U_Ever_Been_Outside (Custom)" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_RFX_Arena\[Effect Slot [0]: (RoomVerb)]\Have_U_Ever_Been_Outside (Custom)" GUID="{4EC028FC-6FD5-4AC6-A71F-B2CB8F1117DF}" LibName="Wwise RoomVerb" LibId="7733251"/>
@@ -384,6 +397,28 @@
 				</ShareSets>
 			</Plugins>
 			<Events>
+				<Event Id="1229892278" Name="GunHeat_Start" ObjectPath="\Events\MC_WU\GunHeat_Start" GUID="{D3F33BAB-CA64-4957-95FB-1CA9C2086365}" Color="19" DurationType="Infinite">
+					<MediaRefs>
+						<MediaRef Id="541217847"/>
+						<MediaRef Id="836470137"/>
+					</MediaRefs>
+					<PluginRefs>
+						<Custom>
+							<PluginRef Id="3531095"/>
+						</Custom>
+					</PluginRefs>
+				</Event>
+				<Event Id="1983175478" Name="GunHeat_Stop" ObjectPath="\Events\MC_WU\GunHeat_Stop" GUID="{FC0718D8-C0F8-452A-8B68-89922A78D92C}" Color="19" DurationType="OneShot" DurationMin="1.0052084" DurationMax="1.0052084">
+					<MediaRefs>
+						<MediaRef Id="212106629"/>
+						<MediaRef Id="836470137"/>
+					</MediaRefs>
+					<PluginRefs>
+						<Custom>
+							<PluginRef Id="3531095"/>
+						</Custom>
+					</PluginRefs>
+				</Event>
 				<Event Id="2749485653" Name="Play_MC_FOL_FT_Jump_SW" ObjectPath="\Events\MC_WU\Play_MC_FOL_FT_Jump_SW" GUID="{84F52436-C579-4C37-9804-C7D11AEDCC08}" Color="19" DurationType="OneShot" DurationMin="0.42432198" DurationMax="0.92546445">
 					<SwitchContainers>
 						<SwitchContainer>
@@ -678,6 +713,7 @@
 			</AuxBusses>
 			<GameParameters>
 				<GameParameter Id="1190880401" Name="RTPC_DoorPyramid" ObjectPath="\Game Parameters\Default Work Unit\RTPC_DoorPyramid" GUID="{D2AEC1CE-EF9E-486E-AE8B-FB121AC42B53}"/>
+				<GameParameter Id="1829010369" Name="RTPC_GunHeat" ObjectPath="\Game Parameters\Default Work Unit\RTPC_GunHeat" GUID="{F9A7333E-9305-4744-858A-05CCB5E8F620}"/>
 				<GameParameter Id="3438452020" Name="RTPC_SFX" ObjectPath="\Game Parameters\Default Work Unit\RTPC_SFX" GUID="{DD8DB651-4F18-462F-97D3-0195BD02087F}"/>
 				<GameParameter Id="3445598977" Name="RTPC_Master" ObjectPath="\Game Parameters\Default Work Unit\RTPC_Master" GUID="{74E6261E-6493-44A8-BAE7-1E79ABF4DED1}" Color="10"/>
 				<GameParameter Id="3553041361" Name="RTPC_AMB" ObjectPath="\Game Parameters\Default Work Unit\RTPC_AMB" GUID="{2EA08633-9826-4131-9D31-3F7F27FCA59E}"/>
@@ -706,5 +742,5 @@
 			</SwitchGroups>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{0431EFC2-6AFF-84F1-2697-0C431CFA0C2E}</FileHash>
+	<FileHash>{4446090F-1F7C-2A25-4234-3200E1D1365D}</FileHash>
 </SoundBanksInfo>
