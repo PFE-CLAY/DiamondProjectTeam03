@@ -9,6 +9,13 @@
 #include "Enemy.h"
 #include "Components/BoxComponent.h"
 #include "ShootingEnemy.generated.h"
+UENUM(BlueprintType)
+enum class EShootSide : uint8
+{
+	Right UMETA(DisplayName = "Right"),
+	Left   UMETA(DisplayName = "Left"),
+
+};
 
 class UShootPointComponent;
 
@@ -50,6 +57,12 @@ protected:
 	UPROPERTY()
 	TArray<AActor*> AllActorsInRange;
 
+public:
+	UPROPERTY(BlueprintReadOnly, Category = "Turret Behavior")
+	EShootSide ShootSide;
+
+	UPROPERTY(EditAnywhere)
+	USceneComponent* ShootPointR;
 	
 protected:
 	// Called when the game starts or when spawned
@@ -97,4 +110,6 @@ public:
 
 	UFUNCTION()
 	void RemoveShootPoint(USceneComponent* ShootPoint);
+
+	
 };

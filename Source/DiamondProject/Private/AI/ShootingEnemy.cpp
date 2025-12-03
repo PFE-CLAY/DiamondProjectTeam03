@@ -15,9 +15,10 @@ AShootingEnemy::AShootingEnemy()
 	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 	USceneComponent* Root = CreateDefaultSubobject<USceneComponent>(TEXT("Root"));
-	USceneComponent* ShootPoint = CreateDefaultSubobject<USceneComponent>("ShootPoint");
-	ShootPoint->SetupAttachment(GetMesh());
-	ShootPoints.Add(ShootPoint);
+	ShootPointR = CreateDefaultSubobject<USceneComponent>("ShootPoint2");
+	//ShootPointL = ShootPoint;
+	ShootPointR->SetupAttachment(GetMesh());
+	ShootPoints.Add(ShootPointR);
 }
 
 // Called when the game starts or when spawned
@@ -89,6 +90,18 @@ USceneComponent* AShootingEnemy::GetNextShootPoint()
 	{
 		IndexShootPoint = (IndexShootPoint + 1) % ShootPoints.Num();
 		shootPoint = ShootPoints[IndexShootPoint];
+		if(shootPoint == ShootPointR)
+		{
+			ShootSide = EShootSide::Right;
+			
+			GEngine->AddOnScreenDebugMessage(745, 5.f, FColor::Yellow, "Right");
+		}
+		else
+		{
+			ShootSide = EShootSide::Left;
+			GEngine->AddOnScreenDebugMessage(745, 5.f, FColor::Yellow, "Left");
+		}
+			
 	}
 	return shootPoint;
 }
