@@ -579,7 +579,7 @@
     "Type": "User",
     "GUID": "{701ECBBD-9C7B-4030-8CDB-749EE5D1C7B9}",
     "Language": "SFX",
-    "Hash": "{97D3FFBD-147A-FCB4-5522-D9D59B3F0F4D}",
+    "Hash": "{0192F850-236F-E486-F2DD-BCC0EED774E3}",
     "ObjectPath": "Init",
     "ShortName": "Init",
     "Path": "Init.bnk",
@@ -900,6 +900,12 @@
       "GUID": "{D2AEC1CE-EF9E-486E-AE8B-FB121AC42B53}"
      },
      {
+      "Id": "1829010369",
+      "Name": "RTPC_GunHeat",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\RTPC_GunHeat",
+      "GUID": "{F9A7333E-9305-4744-858A-05CCB5E8F620}"
+     },
+     {
       "Id": "2176662110",
       "Name": "RTPC_Tourelle_Projectil",
       "ObjectPath": "\\Game Parameters\\Default Work Unit\\RTPC_Tourelle_Projectil",
@@ -1007,6 +1013,32 @@
         "Name": "Metal",
         "ObjectPath": "\\Switches\\Default Work Unit\\SW_Material\\Metal",
         "GUID": "{4F4901C3-CC0C-4142-BDF8-FF62F7720DE3}"
+       }
+      ]
+     },
+     {
+      "Id": "2552052118",
+      "Name": "SW_GunHeat",
+      "ObjectPath": "\\Switches\\Default Work Unit\\SW_GunHeat",
+      "GUID": "{AB3CF31E-D2E1-46A6-833A-2E551F1D31B8}",
+      "Switches": [
+       {
+        "Id": "691006007",
+        "Name": "Loop",
+        "ObjectPath": "\\Switches\\Default Work Unit\\SW_GunHeat\\Loop",
+        "GUID": "{D17BB8BF-1D5D-456B-85BB-3F5687F78394}"
+       },
+       {
+        "Id": "788884573",
+        "Name": "Stop",
+        "ObjectPath": "\\Switches\\Default Work Unit\\SW_GunHeat\\Stop",
+        "GUID": "{5309F748-1DFB-462A-A13A-189999414C19}"
+       },
+       {
+        "Id": "1281810935",
+        "Name": "Start",
+        "ObjectPath": "\\Switches\\Default Work Unit\\SW_GunHeat\\Start",
+        "GUID": "{1AAC5071-6A1D-474D-B65D-6FACC1E44992}"
        }
       ]
      }
@@ -1555,7 +1587,7 @@
     "GUID": "{ADC2D189-6608-4828-BC9C-6EF6F90834DB}",
     "Color": "19",
     "Language": "SFX",
-    "Hash": "{1C92C7B5-DB38-EFD9-9AF6-3AB414D56E83}",
+    "Hash": "{97D7D93C-1E2B-14C3-ADDC-358A2F901BC1}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\MC_SB",
     "ShortName": "MC_SB",
     "Path": "MC_SB.bnk",
@@ -1583,14 +1615,6 @@
       "Location": "Memory",
       "ShortName": "AMB\\SP\\MC_FT_Sand_Jump_01.wav",
       "CachePath": "0C/{0C986EED-5AF2-7F69-9762-257FCD695EE0}.wem"
-     },
-     {
-      "Id": "36917763",
-      "Language": "SFX",
-      "Streaming": "false",
-      "Location": "Memory",
-      "ShortName": "MC_SFX_Gun_Shoot_01.wav",
-      "CachePath": "29/{29B362C9-0E9F-4F98-8D87-CEC87FE9F0E7}.wem"
      },
      {
       "Id": "44684202",
@@ -1625,14 +1649,6 @@
       "CachePath": "E4/{E40A7934-05E0-B500-93D6-C59DAAD989B6}.wem"
      },
      {
-      "Id": "62282605",
-      "Language": "SFX",
-      "Streaming": "false",
-      "Location": "Memory",
-      "ShortName": "MC_SFX_Gun_Shoot_02.wav",
-      "CachePath": "6F/{6F5F0C1F-DBA0-BF94-E54E-F394DC4AA072}.wem"
-     },
-     {
       "Id": "64776164",
       "Language": "SFX",
       "Streaming": "false",
@@ -1647,14 +1663,6 @@
       "Location": "Memory",
       "ShortName": "MC\\MC_FT_Concrete_03.wav",
       "CachePath": "77/{773D71E3-F4E5-4D21-ABA1-2721D2B8D42D}.wem"
-     },
-     {
-      "Id": "70109824",
-      "Language": "SFX",
-      "Streaming": "false",
-      "Location": "Memory",
-      "ShortName": "MC_SFX_Gun_Shoot_04.wav",
-      "CachePath": "FC/{FCFCED4F-42DB-F871-49BD-508D61888A7C}.wem"
      },
      {
       "Id": "97955047",
@@ -1713,12 +1721,28 @@
       "CachePath": "E0/{E019203B-2A53-E4EB-04A2-A15E4A31F212}.wem"
      },
      {
+      "Id": "148074735",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "MC_Gun_Shot_06.wav",
+      "CachePath": "BA/{BABAA971-6DBA-4453-4A51-33D2C58698CE}.wem"
+     },
+     {
       "Id": "148436568",
       "Language": "SFX",
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "AMB\\SP\\MC_FT_Concrete_Land_03.wav",
       "CachePath": "6E/{6E0FB1C1-1509-9175-432B-F8C4A33B0CDB}.wem"
+     },
+     {
+      "Id": "154962763",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "MC_Gun_MaxOverheat.wav",
+      "CachePath": "06/{061F8DF6-8A9C-1095-EE7F-8638AA138D45}.wem"
      },
      {
       "Id": "156842051",
@@ -1751,6 +1775,14 @@
       "Location": "Memory",
       "ShortName": "AMB\\SP\\MC_FT_Sand_01.wav",
       "CachePath": "BF/{BF9D374E-1539-0DA6-DEAC-ABDC5FB2A55C}.wem"
+     },
+     {
+      "Id": "212106629",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Tools, Power, Workshop, Electrical, Circular Saw, Machine, Power, Buzz, Metal 02 SND133864-glued-01_002.wav",
+      "CachePath": "71/{7180860B-91B4-5A52-E7B1-04CBF54605E6}.wem"
      },
      {
       "Id": "221302388",
@@ -1809,12 +1841,44 @@
       "CachePath": "B0/{B07CA63B-2EC3-ED4C-313F-DA444D70C884}.wem"
      },
      {
+      "Id": "372348210",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "MC_SFX_TakeDamage_03.wav",
+      "CachePath": "8D/{8DE3A968-4B82-374C-3679-AA14F5BC8D4C}.wem"
+     },
+     {
+      "Id": "378515017",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "MC_SFX_TakeDamage_04.wav",
+      "CachePath": "CB/{CBD9D3EC-0608-2668-92B3-2808BEB65F17}.wem"
+     },
+     {
+      "Id": "379997934",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "MC_Gun_Shot_01.wav",
+      "CachePath": "EE/{EEFD2DF4-6FFB-9509-ABF0-4BA8269EA01D}.wem"
+     },
+     {
       "Id": "387146543",
       "Language": "SFX",
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "AMB\\SP\\MC_FT_Sand_05.wav",
       "CachePath": "5B/{5BD73E8F-F819-283E-59E4-E5BDBA985B28}.wem"
+     },
+     {
+      "Id": "389222580",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "MC_Gun_Shot_05.wav",
+      "CachePath": "A2/{A2D7187E-C729-6D5A-EBC1-20A485508228}.wem"
      },
      {
       "Id": "393881080",
@@ -1905,6 +1969,22 @@
       "CachePath": "57/{579C8D85-4AC4-348A-B821-4B711EC40395}.wem"
      },
      {
+      "Id": "489469995",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "MC_Gun_Shot_02.wav",
+      "CachePath": "47/{478D3B2D-CECF-66F5-7A12-B574EE08527D}.wem"
+     },
+     {
+      "Id": "497641606",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Voices, Male, Sudden Death, Combat, Pain 04 SND85287.wav",
+      "CachePath": "16/{160E4394-D7FA-215D-DB15-FB76F192F4C5}.wem"
+     },
+     {
       "Id": "499540378",
       "Language": "SFX",
       "Streaming": "false",
@@ -1913,12 +1993,28 @@
       "CachePath": "17/{17DF5E72-0851-EC4D-2C03-3844F1997743}.wem"
      },
      {
+      "Id": "505085735",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "MC_SFX_TakeDamage_05.wav",
+      "CachePath": "F6/{F6265AA6-CC9A-38EC-E2D2-B483C502FD11}.wem"
+     },
+     {
       "Id": "511633870",
       "Language": "SFX",
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "SFX\\MC_SFX_PickupWeapon_03.wav",
       "CachePath": "B7/{B7F926D6-55C7-C3BC-AC34-054E55BB5738}.wem"
+     },
+     {
+      "Id": "541217847",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Tools, Power, Workshop, Electrical, Circular Saw, Machine, Power, Buzz, Metal 02 SND133864-glued-01_001.wav",
+      "CachePath": "E6/{E6646C77-87DE-9C34-72EC-F7998B13B255}.wem"
      },
      {
       "Id": "541415762",
@@ -1937,6 +2033,14 @@
       "CachePath": "E6/{E6DEA5A7-659F-7793-0700-893203975F2D}.wem"
      },
      {
+      "Id": "553317585",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Voices, Scream, Male, Type 03, Death Scream, Intense 04 SND85478 2.wav",
+      "CachePath": "97/{9768EDF3-BC62-0785-A471-1D7380E901DC}.wem"
+     },
+     {
       "Id": "567050137",
       "Language": "SFX",
       "Streaming": "false",
@@ -1951,6 +2055,22 @@
       "Location": "Memory",
       "ShortName": "MC\\MC_FT_Concrete_11.wav",
       "CachePath": "F0/{F00E889C-8DC7-1A04-460E-A528F3BFA183}.wem"
+     },
+     {
+      "Id": "578370687",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "MC_Gun_Shot_04.wav",
+      "CachePath": "23/{2332241B-18FF-1FB5-D5E5-4B9056C66FF5}.wem"
+     },
+     {
+      "Id": "596462661",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "MC_Gun_Shot_03.wav",
+      "CachePath": "7A/{7A7AA0E7-40A5-38BF-1874-33C7072F2636}.wem"
      },
      {
       "Id": "607185623",
@@ -1977,12 +2097,12 @@
       "CachePath": "C6/{C6A6C862-E60F-7923-DB6D-6F44E3D367EA}.wem"
      },
      {
-      "Id": "610918733",
+      "Id": "615051598",
       "Language": "SFX",
       "Streaming": "false",
       "Location": "Memory",
-      "ShortName": "MC_SFX_Gun_Shoot_03.wav",
-      "CachePath": "AE/{AEA35F29-7903-40A5-8F82-F81A0242E86E}.wem"
+      "ShortName": "Voices, Scream, Male, Type 03, Death Scream, Intense 04 SND85478 1.wav",
+      "CachePath": "9A/{9A03BEF1-4DA0-E90E-9301-EB5824FB408B}.wem"
      },
      {
       "Id": "620312545",
@@ -2065,6 +2185,14 @@
       "CachePath": "F6/{F6532AC5-A080-60CB-4353-4AF327D8B704}.wem"
      },
      {
+      "Id": "766974732",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "MC_Gun_ReadyToFire.wav",
+      "CachePath": "C6/{C6D26D2E-2B34-2EF6-D6DE-DEEF645C48E3}.wem"
+     },
+     {
       "Id": "779936328",
       "Language": "SFX",
       "Streaming": "false",
@@ -2095,6 +2223,14 @@
       "Location": "Memory",
       "ShortName": "MC\\MC_FT_Concrete_09.wav",
       "CachePath": "77/{77D4FBAD-F322-CE6A-EA61-DF6DE68E9282}.wem"
+     },
+     {
+      "Id": "836470137",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Tools, Power, Workshop, Electrical, Circular Saw, Machine, Power, Buzz, Metal 02 SND133864-glued-02.wav",
+      "CachePath": "0B/{0B189AAB-22A7-239D-2E40-B4AD496C79CE}.wem"
      },
      {
       "Id": "838939217",
@@ -2137,6 +2273,14 @@
       "CachePath": "E0/{E04ED421-5DD9-00C9-7BD6-ABDA54AB5FF4}.wem"
      },
      {
+      "Id": "941583903",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "MC_SFX_TakeDamage_01.wav",
+      "CachePath": "07/{072AFFE2-A127-7401-2E2A-D20A2BC6CBF6}.wem"
+     },
+     {
       "Id": "967065821",
       "Language": "SFX",
       "Streaming": "false",
@@ -2169,6 +2313,14 @@
       "CachePath": "2F/{2FACB6E1-9176-B347-E678-21D408FBF239}.wem"
      },
      {
+      "Id": "997492934",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "MC_SFX_TakeDamage_02.wav",
+      "CachePath": "F5/{F538AA28-C2E7-249B-7EBA-41A682B7D7F5}.wem"
+     },
+     {
       "Id": "1003274806",
       "Language": "SFX",
       "Streaming": "false",
@@ -2187,6 +2339,14 @@
     ],
     "Plugins": {
      "Custom": [
+      {
+       "Id": "3531095",
+       "Name": "New_Guitar_Distortion (Custom)",
+       "ObjectPath": "\\Actor-Mixer Hierarchy\\MC_WU\\MC_SFX\\MC_SFX_GunHeat_Loop\\[Effect Slot [0]: (Guitar Distortion)]\\New_Guitar_Distortion (Custom)",
+       "GUID": "{59B7F7A8-3341-466F-A17E-4F3D759E27E9}",
+       "LibName": "Wwise Guitar Distortion",
+       "LibId": "8257539"
+      },
       {
        "Id": "16383166",
        "Name": "Hall_Medium_Bright (Custom)",
@@ -2272,6 +2432,54 @@
      ]
     },
     "Events": [
+     {
+      "Id": "1229892278",
+      "Name": "GunHeat_Start",
+      "ObjectPath": "\\Events\\MC_WU\\GunHeat_Start",
+      "GUID": "{D3F33BAB-CA64-4957-95FB-1CA9C2086365}",
+      "Color": "19",
+      "DurationType": "Infinite",
+      "MediaRefs": [
+       {
+        "Id": "541217847"
+       },
+       {
+        "Id": "836470137"
+       }
+      ],
+      "PluginRefs": {
+       "Custom": [
+        {
+         "Id": "3531095"
+        }
+       ]
+      }
+     },
+     {
+      "Id": "1983175478",
+      "Name": "GunHeat_Stop",
+      "ObjectPath": "\\Events\\MC_WU\\GunHeat_Stop",
+      "GUID": "{FC0718D8-C0F8-452A-8B68-89922A78D92C}",
+      "Color": "19",
+      "DurationType": "OneShot",
+      "DurationMin": "1.0052084",
+      "DurationMax": "1.0052084",
+      "MediaRefs": [
+       {
+        "Id": "212106629"
+       },
+       {
+        "Id": "836470137"
+       }
+      ],
+      "PluginRefs": {
+       "Custom": [
+        {
+         "Id": "3531095"
+        }
+       ]
+      }
+     },
      {
       "Id": "2749485653",
       "Name": "Play_MC_FOL_FT_Jump_SW",
@@ -2753,26 +2961,62 @@
       ]
      },
      {
+      "Id": "2458033466",
+      "Name": "Play_MC_Gun_MaxOverheat",
+      "ObjectPath": "\\Events\\MC_WU\\Play_MC_Gun_MaxOverheat",
+      "GUID": "{1D8AC9DC-EFFE-4A5B-9123-6192F0B53ABA}",
+      "Color": "19",
+      "DurationType": "OneShot",
+      "DurationMin": "4.049354",
+      "DurationMax": "4.049354",
+      "MediaRefs": [
+       {
+        "Id": "154962763"
+       }
+      ]
+     },
+     {
+      "Id": "3146091786",
+      "Name": "Play_MC_Gun_ReadyToFire",
+      "ObjectPath": "\\Events\\MC_WU\\Play_MC_Gun_ReadyToFire",
+      "GUID": "{209918B4-E611-4C57-B030-530BFF706AC0}",
+      "Color": "19",
+      "DurationType": "OneShot",
+      "DurationMin": "2.1747084",
+      "DurationMax": "2.1747084",
+      "MediaRefs": [
+       {
+        "Id": "766974732"
+       }
+      ]
+     },
+     {
       "Id": "1177297501",
       "Name": "Play_MC_SFX_Gun_Shoot_RC",
       "ObjectPath": "\\Events\\MC_WU\\Play_MC_SFX_Gun_Shoot_RC",
       "GUID": "{19EDAAA1-DF79-4328-9566-97F28CD19D08}",
       "Color": "19",
       "DurationType": "OneShot",
-      "DurationMin": "1.1600068",
-      "DurationMax": "2.3467753",
+      "DurationMin": "0.45694295",
+      "DurationMax": "0.7375112",
       "MediaRefs": [
        {
-        "Id": "36917763"
+        "Id": "148074735"
        },
        {
-        "Id": "62282605"
+        "Id": "379997934"
        },
        {
-        "Id": "70109824"
+        "Id": "389222580"
        },
        {
-        "Id": "610918733"
+        "Id": "489469995"
+       },
+       {
+        "Id": "578370687"
+       },
+       {
+        "Id": "596462661"
        }
       ]
      },
@@ -3039,6 +3283,12 @@
       "Name": "RTPC_DoorPyramid",
       "ObjectPath": "\\Game Parameters\\Default Work Unit\\RTPC_DoorPyramid",
       "GUID": "{D2AEC1CE-EF9E-486E-AE8B-FB121AC42B53}"
+     },
+     {
+      "Id": "1829010369",
+      "Name": "RTPC_GunHeat",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\RTPC_GunHeat",
+      "GUID": "{F9A7333E-9305-4744-858A-05CCB5E8F620}"
      },
      {
       "Id": "3438452020",
@@ -6767,6 +7017,6 @@
     ]
    }
   ],
-  "FileHash": "{0E1A1161-6B37-DE21-787E-1FD107266BC1}"
+  "FileHash": "{21FB4E97-AEE1-C5C8-8B7F-AD421499647F}"
  }
 }
