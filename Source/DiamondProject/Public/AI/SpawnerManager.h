@@ -56,8 +56,7 @@ private:
 	
 	
 	
-	UFUNCTION()
-	void StartSpawners();
+	
 public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
@@ -73,4 +72,7 @@ public:
 
 	UFUNCTION(BlueprintCallable)
 	void SetManagerActive();
+
+	UFUNCTION()
+	void StartSpawners();
 };
