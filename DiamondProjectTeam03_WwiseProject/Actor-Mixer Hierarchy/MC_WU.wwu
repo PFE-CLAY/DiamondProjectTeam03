@@ -24,6 +24,9 @@
 							<PropertyList>
 								<Property Name="NormalOrShuffle" Type="int16" Value="0"/>
 								<Property Name="Pitch" Type="int32">
+									<ValueList>
+										<Value>800</Value>
+									</ValueList>
 									<ModifierList>
 										<ModifierInfo>
 											<Modifier Name="" ID="{0CBFA6E1-D302-4DDD-9632-E0FAF42F62F1}">
@@ -73,6 +76,10 @@
 									</ReferenceList>
 									<ChildrenList>
 										<AudioFileSource Name="MC_Gun_Shot_01" ID="{9A355214-F37F-4529-B900-557A34E35BD9}">
+											<PropertyList>
+												<Property Name="FadeInDuration" Type="Real64" Value="0.119613825790281"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+											</PropertyList>
 											<Language>SFX</Language>
 											<AudioFile>MC_Gun_Shot_01.wav</AudioFile>
 											<MediaIDList>
@@ -95,6 +102,11 @@
 									</ReferenceList>
 									<ChildrenList>
 										<AudioFileSource Name="MC_Gun_Shot_02" ID="{4A0B5F99-B58C-4406-BD51-AA309EB058D8}">
+											<PropertyList>
+												<Property Name="FadeInDuration" Type="Real64" Value="0.116090621890091"/>
+												<Property Name="LoopBegin" Type="Real64" Value="0"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+											</PropertyList>
 											<Language>SFX</Language>
 											<AudioFile>MC_Gun_Shot_02.wav</AudioFile>
 											<MediaIDList>
@@ -117,6 +129,11 @@
 									</ReferenceList>
 									<ChildrenList>
 										<AudioFileSource Name="MC_Gun_Shot_03" ID="{19A34726-780C-4F70-9EDD-632975D3F934}">
+											<PropertyList>
+												<Property Name="FadeInDuration" Type="Real64" Value="0.0963143604557689"/>
+												<Property Name="LoopBegin" Type="Real64" Value="0"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+											</PropertyList>
 											<Language>SFX</Language>
 											<AudioFile>MC_Gun_Shot_03.wav</AudioFile>
 											<MediaIDList>
@@ -139,6 +156,11 @@
 									</ReferenceList>
 									<ChildrenList>
 										<AudioFileSource Name="MC_Gun_Shot_04" ID="{8FCA1289-82B4-479E-AE9D-0D297AB8F7DB}">
+											<PropertyList>
+												<Property Name="FadeInDuration" Type="Real64" Value="0.0838719519173227"/>
+												<Property Name="LoopBegin" Type="Real64" Value="0"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+											</PropertyList>
 											<Language>SFX</Language>
 											<AudioFile>MC_Gun_Shot_04.wav</AudioFile>
 											<MediaIDList>
@@ -161,6 +183,11 @@
 									</ReferenceList>
 									<ChildrenList>
 										<AudioFileSource Name="MC_Gun_Shot_05" ID="{35E39828-8E1C-4599-B230-D6E4031A9BE6}">
+											<PropertyList>
+												<Property Name="FadeInDuration" Type="Real64" Value="0.108667596811202"/>
+												<Property Name="LoopBegin" Type="Real64" Value="0"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+											</PropertyList>
 											<Language>SFX</Language>
 											<AudioFile>MC_Gun_Shot_05.wav</AudioFile>
 											<MediaIDList>
@@ -183,6 +210,11 @@
 									</ReferenceList>
 									<ChildrenList>
 										<AudioFileSource Name="MC_Gun_Shot_06" ID="{46C72FF3-44F8-48FB-95FF-B1F6C76B1626}">
+											<PropertyList>
+												<Property Name="FadeInDuration" Type="Real64" Value="0.113220020684446"/>
+												<Property Name="LoopBegin" Type="Real64" Value="0"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+											</PropertyList>
 											<Language>SFX</Language>
 											<AudioFile>MC_Gun_Shot_06.wav</AudioFile>
 											<MediaIDList>
