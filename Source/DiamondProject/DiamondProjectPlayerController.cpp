@@ -10,11 +10,7 @@
 
 class UGameSettingsSubsystem;
 
-enum EDetectedLayout : uint8
-{
-	QWERTY,
-	AZERTY,
-};
+
 
 void ADiamondProjectPlayerController::BeginPlay()
 {

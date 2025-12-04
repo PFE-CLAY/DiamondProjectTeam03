@@ -8,6 +8,13 @@
 
 class UInputMappingContext;
 
+UENUM(BlueprintType)
+enum class EDetectedLayout : uint8
+{
+	QWERTY,
+	AZERTY,
+};
+
 /**
  *
  */
