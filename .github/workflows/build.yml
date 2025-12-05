@@ -1,202 +1,112 @@
-name: Unreal Engine Build
-
+name: Release Build (Wwise + GDrive + Discord)
 on:
   push:
     tags:
-      - 'build'
+      - 'build-*' # Only runs when you push a tag like build-v1.0
 
 jobs:
-  build:
-    runs-on: self-hosted
+  build-deploy:
+    runs-on: [self-hosted, Windows]
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-
-      - name: Generate Build ID
-        id: build_id
-        run: echo "BUILD_ID=$(date +%Y%m%d%H%M%S)" >> $GITHUB_OUTPUT
-
-      - name: Build Unreal Project
-        env:
-          UE_ENGINE_PATH: /home/unreal/UE_5.4_Source/UnrealEngine-5.4
-          PROJECT_PATH: /home/unreal/DiamondProject
-          PROJECT_NAME: DiamondProject
+      - name: Cleanup Workspace
+        shell: powershell
         run: |
-          mkdir -p ~/UnrealBuilding
-          cd $GITHUB_WORKSPACE
-          rsync -a --exclude='.git' ./ ~/UnrealBuilding/${PROJECT_NAME}/
+          Get-ChildItem -Path "${{ github.workspace }}" -Recurse | Remove-Item -Force -Recurse -ErrorAction SilentlyContinue
 
-          # Write the build script with jq for Discord JSON
-          cat > ~/UnrealBuilding/build_and_notify.sh << 'EOL'
-          #!/bin/bash
-          DISCORD_WEBHOOK="https://discord.com/api/webhooks/1408866463900499978/XeUlSiZPAwKzybHOm5GH9EY27syRoDLkc8nCXENYYZhgvK58Ib5ShCeXISpLXxHGt1rs"
-          BUILD_PLATFORM="Linux"
-          BUILD_CONFIGURATION="Development"
-          BUILD_TARGET="DiamondProjectEditor"
-          PROJECT_NAME="DiamondProject"
-          BUILDER_NAME="DisturbedBanana"
-          BUILD_START_TIME=$(date -u +"%Y-%m-%d %H:%M:%S UTC")
-          GIT_TAG="${GIT_TAG:-build}"
-          BUILD_ID="${BUILD_ID:-$(date +%s)}"
-          UE_ENGINE_PATH="${UE_ENGINE_PATH:-/home/unreal/UE_5.4_Source/UnrealEngine-5.4}"
-          PROJECT_PATH="${PROJECT_PATH:-/home/unreal/DiamondProject}"
-          cd $PROJECT_PATH
-          GIT_HASH=$(git rev-parse --short HEAD 2>/dev/null || echo "unknown")
-          GIT_BRANCH=$(git rev-parse --abbrev-ref HEAD 2>/dev/null || echo "unknown")
-          GIT_AUTHOR=$(git log -1 --pretty=format:'%an' 2>/dev/null || echo "unknown")
-          GIT_COMMIT_MSG=$(git log -1 --pretty=format:'%s' 2>/dev/null || echo "unknown")
-          GIT_COMMIT_DATE=$(git log -1 --pretty=format:'%ad' --date=short 2>/dev/null || echo "unknown")
-          SEMANTIC_BUILD_NAME="${PROJECT_NAME}_${BUILD_PLATFORM}_${BUILD_CONFIGURATION}_${GIT_COMMIT_DATE}_${GIT_HASH}_${BUILD_ID}"
-          BUILD_DIR="/tmp/build_output"
-          BUILD_ZIP="${BUILD_DIR}/${SEMANTIC_BUILD_NAME}.zip"
-          mkdir -p ${BUILD_DIR}
-          echo "======================= BUILD INFO ======================="
-          echo "Project:        $PROJECT_NAME"
-          echo "Builder:        $BUILDER_NAME"
-          echo "Start Time:     $BUILD_START_TIME"
-          echo "Git Tag:        $GIT_TAG"
-          echo "Git Hash:       $GIT_HASH"
-          echo "Build Name:     $SEMANTIC_BUILD_NAME"
-          echo "Platform:       $BUILD_PLATFORM"
-          echo "Configuration:  $BUILD_CONFIGURATION"
-          echo "Target:         $BUILD_TARGET"
-          echo "Build ID:       $BUILD_ID"
-          echo "========================================================"
-          echo "Generating project files..."
-          $UE_ENGINE_PATH/Engine/Build/BatchFiles/Linux/GenerateProjectFiles.sh -project="$PROJECT_PATH/${PROJECT_NAME}.uproject" -game -engine
-          GEN_RESULT=$?
-          echo "Building project..."
-          BUILD_OUTPUT=$($UE_ENGINE_PATH/Engine/Build/BatchFiles/Linux/Build.sh $BUILD_TARGET $BUILD_PLATFORM $BUILD_CONFIGURATION -project="$PROJECT_PATH/${PROJECT_NAME}.uproject" 2>&1)
-          BUILD_RESULT=$?
-          BUILD_END_TIME=$(date -u +"%Y-%m-%d %H:%M:%S UTC")
-          BUILD_DURATION=$(($(date -d "$BUILD_END_TIME" +%s) - $(date -d "$BUILD_START_TIME" +%s)))
-          if [ $BUILD_DURATION -gt 3600 ]; then
-              DURATION_FORMATTED=$(printf '%dh %dm %ds' $((BUILD_DURATION/3600)) $((BUILD_DURATION%3600/60)) $((BUILD_DURATION%60)))
-          else
-              DURATION_FORMATTED=$(printf '%dm %ds' $((BUILD_DURATION/60)) $((BUILD_DURATION%60)))
-          fi
-          if [ $BUILD_RESULT -eq 0 ] && [ $GEN_RESULT -eq 0 ]; then
-              BUILD_STATUS="✅ Success"
-              COLOR=5763719
-              cd $PROJECT_PATH
-              echo "Build Information" > BuildInfo.txt
-              echo "=================" >> BuildInfo.txt
-              echo "Project:        $PROJECT_NAME" >> BuildInfo.txt
-              echo "Build Name:     $SEMANTIC_BUILD_NAME" >> BuildInfo.txt
-              echo "Build ID:       $BUILD_ID" >> BuildInfo.txt
-              echo "Platform:       $BUILD_PLATFORM" >> BuildInfo.txt
-              echo "Configuration:  $BUILD_CONFIGURATION" >> BuildInfo.txt
-              echo "Target:         $BUILD_TARGET" >> BuildInfo.txt
-              echo "Date:           $BUILD_START_TIME" >> BuildInfo.txt
-              echo "Duration:       $DURATION_FORMATTED" >> BuildInfo.txt
-              echo "Builder:        $BUILDER_NAME" >> BuildInfo.txt
-              echo "" >> BuildInfo.txt
-              echo "Git Information" >> BuildInfo.txt
-              echo "==============" >> BuildInfo.txt
-              echo "Tag:            $GIT_TAG" >> BuildInfo.txt
-              echo "Branch:         $GIT_BRANCH" >> BuildInfo.txt
-              echo "Commit:         $GIT_HASH" >> BuildInfo.txt
-              echo "Author:         $GIT_AUTHOR" >> BuildInfo.txt
-              echo "Date:           $GIT_COMMIT_DATE" >> BuildInfo.txt
-              echo "Message:        $GIT_COMMIT_MSG" >> BuildInfo.txt
-              zip -9r $BUILD_ZIP Binaries Intermediate Build BuildInfo.txt
-              rm BuildInfo.txt
-              echo "Uploading build to transfer.sh..."
-              TRANSFER_URL=$(curl --upload-file $BUILD_ZIP https://transfer.sh/${SEMANTIC_BUILD_NAME}.zip)
-              TRANSFER_STATUS=$?
-              DOWNLOAD_LINKS=""
-              if [ $TRANSFER_STATUS -eq 0 ]; then
-                  DOWNLOAD_LINKS="[Download from Transfer.sh]($TRANSFER_URL) (Available for 14 days)"
-              else
-                  DOWNLOAD_LINKS="File upload failed. Check build logs."
-              fi
-              MESSAGE_JSON=$(jq -n \
-                --arg project "$PROJECT_NAME" \
-                --arg build_status "$BUILD_STATUS" \
-                --arg builder "$BUILDER_NAME" \
-                --arg duration "$DURATION_FORMATTED" \
-                --arg platform "$BUILD_PLATFORM" \
-                --arg configuration "$BUILD_CONFIGURATION" \
-                --arg build_id "$BUILD_ID" \
-                --arg branch "$GIT_BRANCH" \
-                --arg commit "$GIT_HASH" \
-                --arg author "$GIT_AUTHOR" \
-                --arg commit_msg "$GIT_COMMIT_MSG" \
-                --arg download_links "$DOWNLOAD_LINKS" \
-                --arg end_time "$BUILD_END_TIME" \
-                '{
-                  embeds: [{
-                    title: ("🎮 Unreal Engine Build: " + $project),
-                    description: ("Build completed successfully\n\n**Download Link:**\n" + $download_links),
-                    color: 5763719,
-                    fields: [
-                      { name: "Status", value: $build_status, inline: true },
-                      { name: "Builder", value: $builder, inline: true },
-                      { name: "Duration", value: $duration, inline: true },
-                      { name: "Platform", value: $platform, inline: true },
-                      { name: "Configuration", value: $configuration, inline: true },
-                      { name: "Build ID", value: $build_id, inline: true },
-                      { name: "Git Info", value: ("Branch: `" + $branch + "`\nCommit: `" + $commit + "`\nAuthor: " + $author + "\nMessage: `" + $commit_msg + "`") }
-                    ],
-                    footer: { text: ("Build completed at " + $end_time) }
-                  }]
-                }')
-              echo "$MESSAGE_JSON" | jq .
-              curl -H "Content-Type: application/json" -X POST -d "$MESSAGE_JSON" $DISCORD_WEBHOOK
-              echo "Upload complete! Cleaning up build files..."
-          else
-              BUILD_STATUS="❌ Failed"
-              COLOR=15548997
-              FORMATTED_OUTPUT=$(echo "$BUILD_OUTPUT" | tail -n 15)
-              FAILURE_JSON=$(jq -n \
-                --arg project "$PROJECT_NAME" \
-                --arg build_status "$BUILD_STATUS" \
-                --arg builder "$BUILDER_NAME" \
-                --arg duration "$DURATION_FORMATTED" \
-                --arg platform "$BUILD_PLATFORM" \
-                --arg configuration "$BUILD_CONFIGURATION" \
-                --arg branch "$GIT_BRANCH" \
-                --arg commit "$GIT_HASH" \
-                --arg error_output "$FORMATTED_OUTPUT" \
-                --arg end_time "$BUILD_END_TIME" \
-                '{
-                  embeds: [{
-                    title: ("🛑 Unreal Engine Build Failed: " + $project),
-                    description: "Build failed!",
-                    color: 15548997,
-                    fields: [
-                      { name: "Status", value: $build_status, inline: true },
-                      { name: "Builder", value: $builder, inline: true },
-                      { name: "Duration", value: $duration, inline: true },
-                      { name: "Platform", value: $platform, inline: true },
-                      { name: "Configuration", value: $configuration, inline: true },
-                      { name: "Git Info", value: ("Branch: `" + $branch + "`\nCommit: `" + $commit + "`"), inline: true },
-                      { name: "Error Output", value: ("```" + $error_output + "```") }
-                    ],
-                    footer: { text: ("Build failed at " + $end_time) }
-                  }]
-                }')
-              echo "$FAILURE_JSON" | jq .
-              curl -H "Content-Type: application/json" -X POST -d "$FAILURE_JSON" $DISCORD_WEBHOOK
-          fi
-          rm -rf $BUILD_DIR
-          echo "Cleanup complete."
-          echo "Build process completed with status: $BUILD_STATUS"
-          exit $BUILD_RESULT
-          EOL
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          lfs: true
 
-          chmod +x ~/UnrealBuilding/build_and_notify.sh
+      # --- 1. GENERATE WWISE SOUNDBANKS ---
+      - name: Generate Wwise SoundBanks
+        shell: cmd
+        run: |
+          :: UPDATE THIS PATH TO YOUR WWISE VERSION
+          set WWISE_CONSOLE="C:\Audiokinetic\Wwise2024.1.8.8898\Authoring\x64\Release\bin\WwiseConsole.exe"
+          set WWISE_PROJECT="%GITHUB_WORKSPACE%\DiamondProjectTeam03_WwiseProject\DiamondProjectTeam03_WwiseProject.wproj"
+          
+          %WWISE_CONSOLE% generate-soundbanks %WWISE_PROJECT% --platform "Windows" --language "English(US)" --clear-audio-file-cache
+          if %ERRORLEVEL% NEQ 0 exit /b %ERRORLEVEL%
 
-          # Run build in Docker, mounting your built engine and project
-          docker run --name unreal-build-${{ steps.build_id.outputs.BUILD_ID }} \
-            -e BUILD_ID="${{ steps.build_id.outputs.BUILD_ID }}" \
-            -e UE_ENGINE_PATH="/home/unreal/UE_5.4_Source/UnrealEngine-5.4" \
-            -e PROJECT_PATH="/home/unreal/DiamondProject" \
-            -v ~/UE_5.4_Source/UnrealEngine-5.4:/home/unreal/UE_5.4_Source/UnrealEngine-5.4 \
-            -v ~/UnrealBuilding/DiamondProject:/home/unreal/DiamondProject \
-            -v ~/UnrealBuilding/build_and_notify.sh:/home/unreal/build_and_notify.sh \
-            unreal-engine-build /home/unreal/build_and_notify.sh
+      # --- 2. BUILD UNREAL ENGINE ---
+      - name: Build and Package Game
+        shell: cmd
+        run: |
+          :: UPDATE THIS PATH TO YOUR UE VERSION
+          set UAT_PATH="C:\Program Files\Epic Games\UE_5.6\Engine\Build\BatchFiles\RunUAT.bat"
+          
+          call %UAT_PATH% BuildCookRun ^
+          -project="%GITHUB_WORKSPACE%\DiamondProject.uproject" ^
+          -platform=Win64 ^
+          -clientconfig=Development ^
+          -build -cook -stage -package -archive ^
+          -archivedirectory="%GITHUB_WORKSPACE%\PackagedBuild" ^
+          -unattended -nologtimes -utf8output
 
-          docker rm unreal-build-${{ steps.build_id.outputs.BUILD_ID }}
+      # --- 3. ZIP THE BUILD ---
+      - name: Zip Build
+        shell: powershell
+        run: |
+          $Version = "${{ github.ref_name }}"
+          $ZipName = "BlackSands_Windows_$Version.zip"
+          
+          # Compress-Archive does not have a native "force" overwrite in older versions, 
+          # so we delete the old zip if it exists just in case.
+          if (Test-Path $ZipName) { Remove-Item $ZipName }
+          
+          echo "Zipping to $ZipName..."
+          Compress-Archive -Path "PackagedBuild\Windows\*" -DestinationPath "$ZipName"
+          
+          # We save the Zip Name to a Github Variable to use in the next step
+          "ZIP_FILENAME=$ZipName" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
+
+      # --- 4. UPLOAD & GET LINK ---
+      - name: Upload to GDrive
+        shell: powershell
+        run: |
+          $ZipName = "$env:ZIP_FILENAME"
+          $RemotePath = "gdrive:Builds/$ZipName"
+          
+          echo "Uploading $ZipName to Google Drive..."
+          # The -P flag shows progress in the logs
+          rclone copy "$ZipName" "gdrive:Builds" -P
+          
+          echo "Generating Public Link..."
+          # We try to ask Google for a public link to this specific file
+          $PublicLink = rclone link "$RemotePath"
+          
+          # If rclone fails to get a link (permissions issue), fallback to a generic message
+          if (-not $PublicLink) { $PublicLink = "https://drive.google.com/drive/folders/YOUR_FALLBACK_FOLDER_ID" }
+          
+          echo "Link Generated: $PublicLink"
+          
+          # Save the link to a variable for the Discord step
+          "DRIVE_LINK=$PublicLink" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
+
+      # --- 5. NOTIFY DISCORD ---
+      - name: Send Discord Notification
+        shell: powershell
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.https://discord.com/api/webhooks/1446491178353692682/Ctr1gTzbU4TmEAiP38rUpkWik4JSHuiRdCKq8vmmAx7UTUhqxZI4yjWk-uYdfnUxVfqp }}
+        run: |
+          $Version = "${{ github.ref_name }}"
+          $Link = "$env:DRIVE_LINK"
+          
+          $Payload = @{
+              content = "**New Build Ready!** 🚀"
+              embeds = @(
+                  @{
+                      title = "Black Sands - $Version"
+                      description = "Build uploaded successfully."
+                      color = 5814783
+                      fields = @(
+                          @{ name = "Branch/Tag"; value = "$Version"; inline = $true },
+                          @{ name = "Download"; value = "[Click to Download]($Link)"; inline = $true }
+                      )
+                      footer = @{ text = "Built on Worker-PC" }
+                  }
+              )
+          }
+          
+          Invoke-RestMethod -Uri $env:DISCORD_WEBHOOK -Method Post -ContentType 'application/json' -Body ($Payload | ConvertTo-Json -Depth 4)
