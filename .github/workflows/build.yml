@@ -93,7 +93,7 @@ jobs:
           
           "DRIVE_LINK=$PublicLink" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
 
-      # --- 5. NOTIFY DISCORD ---
+# --- 5. NOTIFY DISCORD ---
       - name: Send Discord Notification
         shell: powershell
         env:
@@ -101,22 +101,32 @@ jobs:
         run: |
           [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 
-          # --- Prepare Variables ---
+          # 1. Prepare Basic Info
           $Version = "${{ github.ref_name }}".Trim()
           $Link = "$env:DRIVE_LINK".Trim()
-          if ([string]::IsNullOrWhiteSpace($Link)) { $Link = "https://drive.google.com" }
+          if ([string]::IsNullOrWhiteSpace($Link)) { $Link = "[https://drive.google.com](https://drive.google.com)" }
 
-          # --- FIX: Calculate Duration using Ticks ---
+          # 2. Calculate Duration
           $StartTicks = [long]$env:BUILD_START_TICKS
           $EndTicks = (Get-Date).Ticks
           $Duration = [TimeSpan]::new($EndTicks - $StartTicks)
           $DurationStr = "{0:hh}h {0:mm}m {0:ss}s" -f $Duration
 
-          # Commit Info
+          # 3. Commit Info & Sanitization
           $CommitShort = "$env:COMMIT_SHORT"
           $CommitAuthor = "$env:COMMIT_AUTHOR"
-          $CommitMsg = "$env:COMMIT_MSG"
+          
+          # Grab raw message
+          $RawMsg = "$env:COMMIT_MSG"
+          
+          # Escape quotes and backslashes for JSON safety
+          $SafeMsg = $RawMsg -replace '\\', '\\\\' -replace '"', '\"'
+          
+          # 4. FIX: Use SINGLE QUOTES for the code block backticks
+          # This tells PowerShell: "Don't try to interpret these backticks, just print them."
+          $CodeBlock = '```' + $SafeMsg + '```'
 
+          # 5. Construct JSON
           $JsonPayload = @"
           {
             "content": "**Build Generation Complete**",
@@ -129,7 +139,7 @@ jobs:
                   { "name": "Duration", "value": "$DurationStr", "inline": true },
                   { "name": "Build Tag", "value": "$Version", "inline": true },
                   { "name": "Commit Info", "value": "**$CommitShort** by $CommitAuthor", "inline": false },
-                  { "name": "Message", "value": "```$CommitMsg```", "inline": false },
+                  { "name": "Message", "value": "$CodeBlock", "inline": false },
                   { "name": "Download", "value": "[Direct Google Drive Link]($Link)", "inline": false }
                 ],
                 "footer": { "text": "Built on Worker-PC via GitHub Actions" }
