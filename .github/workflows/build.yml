@@ -81,7 +81,7 @@ jobs:
 
           $JsonPayload = @"
           {
-            "content": "**New Build Ready!** 🚀",
+            "content": "**New Build Ready!**",
             "embeds": [
               {
                 "title": "Black Sands - $Version",
