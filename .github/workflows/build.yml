@@ -1,8 +1,8 @@
-name: Release Build (Wwise + GDrive + Discord)
+name: Release Build (GDrive + Discord)
 on:
   push:
     tags:
-      - 'build-*' # Only runs when you push a tag like build-v1.0
+      - 'build-*' # Remember: use lowercase 'build-' in your git tag!
 
 jobs:
   build-deploy:
@@ -18,22 +18,11 @@ jobs:
         with:
           lfs: true
 
-      # --- 1. GENERATE WWISE SOUNDBANKS ---
-      - name: Generate Wwise SoundBanks
-        shell: cmd
-        run: |
-          :: UPDATE THIS PATH TO YOUR WWISE VERSION
-          set WWISE_CONSOLE="C:\Audiokinetic\Wwise2024.1.8.8898\Authoring\x64\Release\bin\WwiseConsole.exe"
-          set WWISE_PROJECT="%GITHUB_WORKSPACE%\DiamondProjectTeam03_WwiseProject\DiamondProjectTeam03_WwiseProject.wproj"
-          
-          %WWISE_CONSOLE% generate-soundbanks %WWISE_PROJECT% --platform "Windows" --language "English(US)" --clear-audio-file-cache
-          if %ERRORLEVEL% NEQ 0 exit /b %ERRORLEVEL%
-
-      # --- 2. BUILD UNREAL ENGINE ---
+      # --- 1. BUILD UNREAL ENGINE ---
       - name: Build and Package Game
         shell: cmd
         run: |
-          :: UPDATE THIS PATH TO YOUR UE VERSION
+          :: UPDATE THIS PATH TO YOUR UE VERSION IF NEEDED
           set UAT_PATH="C:\Program Files\Epic Games\UE_5.6\Engine\Build\BatchFiles\RunUAT.bat"
           
           call %UAT_PATH% BuildCookRun ^
@@ -44,24 +33,21 @@ jobs:
           -archivedirectory="%GITHUB_WORKSPACE%\PackagedBuild" ^
           -unattended -nologtimes -utf8output
 
-      # --- 3. ZIP THE BUILD ---
+      # --- 2. ZIP THE BUILD ---
       - name: Zip Build
         shell: powershell
         run: |
           $Version = "${{ github.ref_name }}"
           $ZipName = "BlackSands_Windows_$Version.zip"
           
-          # Compress-Archive does not have a native "force" overwrite in older versions, 
-          # so we delete the old zip if it exists just in case.
           if (Test-Path $ZipName) { Remove-Item $ZipName }
           
           echo "Zipping to $ZipName..."
           Compress-Archive -Path "PackagedBuild\Windows\*" -DestinationPath "$ZipName"
           
-          # We save the Zip Name to a Github Variable to use in the next step
           "ZIP_FILENAME=$ZipName" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
 
-      # --- 4. UPLOAD & GET LINK ---
+      # --- 3. UPLOAD & GET LINK ---
       - name: Upload to GDrive
         shell: powershell
         run: |
@@ -69,25 +55,23 @@ jobs:
           $RemotePath = "gdrive:Builds/$ZipName"
           
           echo "Uploading $ZipName to Google Drive..."
-          # The -P flag shows progress in the logs
           rclone copy "$ZipName" "gdrive:Builds" -P
           
           echo "Generating Public Link..."
-          # We try to ask Google for a public link to this specific file
           $PublicLink = rclone link "$RemotePath"
           
-          # If rclone fails to get a link (permissions issue), fallback to a generic message
-          if (-not $PublicLink) { $PublicLink = "https://drive.google.com/drive/folders/YOUR_FALLBACK_FOLDER_ID" }
+          # Replace this with your actual Google Drive Folder link as fallback
+          if (-not $PublicLink) { $PublicLink = "https://drive.google.com/drive/u/0/my-drive" }
           
           echo "Link Generated: $PublicLink"
           
-          # Save the link to a variable for the Discord step
           "DRIVE_LINK=$PublicLink" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
 
-      # --- 5. NOTIFY DISCORD ---
+      # --- 4. NOTIFY DISCORD ---
       - name: Send Discord Notification
         shell: powershell
         env:
+          # I kept this as a string since you didn't set up the secret yet.
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
         run: |
           $Version = "${{ github.ref_name }}"
