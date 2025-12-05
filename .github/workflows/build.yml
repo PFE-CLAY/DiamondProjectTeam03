@@ -73,25 +73,26 @@ jobs:
         env:
           DISCORD_WEBHOOK: "https://discord.com/api/webhooks/1446491178353692682/Ctr1gTzbU4TmEAiP38rUpkWik4JSHuiRdCKq8vmmAx7UTUhqxZI4yjWk-uYdfnUxVfqp"
         run: |
-          $Version = "${{ github.ref_name }}"
-          $Link = "$env:DRIVE_LINK"
+          # 1. Clean the variables (Remove hidden newlines/spaces)
+          $Version = "${{ github.ref_name }}".Trim()
+          $Link = "$env:DRIVE_LINK".Trim()
           
-          # Escape quotes just in case (Safety check)
-          $SafeVersion = $Version.Replace('"', '\"')
-          $SafeLink = $Link.Replace('"', '\"')
+          # 2. Safety check: Ensure Link isn't empty
+          if ([string]::IsNullOrWhiteSpace($Link)) { $Link = "https://drive.google.com" }
 
-          # We manually write the JSON to ensure 'embeds' stays as an array [ ... ]
+          # 3. Manually build the JSON (Safer than ConvertTo-Json for Discord)
+          # IMPORTANT: The closing "@" must be at the very start of the line!
           $JsonPayload = @"
           {
             "content": "**New Build Ready!** 🚀",
             "embeds": [
               {
-                "title": "Black Sands - $SafeVersion",
+                "title": "Black Sands - $Version",
                 "description": "Build uploaded successfully.",
                 "color": 5814783,
                 "fields": [
-                  { "name": "Branch/Tag", "value": "$SafeVersion", "inline": true },
-                  { "name": "Download", "value": "[Click to Download]($SafeLink)", "inline": true }
+                  { "name": "Branch/Tag", "value": "$Version", "inline": true },
+                  { "name": "Download", "value": "[Click to Download]($Link)", "inline": true }
                 ],
                 "footer": { "text": "Built on Worker-PC" }
               }
@@ -99,4 +100,9 @@ jobs:
           }
           "@
 
+          # 4. Debug: Print the JSON to the log so we can see it
+          Write-Host "Sending JSON Payload:"
+          Write-Host $JsonPayload
+
+          # 5. Send
           Invoke-RestMethod -Uri $env:DISCORD_WEBHOOK -Method Post -ContentType 'application/json' -Body $JsonPayload
