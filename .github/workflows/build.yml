@@ -67,30 +67,36 @@ jobs:
           
           "DRIVE_LINK=$PublicLink" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
 
-      # --- 4. NOTIFY DISCORD ---
+# --- 5. NOTIFY DISCORD ---
       - name: Send Discord Notification
         shell: powershell
         env:
-          # I kept this as a string since you didn't set up the secret yet.
-          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+          DISCORD_WEBHOOK: "https://discord.com/api/webhooks/1446491178353692682/Ctr1gTzbU4TmEAiP38rUpkWik4JSHuiRdCKq8vmmAx7UTUhqxZI4yjWk-uYdfnUxVfqp"
         run: |
           $Version = "${{ github.ref_name }}"
           $Link = "$env:DRIVE_LINK"
           
-          $Payload = @{
-              content = "**New Build Ready!** 🚀"
-              embeds = @(
-                  @{
-                      title = "Black Sands - $Version"
-                      description = "Build uploaded successfully."
-                      color = 5814783
-                      fields = @(
-                          @{ name = "Branch/Tag"; value = "$Version"; inline = $true },
-                          @{ name = "Download"; value = "[Click to Download]($Link)"; inline = $true }
-                      )
-                      footer = @{ text = "Built on Worker-PC" }
-                  }
-              )
+          # Escape quotes just in case (Safety check)
+          $SafeVersion = $Version.Replace('"', '\"')
+          $SafeLink = $Link.Replace('"', '\"')
+
+          # We manually write the JSON to ensure 'embeds' stays as an array [ ... ]
+          $JsonPayload = @"
+          {
+            "content": "**New Build Ready!** 🚀",
+            "embeds": [
+              {
+                "title": "Black Sands - $SafeVersion",
+                "description": "Build uploaded successfully.",
+                "color": 5814783,
+                "fields": [
+                  { "name": "Branch/Tag", "value": "$SafeVersion", "inline": true },
+                  { "name": "Download", "value": "[Click to Download]($SafeLink)", "inline": true }
+                ],
+                "footer": { "text": "Built on Worker-PC" }
+              }
+            ]
           }
-          
-          Invoke-RestMethod -Uri $env:DISCORD_WEBHOOK -Method Post -ContentType 'application/json' -Body ($Payload | ConvertTo-Json -Depth 4)
+          "@
+
+          Invoke-RestMethod -Uri $env:DISCORD_WEBHOOK -Method Post -ContentType 'application/json' -Body $JsonPayload
