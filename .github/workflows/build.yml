@@ -67,21 +67,18 @@ jobs:
           
           "DRIVE_LINK=$PublicLink" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
 
-# --- 5. NOTIFY DISCORD ---
+      # --- 5. NOTIFY DISCORD ---
       - name: Send Discord Notification
         shell: powershell
         env:
           DISCORD_WEBHOOK: "https://discord.com/api/webhooks/1446491178353692682/Ctr1gTzbU4TmEAiP38rUpkWik4JSHuiRdCKq8vmmAx7UTUhqxZI4yjWk-uYdfnUxVfqp"
         run: |
-          # 1. Clean the variables (Remove hidden newlines/spaces)
+          [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+
           $Version = "${{ github.ref_name }}".Trim()
           $Link = "$env:DRIVE_LINK".Trim()
-          
-          # 2. Safety check: Ensure Link isn't empty
           if ([string]::IsNullOrWhiteSpace($Link)) { $Link = "https://drive.google.com" }
 
-          # 3. Manually build the JSON (Safer than ConvertTo-Json for Discord)
-          # IMPORTANT: The closing "@" must be at the very start of the line!
           $JsonPayload = @"
           {
             "content": "**New Build Ready!** 🚀",
@@ -100,9 +97,53 @@ jobs:
           }
           "@
 
-          # 4. Debug: Print the JSON to the log so we can see it
           Write-Host "Sending JSON Payload:"
           Write-Host $JsonPayload
 
-          # 5. Send
-          Invoke-RestMethod -Uri $env:DISCORD_WEBHOOK -Method Post -ContentType 'application/json' -Body $JsonPayload
+          $headers = @{ "Content-Type" = "application/json" }
+
+          function Post-Discord {
+            param([string]$url, [string]$body, [hashtable]$headers)
+
+            try {
+              $resp = Invoke-RestMethod -Uri $url -Method Post -Headers $headers -Body $body
+              Write-Host "Discord webhook POST succeeded."
+              return $true
+            } catch {
+              Write-Host "Invoke-RestMethod failed: $($_.Exception.Message)"
+              if ($_.Exception.Response) {
+                $r = $_.Exception.Response
+                $statusCode = $r.StatusCode.value__
+                Write-Host "HTTP Status: $statusCode ($($r.StatusCode))"
+                try {
+                  $sr = New-Object System.IO.StreamReader($r.GetResponseStream())
+                  $text = $sr.ReadToEnd()
+                  Write-Host "Response body: $text"
+                } catch {
+                  Write-Host "Response body: <unavailable>"
+                }
+                # Retry on 429 or 5xx
+                if ($statusCode -eq 429 -or ($statusCode -ge 500 -and $statusCode -lt 600)) {
+                  return $false
+                }
+              } else {
+                Write-Host "No HTTP response available; likely network/TLS/firewall issue."
+              }
+              throw
+            }
+          }
+
+          $maxRetries = 3
+          $delaySec = 5
+          for ($i = 0; $i -le $maxRetries; $i++) {
+            $ok = Post-Discord -url $env:DISCORD_WEBHOOK -body $JsonPayload -headers $headers
+            if ($ok) { exit 0 }
+            if ($i -lt $maxRetries) {
+              Write-Host "Retrying in $delaySec seconds... (attempt $($i+2) of $($maxRetries+1))"
+              Start-Sleep -Seconds $delaySec
+              $delaySec = [Math]::Min($delaySec * 2, 60)
+            }
+          }
+
+          Write-Error "Discord webhook POST failed after $($maxRetries+1) attempts."
+          exit 1
