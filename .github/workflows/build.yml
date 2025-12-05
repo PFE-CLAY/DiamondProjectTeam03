@@ -2,7 +2,7 @@ name: Release Build (GDrive + Discord)
 on:
   push:
     tags:
-      - 'build-*' # Remember: use lowercase 'build-' in your git tag!
+      - 'build-*'
 
 jobs:
   build-deploy:
@@ -12,10 +12,10 @@ jobs:
       - name: Setup Build Info
         shell: powershell
         run: |
-          $StartTime = Get-Date
-          Write-Host "Build Process Started at: $StartTime"
-          # Save Start time to Env to calculate duration later
-          "BUILD_START_TIME=$($StartTime.ToString('u'))" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
+          # Use Ticks (Absolute number) to avoid Timezone math errors
+          $Ticks = (Get-Date).Ticks
+          Write-Host "Build Timer Started."
+          "BUILD_START_TICKS=$Ticks" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
 
       - name: Cleanup Workspace
         shell: powershell
@@ -32,7 +32,6 @@ jobs:
       - name: Extract Commit Info
         shell: powershell
         run: |
-          # Extract Git info for the notification
           $CommitHash = git log -1 --format="%h"
           $CommitAuthor = git log -1 --format="%an"
           $CommitMsg = git log -1 --format="%s"
@@ -49,12 +48,10 @@ jobs:
         run: |
           @echo off
           echo [INFO] Starting Unreal Engine Automation Tool...
-          echo [INFO] Project: %GITHUB_WORKSPACE%\DiamondProject.uproject
           
           :: UPDATE THIS PATH TO YOUR UE VERSION IF NEEDED
           set UAT_PATH="C:\Program Files\Epic Games\UE_5.6\Engine\Build\BatchFiles\RunUAT.bat"
           
-          :: Added -verbose to UAT for more details if something breaks
           call %UAT_PATH% BuildCookRun ^
           -project="%GITHUB_WORKSPACE%\DiamondProject.uproject" ^
           -platform=Win64 ^
@@ -72,14 +69,10 @@ jobs:
           $Version = "${{ github.ref_name }}"
           $ZipName = "BlackSands_Windows_$Version.zip"
           
-          if (Test-Path $ZipName) { 
-            Write-Host "Removing old zip file..."
-            Remove-Item $ZipName 
-          }
+          if (Test-Path $ZipName) { Remove-Item $ZipName }
           
           Write-Host "Compressing build to $ZipName..."
           Compress-Archive -Path "PackagedBuild\Windows\*" -DestinationPath "$ZipName"
-          Write-Host "Compression complete."
           
           "ZIP_FILENAME=$ZipName" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
 
@@ -90,21 +83,13 @@ jobs:
           $ZipName = "$env:ZIP_FILENAME"
           $RemotePath = "gdrive:Builds/$ZipName"
           
-          Write-Host "Starting upload of $ZipName to Google Drive..."
-          
-          # Rclone copy with Progress flag (-P)
+          Write-Host "Starting upload..."
           rclone copy "$ZipName" "gdrive:Builds" -P
           
-          Write-Host "Upload complete. Requesting public link..."
+          Write-Host "Requesting public link..."
           $PublicLink = rclone link "$RemotePath"
           
-          # Fallback link logic
-          if (-not $PublicLink) { 
-             Write-Warning "Could not generate direct link. Using fallback."
-             $PublicLink = "https://drive.google.com/drive/u/0/my-drive" 
-          }
-          
-          Write-Host "Download Link Generated: $PublicLink"
+          if (-not $PublicLink) { $PublicLink = "https://drive.google.com/drive/u/0/my-drive" }
           
           "DRIVE_LINK=$PublicLink" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
 
@@ -121,10 +106,10 @@ jobs:
           $Link = "$env:DRIVE_LINK".Trim()
           if ([string]::IsNullOrWhiteSpace($Link)) { $Link = "https://drive.google.com" }
 
-          # Calculate Duration
-          $Start = Get-Date "$env:BUILD_START_TIME"
-          $End = Get-Date
-          $Duration = New-TimeSpan -Start $Start -End $End
+          # --- FIX: Calculate Duration using Ticks ---
+          $StartTicks = [long]$env:BUILD_START_TICKS
+          $EndTicks = (Get-Date).Ticks
+          $Duration = [TimeSpan]::new($EndTicks - $StartTicks)
           $DurationStr = "{0:hh}h {0:mm}m {0:ss}s" -f $Duration
 
           # Commit Info
@@ -132,7 +117,6 @@ jobs:
           $CommitAuthor = "$env:COMMIT_AUTHOR"
           $CommitMsg = "$env:COMMIT_MSG"
 
-          # --- Construct JSON Payload (No Emojis, Better Layout) ---
           $JsonPayload = @"
           {
             "content": "**Build Generation Complete**",
@@ -155,53 +139,23 @@ jobs:
           "@
 
           Write-Host "Sending JSON Payload..."
-          # Write-Host $JsonPayload # Uncomment to debug JSON structure
-
           $headers = @{ "Content-Type" = "application/json" }
 
-          # --- Retry Logic (Untouched as requested) ---
           function Post-Discord {
             param([string]$url, [string]$body, [hashtable]$headers)
-
             try {
               $resp = Invoke-RestMethod -Uri $url -Method Post -Headers $headers -Body $body
-              Write-Host "Discord webhook POST succeeded."
               return $true
             } catch {
               Write-Host "Invoke-RestMethod failed: $($_.Exception.Message)"
-              if ($_.Exception.Response) {
-                $r = $_.Exception.Response
-                $statusCode = $r.StatusCode.value__
-                Write-Host "HTTP Status: $statusCode ($($r.StatusCode))"
-                try {
-                  $sr = New-Object System.IO.StreamReader($r.GetResponseStream())
-                  $text = $sr.ReadToEnd()
-                  Write-Host "Response body: $text"
-                } catch {
-                  Write-Host "Response body: <unavailable>"
-                }
-                # Retry on 429 or 5xx
-                if ($statusCode -eq 429 -or ($statusCode -ge 500 -and $statusCode -lt 600)) {
-                  return $false
-                }
-              } else {
-                Write-Host "No HTTP response available; likely network/TLS/firewall issue."
-              }
-              throw
+              return $false
             }
           }
 
           $maxRetries = 3
           $delaySec = 5
           for ($i = 0; $i -le $maxRetries; $i++) {
-            $ok = Post-Discord -url $env:DISCORD_WEBHOOK -body $JsonPayload -headers $headers
-            if ($ok) { exit 0 }
-            if ($i -lt $maxRetries) {
-              Write-Host "Retrying in $delaySec seconds... (attempt $($i+2) of $($maxRetries+1))"
-              Start-Sleep -Seconds $delaySec
-              $delaySec = [Math]::Min($delaySec * 2, 60)
-            }
+            if (Post-Discord -url $env:DISCORD_WEBHOOK -body $JsonPayload -headers $headers) { exit 0 }
+            Start-Sleep -Seconds $delaySec
           }
-
-          Write-Error "Discord webhook POST failed after $($maxRetries+1) attempts."
           exit 1
