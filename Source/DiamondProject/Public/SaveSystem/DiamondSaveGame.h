@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "DiamondProject/DiamondProjectPlayerController.h"
 #include "GameFramework/SaveGame.h"
 #include "DiamondSaveGame.generated.h"
 
@@ -43,6 +44,9 @@ struct FGameSettingsSaveData
 
 	UPROPERTY()
 	bool bIsPreplanInSceneVisible = false;
+	
+	UPROPERTY()
+	EKeyboardLayout SavedKeyboardLayout = EKeyboardLayout::UNSPECIFIED;
 };
 
 USTRUCT(BlueprintType)

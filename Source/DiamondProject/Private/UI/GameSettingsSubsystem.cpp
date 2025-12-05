@@ -43,6 +43,7 @@ void UGameSettingsSubsystem::SaveSettings()
 		SaveGameInstance->SettingsData.SFXVolume = SFXVolume;
 		SaveGameInstance->SettingsData.VoiceVolume = VoiceVolume;
 		SaveGameInstance->SettingsData.bIsPreplanInSceneVisible = bIsPreplanInSceneVisible;
+		SaveGameInstance->SettingsData.SavedKeyboardLayout = SavedKeyboardLayout;
 
 		UGameplayStatics::SaveGameToSlot(SaveGameInstance, "DiamondSaveSlot", 0);
 	}
@@ -64,6 +65,7 @@ void UGameSettingsSubsystem::LoadSettings()
 		SFXVolume = SaveGameInstance->SettingsData.SFXVolume;
 		VoiceVolume = SaveGameInstance->SettingsData.VoiceVolume;
 		bIsPreplanInSceneVisible = SaveGameInstance->SettingsData.bIsPreplanInSceneVisible;
+		SavedKeyboardLayout = SaveGameInstance->SettingsData.SavedKeyboardLayout;
 	}
 }
 
@@ -81,6 +83,7 @@ void UGameSettingsSubsystem::ResetSettings()
 	SFXVolume = DefaultData.SFXVolume;
 	VoiceVolume = DefaultData.VoiceVolume;
 	bIsPreplanInSceneVisible = DefaultData.bIsPreplanInSceneVisible;
+	SavedKeyboardLayout = DefaultData.SavedKeyboardLayout;
 	
 	SaveSettings();
 }
