@@ -12,17 +12,14 @@ jobs:
       - name: Setup Build Info
         shell: powershell
         run: |
-          # Use Ticks (Absolute number) to avoid Timezone math errors
+          # Use Ticks to calculate accurate duration later
           $Ticks = (Get-Date).Ticks
-          Write-Host "Build Timer Started."
           "BUILD_START_TICKS=$Ticks" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
 
       - name: Cleanup Workspace
         shell: powershell
         run: |
-          Write-Host "Cleaning up previous build files..."
           Get-ChildItem -Path "${{ github.workspace }}" -Recurse | Remove-Item -Force -Recurse -ErrorAction SilentlyContinue
-          Write-Host "Workspace clean."
 
       - name: Checkout Code
         uses: actions/checkout@v4
@@ -36,8 +33,6 @@ jobs:
           $CommitAuthor = git log -1 --format="%an"
           $CommitMsg = git log -1 --format="%s"
           
-          Write-Host "Current Commit: $CommitHash by $CommitAuthor"
-          
           "COMMIT_SHORT=$CommitHash" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
           "COMMIT_AUTHOR=$CommitAuthor" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
           "COMMIT_MSG=$CommitMsg" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
@@ -46,10 +41,6 @@ jobs:
       - name: Build and Package Game
         shell: cmd
         run: |
-          @echo off
-          echo [INFO] Starting Unreal Engine Automation Tool...
-          
-          :: UPDATE THIS PATH TO YOUR UE VERSION IF NEEDED
           set UAT_PATH="C:\Program Files\Epic Games\UE_5.6\Engine\Build\BatchFiles\RunUAT.bat"
           
           call %UAT_PATH% BuildCookRun ^
@@ -59,8 +50,6 @@ jobs:
           -build -cook -stage -package -archive ^
           -archivedirectory="%GITHUB_WORKSPACE%\PackagedBuild" ^
           -unattended -nologtimes -utf8output
-          
-          echo [INFO] Build process finished.
 
       # --- 2. ZIP THE BUILD ---
       - name: Zip Build
@@ -71,7 +60,6 @@ jobs:
           
           if (Test-Path $ZipName) { Remove-Item $ZipName }
           
-          Write-Host "Compressing build to $ZipName..."
           Compress-Archive -Path "PackagedBuild\Windows\*" -DestinationPath "$ZipName"
           
           "ZIP_FILENAME=$ZipName" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
@@ -83,65 +71,94 @@ jobs:
           $ZipName = "$env:ZIP_FILENAME"
           $RemotePath = "gdrive:Builds/$ZipName"
           
-          Write-Host "Starting upload..."
           rclone copy "$ZipName" "gdrive:Builds" -P
           
-          Write-Host "Requesting public link..."
           $PublicLink = rclone link "$RemotePath"
-          
           if (-not $PublicLink) { $PublicLink = "https://drive.google.com/drive/u/0/my-drive" }
           
           "DRIVE_LINK=$PublicLink" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
 
-# --- 5. NOTIFY DISCORD ---
+# --- 4. NOTIFY DISCORD (RUNS ALWAYS + GIFS) ---
       - name: Send Discord Notification
+        if: always()
         shell: powershell
         env:
           DISCORD_WEBHOOK: "https://discord.com/api/webhooks/1446531201266618430/tXOZLINh87qxV222COHS1BTo3MBI9Of2rGrzXBsNxNgee2pl_7a-KGOggJypgOe_5kdb"
+          JOB_STATUS: ${{ job.status }}
         run: |
           [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 
-          # 1. Prepare Basic Info
-          $Version = "${{ github.ref_name }}".Trim()
+          # --- GIF LISTS (MUST BE DIRECT .GIF LINKS) ---
+          $SuccessGifs = @(
+              "https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExY21laTc3b3A0ZmFzM3hyaHR2NXgxdDRkNXppcHc4YTFkcGkwZnFseCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/muNcDSuINVr1e/giphy.gif",
+              "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZ2tsNnY4a2d1anlkamsydGR2NG1meGFjejRudHlmb3lvOHE4em9zMCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/M769cF8gLiHPq/giphy.gif",
+              "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExYmxzczFhZ25sb2k0cTllaGp3eXl1aWI3dGprY29yd2pmbm4zbWdqdyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/TR996IaHtmDi1x98zW/giphy.gif",
+              "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZGp2NTN2NDVycDd6NnhkOGJnOHUxdDh6aXJuZ2syNzJybDN2ZDZ3ZiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/B2idWDiSBxM6kUs7ZF/giphy.gif",
+              "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMzF1dTdlYjRueXNjc2ZiNTA4Y2RzenRtN21uem9jaTQ1c2s5am5jaSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/Diym3aZO1dHzO/giphy.gif",
+              "https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3Z2g2czZ1anczMGJxMHF5ZHh6dGQzbzhqa3U0dmFlcG8zb2E1ZXpiYSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/36l9iDjXld2mHjlhwH/giphy.gif",
+              "https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3aGhiMDB0cHVlazdlZG5qZjNiazNwcWJzb2VoNnUyY2I4Z2Y1MmVpNCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/macxUG5uAzorongmSW/giphy.gif"
+          )
+
+          $FailGifs = @(
+              "https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExdzRlazBzY2Vmd2tmNW52bzA4bXJrYTF3Z2lwbHlzaXVnZTAxZ25icCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/eRtdjiQ07r2rm2vik2/giphy.gif",
+              "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMWZtOGhjODAxNDJ5bGlwZmIwZGR6cjJ0Y3hzc2hqY2xnbHAyZ2Q5YyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/YqE3jbSQQR6x9g19Kj/giphy.gif",
+              "https://media.giphy.com/media/d2lcHJPG5BTmmTEk/giphy.gif",
+              "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZXN3M2FveTBxZnRuenhwZGhyZHNiODJuaGg0dWkyYnpzczJ4aGF6diZlcD12MV9naWZzX3NlYXJjaCZjdD1n/Ogq1QkqP2RWRoX6G7P/giphy.gif",
+              "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExYzA0N3VsYXA5cTU2aHp4ZnY0cGgzOHJzdmFqYnZnbW9xeGRiOXYybSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/m6pEztxHF1vT4YcFhE/giphy.gif"
+          )
+
+          # --- STATUS LOGIC ---
+          if ($env:JOB_STATUS -eq 'success') {
+              $GifUrl = $SuccessGifs | Get-Random
+              $Title = "Build Complete - ${{ github.ref_name }}"
+              $Desc = "Build uploaded successfully."
+              $Color = 5814783 # Green/Blue
+          } else {
+              $GifUrl = $FailGifs | Get-Random
+              $Title = "Build Failed - ${{ github.ref_name }}"
+              $Desc = "The build process failed. Check the logs."
+              $Color = 15548997 # Red
+          }
+
+          # --- PREPARE INFO ---
           $Link = "$env:DRIVE_LINK".Trim()
-          if ([string]::IsNullOrWhiteSpace($Link)) { $Link = "[https://drive.google.com](https://drive.google.com)" }
+          if ([string]::IsNullOrWhiteSpace($Link)) { $Link = "https://drive.google.com" }
 
-          # 2. Calculate Duration
-          $StartTicks = [long]$env:BUILD_START_TICKS
-          $EndTicks = (Get-Date).Ticks
-          $Duration = [TimeSpan]::new($EndTicks - $StartTicks)
-          $DurationStr = "{0:hh}h {0:mm}m {0:ss}s" -f $Duration
+          if ($env:BUILD_START_TICKS) {
+              $StartTicks = [long]$env:BUILD_START_TICKS
+              $EndTicks = (Get-Date).Ticks
+              $Duration = [TimeSpan]::new($EndTicks - $StartTicks)
+              $DurationStr = "{0:hh}h {0:mm}m {0:ss}s" -f $Duration
+          } else {
+              $DurationStr = "Unknown"
+          }
 
-          # 3. Commit Info & Sanitization
           $CommitShort = "$env:COMMIT_SHORT"
           $CommitAuthor = "$env:COMMIT_AUTHOR"
-          
-          # Grab raw message
           $RawMsg = "$env:COMMIT_MSG"
-          
-          # Escape quotes and backslashes for JSON safety
+          # Sanitize
           $SafeMsg = $RawMsg -replace '\\', '\\\\' -replace '"', '\"'
-          
-          # 4. FIX: Use SINGLE QUOTES for the code block backticks
-          # This tells PowerShell: "Don't try to interpret these backticks, just print them."
           $CodeBlock = '```' + $SafeMsg + '```'
 
-          # 5. Construct JSON
+          # --- CONSTRUCT JSON ---
           $JsonPayload = @"
           {
-            "content": "**Build Generation Complete**",
+            "content": "**Status Update: $env:JOB_STATUS**",
             "embeds": [
               {
-                "title": "Black Sands - $Version",
-                "description": "The automated build process has finished successfully.",
-                "color": 5814783,
+                "title": "$Title",
+                "description": "$Desc",
+                "color": $Color,
                 "fields": [
                   { "name": "Duration", "value": "$DurationStr", "inline": true },
-                  { "name": "Build Tag", "value": "$Version", "inline": true },
+                  { "name": "Status", "value": "$env:JOB_STATUS", "inline": true },
                   { "name": "Commit Info", "value": "**$CommitShort** by $CommitAuthor", "inline": false },
                   { "name": "Message", "value": "$CodeBlock", "inline": false },
                   { "name": "Download", "value": "[Direct Google Drive Link]($Link)", "inline": false }
                 ],
+                "image": {
+                  "url": "$GifUrl"
+                },
                 "footer": { "text": "Built on Worker-PC via GitHub Actions" }
               }
             ]
