@@ -27,6 +27,11 @@ public class NiagaraUIRenderer : ModuleRules
 			{
 				"Core",
 				"UMG",
+				"CoreUObject",
+                "Engine",
+                "Slate",
+                "SlateCore",
+                "Niagara",
 				// ... add other public dependencies that you statically link with here ...
 			}
 			);
