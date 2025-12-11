@@ -46,7 +46,7 @@ jobs:
           call %UAT_PATH% BuildCookRun ^
           -project="%GITHUB_WORKSPACE%\DiamondProject.uproject" ^
           -platform=Win64 ^
-          -clientconfig=Development ^
+          -clientconfig=Shipping ^
           -build -cook -stage -package -archive ^
           -archivedirectory="%GITHUB_WORKSPACE%\PackagedBuild" ^
           -unattended -nologtimes -utf8output
@@ -78,7 +78,7 @@ jobs:
           
           "DRIVE_LINK=$PublicLink" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
 
-# --- 4. NOTIFY DISCORD (RUNS ALWAYS + GIFS) ---
+      # --- 4. NOTIFY DISCORD (RUNS ALWAYS + GIFS) ---
       - name: Send Discord Notification
         if: always()
         shell: powershell
