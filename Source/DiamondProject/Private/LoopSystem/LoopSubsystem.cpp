@@ -479,15 +479,5 @@ void ULoopSubsystem::ResetAllProgress()
 		}
 	}
 
-	UGameInstance* GameInstance = GetWorld()->GetGameInstance();
-	if (GameInstance)
-	{
-		UGameSettingsSubsystem* SettingsSubsystem = GameInstance->GetSubsystem<UGameSettingsSubsystem>();
-		if (SettingsSubsystem)
-		{
-			SettingsSubsystem->ResetSettings();
-		}
-	}
-
 	SaveLoopData();
 }
