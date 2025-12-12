@@ -481,3 +481,13 @@ void ULoopSubsystem::ResetAllProgress()
 
 	SaveLoopData();
 }
+
+bool ULoopSubsystem::IsLoopNbInSaveZero()
+{
+	UDiamondSaveGame* SaveGameInstance = Cast<UDiamondSaveGame>(UGameplayStatics::LoadGameFromSlot("DiamondSaveSlot", 0));
+	if (SaveGameInstance)
+	{
+		return SaveGameInstance->LoopData.LoopNb == 0;
+	}
+	return true;
+}

@@ -98,4 +98,7 @@ public:
 
 	UFUNCTION(BlueprintCallable)
 	void ResetAllProgress();
+	
+	UFUNCTION(BlueprintCallable, BlueprintPure)
+	bool IsLoopNbInSaveZero();
 };
