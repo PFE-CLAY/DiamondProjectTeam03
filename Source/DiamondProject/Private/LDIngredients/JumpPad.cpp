@@ -11,12 +11,16 @@ AJumpPad::AJumpPad()
 {
 	PrimaryActorTick.bCanEverTick = true;
 	
+	TObjectPtr<USceneComponent> DefaultRootComponent = CreateDefaultSubobject<USceneComponent>(TEXT("RootComponent"));
+	RootComponent = DefaultRootComponent;
+
 	JumpPadMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("JumpPadMesh"));
-	RootComponent = JumpPadMesh;
+	JumpPadMesh->SetupAttachment(DefaultRootComponent);
+	
 	
 	JumpCollider = CreateDefaultSubobject<UBoxComponent>(TEXT("JumpCollider"));
-	JumpCollider->SetupAttachment(JumpPadMesh);
-	JumpCollider->SetRelativeLocation(FVector(0.0f, 0.0f, 50.0f)); 
+	JumpCollider->SetupAttachment(DefaultRootComponent);
+	JumpCollider->SetWorldLocation(JumpPadMesh->GetComponentLocation()); 
 	JumpCollider->SetBoxExtent(FVector(60.0f, 60.0f, 20.0f)); 
 	
 	JumpForce = 1000.0f;

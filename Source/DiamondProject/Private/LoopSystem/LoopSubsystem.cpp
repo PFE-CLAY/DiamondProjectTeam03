@@ -479,15 +479,15 @@ void ULoopSubsystem::ResetAllProgress()
 		}
 	}
 
-	UGameInstance* GameInstance = GetWorld()->GetGameInstance();
-	if (GameInstance)
-	{
-		UGameSettingsSubsystem* SettingsSubsystem = GameInstance->GetSubsystem<UGameSettingsSubsystem>();
-		if (SettingsSubsystem)
-		{
-			SettingsSubsystem->ResetSettings();
-		}
-	}
-
 	SaveLoopData();
+}
+
+bool ULoopSubsystem::IsLoopNbInSaveZero()
+{
+	UDiamondSaveGame* SaveGameInstance = Cast<UDiamondSaveGame>(UGameplayStatics::LoadGameFromSlot("DiamondSaveSlot", 0));
+	if (SaveGameInstance)
+	{
+		return SaveGameInstance->LoopData.LoopNb == 0;
+	}
+	return true;
 }
