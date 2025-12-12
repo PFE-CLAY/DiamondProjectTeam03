@@ -71,3 +71,19 @@ void AMeleeEnemy::Charge()
 	OnChargeEvent.Broadcast();
 }
 
+
+void AMeleeEnemy::CheckDistance()
+{
+	
+	if(FVector::Distance(PlayerPawn->GetActorLocation(), GetActorLocation()) >= DistanceCheck)
+	{
+		//GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Orange, "AAAAAAAAAAAAAAAAAA");
+		KillEnemy();
+	}
+}
+
+void AMeleeEnemy::CheckDistanceSetTimer()
+{
+	GetWorldTimerManager().SetTimer(TimerCheckDistance, this, &AMeleeEnemy::CheckDistance, DistanceCheckCooldown, true);
+}
+
