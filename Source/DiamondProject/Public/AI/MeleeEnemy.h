@@ -33,6 +33,9 @@ protected:
 	UPROPERTY()
 	FTimerHandle InvicibleTimerStart;
 
+	UPROPERTY()
+	FTimerHandle ChargeTimer;
+
 	UPROPERTY(EditAnywhere,  Category = "Behavior")
 	float DistanceCheckCooldown = 7.f;
 
@@ -81,4 +84,10 @@ public:
 
 	UFUNCTION(BlueprintCallable)
 	void CheckDistanceSetTimer();
+
+	UFUNCTION(BlueprintCallable)
+	void StopAttack();
+
+	UFUNCTION(BlueprintImplementableEvent)
+	void StopAttackEffects();
 };

@@ -66,7 +66,6 @@ bool AMeleeEnemy::IsTargetInRange(AActor* Target)
 void AMeleeEnemy::Charge()
 {
 	
-	FTimerHandle ChargeTimer;
 	GetWorldTimerManager().SetTimer(ChargeTimer, this, &AMeleeEnemy::AttackMelee ,ChargingDuration, false);
 	OnChargeEvent.Broadcast();
 }
@@ -85,5 +84,11 @@ void AMeleeEnemy::CheckDistance()
 void AMeleeEnemy::CheckDistanceSetTimer()
 {
 	GetWorldTimerManager().SetTimer(TimerCheckDistance, this, &AMeleeEnemy::CheckDistance, DistanceCheckCooldown, true);
+}
+
+void AMeleeEnemy::StopAttack()
+{
+	GetWorldTimerManager().ClearTimer(ChargeTimer);
+	StopAttackEffects();
 }
 
