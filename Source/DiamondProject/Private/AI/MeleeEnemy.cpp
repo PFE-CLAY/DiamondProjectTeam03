@@ -66,8 +66,29 @@ bool AMeleeEnemy::IsTargetInRange(AActor* Target)
 void AMeleeEnemy::Charge()
 {
 	
-	FTimerHandle ChargeTimer;
 	GetWorldTimerManager().SetTimer(ChargeTimer, this, &AMeleeEnemy::AttackMelee ,ChargingDuration, false);
 	OnChargeEvent.Broadcast();
+}
+
+
+void AMeleeEnemy::CheckDistance()
+{
+	
+	if(FVector::Distance(PlayerPawn->GetActorLocation(), GetActorLocation()) >= DistanceCheck)
+	{
+		//GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Orange, "AAAAAAAAAAAAAAAAAA");
+		KillEnemy();
+	}
+}
+
+void AMeleeEnemy::CheckDistanceSetTimer()
+{
+	GetWorldTimerManager().SetTimer(TimerCheckDistance, this, &AMeleeEnemy::CheckDistance, DistanceCheckCooldown, true);
+}
+
+void AMeleeEnemy::StopAttack()
+{
+	GetWorldTimerManager().ClearTimer(ChargeTimer);
+	StopAttackEffects();
 }
 

@@ -12,7 +12,6 @@ jobs:
       - name: Setup Build Info
         shell: powershell
         run: |
-          # Use Ticks to calculate accurate duration later
           $Ticks = (Get-Date).Ticks
           "BUILD_START_TICKS=$Ticks" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
 
@@ -37,7 +36,7 @@ jobs:
           "COMMIT_AUTHOR=$CommitAuthor" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
           "COMMIT_MSG=$CommitMsg" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
 
-      # --- 1. BUILD UNREAL ENGINE ---
+# --- 1. BUILD UNREAL ENGINE (OPTIMIZED + LOW MEMORY) ---
       - name: Build and Package Game
         shell: cmd
         run: |
@@ -48,8 +47,10 @@ jobs:
           -platform=Win64 ^
           -clientconfig=Shipping ^
           -build -cook -stage -package -archive ^
+          -pak -compressed -prereqs ^
           -archivedirectory="%GITHUB_WORKSPACE%\PackagedBuild" ^
-          -unattended -nologtimes -utf8output
+          -unattended -nologtimes -utf8output ^
+          -MaxParallelActions=2
 
       # --- 2. ZIP THE BUILD ---
       - name: Zip Build

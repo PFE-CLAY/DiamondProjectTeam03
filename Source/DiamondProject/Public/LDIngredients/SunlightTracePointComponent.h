@@ -19,7 +19,7 @@ public:
 	virtual void BeginPlay() override;
 
 	UPROPERTY(EditAnywhere, Category="Sunlight Detection")
-	bool bShowVisualizer = true;
+	bool bShowVisualizer = false;
 
 	UPROPERTY()
 	bool bIsInSunlight = false;
