@@ -132,14 +132,26 @@ void AShootingEnemy::RemoveShootPoint(USceneComponent* ShootPoint)
 	}
 }
 
+void AShootingEnemy::ChangeTargetInRange(const bool isInRange)
+{
+	if (IsPlayerInRange != isInRange)
+	{
+		IsPlayerInRange = isInRange;
+		if (IsPlayerInRange)
+		{
+			OnPlayerInRange.Broadcast();
+		} else
+		{
+			OnPlayerOutOfRange.Broadcast();
+		}
+	}
+}
 
 
 void AShootingEnemy::Shoot(AActor* Target)
 {
-	
 	if(bCanAttack)
 	{
-		
 		USceneComponent* ShootPoint = GetNextShootPoint();
 		if (ShootPoint != nullptr)
 		{
