@@ -32,6 +32,18 @@ protected:
 
 	UPROPERTY()
 	FTimerHandle InvicibleTimerStart;
+
+	UPROPERTY()
+	FTimerHandle ChargeTimer;
+
+	UPROPERTY(EditAnywhere,  Category = "Behavior")
+	float DistanceCheckCooldown = 7.f;
+
+	UPROPERTY(EditAnywhere,  Category = "Behavior")
+	float DistanceCheck = 5000.f;
+
+	UPROPERTY()
+	FTimerHandle TimerCheckDistance;
 public:
 	// Sets default values for this character's properties
 	AMeleeEnemy();
@@ -63,4 +75,19 @@ public:
 
 	UFUNCTION(BlueprintCallable)
 	void Charge();
+
+	UFUNCTION(BlueprintImplementableEvent)
+	void KillEnemy();
+	
+	UFUNCTION()
+	void CheckDistance();
+
+	UFUNCTION(BlueprintCallable)
+	void CheckDistanceSetTimer();
+
+	UFUNCTION(BlueprintCallable)
+	void StopAttack();
+
+	UFUNCTION(BlueprintImplementableEvent)
+	void StopAttackEffects();
 };

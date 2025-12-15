@@ -4,6 +4,7 @@
 
 
 #include "CoreMinimal.h"
+#include "DiamondProject/DiamondProjectPlayerController.h"
 #include "Subsystems/GameInstanceSubsystem.h"
 #include "GameSettingsSubsystem.generated.h"
 
@@ -26,6 +27,9 @@ public:
 
 	UPROPERTY(BlueprintReadWrite)
 	bool bSubtitlesActivated = true;
+	
+	UPROPERTY(BlueprintReadWrite)
+	EKeyboardLayout SavedKeyboardLayout = EKeyboardLayout::UNSPECIFIED;
 
 	UPROPERTY(BlueprintReadWrite)
 	float SubtitlesBackgroundOpacity = 0.5f;

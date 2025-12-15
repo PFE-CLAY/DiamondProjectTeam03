@@ -255,5 +255,8 @@ public:
 	/** Returns FirstPersonCameraComponent subobject **/
 	UCameraComponent* GetFirstPersonCameraComponent() const { return FirstPersonCameraComponent; }
 	
+	UFUNCTION(Blueprintable, BlueprintPure)
+	UWeaponComponent* GetCurrentWeapon() const { return CurrentWeapon; }
+	
 
 };
