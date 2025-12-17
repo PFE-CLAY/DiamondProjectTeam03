@@ -2,6 +2,7 @@ Event	ID	Name			Wwise Object Path	Notes
 	297916660	Play_AMB_PAD_Pyramid_Closed			\AMB_WU\Play_AMB_PAD_Pyramid_Closed	
 	770793257	Play_AMB_SP_Incinerator			\AMB_WU\Play_AMB_SP_Incinerator	
 	1229646826	Play_AMB_PAD_CorpseTrap			\AMB_WU\Play_AMB_PAD_CorpseTrap	
+	1347948592	Play_AMB_WIND_SAND			\AMB_WU\Play_AMB_WIND_SAND	
 	1977891013	Play_AMB_PAD_ControlCenter			\AMB_WU\Play_AMB_PAD_ControlCenter	
 	2972533464	Play_AMB_PAD_Hub			\AMB_WU\Play_AMB_PAD_Hub	
 	3817670132	Play_AMB_Arena_Crowd			\AMB_WU\Play_AMB_Arena_Crowd	
@@ -56,6 +57,7 @@ Effect plug-ins	ID	Name	Type				Notes
 	498081942	Hall_Large_Dark (Custom)	Wwise RoomVerb			
 	688337969	Hall_Small_Bright (Custom)	Wwise RoomVerb			
 	1008402193	Low_Pass_20KHz	Wwise Parametric EQ			
+	2394809124	Very_Slow_Modulation	Wwise Tremolo			
 	3442768367	Hall_Large_Dark	Wwise RoomVerb			
 	3487820010	One_Tap_Half_Second	Wwise Delay			
 
@@ -111,4 +113,5 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 
 Streamed Audio	ID	Name	Audio source file	Generated audio file	Wwise Object Path	Notes
 	783949220	AMB_PAD_Crowd	G:\Unreal\Unreal_Projects\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\39\{399F1149-7F7B-AF17-551B-EACA048CCA05}.wem	783949220.wem	\Actor-Mixer Hierarchy\AMB_WU\AMB_AM\AMB_PAD_AM\AMB_PAD_Crowd	
+	930759196	AMB_WIND_SAND	G:\Unreal\Unreal_Projects\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\AA\{AAE04847-D18F-C3F1-D79E-6001FC485A05}.wem	930759196.wem	\Actor-Mixer Hierarchy\AMB_WU\AMB_AM\AMB_PAD_AM\AMB_WIND_SAND	
 

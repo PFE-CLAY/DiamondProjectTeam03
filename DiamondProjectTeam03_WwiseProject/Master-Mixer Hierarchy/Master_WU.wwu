@@ -213,6 +213,26 @@
 									</Reference>
 								</ObjectList>
 							</ObjectLists>
+							<DuckingList>
+								<DuckItem>
+									<BusRef Name="AMB_Crowd" ID="{985719AF-3534-41FC-A751-99E11C3F7784}"/>
+									<DuckingParam>
+										<Volume>-6</Volume>
+										<FadeInTime>0.5</FadeInTime>
+										<FadeOutTime>0.5</FadeOutTime>
+										<FadeCurve>FadeLinear</FadeCurve>
+									</DuckingParam>
+								</DuckItem>
+								<DuckItem>
+									<BusRef Name="Music" ID="{08156595-7637-4348-AC3C-2EDE3FCCB08F}"/>
+									<DuckingParam>
+										<Volume>-6</Volume>
+										<FadeInTime>0.5</FadeInTime>
+										<FadeOutTime>0.5</FadeOutTime>
+										<FadeCurve>FadeLinear</FadeCurve>
+									</DuckingParam>
+								</DuckItem>
+							</DuckingList>
 						</Bus>
 						<Bus Name="Music" ID="{08156595-7637-4348-AC3C-2EDE3FCCB08F}">
 							<PropertyList>
@@ -321,6 +341,26 @@
 										<Property Name="Color" Type="int16" Value="19"/>
 										<Property Name="OverrideColor" Type="bool" Value="True"/>
 									</PropertyList>
+									<DuckingList>
+										<DuckItem>
+											<BusRef Name="AMB_Crowd" ID="{985719AF-3534-41FC-A751-99E11C3F7784}"/>
+											<DuckingParam>
+												<Volume>-3</Volume>
+												<FadeInTime>0.5</FadeInTime>
+												<FadeOutTime>0.5</FadeOutTime>
+												<FadeCurve>FadeLinear</FadeCurve>
+											</DuckingParam>
+										</DuckItem>
+										<DuckItem>
+											<BusRef Name="Music" ID="{08156595-7637-4348-AC3C-2EDE3FCCB08F}"/>
+											<DuckingParam>
+												<Volume>-3</Volume>
+												<FadeInTime>0.5</FadeInTime>
+												<FadeOutTime>0.5</FadeOutTime>
+												<FadeCurve>FadeLinear</FadeCurve>
+											</DuckingParam>
+										</DuckItem>
+									</DuckingList>
 								</Bus>
 								<Bus Name="FOES_Flying" ID="{439831F9-AA50-4CD2-98C3-ACD8B187380E}">
 									<PropertyList>
@@ -372,6 +412,26 @@
 											</Reference>
 										</ObjectList>
 									</ObjectLists>
+									<DuckingList>
+										<DuckItem>
+											<BusRef Name="Music" ID="{08156595-7637-4348-AC3C-2EDE3FCCB08F}"/>
+											<DuckingParam>
+												<Volume>-3</Volume>
+												<FadeInTime>0.5</FadeInTime>
+												<FadeOutTime>0.5</FadeOutTime>
+												<FadeCurve>FadeLinear</FadeCurve>
+											</DuckingParam>
+										</DuckItem>
+										<DuckItem>
+											<BusRef Name="AMB_Crowd" ID="{985719AF-3534-41FC-A751-99E11C3F7784}"/>
+											<DuckingParam>
+												<Volume>-3</Volume>
+												<FadeInTime>0.5</FadeInTime>
+												<FadeOutTime>0.5</FadeOutTime>
+												<FadeCurve>FadeLinear</FadeCurve>
+											</DuckingParam>
+										</DuckItem>
+									</DuckingList>
 								</Bus>
 								<Bus Name="AMB_Crowd" ID="{985719AF-3534-41FC-A751-99E11C3F7784}">
 									<PropertyList>

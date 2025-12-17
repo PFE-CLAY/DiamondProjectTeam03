@@ -632,31 +632,6 @@
 										<ActiveSource Name="AMB_PAD_CorpseTrap" ID="{A27E4D75-0EFD-477B-81FA-2858C9039C32}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
-								<Sound Name="AMB_PAD_FinalDoor" ID="{6068154F-F314-4153-A7E3-E8080669FFF9}" ShortID="477742021">
-									<PropertyList>
-										<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
-									</PropertyList>
-									<ReferenceList>
-										<Reference Name="Conversion">
-											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
-										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D02282EE-6893-403D-9438-D481AB659EA3}"/>
-										</Reference>
-									</ReferenceList>
-									<ChildrenList>
-										<AudioFileSource Name="AMB_PAD_FinalDoor" ID="{0CE4F975-126F-4468-B28B-33FE9C1F2B5A}">
-											<Language>SFX</Language>
-											<AudioFile>AMB\Pads\AMB_PAD_FinalDoor.wav</AudioFile>
-											<MediaIDList>
-												<MediaID ID="219508795"/>
-											</MediaIDList>
-										</AudioFileSource>
-									</ChildrenList>
-									<ActiveSourceList>
-										<ActiveSource Name="AMB_PAD_FinalDoor" ID="{0CE4F975-126F-4468-B28B-33FE9C1F2B5A}" Platform="Linked"/>
-									</ActiveSourceList>
-								</Sound>
 								<Sound Name="AMB_PAD_Sablier" ID="{E7C10284-1AB5-40BC-B0AB-E107A80AD3CB}" ShortID="668711930">
 									<PropertyList>
 										<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
@@ -680,6 +655,62 @@
 									</ChildrenList>
 									<ActiveSourceList>
 										<ActiveSource Name="AMB_PAD_Sablier" ID="{6597DECE-E22C-400A-A19F-F85F7D300210}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="AMB_WIND_SAND" ID="{E12E0A15-3636-47A3-A372-42558F33A84F}" ShortID="633109111">
+									<PropertyList>
+										<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+										<Property Name="IsStreamingEnabled" Type="bool">
+											<ValueList>
+												<Value>True</Value>
+											</ValueList>
+										</Property>
+										<Property Name="OverrideEffect" Type="bool" Value="True"/>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>9</Value>
+											</ValueList>
+											<ModifierList>
+												<ModifierInfo>
+													<Modifier Name="" ID="{7FDDE543-8C30-4AB5-ACE7-6CF02D35C5B6}"/>
+												</ModifierInfo>
+											</ModifierList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D02282EE-6893-403D-9438-D481AB659EA3}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="AMB_WIND_SAND" ID="{9355526E-3183-4737-8B9B-0A1FB4162C3B}">
+											<Language>SFX</Language>
+											<AudioFile>AMB_WIND_SAND.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="930759196"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ObjectLists>
+										<ObjectList Name="Effects">
+											<Reference>
+												<Local>
+													<EffectSlot Name="" ID="{A7A66784-C0DE-44D5-8846-DCD0275F2B8D}" ShortID="619257594">
+														<ReferenceList>
+															<Reference Name="Effect" PluginName="Wwise Tremolo" CompanyID="0" PluginID="131" PluginType="3">
+																<ObjectRef Name="Very_Slow_Modulation" ID="{6082F901-3CE1-4D78-8F2D-B2B72CF28085}" WorkUnitID="{E8613F7D-BAD3-45CD-A3ED-505576F31277}"/>
+															</Reference>
+														</ReferenceList>
+													</EffectSlot>
+												</Local>
+											</Reference>
+										</ObjectList>
+									</ObjectLists>
+									<ActiveSourceList>
+										<ActiveSource Name="AMB_WIND_SAND" ID="{9355526E-3183-4737-8B9B-0A1FB4162C3B}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
 							</ChildrenList>

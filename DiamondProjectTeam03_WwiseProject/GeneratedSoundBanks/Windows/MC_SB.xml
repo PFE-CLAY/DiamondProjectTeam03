@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="16" SoundBankVersion="154">
 	<SoundBanks>
-		<SoundBank Id="1956625499" Type="User" GUID="{ADC2D189-6608-4828-BC9C-6EF6F90834DB}" Color="19" Language="SFX" Hash="{3A8DDD80-4843-7F45-2177-4D76DFCA2778}">
+		<SoundBank Id="1956625499" Type="User" GUID="{ADC2D189-6608-4828-BC9C-6EF6F90834DB}" Color="19" Language="SFX" Hash="{494E6A49-8929-3836-56CF-F57F4DF0433B}">
 			<ObjectPath>\SoundBanks\SoundBanks_WU\MC_SB</ObjectPath>
 			<ShortName>MC_SB</ShortName>
 			<Path>MC_SB.bnk</Path>
@@ -76,7 +76,7 @@
 				</File>
 				<File Id="148074735" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>MC_Gun_Shot_06.wav</ShortName>
-					<CachePath>BA/{BABAA971-6DBA-4453-4A51-33D2C58698CE}.wem</CachePath>
+					<CachePath>9C/{9C29B7A2-ABA9-BE1A-9068-6A307C57A71C}.wem</CachePath>
 				</File>
 				<File Id="148436568" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\SP\MC_FT_Concrete_Land_03.wav</ShortName>
@@ -144,7 +144,7 @@
 				</File>
 				<File Id="379997934" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>MC_Gun_Shot_01.wav</ShortName>
-					<CachePath>EE/{EEFD2DF4-6FFB-9509-ABF0-4BA8269EA01D}.wem</CachePath>
+					<CachePath>79/{79E417EA-6BC3-BAB0-EAAF-47F117A0DB39}.wem</CachePath>
 				</File>
 				<File Id="387146543" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\SP\MC_FT_Sand_05.wav</ShortName>
@@ -152,7 +152,7 @@
 				</File>
 				<File Id="389222580" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>MC_Gun_Shot_05.wav</ShortName>
-					<CachePath>A2/{A2D7187E-C729-6D5A-EBC1-20A485508228}.wem</CachePath>
+					<CachePath>F7/{F7930729-AEAA-04B9-B78B-E3EF09C3617D}.wem</CachePath>
 				</File>
 				<File Id="393881080" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>MC\MC_FT_Metal_11.wav</ShortName>
@@ -200,7 +200,7 @@
 				</File>
 				<File Id="489469995" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>MC_Gun_Shot_02.wav</ShortName>
-					<CachePath>47/{478D3B2D-CECF-66F5-7A12-B574EE08527D}.wem</CachePath>
+					<CachePath>85/{8557EC48-3B30-289F-1144-4811A840CB61}.wem</CachePath>
 				</File>
 				<File Id="497641606" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Voices, Male, Sudden Death, Combat, Pain 04 SND85287.wav</ShortName>
@@ -244,11 +244,11 @@
 				</File>
 				<File Id="578370687" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>MC_Gun_Shot_04.wav</ShortName>
-					<CachePath>23/{2332241B-18FF-1FB5-D5E5-4B9056C66FF5}.wem</CachePath>
+					<CachePath>63/{6361F888-DF6C-E95B-A205-15E65CC8E143}.wem</CachePath>
 				</File>
 				<File Id="596462661" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>MC_Gun_Shot_03.wav</ShortName>
-					<CachePath>7A/{7A7AA0E7-40A5-38BF-1874-33C7072F2636}.wem</CachePath>
+					<CachePath>F2/{F2F9D91B-4E70-0E2D-95CC-8423B4CB84EA}.wem</CachePath>
 				</File>
 				<File Id="607185623" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>SFX\MC_SFX_PickupWeapon_02.wav</ShortName>
@@ -634,7 +634,7 @@
 						<MediaRef Id="615051598"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="1177297501" Name="Play_MC_SFX_Gun_Shoot_RC" ObjectPath="\Events\MC_WU\Play_MC_SFX_Gun_Shoot_RC" GUID="{19EDAAA1-DF79-4328-9566-97F28CD19D08}" Color="19" DurationType="OneShot" DurationMin="0.45694295" DurationMax="0.7375112">
+				<Event Id="1177297501" Name="Play_MC_SFX_Gun_Shoot_RC" ObjectPath="\Events\MC_WU\Play_MC_SFX_Gun_Shoot_RC" GUID="{19EDAAA1-DF79-4328-9566-97F28CD19D08}" Color="19" DurationType="OneShot" DurationMin="0.28785604" DurationMax="0.46460295">
 					<MediaRefs>
 						<MediaRef Id="148074735"/>
 						<MediaRef Id="379997934"/>
@@ -777,5 +777,5 @@
 			</SwitchGroups>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{E380534E-C909-D630-811E-C1512E625B0F}</FileHash>
+	<FileHash>{B43A6068-970E-C1C6-19A2-E8C1EAE27D52}</FileHash>
 </SoundBanksInfo>

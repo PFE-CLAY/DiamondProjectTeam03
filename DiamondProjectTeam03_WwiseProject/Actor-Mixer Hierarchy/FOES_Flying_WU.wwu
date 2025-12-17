@@ -614,13 +614,13 @@
 					</PropertyList>
 					<ReferenceList>
 						<Reference Name="Attenuation">
-							<ObjectRef Name="ATT_30m" ID="{07C26E29-7C77-4AD6-AA3A-91A1861593D0}" WorkUnitID="{3B4DA992-D06B-45A8-A1FE-AF5B7C9D33CA}"/>
+							<ObjectRef Name="ATT_20m" ID="{F52F7C5F-FE35-4688-9788-917AD912F4DF}" WorkUnitID="{3B4DA992-D06B-45A8-A1FE-AF5B7C9D33CA}"/>
 						</Reference>
 						<Reference Name="Conversion">
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
 						</Reference>
 						<Reference Name="OutputBus">
-							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D02282EE-6893-403D-9438-D481AB659EA3}"/>
+							<ObjectRef Name="SFX" ID="{EB4CE24D-8196-408E-9775-5E8EEFE98495}" WorkUnitID="{A9F2777E-FBA3-4BC0-B5B3-14E0777A7B23}"/>
 						</Reference>
 					</ReferenceList>
 					<ChildrenList>
@@ -640,9 +640,27 @@
 									</ValueList>
 								</Property>
 								<Property Name="OverLimitBehavior" Type="int16" Value="1"/>
+								<Property Name="Pitch" Type="int32">
+									<ModifierList>
+										<ModifierInfo>
+											<Modifier Name="" ID="{709CAF7F-C9AA-418E-8710-C513DF0B4B82}">
+												<PropertyList>
+													<Property Name="Enabled" Type="bool" Value="True"/>
+													<Property Name="Max" Type="Real64" Value="150"/>
+													<Property Name="Min" Type="Real64" Value="-150"/>
+												</PropertyList>
+											</Modifier>
+										</ModifierInfo>
+									</ModifierList>
+								</Property>
 								<Property Name="UseMaxSoundPerInstance" Type="bool">
 									<ValueList>
 										<Value>True</Value>
+									</ValueList>
+								</Property>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>3</Value>
 									</ValueList>
 								</Property>
 							</PropertyList>
@@ -669,13 +687,30 @@
 						</Sound>
 						<RandomSequenceContainer Name="FOES_Melee_Death" ID="{F10DDD00-8F87-426D-9873-AAC2C2DB1F95}" ShortID="77651138">
 							<PropertyList>
+								<Property Name="OverridePositioning" Type="bool" Value="True"/>
+								<Property Name="Pitch" Type="int32">
+									<ModifierList>
+										<ModifierInfo>
+											<Modifier Name="" ID="{ACAAC4D1-E153-4969-8835-A5D069310EC3}">
+												<PropertyList>
+													<Property Name="Enabled" Type="bool" Value="True"/>
+													<Property Name="Max" Type="Real64" Value="150"/>
+													<Property Name="Min" Type="Real64" Value="-150"/>
+												</PropertyList>
+											</Modifier>
+										</ModifierInfo>
+									</ModifierList>
+								</Property>
 								<Property Name="Volume" Type="Real64">
 									<ValueList>
-										<Value>9</Value>
+										<Value>-4</Value>
 									</ValueList>
 								</Property>
 							</PropertyList>
 							<ReferenceList>
+								<Reference Name="Attenuation">
+									<ObjectRef Name="ATT_20m" ID="{F52F7C5F-FE35-4688-9788-917AD912F4DF}" WorkUnitID="{3B4DA992-D06B-45A8-A1FE-AF5B7C9D33CA}"/>
+								</Reference>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
 								</Reference>
@@ -775,6 +810,26 @@
 							</ChildrenList>
 						</RandomSequenceContainer>
 						<RandomSequenceContainer Name="FOES_Melee_Attack" ID="{444F6C7F-54FF-4F29-993D-7370D9FB49BF}" ShortID="543929940">
+							<PropertyList>
+								<Property Name="Pitch" Type="int32">
+									<ModifierList>
+										<ModifierInfo>
+											<Modifier Name="" ID="{11806577-1425-4BCE-9C81-4095453BB2CA}">
+												<PropertyList>
+													<Property Name="Enabled" Type="bool" Value="True"/>
+													<Property Name="Max" Type="Real64" Value="150"/>
+													<Property Name="Min" Type="Real64" Value="-150"/>
+												</PropertyList>
+											</Modifier>
+										</ModifierInfo>
+									</ModifierList>
+								</Property>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>-3</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>

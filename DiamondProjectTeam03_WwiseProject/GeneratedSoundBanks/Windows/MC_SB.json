@@ -11,7 +11,7 @@
     "GUID": "{ADC2D189-6608-4828-BC9C-6EF6F90834DB}",
     "Color": "19",
     "Language": "SFX",
-    "Hash": "{3A8DDD80-4843-7F45-2177-4D76DFCA2778}",
+    "Hash": "{494E6A49-8929-3836-56CF-F57F4DF0433B}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\MC_SB",
     "ShortName": "MC_SB",
     "Path": "MC_SB.bnk",
@@ -158,7 +158,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "MC_Gun_Shot_06.wav",
-      "CachePath": "BA/{BABAA971-6DBA-4453-4A51-33D2C58698CE}.wem"
+      "CachePath": "9C/{9C29B7A2-ABA9-BE1A-9068-6A307C57A71C}.wem"
      },
      {
       "Id": "148436568",
@@ -294,7 +294,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "MC_Gun_Shot_01.wav",
-      "CachePath": "EE/{EEFD2DF4-6FFB-9509-ABF0-4BA8269EA01D}.wem"
+      "CachePath": "79/{79E417EA-6BC3-BAB0-EAAF-47F117A0DB39}.wem"
      },
      {
       "Id": "387146543",
@@ -310,7 +310,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "MC_Gun_Shot_05.wav",
-      "CachePath": "A2/{A2D7187E-C729-6D5A-EBC1-20A485508228}.wem"
+      "CachePath": "F7/{F7930729-AEAA-04B9-B78B-E3EF09C3617D}.wem"
      },
      {
       "Id": "393881080",
@@ -406,7 +406,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "MC_Gun_Shot_02.wav",
-      "CachePath": "47/{478D3B2D-CECF-66F5-7A12-B574EE08527D}.wem"
+      "CachePath": "85/{8557EC48-3B30-289F-1144-4811A840CB61}.wem"
      },
      {
       "Id": "497641606",
@@ -494,7 +494,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "MC_Gun_Shot_04.wav",
-      "CachePath": "23/{2332241B-18FF-1FB5-D5E5-4B9056C66FF5}.wem"
+      "CachePath": "63/{6361F888-DF6C-E95B-A205-15E65CC8E143}.wem"
      },
      {
       "Id": "596462661",
@@ -502,7 +502,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "MC_Gun_Shot_03.wav",
-      "CachePath": "7A/{7A7AA0E7-40A5-38BF-1874-33C7072F2636}.wem"
+      "CachePath": "F2/{F2F9D91B-4E70-0E2D-95CC-8423B4CB84EA}.wem"
      },
      {
       "Id": "607185623",
@@ -1487,8 +1487,8 @@
       "GUID": "{19EDAAA1-DF79-4328-9566-97F28CD19D08}",
       "Color": "19",
       "DurationType": "OneShot",
-      "DurationMin": "0.45694295",
-      "DurationMax": "0.7375112",
+      "DurationMin": "0.28785604",
+      "DurationMax": "0.46460295",
       "MediaRefs": [
        {
         "Id": "148074735"
@@ -1909,6 +1909,6 @@
     ]
    }
   ],
-  "FileHash": "{5CD45A22-23A8-0D9A-58B5-494F7BE9D8B1}"
+  "FileHash": "{E1B6939F-7462-1A7F-68B2-1C8616E15049}"
  }
 }

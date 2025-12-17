@@ -11,7 +11,7 @@
     "GUID": "{46F08C13-7BDA-47D5-A653-BDFCDAD2487B}",
     "Color": "11",
     "Language": "SFX",
-    "Hash": "{9A030CC5-9991-A2C8-82C6-D7427C5531C8}",
+    "Hash": "{20BB78E9-3536-51D8-1F5B-FCFB60166C18}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\FOES_Flying_SB",
     "ShortName": "FOES_Flying_SB",
     "Path": "FOES_Flying_SB.bnk",
@@ -271,10 +271,10 @@
       "ObjectPath": "\\Events\\FOES_Flying_WU\\Play_FOES_Melee_Attack",
       "GUID": "{B05FBE0E-77CF-4193-8AD7-FBAF1711239E}",
       "Color": "11",
-      "MaxAttenuation": "3000",
+      "MaxAttenuation": "2000",
       "DurationType": "OneShot",
-      "DurationMin": "2.8907917",
-      "DurationMax": "3.3302917",
+      "DurationMin": "2.6508677",
+      "DurationMax": "3.6317089",
       "MediaRefs": [
        {
         "Id": "155865366"
@@ -296,7 +296,7 @@
       "ObjectPath": "\\Events\\FOES_Flying_WU\\Play_FOES_Melee_Charge",
       "GUID": "{6D6D34D8-A204-4912-BAEF-A0433F66176B}",
       "Color": "11",
-      "MaxAttenuation": "3000",
+      "MaxAttenuation": "2000",
       "DurationType": "OneShot",
       "DurationMin": "1.9220417",
       "DurationMax": "2.538771",
@@ -324,10 +324,10 @@
       "ObjectPath": "\\Events\\FOES_Flying_WU\\Play_FOES_Melee_Death",
       "GUID": "{5AEC5573-B899-4EEA-B073-F8F0445C7362}",
       "Color": "11",
-      "MaxAttenuation": "3000",
+      "MaxAttenuation": "2000",
       "DurationType": "OneShot",
-      "DurationMin": "2.795646",
-      "DurationMax": "3.2353542",
+      "DurationMin": "2.5636187",
+      "DurationMax": "3.5281787",
       "MediaRefs": [
        {
         "Id": "218138060"
@@ -349,7 +349,7 @@
       "ObjectPath": "\\Events\\FOES_Flying_WU\\Play_FOES_Melee_Move_LP",
       "GUID": "{DD99FFBE-5C9F-4818-9840-21638F3DB5B5}",
       "Color": "11",
-      "MaxAttenuation": "3000",
+      "MaxAttenuation": "2000",
       "DurationType": "Infinite",
       "MediaRefs": [
        {
@@ -718,6 +718,6 @@
     ]
    }
   ],
-  "FileHash": "{536E9171-BCFD-6E08-1EBF-208F580A4861}"
+  "FileHash": "{6D2B0DC9-75AB-BC5F-8F78-318D99A4BFEE}"
  }
 }

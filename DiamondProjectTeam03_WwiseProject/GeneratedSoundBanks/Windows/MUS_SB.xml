@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="16" SoundBankVersion="154">
 	<SoundBanks>
-		<SoundBank Id="1329476194" Type="User" GUID="{4B32F9EE-D939-4AEA-A633-697781A78CE3}" Color="21" Language="SFX" Hash="{E78D4A8B-57FB-7309-8ED6-25D546D20865}">
+		<SoundBank Id="1329476194" Type="User" GUID="{4B32F9EE-D939-4AEA-A633-697781A78CE3}" Color="21" Language="SFX" Hash="{7704F7C8-57EA-A9EE-29B5-2827AAE02436}">
 			<ObjectPath>\SoundBanks\SoundBanks_WU\MUS_SB</ObjectPath>
 			<ShortName>MUS_SB</ShortName>
 			<Path>MUS_SB.bnk</Path>
@@ -26,6 +26,11 @@
 						<MediaRef Id="1072494655"/>
 					</MediaRefs>
 				</Event>
+				<Event Id="1784188493" Name="Stop_MUS_ARENA" ObjectPath="\Events\MUS_WU\Stop_MUS_ARENA" GUID="{182B8F79-B612-4322-A636-C7BC836A59D9}" Color="8" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0">
+					<MediaRefs>
+						<MediaRef Id="721910099"/>
+					</MediaRefs>
+				</Event>
 				<Event Id="888771158" Name="Stop_MUS_Blacksands_Hub" ObjectPath="\Events\MUS_WU\Stop_MUS_Blacksands_Hub" GUID="{60E90B0F-AFEA-4121-8616-69BB7F5853C0}" Color="8" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0">
 					<MediaRefs>
 						<MediaRef Id="1072494655"/>
@@ -34,5 +39,5 @@
 			</Events>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{BE9CDB01-4113-2C3A-EF70-02DFCD6CF49B}</FileHash>
+	<FileHash>{F6E24154-38C3-1C1B-AB1F-5D7ADA12A7EF}</FileHash>
 </SoundBanksInfo>

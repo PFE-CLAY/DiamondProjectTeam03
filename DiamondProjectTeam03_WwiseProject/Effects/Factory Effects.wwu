@@ -1893,10 +1893,12 @@
 						</Effect>
 						<Effect Name="Very_Slow_Modulation" ID="{6082F901-3CE1-4D78-8F2D-B2B72CF28085}" PluginName="Wwise Tremolo" CompanyID="0" PluginID="131" PluginType="3">
 							<PropertyList>
-								<Property Name="ModFrequency" Type="Real32" Value="0.5"/>
+								<Property Name="ModFrequency" Type="Real32" Value="0.05"/>
 								<Property Name="ModPWM" Type="Real32" Value="0"/>
+								<Property Name="ModPhaseMode" Type="int32" Value="2"/>
 								<Property Name="ModPhaseOffset" Type="Real32" Value="-180"/>
-								<Property Name="ModPhaseSpread" Type="Real32" Value="58"/>
+								<Property Name="ModPhaseSpread" Type="Real32" Value="34"/>
+								<Property Name="ModSmoothing" Type="Real32" Value="46"/>
 							</PropertyList>
 						</Effect>
 						<Effect Name="Boomerang" ID="{65397B72-19EC-43DB-B2D2-EB84437B6BDC}" PluginName="Wwise Tremolo" CompanyID="0" PluginID="131" PluginType="3">
