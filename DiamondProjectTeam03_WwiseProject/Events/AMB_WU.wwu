@@ -152,6 +152,39 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="Play_AMB_WIND_SAND" ID="{B1C7BABF-E778-4551-8766-9310FE882ED4}">
+					<ChildrenList>
+						<Action Name="" ID="{683D492E-4969-44FB-A11E-466AEAC48B53}" ShortID="413052845">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="AMB_WIND_SAND" ID="{E12E0A15-3636-47A3-A372-42558F33A84F}" WorkUnitID="{183124D0-ACA8-4AFA-A8E9-44C003A151DE}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{7AAFD66B-1CD7-43C2-B7ED-F11AEB87663F}" ShortID="1026550376">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="36"/>
+								<Property Name="SeekPercent" Type="Real64">
+									<ModifierList>
+										<ModifierInfo>
+											<Modifier Name="" ID="{58EB9466-13A7-4927-9A87-7541C3D6B679}">
+												<PropertyList>
+													<Property Name="Enabled" Type="bool" Value="True"/>
+													<Property Name="Max" Type="Real64" Value="100"/>
+												</PropertyList>
+											</Modifier>
+										</ModifierInfo>
+									</ModifierList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="AMB_WIND_SAND" ID="{E12E0A15-3636-47A3-A372-42558F33A84F}" WorkUnitID="{183124D0-ACA8-4AFA-A8E9-44C003A151DE}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

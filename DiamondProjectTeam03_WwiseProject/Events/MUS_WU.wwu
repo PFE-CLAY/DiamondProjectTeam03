@@ -44,6 +44,21 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="Stop_MUS_ARENA" ID="{182B8F79-B612-4322-A636-C7BC836A59D9}">
+					<ChildrenList>
+						<Action Name="" ID="{811AA467-4F4E-44EA-BC09-F49EFC1794CD}" ShortID="947592606">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+								<Property Name="FadeTime" Type="Real64" Value="1.5"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="MUS_ARENA" ID="{97AB55CD-69C5-45E8-B2A6-0FA67392749B}" WorkUnitID="{08BF5C28-C058-481A-9682-718C5A7E58B0}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

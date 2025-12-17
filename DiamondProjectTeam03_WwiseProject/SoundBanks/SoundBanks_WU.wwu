@@ -51,6 +51,7 @@
 						<Property Name="OverrideColor" Type="bool" Value="True"/>
 					</PropertyList>
 					<ObjectInclusionList>
+						<ObjectRef Name="Play_AMB_WIND_SAND" ID="{B1C7BABF-E778-4551-8766-9310FE882ED4}" WorkUnitID="{1BF409B0-B754-4C8B-AEBF-EFEE5E6D5D4D}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_AMB_PAD_CorpseTrap" ID="{06E4EAB2-C55E-4652-84C1-FD484B705D76}" WorkUnitID="{1BF409B0-B754-4C8B-AEBF-EFEE5E6D5D4D}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_AMB_Arena_Crowd" ID="{044D5574-12FD-4A7D-829F-E12D304EBC61}" WorkUnitID="{1BF409B0-B754-4C8B-AEBF-EFEE5E6D5D4D}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_AMB_PAD_ControlCenter" ID="{36CC78C6-483D-4AB2-9AF1-71F27874043E}" WorkUnitID="{1BF409B0-B754-4C8B-AEBF-EFEE5E6D5D4D}" Origin="Manual" Filter="7"/>

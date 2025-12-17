@@ -11,7 +11,7 @@
     "GUID": "{459D1F67-52BD-4FA1-B846-B8F3A50C2C5F}",
     "Color": "17",
     "Language": "SFX",
-    "Hash": "{6D14B597-C695-5589-E47A-AB7FA3D243CF}",
+    "Hash": "{0A05BF0B-FFA3-7014-DDA1-20B3134A65EC}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\SFX_SB",
     "ShortName": "SFX_SB",
     "Path": "SFX_SB.bnk",
@@ -57,12 +57,36 @@
       "CachePath": "64/{64E42013-D7E2-808D-E95E-779D93FF55D5}.wem"
      },
      {
+      "Id": "599335044",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Cine_wakeup.wav",
+      "CachePath": "F4/{F4E8D5EA-456D-943B-02DB-33DB268E318C}.wem"
+     },
+     {
+      "Id": "604138536",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Cine_end.wav",
+      "CachePath": "D3/{D341DCC0-536B-69E3-2558-589C3690AA27}.wem"
+     },
+     {
       "Id": "640927559",
       "Language": "SFX",
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "SFX_Button_Backstage.wav",
       "CachePath": "82/{82F255B1-9004-6903-C391-016D39FD6611}.wem"
+     },
+     {
+      "Id": "670938057",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Cine_menu.wav",
+      "CachePath": "FA/{FA662D48-D620-6CFC-23E1-19210B284D40}.wem"
      },
      {
       "Id": "794556847",
@@ -87,6 +111,14 @@
       "Location": "Memory",
       "ShortName": "MC\\SFX_Door_Pyramid.wav",
       "CachePath": "1A/{1AD9C707-2215-0919-22D3-BF8A571C4E30}.wem"
+     },
+     {
+      "Id": "879513473",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Woosh_Menu.wav",
+      "CachePath": "E1/{E1AC408C-2737-85EF-DEA2-3A5422F48F54}.wem"
      },
      {
       "Id": "1013981530",
@@ -114,6 +146,51 @@
      }
     ],
     "Events": [
+     {
+      "Id": "829040339",
+      "Name": "Play_Cine_end",
+      "ObjectPath": "\\Events\\SFX_WU\\Play_Cine_end",
+      "GUID": "{1A7C53A4-1834-409A-909E-09275CCE6874}",
+      "Color": "17",
+      "DurationType": "OneShot",
+      "DurationMin": "21.153042",
+      "DurationMax": "21.153042",
+      "MediaRefs": [
+       {
+        "Id": "604138536"
+       }
+      ]
+     },
+     {
+      "Id": "138318473",
+      "Name": "Play_Cine_menu",
+      "ObjectPath": "\\Events\\SFX_WU\\Play_Cine_menu",
+      "GUID": "{A8172E8D-7409-4792-B42F-7DC2B0A6D030}",
+      "Color": "17",
+      "DurationType": "OneShot",
+      "DurationMin": "16.218374",
+      "DurationMax": "16.218374",
+      "MediaRefs": [
+       {
+        "Id": "670938057"
+       }
+      ]
+     },
+     {
+      "Id": "3085573507",
+      "Name": "Play_Cine_wakeup",
+      "ObjectPath": "\\Events\\SFX_WU\\Play_Cine_wakeup",
+      "GUID": "{1CE1E1CE-18F7-4D1B-A05F-70FF89834687}",
+      "Color": "17",
+      "DurationType": "OneShot",
+      "DurationMin": "22.075542",
+      "DurationMax": "22.075542",
+      "MediaRefs": [
+       {
+        "Id": "599335044"
+       }
+      ]
+     },
      {
       "Id": "1623238786",
       "Name": "Play_SFX_Button_Backstage",
@@ -223,10 +300,25 @@
         "Id": "794556847"
        }
       ]
+     },
+     {
+      "Id": "2415567568",
+      "Name": "Play_Woosh_Menu",
+      "ObjectPath": "\\Events\\SFX_WU\\Play_Woosh_Menu",
+      "GUID": "{9595ACAB-3807-4E6D-A05A-018B4F89345C}",
+      "Color": "17",
+      "DurationType": "OneShot",
+      "DurationMin": "3.259125",
+      "DurationMax": "3.259125",
+      "MediaRefs": [
+       {
+        "Id": "879513473"
+       }
+      ]
      }
     ]
    }
   ],
-  "FileHash": "{19BA2CCA-4ECE-BC89-B838-6E17777701E1}"
+  "FileHash": "{D7A62C1A-37FA-2FEE-16F7-5AE8D79C19AF}"
  }
 }

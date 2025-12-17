@@ -2774,6 +2774,106 @@
 								<ActiveSource Name="SFX_EndCinematic" ID="{1A85E61A-7125-4B54-BBB0-08C9CC5F4194}" Platform="Linked"/>
 							</ActiveSourceList>
 						</Sound>
+						<ActorMixer Name="Cinematics" ID="{428E8229-D101-4C01-84B8-FE5B16433455}" ShortID="269881987">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D02282EE-6893-403D-9438-D481AB659EA3}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<Sound Name="Cine_end" ID="{866D2301-BFB9-4C10-8854-4D1FD9E8B955}" ShortID="132183534">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D02282EE-6893-403D-9438-D481AB659EA3}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Cine_end" ID="{E8FE3959-F9AA-40CE-8B4D-DAA2F43FAEB9}">
+											<Language>SFX</Language>
+											<AudioFile>Cine_end.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="604138536"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Cine_end" ID="{E8FE3959-F9AA-40CE-8B4D-DAA2F43FAEB9}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="Cine_menu" ID="{647F53D5-8FDB-44F8-BAAA-BFE27EE94B9C}" ShortID="808587580">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D02282EE-6893-403D-9438-D481AB659EA3}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Cine_menu" ID="{C405D5B8-C7D2-45FA-946F-3C1126CDFB4A}">
+											<Language>SFX</Language>
+											<AudioFile>Cine_menu.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="670938057"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Cine_menu" ID="{C405D5B8-C7D2-45FA-946F-3C1126CDFB4A}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="Cine_wakeup" ID="{B70C29B3-9577-4425-A9C7-25862E85063B}" ShortID="141443217">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D02282EE-6893-403D-9438-D481AB659EA3}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Cine_wakeup" ID="{863F0630-B573-42E9-AD1A-B23863246EA4}">
+											<Language>SFX</Language>
+											<AudioFile>Cine_wakeup.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="599335044"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Cine_wakeup" ID="{863F0630-B573-42E9-AD1A-B23863246EA4}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="Woosh_Menu" ID="{F830C239-846B-40B6-8F25-A59A39BB63AD}" ShortID="423744966">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6161F0F8-959D-4E67-94F4-A359240D5612}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D02282EE-6893-403D-9438-D481AB659EA3}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Woosh_Menu" ID="{1AF1B20F-CFEF-4735-9263-8A13F781B1D8}">
+											<Language>SFX</Language>
+											<AudioFile>Woosh_Menu.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="879513473"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Woosh_Menu" ID="{1AF1B20F-CFEF-4735-9263-8A13F781B1D8}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+							</ChildrenList>
+						</ActorMixer>
 					</ChildrenList>
 				</ActorMixer>
 			</ChildrenList>

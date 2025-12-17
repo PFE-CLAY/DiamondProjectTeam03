@@ -104,6 +104,50 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="Play_Cine_end" ID="{1A7C53A4-1834-409A-909E-09275CCE6874}">
+					<ChildrenList>
+						<Action Name="" ID="{D77A3E25-AD78-4B52-804B-2418C68AC29A}" ShortID="583232897">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Cine_end" ID="{866D2301-BFB9-4C10-8854-4D1FD9E8B955}" WorkUnitID="{5DFA8BAE-0AEA-4A3F-92EC-FBABE50597A1}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_Cine_menu" ID="{A8172E8D-7409-4792-B42F-7DC2B0A6D030}">
+					<ChildrenList>
+						<Action Name="" ID="{A515AE12-2D02-408F-B72C-A5BC4BA13139}" ShortID="768525939">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Cine_menu" ID="{647F53D5-8FDB-44F8-BAAA-BFE27EE94B9C}" WorkUnitID="{5DFA8BAE-0AEA-4A3F-92EC-FBABE50597A1}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_Woosh_Menu" ID="{9595ACAB-3807-4E6D-A05A-018B4F89345C}">
+					<ChildrenList>
+						<Action Name="" ID="{BB8962D6-59BB-46D3-A853-1904C4CAD821}" ShortID="928401950">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Woosh_Menu" ID="{F830C239-846B-40B6-8F25-A59A39BB63AD}" WorkUnitID="{5DFA8BAE-0AEA-4A3F-92EC-FBABE50597A1}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_Cine_wakeup" ID="{1CE1E1CE-18F7-4D1B-A05F-70FF89834687}">
+					<ChildrenList>
+						<Action Name="" ID="{2AECE037-F023-43F2-8179-45C014413772}" ShortID="45569372">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Cine_wakeup" ID="{B70C29B3-9577-4425-A9C7-25862E85063B}" WorkUnitID="{5DFA8BAE-0AEA-4A3F-92EC-FBABE50597A1}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>
