@@ -11,7 +11,7 @@
     "GUID": "{9DC5CBA4-02D0-4677-A565-21ECA413E694}",
     "Color": "4",
     "Language": "SFX",
-    "Hash": "{7736A919-EEDF-A901-27DE-664B23EC9A60}",
+    "Hash": "{853B722B-31FF-C294-8F3C-C20A9E238F9B}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\AMB_SB",
     "ShortName": "AMB_SB",
     "Path": "AMB_SB.bnk",
@@ -1038,6 +1038,6 @@
     ]
    }
   ],
-  "FileHash": "{C897396E-195A-3999-2620-4C61525EFCA5}"
+  "FileHash": "{DAE90F79-F887-25D2-BE85-C9B2AD56C83F}"
  }
 }

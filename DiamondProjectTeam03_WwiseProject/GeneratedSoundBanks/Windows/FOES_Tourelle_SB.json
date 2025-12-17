@@ -11,7 +11,7 @@
     "GUID": "{8CC30184-23AF-4DB5-9844-9B04DF10A650}",
     "Color": "10",
     "Language": "SFX",
-    "Hash": "{A6384D83-D5B2-0650-09E4-250CDBFA4551}",
+    "Hash": "{81FE0B6E-CA58-E5AB-62EF-A3C758335B60}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\FOES_Tourelle_SB",
     "ShortName": "FOES_Tourelle_SB",
     "Path": "FOES_Tourelle_SB.bnk",
@@ -549,6 +549,6 @@
     ]
    }
   ],
-  "FileHash": "{63B29862-1E81-DF36-0C50-CD717950C149}"
+  "FileHash": "{75126E82-018F-FF7A-300A-C016D678741F}"
  }
 }

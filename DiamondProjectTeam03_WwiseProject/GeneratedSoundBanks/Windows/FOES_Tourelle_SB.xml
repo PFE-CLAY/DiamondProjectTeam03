@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="16" SoundBankVersion="154">
 	<SoundBanks>
-		<SoundBank Id="3250948517" Type="User" GUID="{8CC30184-23AF-4DB5-9844-9B04DF10A650}" Color="10" Language="SFX" Hash="{A6384D83-D5B2-0650-09E4-250CDBFA4551}">
+		<SoundBank Id="3250948517" Type="User" GUID="{8CC30184-23AF-4DB5-9844-9B04DF10A650}" Color="10" Language="SFX" Hash="{81FE0B6E-CA58-E5AB-62EF-A3C758335B60}">
 			<ObjectPath>\SoundBanks\SoundBanks_WU\FOES_Tourelle_SB</ObjectPath>
 			<ShortName>FOES_Tourelle_SB</ShortName>
 			<Path>FOES_Tourelle_SB.bnk</Path>
@@ -183,5 +183,5 @@
 			</StateGroups>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{5EA7C2C2-C449-06DB-73D7-95B501D8BBA7}</FileHash>
+	<FileHash>{1CCBF50D-0B53-7957-C147-FC1EF8BF38B0}</FileHash>
 </SoundBanksInfo>

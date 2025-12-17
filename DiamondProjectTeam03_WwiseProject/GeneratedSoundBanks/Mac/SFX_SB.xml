@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SoundBanksInfo Platform="Mac" BasePlatform="Mac" SchemaVersion="16" SoundBankVersion="154">
 	<SoundBanks>
-		<SoundBank Id="3896292454" Type="User" GUID="{459D1F67-52BD-4FA1-B846-B8F3A50C2C5F}" Color="17" Language="SFX" Hash="{3F25947D-8A4F-B3B0-F1D3-1EC6B0FD17F6}">
+		<SoundBank Id="3896292454" Type="User" GUID="{459D1F67-52BD-4FA1-B846-B8F3A50C2C5F}" Color="17" Language="SFX" Hash="{66CEAA13-692C-A9F8-6A2C-B6179224FCD8}">
 			<ObjectPath>\SoundBanks\SoundBanks_WU\SFX_SB</ObjectPath>
 			<ShortName>SFX_SB</ShortName>
 			<Path>SFX_SB.bnk</Path>
@@ -26,9 +26,21 @@
 					<ShortName>SFX_BlackSand_Glitchy_2s_Stereo_01.wav</ShortName>
 					<CachePath>64/{64E42013-D7E2-808D-E95E-779D93FF55D5}.wem</CachePath>
 				</File>
+				<File Id="599335044" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Cine_wakeup.wav</ShortName>
+					<CachePath>F4/{F4E8D5EA-456D-943B-02DB-33DB268E318C}.wem</CachePath>
+				</File>
+				<File Id="604138536" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Cine_end.wav</ShortName>
+					<CachePath>D3/{D341DCC0-536B-69E3-2558-589C3690AA27}.wem</CachePath>
+				</File>
 				<File Id="640927559" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>SFX_Button_Backstage.wav</ShortName>
 					<CachePath>82/{82F255B1-9004-6903-C391-016D39FD6611}.wem</CachePath>
+				</File>
+				<File Id="670938057" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Cine_menu.wav</ShortName>
+					<CachePath>FA/{FA662D48-D620-6CFC-23E1-19210B284D40}.wem</CachePath>
 				</File>
 				<File Id="794556847" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>MC\SFX_HourGlass_Idle_LP.wav</ShortName>
@@ -41,6 +53,10 @@
 				<File Id="862611700" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>MC\SFX_Door_Pyramid.wav</ShortName>
 					<CachePath>1A/{1AD9C707-2215-0919-22D3-BF8A571C4E30}.wem</CachePath>
+				</File>
+				<File Id="879513473" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Woosh_Menu.wav</ShortName>
+					<CachePath>E1/{E1AC408C-2737-85EF-DEA2-3A5422F48F54}.wem</CachePath>
 				</File>
 				<File Id="1013981530" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>SFX_BlackSand_Glitchy_2s_Stereo_05.wav</ShortName>
@@ -56,6 +72,21 @@
 				</File>
 			</Media>
 			<Events>
+				<Event Id="829040339" Name="Play_Cine_end" ObjectPath="\Events\SFX_WU\Play_Cine_end" GUID="{1A7C53A4-1834-409A-909E-09275CCE6874}" Color="17" DurationType="OneShot" DurationMin="21.153042" DurationMax="21.153042">
+					<MediaRefs>
+						<MediaRef Id="604138536"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="138318473" Name="Play_Cine_menu" ObjectPath="\Events\SFX_WU\Play_Cine_menu" GUID="{A8172E8D-7409-4792-B42F-7DC2B0A6D030}" Color="17" DurationType="OneShot" DurationMin="16.218374" DurationMax="16.218374">
+					<MediaRefs>
+						<MediaRef Id="670938057"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="3085573507" Name="Play_Cine_wakeup" ObjectPath="\Events\SFX_WU\Play_Cine_wakeup" GUID="{1CE1E1CE-18F7-4D1B-A05F-70FF89834687}" Color="17" DurationType="OneShot" DurationMin="22.075542" DurationMax="22.075542">
+					<MediaRefs>
+						<MediaRef Id="599335044"/>
+					</MediaRefs>
+				</Event>
 				<Event Id="1623238786" Name="Play_SFX_Button_Backstage" ObjectPath="\Events\SFX_WU\Play_SFX_Button_Backstage" GUID="{F8593F23-32CE-4C34-A551-35034A61FD79}" Color="17" MaxAttenuation="2000" DurationType="OneShot" DurationMin="0.9392083" DurationMax="0.9392083">
 					<MediaRefs>
 						<MediaRef Id="640927559"/>
@@ -87,13 +118,18 @@
 						<MediaRef Id="1049815799"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="2563465684" Name="Play_SFX_HourGlass_Idle_LP" ObjectPath="\Events\SFX_WU\Play_SFX_HourGlass_Idle_LP" GUID="{0994537E-EF34-4F9C-A1D4-F9FFCF6E9CD1}" Color="17" MaxAttenuation="150000" DurationType="Infinite">
+				<Event Id="2563465684" Name="Play_SFX_HourGlass_Idle_LP" ObjectPath="\Events\SFX_WU\Play_SFX_HourGlass_Idle_LP" GUID="{0994537E-EF34-4F9C-A1D4-F9FFCF6E9CD1}" Color="17" MaxAttenuation="10000" DurationType="Infinite">
 					<MediaRefs>
 						<MediaRef Id="794556847"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="2415567568" Name="Play_Woosh_Menu" ObjectPath="\Events\SFX_WU\Play_Woosh_Menu" GUID="{9595ACAB-3807-4E6D-A05A-018B4F89345C}" Color="17" DurationType="OneShot" DurationMin="3.259125" DurationMax="3.259125">
+					<MediaRefs>
+						<MediaRef Id="879513473"/>
 					</MediaRefs>
 				</Event>
 			</Events>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{F150A719-E4F2-0188-E10A-BEF0E22A2B55}</FileHash>
+	<FileHash>{197D27E0-481C-19E7-A731-A8FEF6CB0CC3}</FileHash>
 </SoundBanksInfo>

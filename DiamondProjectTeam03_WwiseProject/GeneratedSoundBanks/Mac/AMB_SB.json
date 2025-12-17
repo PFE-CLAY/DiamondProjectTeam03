@@ -11,7 +11,7 @@
     "GUID": "{9DC5CBA4-02D0-4677-A565-21ECA413E694}",
     "Color": "4",
     "Language": "SFX",
-    "Hash": "{7CC153C0-66E8-12C3-546E-09D8454CD4D2}",
+    "Hash": "{853B722B-31FF-C294-8F3C-C20A9E238F9B}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\AMB_SB",
     "ShortName": "AMB_SB",
     "Path": "AMB_SB.bnk",
@@ -227,9 +227,10 @@
      {
       "Id": "783949220",
       "Language": "SFX",
-      "Streaming": "false",
-      "Location": "Memory",
+      "Streaming": "true",
+      "Location": "Loose",
       "ShortName": "AMB\\AMB_PAD_Crowd.wav",
+      "Path": "Media/783949220.wem",
       "CachePath": "39/{399F1149-7F7B-AF17-551B-EACA048CCA05}.wem"
      },
      {
@@ -343,6 +344,15 @@
       "Location": "Memory",
       "ShortName": "AMB\\RFX\\AMB_RFX_Crowd_Individual_02.wav",
       "CachePath": "C5/{C5D4F69F-4A43-C271-EA82-1422D7D302A0}.wem"
+     },
+     {
+      "Id": "930759196",
+      "Language": "SFX",
+      "Streaming": "true",
+      "Location": "Loose",
+      "ShortName": "AMB_WIND_SAND.wav",
+      "Path": "Media/930759196.wem",
+      "CachePath": "AA/{AAE04847-D18F-C3F1-D79E-6001FC485A05}.wem"
      },
      {
       "Id": "935598577",
@@ -478,6 +488,14 @@
        "LibId": "6881283"
       },
       {
+       "Id": "2394809124",
+       "Name": "Very_Slow_Modulation",
+       "ObjectPath": "\\Effects\\Factory Effects\\Tremolo\\Very_Slow_Modulation",
+       "GUID": "{6082F901-3CE1-4D78-8F2D-B2B72CF28085}",
+       "LibName": "Wwise Tremolo",
+       "LibId": "8585219"
+      },
+      {
        "Id": "3442768367",
        "Name": "Hall_Large_Dark",
        "ObjectPath": "\\Effects\\Factory Effects\\RoomVerb\\Halls\\Hall_Large_Dark",
@@ -502,7 +520,7 @@
       "ObjectPath": "\\Events\\AMB_WU\\Play_AMB_Arena_Crowd",
       "GUID": "{044D5574-12FD-4A7D-829F-E12D304EBC61}",
       "Color": "4",
-      "MaxAttenuation": "3000",
+      "MaxAttenuation": "15000",
       "DurationType": "Infinite",
       "MediaRefs": [
        {
@@ -717,6 +735,27 @@
         "Id": "754770262"
        }
       ]
+     },
+     {
+      "Id": "1347948592",
+      "Name": "Play_AMB_WIND_SAND",
+      "ObjectPath": "\\Events\\AMB_WU\\Play_AMB_WIND_SAND",
+      "GUID": "{B1C7BABF-E778-4551-8766-9310FE882ED4}",
+      "Color": "4",
+      "MaxAttenuation": "3000",
+      "DurationType": "Infinite",
+      "MediaRefs": [
+       {
+        "Id": "930759196"
+       }
+      ],
+      "PluginRefs": {
+       "ShareSets": [
+        {
+         "Id": "2394809124"
+        }
+       ]
+      }
      }
     ],
     "Busses": [
@@ -999,6 +1038,6 @@
     ]
    }
   ],
-  "FileHash": "{8D162B4B-EAC3-3F3A-8452-D9C369F134D5}"
+  "FileHash": "{0B8DB949-BD68-C474-C8BF-3773F35EBCB3}"
  }
 }

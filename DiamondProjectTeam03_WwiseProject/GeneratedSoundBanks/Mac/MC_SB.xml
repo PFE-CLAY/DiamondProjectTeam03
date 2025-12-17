@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SoundBanksInfo Platform="Mac" BasePlatform="Mac" SchemaVersion="16" SoundBankVersion="154">
 	<SoundBanks>
-		<SoundBank Id="1956625499" Type="User" GUID="{ADC2D189-6608-4828-BC9C-6EF6F90834DB}" Color="19" Language="SFX" Hash="{BE089F69-CF7C-7132-EDCB-E092E802D9EF}">
+		<SoundBank Id="1956625499" Type="User" GUID="{ADC2D189-6608-4828-BC9C-6EF6F90834DB}" Color="19" Language="SFX" Hash="{A7979F4B-FDF0-E8CA-BCAE-D8C65FC35980}">
 			<ObjectPath>\SoundBanks\SoundBanks_WU\MC_SB</ObjectPath>
 			<ShortName>MC_SB</ShortName>
 			<Path>MC_SB.bnk</Path>
@@ -17,10 +17,6 @@
 				<File Id="34141530" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\SP\MC_FT_Sand_Jump_01.wav</ShortName>
 					<CachePath>0C/{0C986EED-5AF2-7F69-9762-257FCD695EE0}.wem</CachePath>
-				</File>
-				<File Id="36917763" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>MC_SFX_Gun_Shoot_01.wav</ShortName>
-					<CachePath>29/{29B362C9-0E9F-4F98-8D87-CEC87FE9F0E7}.wem</CachePath>
 				</File>
 				<File Id="44684202" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\SP\MC_FT_Sand_08.wav</ShortName>
@@ -38,10 +34,6 @@
 					<ShortName>AMB\SP\MC_FT_Sand_Jump_02.wav</ShortName>
 					<CachePath>E4/{E40A7934-05E0-B500-93D6-C59DAAD989B6}.wem</CachePath>
 				</File>
-				<File Id="62282605" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>MC_SFX_Gun_Shoot_02.wav</ShortName>
-					<CachePath>6F/{6F5F0C1F-DBA0-BF94-E54E-F394DC4AA072}.wem</CachePath>
-				</File>
 				<File Id="64776164" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>MC\MC_FT_Concrete_02.wav</ShortName>
 					<CachePath>32/{324A9DFC-88A5-D474-01F3-E0D99CAEB188}.wem</CachePath>
@@ -49,10 +41,6 @@
 				<File Id="66925727" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>MC\MC_FT_Concrete_03.wav</ShortName>
 					<CachePath>77/{773D71E3-F4E5-4D21-ABA1-2721D2B8D42D}.wem</CachePath>
-				</File>
-				<File Id="70109824" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>MC_SFX_Gun_Shoot_04.wav</ShortName>
-					<CachePath>FC/{FCFCED4F-42DB-F871-49BD-508D61888A7C}.wem</CachePath>
 				</File>
 				<File Id="97955047" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\SP\MC_FT_Metal_Land_03.wav</ShortName>
@@ -70,6 +58,10 @@
 					<ShortName>AMB\SP\MC_FT_Concrete_Jump_02.wav</ShortName>
 					<CachePath>AF/{AF27FD3A-E5F2-945D-DC63-471942E9CB7F}.wem</CachePath>
 				</File>
+				<File Id="123620866" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Swooshes, Whoosh, Wind, Soft, Short 02 SND55221 1.wav</ShortName>
+					<CachePath>86/{8649F01B-1F24-4252-2450-F8FB0313085F}.wem</CachePath>
+				</File>
 				<File Id="130136752" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>MC_SFX_Weapon_Armed.wav</ShortName>
 					<CachePath>F6/{F6D6D4C3-0015-4B76-17A7-DBBECFCC2D43}.wem</CachePath>
@@ -82,9 +74,17 @@
 					<ShortName>AMB\SP\MC_FT_Metal_Land_05.wav</ShortName>
 					<CachePath>E0/{E019203B-2A53-E4EB-04A2-A15E4A31F212}.wem</CachePath>
 				</File>
+				<File Id="148074735" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>MC_Gun_Shot_06.wav</ShortName>
+					<CachePath>9C/{9C29B7A2-ABA9-BE1A-9068-6A307C57A71C}.wem</CachePath>
+				</File>
 				<File Id="148436568" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\SP\MC_FT_Concrete_Land_03.wav</ShortName>
 					<CachePath>6E/{6E0FB1C1-1509-9175-432B-F8C4A33B0CDB}.wem</CachePath>
+				</File>
+				<File Id="154962763" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>MC_Gun_MaxOverheat.wav</ShortName>
+					<CachePath>06/{061F8DF6-8A9C-1095-EE7F-8638AA138D45}.wem</CachePath>
 				</File>
 				<File Id="156842051" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\SP\MC_FT_Metal_Jump_04.wav</ShortName>
@@ -101,6 +101,10 @@
 				<File Id="211150638" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\SP\MC_FT_Sand_01.wav</ShortName>
 					<CachePath>BF/{BF9D374E-1539-0DA6-DEAC-ABDC5FB2A55C}.wem</CachePath>
+				</File>
+				<File Id="212106629" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Tools, Power, Workshop, Electrical, Circular Saw, Machine, Power, Buzz, Metal 02 SND133864-glued-01_002.wav</ShortName>
+					<CachePath>71/{7180860B-91B4-5A52-E7B1-04CBF54605E6}.wem</CachePath>
 				</File>
 				<File Id="221302388" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>MC\MC_FT_Metal_09.wav</ShortName>
@@ -130,9 +134,25 @@
 					<ShortName>MC\MC_FT_Concrete_01.wav</ShortName>
 					<CachePath>B0/{B07CA63B-2EC3-ED4C-313F-DA444D70C884}.wem</CachePath>
 				</File>
+				<File Id="372348210" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>MC_SFX_TakeDamage_03.wav</ShortName>
+					<CachePath>8D/{8DE3A968-4B82-374C-3679-AA14F5BC8D4C}.wem</CachePath>
+				</File>
+				<File Id="378515017" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>MC_SFX_TakeDamage_04.wav</ShortName>
+					<CachePath>CB/{CBD9D3EC-0608-2668-92B3-2808BEB65F17}.wem</CachePath>
+				</File>
+				<File Id="379997934" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>MC_Gun_Shot_01.wav</ShortName>
+					<CachePath>79/{79E417EA-6BC3-BAB0-EAAF-47F117A0DB39}.wem</CachePath>
+				</File>
 				<File Id="387146543" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\SP\MC_FT_Sand_05.wav</ShortName>
 					<CachePath>5B/{5BD73E8F-F819-283E-59E4-E5BDBA985B28}.wem</CachePath>
+				</File>
+				<File Id="389222580" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>MC_Gun_Shot_05.wav</ShortName>
+					<CachePath>F7/{F7930729-AEAA-04B9-B78B-E3EF09C3617D}.wem</CachePath>
 				</File>
 				<File Id="393881080" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>MC\MC_FT_Metal_11.wav</ShortName>
@@ -178,13 +198,29 @@
 					<ShortName>AMB\SP\MC_FT_Sand_Land_02.wav</ShortName>
 					<CachePath>57/{579C8D85-4AC4-348A-B821-4B711EC40395}.wem</CachePath>
 				</File>
+				<File Id="489469995" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>MC_Gun_Shot_02.wav</ShortName>
+					<CachePath>85/{8557EC48-3B30-289F-1144-4811A840CB61}.wem</CachePath>
+				</File>
+				<File Id="497641606" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Voices, Male, Sudden Death, Combat, Pain 04 SND85287.wav</ShortName>
+					<CachePath>16/{160E4394-D7FA-215D-DB15-FB76F192F4C5}.wem</CachePath>
+				</File>
 				<File Id="499540378" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\SP\MC_FT_Concrete_Jump_01.wav</ShortName>
 					<CachePath>17/{17DF5E72-0851-EC4D-2C03-3844F1997743}.wem</CachePath>
 				</File>
+				<File Id="505085735" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>MC_SFX_TakeDamage_05.wav</ShortName>
+					<CachePath>F6/{F6265AA6-CC9A-38EC-E2D2-B483C502FD11}.wem</CachePath>
+				</File>
 				<File Id="511633870" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>SFX\MC_SFX_PickupWeapon_03.wav</ShortName>
 					<CachePath>B7/{B7F926D6-55C7-C3BC-AC34-054E55BB5738}.wem</CachePath>
+				</File>
+				<File Id="541217847" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Tools, Power, Workshop, Electrical, Circular Saw, Machine, Power, Buzz, Metal 02 SND133864-glued-01_001.wav</ShortName>
+					<CachePath>E6/{E6646C77-87DE-9C34-72EC-F7998B13B255}.wem</CachePath>
 				</File>
 				<File Id="541415762" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\SP\MC_FT_Metal_Jump_02.wav</ShortName>
@@ -194,6 +230,10 @@
 					<ShortName>AMB\SP\MC_FT_Sand_12.wav</ShortName>
 					<CachePath>E6/{E6DEA5A7-659F-7793-0700-893203975F2D}.wem</CachePath>
 				</File>
+				<File Id="553317585" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Voices, Scream, Male, Type 03, Death Scream, Intense 04 SND85478 2.wav</ShortName>
+					<CachePath>97/{9768EDF3-BC62-0785-A471-1D7380E901DC}.wem</CachePath>
+				</File>
 				<File Id="567050137" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>MC\MC_FT_Metal_07.wav</ShortName>
 					<CachePath>DD/{DD9B7D2F-94AF-2ED9-773E-5896B8AE74A1}.wem</CachePath>
@@ -201,6 +241,14 @@
 				<File Id="573783568" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>MC\MC_FT_Concrete_11.wav</ShortName>
 					<CachePath>F0/{F00E889C-8DC7-1A04-460E-A528F3BFA183}.wem</CachePath>
+				</File>
+				<File Id="578370687" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>MC_Gun_Shot_04.wav</ShortName>
+					<CachePath>63/{6361F888-DF6C-E95B-A205-15E65CC8E143}.wem</CachePath>
+				</File>
+				<File Id="596462661" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>MC_Gun_Shot_03.wav</ShortName>
+					<CachePath>F2/{F2F9D91B-4E70-0E2D-95CC-8423B4CB84EA}.wem</CachePath>
 				</File>
 				<File Id="607185623" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>SFX\MC_SFX_PickupWeapon_02.wav</ShortName>
@@ -214,9 +262,9 @@
 					<ShortName>SFX\MC_SFX_PickupWeapon_05.wav</ShortName>
 					<CachePath>C6/{C6A6C862-E60F-7923-DB6D-6F44E3D367EA}.wem</CachePath>
 				</File>
-				<File Id="610918733" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>MC_SFX_Gun_Shoot_03.wav</ShortName>
-					<CachePath>AE/{AEA35F29-7903-40A5-8F82-F81A0242E86E}.wem</CachePath>
+				<File Id="615051598" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Voices, Scream, Male, Type 03, Death Scream, Intense 04 SND85478 1.wav</ShortName>
+					<CachePath>9A/{9A03BEF1-4DA0-E90E-9301-EB5824FB408B}.wem</CachePath>
 				</File>
 				<File Id="620312545" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\SP\MC_FT_Sand_03.wav</ShortName>
@@ -258,6 +306,10 @@
 					<ShortName>AMB\SP\MC_FT_Concrete_Jump_03.wav</ShortName>
 					<CachePath>F6/{F6532AC5-A080-60CB-4353-4AF327D8B704}.wem</CachePath>
 				</File>
+				<File Id="766974732" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>MC_Gun_ReadyToFire.wav</ShortName>
+					<CachePath>C6/{C6D26D2E-2B34-2EF6-D6DE-DEEF645C48E3}.wem</CachePath>
+				</File>
 				<File Id="779936328" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\SP\MC_FT_Sand_02.wav</ShortName>
 					<CachePath>34/{34E4058B-9F0F-CFF5-796B-FA1D906A1499}.wem</CachePath>
@@ -270,9 +322,17 @@
 					<ShortName>MC\MC_FT_Concrete_06.wav</ShortName>
 					<CachePath>3E/{3E8FEA14-C520-74CE-8000-00480DF60354}.wem</CachePath>
 				</File>
+				<File Id="805197856" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Swooshes, Whoosh, Wind, Soft, Short 02 SND55221 2.wav</ShortName>
+					<CachePath>20/{209D0715-1542-4599-FFC7-03D765182649}.wem</CachePath>
+				</File>
 				<File Id="808130812" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>MC\MC_FT_Concrete_09.wav</ShortName>
 					<CachePath>77/{77D4FBAD-F322-CE6A-EA61-DF6DE68E9282}.wem</CachePath>
+				</File>
+				<File Id="836470137" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Tools, Power, Workshop, Electrical, Circular Saw, Machine, Power, Buzz, Metal 02 SND133864-glued-02.wav</ShortName>
+					<CachePath>0B/{0B189AAB-22A7-239D-2E40-B4AD496C79CE}.wem</CachePath>
 				</File>
 				<File Id="838939217" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\SP\MC_FT_Sand_04.wav</ShortName>
@@ -294,6 +354,10 @@
 					<ShortName>AMB\SP\MC_FT_Sand_06.wav</ShortName>
 					<CachePath>E0/{E04ED421-5DD9-00C9-7BD6-ABDA54AB5FF4}.wem</CachePath>
 				</File>
+				<File Id="941583903" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>MC_SFX_TakeDamage_01.wav</ShortName>
+					<CachePath>07/{072AFFE2-A127-7401-2E2A-D20A2BC6CBF6}.wem</CachePath>
+				</File>
 				<File Id="967065821" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\SP\MC_FT_Sand_11.wav</ShortName>
 					<CachePath>AD/{AD57DE0A-A474-26BB-0471-48136B386916}.wem</CachePath>
@@ -310,6 +374,10 @@
 					<ShortName>MC\MC_FT_Metal_01.wav</ShortName>
 					<CachePath>2F/{2FACB6E1-9176-B347-E678-21D408FBF239}.wem</CachePath>
 				</File>
+				<File Id="997492934" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>MC_SFX_TakeDamage_02.wav</ShortName>
+					<CachePath>F5/{F538AA28-C2E7-249B-7EBA-41A682B7D7F5}.wem</CachePath>
+				</File>
 				<File Id="1003274806" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\SP\MC_FT_Sand_Land_01.wav</ShortName>
 					<CachePath>22/{22A920E8-4E43-3A2E-9F29-CF4FAAE7C847}.wem</CachePath>
@@ -318,9 +386,14 @@
 					<ShortName>MC\MC_FT_Concrete_05.wav</ShortName>
 					<CachePath>EE/{EE68524C-8BCD-0543-26CD-95FA36E31C2F}.wem</CachePath>
 				</File>
+				<File Id="1066849935" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Swooshes, Whoosh, Wind, Soft, Short 02 SND55221.wav</ShortName>
+					<CachePath>08/{08C83980-8B2C-E746-A7F4-DDEF15149BA8}.wem</CachePath>
+				</File>
 			</Media>
 			<Plugins>
 				<Custom>
+					<Plugin Id="3531095" Name="New_Guitar_Distortion (Custom)" ObjectPath="\Actor-Mixer Hierarchy\MC_WU\MC_SFX\MC_SFX_GunHeat_Loop\[Effect Slot [0]: (Guitar Distortion)]\New_Guitar_Distortion (Custom)" GUID="{59B7F7A8-3341-466F-A17E-4F3D759E27E9}" LibName="Wwise Guitar Distortion" LibId="8257539"/>
 					<Plugin Id="16383166" Name="Hall_Medium_Bright (Custom)" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Hub\[Effect Slot [0]: (RoomVerb)]\Hall_Medium_Bright (Custom)" GUID="{2B8E8BE0-9B77-422E-880F-E9F637DE5BCF}" LibName="Wwise RoomVerb" LibId="7733251"/>
 					<Plugin Id="97605317" Name="Hall_Medium_Dark (Custom)" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_Basement\[Effect Slot [0]: (RoomVerb)]\Hall_Medium_Dark (Custom)" GUID="{8C478E3B-5F92-4AEE-A130-8EAD54778042}" LibName="Wwise RoomVerb" LibId="7733251"/>
 					<Plugin Id="169636257" Name="Have_U_Ever_Been_Outside (Custom)" ObjectPath="\Master-Mixer Hierarchy\Master_WU\Master\RVB_RFX_Arena\[Effect Slot [0]: (RoomVerb)]\Have_U_Ever_Been_Outside (Custom)" GUID="{4EC028FC-6FD5-4AC6-A71F-B2CB8F1117DF}" LibName="Wwise RoomVerb" LibId="7733251"/>
@@ -336,6 +409,35 @@
 				</ShareSets>
 			</Plugins>
 			<Events>
+				<Event Id="1229892278" Name="GunHeat_Start" ObjectPath="\Events\MC_WU\GunHeat_Start" GUID="{D3F33BAB-CA64-4957-95FB-1CA9C2086365}" Color="19" DurationType="Infinite">
+					<MediaRefs>
+						<MediaRef Id="541217847"/>
+						<MediaRef Id="836470137"/>
+					</MediaRefs>
+					<PluginRefs>
+						<Custom>
+							<PluginRef Id="3531095"/>
+						</Custom>
+					</PluginRefs>
+				</Event>
+				<Event Id="1983175478" Name="GunHeat_Stop" ObjectPath="\Events\MC_WU\GunHeat_Stop" GUID="{FC0718D8-C0F8-452A-8B68-89922A78D92C}" Color="19" DurationType="OneShot" DurationMin="1.0052084" DurationMax="1.0052084">
+					<MediaRefs>
+						<MediaRef Id="212106629"/>
+						<MediaRef Id="836470137"/>
+					</MediaRefs>
+					<PluginRefs>
+						<Custom>
+							<PluginRef Id="3531095"/>
+						</Custom>
+					</PluginRefs>
+				</Event>
+				<Event Id="3884301275" Name="Play_MC_FOL_Dash" ObjectPath="\Events\MC_WU\Play_MC_FOL_Dash" GUID="{4D96658D-3207-4FF8-9FDC-51449BB5B0DB}" Color="19" DurationType="OneShot" DurationMin="0.83809435" DurationMax="1.1124535">
+					<MediaRefs>
+						<MediaRef Id="123620866"/>
+						<MediaRef Id="805197856"/>
+						<MediaRef Id="1066849935"/>
+					</MediaRefs>
+				</Event>
 				<Event Id="2749485653" Name="Play_MC_FOL_FT_Jump_SW" ObjectPath="\Events\MC_WU\Play_MC_FOL_FT_Jump_SW" GUID="{84F52436-C579-4C37-9804-C7D11AEDCC08}" Color="19" DurationType="OneShot" DurationMin="0.42432198" DurationMax="0.92546445">
 					<SwitchContainers>
 						<SwitchContainer>
@@ -515,12 +617,40 @@
 						<MediaRef Id="17784281"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="1177297501" Name="Play_MC_SFX_Gun_Shoot_RC" ObjectPath="\Events\MC_WU\Play_MC_SFX_Gun_Shoot_RC" GUID="{19EDAAA1-DF79-4328-9566-97F28CD19D08}" Color="19" DurationType="OneShot" DurationMin="1.1600068" DurationMax="2.3467753">
+				<Event Id="2458033466" Name="Play_MC_Gun_MaxOverheat" ObjectPath="\Events\MC_WU\Play_MC_Gun_MaxOverheat" GUID="{1D8AC9DC-EFFE-4A5B-9123-6192F0B53ABA}" Color="19" DurationType="OneShot" DurationMin="4.049354" DurationMax="4.049354">
 					<MediaRefs>
-						<MediaRef Id="36917763"/>
-						<MediaRef Id="62282605"/>
-						<MediaRef Id="70109824"/>
-						<MediaRef Id="610918733"/>
+						<MediaRef Id="154962763"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="3146091786" Name="Play_MC_Gun_ReadyToFire" ObjectPath="\Events\MC_WU\Play_MC_Gun_ReadyToFire" GUID="{209918B4-E611-4C57-B030-530BFF706AC0}" Color="19" DurationType="OneShot" DurationMin="2.1747084" DurationMax="2.1747084">
+					<MediaRefs>
+						<MediaRef Id="766974732"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="4036448981" Name="Play_MC_SFX_Death" ObjectPath="\Events\MC_WU\Play_MC_SFX_Death" GUID="{369E0466-2B87-411B-BCBB-99A217DAD9DA}" Color="19" DurationType="OneShot" DurationMin="1.3978542" DurationMax="1.9379584">
+					<MediaRefs>
+						<MediaRef Id="497641606"/>
+						<MediaRef Id="553317585"/>
+						<MediaRef Id="615051598"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="1177297501" Name="Play_MC_SFX_Gun_Shoot_RC" ObjectPath="\Events\MC_WU\Play_MC_SFX_Gun_Shoot_RC" GUID="{19EDAAA1-DF79-4328-9566-97F28CD19D08}" Color="19" DurationType="OneShot" DurationMin="0.28785604" DurationMax="0.46460295">
+					<MediaRefs>
+						<MediaRef Id="148074735"/>
+						<MediaRef Id="379997934"/>
+						<MediaRef Id="389222580"/>
+						<MediaRef Id="489469995"/>
+						<MediaRef Id="578370687"/>
+						<MediaRef Id="596462661"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="413846691" Name="Play_MC_SFX_TakeDamage" ObjectPath="\Events\MC_WU\Play_MC_SFX_TakeDamage" GUID="{2A19BED5-BFA6-4B71-84B0-F44CE93BE9BC}" Color="19" DurationType="OneShot" DurationMin="0.40547916" DurationMax="0.70947915">
+					<MediaRefs>
+						<MediaRef Id="372348210"/>
+						<MediaRef Id="378515017"/>
+						<MediaRef Id="505085735"/>
+						<MediaRef Id="941583903"/>
+						<MediaRef Id="997492934"/>
 					</MediaRefs>
 				</Event>
 				<Event Id="4122495842" Name="Play_MC_SFX_UpdateAmmo_RC" ObjectPath="\Events\MC_WU\Play_MC_SFX_UpdateAmmo_RC" GUID="{4C30DC19-451C-449E-9B9A-AADEEAB14B44}" Color="19" DurationType="OneShot" DurationMin="2.5657325" DurationMax="3.6410909">
@@ -618,6 +748,7 @@
 			</AuxBusses>
 			<GameParameters>
 				<GameParameter Id="1190880401" Name="RTPC_DoorPyramid" ObjectPath="\Game Parameters\Default Work Unit\RTPC_DoorPyramid" GUID="{D2AEC1CE-EF9E-486E-AE8B-FB121AC42B53}"/>
+				<GameParameter Id="1829010369" Name="RTPC_GunHeat" ObjectPath="\Game Parameters\Default Work Unit\RTPC_GunHeat" GUID="{F9A7333E-9305-4744-858A-05CCB5E8F620}"/>
 				<GameParameter Id="3438452020" Name="RTPC_SFX" ObjectPath="\Game Parameters\Default Work Unit\RTPC_SFX" GUID="{DD8DB651-4F18-462F-97D3-0195BD02087F}"/>
 				<GameParameter Id="3445598977" Name="RTPC_Master" ObjectPath="\Game Parameters\Default Work Unit\RTPC_Master" GUID="{74E6261E-6493-44A8-BAE7-1E79ABF4DED1}" Color="10"/>
 				<GameParameter Id="3553041361" Name="RTPC_AMB" ObjectPath="\Game Parameters\Default Work Unit\RTPC_AMB" GUID="{2EA08633-9826-4131-9D31-3F7F27FCA59E}"/>
@@ -646,5 +777,5 @@
 			</SwitchGroups>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{C0DF161F-416B-F705-D84E-F8CAA76AF173}</FileHash>
+	<FileHash>{08322FB0-8E7C-5742-D8BD-2FE8A7654BC6}</FileHash>
 </SoundBanksInfo>

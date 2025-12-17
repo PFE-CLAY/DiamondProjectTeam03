@@ -11,7 +11,7 @@
     "GUID": "{46F08C13-7BDA-47D5-A653-BDFCDAD2487B}",
     "Color": "11",
     "Language": "SFX",
-    "Hash": "{20BB78E9-3536-51D8-1F5B-FCFB60166C18}",
+    "Hash": "{7AB20D55-1348-4AEB-7007-8863E821AFAA}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\FOES_Flying_SB",
     "ShortName": "FOES_Flying_SB",
     "Path": "FOES_Flying_SB.bnk",
@@ -718,6 +718,6 @@
     ]
    }
   ],
-  "FileHash": "{6D2B0DC9-75AB-BC5F-8F78-318D99A4BFEE}"
+  "FileHash": "{F81F8E51-E6FA-99D5-90BF-2429F7361009}"
  }
 }

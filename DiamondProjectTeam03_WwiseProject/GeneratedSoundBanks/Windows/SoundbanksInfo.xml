@@ -9,7 +9,7 @@
 	</RootPaths>
 	<DialogueEvents/>
 	<SoundBanks>
-		<SoundBank Id="459280130" Type="User" GUID="{46F08C13-7BDA-47D5-A653-BDFCDAD2487B}" Color="11" Language="SFX" Hash="{20BB78E9-3536-51D8-1F5B-FCFB60166C18}">
+		<SoundBank Id="459280130" Type="User" GUID="{46F08C13-7BDA-47D5-A653-BDFCDAD2487B}" Color="11" Language="SFX" Hash="{7AB20D55-1348-4AEB-7007-8863E821AFAA}">
 			<ObjectPath>\SoundBanks\SoundBanks_WU\FOES_Flying_SB</ObjectPath>
 			<ShortName>FOES_Flying_SB</ShortName>
 			<Path>FOES_Flying_SB.bnk</Path>
@@ -262,7 +262,7 @@
 				</StateGroup>
 			</StateGroups>
 		</SoundBank>
-		<SoundBank Id="1329476194" Type="User" GUID="{4B32F9EE-D939-4AEA-A633-697781A78CE3}" Color="21" Language="SFX" Hash="{7704F7C8-57EA-A9EE-29B5-2827AAE02436}">
+		<SoundBank Id="1329476194" Type="User" GUID="{4B32F9EE-D939-4AEA-A633-697781A78CE3}" Color="21" Language="SFX" Hash="{3532048F-C25C-3A77-A57E-DEB98C8D65B1}">
 			<ObjectPath>\SoundBanks\SoundBanks_WU\MUS_SB</ObjectPath>
 			<ShortName>MUS_SB</ShortName>
 			<Path>MUS_SB.bnk</Path>
@@ -299,7 +299,7 @@
 				</Event>
 			</Events>
 		</SoundBank>
-		<SoundBank Id="1355168291" Type="User" GUID="{701ECBBD-9C7B-4030-8CDB-749EE5D1C7B9}" Language="SFX" Hash="{25B8DFFC-6491-CDEE-6C40-96F1987CE305}">
+		<SoundBank Id="1355168291" Type="User" GUID="{701ECBBD-9C7B-4030-8CDB-749EE5D1C7B9}" Language="SFX" Hash="{F1B2F7F7-18F7-2CB5-EC7F-35F52D8CA147}">
 			<ObjectPath>Init</ObjectPath>
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
@@ -436,7 +436,7 @@
 				</SwitchGroup>
 			</SwitchGroups>
 		</SoundBank>
-		<SoundBank Id="1734647573" Type="User" GUID="{6B7E0BFB-A825-46AA-907A-12621FC4038F}" Color="1" Language="SFX" Hash="{C65F74BC-7490-57D7-5730-EEF28C99070D}">
+		<SoundBank Id="1734647573" Type="User" GUID="{6B7E0BFB-A825-46AA-907A-12621FC4038F}" Color="1" Language="SFX" Hash="{F672710A-174F-DAFD-E1A6-A63AE0D9A5B6}">
 			<ObjectPath>\SoundBanks\SoundBanks_WU\UI_SB</ObjectPath>
 			<ShortName>UI_SB</ShortName>
 			<Path>UI_SB.bnk</Path>
@@ -624,7 +624,7 @@
 				</StateGroup>
 			</StateGroups>
 		</SoundBank>
-		<SoundBank Id="1956625499" Type="User" GUID="{ADC2D189-6608-4828-BC9C-6EF6F90834DB}" Color="19" Language="SFX" Hash="{494E6A49-8929-3836-56CF-F57F4DF0433B}">
+		<SoundBank Id="1956625499" Type="User" GUID="{ADC2D189-6608-4828-BC9C-6EF6F90834DB}" Color="19" Language="SFX" Hash="{A7979F4B-FDF0-E8CA-BCAE-D8C65FC35980}">
 			<ObjectPath>\SoundBanks\SoundBanks_WU\MC_SB</ObjectPath>
 			<ShortName>MC_SB</ShortName>
 			<Path>MC_SB.bnk</Path>
@@ -1399,7 +1399,7 @@
 				</SwitchGroup>
 			</SwitchGroups>
 		</SoundBank>
-		<SoundBank Id="2516814376" Type="User" GUID="{48187E94-2869-42A3-9E99-A12DF1DA86DF}" Color="23" Language="SFX" Hash="{F8B1AFAA-F374-C3EF-1343-7C2688999789}">
+		<SoundBank Id="2516814376" Type="User" GUID="{48187E94-2869-42A3-9E99-A12DF1DA86DF}" Color="23" Language="SFX" Hash="{A8167A65-FA0E-3395-E878-028AE473958A}">
 			<ObjectPath>\SoundBanks\SoundBanks_WU\FOES_Invisible_SB</ObjectPath>
 			<ShortName>FOES_Invisible_SB</ShortName>
 			<Path>FOES_Invisible_SB.bnk</Path>
@@ -1512,7 +1512,7 @@
 				</StateGroup>
 			</StateGroups>
 		</SoundBank>
-		<SoundBank Id="2765162312" Type="User" GUID="{9B915276-16F3-4721-B819-126344F97366}" Language="SFX" Hash="{218C7D90-6EDC-0496-F8B4-458740BBDE81}">
+		<SoundBank Id="2765162312" Type="User" GUID="{9B915276-16F3-4721-B819-126344F97366}" Language="SFX" Hash="{F07EAF96-CC8D-C6CC-F9F9-E69317C8C572}">
 			<ObjectPath>\SoundBanks\SoundBanks_WU\VOICES_SB</ObjectPath>
 			<ShortName>VOICES_SB</ShortName>
 			<Path>VOICES_SB.bnk</Path>
@@ -1937,7 +1937,7 @@
 				</Event>
 			</Events>
 		</SoundBank>
-		<SoundBank Id="3250948517" Type="User" GUID="{8CC30184-23AF-4DB5-9844-9B04DF10A650}" Color="10" Language="SFX" Hash="{A6384D83-D5B2-0650-09E4-250CDBFA4551}">
+		<SoundBank Id="3250948517" Type="User" GUID="{8CC30184-23AF-4DB5-9844-9B04DF10A650}" Color="10" Language="SFX" Hash="{81FE0B6E-CA58-E5AB-62EF-A3C758335B60}">
 			<ObjectPath>\SoundBanks\SoundBanks_WU\FOES_Tourelle_SB</ObjectPath>
 			<ShortName>FOES_Tourelle_SB</ShortName>
 			<Path>FOES_Tourelle_SB.bnk</Path>
@@ -2118,7 +2118,7 @@
 				</StateGroup>
 			</StateGroups>
 		</SoundBank>
-		<SoundBank Id="3256182613" Type="User" GUID="{9DC5CBA4-02D0-4677-A565-21ECA413E694}" Color="4" Language="SFX" Hash="{7736A919-EEDF-A901-27DE-664B23EC9A60}">
+		<SoundBank Id="3256182613" Type="User" GUID="{9DC5CBA4-02D0-4677-A565-21ECA413E694}" Color="4" Language="SFX" Hash="{853B722B-31FF-C294-8F3C-C20A9E238F9B}">
 			<ObjectPath>\SoundBanks\SoundBanks_WU\AMB_SB</ObjectPath>
 			<ShortName>AMB_SB</ShortName>
 			<Path>AMB_SB.bnk</Path>
@@ -2524,7 +2524,7 @@
 				</StateGroup>
 			</StateGroups>
 		</SoundBank>
-		<SoundBank Id="3896292454" Type="User" GUID="{459D1F67-52BD-4FA1-B846-B8F3A50C2C5F}" Color="17" Language="SFX" Hash="{0A05BF0B-FFA3-7014-DDA1-20B3134A65EC}">
+		<SoundBank Id="3896292454" Type="User" GUID="{459D1F67-52BD-4FA1-B846-B8F3A50C2C5F}" Color="17" Language="SFX" Hash="{66CEAA13-692C-A9F8-6A2C-B6179224FCD8}">
 			<ObjectPath>\SoundBanks\SoundBanks_WU\SFX_SB</ObjectPath>
 			<ShortName>SFX_SB</ShortName>
 			<Path>SFX_SB.bnk</Path>
@@ -2653,7 +2653,7 @@
 				</Event>
 			</Events>
 		</SoundBank>
-		<SoundBank Id="4155742227" Type="User" GUID="{D2378E68-5468-4849-BC4A-8FC6D8A3BF29}" Color="15" Language="SFX" Hash="{E096A6DD-1324-FFE9-89C1-D2B0B01DBE08}">
+		<SoundBank Id="4155742227" Type="User" GUID="{D2378E68-5468-4849-BC4A-8FC6D8A3BF29}" Color="15" Language="SFX" Hash="{AF33CBF7-89F9-47EB-1D83-5748B59E34AF}">
 			<ObjectPath>\SoundBanks\SoundBanks_WU\GPE_SB</ObjectPath>
 			<ShortName>GPE_SB</ShortName>
 			<Path>GPE_SB.bnk</Path>
@@ -2792,5 +2792,5 @@
 			</Events>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{90EBC150-41B4-3BA7-646E-08062545BFD0}</FileHash>
+	<FileHash>{BD921201-900D-5FD5-EE4F-B25A17DE16B0}</FileHash>
 </SoundBanksInfo>

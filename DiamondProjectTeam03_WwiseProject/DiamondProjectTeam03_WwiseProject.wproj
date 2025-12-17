@@ -25,7 +25,22 @@
 						<Value Platform="Mac">GeneratedSoundBanks\Mac\</Value>
 					</ValueList>
 				</Property>
-				<Property Name="LicenseKey" Type="string" Value="PHByb2plY3QgaWQ9IjIxNDYwIiBtYXNrPSJKSEpONjc0OCIgZW5jPSIwIj48bGljZW5zZSBpZD0iMSIgbmFtZT0iV3dpc2UiIHR5cGU9IjMiIHBsYXRmb3Jtcz0iMTAiIGV4cGlyZXM9IjIwMjYtMDMtMDEiICAvPjxsaWNlbnNlIGlkPSIyMSIgbmFtZT0iTWFpbnRlbmFuY2UiIHR5cGU9IjMiIHBsYXRmb3Jtcz0iMTAiIGV4cGlyZXM9IjIwMjYtMDMtMDEiICAvPjxsaWNlbnNlIGlkPSI3MCIgbmFtZT0iSW5kaWUgTGljZW5zZSIgdHlwZT0iMyIgcGxhdGZvcm1zPSIxMCIgZXhwaXJlcz0iMjAyNi0wMy0wMSIgIC8+PC9wcm9qZWN0Pg==|1aPgd4nSSDow2Osp2V4ILJxOv/wle3vA4seIeX99peqRdojPSCK2lY2MKo64a3CVDNzD03G9azVkqK5xjpWY8CEjEZh0otsvz0Sa9DS8hqEEDqs8DTn+9W2Ea9rRVZqP/znPgajlmnwYq7PbVT7WfdzluyXifS+Q4ttzQ8qElZsMvWKxcmgbO9+Z1lbCDzhieJs5uMvuLxSOrhDvaIe9CZB7fbsTS+tk+7Sgb08wwbCTNUS1ao0qxoA9/zlGNLFNXyJRDc1vid8LS9FcuBN6fkiYBFaZdbAoGsnJ5/10I2hZgDpIiaQgG+UEmPN1RXej2oJHWqQ4Yxx2/9bsuus9Rw=="/>
+				<Property Name="LicenseKey" Type="string" Value="PHByb2plY3QgaWQ9IjIwOTAxIiBtYXNrPSJLWEZBMjc2NiIgZW5jPSIwIj48bGlj
+ZW5zZSBpZD0iMSIgbmFtZT0iV3dpc2UiIHR5cGU9IjMiIHBsYXRmb3Jtcz0iNCwx
+MCIgZXhwaXJlcz0iMjAyNi0wMS0wMSIgIC8+PGxpY2Vuc2UgaWQ9IjIxIiBuYW1l
+PSJNYWludGVuYW5jZSIgdHlwZT0iMyIgcGxhdGZvcm1zPSI0LDEwIiBleHBpcmVz
+PSIyMDI2LTAxLTAxIiAgLz48bGljZW5zZSBpZD0iNzAiIG5hbWU9IkluZGllIExp
+Y2Vuc2UiIHR5cGU9IjMiIHBsYXRmb3Jtcz0iNCwxMCIgZXhwaXJlcz0iMjAyNi0w
+MS0wMSIgIC8+PGxpY2Vuc2UgaWQ9IjYzIiBuYW1lPSJNYXN0ZXJpbmcgU3VpdGUi
+IHR5cGU9IjIiIHBsYXRmb3Jtcz0iNCwxMCIgZXhwaXJlcz0iMjAyNi0wMS0wMSIg
+IC8+PHBsdWdpbiBpZD0iMTIxODk2OTkiIG5hbWU9Ik1hc3RlcmluZyBTdWl0ZSIg
+bGljZW5zZT0iNjMiIC8+PC9wcm9qZWN0Pg==|LcfSornkZhAQeytyRmNNXvC/D75
+pekgJGfV/APGufcf+bEzJa8HX81uEJ6g0gLtJU1Ca/MtJO15ZV3BjeLorVwIpeBg
+8jx+0aTg2SwNpzYoRkbgy0BdzHNQ9NAy16NmAU9YxuT0KG8cKBg6iUTnSKgdtlYI
+oSuSrTfW9xI5shOhQwyXrptAnTxMH2cFXXnS6WeKql1plI91XggbwXEsPPGJ0E3R
+w4nlIEqj7wFz6rumkUC97ewchkbS2xoxICjseK7/Fly042bYjYqou6QJecG0J9az
+gQ+Nht1mIxZA0wSF1ywehAf3EWh7pnxeeE2//hZdZU/Rt9+3ctVPMOo20TQ==
+"/>
 				<Property Name="SoundBankHeaderFilePath" Type="string" Value="GeneratedSoundBanks\"/>
 				<Property Name="SoundBankPaths" Type="string">
 					<ValueList>
@@ -140,11 +155,6 @@
 						<Property Name="OverrideWavLoop" Type="bool">
 							<ValueList>
 								<Value>False</Value>
-							</ValueList>
-						</Property>
-						<Property Name="Soundly:FileIDForAudioSource" Type="string">
-							<ValueList>
-								<Value></Value>
 							</ValueList>
 						</Property>
 						<Property Name="TrimBegin" Type="Real64">
@@ -538,76 +548,6 @@
 						<Property Name="ReflectionsVolume" Type="Real64">
 							<ValueList>
 								<Value>0</Value>
-							</ValueList>
-						</Property>
-						<Property Name="Soundly:ActiveChannels" Type="string">
-							<ValueList>
-								<Value></Value>
-							</ValueList>
-						</Property>
-						<Property Name="Soundly:FileID" Type="string">
-							<ValueList>
-								<Value></Value>
-							</ValueList>
-						</Property>
-						<Property Name="Soundly:FileName" Type="string">
-							<ValueList>
-								<Value></Value>
-							</ValueList>
-						</Property>
-						<Property Name="Soundly:HandleStartTime" Type="string">
-							<ValueList>
-								<Value></Value>
-							</ValueList>
-						</Property>
-						<Property Name="Soundly:HandleStopTime" Type="string">
-							<ValueList>
-								<Value></Value>
-							</ValueList>
-						</Property>
-						<Property Name="Soundly:LibraryID" Type="string">
-							<ValueList>
-								<Value></Value>
-							</ValueList>
-						</Property>
-						<Property Name="Soundly:LibraryLocation" Type="string">
-							<ValueList>
-								<Value></Value>
-							</ValueList>
-						</Property>
-						<Property Name="Soundly:PlaybackSpeed" Type="string">
-							<ValueList>
-								<Value></Value>
-							</ValueList>
-						</Property>
-						<Property Name="Soundly:ProcessList" Type="string">
-							<ValueList>
-								<Value></Value>
-							</ValueList>
-						</Property>
-						<Property Name="Soundly:RenderedFileBitRate" Type="string">
-							<ValueList>
-								<Value></Value>
-							</ValueList>
-						</Property>
-						<Property Name="Soundly:RenderedFilePath" Type="string">
-							<ValueList>
-								<Value></Value>
-							</ValueList>
-						</Property>
-						<Property Name="Soundly:RenderedFileSampleRate" Type="string">
-							<ValueList>
-								<Value></Value>
-							</ValueList>
-						</Property>
-						<Property Name="Soundly:SelectionStartTime" Type="string">
-							<ValueList>
-								<Value></Value>
-							</ValueList>
-						</Property>
-						<Property Name="Soundly:SelectionStopTime" Type="string">
-							<ValueList>
-								<Value></Value>
 							</ValueList>
 						</Property>
 						<Property Name="SpeakerPanning" Type="int16">

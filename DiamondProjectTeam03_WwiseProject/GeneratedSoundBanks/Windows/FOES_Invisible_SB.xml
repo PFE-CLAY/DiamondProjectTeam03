@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="16" SoundBankVersion="154">
 	<SoundBanks>
-		<SoundBank Id="2516814376" Type="User" GUID="{48187E94-2869-42A3-9E99-A12DF1DA86DF}" Color="23" Language="SFX" Hash="{F8B1AFAA-F374-C3EF-1343-7C2688999789}">
+		<SoundBank Id="2516814376" Type="User" GUID="{48187E94-2869-42A3-9E99-A12DF1DA86DF}" Color="23" Language="SFX" Hash="{A8167A65-FA0E-3395-E878-028AE473958A}">
 			<ObjectPath>\SoundBanks\SoundBanks_WU\FOES_Invisible_SB</ObjectPath>
 			<ShortName>FOES_Invisible_SB</ShortName>
 			<Path>FOES_Invisible_SB.bnk</Path>
@@ -115,5 +115,5 @@
 			</StateGroups>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{3286C341-B373-B6B2-599B-E31CB4BD2B0C}</FileHash>
+	<FileHash>{04C78B60-7E69-BBBA-157F-43E8F19B0A66}</FileHash>
 </SoundBanksInfo>

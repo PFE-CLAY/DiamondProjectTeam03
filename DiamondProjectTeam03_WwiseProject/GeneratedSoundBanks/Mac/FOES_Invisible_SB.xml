@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SoundBanksInfo Platform="Mac" BasePlatform="Mac" SchemaVersion="16" SoundBankVersion="154">
 	<SoundBanks>
-		<SoundBank Id="2516814376" Type="User" GUID="{48187E94-2869-42A3-9E99-A12DF1DA86DF}" Color="23" Language="SFX" Hash="{27C2B351-EF68-EC4D-0915-60E3E01CEC1F}">
+		<SoundBank Id="2516814376" Type="User" GUID="{48187E94-2869-42A3-9E99-A12DF1DA86DF}" Color="23" Language="SFX" Hash="{A8167A65-FA0E-3395-E878-028AE473958A}">
 			<ObjectPath>\SoundBanks\SoundBanks_WU\FOES_Invisible_SB</ObjectPath>
 			<ShortName>FOES_Invisible_SB</ShortName>
 			<Path>FOES_Invisible_SB.bnk</Path>
@@ -115,5 +115,5 @@
 			</StateGroups>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{981BB4EF-CFEE-9C8B-D6DA-2638DFD78EAD}</FileHash>
+	<FileHash>{F5EEAC94-7B8B-8F8D-6148-55AADC22A37E}</FileHash>
 </SoundBanksInfo>

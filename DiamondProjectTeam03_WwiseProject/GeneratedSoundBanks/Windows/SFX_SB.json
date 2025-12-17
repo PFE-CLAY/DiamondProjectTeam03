@@ -11,7 +11,7 @@
     "GUID": "{459D1F67-52BD-4FA1-B846-B8F3A50C2C5F}",
     "Color": "17",
     "Language": "SFX",
-    "Hash": "{0A05BF0B-FFA3-7014-DDA1-20B3134A65EC}",
+    "Hash": "{66CEAA13-692C-A9F8-6A2C-B6179224FCD8}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\SFX_SB",
     "ShortName": "SFX_SB",
     "Path": "SFX_SB.bnk",
@@ -319,6 +319,6 @@
     ]
    }
   ],
-  "FileHash": "{D7A62C1A-37FA-2FEE-16F7-5AE8D79C19AF}"
+  "FileHash": "{FE6470D9-4189-B5C4-B0D0-9EEEA0FCBD89}"
  }
 }
