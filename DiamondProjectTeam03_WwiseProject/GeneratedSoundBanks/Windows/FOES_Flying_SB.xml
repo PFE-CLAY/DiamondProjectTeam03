@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="16" SoundBankVersion="154">
 	<SoundBanks>
-		<SoundBank Id="459280130" Type="User" GUID="{46F08C13-7BDA-47D5-A653-BDFCDAD2487B}" Color="11" Language="SFX" Hash="{7AB20D55-1348-4AEB-7007-8863E821AFAA}">
+		<SoundBank Id="459280130" Type="User" GUID="{46F08C13-7BDA-47D5-A653-BDFCDAD2487B}" Color="11" Language="SFX" Hash="{CC211F72-A27D-6385-C907-BC18ED805A22}">
 			<ObjectPath>\SoundBanks\SoundBanks_WU\FOES_Flying_SB</ObjectPath>
 			<ShortName>FOES_Flying_SB</ShortName>
 			<Path>FOES_Flying_SB.bnk</Path>
@@ -255,5 +255,5 @@
 			</StateGroups>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{7B613E68-C0CF-0FF3-2B34-C6436467BEC8}</FileHash>
+	<FileHash>{6F3D0DFC-3141-7999-59AF-CEB0449CA240}</FileHash>
 </SoundBanksInfo>

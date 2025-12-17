@@ -11,7 +11,7 @@
     "GUID": "{4B32F9EE-D939-4AEA-A633-697781A78CE3}",
     "Color": "21",
     "Language": "SFX",
-    "Hash": "{3532048F-C25C-3A77-A57E-DEB98C8D65B1}",
+    "Hash": "{E73B172F-3BA4-490C-6DBB-1EE12D0E3007}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\MUS_SB",
     "ShortName": "MUS_SB",
     "Path": "MUS_SB.bnk",
@@ -97,6 +97,6 @@
     ]
    }
   ],
-  "FileHash": "{ECBAD909-4676-8E9B-0163-12A4233441B2}"
+  "FileHash": "{03CD0D5A-1331-3366-8E1A-3792E646026D}"
  }
 }
