@@ -20,6 +20,8 @@ enum class EShootSide : uint8
 class UShootPointComponent;
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnEnemyShoot);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnPlayerInRange);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnPlayerOutOfRange);
 
 UCLASS()
 class DIAMONDPROJECT_API AShootingEnemy : public AEnemy
@@ -42,11 +44,8 @@ protected:
 	
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category="Enemy Behavior")
 	TArray<USceneComponent*> ShootPoints;
-
 	
 	//Garbage
-	
-	
 
 	UPROPERTY(BlueprintReadOnly)
 	int IndexShootPoint = 0;
@@ -56,6 +55,9 @@ protected:
 
 	UPROPERTY()
 	TArray<AActor*> AllActorsInRange;
+
+	UPROPERTY(BlueprintReadOnly)
+	bool IsPlayerInRange = false;
 
 public:
 	UPROPERTY(BlueprintReadOnly, Category = "Turret Behavior")
@@ -69,8 +71,6 @@ protected:
 	virtual void BeginPlay() override;
 
 private:
-	
-	
 
 	UFUNCTION(BlueprintCallable, Category = "Enemy")
 	void Shoot(AActor* Target);
@@ -98,6 +98,12 @@ public:
 
 	UPROPERTY(BlueprintAssignable, Category="Sunlight Detection")
 	FOnEnemyShoot OnEnemyShoot;
+
+	UPROPERTY(BlueprintAssignable)
+	FOnPlayerInRange OnPlayerInRange;
+
+	UPROPERTY(BlueprintAssignable)
+	FOnPlayerOutOfRange OnPlayerOutOfRange;
 	
 	UFUNCTION()
 	USceneComponent* GetNextShootPoint();
@@ -111,5 +117,6 @@ public:
 	UFUNCTION()
 	void RemoveShootPoint(USceneComponent* ShootPoint);
 
-	
+	UFUNCTION(BlueprintCallable)
+	void ChangeTargetInRange(const bool isInRange);
 };

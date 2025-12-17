@@ -291,10 +291,10 @@ void ULoopSubsystem::OnAdvicesVisibilityChanged(bool bNewVisibility)
 
 void ULoopSubsystem::InitializePreplan()
 {
-	LoadLoopData();
 	InitializePreplanSteps();
 	InitializeCollectibles();
 	InitializePreplanAdvices();
+	LoadLoopData();
 	//InitializePreplanLinks();
 
 }
