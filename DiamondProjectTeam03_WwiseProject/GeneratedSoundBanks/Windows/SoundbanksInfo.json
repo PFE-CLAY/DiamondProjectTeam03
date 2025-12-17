@@ -19,7 +19,7 @@
     "GUID": "{46F08C13-7BDA-47D5-A653-BDFCDAD2487B}",
     "Color": "11",
     "Language": "SFX",
-    "Hash": "{9A030CC5-9991-A2C8-82C6-D7427C5531C8}",
+    "Hash": "{20BB78E9-3536-51D8-1F5B-FCFB60166C18}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\FOES_Flying_SB",
     "ShortName": "FOES_Flying_SB",
     "Path": "FOES_Flying_SB.bnk",
@@ -279,10 +279,10 @@
       "ObjectPath": "\\Events\\FOES_Flying_WU\\Play_FOES_Melee_Attack",
       "GUID": "{B05FBE0E-77CF-4193-8AD7-FBAF1711239E}",
       "Color": "11",
-      "MaxAttenuation": "3000",
+      "MaxAttenuation": "2000",
       "DurationType": "OneShot",
-      "DurationMin": "2.8907917",
-      "DurationMax": "3.3302917",
+      "DurationMin": "2.6508677",
+      "DurationMax": "3.6317089",
       "MediaRefs": [
        {
         "Id": "155865366"
@@ -304,7 +304,7 @@
       "ObjectPath": "\\Events\\FOES_Flying_WU\\Play_FOES_Melee_Charge",
       "GUID": "{6D6D34D8-A204-4912-BAEF-A0433F66176B}",
       "Color": "11",
-      "MaxAttenuation": "3000",
+      "MaxAttenuation": "2000",
       "DurationType": "OneShot",
       "DurationMin": "1.9220417",
       "DurationMax": "2.538771",
@@ -332,10 +332,10 @@
       "ObjectPath": "\\Events\\FOES_Flying_WU\\Play_FOES_Melee_Death",
       "GUID": "{5AEC5573-B899-4EEA-B073-F8F0445C7362}",
       "Color": "11",
-      "MaxAttenuation": "3000",
+      "MaxAttenuation": "2000",
       "DurationType": "OneShot",
-      "DurationMin": "2.795646",
-      "DurationMax": "3.2353542",
+      "DurationMin": "2.5636187",
+      "DurationMax": "3.5281787",
       "MediaRefs": [
        {
         "Id": "218138060"
@@ -357,7 +357,7 @@
       "ObjectPath": "\\Events\\FOES_Flying_WU\\Play_FOES_Melee_Move_LP",
       "GUID": "{DD99FFBE-5C9F-4818-9840-21638F3DB5B5}",
       "Color": "11",
-      "MaxAttenuation": "3000",
+      "MaxAttenuation": "2000",
       "DurationType": "Infinite",
       "MediaRefs": [
        {
@@ -731,7 +731,7 @@
     "GUID": "{4B32F9EE-D939-4AEA-A633-697781A78CE3}",
     "Color": "21",
     "Language": "SFX",
-    "Hash": "{E78D4A8B-57FB-7309-8ED6-25D546D20865}",
+    "Hash": "{7704F7C8-57EA-A9EE-29B5-2827AAE02436}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\MUS_SB",
     "ShortName": "MUS_SB",
     "Path": "MUS_SB.bnk",
@@ -783,6 +783,22 @@
       ]
      },
      {
+      "Id": "1784188493",
+      "Name": "Stop_MUS_ARENA",
+      "ObjectPath": "\\Events\\MUS_WU\\Stop_MUS_ARENA",
+      "GUID": "{182B8F79-B612-4322-A636-C7BC836A59D9}",
+      "Color": "8",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0",
+      "MediaRefs": [
+       {
+        "Id": "721910099"
+       }
+      ]
+     },
+     {
       "Id": "888771158",
       "Name": "Stop_MUS_Blacksands_Hub",
       "ObjectPath": "\\Events\\MUS_WU\\Stop_MUS_Blacksands_Hub",
@@ -805,7 +821,7 @@
     "Type": "User",
     "GUID": "{701ECBBD-9C7B-4030-8CDB-749EE5D1C7B9}",
     "Language": "SFX",
-    "Hash": "{0192F850-236F-E486-F2DD-BCC0EED774E3}",
+    "Hash": "{25B8DFFC-6491-CDEE-6C40-96F1987CE305}",
     "ObjectPath": "Init",
     "ShortName": "Init",
     "Path": "Init.bnk",
@@ -1276,7 +1292,7 @@
     "GUID": "{6B7E0BFB-A825-46AA-907A-12621FC4038F}",
     "Color": "1",
     "Language": "SFX",
-    "Hash": "{D6450A9C-EB13-D57D-7F9D-301009D5CC64}",
+    "Hash": "{C65F74BC-7490-57D7-5730-EEF28C99070D}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\UI_SB",
     "ShortName": "UI_SB",
     "Path": "UI_SB.bnk",
@@ -1813,7 +1829,7 @@
     "GUID": "{ADC2D189-6608-4828-BC9C-6EF6F90834DB}",
     "Color": "19",
     "Language": "SFX",
-    "Hash": "{3A8DDD80-4843-7F45-2177-4D76DFCA2778}",
+    "Hash": "{494E6A49-8929-3836-56CF-F57F4DF0433B}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\MC_SB",
     "ShortName": "MC_SB",
     "Path": "MC_SB.bnk",
@@ -1960,7 +1976,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "MC_Gun_Shot_06.wav",
-      "CachePath": "BA/{BABAA971-6DBA-4453-4A51-33D2C58698CE}.wem"
+      "CachePath": "9C/{9C29B7A2-ABA9-BE1A-9068-6A307C57A71C}.wem"
      },
      {
       "Id": "148436568",
@@ -2096,7 +2112,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "MC_Gun_Shot_01.wav",
-      "CachePath": "EE/{EEFD2DF4-6FFB-9509-ABF0-4BA8269EA01D}.wem"
+      "CachePath": "79/{79E417EA-6BC3-BAB0-EAAF-47F117A0DB39}.wem"
      },
      {
       "Id": "387146543",
@@ -2112,7 +2128,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "MC_Gun_Shot_05.wav",
-      "CachePath": "A2/{A2D7187E-C729-6D5A-EBC1-20A485508228}.wem"
+      "CachePath": "F7/{F7930729-AEAA-04B9-B78B-E3EF09C3617D}.wem"
      },
      {
       "Id": "393881080",
@@ -2208,7 +2224,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "MC_Gun_Shot_02.wav",
-      "CachePath": "47/{478D3B2D-CECF-66F5-7A12-B574EE08527D}.wem"
+      "CachePath": "85/{8557EC48-3B30-289F-1144-4811A840CB61}.wem"
      },
      {
       "Id": "497641606",
@@ -2296,7 +2312,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "MC_Gun_Shot_04.wav",
-      "CachePath": "23/{2332241B-18FF-1FB5-D5E5-4B9056C66FF5}.wem"
+      "CachePath": "63/{6361F888-DF6C-E95B-A205-15E65CC8E143}.wem"
      },
      {
       "Id": "596462661",
@@ -2304,7 +2320,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "MC_Gun_Shot_03.wav",
-      "CachePath": "7A/{7A7AA0E7-40A5-38BF-1874-33C7072F2636}.wem"
+      "CachePath": "F2/{F2F9D91B-4E70-0E2D-95CC-8423B4CB84EA}.wem"
      },
      {
       "Id": "607185623",
@@ -3289,8 +3305,8 @@
       "GUID": "{19EDAAA1-DF79-4328-9566-97F28CD19D08}",
       "Color": "19",
       "DurationType": "OneShot",
-      "DurationMin": "0.45694295",
-      "DurationMax": "0.7375112",
+      "DurationMin": "0.28785604",
+      "DurationMax": "0.46460295",
       "MediaRefs": [
        {
         "Id": "148074735"
@@ -3716,7 +3732,7 @@
     "GUID": "{48187E94-2869-42A3-9E99-A12DF1DA86DF}",
     "Color": "23",
     "Language": "SFX",
-    "Hash": "{C875FD78-A2BD-BD0B-9409-7378DA2B8E70}",
+    "Hash": "{F8B1AFAA-F374-C3EF-1343-7C2688999789}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\FOES_Invisible_SB",
     "ShortName": "FOES_Invisible_SB",
     "Path": "FOES_Invisible_SB.bnk",
@@ -5265,7 +5281,7 @@
     "GUID": "{8CC30184-23AF-4DB5-9844-9B04DF10A650}",
     "Color": "10",
     "Language": "SFX",
-    "Hash": "{D4C37E42-6034-BBD4-8517-576B140B085C}",
+    "Hash": "{A6384D83-D5B2-0650-09E4-250CDBFA4551}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\FOES_Tourelle_SB",
     "ShortName": "FOES_Tourelle_SB",
     "Path": "FOES_Tourelle_SB.bnk",
@@ -5808,7 +5824,7 @@
     "GUID": "{9DC5CBA4-02D0-4677-A565-21ECA413E694}",
     "Color": "4",
     "Language": "SFX",
-    "Hash": "{B4B95944-7691-5858-8321-DDB342871511}",
+    "Hash": "{7736A919-EEDF-A901-27DE-664B23EC9A60}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\AMB_SB",
     "ShortName": "AMB_SB",
     "Path": "AMB_SB.bnk",
@@ -6143,6 +6159,15 @@
       "CachePath": "C5/{C5D4F69F-4A43-C271-EA82-1422D7D302A0}.wem"
      },
      {
+      "Id": "930759196",
+      "Language": "SFX",
+      "Streaming": "true",
+      "Location": "Loose",
+      "ShortName": "AMB_WIND_SAND.wav",
+      "Path": "Media/930759196.wem",
+      "CachePath": "AA/{AAE04847-D18F-C3F1-D79E-6001FC485A05}.wem"
+     },
+     {
       "Id": "935598577",
       "Language": "SFX",
       "Streaming": "false",
@@ -6274,6 +6299,14 @@
        "GUID": "{830124FB-B9D5-4AE8-846E-E94A74652666}",
        "LibName": "Wwise Parametric EQ",
        "LibId": "6881283"
+      },
+      {
+       "Id": "2394809124",
+       "Name": "Very_Slow_Modulation",
+       "ObjectPath": "\\Effects\\Factory Effects\\Tremolo\\Very_Slow_Modulation",
+       "GUID": "{6082F901-3CE1-4D78-8F2D-B2B72CF28085}",
+       "LibName": "Wwise Tremolo",
+       "LibId": "8585219"
       },
       {
        "Id": "3442768367",
@@ -6515,6 +6548,27 @@
         "Id": "754770262"
        }
       ]
+     },
+     {
+      "Id": "1347948592",
+      "Name": "Play_AMB_WIND_SAND",
+      "ObjectPath": "\\Events\\AMB_WU\\Play_AMB_WIND_SAND",
+      "GUID": "{B1C7BABF-E778-4551-8766-9310FE882ED4}",
+      "Color": "4",
+      "MaxAttenuation": "3000",
+      "DurationType": "Infinite",
+      "MediaRefs": [
+       {
+        "Id": "930759196"
+       }
+      ],
+      "PluginRefs": {
+       "ShareSets": [
+        {
+         "Id": "2394809124"
+        }
+       ]
+      }
      }
     ],
     "Busses": [
@@ -6802,7 +6856,7 @@
     "GUID": "{459D1F67-52BD-4FA1-B846-B8F3A50C2C5F}",
     "Color": "17",
     "Language": "SFX",
-    "Hash": "{6D14B597-C695-5589-E47A-AB7FA3D243CF}",
+    "Hash": "{0A05BF0B-FFA3-7014-DDA1-20B3134A65EC}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\SFX_SB",
     "ShortName": "SFX_SB",
     "Path": "SFX_SB.bnk",
@@ -6848,12 +6902,36 @@
       "CachePath": "64/{64E42013-D7E2-808D-E95E-779D93FF55D5}.wem"
      },
      {
+      "Id": "599335044",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Cine_wakeup.wav",
+      "CachePath": "F4/{F4E8D5EA-456D-943B-02DB-33DB268E318C}.wem"
+     },
+     {
+      "Id": "604138536",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Cine_end.wav",
+      "CachePath": "D3/{D341DCC0-536B-69E3-2558-589C3690AA27}.wem"
+     },
+     {
       "Id": "640927559",
       "Language": "SFX",
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "SFX_Button_Backstage.wav",
       "CachePath": "82/{82F255B1-9004-6903-C391-016D39FD6611}.wem"
+     },
+     {
+      "Id": "670938057",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Cine_menu.wav",
+      "CachePath": "FA/{FA662D48-D620-6CFC-23E1-19210B284D40}.wem"
      },
      {
       "Id": "794556847",
@@ -6878,6 +6956,14 @@
       "Location": "Memory",
       "ShortName": "MC\\SFX_Door_Pyramid.wav",
       "CachePath": "1A/{1AD9C707-2215-0919-22D3-BF8A571C4E30}.wem"
+     },
+     {
+      "Id": "879513473",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Woosh_Menu.wav",
+      "CachePath": "E1/{E1AC408C-2737-85EF-DEA2-3A5422F48F54}.wem"
      },
      {
       "Id": "1013981530",
@@ -6905,6 +6991,51 @@
      }
     ],
     "Events": [
+     {
+      "Id": "829040339",
+      "Name": "Play_Cine_end",
+      "ObjectPath": "\\Events\\SFX_WU\\Play_Cine_end",
+      "GUID": "{1A7C53A4-1834-409A-909E-09275CCE6874}",
+      "Color": "17",
+      "DurationType": "OneShot",
+      "DurationMin": "21.153042",
+      "DurationMax": "21.153042",
+      "MediaRefs": [
+       {
+        "Id": "604138536"
+       }
+      ]
+     },
+     {
+      "Id": "138318473",
+      "Name": "Play_Cine_menu",
+      "ObjectPath": "\\Events\\SFX_WU\\Play_Cine_menu",
+      "GUID": "{A8172E8D-7409-4792-B42F-7DC2B0A6D030}",
+      "Color": "17",
+      "DurationType": "OneShot",
+      "DurationMin": "16.218374",
+      "DurationMax": "16.218374",
+      "MediaRefs": [
+       {
+        "Id": "670938057"
+       }
+      ]
+     },
+     {
+      "Id": "3085573507",
+      "Name": "Play_Cine_wakeup",
+      "ObjectPath": "\\Events\\SFX_WU\\Play_Cine_wakeup",
+      "GUID": "{1CE1E1CE-18F7-4D1B-A05F-70FF89834687}",
+      "Color": "17",
+      "DurationType": "OneShot",
+      "DurationMin": "22.075542",
+      "DurationMax": "22.075542",
+      "MediaRefs": [
+       {
+        "Id": "599335044"
+       }
+      ]
+     },
      {
       "Id": "1623238786",
       "Name": "Play_SFX_Button_Backstage",
@@ -7014,6 +7145,21 @@
         "Id": "794556847"
        }
       ]
+     },
+     {
+      "Id": "2415567568",
+      "Name": "Play_Woosh_Menu",
+      "ObjectPath": "\\Events\\SFX_WU\\Play_Woosh_Menu",
+      "GUID": "{9595ACAB-3807-4E6D-A05A-018B4F89345C}",
+      "Color": "17",
+      "DurationType": "OneShot",
+      "DurationMin": "3.259125",
+      "DurationMax": "3.259125",
+      "MediaRefs": [
+       {
+        "Id": "879513473"
+       }
+      ]
      }
     ]
    },
@@ -7023,7 +7169,7 @@
     "GUID": "{D2378E68-5468-4849-BC4A-8FC6D8A3BF29}",
     "Color": "15",
     "Language": "SFX",
-    "Hash": "{9FBE0ACE-F871-584A-41BB-D53F32714033}",
+    "Hash": "{E096A6DD-1324-FFE9-89C1-D2B0B01DBE08}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\GPE_SB",
     "ShortName": "GPE_SB",
     "Path": "GPE_SB.bnk",
@@ -7336,6 +7482,6 @@
     ]
    }
   ],
-  "FileHash": "{BAD28ECD-C3CD-EAF1-98F2-E50A9AD9E8E4}"
+  "FileHash": "{89B228BA-2405-62D1-FD51-7301D2D34781}"
  }
 }

@@ -1,9 +1,13 @@
 Event	ID	Name			Wwise Object Path	Notes
+	138318473	Play_Cine_menu			\SFX_WU\Play_Cine_menu	
 	582941242	Play_SFX_Door_Pyramid_Open			\SFX_WU\Play_SFX_Door_Pyramid_Open	
+	829040339	Play_Cine_end			\SFX_WU\Play_Cine_end	
 	1447435678	Play_SFX_Door_Pyramid_Close			\SFX_WU\Play_SFX_Door_Pyramid_Close	
 	1623238786	Play_SFX_Button_Backstage			\SFX_WU\Play_SFX_Button_Backstage	
+	2415567568	Play_Woosh_Menu			\SFX_WU\Play_Woosh_Menu	
 	2496075354	Play_SFX_HourGlass_Destruction_2D			\SFX_WU\Play_SFX_HourGlass_Destruction_2D	
 	2563465684	Play_SFX_HourGlass_Idle_LP			\SFX_WU\Play_SFX_HourGlass_Idle_LP	
+	3085573507	Play_Cine_wakeup			\SFX_WU\Play_Cine_wakeup	
 	3780890544	Play_SFX_EndCinematic			\SFX_WU\Play_SFX_EndCinematic	
 
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
@@ -12,10 +16,14 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	460314317	SFX_BlackSand_Glitchy_2s_Stereo_02	G:\Unreal\Unreal_Projects\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\0A\{0A54382E-C0DE-AD37-E077-EF38B145DF68}.wem		\Actor-Mixer Hierarchy\SFX_WU\SFX\SFX_BlackSand_Texture\Glitchy_Stereo\SFX_BlackSand_Glitchy_2s_Stereo_02		672704
 	482790053	SFX_Door_Pyramid_Open	G:\Unreal\Unreal_Projects\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\18\{1849399E-D740-513D-FA9C-914BCAAD267D}.wem		\Actor-Mixer Hierarchy\SFX_WU\SFX\SFX_Door_Pyramid_Open		443904
 	498448547	SFX_BlackSand_Glitchy_2s_Stereo_01	G:\Unreal\Unreal_Projects\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\64\{64E42013-D7E2-808D-E95E-779D93FF55D5}.wem		\Actor-Mixer Hierarchy\SFX_WU\SFX\SFX_BlackSand_Texture\Glitchy_Stereo\SFX_BlackSand_Glitchy_2s_Stereo_01		666696
+	599335044	Cine_wakeup	G:\Unreal\Unreal_Projects\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\F4\{F4E8D5EA-456D-943B-02DB-33DB268E318C}.wem		\Actor-Mixer Hierarchy\SFX_WU\SFX\Cinematics\Cine_wakeup		4238600
+	604138536	Cine_end	G:\Unreal\Unreal_Projects\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\D3\{D341DCC0-536B-69E3-2558-589C3690AA27}.wem		\Actor-Mixer Hierarchy\SFX_WU\SFX\Cinematics\Cine_end		4061480
 	640927559	SFX_Button_Backstage	G:\Unreal\Unreal_Projects\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\82\{82F255B1-9004-6903-C391-016D39FD6611}.wem		\Actor-Mixer Hierarchy\SFX_WU\SFX\SFX_Button_Backstage		90260
+	670938057	Cine_menu	G:\Unreal\Unreal_Projects\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\FA\{FA662D48-D620-6CFC-23E1-19210B284D40}.wem		\Actor-Mixer Hierarchy\SFX_WU\SFX\Cinematics\Cine_menu		3114024
 	794556847	SFX_HourGlass_Idle_LP	G:\Unreal\Unreal_Projects\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\9E\{9E9F4175-FA7A-716B-4585-6EDB4DFDB77D}.wem		\Actor-Mixer Hierarchy\SFX_WU\SFX\SFX_HourGlass_Idle_LP		6044636
 	846163179	SFX_EndCinematic	G:\Unreal\Unreal_Projects\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\1F\{1F764E73-3056-A979-4624-357EC16404CB}.wem		\Actor-Mixer Hierarchy\SFX_WU\SFX\SFX_EndCinematic		6380692
 	862611700	SFX_Door_Pyramid_Close	G:\Unreal\Unreal_Projects\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\1A\{1AD9C707-2215-0919-22D3-BF8A571C4E30}.wem		\Actor-Mixer Hierarchy\SFX_WU\SFX\SFX_Door_Pyramid_Close		522996
+	879513473	Woosh_Menu	G:\Unreal\Unreal_Projects\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\E1\{E1AC408C-2737-85EF-DEA2-3A5422F48F54}.wem		\Actor-Mixer Hierarchy\SFX_WU\SFX\Cinematics\Woosh_Menu		625848
 	1013981530	SFX_BlackSand_Glitchy_2s_Stereo_05	G:\Unreal\Unreal_Projects\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\EB\{EB411A14-847D-B177-ACC9-45C294A582EB}.wem		\Actor-Mixer Hierarchy\SFX_WU\SFX\SFX_BlackSand_Texture\Glitchy_Stereo\SFX_BlackSand_Glitchy_2s_Stereo_05		687216
 	1028643509	SFX_BlackSand_Glitchy_2s_Stereo_03	G:\Unreal\Unreal_Projects\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\A8\{A810EF3C-0027-8B6D-95B4-735D8FD5175C}.wem		\Actor-Mixer Hierarchy\SFX_WU\SFX\SFX_BlackSand_Texture\Glitchy_Stereo\SFX_BlackSand_Glitchy_2s_Stereo_03		703156
 	1049815799	SFX_HourGlass_Destruction_2D	G:\Unreal\Unreal_Projects\DiamondProjectTeam03\DiamondProjectTeam03_WwiseProject\.cache\06\{063FC635-A85C-DE7F-9008-1CC84261DC06}.wem		\Actor-Mixer Hierarchy\SFX_WU\SFX\SFX_HourGlass_Destruction_2D		3577400

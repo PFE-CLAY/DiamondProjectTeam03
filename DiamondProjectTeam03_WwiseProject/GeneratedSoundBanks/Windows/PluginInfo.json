@@ -32,6 +32,13 @@
     "StaticLib": "AkGuitarDistortionFX"
    },
    {
+    "LibName": "Wwise Tremolo",
+    "LibId": "8585219",
+    "Type": "Effect",
+    "DLL": "AkTremolo",
+    "StaticLib": "AkTremoloFX"
+   },
+   {
     "LibName": "System",
     "LibId": "11403271",
     "Type": "AudioDevice"
@@ -42,6 +49,6 @@
     "Type": "AudioDevice"
    }
   ],
-  "FileHash": "{05B180F5-97BB-0053-BDF9-5E7A6B32E08D}"
+  "FileHash": "{2F35F218-CCFE-04F4-DC62-D65E6236B1A7}"
  }
 }

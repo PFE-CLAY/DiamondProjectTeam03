@@ -11,7 +11,7 @@
     "GUID": "{9DC5CBA4-02D0-4677-A565-21ECA413E694}",
     "Color": "4",
     "Language": "SFX",
-    "Hash": "{B4B95944-7691-5858-8321-DDB342871511}",
+    "Hash": "{7736A919-EEDF-A901-27DE-664B23EC9A60}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\AMB_SB",
     "ShortName": "AMB_SB",
     "Path": "AMB_SB.bnk",
@@ -346,6 +346,15 @@
       "CachePath": "C5/{C5D4F69F-4A43-C271-EA82-1422D7D302A0}.wem"
      },
      {
+      "Id": "930759196",
+      "Language": "SFX",
+      "Streaming": "true",
+      "Location": "Loose",
+      "ShortName": "AMB_WIND_SAND.wav",
+      "Path": "Media/930759196.wem",
+      "CachePath": "AA/{AAE04847-D18F-C3F1-D79E-6001FC485A05}.wem"
+     },
+     {
       "Id": "935598577",
       "Language": "SFX",
       "Streaming": "false",
@@ -477,6 +486,14 @@
        "GUID": "{830124FB-B9D5-4AE8-846E-E94A74652666}",
        "LibName": "Wwise Parametric EQ",
        "LibId": "6881283"
+      },
+      {
+       "Id": "2394809124",
+       "Name": "Very_Slow_Modulation",
+       "ObjectPath": "\\Effects\\Factory Effects\\Tremolo\\Very_Slow_Modulation",
+       "GUID": "{6082F901-3CE1-4D78-8F2D-B2B72CF28085}",
+       "LibName": "Wwise Tremolo",
+       "LibId": "8585219"
       },
       {
        "Id": "3442768367",
@@ -718,6 +735,27 @@
         "Id": "754770262"
        }
       ]
+     },
+     {
+      "Id": "1347948592",
+      "Name": "Play_AMB_WIND_SAND",
+      "ObjectPath": "\\Events\\AMB_WU\\Play_AMB_WIND_SAND",
+      "GUID": "{B1C7BABF-E778-4551-8766-9310FE882ED4}",
+      "Color": "4",
+      "MaxAttenuation": "3000",
+      "DurationType": "Infinite",
+      "MediaRefs": [
+       {
+        "Id": "930759196"
+       }
+      ],
+      "PluginRefs": {
+       "ShareSets": [
+        {
+         "Id": "2394809124"
+        }
+       ]
+      }
      }
     ],
     "Busses": [
@@ -1000,6 +1038,6 @@
     ]
    }
   ],
-  "FileHash": "{61985350-E9B1-43AA-4E54-B0BE18DF7F29}"
+  "FileHash": "{C897396E-195A-3999-2620-4C61525EFCA5}"
  }
 }

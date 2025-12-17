@@ -11,7 +11,7 @@
     "GUID": "{4B32F9EE-D939-4AEA-A633-697781A78CE3}",
     "Color": "21",
     "Language": "SFX",
-    "Hash": "{E78D4A8B-57FB-7309-8ED6-25D546D20865}",
+    "Hash": "{7704F7C8-57EA-A9EE-29B5-2827AAE02436}",
     "ObjectPath": "\\SoundBanks\\SoundBanks_WU\\MUS_SB",
     "ShortName": "MUS_SB",
     "Path": "MUS_SB.bnk",
@@ -63,6 +63,22 @@
       ]
      },
      {
+      "Id": "1784188493",
+      "Name": "Stop_MUS_ARENA",
+      "ObjectPath": "\\Events\\MUS_WU\\Stop_MUS_ARENA",
+      "GUID": "{182B8F79-B612-4322-A636-C7BC836A59D9}",
+      "Color": "8",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0",
+      "MediaRefs": [
+       {
+        "Id": "721910099"
+       }
+      ]
+     },
+     {
       "Id": "888771158",
       "Name": "Stop_MUS_Blacksands_Hub",
       "ObjectPath": "\\Events\\MUS_WU\\Stop_MUS_Blacksands_Hub",
@@ -81,6 +97,6 @@
     ]
    }
   ],
-  "FileHash": "{0A612822-323B-6DD3-BA48-BA3EE3D4234D}"
+  "FileHash": "{97FFF836-4D64-545A-C6A7-F7D9914FEE61}"
  }
 }
