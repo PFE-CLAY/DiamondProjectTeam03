@@ -7,13 +7,13 @@
 
 bool UGameSettingsSubsystem::IsPreplanInSceneVisible() const
 {
-	return bIsPreplanInSceneVisible;
+	return bIsOnboardingTutorialActivated;
 }
 
 void UGameSettingsSubsystem::SetPreplanInSceneVisibility(bool IsPreplanVisible)
 {
-	bIsPreplanInSceneVisible = IsPreplanVisible;
-	OnAdvicesVisibilityChangedDelegate.Broadcast(bIsPreplanInSceneVisible);
+	bIsOnboardingTutorialActivated = IsPreplanVisible;
+	OnAdvicesVisibilityChangedDelegate.Broadcast(bIsOnboardingTutorialActivated);
 }
 
 void UGameSettingsSubsystem::Initialize(FSubsystemCollectionBase& Collection)
@@ -42,7 +42,7 @@ void UGameSettingsSubsystem::SaveSettings()
 		SaveGameInstance->SettingsData.MusicVolume = MusicVolume;
 		SaveGameInstance->SettingsData.SFXVolume = SFXVolume;
 		SaveGameInstance->SettingsData.VoiceVolume = VoiceVolume;
-		SaveGameInstance->SettingsData.bIsPreplanInSceneVisible = bIsPreplanInSceneVisible;
+		SaveGameInstance->SettingsData.bIsPreplanInSceneVisible = bIsOnboardingTutorialActivated;
 		SaveGameInstance->SettingsData.SavedKeyboardLayout = SavedKeyboardLayout;
 
 		UGameplayStatics::SaveGameToSlot(SaveGameInstance, "DiamondSaveSlot", 0);
@@ -64,7 +64,7 @@ void UGameSettingsSubsystem::LoadSettings()
 		MusicVolume = SaveGameInstance->SettingsData.MusicVolume;
 		SFXVolume = SaveGameInstance->SettingsData.SFXVolume;
 		VoiceVolume = SaveGameInstance->SettingsData.VoiceVolume;
-		bIsPreplanInSceneVisible = SaveGameInstance->SettingsData.bIsPreplanInSceneVisible;
+		bIsOnboardingTutorialActivated = SaveGameInstance->SettingsData.bIsPreplanInSceneVisible;
 		SavedKeyboardLayout = SaveGameInstance->SettingsData.SavedKeyboardLayout;
 	}
 }
@@ -82,7 +82,7 @@ void UGameSettingsSubsystem::ResetSettings()
 	MusicVolume = DefaultData.MusicVolume;
 	SFXVolume = DefaultData.SFXVolume;
 	VoiceVolume = DefaultData.VoiceVolume;
-	bIsPreplanInSceneVisible = DefaultData.bIsPreplanInSceneVisible;
+	bIsOnboardingTutorialActivated = DefaultData.bIsPreplanInSceneVisible;
 	SavedKeyboardLayout = DefaultData.SavedKeyboardLayout;
 	
 	SaveSettings();
