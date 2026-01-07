@@ -56,13 +56,6 @@ void AMeleeEnemy::AttackMelee()
 	OnMeleeAttack.Broadcast();
 }
 
-
-bool AMeleeEnemy::IsTargetInRange(AActor* Target)
-	{
-	float DistanceToPlayer = FVector::Dist(GetActorLocation(), Target->GetActorLocation());
-	return (DistanceToPlayer <= AttackRange);
-}
-
 void AMeleeEnemy::Charge()
 {
 	
@@ -91,4 +84,3 @@ void AMeleeEnemy::StopAttack()
 	GetWorldTimerManager().ClearTimer(ChargeTimer);
 	StopAttackEffects();
 }
-

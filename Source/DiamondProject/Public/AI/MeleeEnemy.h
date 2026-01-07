@@ -68,8 +68,6 @@ public:
 	UFUNCTION()
 	void AttackMelee();
 	
-	UFUNCTION(BlueprintCallable, BlueprintPure)
-	bool IsTargetInRange(AActor* Target);
 	UFUNCTION(BlueprintImplementableEvent)
 	void OnAttackEvent(AActor* Target);
 
