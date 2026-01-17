@@ -80,7 +80,7 @@ USTRUCT(BlueprintType)
 struct FLoopSystemSaveData
 {
 	GENERATED_BODY()
-
+	
 	UPROPERTY()
 	int32 LoopNb = 0;
 
@@ -92,6 +92,9 @@ struct FLoopSystemSaveData
 
 	UPROPERTY()
 	bool bIsDreamLevel = false;
+
+	UPROPERTY()
+	bool IsDeadByTimer = false;
 };
 
 /**

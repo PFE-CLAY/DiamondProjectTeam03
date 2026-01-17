@@ -35,6 +35,9 @@ public:
 
 	UPROPERTY(BlueprintReadOnly)
 	int LoopNb = 0;
+
+	UPROPERTY(BlueprintReadWrite)
+	bool bIsDeadByTimer = false;
 	
 	UPROPERTY(BlueprintAssignable)
 	FOnSceneReloadEvent OnSceneReloadEvent;
