@@ -82,5 +82,9 @@ public:
 	
 	UFUNCTION(BlueprintCallable, BlueprintPure, Category = "Enemy")
     virtual FRotator GetDirectionRotation(AActor* OriginActor, AActor* TargetActor);
+
+	// Line of sight + target gating. Allows target or any AEnemy, blocks anything else.
+	UFUNCTION(BlueprintCallable, BlueprintPure, Category = "Enemy")
+	virtual bool IsTargetInRange(AActor* Target);
 	
 };

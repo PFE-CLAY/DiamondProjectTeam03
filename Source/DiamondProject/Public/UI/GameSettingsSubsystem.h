@@ -58,9 +58,8 @@ public:
 	UPROPERTY(BlueprintReadWrite)
 	float VoiceVolume = 1.0f;
 	
-private:
-	UPROPERTY(EditAnywhere)
-	bool bIsPreplanInSceneVisible = false;
+	UPROPERTY(BlueprintReadWrite)
+	bool bIsOnboardingTutorialActivated = true;
 	
 public:
 	UFUNCTION(BlueprintCallable)
