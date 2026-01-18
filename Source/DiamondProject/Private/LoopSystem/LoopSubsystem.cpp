@@ -390,6 +390,7 @@ void ULoopSubsystem::SaveLoopData()
 	if (SaveGameInstance)
 	{
 		SaveGameInstance->LoopData.LoopNb = LoopNb;
+		SaveGameInstance->LoopData.IsDeadByTimer = bIsDeadByTimer;
 		SaveGameInstance->LoopData.Collectibles = Collectibles;
 		SaveGameInstance->LoopData.bIsDreamLevel = bIsDreamLevel;
 
@@ -421,6 +422,7 @@ void ULoopSubsystem::LoadLoopData()
 	if (SaveGameInstance)
 	{
 		LoopNb = SaveGameInstance->LoopData.LoopNb;
+		bIsDeadByTimer = SaveGameInstance->LoopData.IsDeadByTimer;
 		//Collectibles = SaveGameInstance->LoopData.Collectibles;
 		bIsDreamLevel = SaveGameInstance->LoopData.bIsDreamLevel;
 		
@@ -451,6 +453,7 @@ void ULoopSubsystem::LoadLoopData()
 void ULoopSubsystem::ResetAllProgress()
 {
 	LoopNb = 0;
+	bIsDeadByTimer = false;
 	Collectibles.Empty();
 	bIsDreamLevel = false;
 
