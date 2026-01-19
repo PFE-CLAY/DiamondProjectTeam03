@@ -9,6 +9,15 @@
 #include "GameFramework/GameUserSettings.h"
 #include "GameSettingsSubsystem.generated.h"
 
+UENUM(BlueprintType)
+enum class EGraphicsQuality : uint8
+{
+	LOW,
+	MEDIUM,
+	HIGH,
+	VERY_HIGH,
+};
+
 /**
  * 
  */
@@ -65,7 +74,7 @@ public:
 private:
 	
 	UPROPERTY()
-	int32 SelectedGraphicsQualityLevel = 3; // Default to Epic
+	int32 SelectedGraphicsQualityLevel = 2; // Default High
 	
 public:
 	UFUNCTION(BlueprintCallable)
@@ -83,7 +92,7 @@ public:
 	void ResetSettings();
 	
 	UFUNCTION(BlueprintCallable)
-	void ChangeGraphicsSettings(int32 QualityLevel);
+	void ChangeGraphicsSettings(EGraphicsQuality QualityLevel);
 	
 	UFUNCTION(BlueprintCallable)
 	int32 GetSelectedGraphicsQualityLevel() const { return SelectedGraphicsQualityLevel; }

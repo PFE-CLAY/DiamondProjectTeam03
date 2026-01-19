@@ -91,14 +91,14 @@ void UGameSettingsSubsystem::ResetSettings()
 	SaveSettings();
 }
 
-void UGameSettingsSubsystem::ChangeGraphicsSettings(int32 QualityLevel)
+void UGameSettingsSubsystem::ChangeGraphicsSettings(EGraphicsQuality QualityLevel)
 {
 	// 1. Get the GameUserSettings pointer
 	UGameUserSettings* UserSettings = UGameUserSettings::GetGameUserSettings();
 
 	if (!UserSettings) return;
 
-	SelectedGraphicsQualityLevel = QualityLevel;
+	SelectedGraphicsQualityLevel = static_cast<int32>(QualityLevel);
 	
 	// 2. Set individual scalability groups
 	// QualityLevel: 0=Low, 1=Medium, 2=High, 3=Epic, 4=Cinematic
