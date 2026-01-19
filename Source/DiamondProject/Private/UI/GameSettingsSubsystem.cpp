@@ -44,6 +44,7 @@ void UGameSettingsSubsystem::SaveSettings()
 		SaveGameInstance->SettingsData.VoiceVolume = VoiceVolume;
 		SaveGameInstance->SettingsData.bIsPreplanInSceneVisible = bIsOnboardingTutorialActivated;
 		SaveGameInstance->SettingsData.SavedKeyboardLayout = SavedKeyboardLayout;
+		SaveGameInstance->SettingsData.SelectedGraphicsQualityLevel = SelectedGraphicsQualityLevel;
 
 		UGameplayStatics::SaveGameToSlot(SaveGameInstance, "DiamondSaveSlot", 0);
 	}
@@ -66,6 +67,7 @@ void UGameSettingsSubsystem::LoadSettings()
 		VoiceVolume = SaveGameInstance->SettingsData.VoiceVolume;
 		bIsOnboardingTutorialActivated = SaveGameInstance->SettingsData.bIsPreplanInSceneVisible;
 		SavedKeyboardLayout = SaveGameInstance->SettingsData.SavedKeyboardLayout;
+		SelectedGraphicsQualityLevel = SaveGameInstance->SettingsData.SelectedGraphicsQualityLevel;
 	}
 }
 
@@ -84,6 +86,44 @@ void UGameSettingsSubsystem::ResetSettings()
 	VoiceVolume = DefaultData.VoiceVolume;
 	bIsOnboardingTutorialActivated = DefaultData.bIsPreplanInSceneVisible;
 	SavedKeyboardLayout = DefaultData.SavedKeyboardLayout;
+	SelectedGraphicsQualityLevel = DefaultData.SelectedGraphicsQualityLevel;
+	
+	SaveSettings();
+}
+
+void UGameSettingsSubsystem::ChangeGraphicsSettings(int32 QualityLevel)
+{
+	// 1. Get the GameUserSettings pointer
+	UGameUserSettings* UserSettings = UGameUserSettings::GetGameUserSettings();
+
+	if (!UserSettings) return;
+
+	SelectedGraphicsQualityLevel = QualityLevel;
+	
+	// 2. Set individual scalability groups
+	// QualityLevel: 0=Low, 1=Medium, 2=High, 3=Epic, 4=Cinematic
+    
+	// UserSettings->SetTextureQuality(QualityLevel);
+	// UserSettings->SetShadowQuality(QualityLevel);
+	// UserSettings->SetVisualEffectQuality(QualityLevel);
+	// UserSettings->SetPostProcessingQuality(QualityLevel);
+	// UserSettings->SetAntiAliasingQuality(QualityLevel);
+	// UserSettings->SetFoliageQuality(QualityLevel);
+	// UserSettings->SetShadingQuality(QualityLevel);
+	// UserSettings->SetGlobalIlluminationQuality(QualityLevel);
+	// UserSettings->SetReflectionQuality(QualityLevel);
+	// UserSettings->SetViewDistanceQuality(QualityLevel);
+
+	// Optional: Set the overall scalability level (sets all groups at once)
+	UserSettings->SetOverallScalabilityLevel(SelectedGraphicsQualityLevel);
+
+	// 3. Apply the settings to the engine (Actual visual change happens here)
+	// passing 'false' prevents the engine from checking for command line overrides
+	UserSettings->ApplySettings(false);
+
+	// 4. Save settings to disk (GameUserSettings.ini)
+	// ApplySettings() usually saves automatically, but you can force it here
+	UserSettings->SaveSettings();
 	
 	SaveSettings();
 }

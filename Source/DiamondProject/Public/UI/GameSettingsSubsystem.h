@@ -6,6 +6,7 @@
 #include "CoreMinimal.h"
 #include "DiamondProject/DiamondProjectPlayerController.h"
 #include "Subsystems/GameInstanceSubsystem.h"
+#include "GameFramework/GameUserSettings.h"
 #include "GameSettingsSubsystem.generated.h"
 
 /**
@@ -61,6 +62,11 @@ public:
 	UPROPERTY(BlueprintReadWrite)
 	bool bIsOnboardingTutorialActivated = true;
 	
+private:
+	
+	UPROPERTY()
+	int32 SelectedGraphicsQualityLevel = 3; // Default to Epic
+	
 public:
 	UFUNCTION(BlueprintCallable)
 	bool IsPreplanInSceneVisible() const;
@@ -75,6 +81,12 @@ public:
 
 	UFUNCTION(BlueprintCallable)
 	void ResetSettings();
+	
+	UFUNCTION(BlueprintCallable)
+	void ChangeGraphicsSettings(int32 QualityLevel);
+	
+	UFUNCTION(BlueprintCallable)
+	int32 GetSelectedGraphicsQualityLevel() const { return SelectedGraphicsQualityLevel; }
 
 	virtual void Initialize(FSubsystemCollectionBase& Collection) override;
 };

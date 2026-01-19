@@ -47,6 +47,9 @@ struct FGameSettingsSaveData
 	
 	UPROPERTY()
 	EKeyboardLayout SavedKeyboardLayout = EKeyboardLayout::UNSPECIFIED;
+	
+	UPROPERTY()
+	int32 SelectedGraphicsQualityLevel = 3;
 };
 
 USTRUCT(BlueprintType)
