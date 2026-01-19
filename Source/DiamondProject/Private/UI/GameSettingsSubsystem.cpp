@@ -4,6 +4,7 @@
 #include "UI/GameSettingsSubsystem.h"
 #include "Kismet/GameplayStatics.h"
 #include "SaveSystem/DiamondSaveGame.h"
+#include "GameFramework/GameUserSettings.h"
 
 bool UGameSettingsSubsystem::IsPreplanInSceneVisible() const
 {

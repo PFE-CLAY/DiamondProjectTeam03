@@ -6,7 +6,6 @@
 #include "CoreMinimal.h"
 #include "DiamondProject/DiamondProjectPlayerController.h"
 #include "Subsystems/GameInstanceSubsystem.h"
-#include "GameFramework/GameUserSettings.h"
 #include "GameSettingsSubsystem.generated.h"
 
 UENUM(BlueprintType)
