@@ -16,6 +16,7 @@ enum class EGraphicsQuality : uint8
 	MEDIUM,
 	HIGH,
 	VERY_HIGH,
+	CINEMATIC
 };
 
 /**
@@ -74,7 +75,7 @@ public:
 private:
 	
 	UPROPERTY()
-	int32 SelectedGraphicsQualityLevel = 2; // Default High
+	int32 SelectedGraphicsQualityLevel = 3; // Default High
 	
 public:
 	UFUNCTION(BlueprintCallable)
