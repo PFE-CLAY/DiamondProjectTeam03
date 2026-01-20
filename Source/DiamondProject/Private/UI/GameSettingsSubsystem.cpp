@@ -4,7 +4,6 @@
 #include "UI/GameSettingsSubsystem.h"
 #include "Kismet/GameplayStatics.h"
 #include "SaveSystem/DiamondSaveGame.h"
-#include "GameFramework/GameUserSettings.h"
 
 bool UGameSettingsSubsystem::IsPreplanInSceneVisible() const
 {
@@ -15,6 +14,11 @@ void UGameSettingsSubsystem::SetPreplanInSceneVisibility(bool IsPreplanVisible)
 {
 	bIsOnboardingTutorialActivated = IsPreplanVisible;
 	OnAdvicesVisibilityChangedDelegate.Broadcast(bIsOnboardingTutorialActivated);
+}
+
+void UGameSettingsSubsystem::InitGraphicSettings()
+{
+	UserSettingsPtr = TStrongObjectPtr<UGameUserSettings>(UGameUserSettings::GetGameUserSettings());
 }
 
 void UGameSettingsSubsystem::Initialize(FSubsystemCollectionBase& Collection)
@@ -92,39 +96,47 @@ void UGameSettingsSubsystem::ResetSettings()
 	SaveSettings();
 }
 
-void UGameSettingsSubsystem::ChangeGraphicsSettings(EGraphicsQuality QualityLevel)
+void UGameSettingsSubsystem::ChangeGraphicsSettings(EGraphicsSettingType type ,EGraphicsQuality QualityLevel)
 {
-	// 1. Get the GameUserSettings pointer
-	UGameUserSettings* UserSettings = UGameUserSettings::GetGameUserSettings();
-
-	if (!UserSettings) return;
-
-	SelectedGraphicsQualityLevel = static_cast<int32>(QualityLevel);
+	int32 castedValue = static_cast<int32>(QualityLevel);
 	
-	// 2. Set individual scalability groups
-	// QualityLevel: 0=Low, 1=Medium, 2=High, 3=Epic, 4=Cinematic
-    
-	// UserSettings->SetTextureQuality(QualityLevel);
-	// UserSettings->SetShadowQuality(QualityLevel);
-	// UserSettings->SetVisualEffectQuality(QualityLevel);
-	// UserSettings->SetPostProcessingQuality(QualityLevel);
-	// UserSettings->SetAntiAliasingQuality(QualityLevel);
-	// UserSettings->SetFoliageQuality(QualityLevel);
-	// UserSettings->SetShadingQuality(QualityLevel);
-	// UserSettings->SetGlobalIlluminationQuality(QualityLevel);
-	// UserSettings->SetReflectionQuality(QualityLevel);
-	// UserSettings->SetViewDistanceQuality(QualityLevel);
-
-	// Optional: Set the overall scalability level (sets all groups at once)
-	UserSettings->SetOverallScalabilityLevel(SelectedGraphicsQualityLevel);
-
-	// 3. Apply the settings to the engine (Actual visual change happens here)
-	// passing 'false' prevents the engine from checking for command line overrides
-	UserSettings->ApplySettings(false);
-
-	// 4. Save settings to disk (GameUserSettings.ini)
-	// ApplySettings() usually saves automatically, but you can force it here
-	UserSettings->SaveSettings();
+	switch (type)
+	{
+		case EGraphicsSettingType::TEXTURE_QUALITY:
+			UserSettingsPtr->SetTextureQuality(castedValue);
+			break;
+		case EGraphicsSettingType::SHADOW_QUALITY:
+			UserSettingsPtr->SetShadowQuality(castedValue);
+			break;
+		case EGraphicsSettingType::VISUAL_EFFECT_QUALITY:
+			UserSettingsPtr->SetVisualEffectQuality(castedValue);
+			break;
+		case EGraphicsSettingType::POST_PROCESSING_QUALITY:
+			UserSettingsPtr->SetPostProcessingQuality(castedValue);
+			break;
+		case EGraphicsSettingType::ANTI_ALIASING_QUALITY:
+			UserSettingsPtr->SetAntiAliasingQuality(castedValue);
+			break;
+		case EGraphicsSettingType::SHADING_QUALITY:
+			UserSettingsPtr->SetShadingQuality(castedValue);
+			break;
+		case EGraphicsSettingType::GLOBAL_ILLUMINATION_QUALITY:
+			UserSettingsPtr->SetGlobalIlluminationQuality(castedValue);
+			break;
+		case EGraphicsSettingType::REFLECTION_QUALITY:
+			UserSettingsPtr->SetReflectionQuality(castedValue);
+			break;
+	}
 	
-	SaveSettings();
+	UserSettingsPtr->SetOverallScalabilityLevel(castedValue);
+}
+
+void UGameSettingsSubsystem::ApplyGraphicSettings()
+{
+	UserSettingsPtr->ValidateSettings();
+	
+	if (UserSettingsPtr.IsValid())
+	{
+		UserSettingsPtr->ApplySettings(false);
+	}
 }
