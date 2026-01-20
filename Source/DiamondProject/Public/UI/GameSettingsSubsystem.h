@@ -91,7 +91,8 @@ private:
 	UPROPERTY()
 	int32 SelectedGraphicsQualityLevel = 3; // Default High
 	
-	TStrongObjectPtr<UGameUserSettings> UserSettingsPtr;
+	UPROPERTY()
+	TObjectPtr<UGameUserSettings> UserSettingsPtr;
 	
 public:
 	UFUNCTION(BlueprintCallable)

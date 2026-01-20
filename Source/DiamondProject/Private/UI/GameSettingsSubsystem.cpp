@@ -18,7 +18,11 @@ void UGameSettingsSubsystem::SetPreplanInSceneVisibility(bool IsPreplanVisible)
 
 void UGameSettingsSubsystem::InitGraphicSettings()
 {
-	UserSettingsPtr = TStrongObjectPtr<UGameUserSettings>(UGameUserSettings::GetGameUserSettings());
+	if (UserSettingsPtr != nullptr) return;
+	
+	UserSettingsPtr = TObjectPtr<UGameUserSettings>(UGameUserSettings::GetGameUserSettings());
+	UserSettingsPtr->SetOverallScalabilityLevel(3);
+	LoadSettings();
 }
 
 void UGameSettingsSubsystem::Initialize(FSubsystemCollectionBase& Collection)
@@ -127,16 +131,9 @@ void UGameSettingsSubsystem::ChangeGraphicsSettings(EGraphicsSettingType type ,E
 			UserSettingsPtr->SetReflectionQuality(castedValue);
 			break;
 	}
-	
-	UserSettingsPtr->SetOverallScalabilityLevel(castedValue);
 }
 
 void UGameSettingsSubsystem::ApplyGraphicSettings()
 {
-	UserSettingsPtr->ValidateSettings();
-	
-	if (UserSettingsPtr.IsValid())
-	{
-		UserSettingsPtr->ApplySettings(false);
-	}
+	UserSettingsPtr->ApplySettings(false);
 }
