@@ -178,4 +178,5 @@ void UGameSettingsSubsystem::ChangeGraphicsSettings(EGraphicsSettingType type ,E
 void UGameSettingsSubsystem::ApplyGraphicSettings()
 {
 	UserSettingsPtr->ApplySettings(false);
+	SaveSettings();
 }
