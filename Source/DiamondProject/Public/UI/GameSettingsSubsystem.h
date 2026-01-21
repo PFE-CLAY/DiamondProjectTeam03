@@ -7,7 +7,6 @@
 #include "DiamondProject/DiamondProjectPlayerController.h"
 #include "Subsystems/GameInstanceSubsystem.h"
 #include "GameFramework/GameUserSettings.h"
-#include "UObject/StrongObjectPtr.h"
 #include "GameSettingsSubsystem.generated.h"
 
 UENUM(BlueprintType)
@@ -88,9 +87,7 @@ public:
 	
 private:
 	
-	UPROPERTY()
-	int32 SelectedGraphicsQualityLevel = 3; // Default High
-	
+
 	UPROPERTY()
 	TObjectPtr<UGameUserSettings> UserSettingsPtr;
 	
