@@ -16,10 +16,25 @@ void UGameSettingsSubsystem::SetPreplanInSceneVisibility(bool IsPreplanVisible)
 	OnAdvicesVisibilityChangedDelegate.Broadcast(bIsOnboardingTutorialActivated);
 }
 
+void UGameSettingsSubsystem::InitGraphicSettings()
+{
+	if (!UserSettingsPtr)
+	{
+		UserSettingsPtr = UGameUserSettings::GetGameUserSettings();
+	}
+	
+	ApplyGraphicSettings();
+}
+
 void UGameSettingsSubsystem::Initialize(FSubsystemCollectionBase& Collection)
 {
 	Super::Initialize(Collection);
+	if (!UserSettingsPtr)
+	{
+		UserSettingsPtr = UGameUserSettings::GetGameUserSettings();
+	}
 	LoadSettings();
+	ApplyGraphicSettings();
 }
 
 void UGameSettingsSubsystem::SaveSettings()
@@ -32,6 +47,7 @@ void UGameSettingsSubsystem::SaveSettings()
 
 	if (SaveGameInstance)
 	{
+		
 		SaveGameInstance->SettingsData.bSubtitlesActivated = bSubtitlesActivated;
 		SaveGameInstance->SettingsData.SubtitlesBackgroundOpacity = SubtitlesBackgroundOpacity;
 		SaveGameInstance->SettingsData.MouseSensitivity = MouseSensitivity;
@@ -44,6 +60,18 @@ void UGameSettingsSubsystem::SaveSettings()
 		SaveGameInstance->SettingsData.VoiceVolume = VoiceVolume;
 		SaveGameInstance->SettingsData.bIsPreplanInSceneVisible = bIsOnboardingTutorialActivated;
 		SaveGameInstance->SettingsData.SavedKeyboardLayout = SavedKeyboardLayout;
+		
+		if (UserSettingsPtr)
+		{
+			SaveGameInstance->SettingsData.GraphicsQualitySettings.TextureQuality = UserSettingsPtr->GetTextureQuality();
+			SaveGameInstance->SettingsData.GraphicsQualitySettings.ShadowQuality = UserSettingsPtr->GetShadowQuality();
+			SaveGameInstance->SettingsData.GraphicsQualitySettings.VisualEffectQuality = UserSettingsPtr->GetVisualEffectQuality();
+			SaveGameInstance->SettingsData.GraphicsQualitySettings.PostProcessQuality = UserSettingsPtr->GetPostProcessingQuality();
+			SaveGameInstance->SettingsData.GraphicsQualitySettings.AntiAliasingQuality = UserSettingsPtr->GetAntiAliasingQuality();
+			SaveGameInstance->SettingsData.GraphicsQualitySettings.ShadingQuality = UserSettingsPtr->GetShadingQuality();
+			SaveGameInstance->SettingsData.GraphicsQualitySettings.GlobalIlluminationQuality = UserSettingsPtr->GetGlobalIlluminationQuality();
+			SaveGameInstance->SettingsData.GraphicsQualitySettings.ReflectionQuality = UserSettingsPtr->GetReflectionQuality();
+		}
 
 		UGameplayStatics::SaveGameToSlot(SaveGameInstance, "DiamondSaveSlot", 0);
 	}
@@ -66,6 +94,18 @@ void UGameSettingsSubsystem::LoadSettings()
 		VoiceVolume = SaveGameInstance->SettingsData.VoiceVolume;
 		bIsOnboardingTutorialActivated = SaveGameInstance->SettingsData.bIsPreplanInSceneVisible;
 		SavedKeyboardLayout = SaveGameInstance->SettingsData.SavedKeyboardLayout;
+		
+		if (UserSettingsPtr)
+		{
+			UserSettingsPtr->SetTextureQuality(SaveGameInstance->SettingsData.GraphicsQualitySettings.TextureQuality);
+			UserSettingsPtr->SetShadowQuality(SaveGameInstance->SettingsData.GraphicsQualitySettings.ShadowQuality);
+			UserSettingsPtr->SetVisualEffectQuality(SaveGameInstance->SettingsData.GraphicsQualitySettings.VisualEffectQuality);
+			UserSettingsPtr->SetPostProcessingQuality(SaveGameInstance->SettingsData.GraphicsQualitySettings.PostProcessQuality);
+			UserSettingsPtr->SetAntiAliasingQuality(SaveGameInstance->SettingsData.GraphicsQualitySettings.AntiAliasingQuality);
+			UserSettingsPtr->SetShadingQuality(SaveGameInstance->SettingsData.GraphicsQualitySettings.ShadingQuality);
+			UserSettingsPtr->SetGlobalIlluminationQuality(SaveGameInstance->SettingsData.GraphicsQualitySettings.GlobalIlluminationQuality);
+			UserSettingsPtr->SetReflectionQuality(SaveGameInstance->SettingsData.GraphicsQualitySettings.ReflectionQuality);
+		}
 	}
 }
 
@@ -85,5 +125,58 @@ void UGameSettingsSubsystem::ResetSettings()
 	bIsOnboardingTutorialActivated = DefaultData.bIsPreplanInSceneVisible;
 	SavedKeyboardLayout = DefaultData.SavedKeyboardLayout;
 	
+	if (UserSettingsPtr)
+	{
+		UserSettingsPtr->SetTextureQuality(DefaultData.GraphicsQualitySettings.TextureQuality);
+		UserSettingsPtr->SetShadowQuality(DefaultData.GraphicsQualitySettings.ShadowQuality);
+		UserSettingsPtr->SetVisualEffectQuality(DefaultData.GraphicsQualitySettings.VisualEffectQuality);
+		UserSettingsPtr->SetPostProcessingQuality(DefaultData.GraphicsQualitySettings.PostProcessQuality);
+		UserSettingsPtr->SetAntiAliasingQuality(DefaultData.GraphicsQualitySettings.AntiAliasingQuality);
+		UserSettingsPtr->SetShadingQuality(DefaultData.GraphicsQualitySettings.ShadingQuality);
+		UserSettingsPtr->SetGlobalIlluminationQuality(DefaultData.GraphicsQualitySettings.GlobalIlluminationQuality);
+		UserSettingsPtr->SetReflectionQuality(DefaultData.GraphicsQualitySettings.ReflectionQuality);
+	}
+	
+	SaveSettings();
+}
+
+void UGameSettingsSubsystem::ChangeGraphicsSettings(EGraphicsSettingType type ,EGraphicsQuality QualityLevel)
+{
+	if (!UserSettingsPtr) return;
+	
+	int32 castedValue = static_cast<int32>(QualityLevel);
+	
+	switch (type)
+	{
+		case EGraphicsSettingType::TEXTURE_QUALITY:
+			UserSettingsPtr->SetTextureQuality(castedValue);
+			break;
+		case EGraphicsSettingType::SHADOW_QUALITY:
+			UserSettingsPtr->SetShadowQuality(castedValue);
+			break;
+		case EGraphicsSettingType::VISUAL_EFFECT_QUALITY:
+			UserSettingsPtr->SetVisualEffectQuality(castedValue);
+			break;
+		case EGraphicsSettingType::POST_PROCESSING_QUALITY:
+			UserSettingsPtr->SetPostProcessingQuality(castedValue);
+			break;
+		case EGraphicsSettingType::ANTI_ALIASING_QUALITY:
+			UserSettingsPtr->SetAntiAliasingQuality(castedValue);
+			break;
+		case EGraphicsSettingType::SHADING_QUALITY:
+			UserSettingsPtr->SetShadingQuality(castedValue);
+			break;
+		case EGraphicsSettingType::GLOBAL_ILLUMINATION_QUALITY:
+			UserSettingsPtr->SetGlobalIlluminationQuality(castedValue);
+			break;
+		case EGraphicsSettingType::REFLECTION_QUALITY:
+			UserSettingsPtr->SetReflectionQuality(castedValue);
+			break;
+	}
+}
+
+void UGameSettingsSubsystem::ApplyGraphicSettings()
+{
+	UserSettingsPtr->ApplySettings(false);
 	SaveSettings();
 }
