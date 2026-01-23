@@ -6,7 +6,31 @@
 #include "CoreMinimal.h"
 #include "DiamondProject/DiamondProjectPlayerController.h"
 #include "Subsystems/GameInstanceSubsystem.h"
+#include "GameFramework/GameUserSettings.h"
 #include "GameSettingsSubsystem.generated.h"
+
+UENUM(BlueprintType)
+enum class EGraphicsQuality : uint8
+{
+	LOW,
+	MEDIUM,
+	HIGH,
+	VERY_HIGH,
+	CINEMATIC
+};
+
+UENUM(BlueprintType)
+enum class EGraphicsSettingType : uint8
+{
+	TEXTURE_QUALITY,
+	SHADOW_QUALITY,
+	VISUAL_EFFECT_QUALITY,
+	POST_PROCESSING_QUALITY,
+	ANTI_ALIASING_QUALITY,
+	SHADING_QUALITY,
+	GLOBAL_ILLUMINATION_QUALITY,
+	REFLECTION_QUALITY,
+};
 
 /**
  * 
@@ -61,6 +85,12 @@ public:
 	UPROPERTY(BlueprintReadWrite)
 	bool bIsOnboardingTutorialActivated = true;
 	
+private:
+	
+
+	UPROPERTY()
+	TObjectPtr<UGameUserSettings> UserSettingsPtr;
+	
 public:
 	UFUNCTION(BlueprintCallable)
 	bool IsPreplanInSceneVisible() const;
@@ -75,6 +105,42 @@ public:
 
 	UFUNCTION(BlueprintCallable)
 	void ResetSettings();
+	
+	UFUNCTION(BlueprintCallable)
+	void ChangeGraphicsSettings(EGraphicsSettingType Type, EGraphicsQuality QualityLevel);
+	
+	UFUNCTION(BlueprintCallable)
+	void InitGraphicSettings();
 
+	UFUNCTION(BlueprintCallable)
+	void ApplyGraphicSettings();
+	
 	virtual void Initialize(FSubsystemCollectionBase& Collection) override;
+	
+#pragma region GraphicsSettingsGetters
+	
+	UFUNCTION(BlueprintCallable)
+	int32 GetTextureQuality() const { return UserSettingsPtr ? UserSettingsPtr->GetTextureQuality() : 0; }
+
+	UFUNCTION(BlueprintCallable)
+	int32 GetShadowQuality() const { return UserSettingsPtr ? UserSettingsPtr->GetShadowQuality() : 0; }
+
+	UFUNCTION(BlueprintCallable)
+	int32 GetVisualEffectsQuality() const { return UserSettingsPtr ? UserSettingsPtr->GetVisualEffectQuality() : 0; }
+
+	UFUNCTION(BlueprintCallable)
+	int32 GetPostProcessingQuality() const { return UserSettingsPtr ? UserSettingsPtr->GetPostProcessingQuality() : 0; }
+
+	UFUNCTION(BlueprintCallable)
+	int32 GetAntiAliasingQuality() const { return UserSettingsPtr ? UserSettingsPtr->GetAntiAliasingQuality() : 0; }
+
+	UFUNCTION(BlueprintCallable)
+	int32 GetShadingQuality() const { return UserSettingsPtr ? UserSettingsPtr->GetShadingQuality() : 0; }
+
+	UFUNCTION(BlueprintCallable)
+	int32 GetGlobalIlluminationQuality() const { return UserSettingsPtr ? UserSettingsPtr->GetGlobalIlluminationQuality() : 0; }
+
+	UFUNCTION(BlueprintCallable)
+	int32 GetReflectionQuality() const { return UserSettingsPtr ? UserSettingsPtr->GetReflectionQuality() : 0; }
+#pragma endregion
 };

@@ -8,6 +8,36 @@
 #include "DiamondSaveGame.generated.h"
 
 USTRUCT(BlueprintType)
+struct FGraphicsSettingsSaveData
+{
+	GENERATED_BODY()
+
+	UPROPERTY()
+	int32 TextureQuality = 3;
+
+	UPROPERTY()
+	int32 ShadowQuality = 3;
+
+	UPROPERTY()
+	int32 GlobalIlluminationQuality = 3;
+	
+	UPROPERTY()
+	int32 ReflectionQuality = 3;
+
+	UPROPERTY()
+	int32 AntiAliasingQuality = 3;
+
+	UPROPERTY()
+	int32 PostProcessQuality = 3;
+
+	UPROPERTY()
+	int32 VisualEffectQuality = 3;
+
+	UPROPERTY()
+	int32 ShadingQuality = 3;
+};
+
+USTRUCT(BlueprintType)
 struct FGameSettingsSaveData
 {
 	GENERATED_BODY()
@@ -47,6 +77,9 @@ struct FGameSettingsSaveData
 	
 	UPROPERTY()
 	EKeyboardLayout SavedKeyboardLayout = EKeyboardLayout::UNSPECIFIED;
+	
+	UPROPERTY()
+	FGraphicsSettingsSaveData GraphicsQualitySettings;
 };
 
 USTRUCT(BlueprintType)
