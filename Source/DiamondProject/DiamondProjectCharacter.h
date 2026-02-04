@@ -162,7 +162,11 @@ public:
 	UPROPERTY()
 	TObjectPtr<UWeaponComponent> CurrentWeapon;
 
+	UPROPERTY(BlueprintReadOnly, Category = "Weapon")
+	bool bHasWeaponOverheated = false;
 
+	UFUNCTION()
+	void OnWeaponOverheat();
 
 protected:
 	/** Called for movement input */

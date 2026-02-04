@@ -55,6 +55,8 @@ void ADiamondProjectCharacter::BeginPlay()
 	UCharacterMovementComponent* characterMovement=GetCharacterMovement();
 	// Call the base class  
 	Super::BeginPlay();
+	
+	bHasWeaponOverheated = false;
 }
 
 void ADiamondProjectCharacter::Tick(float deltaTime)
@@ -277,6 +279,11 @@ void ADiamondProjectCharacter::CheatToggleAllyInvincibility(const FInputActionVa
 void ADiamondProjectCharacter::CheatEndLoop(const FInputActionValue& Value)
 {
 	OnCheatEndLoop.Broadcast();
+}
+
+void ADiamondProjectCharacter::OnWeaponOverheat()
+{
+	bHasWeaponOverheated = true;
 }
 
 

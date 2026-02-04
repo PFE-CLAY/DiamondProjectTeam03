@@ -12,6 +12,7 @@ DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnOverheatStart);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnOverheatEnd);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnCoolingStart);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnFireFinished);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnRareFire);
 
 /**
  * Projectile weapon with overheat mechanic (no ammo consumption)
@@ -64,6 +65,9 @@ public:
 
 	UPROPERTY(BlueprintAssignable, Category = Overheat)
 	FOnFireFinished OnFireFinished;
+
+	UPROPERTY(BlueprintAssignable, Category = "Rare Events")
+	FOnRareFire OnRareFire;
 	
 	virtual void PerformShot() const override;
 	virtual bool AttachWeapon(ADiamondProjectCharacter* TargetCharacter) override;

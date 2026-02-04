@@ -8,6 +8,7 @@
 #include "JumpPad.generated.h"
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnJumpadJump);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnJumpadEnemyLaunched);
 
 UCLASS()
 class DIAMONDPROJECT_API AJumpPad : public AActor
@@ -25,6 +26,9 @@ protected:
 
 	UPROPERTY(BlueprintAssignable)
 	FOnJumpadJump JumpadJump;
+
+	UPROPERTY(BlueprintAssignable)
+	FOnJumpadEnemyLaunched JumpadEnemyLaunched;
 
 	UPROPERTY(EditAnywhere)
 	bool bDoesJumppadRequireSun = false;

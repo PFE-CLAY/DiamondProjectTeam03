@@ -128,6 +128,9 @@ struct FLoopSystemSaveData
 
 	UPROPERTY()
 	bool IsDeadByTimer = false;
+
+	UPROPERTY()
+	int32 TotalEnemyKillCount = 0;
 };
 
 /**

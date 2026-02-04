@@ -13,6 +13,7 @@
 #include "LoopSystem/PreplanStep.h"
 #include "UI/GameSettingsSubsystem.h"
 #include "SaveSystem/DiamondSaveGame.h"
+#include "steam/steam_api.h"
 
 void ULoopSubsystem::Initialize(FSubsystemCollectionBase& Collection)
 {
@@ -28,7 +29,8 @@ void ULoopSubsystem::ReloadScene()
 
 	// const ULevelSelectionSettings* LevelSelectionSettings = GetDefault<ULevelSelectionSettings>();
 	// if (LevelSelectionSettings == nullptr) return;
-	LoopNb++;	
+	LoopNb++;
+	CheckLoopCountAchievement();
 	OnSceneReloadEvent.Broadcast();
 	// bool mainLevelNull = LevelSelectionSettings->MainLevel.IsNull();
 	// if (!mainLevelNull)
@@ -357,6 +359,7 @@ void ULoopSubsystem::ActivatePreplanStep(FString PreplanID,int StepPart)
 		}
 	}
 	SaveLoopData();
+	CheckAllPreplanStepsUnlocked();
 }
 
 void ULoopSubsystem::ActivateCollectible(FString CollectibleID)
@@ -393,6 +396,7 @@ void ULoopSubsystem::SaveLoopData()
 		SaveGameInstance->LoopData.IsDeadByTimer = bIsDeadByTimer;
 		SaveGameInstance->LoopData.Collectibles = Collectibles;
 		SaveGameInstance->LoopData.bIsDreamLevel = bIsDreamLevel;
+		SaveGameInstance->LoopData.TotalEnemyKillCount = TotalEnemyKillCount;
 
 		SaveGameInstance->LoopData.PreplanSteps.Empty();
 		for (const TPair<FString, TObjectPtr<UPreplanStep>>& Pair : PreplanSteps)
@@ -425,6 +429,7 @@ void ULoopSubsystem::LoadLoopData()
 		bIsDeadByTimer = SaveGameInstance->LoopData.IsDeadByTimer;
 		//Collectibles = SaveGameInstance->LoopData.Collectibles;
 		bIsDreamLevel = SaveGameInstance->LoopData.bIsDreamLevel;
+		TotalEnemyKillCount = SaveGameInstance->LoopData.TotalEnemyKillCount;
 		
 		for (const TPair<FString, FPreplanStepSaveData>& Pair : SaveGameInstance->LoopData.PreplanSteps)
 		{
@@ -456,6 +461,7 @@ void ULoopSubsystem::ResetAllProgress()
 	bIsDeadByTimer = false;
 	Collectibles.Empty();
 	bIsDreamLevel = false;
+	TotalEnemyKillCount = 0;
 
 	for (auto& Pair : PreplanSteps)
 	{
@@ -494,3 +500,101 @@ bool ULoopSubsystem::IsLoopNbInSaveZero()
 	}
 	return true;
 }
+
+void ULoopSubsystem::CheckAllPreplanStepsUnlocked()
+{
+	if (bHasUnlockedAllPreplanStepsAchievement)
+	{
+		return;
+	}
+
+	if (PreplanSteps.Num() == 0)
+	{
+		return;
+	}
+
+	bool bAllUnlocked = true;
+	for (const TPair<FString, TObjectPtr<UPreplanStep>>& Pair : PreplanSteps)
+	{
+		if (Pair.Value && !Pair.Value->bIsStepActive)
+		{
+			bAllUnlocked = false;
+			break;
+		}
+	}
+
+	if (bAllUnlocked)
+	{
+		bHasUnlockedAllPreplanStepsAchievement = true;
+
+#if !UE_SERVER
+		if (SteamAPI_Init() && SteamUserStats())
+		{
+			SteamUserStats()->SetAchievement("ACH_COMPLETIONIST");
+			SteamUserStats()->StoreStats();
+		}
+		else
+		{
+			UE_LOG(LogTemp, Warning, TEXT("Failed to unlock achievement ACH_COMPLETIONIST - Steam not initialized"));
+		}
+#endif
+	}
+}
+
+void ULoopSubsystem::CheckLoopCountAchievement()
+{
+	if (bHasUnlockedWildsAchievement)
+	{
+		return;
+	}
+
+	if (LoopNb >= 22)
+	{
+		bHasUnlockedWildsAchievement = true;
+
+#if !UE_SERVER
+		if (SteamAPI_Init() && SteamUserStats())
+		{
+			SteamUserStats()->SetAchievement("ACH_WILDS");
+			SteamUserStats()->StoreStats();
+		}
+		else
+		{
+			UE_LOG(LogTemp, Warning, TEXT("Failed to unlock achievement ACH_WILDS - Steam not initialized"));
+		}
+#endif
+	}
+}
+
+void ULoopSubsystem::OnEnemyKilled()
+{
+	TotalEnemyKillCount++;
+	CheckEnemyKillCountAchievement();
+	SaveLoopData();
+}
+
+void ULoopSubsystem::CheckEnemyKillCountAchievement()
+{
+	if (bHasUnlockedGetOffMeAchievement)
+	{
+		return;
+	}
+
+	if (TotalEnemyKillCount >= 500)
+	{
+		bHasUnlockedGetOffMeAchievement = true;
+
+#if !UE_SERVER
+		if (SteamAPI_Init() && SteamUserStats())
+		{
+			SteamUserStats()->SetAchievement("ACH_GETOFFME");
+			SteamUserStats()->StoreStats();
+		}
+		else
+		{
+			UE_LOG(LogTemp, Warning, TEXT("Failed to unlock achievement ACH_GETOFFME - Steam not initialized"));
+		}
+#endif
+	}
+}
+

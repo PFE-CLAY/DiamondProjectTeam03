@@ -6,6 +6,7 @@
 #include "Components/BoxComponent.h"
 #include "GameFramework/Character.h"
 #include "Engine/World.h"
+#include "AI/Enemy.h"
 
 AJumpPad::AJumpPad()
 {
@@ -87,6 +88,11 @@ void AJumpPad::OnOverlapBegin(class UPrimitiveComponent* OverlappedComponent, cl
 		bCanBounce = false;
 
 		JumpadJump.Broadcast();
+
+		if (Cast<AEnemy>(OtherActor))
+		{
+			JumpadEnemyLaunched.Broadcast();
+		}
 	}
 	else if (UPrimitiveComponent* PrimComp = Cast<UPrimitiveComponent>(OtherComp))
 	{

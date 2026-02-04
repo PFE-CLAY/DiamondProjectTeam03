@@ -3,6 +3,8 @@
 
 #include "Weapons/PlayerHitWeaponComponent.h"
 
+#include <steam/steam_api.h>
+
 #include "EnhancedInputComponent.h"
 #include "EnhancedInputSubsystems.h"
 #include "DiamondProject/DiamondProjectCharacter.h"
@@ -171,6 +173,22 @@ void UPlayerHitWeaponComponent::PerformShot() const
 			if (Projectile)
 			{
 				Projectile->Initialize(Damage);
+				
+				// 1/10000 chance to trigger rare fire event
+				if (FMath::RandRange(1, 10000) == 1)
+				{
+#if !UE_SERVER
+					if (SteamAPI_Init() && SteamUserStats())
+					{
+						SteamUserStats()->SetAchievement("ACH_SNAKE");
+						SteamUserStats()->StoreStats();
+					}
+					else
+					{
+						UE_LOG(LogTemp, Warning, TEXT("Failed to unlock achievement ACH_WILDS - Steam not initialized"));
+					}
+#endif
+				}
 			}
 			OnFire.Broadcast(CurrentAmmo, SpawnLocation + (SpawnRotation.Vector() * 1000));
 		}
@@ -181,6 +199,9 @@ bool UPlayerHitWeaponComponent::AttachWeapon(ADiamondProjectCharacter* TargetCha
 {
 	bool bAttached = Super::AttachWeapon(TargetCharacter);
 	if (!bAttached) return false;
+
+	// Bind overheat delegate to character
+	OnOverheatStart.AddDynamic(Character, &ADiamondProjectCharacter::OnWeaponOverheat);
 
 	if (APlayerController* PlayerController = Cast<APlayerController>(Character->GetController()))
 	{

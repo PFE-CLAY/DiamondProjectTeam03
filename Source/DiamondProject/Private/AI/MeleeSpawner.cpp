@@ -5,6 +5,7 @@
 
 #include "AI/SpawnerManager.h"
 #include "LoopSystem/AC_Health.h"
+#include "LoopSystem/LoopSubsystem.h"
 
 
 // Sets default values
@@ -38,6 +39,14 @@ void AMeleeSpawner::DeathEnemy(const AActor* DamageDealer, AActor* Enemy)
 		}
 	}
 
+	// Track enemy kill for achievement
+	if (UGameInstance* GameInstance = GetWorld()->GetGameInstance())
+	{
+		if (ULoopSubsystem* LoopSubsystem = GameInstance->GetSubsystem<ULoopSubsystem>())
+		{
+			LoopSubsystem->OnEnemyKilled();
+		}
+	}
 }
 
 void AMeleeSpawner::RestartLastEnemyTimer()

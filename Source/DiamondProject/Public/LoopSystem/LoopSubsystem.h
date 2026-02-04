@@ -104,4 +104,29 @@ public:
 	
 	UFUNCTION(BlueprintCallable, BlueprintPure)
 	bool IsLoopNbInSaveZero();
+
+	UFUNCTION(BlueprintCallable)
+	void CheckAllPreplanStepsUnlocked();
+
+	UFUNCTION()
+	void CheckLoopCountAchievement();
+
+	UFUNCTION(BlueprintCallable)
+	void OnEnemyKilled();
+
+	UFUNCTION()
+	void CheckEnemyKillCountAchievement();
+	
+private:
+	UPROPERTY()
+	bool bHasUnlockedAllPreplanStepsAchievement = false;
+
+	UPROPERTY()
+	bool bHasUnlockedWildsAchievement = false;
+
+	UPROPERTY()
+	bool bHasUnlockedGetOffMeAchievement = false;
+
+	UPROPERTY(BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
+	int32 TotalEnemyKillCount = 0;
 };
