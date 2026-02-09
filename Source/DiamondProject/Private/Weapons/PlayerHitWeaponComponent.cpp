@@ -183,10 +183,6 @@ void UPlayerHitWeaponComponent::PerformShot() const
 						SteamUserStats()->SetAchievement("ACH_SNAKE");
 						SteamUserStats()->StoreStats();
 					}
-					else
-					{
-						UE_LOG(LogTemp, Warning, TEXT("Failed to unlock achievement ACH_WILDS - Steam not initialized"));
-					}
 #endif
 				}
 			}
