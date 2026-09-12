@@ -84,7 +84,7 @@ jobs:
         if: always()
         shell: powershell
         env:
-          DISCORD_WEBHOOK: "https://discord.com/api/webhooks/1446531201266618430/tXOZLINh87qxV222COHS1BTo3MBI9Of2rGrzXBsNxNgee2pl_7a-KGOggJypgOe_5kdb"
+          DISCORD_WEBHOOK: ""
           JOB_STATUS: ${{ job.status }}
         run: |
           [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
